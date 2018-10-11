@@ -1,3 +1,22 @@
-<p>
-  login works!
-</p>
+<div class="login-co">
+  <div class="brand-logo" [routerLink]="['/']"  >
+    <div class="primary-name">
+      {{'BRAND.primaryName' | translate}}
+    </div>
+    <div class="secondary-name">
+        {{'BRAND.secondaryName' | translate}}
+    </div>
+  </div>
+
+  <div class="login-box">
+     <div class="form-header">Login</div>
+     <form #f="ngForm" class="login-form">
+       <input placeholder="{{'LOGIN.user' | translate}}" name="user" ngModel>
+       <input placeholder="{{'LOGIN.password' | translate}}" name="password" ngModel>
+       <button class="kg-btn login">Login</button>
+     </form>
+     <div class="toRegister">
+        for <span>Registration</span>
+     </div>
+  </div>
+</div>

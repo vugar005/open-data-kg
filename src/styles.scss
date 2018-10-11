@@ -1,2 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+button.kg-btn {
+  border: 0;
+  outline: 0;
+}
+a {
+  text-decoration: none!important;
+}
+
+body {
+  background-image: linear-gradient(to right, #4e8ec8, #47b7c5);
+}

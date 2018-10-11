@@ -30,7 +30,14 @@
               "node_modules/daemonite-material/css/material.min.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/three/build/three.min.js",
+              "node_modules/three/examples/js/renderers/Projector.js",
+              "node_modules/three/examples/js/WebGL.js",
+              "node_modules/three/examples/js/renderers/CanvasRenderer.js",
+              "node_modules/three/examples/js/renderers/WebGLDeferredRenderer.js",
+              "node_modules/three/examples/js/libs/stats.min.js"
+            ]
           },
           "configurations": {
             "production": {

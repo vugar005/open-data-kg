@@ -1,0 +1,10 @@
+{
+  "BRAND": {
+    "primaryName": "KYRGYZSTAN REPUBLIC",
+    "secondaryName": "OPEN DATA PORTAL"
+  },
+  "LOGIN": {
+      "user": "User",
+      "password": "Password"
+  }
+}
