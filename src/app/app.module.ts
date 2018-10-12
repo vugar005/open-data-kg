@@ -18,6 +18,7 @@ import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { MainPageComponent } from './landing-page/main-page/main-page.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { WaveParticlesComponent } from './landing-page/wave-particles/wave-particles.component';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -26,7 +27,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppComponent,
     LandingPageComponent,
     HeaderComponent,
-    MainPageComponent
+    MainPageComponent,
+    WaveParticlesComponent
   ],
   imports: [
     BrowserModule,

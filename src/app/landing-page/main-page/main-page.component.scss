@@ -3,12 +3,7 @@
   width: 100vw;
   height: calc(100vh - 70px);
 }
-.waves {
-//  background-image: linear-gradient(to right, #4e8ec8, #47b7c5);
-position: fixed;
-pointer-events: none;
-bottom: 15%;
-}
+
 .main-page-co {
   display: flex;
   flex-direction: column;
@@ -17,6 +12,7 @@ bottom: 15%;
   width: 100%;
   height: calc(100% - 48px);
   .search-container {
+    z-index: 1;
     margin-bottom: 50px;
    .search-header {
      display: flex;

@@ -13,7 +13,7 @@
      <form #f="ngForm" class="login-form">
        <input placeholder="{{'LOGIN.user' | translate}}" name="user" ngModel>
        <input placeholder="{{'LOGIN.password' | translate}}" name="password" ngModel>
-       <button class="kg-btn login">Login</button>
+       <button class="kg-btn login" [routerLink]="['/']">Login</button>
      </form>
      <div class="toRegister">
         for <span>Registration</span>
