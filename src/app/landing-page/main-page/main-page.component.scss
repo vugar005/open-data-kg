@@ -1,7 +1,7 @@
 :host {
   display: block;
   width: 100vw;
-  height: calc(100vh - 70px);
+  height: 100%;
 }
 
 .main-page-co {
@@ -68,15 +68,4 @@
   }
 
 }
-.modules {
-  display: flex;
-  justify-content: space-around;
-  width: 60%;
-  margin: auto;
-  padding-bottom: 20px;
-  .module {
-    font-size: 20px;
-    color: #ffffff;
-    cursor: pointer;
-  }
-}
+

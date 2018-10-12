@@ -1,0 +1,20 @@
+:host {
+  display: block;
+  padding-right: 35px;
+}
+.news-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+  .card-image {
+    width: 100%;
+    img {
+     width: 100%;
+    }
+  }
+  .card-body {
+    padding: 15px 26px;
+    background: #ffffff;
+  }
+}

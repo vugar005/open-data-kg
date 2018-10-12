@@ -3,8 +3,13 @@
     "primaryName": "KYRGYZSTAN REPUBLIC",
     "secondaryName": "OPEN DATA PORTAL"
   },
-  "LOGIN": {
-      "user": "User",
-      "password": "Password"
+  "AUTH": {
+      "userName": "Username",
+      "email": "Email",
+      "password": "Password",
+      "confirmPassword": "ConfirmPassword"
+  },
+  "NEWS": {
+    "moduleName": "NEWS"
   }
 }

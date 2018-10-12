@@ -1,4 +1,4 @@
-<div class="login-co">
+<div class="auth-co">
   <div class="brand-logo" [routerLink]="['/']"  >
     <div class="primary-name">
       {{'BRAND.primaryName' | translate}}
@@ -8,15 +8,15 @@
     </div>
   </div>
 
-  <div class="login-box">
+  <div class="auth-box">
      <div class="form-header">Login</div>
      <form #f="ngForm" class="login-form">
-       <input placeholder="{{'LOGIN.user' | translate}}" name="user" ngModel>
-       <input placeholder="{{'LOGIN.password' | translate}}" name="password" ngModel>
+       <input placeholder="{{'AUTH.userName' | translate}}" name="user" ngModel>
+       <input placeholder="{{'AUTH.password' | translate}}" name="user" ngModel>
        <button class="kg-btn login" [routerLink]="['/']">Login</button>
      </form>
      <div class="toRegister">
-        for <span>Registration</span>
+        for <a [routerLink]="'/register'" >Register</a>
      </div>
   </div>
 </div>

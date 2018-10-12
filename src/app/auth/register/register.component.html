@@ -1,3 +1,24 @@
-<p>
-  register works!
-</p>
+<div class="auth-co">
+  <div class="brand-logo" [routerLink]="['/']"  >
+    <div class="primary-name">
+      {{'BRAND.primaryName' | translate}}
+    </div>
+    <div class="secondary-name">
+        {{'BRAND.secondaryName' | translate}}
+    </div>
+  </div>
+
+  <div class="auth-box">
+     <div class="form-header">Register</div>
+     <form #f="ngForm" class="login-form">
+       <input placeholder="{{'AUTH.userName' | translate}}" name="user" ngModel>
+       <input placeholder="{{'AUTH.email' | translate}}" name="password" ngModel>
+       <input placeholder="{{'AUTH.password' | translate}}" name="password" ngModel>
+       <input placeholder="{{'AUTH.confirmPassword' | translate}}" name="password" ngModel>
+       <button class="kg-btn login" [routerLink]="['/']">Login</button>
+     </form>
+     <div class="toRegister">
+        for <a [routerLink]="'/login'">Login</a>
+     </div>
+  </div>
+</div>

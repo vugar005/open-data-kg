@@ -1,0 +1,27 @@
+:host {
+  display: block;
+  position: fixed;
+  height: 100vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  z-index: 1;
+  left: 25px;
+  top: 0;
+}
+.lang-list {
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+  position: relative;
+  .lang {
+    font-size: 18px;
+    color: #ffffff;
+    cursor: pointer;
+  }
+  .horizontal-line {
+    height: 60px;
+    width: 2px;
+    background: #ffffff;
+  }
+}

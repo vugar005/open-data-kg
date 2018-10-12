@@ -1,0 +1,15 @@
+<div class="module-name">
+  {{'NEWS.moduleName' | translate}}
+</div>
+
+<div class="date-filters">
+  <div class="date-filter">Today</div>
+  <div class="date-filter">Yesterday</div>
+  <div class="date-filter">25.08.2018</div>
+  <div class="date-filter">23.08.2018</div>
+  <div class="date-filter">22.07.2018</div>
+</div>
+
+<div class="news-list">
+  <news-item *ngFor="let news of newsList" [news]="news"></news-item>
+</div>

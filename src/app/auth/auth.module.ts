@@ -17,7 +17,7 @@ import {FormsModule} from '@angular/forms';
     StoreModule.forFeature('auth', fromAuth.reducer),
     RouterModule,
     SharedModule,
-    FormsModule
+    FormsModule,
 
   ],
   declarations: [

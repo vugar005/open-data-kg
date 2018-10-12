@@ -1,0 +1,26 @@
+:host {
+  display: block;
+}
+.module-name {
+  font-family: Open Sans;
+ font-weight: bold;
+ font-size: 36px;
+ color: #ffffff;
+ padding-bottom:16px;
+}
+.date-filters {
+  display: flex;
+  .date-filter {
+    font-family: OpenSans;
+    font-size: 11px;
+    text-decoration: underline;
+    color: #FFFFFF;
+    padding-right: 15px;
+    cursor: pointer;
+  }
+}
+
+.news-list {
+  display: flex;
+  padding-top: 30px;
+}

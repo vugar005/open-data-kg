@@ -2,10 +2,10 @@
   display: block;
   background-image: linear-gradient(to right, #4e8ec8, #47b7c5);
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 70px);
 }
 
-.login-co {
+.auth-co {
   padding-top: 9.9em;
 .brand-logo {
   display: flex;
@@ -28,7 +28,7 @@
     letter-spacing: 19px
   }
 }
-.login-box {
+.auth-box {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -71,9 +71,10 @@
   .toRegister {
     margin-top: 20px;
     color: #ffffff;
-    span {
+   a {
       text-decoration: underline;
       cursor: pointer;
+      color: #ffffff;
     }
   }
 }
