@@ -35,6 +35,7 @@
     "@types/three": "^0.92.25",
     "core-js": "^2.5.4",
     "daemonite-material": "^4.1.1",
+    "ng-animate": "^0.3.4",
     "rxjs": "~6.2.0",
     "three": "^0.97.0",
     "zone.js": "~0.8.26"
