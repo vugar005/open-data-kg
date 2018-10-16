@@ -9,7 +9,8 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent },
   {path: 'register', component: RegisterComponent },
   {path: 'admin', loadChildren: './admin-panel/admin-panel.module#AdminPanelModule'},
-  {path: 'news', loadChildren: './news/news.module#NewsModule'}
+  {path: 'news', loadChildren: './news/news.module#NewsModule'},
+  {path: 'blogs', loadChildren: './blog/blog.module#BlogModule'}
 ];
 
 @NgModule({

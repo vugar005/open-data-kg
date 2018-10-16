@@ -1,0 +1,36 @@
+<div class="news-card">
+  <div class="cardBody">
+    <div class="cardHeader">
+      <div class="cardTitle">
+        {{blog?.title}}
+      </div>
+      <div class="cardSubTitle">
+        Entry posted by Алиев Али Али оглу · 18 hours ago 575 views
+      </div>
+      <div class="cardRating">
+        <div class="rating">
+            <img src="./assets/img/star.png">
+        </div>
+        <div class="rating">
+            <img src="./assets/img/star.png">
+        </div>
+        <div class="rating">
+            <img src="./assets/img/star.png">
+        </div>
+        <div class="rating">
+            <img src="./assets/img/star.png">
+        </div>
+      </div>
+    </div>
+    <div class="cardContent">
+      {{blog?.shortContent}}
+    </div>
+    <div class="cardFooter">
+      {{blog?.date}}
+    </div>
+  </div>
+
+  <div class="cardImage">
+    <img src="./assets/img/{{blog?.imgPath}}.png">
+  </div>
+</div>

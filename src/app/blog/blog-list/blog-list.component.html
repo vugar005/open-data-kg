@@ -1,0 +1,21 @@
+<div class="module-name">
+    Blog
+  </div>
+
+  <div class="date-filters">
+    <div class="date-filter">Latest</div>
+    <div class="date-filter">Popular</div>
+  </div>
+
+  <div class="news-list">
+    <blog-item *ngFor="let blog of blogList" [blog]="blog"></blog-item>
+  </div>
+
+  <div class="en-pagination">
+    <div class="arrow left">
+      <img src="./assets/icons/arrow.svg">
+    </div>
+    <div class="arrow right">
+        <img src="./assets/icons/arrow.svg">
+    </div>
+  </div>
