@@ -1,21 +1,29 @@
 :host {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  background-image: linear-gradient(to right, #4e8ec8, #47b7c5);
+  height: calc(100vh - 70px);
+  padding-left: 13%;
+  padding-top: 9%;
 }
+
 .module-name {
   font-family: Open Sans;
- font-weight: bold;
- font-size: 36px;
- color: #ffffff;
- padding-bottom:16px;
+  font-weight: bold;
+  font-size: 36px;
+  color: #ffffff;
+  padding-bottom: 16px;
 }
+
 .date-filters {
   display: flex;
+
   .date-filter {
     font-family: OpenSans;
     font-size: 11px;
-    text-decoration: underline;
     color: #FFFFFF;
     padding-right: 15px;
+    line-height: 15px;
     cursor: pointer;
   }
 }
@@ -23,4 +31,28 @@
 .news-list {
   display: flex;
   padding-top: 30px;
+}
+
+.en-pagination {
+  display: flex;
+  align-self: flex-end;
+  padding-right: 50px;
+  padding-top: 100px;
+  align-self: flex-end;
+  .arrow {
+    display: flex;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    background: #1F93CF;
+    cursor: pointer;
+
+    &.left {
+      background: transparent;
+      transform: rotate(180deg);
+    }
+
+    &.right {
+    }
+  }
 }

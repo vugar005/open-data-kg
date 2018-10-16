@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AppState } from '../../reducers';
+import { Store } from '@ngrx/store';
+import { ChangeGlobalNavClass } from '../../shared/store/ui.actions';
 
 @Component({
   selector: 'app-news-list',
@@ -25,6 +28,12 @@ export class NewsListComponent implements OnInit {
       shortContent: 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some',
       date: '22 august 14:35'
     },
+    {
+      imgPath: 'crew-22252-unsplash',
+      title: 'Established fact about watch',
+      shortContent: 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some',
+      date: '22 august 14:35'
+    }
     // {
     //   imgPath: 'crew-22252-unsplash',
     //   title: 'Established fact about watch',
@@ -32,7 +41,9 @@ export class NewsListComponent implements OnInit {
     //   date: '27 august 14:35'
     // }
   ];
-  constructor() { }
+  constructor(private store: Store<AppState>) {
+//    store.dispatch(new ChangeGlobalNavClass('top'));
+  }
 
   ngOnInit() {
   }

@@ -4,3 +4,20 @@
   height: 100%;
 }
 
+.hide {
+  display: none;
+}
+
+.global-nav {
+  transition: bottom 700ms ease-in-out;
+  visibility: hidden;
+  bottom: -50px;
+  &.bottom {
+   visibility: visible;
+    position: fixed;
+    width: 100vw;
+    left: 0;
+    z-index: 1;
+    bottom:15px;
+  }
+}

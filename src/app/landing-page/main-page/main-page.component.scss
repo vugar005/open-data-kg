@@ -4,6 +4,7 @@
   height: 100%;
 }
 
+
 .main-page-co {
   display: flex;
   flex-direction: column;
@@ -11,61 +12,69 @@
   justify-content: center;
   width: 100%;
   height: calc(100% - 48px);
+
   .search-container {
     z-index: 1;
     margin-bottom: 50px;
-   .search-header {
-     display: flex;
-     flex-direction: column;
-     align-items: center;
-    .primary-name {
-      font-family: OpenSans;
-      font-size: 39px;
-      letter-spacing: 2px;
-      font-weight: bold;
-      text-align: center;
-      color: #ffffff;
-    }
-    .secondary-name {
-      font-family: OpenSans;
-      font-size: 12px;
-      font-weight: bold;
-      text-align: center;
-      color: #ffffff;
-      letter-spacing: 23px;
-      margin-right: -23px;
-    }
-   }
-  .input-co {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    background: #ffffff;
-    margin-top: 8px;
-    .search-ico {
-      color: gray;
-      padding: 0 21px;
-      font-size: 18px;
-    }
-    .search-input {
-      background: #ffffff;
-      border: 0;
-      outline: 0;
-      margin-right: auto;
-      width: 100%;
-      &::placeholder {
+
+    .search-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .primary-name {
+        font-family: OpenSans;
+        font-size: 39px;
+        letter-spacing: 2px;
+        font-weight: bold;
+        text-align: center;
+        color: #ffffff;
+      }
+
+      .secondary-name {
+        font-family: OpenSans;
         font-size: 12px;
+        font-weight: bold;
+        text-align: center;
+        color: #ffffff;
+        letter-spacing: 23px;
+        margin-right: -23px;
       }
     }
-    .submit-ico {
-      color: white;
-      background: #1F93CF;
-      padding: 19px 23px;
-      cursor: pointer;
+
+    .input-co {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      background: #ffffff;
+      margin-top: 8px;
+
+      .search-ico {
+        color: gray;
+        padding: 0 21px;
+        font-size: 18px;
+      }
+
+      .search-input {
+        background: #ffffff;
+        border: 0;
+        outline: 0;
+        margin-right: auto;
+        width: 100%;
+
+        &::placeholder {
+          font-size: 12px;
+        }
+      }
+
+      .submit-ico {
+        color: white;
+        background: #1F93CF;
+        padding: 19px 23px;
+        cursor: pointer;
+      }
     }
-  }
   }
 
 }
-

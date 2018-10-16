@@ -2,11 +2,15 @@ import {
   Component,
   OnInit,
   ChangeDetectionStrategy,
-  ViewChild,
+  ViewChild
 } from '@angular/core';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { WaveParticlesComponent } from '../wave-particles/wave-particles.component';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../reducers';
+import { Observable } from 'rxjs';
+import { getGlobalNavClass } from '../../shared/store/ui.selectors';
 
 @Component({
   selector: 'app-main-page',
@@ -15,15 +19,20 @@ import { WaveParticlesComponent } from '../wave-particles/wave-particles.compone
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MainPageComponent implements OnInit {
-  @ViewChild('wave') wave: WaveParticlesComponent;
+  @ViewChild('wave')
+  wave: WaveParticlesComponent;
   faSearch = faSearch;
   faChevronRight = faChevronRight;
-
-  constructor() {}
+  globalNavClass$: Observable<string>;
+  constructor(private store: Store<AppState>) {
+    this.globalNavClass$ = store.select(getGlobalNavClass);
+  }
 
   ngOnInit() {}
-resetMouse() {
-  if (!this.wave) {return; }
-   this.wave.resetMouse();
-}
+  resetMouse() {
+    if (!this.wave) {
+      return;
+    }
+    this.wave.resetMouse();
+  }
 }

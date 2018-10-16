@@ -1,21 +1,18 @@
 :host {
-display: block;
-position: fixed;
-width: 100vw;
-transition: all 700ms ease-in-out;
-left: 0;
-top: 95%;
-z-index: 1;
+  display: block;
 }
+
+
+
 .modules {
   display: flex;
   justify-content: space-around;
   width: 50%;
   margin: auto;
+
   .module {
     font-size: 20px;
     color: #ffffff;
     cursor: pointer;
   }
 }
-
