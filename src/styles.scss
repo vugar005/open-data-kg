@@ -1,7 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "./assets//themes/ag-theme.scss";
 * {
   box-sizing: border-box;
+}
+html, body {
+  width: 100%;
+  height: 100%;
 }
 z-1 {
   z-index: 1;
@@ -10,9 +15,13 @@ button.kg-btn {
   border: 0;
   outline: 0;
 }
-a {
-  text-decoration: none!important;
-}
+  a {
+    color: #333333;;
+    text-decoration: none!important;
+    &:hover, &:active, &:visited {
+      color: #333333;
+    }
+  }
 p {
   margin: 0;
 }
@@ -20,5 +29,4 @@ div {
   outline: 0;
 }
 body {
-  background-image: linear-gradient(to right, #4e8ec8, #47b7c5);
 }

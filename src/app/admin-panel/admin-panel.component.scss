@@ -1,0 +1,13 @@
+:host {
+  display: block;
+  position: relative;
+  height: calc(100% - 70px);
+  padding-top: 15px;
+  z-index: 2;
+}
+.c-p {
+padding: 0 6px;
+}
+.co-p {
+  padding: 0 4em 0 0!important;
+}

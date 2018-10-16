@@ -1,3 +1,36 @@
-<p>
-  left-aside works!
-</p>
+<div class="structure-info">
+  <!-- <div class="cover-photo">
+    <img src= "{{hostname}}/{{(structureImgUrl$ | async)}}/logo?token={{(token$ | async)}}">
+  </div> -->
+  <div class="name">
+    <!-- {{structureName$ | async | translator}} -->
+  </div>
+</div>
+<div class="modules-list">
+  <a class="module"  >
+    <div class="icon">
+    <fa-icon [icon]="faAccusoft"></fa-icon>
+    </div>
+    <p  class="link">Applications </p>
+  </a>
+  <a class="module" [routerLink]="['modules']" routerLinkActive="active" >
+    <div class="icon">
+    <fa-icon [icon]="faAccusoft"></fa-icon>
+    </div>
+    <p  class="link">Modules </p>
+  </a>
+  <a class="module" >
+    <div class="icon">
+    <fa-icon [icon]="faAccusoft"></fa-icon>
+    </div>
+    <p  class="link">Operations </p>
+  </a>
+
+  <a class="module" >
+    <div class="icon">
+    <fa-icon [icon]="faAccusoft"></fa-icon>
+    </div>
+    <p  class="link">Dictionaries </p>
+  </a>
+
+</div>

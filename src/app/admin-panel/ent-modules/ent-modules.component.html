@@ -1,3 +1,18 @@
-<p>
-  ent-modules works!
-</p>
+<div class="content-header">
+  <div class="moduleName">
+   Modules
+  </div>
+ </div>
+
+ <div class="content">
+   <div class="nt-table" style="width: 100%;height: 620px;">
+     <ngx-nt-table #table
+     [getApi]="'https://vugar.xyz/api/table'"
+     [insertApi]="'http://192.168.1.7:8080/DispatcherRest/api/Permission/Modules/insertNewModule'"
+     [updateApi]="'http://192.168.1.7:8080/DispatcherRest/api/Permission/Modules/updateModule'"
+     [deleteApi]="'http://192.168.1.7:8080/DispatcherRest/api/Permission/Modules/deleteApplication'"
+     (rowAdd)="initDialog(table.insertApi)"
+     (rowEdit)="initUpdateDialog($event, table.updateApi)"
+    ></ngx-nt-table>
+   </div>
+ </div>

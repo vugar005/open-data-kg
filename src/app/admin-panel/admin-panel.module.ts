@@ -1,17 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AdminPanelComponent } from './admin-panel.component';
-import { LeftAsideComponent } from './left-aside/left-aside.component';
 import { AdminPanelRoutes } from './admin-panel.routing';
+import { SharedModule } from './shared/shared.module';
+import { LeftAsideComponent } from './left-aside/left-aside.component';
 
 @NgModule({
   imports: [
     CommonModule,
-    AdminPanelRoutes
+    AdminPanelRoutes,
+    SharedModule,
   ],
   declarations: [
     AdminPanelComponent,
-    LeftAsideComponent
+    LeftAsideComponent,
   ]
 })
 export class AdminPanelModule { }
