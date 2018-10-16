@@ -2,10 +2,17 @@
   <div class="moduleName">
    Modules
   </div>
+ <div class="actions-template">
+    <button mat-raised-button (click)="table.onPrintSelected()" *ngIf="table.printable">Print</button>
+    <button mat-raised-button (click)="table.addData()">Add data</button>
+    <button mat-raised-button (click)="table.onRemove()" [disabled]="!(table.isRowSelected)">Remove selected</button>
+    <button mat-raised-button [disabled]="!(table.selectedRow)" (click)="table.onRowPin()" *ngIf="table.rowPinnable"> Pin to top</button>
+    <button mat-raised-button (click)="table.onExport()" *ngIf="table.exportable">Export</button>
+ </div>
  </div>
 
  <div class="content">
-   <div class="nt-table" style="width: 100%;height: 620px;">
+   <div class="nt-table">
      <ngx-nt-table #table
      [getApi]="'https://vugar.xyz/api/table'"
      [insertApi]="'http://192.168.1.7:8080/DispatcherRest/api/Permission/Modules/insertNewModule'"
@@ -13,6 +20,7 @@
      [deleteApi]="'http://192.168.1.7:8080/DispatcherRest/api/Permission/Modules/deleteApplication'"
      (rowAdd)="initDialog(table.insertApi)"
      (rowEdit)="initUpdateDialog($event, table.updateApi)"
+     [featureTemplate]="true"
     ></ngx-nt-table>
    </div>
  </div>

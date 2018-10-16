@@ -1,0 +1,17 @@
+<div class="side-nav">
+  <div class="profile-img">
+    <div class="icon">
+      <fa-icon [icon]="faUser"></fa-icon>
+    </div>
+  </div>
+  <div class="notifications">
+    <img src="./assets/icons/bell-ring.svg" alt="">
+  </div>
+  <div class="app-links">
+    <div class="link" *ngFor="let app of apps">
+        <div class="icon">
+         <img src="/assets/icons/{{app.imgUrl}}.svg">
+        </div>
+    </div>
+  </div>
+  </div>
