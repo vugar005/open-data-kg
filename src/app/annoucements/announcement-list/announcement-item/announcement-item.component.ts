@@ -1,21 +1,13 @@
-import {
-  Component,
-  OnInit,
-  Input,
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  DoCheck,
-  OnDestroy
-} from '@angular/core';
-import { transition, trigger, useAnimation } from '@angular/animations';
+import { Component, OnInit, ChangeDetectionStrategy, DoCheck, OnDestroy, Input, ChangeDetectorRef } from '@angular/core';
+import { trigger, transition, useAnimation } from '@angular/animations';
 import { fadeInRight } from 'ng-animate';
-import { timer, Subject } from 'rxjs';
+import { Subject, timer } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-
+import {faChevronRight} from '@fortawesome/free-solid-svg-icons';
 @Component({
-  selector: 'news-item',
-  templateUrl: './news-item.component.html',
-  styleUrls: ['./news-item.component.scss'],
+  selector: 'announcement-item',
+  templateUrl: './announcement-item.component.html',
+  styleUrls: ['./announcement-item.component.scss'],
   animations: [
     trigger('fadeInRight', [
       transition(
@@ -28,14 +20,15 @@ import { takeUntil } from 'rxjs/operators';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NewsItemComponent implements OnInit, DoCheck, OnDestroy {
+export class AnnouncementItemComponent implements OnInit, DoCheck, OnDestroy {
   @Input()
-  news: any;
+  item: any;
   @Input()
   index: number;
   fadeInRight = fadeInRight;
   ready: boolean;
   _onDestroy$ = new Subject<void>();
+  faChevronRight = faChevronRight;
   constructor(private changeDetectorRef: ChangeDetectorRef) {}
 
   ngOnInit() {

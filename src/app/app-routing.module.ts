@@ -10,7 +10,8 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent },
   {path: 'admin', loadChildren: './admin-panel/admin-panel.module#AdminPanelModule'},
   {path: 'news', loadChildren: './news/news.module#NewsModule'},
-  {path: 'blogs', loadChildren: './blog/blog.module#BlogModule'}
+  {path: 'blogs', loadChildren: './blog/blog.module#BlogModule'},
+  {path: 'announcements', loadChildren: './annoucements/announcements.module#AnnouncementsModule'}
 ];
 
 @NgModule({

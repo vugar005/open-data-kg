@@ -1,0 +1,61 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  background-image: linear-gradient(to right, #4e8ec8, #47b7c5);
+  height: calc(100vh - 70px);
+  padding-left: 13%;
+  padding-top: 9%;
+  overflow: hidden;
+}
+
+.swiper-container {
+  width: 100%;
+  padding-top: 32px;
+}
+.swiper-slide {
+  width: 477px!important;
+  padding: 5px;
+  &.first {}
+}
+.module-name {
+  font-weight: bold;
+  font-size: 36px;
+  color: #ffffff;
+  padding-bottom: 16px;
+}
+
+.date-filters {
+  display: flex;
+
+  .date-filter {
+    font-size: 11px;
+    color: #FFFFFF;
+    padding-right: 15px;
+    line-height: 15px;
+    cursor: pointer;
+  }
+}
+
+
+.en-pagination {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 50px;
+  padding-top: 100px;
+  .arrow {
+    display: flex;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    background: #1F93CF;
+    cursor: pointer;
+
+    &.left {
+      background: transparent;
+      transform: rotate(180deg);
+    }
+
+    &.right {
+    }
+  }
+}

@@ -1,0 +1,44 @@
+<div class="module-name">
+   Annoucements
+  </div>
+
+  <div class="date-filters">
+    <div class="date-filter">Latest</div>
+    <div class="date-filter">Popular</div>
+  </div>
+<!--
+  <div class="list d-flex flex-wrap w-100">
+    <div class="item" *ngFor="let item of itemsList;let i=index;" [ngClass]="{'wide': i=== 0 }" >
+      <announcement-item [item]="item" [index]="i" ></announcement-item>
+    </div>
+
+  </div> -->
+
+  <!-- <div class="items-container">
+    <div class="first-item">
+        <announcement-item [item]="itemsList[0]" [index]="0" ></announcement-item>
+    </div>
+    <div class="others">
+
+          <div class="other-items">
+              <announcement-item [item]="itemsList[0]" [index]="0" ></announcement-item>
+
+          </div>
+
+    </div>
+  </div> -->
+
+  <div  class="swiper-container" [swiper]="config" style="width: 100%" #swiper >
+      <div class="swiper-wrapper">
+          <div class="swiper-slide" *ngFor="let item of itemsList;let i=index;" >
+              <announcement-item [item]="item" [index]="0" ></announcement-item>
+          </div>
+      </div>
+      <div class="en-pagination" >
+        <div class="arrow left" (click)="slidePrev()">
+          <img src="./assets/icons/arrow.svg">
+        </div>
+        <div class="arrow right" (click)="slideNext()">
+          <img src="./assets/icons/arrow.svg">
+        </div>
+    </div>
