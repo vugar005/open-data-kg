@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, OnDestroy } from '@angular/core';
 import { AppState } from '../../reducers';
 import { Store } from '@ngrx/store';
+import { SwiperConfigInterface, SwiperComponent, SwiperDirective } from 'ngx-swiper-wrapper';
 declare var Swiper;
 @Component({
   selector: 'app-news-list',
@@ -8,19 +9,19 @@ declare var Swiper;
   styleUrls: ['./news-list.component.scss']
 })
 export class NewsListComponent implements OnInit, AfterViewInit, OnDestroy {
-  // @ViewChild('swiper') swiper: SwiperComponent;
-  // public config: SwiperConfigInterface = {
-  //   a11y: true,
-  //   direction: 'horizontal',
-  //   keyboard: false,
-  //   mousewheel: true,
-  //   navigation: true,
-  //   pagination: false,
-  //   scrollbar: false,
-  //   slidesPerView: 4,
-  // };
-  index = 0;
-  swiper: any;
+  @ViewChild(SwiperDirective) swiper?: SwiperDirective;
+  public config: SwiperConfigInterface = {
+    slidesPerView: 4,
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    spaceBetween: 0,
+    navigation: {
+      nextEl: '.arrow-left',
+      prevEl: '.arrow-right',
+    },
+  };
   newsList = [
     {
         imgPath: 'patrick-tomasso-88398-unsplash',
@@ -61,41 +62,16 @@ export class NewsListComponent implements OnInit, AfterViewInit, OnDestroy {
   this.newsList =  this.newsList.concat(this.newsList).concat(this.newsList);
   }
   ngAfterViewInit() {
-      this.initSwiper();
   }
   ngOnDestroy() {
-   try {
-     this.swiper.detach();
-    this.swiper.destroy(true, true);
-    this.swiper = undefined;
-   } catch (er) {
-  //   console.log(er);
-   }
   }
   slidePrev() {
     if (!this.swiper) {return; }
-    this.swiper.slidePrev();
+    this.swiper.prevSlide();
   }
   slideNext() {
-    console.log(this.swiper);
     if (!this.swiper) {return; }
-   this.swiper.slideNext();
-  }
-  initSwiper() {
-    this.swiper = new Swiper('.swiper-container', {
-      slidesPerView: '4',
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-        spaceBetween: 0
-      },
-      spaceBetween: 0,
-      navigation: {
-        nextEl: '.arrow-left',
-        prevEl: '.arrow-right',
-      },
-    });
-    console.log(this.swiper)
+   this.swiper.nextSlide();
   }
 
 }

@@ -4,11 +4,13 @@ import { BlogComponent } from './blog.component';
 import { BlogListComponent } from './blog-list/blog-list.component';
 import { BlogItemComponent } from './blog-list/blog-item/blog-item.component';
 import { BlogRoutes } from './blog.routing';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    BlogRoutes
+    BlogRoutes,
+    SharedModule
   ],
   declarations: [
     BlogComponent,

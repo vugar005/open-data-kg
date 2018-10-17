@@ -2,10 +2,11 @@
   display: block;
   padding-right: 15px;
   cursor: pointer;
+  width: 100%;
 }
 .en-card {
   display: flex;
-  width: 570px;
+  width: 100%;
   transition: box-shadow 300ms ease-in-out;
   .cardImage {
     width: 50%;

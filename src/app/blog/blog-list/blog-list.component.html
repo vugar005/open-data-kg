@@ -1,30 +1,20 @@
 <div class="module-name">
-    Blog
-  </div>
+  Blog
+</div>
 
-  <div class="date-filters">
-    <div class="date-filter">Latest</div>
-    <div class="date-filter">Popular</div>
-  </div>
+<div class="date-filters">
+  <div class="date-filter">Latest</div>
+  <div class="date-filter">Popular</div>
+</div>
 
 
-  <div class="swiper-container blog">
-    <!-- Additional required wrapper -->
-    <div class="swiper-wrapper">
-      <!-- Slides -->
-      <div class="swiper-slide" *ngFor="let blog of blogList;let i=index;let first=first">
-        <blog-item  [blog]="blog" [index]="i"></blog-item>
-
-      </div>
-
+<div class="swiper-container" [swiper]="config" style="width: 100%" #swiper>
+  <div class="swiper-wrapper">
+    <div class="swiper-slide" *ngFor="let blog of blogList;let i=index;" >
+      <blog-item [blog]="blog" [index]="i" > </blog-item>
     </div>
-    <!-- If we need pagination -->
-    <!-- <div class="swiper-pagination"></div> -->
-
-    <!-- If we need scrollbar -->
-    <!-- <div class="swiper-scrollbar"></div> -->
-
-    <div class="en-pagination" >
+  </div>
+  <div class="en-pagination" >
       <div class="arrow left" (click)="slidePrev()">
         <img src="./assets/icons/arrow.svg">
       </div>
@@ -32,6 +22,4 @@
         <img src="./assets/icons/arrow.svg">
       </div>
     </div>
-  </div>
-
-
+</div>

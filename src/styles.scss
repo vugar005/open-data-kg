@@ -22,18 +22,18 @@ button.kg-btn {
   a {
     color: #333333;;
     text-decoration: none!important;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'OpensSans', sans-serif;
     &:hover, &:active, &:visited {
       color: #333333;
     }
   }
 p {
   margin: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'OpensSans', sans-serif;
 }
 div {
   outline: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'OpensSans', sans-serif;
 }
 
 ::-webkit-scrollbar {
@@ -53,4 +53,8 @@ div {
 @font-face {
   font-family: Roboto;
   src: url(assets/fonts/Roboto/Roboto-Regular.ttf) format("opentype");
+}
+@font-face {
+  font-family: OpenSans;
+  src: url(assets/fonts/Open_Sans/OpenSans-Regular.ttf) format("opentype");
 }

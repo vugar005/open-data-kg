@@ -24,5 +24,4 @@ export class BlogItemComponent implements OnInit {
       // this.changeDetectorRef.detectChanges();
     }, this.index * 150);
   }
-
 }
