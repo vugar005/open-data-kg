@@ -10,15 +10,63 @@
   <div class="date-filter">22.07.2018</div>
 </div>
 
-<div class="news-list">
-  <news-item *ngFor="let news of newsList" [news]="news"></news-item>
+
+<!-- <div  class="swiper-container" [swiper]="config" style="width: 100%" #swiper >
+    <div class="swiper-wrapper">
+      <div class="swiper-slide" *ngFor="let news of newsList" >
+              <news-item [news]="news"></news-item>
+      </div>
+    </div>
+
+    <div class="swiper-scrollbar"></div>
+    <div class="swiper-pagination"></div>
+
+  </div> -->
+<!-- <swiper [config]="config" [(index)]="index" #swiper>
+      <div  *ngFor="let news of newsList" >
+          <news-item [news]="news"></news-item>
+  </div>
+    </swiper> -->
+
+
+<div class="swiper-container">
+  <!-- Additional required wrapper -->
+  <div class="swiper-wrapper">
+    <!-- Slides -->
+    <div class="swiper-slide" *ngFor="let news of newsList;let i=index;let first=first"  [ngClass]="{ 'wide': i === 0}" >
+      <news-item [news]="news" [index]="i" ></news-item>
+    </div>
+  </div>
+  <!-- If we need pagination -->
+  <!-- <div class="swiper-pagination"></div> -->
+
+  <!-- If we need scrollbar -->
+  <!-- <div class="swiper-scrollbar"></div> -->
+
+  <div class="en-pagination" >
+    <div class="arrow left" (click)="slidePrev()">
+      <img src="./assets/icons/arrow.svg">
+    </div>
+    <div class="arrow right" (click)="slideNext()">
+      <img src="./assets/icons/arrow.svg">
+    </div>
+  </div>
 </div>
 
-<div class="en-pagination">
-  <div class="arrow left">
-    <img src="./assets/icons/arrow.svg">
-  </div>
-  <div class="arrow right">
-      <img src="./assets/icons/arrow.svg">
-  </div>
-</div>
+
+
+
+
+<!-- <div  class="swiper-container" [swiper]="config" style="width: 100%" >
+    <div class="swiper-wrapper">
+      <div class="swiper-slide" *ngFor="let news of newsList" >
+              <news-item [news]="news"></news-item>
+      </div>
+    </div>
+
+    <div class="swiper-scrollbar"></div>
+    <div class="swiper-pagination"></div>
+
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </div> -->

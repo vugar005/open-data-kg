@@ -9,7 +9,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 @NgModule({
     imports: [
       HttpClientModule,
-      FontAwesomeModule,
       TranslateModule.forChild({
         loader: {
           provide: TranslateLoader,
@@ -21,7 +20,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     exports: [
       HttpClientModule,
       FontAwesomeModule,
-      TranslateModule
+      TranslateModule,
+    ],
+    providers: [
     ]
   }
 )

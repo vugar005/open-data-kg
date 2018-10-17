@@ -11,7 +11,7 @@ import { ChangeGlobalNavClass } from '../shared/store/ui.actions';
 export class NewsComponent implements OnInit {
 
   constructor(private store: Store<AppState>) {
-    store.dispatch(new ChangeGlobalNavClass('top'));
+  //  store.dispatch(new ChangeGlobalNavClass('top'));
   }
 
   ngOnInit() {

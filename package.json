@@ -42,6 +42,7 @@
     "ngx-form-utils": "0.0.3",
     "nt-table": "^1.0.0-rc.8",
     "rxjs": "~6.2.0",
+    "swiper": "^4.4.1",
     "three": "^0.97.0",
     "zone.js": "~0.8.26"
   },

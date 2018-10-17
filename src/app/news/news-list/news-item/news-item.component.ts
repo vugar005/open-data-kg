@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy, ChangeDetectorRef, DoCheck } from '@angular/core';
 import { transition, trigger, useAnimation } from '@angular/animations';
 import { bounceInRight} from 'ng-animate';
 
@@ -10,14 +10,23 @@ import { bounceInRight} from 'ng-animate';
     trigger('bounceInRight', [transition('* => *', useAnimation(bounceInRight, {
       params: { timing: 2.5, delay: 0 }
     }))])
-  ]
+  ],
 })
-export class NewsItemComponent implements OnInit {
+export class NewsItemComponent implements OnInit, DoCheck {
   @Input() news: any;
+  @Input() index: number;
   bounceInRight = bounceInRight;
-  constructor() { }
+  ready: boolean;
+  constructor(private changeDetectorRef: ChangeDetectorRef) { }
 
   ngOnInit() {
+    setTimeout(() => {
+      this.ready = true;
+    //  this.changeDetectorRef.detectChanges();
+    }, this.index * 150);
+  }
+  ngDoCheck() {
+  //  console.log('checking')
   }
 
 }

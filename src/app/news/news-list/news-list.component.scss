@@ -8,8 +8,18 @@
   overflow: hidden;
 }
 
+.swiper-container {
+  width: 100%;
+  padding-top: 32px;
+}
+
+.swiper-slide {
+  width: 240px!important;
+  &.wide {
+    width: 480px!important;
+  }
+}
 .module-name {
-  font-family: Open Sans;
   font-weight: bold;
   font-size: 36px;
   color: #ffffff;
@@ -20,7 +30,6 @@
   display: flex;
 
   .date-filter {
-    font-family: OpenSans;
     font-size: 11px;
     color: #FFFFFF;
     padding-right: 15px;
@@ -36,10 +45,9 @@
 
 .en-pagination {
   display: flex;
-  align-self: flex-end;
+  justify-content: flex-end;
   padding-right: 50px;
   padding-top: 100px;
-  align-self: flex-end;
   .arrow {
     display: flex;
     justify-content: center;

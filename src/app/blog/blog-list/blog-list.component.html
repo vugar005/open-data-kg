@@ -7,15 +7,31 @@
     <div class="date-filter">Popular</div>
   </div>
 
-  <div class="news-list">
-    <blog-item *ngFor="let blog of blogList" [blog]="blog"></blog-item>
+
+  <div class="swiper-container blog">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+      <!-- Slides -->
+      <div class="swiper-slide" *ngFor="let blog of blogList;let i=index;let first=first">
+        <blog-item  [blog]="blog" [index]="i"></blog-item>
+
+      </div>
+
+    </div>
+    <!-- If we need pagination -->
+    <!-- <div class="swiper-pagination"></div> -->
+
+    <!-- If we need scrollbar -->
+    <!-- <div class="swiper-scrollbar"></div> -->
+
+    <div class="en-pagination" >
+      <div class="arrow left" (click)="slidePrev()">
+        <img src="./assets/icons/arrow.svg">
+      </div>
+      <div class="arrow right" (click)="slideNext()">
+        <img src="./assets/icons/arrow.svg">
+      </div>
+    </div>
   </div>
 
-  <div class="en-pagination">
-    <div class="arrow left">
-      <img src="./assets/icons/arrow.svg">
-    </div>
-    <div class="arrow right">
-        <img src="./assets/icons/arrow.svg">
-    </div>
-  </div>
+
