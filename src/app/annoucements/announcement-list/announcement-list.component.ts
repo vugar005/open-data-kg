@@ -11,10 +11,6 @@ export class AnnouncementListComponent implements OnInit {
   public config: SwiperConfigInterface = {
     slidesPerView: 3,
     slidesPerColumn: 2,
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    },
     spaceBetween: 0,
     navigation: {
       nextEl: '.arrow-left',

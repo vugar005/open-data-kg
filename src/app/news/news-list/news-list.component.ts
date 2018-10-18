@@ -12,6 +12,7 @@ export class NewsListComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild(SwiperDirective) swiper?: SwiperDirective;
   public config: SwiperConfigInterface = {
     slidesPerView: 4,
+    slidesPerGroup: 4,
     pagination: {
       el: '.swiper-pagination',
       clickable: true,
@@ -20,6 +21,10 @@ export class NewsListComponent implements OnInit, AfterViewInit, OnDestroy {
     navigation: {
       nextEl: '.arrow-left',
       prevEl: '.arrow-right',
+    },
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: true
     },
   };
   newsList = [
