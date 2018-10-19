@@ -1,5 +1,8 @@
 import { Component, OnInit, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import { SwiperDirective, SwiperConfigInterface } from 'ngx-swiper-wrapper';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../reducers';
+import { ChangeGlobalNavClass } from '../../shared/store/ui.actions';
 @Component({
   selector: 'app-blog-list',
   templateUrl: './blog-list.component.html',
@@ -8,7 +11,7 @@ import { SwiperDirective, SwiperConfigInterface } from 'ngx-swiper-wrapper';
 export class BlogListComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild(SwiperDirective) swiper?: SwiperDirective;
   public config: SwiperConfigInterface = {
-    slidesPerView: 3,
+    slidesPerView: 2,
     pagination: {
       el: '.swiper-pagination',
       clickable: true,
@@ -30,7 +33,8 @@ export class BlogListComponent implements OnInit, AfterViewInit, OnDestroy {
       },
 
   ];
-  constructor() { }
+  constructor(private store: Store<AppState>) {
+   }
 
   ngOnInit() {
     this.blogList = this.blogList.concat(this.blogList).concat(this.blogList);
@@ -42,16 +46,14 @@ export class BlogListComponent implements OnInit, AfterViewInit, OnDestroy {
   }
   slidePrev() {
     try {
-      this.swiper.nextSlide();
+      this.swiper.prevSlide();
     } catch (er) {
     console.log(er);
     }
   }
   slideNext() {
-    console.log('nex')
-
     try {
-      this.swiper.prevSlide();
+      this.swiper.nextSlide();
     } catch (er) {
     console.log(er);
     }

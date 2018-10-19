@@ -11,7 +11,7 @@
 <div class="swiper-container" [swiper]="config" style="width: 100%" #swiper>
   <div class="swiper-wrapper">
     <div class="swiper-slide" *ngFor="let blog of blogList;let i=index;" >
-      <blog-item [blog]="blog" [index]="i" > </blog-item>
+      <blog-item [blog]="blog" [index]="i" routerLink="1"> </blog-item>
     </div>
   </div>
   <div class="en-pagination" >

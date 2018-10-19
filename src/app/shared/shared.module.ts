@@ -10,6 +10,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SwiperModule } from 'ngx-swiper-wrapper';
 import { SWIPER_CONFIG } from 'ngx-swiper-wrapper';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
+import { NavStyleChangeDirective } from './directives/nav-style-change.directive';
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
   slidesPerView: 'auto'
@@ -36,7 +37,8 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
         provide: SWIPER_CONFIG,
         useValue: DEFAULT_SWIPER_CONFIG
       }
-    ]
+    ],
+    declarations: []
   }
 )
 export class SharedModule {

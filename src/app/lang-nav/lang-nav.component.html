@@ -1,5 +1,5 @@
 <div class="lang-list">
-    <div class="lang">EN</div>
+    <div class="lang" (click)="onLangChange('en')"  [ngClass]="{'active': currentLang === 'en'}">EN</div>
     <div class="horizontal-line"></div>
-    <div class="lang">KG</div>
+    <div class="lang" (click)="onLangChange('kg')" [ngClass]="{'active': currentLang === 'kg'}">KG</div>
   </div>

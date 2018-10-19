@@ -15,9 +15,13 @@
   z-index: 1;
   position: relative;
   .lang {
-    font-size: 18px;
+    font-size: 12px;
     color: #ffffff;
     cursor: pointer;
+    transition: font-size 300ms ease-in-out;
+    &.active {
+      font-size: 18px;
+    }
   }
   .horizontal-line {
     height: 60px;

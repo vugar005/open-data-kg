@@ -21,6 +21,7 @@ import { WaveParticlesComponent } from './landing-page/wave-particles/wave-parti
 import { HeaderComponent } from './header/header.component';
 import { LangNavComponent } from './lang-nav/lang-nav.component';
 import { GlobalNavComponent } from './global-nav/global-nav.component';
+import { NavStyleChangeDirective } from './shared/directives/nav-style-change.directive';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -32,7 +33,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     MainPageComponent,
     WaveParticlesComponent,
     LangNavComponent,
-    GlobalNavComponent
+    GlobalNavComponent,
+    NavStyleChangeDirective
   ],
   imports: [
     BrowserModule,

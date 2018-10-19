@@ -5,6 +5,7 @@ import { BlogListComponent } from './blog-list/blog-list.component';
 import { BlogItemComponent } from './blog-list/blog-item/blog-item.component';
 import { BlogRoutes } from './blog.routing';
 import { SharedModule } from '../shared/shared.module';
+import { BlogDetailComponent } from './blog-detail/blog-detail.component';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { SharedModule } from '../shared/shared.module';
   declarations: [
     BlogComponent,
     BlogListComponent,
-    BlogItemComponent
+    BlogItemComponent,
+    BlogDetailComponent
   ]
 })
 export class BlogModule { }

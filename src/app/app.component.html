@@ -1,4 +1,4 @@
 <app-header [class]="headerClass$ | async"></app-header>
 <lang-nav></lang-nav>
 <router-outlet></router-outlet>
-<span [ngClass]="{bottom: (globalNavClass$ | async)==='bottom'}" class="global-nav"> <global-nav></global-nav> </span>
+ <global-nav navStyleChange></global-nav>

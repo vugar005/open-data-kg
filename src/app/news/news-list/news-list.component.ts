@@ -1,8 +1,7 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import { AppState } from '../../reducers';
 import { Store } from '@ngrx/store';
-import { SwiperConfigInterface, SwiperComponent, SwiperDirective } from 'ngx-swiper-wrapper';
-declare var Swiper;
+import { SwiperConfigInterface, SwiperDirective } from 'ngx-swiper-wrapper';
 @Component({
   selector: 'app-news-list',
   templateUrl: './news-list.component.html',
@@ -17,6 +16,7 @@ export class NewsListComponent implements OnInit, AfterViewInit, OnDestroy {
       el: '.swiper-pagination',
       clickable: true,
     },
+    speed: 2500,
     spaceBetween: 0,
     navigation: {
       nextEl: '.arrow-left',
@@ -60,7 +60,6 @@ export class NewsListComponent implements OnInit, AfterViewInit, OnDestroy {
     // }
   ];
   constructor(private store: Store<AppState>) {
-//    store.dispatch(new ChangeGlobalNavClass('top'));
   }
 
   ngOnInit() {
