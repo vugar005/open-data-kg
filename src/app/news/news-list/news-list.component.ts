@@ -11,7 +11,7 @@ export class NewsListComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild(SwiperDirective) swiper?: SwiperDirective;
   public config: SwiperConfigInterface = {
     slidesPerView: 4,
-    slidesPerGroup: 4,
+    slidesPerGroup: 2,
     pagination: {
       el: '.swiper-pagination',
       clickable: true,
@@ -46,12 +46,12 @@ export class NewsListComponent implements OnInit, AfterViewInit, OnDestroy {
       shortContent: 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some',
       date: '22 august 14:35'
     },
-    {
-      imgPath: 'crew-22252-unsplash',
-      title: 'Established fact about watch',
-      shortContent: 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some',
-      date: '22 august 14:35'
-    }
+    // {
+    //   imgPath: 'crew-22252-unsplash',
+    //   title: 'Established fact about watch',
+    //   shortContent: 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some',
+    //   date: '22 august 14:35'
+    // }
     // {
     //   imgPath: 'crew-22252-unsplash',
     //   title: 'Established fact about watch',

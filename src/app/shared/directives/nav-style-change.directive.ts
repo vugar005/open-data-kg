@@ -23,8 +23,8 @@ export class NavStyleChangeDirective implements AfterViewInit {
           this.hide();
           return;
         }
-        const isMain =   this.mainModules.some((mod) => `/${mod}` === res.url);
-        if ( isMain) {
+        const isMain = this.mainModules.some((mod) => `/${mod}` === res.url);
+        if (isMain) {
           this.pinBottom();
         } else {
           this.pinTop();

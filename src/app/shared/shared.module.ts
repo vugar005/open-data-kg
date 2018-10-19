@@ -11,6 +11,7 @@ import { SwiperModule } from 'ngx-swiper-wrapper';
 import { SWIPER_CONFIG } from 'ngx-swiper-wrapper';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 import { NavStyleChangeDirective } from './directives/nav-style-change.directive';
+import { FooterComponent } from '../footer/footer.component';
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
   slidesPerView: 'auto'
@@ -30,7 +31,8 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
       HttpClientModule,
       FontAwesomeModule,
       TranslateModule,
-      SwiperModule
+      SwiperModule,
+      FooterComponent
     ],
     providers: [
       {
@@ -38,7 +40,7 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
         useValue: DEFAULT_SWIPER_CONFIG
       }
     ],
-    declarations: []
+    declarations: [FooterComponent]
   }
 )
 export class SharedModule {
