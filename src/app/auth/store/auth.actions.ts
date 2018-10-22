@@ -13,6 +13,7 @@ export class SetToken implements Action {
 }
 export class TryLogin implements Action {
   readonly type = AuthActionTypes.TRY_LOGIN;
+  constructor(public payload: {username: string, password: string}) {}
 }
 export class Login implements Action {
   readonly type = AuthActionTypes.LOGIN;

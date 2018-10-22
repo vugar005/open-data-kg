@@ -5,6 +5,7 @@ import { SetToken, TryLogin } from '../store/auth.actions';
 import { trigger, transition, useAnimation } from '@angular/animations';
 import { fadeIn } from 'ng-animate';
 import { ChangeHeaderClass } from '../../shared/store/ui.actions';
+import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -23,9 +24,8 @@ export class LoginComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.store.dispatch(new ChangeHeaderClass(''));
   }
-  onTryLogin() {
-    this.store.dispatch(new TryLogin());
-    this.store.dispatch(new SetToken('12345'));
+  onSubmit(f: NgForm) {
+    this.store.dispatch(new TryLogin(f.form.value));
   }
 
 }
