@@ -39,6 +39,7 @@
     "core-js": "^2.5.4",
     "daemonite-material": "^4.1.1",
     "ng-animate": "^0.3.4",
+    "ng2-izitoast": "^2.0.0",
     "ngx-form-utils": "0.0.3",
     "ngx-swiper-wrapper": "^6.4.0",
     "nt-table": "^1.0.0-rc.8",

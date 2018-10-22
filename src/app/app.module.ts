@@ -24,6 +24,7 @@ import { GlobalNavComponent } from './global-nav/global-nav.component';
 import { NavStyleChangeDirective } from './shared/directives/nav-style-change.directive';
 import { SharedService } from './shared/shared.service';
 import { ErrorInterceptor } from './shared/error.interceptor';
+import { Ng2IziToastModule } from 'ng2-izitoast';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -47,6 +48,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     StoreModule.forRoot(reducers, { metaReducers }),
     EffectsModule.forRoot([]),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
+    Ng2IziToastModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
