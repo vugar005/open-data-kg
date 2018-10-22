@@ -11,10 +11,10 @@
   <div class="auth-box">
      <div class="form-header">Register</div>
      <form #f="ngForm" class="login-form">
-       <input placeholder="{{'AUTH.userName' | translate}}" name="user" ngModel>
-       <input placeholder="{{'AUTH.email' | translate}}" name="password" ngModel>
-       <input placeholder="{{'AUTH.password' | translate}}" name="password" ngModel>
-       <input placeholder="{{'AUTH.confirmPassword' | translate}}" name="password" ngModel>
+       <input placeholder="{{'AUTH.userName' | translate}}" name="user" ngModel class="input">
+       <input placeholder="{{'AUTH.email' | translate}}" name="password" ngModel class="input">
+       <input placeholder="{{'AUTH.password' | translate}}" name="password" ngModel class="input">
+       <input placeholder="{{'AUTH.confirmPassword' | translate}}" name="password" ngModel class="input">
        <button class="kg-btn login" [routerLink]="['/']">Login</button>
      </form>
      <div class="toRegister">

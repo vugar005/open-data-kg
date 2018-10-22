@@ -9,6 +9,7 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef
 } from '@angular/core';
+import { loadExternalScripts } from '../../shared/methods/loadExternals';
 declare var THREE;
 @Component({
   selector: 'wave-particles',
@@ -32,7 +33,7 @@ export class WaveParticlesComponent
 
   container: HTMLElement;
   camera;
-  scene = THREE.Scene;
+  scene: any;
   renderer;
   req: any;
   mouseX = 170;
@@ -57,11 +58,21 @@ export class WaveParticlesComponent
 
   ngOnInit() {}
   ngAfterViewInit() {
-    this.init();
-    this.animate();
+    this.loadThreejs()
+      .then(res => {
+        this.scene = THREE.Scene;
+        this.init();
+        this.animate();
+      });
   }
   ngOnDestroy() {
     cancelAnimationFrame(this.req);
+  }
+  loadThreejs() {
+    return loadExternalScripts('./assets/scripts/threejs/three.min.js')
+    .then(res => loadExternalScripts('./assets/scripts/threejs/stats.min.js'))
+    .then(res => loadExternalScripts('./assets/scripts/threejs/Projector.js'))
+    .then(res => loadExternalScripts('./assets/scripts/threejs/CanvasRenderer.js'));
   }
   resetMouse() {
     this.mouseX = 170;
@@ -166,6 +177,6 @@ export class WaveParticlesComponent
     this.windowHalfY = window.innerHeight / 2;
     this.camera.aspect = window.innerWidth / window.innerHeight;
     this.camera.updateProjectionMatrix();
-    this.renderer.setSize( window.innerWidth, window.innerHeight );
+    this.renderer.setSize(window.innerWidth, window.innerHeight);
   }
 }

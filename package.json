@@ -46,6 +46,7 @@
     "rxjs": "~6.2.0",
     "swiper": "^4.4.1",
     "three": "^0.97.0",
+    "typed.js": "^2.0.9",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {

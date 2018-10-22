@@ -11,8 +11,8 @@
   <div class="auth-box">
      <div class="form-header">Login</div>
      <form #f="ngForm" class="login-form" (ngSubmit)="onSubmit(f)">
-       <input placeholder="{{'AUTH.userName' | translate}}" name="username" ngModel>
-       <input placeholder="{{'AUTH.password' | translate}}" name="password" type="password" ngModel>
+       <input placeholder="{{'AUTH.userName' | translate}}" name="username" ngModel class="input">
+       <input placeholder="{{'AUTH.password' | translate}}" name="password" type="password" ngModel class="input">
        <button class="kg-btn login" type="submit">Login</button>
      </form>
      <div class="toRegister">
