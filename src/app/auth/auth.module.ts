@@ -10,6 +10,10 @@ import * as fromAuth from './store/auth.reducer';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 import {FormsModule} from '@angular/forms';
+import { JwtModule } from '@auth0/angular-jwt';
+export function tokenGetter() {
+  return localStorage.getItem('access_token');
+}
 @NgModule({
   imports: [
     CommonModule,
@@ -18,7 +22,12 @@ import {FormsModule} from '@angular/forms';
     RouterModule,
     SharedModule,
     FormsModule,
-
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        whitelistedDomains: ['localhost:3001'],
+        blacklistedRoutes: ['localhost:3001/auth/']
+      }})
   ],
   declarations: [
     AuthComponent,

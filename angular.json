@@ -33,13 +33,12 @@
               "src/styles.scss"
             ],
             "scripts": [
-              "node_modules/swiper/dist/js/swiper.min.js",
-              "node_modules/izitoast/dist/js/iziToast.min.js",
-              {
-                "input": "node_modules/typed.js/lib/typed.min.js",
-                "lazy": true,
-                "bundleName": "typed.js"
-              }
+              "node_modules/three/build/three.min.js",
+              "node_modules/three/examples/js/renderers/Projector.js",
+              "node_modules/three/examples/js/renderers/CanvasRenderer.js",
+              "node_modules/three/examples/js/libs/stats.min.js",
+              "node_modules/izitoast/dist/js/iziToast.min.js"
+
             ]
           },
           "configurations": {

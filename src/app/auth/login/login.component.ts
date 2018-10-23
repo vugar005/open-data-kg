@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit, OnDestroy, AfterViewInit {
       typeSpeed: 40
     };
      loadExternalScripts('https://cdn.jsdelivr.net/npm/typed.js@2.0.9').then(res => {
-      this.typed = new Typed('.input', options);
+     // this.typed = new Typed('.input', options);
     }).catch(er => console.log(er));
   }
 }

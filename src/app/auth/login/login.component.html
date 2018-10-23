@@ -11,12 +11,12 @@
   <div class="auth-box">
      <div class="form-header">Login</div>
      <form #f="ngForm" class="login-form" (ngSubmit)="onSubmit(f)">
-       <input placeholder="{{'AUTH.userName' | translate}}" name="username" ngModel class="input">
-       <input placeholder="{{'AUTH.password' | translate}}" name="password" type="password" ngModel class="input">
+       <input  placeholder="{{'AUTH.userName' | translate}}" name="username"  ngModel class="input" value="raliyev">
+       <input placeholder="{{'AUTH.password' | translate}}" name="password" type="password" ngModel class="input" value="rokki">
        <button class="kg-btn login" type="submit">Login</button>
      </form>
      <div class="toRegister">
-        for <a [routerLink]="'/register'" >Register</a>
+        for <a [routerLink]="'/admin'" >Register</a>
      </div>
   </div>
 </div>
