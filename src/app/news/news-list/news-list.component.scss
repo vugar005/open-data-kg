@@ -7,7 +7,10 @@
   padding-top: 9%;
   overflow: hidden;
 }
-
+.swiper-co {
+  width: 100%;
+  padding-right: 2em;
+}
 .swiper-container {
   width: 100%;
   padding-top: 32px;
@@ -46,15 +49,21 @@
 .en-pagination {
   display: flex;
   justify-content: flex-end;
-  padding-right: 50px;
-  padding-top: 1%;
+  padding-top: 100px;
   .arrow {
     display: flex;
     justify-content: center;
     width: 70px;
     height: 70px;
     background: #1F93CF;
+    transition: box-shadow 300ms ease-in-out;
     cursor: pointer;
+    img {
+      pointer-events: none;
+    }
+    &:active:focus{
+     // box-shadow: 1px 0px 22px 1px rgba(0, 0, 0, 0.2);
+     }
 
     &.left {
       background: transparent;
@@ -64,4 +73,10 @@
     &.right {
     }
   }
+}
+
+@media all and  (max-height: 768px) {
+   .en-pagination {
+     padding-top: 1%;
+   }
 }

@@ -58,21 +58,22 @@ export class WaveParticlesComponent
 
   ngOnInit() {}
   ngAfterViewInit() {
-    this.loadThreejs()
-      .then(res => {
-        this.scene = THREE.Scene;
-        this.init();
-        this.animate();
-      });
+    this.initWaves();
+    // this.loadThreejs()
+    //   .then(res => {
+    //     this.initWaves();
+    //   });
+  }
+  initWaves() {
+    this.scene = THREE.Scene;
+    this.init();
+    this.animate();
   }
   ngOnDestroy() {
     cancelAnimationFrame(this.req);
   }
   loadThreejs() {
-    return loadExternalScripts('./assets/scripts/threejs/three.min.js')
-    .then(res => loadExternalScripts('./assets/scripts/threejs/stats.min.js'))
-    .then(res => loadExternalScripts('./assets/scripts/threejs/Projector.js'))
-    .then(res => loadExternalScripts('./assets/scripts/threejs/CanvasRenderer.js'));
+    return loadExternalScripts('./assets/scripts/threejs/three-compact.js');
   }
   resetMouse() {
     this.mouseX = 170;

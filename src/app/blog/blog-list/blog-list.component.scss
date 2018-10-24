@@ -6,6 +6,10 @@
   padding-top: 9%;
   width: 100%;
 }
+.swiper-co {
+  width: 100%;
+  padding-right: 2em;
+}
 .swiper-container {
   width: 100%;
   padding-top: 32px;
@@ -40,7 +44,6 @@
 .en-pagination {
   display: flex;
   justify-content: flex-end;
-  padding-right: 50px;
   padding-top: 100px;
   .arrow {
     display: flex;
@@ -57,5 +60,10 @@
 
     &.right {
     }
+  }
+}
+@media all and  (max-height: 768px) {
+  .en-pagination {
+    padding-top: 1%;
   }
 }

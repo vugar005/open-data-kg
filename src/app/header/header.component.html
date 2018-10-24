@@ -2,8 +2,17 @@
   <div class="left" [routerLink]="'/'">
     <img src="./assets/icons/opendata_final.svg">
   </div>
-  <div class="right">
-    <a class="auth-nav" [routerLink]="['/login']" >Login</a>
-    <a class="auth-nav" [routerLink]="['/register']">Register</a>
+  <div class="right" *ngIf="!(isLoggedIn$ | async)">
+    <a class="auth-nav" [routerLink]="['/login']" >LOGIN</a>
+  </div>
+  <div class="right" *ngIf="(isLoggedIn$ | async)">
+    <div class="user">
+      <div class="name">
+        John O-Shee
+      </div>
+        <div class="image">
+            <img src= "https://www.freeiconspng.com/uploads/user-login-icon-14.png">
+          </div>
+    </div>
   </div>
 </div>

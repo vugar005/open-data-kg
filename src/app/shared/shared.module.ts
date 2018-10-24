@@ -10,8 +10,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SwiperModule } from 'ngx-swiper-wrapper';
 import { SWIPER_CONFIG } from 'ngx-swiper-wrapper';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
-import { NavStyleChangeDirective } from './directives/nav-style-change.directive';
 import { FooterComponent } from '../footer/footer.component';
+import { MatRippleModule } from '@angular/material';
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
   slidesPerView: 'auto'
@@ -32,7 +32,8 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
       FontAwesomeModule,
       TranslateModule,
       SwiperModule,
-      FooterComponent
+      FooterComponent,
+      MatRippleModule
     ],
     providers: [
       {

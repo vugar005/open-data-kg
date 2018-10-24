@@ -18,10 +18,16 @@ export function reducer(state = initialState, action: AuthActions): AuthState {
       ...state,
       token: action.payload.decoded
     };
+    case AuthActionTypes.AUTO_SET_USER:
     case AuthActionTypes.SET_USER:
     return {
       ...state,
      user: action.payload
+    };
+    case AuthActionTypes.AUTO_SET_TOKEN:
+    return {
+      ...state,
+      token: action.payload
     };
     case AuthActionTypes.LOGIN:
     return {

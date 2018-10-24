@@ -28,7 +28,9 @@
     </div>
   </div> -->
 
-  <div  class="swiper-container" [swiper]="config" style="width: 100%" #swiper >
+  <div class="swiper-co">
+
+    <div  class="swiper-container" [swiper]="config" style="width: 100%" #swiper >
       <div class="swiper-wrapper">
           <div class="swiper-slide" *ngFor="let item of itemsList;let i=index;" >
               <announcement-item [item]="item" [index]="0" ></announcement-item>
@@ -42,3 +44,6 @@
           <img src="./assets/icons/arrow.svg">
         </div>
     </div>
+    </div>
+
+  </div>

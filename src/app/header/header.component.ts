@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AppState } from '../reducers';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { isLoggedIn } from '../auth/store/auth.selectors';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +11,9 @@ import { Observable } from 'rxjs';
 })
 export class HeaderComponent implements OnInit {
   globalNavClass$: Observable<string>;
+  isLoggedIn$: Observable<boolean>;
   constructor(private store: Store<AppState>) {
+    this.isLoggedIn$ = store.select(isLoggedIn);
   }
 
   ngOnInit() {

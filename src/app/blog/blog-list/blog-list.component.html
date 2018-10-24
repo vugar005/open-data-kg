@@ -8,18 +8,21 @@
 </div>
 
 
-<div class="swiper-container" [swiper]="config" style="width: 100%" #swiper>
-  <div class="swiper-wrapper">
-    <div class="swiper-slide" *ngFor="let blog of blogList;let i=index;" >
-      <blog-item [blog]="blog" [index]="i" routerLink="1"> </blog-item>
-    </div>
-  </div>
-  <div class="en-pagination" >
-      <div class="arrow left" (click)="slidePrev()">
-        <img src="./assets/icons/arrow.svg">
+<div class="swiper-co">
+    <div class="swiper-container" [swiper]="config" style="width: 100%" #swiper>
+      <div class="swiper-wrapper">
+        <div class="swiper-slide" *ngFor="let blog of blogList;let i=index;" >
+          <blog-item [blog]="blog" [index]="i" routerLink="1"> </blog-item>
+        </div>
       </div>
-      <div class="arrow right" (click)="slideNext()">
-        <img src="./assets/icons/arrow.svg">
-      </div>
+      <div class="en-pagination" >
+          <div class="arrow left" (click)="slidePrev()">
+            <img src="./assets/icons/arrow.svg">
+          </div>
+          <div class="arrow right" (click)="slideNext()">
+            <img src="./assets/icons/arrow.svg">
+          </div>
+        </div>
     </div>
+
 </div>

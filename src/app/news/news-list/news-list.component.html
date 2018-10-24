@@ -10,18 +10,22 @@
   <div class="date-filter">22.07.2018</div>
 </div>
 
-<div  class="swiper-container" [swiper]="config" style="width: 100%" #swiper >
+<div class="swiper-co">
+  <div  class="swiper-container" [swiper]="config" style="width: 100%" #swiper >
     <div class="swiper-wrapper">
       <div class="swiper-slide" *ngFor="let news of newsList;let i=index;let first=first" [ngClass]="{'wide': i=== 0 }" >
               <news-item [news]="news" [index]="i" ></news-item>
       </div>
     </div>
     <div class="en-pagination" >
-      <div class="arrow left" (click)="slidePrev()">
+      <button class="arrow left" (click)="slidePrev()">
         <img src="./assets/icons/arrow.svg">
-      </div>
-      <div class="arrow right" (click)="slideNext()">
+      </button>
+      <button class="arrow right" (click)="slideNext()" tabindex="-1">
         <img src="./assets/icons/arrow.svg">
-      </div>
+
+    </button>
     </div>
   </div>
+
+</div>

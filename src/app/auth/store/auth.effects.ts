@@ -21,8 +21,6 @@ export class AuthEffects {
        mergeMap((res: HttpResponse<any>) => {
          const jwtToken = res.headers.get('Authorisation');
         const decoded = this.jwtService.decodeToken(jwtToken);
-        console.log(res.body.data)
-        console.log(decoded);
          return [{
            type: AuthActionTypes.SET_TOKEN,
            payload: {decoded, jwtToken}
@@ -50,7 +48,7 @@ export class AuthEffects {
       tap((res: any) => {
         console.log(2)
         localStorage.setItem('kg-user', JSON.stringify(res.payload));
-        this.router.navigateByUrl('/admin');
+       this.router.navigateByUrl('/');
       })
     );
 

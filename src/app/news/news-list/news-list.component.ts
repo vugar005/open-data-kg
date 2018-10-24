@@ -9,8 +9,9 @@ import { SwiperConfigInterface, SwiperDirective } from 'ngx-swiper-wrapper';
 })
 export class NewsListComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild(SwiperDirective) swiper?: SwiperDirective;
+  slidesPerview = 4;
   public config: SwiperConfigInterface = {
-    slidesPerView: 4,
+    slidesPerView: this.slidesPerview,
     slidesPerGroup: 2,
     pagination: {
       el: '.swiper-pagination',
@@ -24,7 +25,7 @@ export class NewsListComponent implements OnInit, AfterViewInit, OnDestroy {
     },
     autoplay: {
       delay: 2500,
-      disableOnInteraction: true
+      stopOnLastSlide: true
     },
   };
   newsList = [
@@ -66,6 +67,11 @@ export class NewsListComponent implements OnInit, AfterViewInit, OnDestroy {
   this.newsList =  this.newsList.concat(this.newsList).concat(this.newsList);
   }
   ngAfterViewInit() {
+    this.swiper.indexChange.subscribe(index => {
+      if (index + this.slidesPerview === this.newsList.length) {
+        this.swiper.setIndex(0);
+      }
+    });
   }
   ngOnDestroy() {
   }

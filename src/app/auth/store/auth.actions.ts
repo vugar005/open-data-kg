@@ -3,9 +3,11 @@ import { Action } from '@ngrx/store';
 export enum AuthActionTypes {
   SET_TOKEN = '[Auth] SET_TOKEN',
   SET_USER = '[AUTH] SET_USER',
+  AUTO_SET_TOKEN = '[AUTO] SET_TOKEN',
+  AUTO_SET_USER = '[AUTO] SET_USER',
   TRY_LOGIN = '[AUTH] TRY_LOGIN Effect',
   LOGIN = '[AUTH] LOGIN',
-  TRY_REGISTER = '[AUTH] TRY_REGISTER',
+  TRY_REGISTER = '[AUTH] TRY_REGISTER'
 }
 
 export class SetToken implements Action {
@@ -14,6 +16,14 @@ export class SetToken implements Action {
 }
 export class SetUser implements Action {
   readonly type = AuthActionTypes.SET_USER;
+  constructor(public payload: any) {}
+}
+export class AutoSetToken implements Action {
+  readonly type = AuthActionTypes.AUTO_SET_TOKEN;
+  constructor(public payload: string) {}
+}
+export class AutoSetUser implements Action {
+  readonly type = AuthActionTypes.AUTO_SET_USER;
   constructor(public payload: any) {}
 }
 export class TryLogin implements Action {
@@ -28,4 +38,4 @@ export class TryRegister implements Action {
 }
 
 
-export type AuthActions = SetToken | TryLogin | Login | TryRegister | SetUser;
+export type AuthActions = SetToken | TryLogin | Login | TryRegister | SetUser | AutoSetToken | AutoSetUser;
