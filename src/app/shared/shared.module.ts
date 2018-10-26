@@ -18,7 +18,6 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
 };
 @NgModule({
     imports: [
-      HttpClientModule,
       TranslateModule.forChild({
         loader: {
           provide: TranslateLoader,
@@ -28,7 +27,6 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
       }),
     ],
     exports: [
-      HttpClientModule,
       FontAwesomeModule,
       TranslateModule,
       SwiperModule,

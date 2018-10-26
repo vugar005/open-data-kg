@@ -4,6 +4,8 @@ import {NtTableModule} from 'nt-table';
 import { MatMenuModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatDialogModule } from '@angular/material';
 import { FormUtilsModule } from 'ngx-form-utils';
 import { FormsModule } from '@angular/forms';
+import { TokenInterceptor } from 'src/app/auth/token.inteceptor';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 @NgModule({
   imports: [] ,
   exports: [
@@ -19,7 +21,7 @@ import { FormsModule } from '@angular/forms';
     ],
   declarations: [],
   providers: [
-   // { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
   ],
 })
 export class SharedAdminModule { }

@@ -7,7 +7,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import { HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClient, HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthModule } from './auth/auth.module';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { StoreModule } from '@ngrx/store';
@@ -25,6 +25,7 @@ import { NavStyleChangeDirective } from './shared/directives/nav-style-change.di
 import { SharedService } from './shared/shared.service';
 import { ErrorInterceptor } from './shared/error.interceptor';
 import { Ng2IziToastModule } from 'ng2-izitoast';
+import { TokenInterceptor } from './auth/token.inteceptor';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -45,6 +46,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppRoutingModule,
     AuthModule,
     FontAwesomeModule,
+    HttpClientModule,
     StoreModule.forRoot(reducers, { metaReducers }),
     EffectsModule.forRoot([]),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
@@ -60,6 +62,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   providers: [
     SharedService,
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
 })

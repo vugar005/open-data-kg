@@ -6,6 +6,10 @@ export const getToken = createSelector(
   selectAuthState,
   auth => auth.token
 );
+export const getRawToken = createSelector(
+  selectAuthState,
+  auth => auth.raw_token
+);
 export const getUser = createSelector(
   selectAuthState,
   auth => auth.user
