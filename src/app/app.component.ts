@@ -39,7 +39,7 @@ export class AppComponent implements OnInit {
   //  if (isExpired) {return; }
     const decoded = this.jwtService.decodeToken(jwtToken);
     if (!decoded) {return; }
-    this.store.dispatch(new AutoSetToken(decoded));
+    this.store.dispatch(new AutoSetToken({jwtToken, decoded}));
     this.store.dispatch(new AutoSetUser(user));
    } catch (er) {
      console.log(er)

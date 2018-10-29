@@ -42,7 +42,7 @@
     "ng2-izitoast": "^2.0.0",
     "ngx-form-utils": "0.0.3",
     "ngx-swiper-wrapper": "^6.4.0",
-    "nt-table": "^1.0.0-rc.8",
+    "nt-table": "^1.0.0-rc.10",
     "rxjs": "~6.2.0",
     "swiper": "^4.4.1",
     "three": "^0.97.0",

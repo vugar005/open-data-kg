@@ -8,7 +8,7 @@
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="Name Az" class="nt-form-input" name="nameAz" ngModel required>
+        <input matInput placeholder="Name Kg" class="nt-form-input" name="nameKg" ngModel required>
         <mat-error>{{getErrors('nameAz')}}</mat-error>
 
       </mat-form-field>
@@ -43,7 +43,7 @@
 
     <div class="right">
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="Shortame Az" class="nt-form-input" name="shortNameAz" ngModel required>
+        <input matInput placeholder="Shortame Kg" class="nt-form-input" name="shortNameKg" ngModel required>
         <mat-error>{{getErrors('shortNameAz')}}</mat-error>
       </mat-form-field>
 
@@ -57,17 +57,15 @@
         <mat-error>{{getErrors('shortNameRu')}}</mat-error>
       </mat-form-field>
 
-      <mat-form-field class="example-full-width">
-        <input matInput placeholder="About Az" class="nt-form-input" name="aboutAz" ngModel>
+      <mat-form-field>
+        <mat-select placeholder="App id" class="nt-form-input" name="appId" ngModel required >
+          <mat-option *ngFor="let item of (apps$ | async)" [value]="item.id">
+            {{item.name}}
+          </mat-option>
+        </mat-select>
+        <mat-error>{{getErrors('appId')}}</mat-error>
       </mat-form-field>
 
-      <mat-form-field class="example-full-width">
-        <input matInput placeholder="About En" class="nt-form-input" name="aboutEn" ngModel>
-      </mat-form-field>
-
-      <mat-form-field class="example-full-width">
-        <input matInput placeholder="About Ru" class="nt-form-input" name="aboutRu" ngModel>
-      </mat-form-field>
 
       <mat-form-field class="example-full-width">
         <input matInput placeholder="Parent Id" class="nt-form-input" name="parentId" ngModel required>
@@ -77,10 +75,18 @@
     </div>
   </div>
   <div class="actions">
-    <button mat-raised-button color="primary" type="submit" *ngIf="data?.insertApi" insertTableData [form]="f" [url]="data?.insertApi"
-      [disabled]="f?.dirty && !f?.valid" (onClose)="dialogRef.close()">Add</button>
-    <button mat-raised-button color="primary" type="submit" updateTableData [form]="f" [url]="data?.updateApi"
-      (onClose)="dialogRef.close()" *ngIf="data?.updateApi" [disabled]="f?.dirty && !f?.valid">Update</button>
+    <button mat-raised-button color="primary"  type="submit" insertTableData
+    *ngIf="data?.insertApi" [disabled]="!f?.valid"
+    [url] ="data?.insertApi"
+    [form]="f"
+    (onClose)="dialogRef.close()"
+    >Add</button>
+    <button mat-raised-button color="primary"  type="submit" updateTableData
+    *ngIf="data?.updateApi" [disabled]="!f?.valid"
+    [url] ="data?.updateApi"
+    [form]="f"
+    (onClose)="dialogRef.close()"
+    >Update</button>
     <button mat-raised-button (click)="dialogRef.close()" type="reset">Cancel</button>
   </div>
 

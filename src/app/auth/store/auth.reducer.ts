@@ -30,7 +30,8 @@ export function reducer(state = initialState, action: AuthActions): AuthState {
     case AuthActionTypes.AUTO_SET_TOKEN:
     return {
       ...state,
-      token: action.payload
+      token: action.payload.decoded,
+      raw_token: action.payload.jwtToken
     };
     case AuthActionTypes.LOGIN:
     return {

@@ -1,15 +1,18 @@
 import { Component, OnInit, ViewChild, Inject, ViewContainerRef } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
-import {NgxFormUtils} from 'ngx-form-utils';
 import { Observable } from 'rxjs';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { ModulesInsertDialogComponent } from '../../ent-modules/modules-insert-dialog/modules-insert-dialog.component';
 import { SharedAdminService } from '../../shared/shared-admin.service';
+import { NgxFormUtils } from 'ngx-form-utils';
+
 @Component({
-  selector: 'modules-insert-dialog',
-  templateUrl: './modules-insert-dialog.component.html',
-  styleUrls: ['./modules-insert-dialog.component.scss']
+  selector: 'app-operations-insert-dialog',
+  templateUrl: './operations-insert-dialog.component.html',
+  styleUrls: ['./operations-insert-dialog.component.scss']
 })
-export class ModulesInsertDialogComponent implements OnInit{
+export class OperationsInsertDialogComponent implements OnInit {
+
   @ViewChild('f') ntForm: NgForm;
   apps$: Observable<any>;
   constructor(
@@ -19,7 +22,7 @@ export class ModulesInsertDialogComponent implements OnInit{
     private sharedService: SharedAdminService
   ) {}
   ngOnInit() {
-    this.apps$ = this.sharedService.getAppList('http://192.168.1.23:8080/DispatcherRest/api/get/Permission/Applications/GetApplicationList');
+    this.apps$ = this.sharedService.getAppList('http://192.168.1.23:8080/DispatcherRest/api/get/Permission/Modules/GetModuleList');
   }
   getErrors(str) {
     if (!this.ntForm || !NgxFormUtils) { return; }

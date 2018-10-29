@@ -20,7 +20,7 @@ export class SetUser implements Action {
 }
 export class AutoSetToken implements Action {
   readonly type = AuthActionTypes.AUTO_SET_TOKEN;
-  constructor(public payload: string) {}
+  constructor(public payload: {jwtToken: string, decoded: string}) {}
 }
 export class AutoSetUser implements Action {
   readonly type = AuthActionTypes.AUTO_SET_USER;

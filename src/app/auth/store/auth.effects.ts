@@ -48,7 +48,7 @@ export class AuthEffects {
       tap((res: any) => {
         console.log(2)
         localStorage.setItem('kg-user', JSON.stringify(res.payload));
-       this.router.navigateByUrl('/');
+       this.router.navigateByUrl('/admin');
       })
     );
 
