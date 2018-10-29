@@ -28,7 +28,7 @@
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="Code" class= "nt-form-input" name="code" ngModel >
+        <input matInput placeholder="Code" class= "nt-form-input" name="code" ngModel required >
       </mat-form-field>
      </div>
 
@@ -46,6 +46,11 @@
               <input matInput placeholder="Parent Id" class="nt-form-input" name="parentId" ngModel required>
               <mat-error>{{getErrors('parentId')}}</mat-error>
             </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Type" class="nt-form-input" name="type" ngModel type="number" >
+                <mat-error>{{getErrors('type')}}</mat-error>
+              </mat-form-field>
 
              <input [hidden]="true" name="id" ngModel>
           </div>

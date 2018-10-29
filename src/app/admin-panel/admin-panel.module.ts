@@ -4,13 +4,13 @@ import { AdminPanelComponent } from './admin-panel.component';
 import { AdminPanelRoutes } from './admin-panel.routing';
 import { LeftAsideComponent } from './left-aside/left-aside.component';
 import { RightAsideComponent } from './right-aside/right-aside.component';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { TokenInterceptor } from '../auth/token.inteceptor';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { HttpClient } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SharedAdminService } from './shared/shared-admin.service';
+import { AdminPanelService } from './admin-panel.service';
+import { AdminModulesResolver } from './shared/resolvers/admin-modules.resolver';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -33,7 +33,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     RightAsideComponent
   ],
   providers: [
-    SharedAdminService
+    SharedAdminService,
+    AdminPanelService,
+    AdminModulesResolver
   ]
 })
 export class AdminPanelModule { }

@@ -23,9 +23,16 @@ export function reducer(state = initialState, action: AuthActions): AuthState {
     };
     case AuthActionTypes.AUTO_SET_USER:
     case AuthActionTypes.SET_USER:
+    const user: any = Object.assign({}, action.payload);
+    user.modules = user.modules.map(mod => {
+      return {
+        ...mod,
+        url: getUrl(mod)
+      };
+    });
     return {
       ...state,
-     user: action.payload
+     user: user
     };
     case AuthActionTypes.AUTO_SET_TOKEN:
     return {
@@ -40,5 +47,22 @@ export function reducer(state = initialState, action: AuthActions): AuthState {
     };
     default:
       return state;
+  }
+}
+
+function getUrl(mod) {
+  switch (mod.code) {
+    case 'USR':
+    return 'users';
+    case 'APP':
+    return 'applications';
+    case 'MOD':
+    return 'modules';
+    case 'OPR':
+    return 'operations';
+    case 'USRGRP':
+    return 'user-roles';
+    default :
+    return '';
   }
 }

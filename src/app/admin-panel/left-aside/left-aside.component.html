@@ -7,30 +7,10 @@
   </div>
 </div>
 <div class="modules-list">
-  <a class="module" [routerLink]="['applications']" routerLinkActive="active" >
-    <div class="icon">
-    <fa-icon [icon]="faAccusoft"></fa-icon>
-    </div>
-    <p  class="link">Applications </p>
-  </a>
-  <a class="module" [routerLink]="['modules']" routerLinkActive="active" >
-    <div class="icon">
-    <fa-icon [icon]="faAccusoft"></fa-icon>
-    </div>
-    <p  class="link">Modules </p>
-  </a>
-  <a class="module" [routerLink]="['operations']" routerLinkActive="active">
-    <div class="icon">
-    <fa-icon [icon]="faAccusoft"></fa-icon>
-    </div>
-    <p  class="link">Operations </p>
-  </a>
-
-  <a class="module" >
-    <div class="icon">
-    <fa-icon [icon]="faAccusoft"></fa-icon>
-    </div>
-    <p  class="link">Dictionaries </p>
-  </a>
-
+    <a class="module" *ngFor = "let module of (modules)" routerLink= "{{module.url}}" routerLinkActive="active"  >
+        <div class="icon">
+        <fa-icon [icon]="faAccusoft"></fa-icon>
+        </div>
+        <p  class="link">{{module.name.en | titlecase}} </p>
+      </a>
 </div>

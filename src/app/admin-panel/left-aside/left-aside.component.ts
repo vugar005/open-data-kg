@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {faAccusoft} from '@fortawesome/free-brands-svg-icons';
 import { Observable } from 'rxjs';
+import { AdminPanelService } from '../admin-panel.service';
+import { AppState } from 'src/app/reducers';
+import { Store } from '@ngrx/store';
+import { getUserModules } from 'src/app/auth/store/auth.selectors';
+import { Router } from '@angular/router';
 @Component({
   selector: 'left-aside',
   templateUrl: './left-aside.component.html',
@@ -12,9 +17,18 @@ export class LeftAsideComponent implements OnInit {
   structureImgUrl$: Observable<string>;
   hostname: string;
   token$: Observable<string>;
-  constructor() { }
+  modules: any;
+  constructor(private adminService: AdminPanelService, private store: Store<AppState>, private router: Router) {
+   }
 
   ngOnInit() {
+    this.store.select(getUserModules).subscribe(modules => {
+      this.modules = modules;
+      this.router.navigate([`/admin/${modules[0].url}`]);
+    });
+  }
+  onNavigate(module) {
+
   }
 
 }

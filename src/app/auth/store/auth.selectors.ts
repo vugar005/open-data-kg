@@ -14,7 +14,10 @@ export const getUser = createSelector(
   selectAuthState,
   auth => auth.user
 );
-
+export const getUserModules = createSelector(
+  selectAuthState,
+  auth => auth.user.modules
+);
 export const isLoggedIn = createSelector(
   selectAuthState,
   auth => !!auth.user

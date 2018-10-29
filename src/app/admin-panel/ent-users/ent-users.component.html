@@ -1,0 +1,25 @@
+<div class="content-header">
+  <div class="moduleName">
+   Modules
+  </div>
+ <div class="actions-template">
+    <button mat-raised-button (click)="table.onPrintSelected()" *ngIf="table.printable">Print</button>
+    <button mat-raised-button (click)="table.addData()">Add data</button>
+    <button mat-raised-button (click)="table.onRemove()" [disabled]="!(table.isRowSelected)">Remove selected</button>
+    <button mat-raised-button [disabled]="!(table.selectedRow)" (click)="table.onRowPin()" *ngIf="table.rowPinnable"> Pin to top</button>
+    <button mat-raised-button (click)="table.onExport()" *ngIf="table.exportable">Export</button>
+ </div>
+ </div>
+
+ <div class="content">
+   <div class="nt-table">
+     <ngx-nt-table #table
+     [getApi]="'http://192.168.1.23:8080/DispatcherRest/api/post/Permission/Users/GetUserList'"
+     [insertApi]="'http://192.168.1.23:8080/DispatcherRest/api/post/Permission/Users/InsertNewUser'"
+     [updateApi]="'http://192.168.1.23:8080/DispatcherRest/api/post/Permission/Users/UpdateUser'"
+     [deleteApi]="'http://192.168.1.23:8080/DispatcherRest/api/post/Permission/Users/DeleteUser'"
+     (rowAdd)="initDialog(table.insertApi)"
+     (rowEdit)="initUpdateDialog($event, table.updateApi)"
+    ></ngx-nt-table>
+   </div>
+ </div>
