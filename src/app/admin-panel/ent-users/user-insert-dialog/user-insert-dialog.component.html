@@ -34,27 +34,15 @@
         <mat-error>{{getErrors('genderId')}}</mat-error>
       </mat-form-field>
 
-      <mat-form-field class="example-full-width">
-        <input matInput placeholder="Birthdate" class="nt-form-input" name="birthDate" ngModel required>
-        <mat-error>{{getErrors('birthDate')}}</mat-error>
-      </mat-form-field>
-
-      <mat-form-field class="example-full-width" *ngIf="data?.updateApi">
-          <input matInput placeholder="Old Password" class="nt-form-input" name="oldPasswd" ngModel type="password" required>
-          <mat-error>{{getErrors('oldPasswd')}}</mat-error>
-        </mat-form-field>
-
-      <mat-form-field class="example-full-width">
-        <input matInput placeholder="Password" class="nt-form-input" name="passwd" ngModel type="password" required>
-        <mat-error>{{getErrors('passwd')}}</mat-error>
-      </mat-form-field>
-
-
-
 
     </div>
 
     <div class="right">
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="Birthdate" class="nt-form-input" name="birthDate" ngModel required>
+            <mat-error>{{getErrors('birthDate')}}</mat-error>
+          </mat-form-field>
+
       <mat-form-field>
         <mat-select placeholder="User Type" class="nt-form-input" name="userType" ngModel required>
           <mat-option  value="ADMIN"> ADMIN </mat-option>
@@ -70,14 +58,15 @@
           <mat-error>{{getErrors('userRoleId')}}</mat-error>
         </mat-form-field>
 
-      <!-- <mat-form-field>
-        <mat-select placeholder="Module id" class="nt-form-input" name="moduleId" ngModel required>
-          <mat-option *ngFor="let item of (apps$ | async)" [value]="item.id">
-            {{item.name}}
-          </mat-option>
-        </mat-select>
-        <mat-error>{{getErrors('moduleId')}}</mat-error>
-      </mat-form-field> -->
+        <mat-form-field class="example-full-width" *ngIf="data?.updateApi">
+          <input matInput placeholder="Old Password" class="nt-form-input" name="oldPasswd" ngModel type="password" required>
+          <mat-error>{{getErrors('oldPasswd')}}</mat-error>
+        </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Password" class="nt-form-input" name="passwd" ngModel type="password" required>
+        <mat-error>{{getErrors('passwd')}}</mat-error>
+      </mat-form-field>
 
       <input [hidden]="true" name="id" ngModel>
       <input [hidden]="true" name="personId" ngModel>
