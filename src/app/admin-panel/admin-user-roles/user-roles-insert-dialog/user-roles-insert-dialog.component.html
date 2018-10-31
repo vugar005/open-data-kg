@@ -55,14 +55,8 @@
   </form>
 
   <form>
-      <mat-form-field class="example-full-width">
-          <input matInput placeholder="Name En" class="nt-form-input" name="nameEn" ngModel required>
-          <mat-error>{{getErrors('nameEn')}}</mat-error>
-        </mat-form-field>
-
-        <mat-form-field class="example-full-width">
-            <input matInput placeholder="Name En" class="nt-form-input" name="nameEn" ngModel required>
-            <mat-error>{{getErrors('nameEn')}}</mat-error>
-          </mat-form-field>
+   <app-user-operations-table *ngIf="data.row"
+   [userRoleIdForChange]="data.row?.id"
+   > </app-user-operations-table>
 
   </form>

@@ -24,6 +24,7 @@ export class LeftAsideComponent implements OnInit {
   ngOnInit() {
     this.store.select(getUserModules).subscribe(modules => {
       this.modules = modules;
+      if (!(this.modules && this.modules.length > 0)) {return; }
       this.router.navigate([`/admin/${modules[0].url}`]);
     });
   }

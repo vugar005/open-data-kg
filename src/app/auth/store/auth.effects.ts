@@ -46,7 +46,7 @@ export class AuthEffects {
     .pipe(
       ofType(AuthActionTypes.SET_USER),
       tap((res: any) => {
-        console.log(2)
+        console.log(res)
         localStorage.setItem('kg-user', JSON.stringify(res.payload));
        this.router.navigateByUrl('/admin');
       })

@@ -63,6 +63,6 @@ function getUrl(mod) {
     case 'USRGRP':
     return 'user-roles';
     default :
-    return '';
+    return '/admin';
   }
 }

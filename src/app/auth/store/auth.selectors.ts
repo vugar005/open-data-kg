@@ -22,3 +22,8 @@ export const isLoggedIn = createSelector(
   selectAuthState,
   auth => !!auth.user
 );
+
+export const getUseRoleId = createSelector(
+  selectAuthState,
+  auth => auth.user.account.role.id
+);

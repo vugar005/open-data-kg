@@ -9,7 +9,6 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
   styleUrls: ['./user-roles-insert-dialog.component.scss']
 })
 export class UserRolesInsertDialogComponent {
-
   @ViewChild('f') ntForm: NgForm;
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,

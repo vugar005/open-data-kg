@@ -1,0 +1,13 @@
+
+ <button mat-button color="primary" (click)="onSaveOp()">Save settings</button>
+<ag-grid-angular
+id="my-grid"
+style="width: 100%;height: calc(100% - 56px)"
+class="ag-theme-material"
+[rowData]="rowData"
+(gridReady)="onGridReady($event)"
+[rowDeselection]="true"
+[frameworkComponents]="frameworkComponents"
+[gridOptions]="gridOptions"
+>
+</ag-grid-angular>
