@@ -23,6 +23,9 @@ export class ErrorInterceptor implements HttpInterceptor {
         catchError(er => this.handleHttpError()),
        tap((response) => {
           if (response instanceof HttpResponse) {
+            if (response.body.code === 'ERROR') {
+            //  this.handleHttpError();
+            }
             if (response.body && response.body.code === 'UNAUTHORIZED') {
               // this.sharedService.createNotification('error', `${req.urlWithParams}`, 'Unauthorized');
               // this.store.select(getHostname)

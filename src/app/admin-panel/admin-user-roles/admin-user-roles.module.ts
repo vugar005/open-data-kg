@@ -4,7 +4,6 @@ import { AdminUserRolesComponent } from './admin-user-roles.component';
 import { SharedAdminModule } from '../shared/shared-admin.module';
 import { UserRolesInsertDialogComponent } from './user-roles-insert-dialog/user-roles-insert-dialog.component';
 import { AdminUserRolesRoutes } from './admin-user-roles.routing';
-import { NtTableModule } from 'nt-table';
 import { AgGridModule } from 'ag-grid-angular';
 import { UserOperationsTableComponent } from './user-operations-table/user-operations-table.component';
 import { CheckboxRendererComponent } from './user-operations-table/checkbox-renderer';
@@ -15,7 +14,6 @@ import { MatCheckboxModule } from '@angular/material';
     CommonModule,
     SharedAdminModule,
     AdminUserRolesRoutes,
-    NtTableModule,
     MatCheckboxModule,
     AgGridModule.withComponents([]),
   ],

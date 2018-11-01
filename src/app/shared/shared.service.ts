@@ -6,18 +6,18 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 export class SharedService {
   toastRunning: boolean;
   constructor(public iziToast: Ng2IzitoastService, private jwtService: JwtHelperService) {}
-  createNotification(type: string, message: string) {
+  createNotification(type: string, message: string, position = 'bottomRight') {
     this.clearOldToats();
     switch (type) {
       case 'error':
-      this.createErrorNotification(message);
+      this.createErrorNotification(message, position);
       break;
       case 'warning':
-      this.createWarnNotification(message);
+      this.createWarnNotification(message, position);
       break;
     }
 }
-createErrorNotification(message: string) {
+createErrorNotification(message: string, position) {
   this.iziToast.show({
     title: 'Error',
     class: 'foo',
@@ -27,9 +27,10 @@ createErrorNotification(message: string) {
     icon: 'fas fa-exclamation-circle',
     progressBarColor: '#9D787A',
     close: false,
+    position: position
 });
 }
-createWarnNotification(message: string) {
+createWarnNotification(message: string, position) {
   this.iziToast.show({
     title: 'Warning',
     class: 'foo',
@@ -40,6 +41,7 @@ createWarnNotification(message: string) {
     progressBarColor: '#9D787A',
     transitionOut: 'flipOutX',
     close: false,
+    position: position
 });
 }
 clearOldToats() {

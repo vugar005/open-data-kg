@@ -11,7 +11,7 @@ const routes: Routes = [
   {path: 'admin', loadChildren: './admin-panel/admin-panel.module#AdminPanelModule'},
   {path: 'news', loadChildren: './news/news.module#NewsModule'},
   {path: 'blogs', loadChildren: './blog/blog.module#BlogModule'},
-  {path: 'announcements', loadChildren: './annoucements/announcements.module#AnnouncementsModule'}
+  {path: 'announcements', loadChildren: './annoucements/announcements.module#AnnouncementsModule'},
 ];
 
 @NgModule({

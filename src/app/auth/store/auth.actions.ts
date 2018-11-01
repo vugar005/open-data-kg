@@ -7,7 +7,8 @@ export enum AuthActionTypes {
   AUTO_SET_USER = '[AUTO] SET_USER',
   TRY_LOGIN = '[AUTH] TRY_LOGIN Effect',
   LOGIN = '[AUTH] LOGIN',
-  TRY_REGISTER = '[AUTH] TRY_REGISTER'
+  TRY_REGISTER = '[AUTH] TRY_REGISTER',
+  LOGIN_FAIL = '[AUTH] LOGIN_FAIL'
 }
 
 export class SetToken implements Action {
@@ -36,6 +37,9 @@ export class Login implements Action {
 export class TryRegister implements Action {
   readonly type = AuthActionTypes.TRY_REGISTER;
 }
+export class LoginFail implements Action {
+  readonly type = AuthActionTypes.LOGIN_FAIL;
+  constructor(public payload: string) {}
+}
 
-
-export type AuthActions = SetToken | TryLogin | Login | TryRegister | SetUser | AutoSetToken | AutoSetUser;
+export type AuthActions = SetToken | TryLogin | Login | TryRegister | SetUser | AutoSetToken | AutoSetUser | LoginFail;

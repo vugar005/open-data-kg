@@ -62,7 +62,13 @@ function getUrl(mod) {
     return 'operations';
     case 'USRGRP':
     return 'user-roles';
+    case 'DIC':
+    return 'dictionaries';
+    case 'DICTYP':
+    return 'dictionary-types';
+    case 'ORG':
+    return 'organizations';
     default :
-    return '/admin';
+    return '';
   }
 }
