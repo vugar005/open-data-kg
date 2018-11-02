@@ -18,11 +18,13 @@ export class NavStyleChangeDirective implements AfterViewInit {
   listenToRouteChange() {
     this.router.events.subscribe(res => {
       if (res instanceof NavigationEnd) {
+        /** Hide in Login page */
         const isAuth = this.hideInModules.some((mod) => `/${mod}` === res.url);
         if (isAuth) {
           this.hide();
           return;
         }
+         /** Pin to bottom if landing page */
         const isMain = this.mainModules.some((mod) => `/${mod}` === res.url);
         if (isMain) {
           this.pinBottom();

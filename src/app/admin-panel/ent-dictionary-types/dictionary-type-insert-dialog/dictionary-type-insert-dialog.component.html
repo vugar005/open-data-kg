@@ -4,9 +4,19 @@
 
           <div class="right">
             <mat-form-field class="example-full-width">
-              <input matInput placeholder="Name" class="nt-form-input" name="name" ngModel required>
-              <mat-error>{{getErrors('name')}}</mat-error>
+              <input matInput placeholder="Name En" class="nt-form-input" name="nameEn" ngModel required>
+              <mat-error>{{getErrors('nameEn')}}</mat-error>
             </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Name Ru" class="nt-form-input" name="nameRu" ngModel >
+                <mat-error>{{getErrors('nameRu')}}</mat-error>
+              </mat-form-field>
+
+              <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Name Kg" class="nt-form-input" name="nameKg" ngModel>
+                  <mat-error>{{getErrors('nameKg')}}</mat-error>
+                </mat-form-field>
 
             <mat-form-field class="example-full-width">
               <input matInput placeholder="Code" class="nt-form-input" name="code" ngModel required>

@@ -14,10 +14,10 @@
  <div class="content">
    <div class="nt-table">
      <ngx-nt-table #table
-     [getApi]="'http://192.168.1.23:8080/DispatcherRest/api/post/Permission/Operations/GetOperationList'"
-     [insertApi]="'http://192.168.1.23:8080/DispatcherRest/api/post/Permission/Operations/InsertNewOperation'"
-     [updateApi]="'http://192.168.1.23:8080/DispatcherRest/api/post/Permission/Operations/UpdateOperation'"
-     [deleteApi]="'http://192.168.1.23:8080/DispatcherRest/api/post/Permission/Operations/DeleteOperation'"
+     [getApi]="'api/post/Permission/Operations/GetOperationList'"
+     [insertApi]="'api/post/Permission/Operations/InsertNewOperation'"
+     [updateApi]="'api/post/Permission/Operations/UpdateOperation'"
+     [deleteApi]="'api/post/Permission/Operations/DeleteOperation'"
      (rowAdd)="initDialog(table.insertApi)"
      (rowEdit)="initUpdateDialog($event, table.updateApi)"
      [featureTemplate]="true"

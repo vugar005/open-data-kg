@@ -24,47 +24,53 @@
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="Pin Code" class="nt-form-input" name="pincode" ngModel  required>
+        <input matInput placeholder="Pin Code" class="nt-form-input" name="pincode" ngModel required>
         <mat-error>{{getErrors('pincode')}}</mat-error>
 
       </mat-form-field>
 
-      <mat-form-field class="example-full-width">
-        <input matInput placeholder="Gender" class="nt-form-input" name="genderId" ngModel required>
-        <mat-error>{{getErrors('genderId')}}</mat-error>
-      </mat-form-field>
 
 
     </div>
 
     <div class="right">
-        <mat-form-field class="example-full-width">
-            <input matInput placeholder="Birthdate" class="nt-form-input" name="birthDate" ngModel required>
-            <mat-error>{{getErrors('birthDate')}}</mat-error>
-          </mat-form-field>
 
       <mat-form-field>
-        <mat-select placeholder="User Type" class="nt-form-input" name="userType" ngModel required>
-          <mat-option  value="ADMIN"> ADMIN </mat-option>
-          <mat-option  value="USER"> USER </mat-option>
-            <mat-option value = "SYSADMIN">SYS_ADMIN</mat-option>
-            <mat-option value = "MODERATOR">MODERATOR</mat-option>
+        <mat-select placeholder="Gender" class="nt-form-input" name="genderId" ngModel required>
+          <mat-option *ngFor="let item of (genders$ | async)" [value]="item.value"> {{item.label}} </mat-option>
         </mat-select>
-        <mat-error>{{getErrors('userType')}}</mat-error>
+        <mat-error>{{getErrors('genderId')}}</mat-error>
+      </mat-form-field>
+
+
+      <mat-form-field>
+          <input matInput [matDatepicker]="picker" placeholder="Birthdate" name="birthDate" ngModel required>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error>{{getErrors('birthDate')}}</mat-error>
+        </mat-form-field>
+
+
+      <mat-form-field>
+        <mat-select placeholder="User Role" class="nt-form-input" name="userRoleId" ngModel required>
+          <mat-option *ngFor="let item of (roles$ | async)" [value]="item.value">
+            {{item.label}}
+          </mat-option>
+        </mat-select>
+        <mat-error>{{getErrors('userRoleId')}}</mat-error>
+      </mat-form-field>
+
+
+      <mat-form-field class="example-full-width" *ngIf="data?.updateApi">
+        <input matInput placeholder="Old Password" class="nt-form-input" name="oldPasswd" ngModel [type]="hideOld ? 'password' : 'text'"
+          required>
+          <mat-icon matSuffix (click)="hideOld = !hideOld">{{hideOld ? 'visibility_off' : 'visibility'}}</mat-icon>
+        <mat-error>{{getErrors('oldPasswd')}}</mat-error>
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
-          <input matInput placeholder="User Role" class="nt-form-input" name="userRoleId" ngModel required>
-          <mat-error>{{getErrors('userRoleId')}}</mat-error>
-        </mat-form-field>
-
-        <mat-form-field class="example-full-width" *ngIf="data?.updateApi">
-          <input matInput placeholder="Old Password" class="nt-form-input" name="oldPasswd" ngModel type="password" required>
-          <mat-error>{{getErrors('oldPasswd')}}</mat-error>
-        </mat-form-field>
-
-      <mat-form-field class="example-full-width">
-        <input matInput placeholder="Password" class="nt-form-input" name="passwd" ngModel type="password" required>
+        <input matInput placeholder="Password" class="nt-form-input" name="passwd" ngModel [type]="hide ? 'password' : 'text'" required>
+        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         <mat-error>{{getErrors('passwd')}}</mat-error>
       </mat-form-field>
 

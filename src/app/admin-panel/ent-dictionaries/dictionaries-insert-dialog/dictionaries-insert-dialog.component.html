@@ -29,9 +29,14 @@
         <mat-error>{{getErrors('code')}}</mat-error>
       </mat-form-field>
 
-      <mat-form-field class="example-full-width">
-        <input matInput placeholder="dicTypeId" class="nt-form-input" name="dicTypeId" ngModel >
-        <mat-error>{{getErrors('dictypeId')}}</mat-error>
+      <mat-form-field>
+
+        <mat-select placeholder="Dictionary Type" class="nt-form-input" name="dicTypeId" ngModel required >
+          <mat-option *ngFor="let item of (dicTypes$ | async)" [value]="item.value">
+            {{item.label}}
+          </mat-option>
+        </mat-select>
+        <mat-error>{{getErrors('moduleId')}}</mat-error>
       </mat-form-field>
 
       <input [hidden]="true" name="id" ngModel>

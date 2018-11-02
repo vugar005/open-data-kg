@@ -15,7 +15,7 @@ export class AuthEffects {
     .pipe(
       ofType(AuthActionTypes.TRY_LOGIN),
       switchMap((res: any) =>
-       this.http.post('http://192.168.1.23:8080/DispatcherRest/login', res.payload, {
+       this.http.post('login', res.payload, {
        observe: 'response'})
        ),
        mergeMap((res: HttpResponse<any>) => {

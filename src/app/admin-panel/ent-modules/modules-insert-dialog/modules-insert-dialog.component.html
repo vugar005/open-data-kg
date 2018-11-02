@@ -59,8 +59,8 @@
 
       <mat-form-field>
         <mat-select placeholder="App id" class="nt-form-input" name="appId" ngModel required >
-          <mat-option *ngFor="let item of (apps$ | async)" [value]="item.id">
-            {{item.name}}
+          <mat-option *ngFor="let item of (apps$ | async)" [value]="item.value">
+            {{item.label}}
           </mat-option>
         </mat-select>
         <mat-error>{{getErrors('appId')}}</mat-error>

@@ -1,16 +1,19 @@
 import { AuthActionTypes, AuthActions } from './auth.actions';
+import { User } from '../models/user.model.';
 
 
 export interface AuthState {
  token: string;
  raw_token: string;
- user: any;
+ user: User;
+ api_url: string;
 }
 
 export const initialState: AuthState = {
  token: '',
  raw_token: '',
- user: null
+ user: null,
+ api_url: ''
 };
 
 export function reducer(state = initialState, action: AuthActions): AuthState {
@@ -43,7 +46,11 @@ export function reducer(state = initialState, action: AuthActions): AuthState {
     case AuthActionTypes.LOGIN:
     return {
       ...state,
-
+    };
+    case AuthActionTypes.SET_API_URL:
+    return {
+     ...state,
+     api_url: action.payload
     };
     default:
       return state;

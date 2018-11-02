@@ -9,8 +9,8 @@ import {Observable} from 'rxjs/internal/Observable';
 import {tap, catchError} from 'rxjs/operators';
 import {Injectable} from '@angular/core';
 import {Store} from '@ngrx/store';
-import { SharedService } from './shared.service';
-import { AppState } from '../reducers';
+import { SharedService } from '../shared.service';
+import { AppState } from '../../reducers';
 import { Ng2IzitoastService } from 'ng2-izitoast';
 import { of } from 'rxjs';
 
@@ -23,7 +23,7 @@ export class ErrorInterceptor implements HttpInterceptor {
         catchError(er => this.handleHttpError()),
        tap((response) => {
           if (response instanceof HttpResponse) {
-            if (response.body.code === 'ERROR') {
+            if (response.body && response.body.code === 'ERROR') {
             //  this.handleHttpError();
             }
             if (response.body && response.body.code === 'UNAUTHORIZED') {

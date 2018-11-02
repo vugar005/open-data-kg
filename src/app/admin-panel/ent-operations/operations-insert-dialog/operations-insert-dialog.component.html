@@ -33,8 +33,8 @@
           <div class="right">
             <mat-form-field>
               <mat-select placeholder="Module id" class="nt-form-input" name="moduleId" ngModel required >
-                <mat-option *ngFor="let item of (apps$ | async)" [value]="item.id">
-                  {{item.name}}
+                <mat-option *ngFor="let item of (modules$ | async)" [value]="item.value">
+                  {{item.label}}
                 </mat-option>
               </mat-select>
               <mat-error>{{getErrors('moduleId')}}</mat-error>

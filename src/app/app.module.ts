@@ -23,9 +23,11 @@ import { LangNavComponent } from './lang-nav/lang-nav.component';
 import { GlobalNavComponent } from './global-nav/global-nav.component';
 import { NavStyleChangeDirective } from './shared/directives/nav-style-change.directive';
 import { SharedService } from './shared/shared.service';
-import { ErrorInterceptor } from './shared/error.interceptor';
+import { ErrorInterceptor } from './shared/interceptors/error.interceptor';
 import { Ng2IziToastModule } from 'ng2-izitoast';
 import { TokenInterceptor } from './auth/token.inteceptor';
+import { HeaderToggleDirective } from './shared/directives/header-toggle.directive';
+import { APIInterceptor } from './shared/interceptors/api.interceptor';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -38,7 +40,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     WaveParticlesComponent,
     LangNavComponent,
     GlobalNavComponent,
-    NavStyleChangeDirective
+    NavStyleChangeDirective,
+    HeaderToggleDirective
   ],
   imports: [
     BrowserModule,
@@ -62,7 +65,8 @@ export function HttpLoaderFactory(http: HttpClient) {
   providers: [
     SharedService,
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-    {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: APIInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

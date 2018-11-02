@@ -73,7 +73,7 @@ export class UserOperationsTableComponent implements OnInit {
   }
   geTableData(roleId: number): Observable<any> {
    return this.adminService.getTableData(roleId,
-      'http://192.168.1.23:8080/DispatcherRest/api/get/Permission/UserRoles/GetUserRolePrivilege')
+      'api/get/Permission/UserRoles/GetUserRolePrivilege');
   }
   buildTableData(res) {
     if (res && res.tbl[0] && res.tbl[0].c) {

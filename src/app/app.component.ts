@@ -3,10 +3,9 @@ import { TranslateService } from '@ngx-translate/core';
 import { AppState } from './reducers';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { getHeaderClass, getGlobalNavClass } from './shared/store/ui.selectors';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { SetToken, SetUser, AutoSetToken, AutoSetUser } from './auth/store/auth.actions';
-
+import { AutoSetToken, AutoSetUser, SetApiUrl } from './auth/store/auth.actions';
+import * as globalVars from './app.globals';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -25,8 +24,8 @@ export class AppComponent implements OnInit {
   }
   ngOnInit() {
     this.tryAutoLogin();
-    this.translateService.setDefaultLang('en');
-    this.headerClass$ = this.store.select(getHeaderClass);
+    this.setHostname();
+    this.setDefaultLang();
   }
   tryAutoLogin() {
    try {
@@ -44,5 +43,18 @@ export class AppComponent implements OnInit {
    } catch (er) {
      console.log(er)
    }
+  }
+ setHostname() {
+    const hostname = window.location.hostname;
+    let URL =  hostname !== 'localhost' ? `http://${hostname}/DispatcherRest` : globalVars.baseUrl;
+    if (URL === 'http://192.168.1.23/DispatcherRest') {
+      URL = 'http://192.168.1.23:8080/DispatcherRest';
+    }
+    console.log(URL)
+    this.store.dispatch(new SetApiUrl(URL));
+   // localStorage.setItem('uni_hostname', URL);
+  }
+  setDefaultLang() {
+    this.translateService.setDefaultLang('en');
   }
 }

@@ -10,7 +10,8 @@ import { DictionariesInsertDialogComponent } from './dictionaries-insert-dialog/
 })
 export class EntDictionariesComponent {
   @ViewChild('table') table: NtTableComponent;
-  constructor(private dialog: MatDialog) { }
+  constructor(private dialog: MatDialog) {
+   }
   initDialog(e) {
     console.log('e');
     const ref = this.dialog.open(DictionariesInsertDialogComponent,

@@ -1,10 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '../reducers';
-import { ChangeHeaderClass } from '../shared/store/ui.actions';
-import { Observable } from 'rxjs';
 import { getUserModules } from '../auth/store/auth.selectors';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'admin-panel',
@@ -14,7 +12,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class AdminPanelComponent implements OnInit, OnDestroy {
  modules: any;
   constructor(private store: Store<AppState>, private router: Router) {
-    store.dispatch(new ChangeHeaderClass('hide'));
    }
 
   ngOnInit() {
@@ -24,15 +21,12 @@ export class AdminPanelComponent implements OnInit, OnDestroy {
     });
   }
   ngOnDestroy() {
-    this.store.dispatch(new ChangeHeaderClass(''));
   }
   navigateToFirstModule() {
     if (!(this.modules && this.modules.length > 0)) {return; }
-    console.log(this.router);
     const paths = this.router.url.split('/');
-    console.log(paths);
-    console.log(paths.length);
     if (paths.length <= 2) {
+      console.log('nav')
       this.router.navigate([`/admin/${this.modules[0].url}`]);
     }
   }

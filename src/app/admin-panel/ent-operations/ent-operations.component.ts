@@ -13,7 +13,6 @@ export class EntOperationsComponent {
   @ViewChild('table') table: NtTableComponent;
   constructor(private dialog: MatDialog) { }
   initDialog(e) {
-    console.log('e');
     const ref = this.dialog.open(OperationsInsertDialogComponent,
       {data: {insertApi: e}
      });

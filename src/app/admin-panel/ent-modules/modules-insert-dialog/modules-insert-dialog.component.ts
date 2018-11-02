@@ -19,7 +19,7 @@ export class ModulesInsertDialogComponent implements OnInit{
     private sharedService: SharedAdminService
   ) {}
   ngOnInit() {
-    this.apps$ = this.sharedService.getAppList('http://192.168.1.23:8080/DispatcherRest/api/get/Permission/Applications/GetApplicationList');
+    this.apps$ = this.sharedService.getModTypes('api/get/Permission/Applications/GetApplicationList');
   }
   getErrors(str) {
     if (!this.ntForm || !NgxFormUtils) { return; }

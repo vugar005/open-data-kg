@@ -8,7 +8,7 @@
   <div class="right" *ngIf="(isLoggedIn$ | async)">
     <div class="user">
       <div class="name">
-        John O-Shee
+        {{ (user$ | async)?.name}} {{(user$ | async)?.surname }}
       </div>
         <div class="image">
             <img src= "https://www.timeshighereducation.com/sites/default/files/byline_photos/default-avatar.png">

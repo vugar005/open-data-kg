@@ -14,10 +14,10 @@
  <div class="content">
    <div class="nt-table">
      <ngx-nt-table #table
-     [getApi]="'http://192.168.1.23:8080/DispatcherRest/api/post/Permission/DictionaryTypes/GetDictionaryTypeList'"
-     [insertApi]="'http://192.168.1.23:8080/DispatcherRest/api/post/Permission/DictionaryTypes/InsertNewDictionaryType'"
-     [updateApi]="'http://192.168.1.23:8080/DispatcherRest/api/post/Permission/DictionaryTypes/UpdateDictionaryType'"
-     [deleteApi]="'http://192.168.1.23:8080/DispatcherRest/api/post/Permission/DictionaryTypes/DeleteDictionaryType'"
+     [getApi]="'api/post/Permission/DictionaryTypes/GetDictionaryTypeList'"
+     [insertApi]="'api/post/Permission/DictionaryTypes/InsertNewDictionaryType'"
+     [updateApi]="'api/post/Permission/DictionaryTypes/UpdateDictionaryType'"
+     [deleteApi]="'api/post/Permission/DictionaryTypes/DeleteDictionaryType'"
      (rowAdd)="initDialog(table.insertApi)"
      (rowEdit)="initUpdateDialog($event, table.updateApi)"
      [isAdmin]="true"

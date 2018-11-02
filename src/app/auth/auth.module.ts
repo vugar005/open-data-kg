@@ -11,6 +11,7 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 import {FormsModule} from '@angular/forms';
 import { JwtModule } from '@auth0/angular-jwt';
+import { MatIconModule } from '@angular/material';
 export function tokenGetter() {
   return localStorage.getItem('access_token');
 }
@@ -22,6 +23,7 @@ export function tokenGetter() {
     RouterModule,
     SharedModule,
     FormsModule,
+    MatIconModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,

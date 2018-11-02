@@ -1,4 +1,5 @@
 import { Action } from '@ngrx/store';
+import { User } from '../models/user.model.';
 
 export enum AuthActionTypes {
   SET_TOKEN = '[Auth] SET_TOKEN',
@@ -8,7 +9,8 @@ export enum AuthActionTypes {
   TRY_LOGIN = '[AUTH] TRY_LOGIN Effect',
   LOGIN = '[AUTH] LOGIN',
   TRY_REGISTER = '[AUTH] TRY_REGISTER',
-  LOGIN_FAIL = '[AUTH] LOGIN_FAIL'
+  LOGIN_FAIL = '[AUTH] LOGIN_FAIL',
+  SET_API_URL = '[APP CO] SET_API_URL'
 }
 
 export class SetToken implements Action {
@@ -17,7 +19,7 @@ export class SetToken implements Action {
 }
 export class SetUser implements Action {
   readonly type = AuthActionTypes.SET_USER;
-  constructor(public payload: any) {}
+  constructor(public payload: User) {}
 }
 export class AutoSetToken implements Action {
   readonly type = AuthActionTypes.AUTO_SET_TOKEN;
@@ -25,7 +27,7 @@ export class AutoSetToken implements Action {
 }
 export class AutoSetUser implements Action {
   readonly type = AuthActionTypes.AUTO_SET_USER;
-  constructor(public payload: any) {}
+  constructor(public payload: User) {}
 }
 export class TryLogin implements Action {
   readonly type = AuthActionTypes.TRY_LOGIN;
@@ -41,5 +43,18 @@ export class LoginFail implements Action {
   readonly type = AuthActionTypes.LOGIN_FAIL;
   constructor(public payload: string) {}
 }
+export class SetApiUrl implements Action {
+  readonly type = AuthActionTypes.SET_API_URL;
+  constructor(public payload: string) {}
+}
 
-export type AuthActions = SetToken | TryLogin | Login | TryRegister | SetUser | AutoSetToken | AutoSetUser | LoginFail;
+export type AuthActions = SetToken |
+TryLogin |
+Login |
+TryRegister |
+SetUser |
+AutoSetToken |
+AutoSetUser |
+LoginFail |
+SetApiUrl
+;

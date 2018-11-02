@@ -101,6 +101,7 @@ export class WaveParticlesComponent
     const PI2 = Math.PI * 2;
     const material = new THREE.SpriteCanvasMaterial({
       color: 0xffffff,
+      transparent: true, opacity: 0.8 ,
       program: function(context) {
         context.beginPath();
         context.arc(0, 0, 0.2, 0, PI2, true); // (0, 0, 0.1, 0, PI2
@@ -120,7 +121,7 @@ export class WaveParticlesComponent
       }
     }
 
-    this.renderer = new THREE.CanvasRenderer({ alpha: true });
+    this.renderer = new THREE.CanvasRenderer({ alpha: true});
     this.renderer.setPixelRatio(window.devicePixelRatio);
     this.renderer.setSize(window.innerWidth, window.innerHeight);
     this.container.appendChild(this.renderer.domElement);

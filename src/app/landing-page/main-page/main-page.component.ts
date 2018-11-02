@@ -11,7 +11,6 @@ import { WaveParticlesComponent } from '../wave-particles/wave-particles.compone
 import { Store } from '@ngrx/store';
 import { AppState } from '../../reducers';
 import { Observable } from 'rxjs';
-import { getGlobalNavClass } from '../../shared/store/ui.selectors';
 @Component({
   selector: 'app-main-page',
   templateUrl: './main-page.component.html',
@@ -26,7 +25,6 @@ export class MainPageComponent implements OnInit, AfterViewInit {
   globalNavClass$: Observable<string>;
   typed: any;
   constructor(private store: Store<AppState>) {
-    this.globalNavClass$ = store.select(getGlobalNavClass);
   }
 
   ngOnInit() {}

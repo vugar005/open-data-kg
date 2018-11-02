@@ -14,7 +14,7 @@ import { NgxFormUtils } from 'ngx-form-utils';
 export class OperationsInsertDialogComponent implements OnInit {
 
   @ViewChild('f') ntForm: NgForm;
-  apps$: Observable<any>;
+  modules$: Observable<any>;
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<ModulesInsertDialogComponent>,
@@ -22,7 +22,7 @@ export class OperationsInsertDialogComponent implements OnInit {
     private sharedService: SharedAdminService
   ) {}
   ngOnInit() {
-    this.apps$ = this.sharedService.getAppList('http://192.168.1.23:8080/DispatcherRest/api/get/Permission/Modules/GetModuleList');
+    this.modules$ = this.sharedService.getModTypes('api/get/Permission/Modules/GetModuleList');
   }
   getErrors(str) {
     if (!this.ntForm || !NgxFormUtils) { return; }

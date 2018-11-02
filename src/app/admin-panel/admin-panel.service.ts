@@ -11,7 +11,7 @@ export class AdminPanelService {
 
 constructor(private http: HttpClient) { }
  getModuleList(): Observable<any> {
-   return this.http.post('http://192.168.1.23:8080/DispatcherRest/api/post/Permission/Modules/GetModuleList', {kv: {}})
+   return this.http.post('post/Permission/Modules/GetModuleList', {kv: {}})
    .pipe(
      map((res: any) => {
         if (!(res && res.tbl[0])) {return; }
@@ -37,7 +37,7 @@ getTableData(roleId, getApi): Observable<any> {
 
   }
   insertPriviligeList(body) {
-    return this.http.post('http://192.168.1.23:8080/DispatcherRest/api/post/Permission/UserRoles/InsertUserRolePrivilege',
+    return this.http.post('post/Permission/UserRoles/InsertUserRolePrivilege',
     JSON.stringify(body))
     .pipe(
     );
