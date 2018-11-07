@@ -10,6 +10,7 @@ export enum AuthActionTypes {
   LOGIN = '[AUTH] LOGIN',
   TRY_REGISTER = '[AUTH] TRY_REGISTER',
   LOGIN_FAIL = '[AUTH] LOGIN_FAIL',
+  REGISTER_FAIL = '[AUTH] REGISTER_FAIL',
   SET_API_URL = '[APP CO] SET_API_URL'
 }
 
@@ -44,6 +45,10 @@ export class LoginFail implements Action {
   readonly type = AuthActionTypes.LOGIN_FAIL;
   constructor(public payload: string) {}
 }
+export class RegisterFail implements Action {
+  readonly type = AuthActionTypes.REGISTER_FAIL;
+  constructor(public payload: string) {}
+}
 export class SetApiUrl implements Action {
   readonly type = AuthActionTypes.SET_API_URL;
   constructor(public payload: string) {}
@@ -57,5 +62,6 @@ SetUser |
 AutoSetToken |
 AutoSetUser |
 LoginFail |
+RegisterFail |
 SetApiUrl
 ;

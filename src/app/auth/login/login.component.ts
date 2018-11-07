@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit, OnDestroy, AfterViewInit {
     this.typed && this.typed.destroy();
   }
   onSubmit(f: NgForm) {
+    if (!f.valid) {return; }
     this.store.dispatch(new TryLogin(f.form.value));
   }
   ngAfterViewInit() {

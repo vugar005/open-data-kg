@@ -42,6 +42,7 @@ export class RegisterComponent implements OnInit, OnDestroy, AfterViewInit {
   ngAfterViewInit() {
   }
   onSubmit(f: NgForm) {
+    if (!f.valid) {return; }
     this.store.dispatch(new TryRegister(f.form.value));
   }
   onUpload() {

@@ -50,7 +50,7 @@ export class AuthEffects {
      mergeMap((res: HttpResponse<any>) => {
       if (res.body.code === 'ERROR') {
         return [{
-          type: AuthActionTypes.LOGIN_FAIL,
+          type: AuthActionTypes.REGISTER_FAIL,
           payload: res.body.message['en']
         }];
       }
@@ -94,6 +94,15 @@ export class AuthEffects {
     loginFail = this.actions$
     .pipe(
       ofType(AuthActionTypes.LOGIN_FAIL),
+      tap((res: any) => {
+        this.sharedService.createNotification('error', res.payload, 'bottomCenter');
+      })
+    );
+
+    @Effect({dispatch: false})
+   registerFail = this.actions$
+    .pipe(
+      ofType(AuthActionTypes.REGISTER_FAIL),
       tap((res: any) => {
         this.sharedService.createNotification('error', res.payload, 'bottomCenter');
       })

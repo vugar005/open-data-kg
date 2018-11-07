@@ -12,11 +12,12 @@
      <div class="form-header">Login</div>
      <form #f="ngForm" class="login-form" (ngSubmit)="onSubmit(f)">
         <mat-form-field class="field-style" >
-            <input matInput placeholder="{{'AUTH.username' | translate}}" class="nt-form-input" name="username" ngModel>
+            <input matInput placeholder="{{'AUTH.username' | translate}}" class="nt-form-input" name="username" ngModel required>
           </mat-form-field>
 
           <mat-form-field class="field-style" >
-              <input matInput placeholder="{{'AUTH.password' | translate}}" class="nt-form-input" name="password" ngModel [type]="hideOld ? 'password' : 'text'">
+              <input matInput placeholder="{{'AUTH.password' | translate}}" class="nt-form-input"
+                     name="password" ngModel required [type]="hideOld ? 'password' : 'text'">
               <mat-icon matSuffix (click)="hideOld = !hideOld">{{hideOld ? 'visibility_off' : 'visibility'}}</mat-icon>
          </mat-form-field>
 
