@@ -15,7 +15,7 @@ export class AdminUserRolesComponent {
   initDialog(e) {
     console.log('e');
     const ref = this.dialog.open(UserRolesInsertDialogComponent,
-      {data: {insertApi: e}
+      {data: {insertApi: e}, disableClose: true
      });
   }
   initUpdateDialog(e, url) {

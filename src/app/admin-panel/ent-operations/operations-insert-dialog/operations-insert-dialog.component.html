@@ -52,6 +52,7 @@
 
               <mat-form-field class="example-full-width">
                 <input matInput placeholder="Code" class= "nt-form-input" name="code" ngModel required >
+                <mat-error>{{getErrors('code')}}</mat-error>
               </mat-form-field>
 
              <input [hidden]="true" name="id" ngModel>

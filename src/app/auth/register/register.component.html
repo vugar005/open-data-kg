@@ -11,11 +11,25 @@
   <div class="auth-box">
      <div class="form-header">Register</div>
      <form #f="ngForm" class="login-form">
-       <input placeholder="{{'AUTH.userName' | translate}}" name="user" ngModel class="input">
-       <input placeholder="{{'AUTH.email' | translate}}" name="password" ngModel class="input">
-       <input placeholder="{{'AUTH.password' | translate}}" name="password" ngModel class="input">
-       <input placeholder="{{'AUTH.confirmPassword' | translate}}" name="password" ngModel class="input">
-       <button class="kg-btn login" [routerLink]="['/']">Login</button>
+      <div class="controls">
+          <div class="left">
+              <input placeholder="{{'AUTH.username' | translate}}" name="user" ngModel class="input">
+              <input placeholder="{{'AUTH.email' | translate}}" name="email" ngModel class="input">
+              <input placeholder="{{'AUTH.password' | translate}}" name="password" ngModel class="input">
+              <input placeholder="{{'AUTH.confirmPassword' | translate}}" class="input">
+          </div>
+          <div class="right">
+              <input placeholder="{{'AUTH.name' | translate}}" name="name" ngModel class="input">
+              <input placeholder="{{'AUTH.middlename' | translate}}" name="middlename" ngModel class="input">
+              <input placeholder="{{'AUTH.surname' | translate}}" name="surname" ngModel class="input">
+              <input placeholder="{{'AUTH.gender' | translate}}" name="gender" ngModel class="input">
+              <input placeholder="{{'AUTH.birthdate' | translate}}" name="birthdate" ngModel class="input">
+          </div>
+      </div>
+        <div class="bottom">
+            <button class="kg-btn login" [routerLink]="['/']">Register</button>
+        </div>
+
      </form>
      <div class="toRegister">
         for <a [routerLink]="'/login'">Login</a>

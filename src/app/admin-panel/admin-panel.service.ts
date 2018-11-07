@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
-import { GridApi, ColumnApi } from 'ag-grid-community';
-import { PageQuery } from 'nt-table/lib/pageQuery.model';
 
 @Injectable()
 export class AdminPanelService {
@@ -37,7 +35,7 @@ getTableData(roleId, getApi): Observable<any> {
 
   }
   insertPriviligeList(body) {
-    return this.http.post('post/Permission/UserRoles/InsertUserRolePrivilege',
+    return this.http.post('api/post/Permission/UserRoles/InsertUserRolePrivilege',
     JSON.stringify(body))
     .pipe(
     );

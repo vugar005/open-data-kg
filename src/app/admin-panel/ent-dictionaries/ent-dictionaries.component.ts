@@ -15,7 +15,7 @@ export class EntDictionariesComponent {
   initDialog(e) {
     console.log('e');
     const ref = this.dialog.open(DictionariesInsertDialogComponent,
-      {data: {insertApi: e}
+      {data: {insertApi: e}, disableClose: true
      });
   }
   initUpdateDialog(e, url) {

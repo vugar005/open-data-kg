@@ -7,6 +7,7 @@ import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
 import { SharedService } from 'src/app/shared/shared.service';
+import { User } from '../models/user.model.';
 @Injectable()
 export class AuthEffects {
 
@@ -52,8 +53,11 @@ export class AuthEffects {
     .pipe(
       ofType(AuthActionTypes.SET_USER),
       tap((res: any) => {
-        localStorage.setItem('kg-user', JSON.stringify(res.payload));
-       this.router.navigateByUrl('/admin');
+        const user: User = res.payload;
+        localStorage.setItem('kg-user', JSON.stringify(user));
+        if (user.userType !== 'User') {
+          this.router.navigateByUrl('/admin');
+        }
       })
     );
     @Effect({dispatch: false})

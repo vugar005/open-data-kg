@@ -5,8 +5,9 @@ import { EntUsersRoutes } from './ent-users.routing';
 import { SharedAdminModule } from '../shared/shared-admin.module';
 import { UserInsertDialogComponent } from './user-insert-dialog/user-insert-dialog.component';
 import { MatIconModule, MatDatepickerModule, MAT_DATE_LOCALE, DateAdapter, MAT_DATE_FORMATS } from '@angular/material';
-import { MatMomentDateModule,  MomentDateAdapter, MAT_MOMENT_DATE_FORMATS } from '@angular/material-moment-adapter';
-import { ReactiveFormsModule } from '@angular/forms';
+import { MatMomentDateModule,  MomentDateAdapter } from '@angular/material-moment-adapter';
+import { UploadUserImgComponent } from './user-insert-dialog/upload-user-img/upload-user-img.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 export const MY_FORMATS = {
   parse: {
     dateInput: 'L'
@@ -25,11 +26,10 @@ export const MY_FORMATS = {
     SharedAdminModule,
     MatIconModule,
     MatDatepickerModule,
-    MatMomentDateModule,
-    ReactiveFormsModule
+    MatMomentDateModule
   ],
-  declarations: [EntUsersComponent, UserInsertDialogComponent],
-  entryComponents: [UserInsertDialogComponent],
+  declarations: [EntUsersComponent, UserInsertDialogComponent, UploadUserImgComponent],
+  entryComponents: [UserInsertDialogComponent, UploadUserImgComponent],
   exports: [UserInsertDialogComponent],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'az' },

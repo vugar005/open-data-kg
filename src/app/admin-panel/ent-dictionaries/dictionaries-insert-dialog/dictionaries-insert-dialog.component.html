@@ -30,13 +30,17 @@
       </mat-form-field>
 
       <mat-form-field>
-
         <mat-select placeholder="Dictionary Type" class="nt-form-input" name="dicTypeId" ngModel required >
           <mat-option *ngFor="let item of (dicTypes$ | async)" [value]="item.value">
             {{item.label}}
           </mat-option>
         </mat-select>
         <mat-error>{{getErrors('moduleId')}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Parent Id" class="nt-form-input" name="parentId" ngModel>
+        <mat-error>{{getErrors('parentId')}}</mat-error>
       </mat-form-field>
 
       <input [hidden]="true" name="id" ngModel>

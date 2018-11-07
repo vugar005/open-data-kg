@@ -50,7 +50,10 @@ export class AppComponent implements OnInit {
     if (URL === 'http://192.168.1.23/DispatcherRest') {
       URL = 'http://192.168.1.23:8080/DispatcherRest';
     }
-    console.log(URL)
+    if (URL === 'http://192.168.1.8/DispatcherRest') {
+      URL = 'http://192.168.1.23:8080/DispatcherRest';
+    }
+    console.log(URL);
     this.store.dispatch(new SetApiUrl(URL));
    // localStorage.setItem('uni_hostname', URL);
   }

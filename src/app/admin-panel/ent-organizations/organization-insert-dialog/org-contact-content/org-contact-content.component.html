@@ -1,0 +1,19 @@
+<div class="title">
+  <div class="name">Contact</div>
+  <div class="add-icon" (click)="table.addData()">
+    <fa-icon [icon]="faPlusCircle"></fa-icon>
+  </div>
+ </div>
+
+<div style="width: 100%;height: 200px;">
+  <ngx-nt-table #table
+  [getApi]="'api/get/Permission/Organizations/GetOrganizationContactList'"
+  [insertApi]="'api/post/Permission/Organizations/InsertNewOrganizationContact'"
+  [updateApi]="'api/post/Permission/Organizations/UpdateOrganizationContact'"
+  [deleteApi]="'api/post/Permission/Organizations/DeleteOrganizationContact'"
+  (rowAdd)="initDialog(table.insertApi)"
+  (rowEdit)="initUpdateDialog($event, table.updateApi)"
+  [pagination]="false"
+  [addtionalFormData]="{ownerId: id}"
+></ngx-nt-table>
+</div>

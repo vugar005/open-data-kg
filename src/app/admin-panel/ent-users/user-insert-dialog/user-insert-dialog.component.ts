@@ -1,30 +1,41 @@
 import { Component, ViewChild, Inject, ViewContainerRef } from '@angular/core';
 import { NgForm, FormControl } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialogRef, MatDialog } from '@angular/material';
 import { NgxFormUtils } from 'ngx-form-utils';
 import { SharedAdminService } from '../../shared/shared-admin.service';
 import { Observable } from 'rxjs';
 import { SelectType } from 'src/app/shared/models/select-type.model';
-// tslint:disable-next-line:no-duplicate-imports
-
+import { trigger, transition, useAnimation } from '@angular/animations';
+import { slideInDown, bounceInDown , fadeIn} from 'ng-animate';
+import { UploadUserImgComponent } from './upload-user-img/upload-user-img.component';
 @Component({
   selector: 'app-user-insert-dialog',
   templateUrl: './user-insert-dialog.component.html',
-  styleUrls: ['./user-insert-dialog.component.scss']
+  styleUrls: ['./user-insert-dialog.component.scss'],
+  animations: [
+    trigger('fadeIn', [transition('* => *', useAnimation(fadeIn, {
+      // Set the duration to 5seconds and delay to 2seconds
+      params: { timing: 2, delay: 2 }
+    }))])]
 })
 export class UserInsertDialogComponent  {
+  @ViewChild('f') ntForm: NgForm;
   roles$: Observable<any>;
   genders$: Observable<SelectType[]>;
   hide = true;
   hideOld = true;
   maxDate = new Date(1994, 9, 30);
   startDate = new Date(1990, 0, 1);
-  @ViewChild('f') ntForm: NgForm;
+  imgId: string;
+  slideInDown = slideInDown;
+  bounceInDown = true;
+  fadeIn = true;
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<UserInsertDialogComponent>,
     public viewRef: ViewContainerRef,
-    private sharedService: SharedAdminService
+    private sharedService: SharedAdminService,
+    private dialog: MatDialog
   ) {
     this.roles$ = this.sharedService.getModTypes('api/post/Permission/UserRoles/GetUserRoleList');
     this.genders$ = this.sharedService.getTypes('181010384504309277');
@@ -34,8 +45,17 @@ export class UserInsertDialogComponent  {
      return NgxFormUtils.getErrors(this.ntForm, str);
     }
     onDateChange(e) {
-      console.log(e)
-      console.log(e.value)
+      console.log(e);
+      console.log(e.value);
+    }
+    onUpload() {
+      console.log('ded');
+      const dialogRef = this.dialog.open(UploadUserImgComponent);
+      dialogRef.afterClosed().subscribe(res => {
+        console.log(res);
+        if (res) { this.imgId = res; }
+        dialogRef.close();
+      });
     }
 
 }

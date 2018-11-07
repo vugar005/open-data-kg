@@ -23,7 +23,6 @@ export class SharedAdminService {
      };
   }
   getTypes(id: string): Observable<SelectType[]> {
-    console.log(id)
     const body = {
       kv: {
        dicTypeId: id
@@ -43,5 +42,22 @@ export class SharedAdminService {
         value: res.id,
         label: res.nameEn,
      };
+  }
+
+  getTypesByParentId(typeId: string, parentId: string): Observable<SelectType[]> {
+    const body = {
+      kv: {
+       dicTypeId: typeId,
+       parentId: parentId
+      }
+    };
+    return this.http.post(`api/post/Permission/Dictionaries/GetDictionaryList`,
+     JSON.stringify(body) )
+    .pipe(
+      map((res: any) =>  {
+        if (!(res && res.tbl[0]) && res.tbl[0].r) {return; }
+        return res.tbl[0].r.map( row => this.mapType(row));
+      })
+    );
   }
 }

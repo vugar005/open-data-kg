@@ -5,15 +5,26 @@
 }
 .inputs {
   display: flex;
-  .left {
-  display: flex;
   flex-direction: column;
-  padding: 10px;
+
+  .main-info {
+  display: flex;
+    .left {
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+      }
+      .right {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+      }
   }
-  .right {
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
+  .other-info {
+    border-top: 1px solid #e0e0e0;
+    padding-top: 10px;
+
+
   }
 }
 

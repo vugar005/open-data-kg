@@ -4,10 +4,15 @@
     "secondaryName": "OPEN DATA PORTAL"
   },
   "AUTH": {
-      "userName": "Username",
+      "username": "Username",
       "email": "Email",
       "password": "Password",
-      "confirmPassword": "ConfirmPassword"
+      "confirmPassword": "ConfirmPassword",
+      "name": "Name",
+      "surname": "Surname",
+      "middlename": "Middlename",
+      "gender": "Gender",
+      "birthdate": "Birthdate"
   },
   "NEWS": {
     "moduleName": "NEWS"

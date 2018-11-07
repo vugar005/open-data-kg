@@ -67,5 +67,6 @@
       sessionActive: boolean;
       isBlocked: boolean;
       modules: UserModule[];
+      userType: string;
       privilegeList: string[];
   }

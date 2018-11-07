@@ -15,7 +15,7 @@ export class EntApplicationsComponent  {
   initDialog(e) {
     console.log('e');
     const ref = this.dialog.open(ApplicationsInsertDialogComponent,
-      {data: {insertApi: e}
+      {data: {insertApi: e}, disableClose: true
      });
   }
   initUpdateDialog(e, url) {

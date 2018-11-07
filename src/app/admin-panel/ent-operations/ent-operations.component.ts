@@ -14,7 +14,7 @@ export class EntOperationsComponent {
   constructor(private dialog: MatDialog) { }
   initDialog(e) {
     const ref = this.dialog.open(OperationsInsertDialogComponent,
-      {data: {insertApi: e}
+      {data: {insertApi: e}, disableClose: true
      });
   }
   initUpdateDialog(e, url) {

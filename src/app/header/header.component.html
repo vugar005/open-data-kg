@@ -10,7 +10,7 @@
       <div class="name">
         {{ (user$ | async)?.name}} {{(user$ | async)?.surname }}
       </div>
-        <div class="image">
+        <div class="image" [routerLink]="['/admin']"  >
             <img src= "https://www.timeshighereducation.com/sites/default/files/byline_photos/default-avatar.png">
           </div>
     </div>
