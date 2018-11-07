@@ -14,12 +14,9 @@
  <div class="content">
    <div class="nt-table">
      <ngx-nt-table #table
-     [getApi]="'api/post/Permission/Applications/GetApplicationList'"
-     [insertApi]="'api/post/Permission/Applications/InsertNewApplication'"
-     [updateApi]="'api/post/Permission/Applications/UpdateApplication'"
-     [deleteApi]="'api/post/Permission/Applications/DeleteApplication'"
-     (rowAdd)="initDialog(table.insertApi)"
-     (rowEdit)="initUpdateDialog($event, table.updateApi)"
+     [config]="config"
+     (rowAdd)="initDialog(table)"
+     (rowEdit)="initDialog(table, $event)"
     ></ngx-nt-table>
    </div>
  </div>

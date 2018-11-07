@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NtTableComponent } from 'nt-table';
 import { MatDialog } from '@angular/material';
 import { UserInsertDialogComponent } from './user-insert-dialog/user-insert-dialog.component';
+import { ApiConfig } from 'nt-table/lib/api-config.model';
 
 @Component({
   selector: 'app-ent-users',
@@ -10,16 +11,16 @@ import { UserInsertDialogComponent } from './user-insert-dialog/user-insert-dial
 })
 export class EntUsersComponent  {
   @ViewChild('table') table: NtTableComponent;
+  config: ApiConfig = {
+    getApi: 'api/post/Permission/Users/GetUserList',
+    insertApi: 'api/post/Permission/Users/InsertNewUser',
+    updateApi: 'api/post/Permission/Users/UpdateUser',
+    deleteApi: 'api/post/Permission/Users/DeleteUser'
+  };
   constructor(private dialog: MatDialog) { }
-  initDialog(e) {
-    console.log('e');
-    const ref = this.dialog.open(UserInsertDialogComponent,
-      {data: {insertApi: e}, disableClose: true
-     });
-  }
-  initUpdateDialog(e, url) {
-   const ref = this.dialog.open(UserInsertDialogComponent,
-     {data: {updateApi: url, row: e}
+  initDialog(table: NtTableComponent, row = null) {
+    const ref = this.dialog.open(UserInsertDialogComponent, {
+      data: { table: table, row: row || undefined}
     });
- }
+  }
 }

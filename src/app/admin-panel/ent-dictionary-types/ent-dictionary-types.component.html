@@ -14,12 +14,9 @@
  <div class="content">
    <div class="nt-table">
      <ngx-nt-table #table
-     [getApi]="'api/post/Permission/DictionaryTypes/GetDictionaryTypeList'"
-     [insertApi]="'api/post/Permission/DictionaryTypes/InsertNewDictionaryType'"
-     [updateApi]="'api/post/Permission/DictionaryTypes/UpdateDictionaryType'"
-     [deleteApi]="'api/post/Permission/DictionaryTypes/DeleteDictionaryType'"
-     (rowAdd)="initDialog(table.insertApi)"
-     (rowEdit)="initUpdateDialog($event, table.updateApi)"
+     [config]="config"
+     (rowAdd)="initDialog(table)"
+     (rowEdit)="initDialog(table, $event)"
      [isAdmin]="true"
     ></ngx-nt-table>
    </div>

@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NtTableComponent } from 'nt-table';
 import { MatDialog } from '@angular/material';
 import { ModulesInsertDialogComponent } from './modules-insert-dialog/modules-insert-dialog.component';
-import { SharedAdminService } from '../shared/shared-admin.service';
+import { ApiConfig } from 'nt-table/lib/api-config.model';
 
 @Component({
   selector: 'app-ent-modules',
@@ -10,21 +10,20 @@ import { SharedAdminService } from '../shared/shared-admin.service';
   styleUrls: ['./ent-modules.component.scss']
 })
 export class EntModulesComponent implements OnInit {
-
+  config: ApiConfig = {
+    getApi: 'api/post/Permission/Modules/GetModuleList',
+    insertApi: 'api/post/Permission/Modules/InsertNewModule',
+    updateApi: 'api/post/Permission/Modules/UpdateModule',
+    deleteApi: 'api/post/Permission/Modules/DeleteModule'
+  };
   @ViewChild('table') table: NtTableComponent;
   constructor(private dialog: MatDialog) { }
   ngOnInit() {
   }
-  initDialog(e) {
-    console.log('e');
-    const ref = this.dialog.open(ModulesInsertDialogComponent,
-      {data: {insertApi: e}, disableClose: true
-     });
-  }
-  initUpdateDialog(e, url) {
-   const ref = this.dialog.open(ModulesInsertDialogComponent,
-     {data: {updateApi: url, row: e}
+  initDialog(table: NtTableComponent, row = null) {
+    const ref = this.dialog.open(ModulesInsertDialogComponent, {
+      data: { table: table, row: row || undefined}
     });
- }
+  }
 
 }

@@ -6,7 +6,7 @@ import { Router, NavigationEnd } from '@angular/router';
 })
 export class HeaderToggleDirective implements AfterViewInit {
 
-  hideInModules = ['admin'];
+  hideInModules = ['admin', 'login', 'register'];
   constructor(
     private element: ElementRef,
     private router: Router,

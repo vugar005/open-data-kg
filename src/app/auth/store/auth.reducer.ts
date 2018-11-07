@@ -27,12 +27,14 @@ export function reducer(state = initialState, action: AuthActions): AuthState {
     case AuthActionTypes.AUTO_SET_USER:
     case AuthActionTypes.SET_USER:
     const user: any = Object.assign({}, action.payload);
-    user.modules = user.modules.map(mod => {
-      return {
-        ...mod,
-        url: getUrl(mod)
-      };
-    });
+    if (user.modules) {
+      user.modules = user.modules.map(mod => {
+        return {
+          ...mod,
+          url: getUrl(mod)
+        };
+      });
+    }
     return {
       ...state,
      user: user

@@ -5,7 +5,8 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { ModulesInsertDialogComponent } from '../../ent-modules/modules-insert-dialog/modules-insert-dialog.component';
 import { NgxFormUtils } from 'ngx-form-utils';
 import { SelectType } from 'src/app/shared/models/select-type.model';
-import { SharedAdminService } from '../../shared/shared-admin.service';
+import { SharedService } from 'src/app/shared/shared.service';
+import { ApiConfig } from 'nt-table/lib/api-config.model';
 @Component({
   selector: 'app-organization-insert-dialog',
   templateUrl: './organization-insert-dialog.component.html',
@@ -13,13 +14,14 @@ import { SharedAdminService } from '../../shared/shared-admin.service';
 })
 export class OrganizationInsertDialogComponent {
   @ViewChild('f') ntForm: NgForm;
+
   apps$: Observable<any>;
   orgTypes$: Observable<SelectType[]>;
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<ModulesInsertDialogComponent>,
     public viewRef: ViewContainerRef,
-    private sharedService: SharedAdminService
+    private sharedService: SharedService
   ) {
     this.orgTypes$ = this.sharedService.getTypesByParentId('1000001', '1000001');
   }

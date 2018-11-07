@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NtTableComponent } from 'nt-table';
 import { MatDialog } from '@angular/material';
 import { OrganizationInsertDialogComponent } from './organization-insert-dialog/organization-insert-dialog.component';
+import { ApiConfig } from 'nt-table/lib/api-config.model';
 
 @Component({
   selector: 'app-ent-organizations',
@@ -10,17 +11,17 @@ import { OrganizationInsertDialogComponent } from './organization-insert-dialog/
 })
 export class EntOrganizationsComponent {
   @ViewChild('table') table: NtTableComponent;
+  config: ApiConfig = {
+    getApi: 'api/post/Permission/Organizations/GetOrganizationList',
+    insertApi: 'api/post/Permission/Organizations/InsertNewDictionary',
+    updateApi: 'api/post/Permission/Organizations/UpdateOrganization',
+    deleteApi: 'api/post/Permission/Organizations/DeleteOrganization'
+  };
   constructor(private dialog: MatDialog) { }
-  initDialog(e) {
-    console.log('e');
-    const ref = this.dialog.open(OrganizationInsertDialogComponent,
-      {data: {insertApi: e}, disableClose: true
-     });
-  }
-  initUpdateDialog(e, url) {
-   const ref = this.dialog.open(OrganizationInsertDialogComponent,
-     {data: {updateApi: url, row: e}
+  initDialog(table: NtTableComponent, row = null) {
+    const ref = this.dialog.open(OrganizationInsertDialogComponent, {
+      data: { table: table, row: row || undefined}
     });
- }
+  }
 
 }

@@ -79,7 +79,7 @@
       </mat-form-field>
 
 
-      <mat-form-field class="example-full-width" *ngIf="data?.updateApi">
+      <mat-form-field class="example-full-width" *ngIf="data?.row">
         <input matInput placeholder="Old Password" class="nt-form-input" name="oldPasswd" ngModel [type]="hideOld ? 'password' : 'text'">
         <mat-icon matSuffix (click)="hideOld = !hideOld">{{hideOld ? 'visibility_off' : 'visibility'}}</mat-icon>
         <mat-error>{{getErrors('oldPasswd')}}</mat-error>
@@ -87,7 +87,7 @@
 
       <mat-form-field class="example-full-width">
         <input matInput placeholder="Password" class="nt-form-input" name="passwd" ngModel [type]="hide ? 'password' : 'text'"
-          [required]="data.insertApi">
+          [required]="!data.row">
         <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         <mat-error>{{getErrors('passwd')}}</mat-error>
       </mat-form-field>
@@ -98,10 +98,16 @@
     </div>
   </div>
   <div class="actions">
-    <button mat-raised-button color="primary" type="submit" insertTableData [form]="f" [disabled]="f?.dirty && !f?.valid"
-      *ngIf="data?.insertApi" [url]="data?.insertApi" (onClose)="dialogRef.close()">Add</button>
-    <button mat-raised-button color="primary" type="submit" updateTableData [form]="f" [url]="data?.updateApi" *ngIf="data?.updateApi"
-      [disabled]="f?.dirty && !f?.valid" [url]="data?.updateApi" (onClose)="dialogRef.close()">Update</button>
+    <button mat-raised-button color="primary"  type="submit"  insertTableData [form]="f" [disabled]="f?.dirty && !f?.valid"
+    *ngIf="!data?.row"
+    [table]="data?.table"
+    >Add</button>
+    <button mat-raised-button color="primary"  type="submit" updateTableData [form]="f"
+    *ngIf="data?.row"
+    [disabled]="f?.dirty && !f?.valid"
+    (onClose)="dialogRef.close()"
+    [table]="data?.table"
+    >Update</button>
     <button mat-raised-button (click)="dialogRef.close()" type="reset">Cancel</button>
   </div>
 

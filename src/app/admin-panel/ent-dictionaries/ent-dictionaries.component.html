@@ -14,12 +14,10 @@
  <div class="content">
    <div class="nt-table">
      <ngx-nt-table #table
-     [getApi]="'api/post/Permission/Dictionaries/GetDictionaryList'"
-     [insertApi]="'api/post/Permission/Dictionaries/InsertNewDictionary'"
-     [updateApi]="'api/post/Permission/Dictionaries/UpdateDictionary'"
-     [deleteApi]="'api/post/Permission/Dictionaries/DeleteDictionary'"
-     (rowAdd)="initDialog(table.insertApi)"
-     (rowEdit)="initUpdateDialog($event, table.updateApi)"
+
+     [config]="config"
+     (rowAdd)="initDialog(table)"
+     (rowEdit)="initDialog(table, $event)"
      [isAdmin]="true"
     ></ngx-nt-table>
    </div>

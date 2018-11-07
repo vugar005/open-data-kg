@@ -3,6 +3,7 @@ import { OrgAddrInsertDialogComponent } from './org-addr-insert-dialog/org-addr-
 import { NtTableComponent } from 'nt-table';
 import { MatDialog } from '@angular/material';
 import {faPlusCircle} from '@fortawesome/free-solid-svg-icons';
+import { ApiConfig } from 'nt-table/lib/api-config.model';
 
 @Component({
   selector: 'org-address-content',
@@ -12,18 +13,21 @@ import {faPlusCircle} from '@fortawesome/free-solid-svg-icons';
 export class OrgAddressContentComponent {
   @Input() id: string;
   @ViewChild('table') table: NtTableComponent;
+  config: ApiConfig = {
+    getApi: 'api/post/Permission/Organizations/GetOrganizationAddressList',
+    insertApi: 'api/post/Permission/Organizations/InsertNewOrganizationAddress',
+    updateApi: 'api/post/Permission/Organizations/UpdateOrganizationAddress',
+    deleteApi: 'api/post/Permission/Organizations/DeleteOrganizationAddress',
+    additionalFormData : {
+      ownerId: this.id
+    }
+  };
   faPlusCircle = faPlusCircle;
   constructor(private dialog: MatDialog) { }
-  initDialog(e) {
-    console.log('e');
-    const ref = this.dialog.open(OrgAddrInsertDialogComponent,
-      {data: {insertApi: e, id: this.id}
-     });
-  }
-  initUpdateDialog(e, url) {
-   const ref = this.dialog.open(OrgAddrInsertDialogComponent,
-     {data: {updateApi: url, row: e}
+  initDialog(table: NtTableComponent, row = null) {
+   const ref = this.dialog.open(OrgAddrInsertDialogComponent, {
+      data: { table: table, row: row || undefined}
     });
- }
+  }
 
 }

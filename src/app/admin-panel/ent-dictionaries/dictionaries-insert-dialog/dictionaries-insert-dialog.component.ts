@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { NgxFormUtils } from 'ngx-form-utils';
 import { Observable } from 'rxjs';
-import { SharedAdminService } from '../../shared/shared-admin.service';
+import { SharedService } from 'src/app/shared/shared.service';
 
 @Component({
   selector: 'app-dictionaries-insert-dialog',
@@ -17,7 +17,7 @@ export class DictionariesInsertDialogComponent  {
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<DictionariesInsertDialogComponent>,
     public viewRef: ViewContainerRef,
-    private sharedService: SharedAdminService
+    private sharedService: SharedService
   ) {
    this.dicTypes$ = sharedService.getModTypes('api/post/Permission/DictionaryTypes/GetDictionaryTypeList');
   }

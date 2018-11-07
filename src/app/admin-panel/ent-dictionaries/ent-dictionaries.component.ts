@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NtTableComponent } from 'nt-table';
 import { MatDialog } from '@angular/material';
 import { DictionariesInsertDialogComponent } from './dictionaries-insert-dialog/dictionaries-insert-dialog.component';
+import { ApiConfig } from 'nt-table/lib/api-config.model';
 
 @Component({
   selector: 'app-ent-dictionaries',
@@ -10,17 +11,17 @@ import { DictionariesInsertDialogComponent } from './dictionaries-insert-dialog/
 })
 export class EntDictionariesComponent {
   @ViewChild('table') table: NtTableComponent;
+  config: ApiConfig = {
+    getApi: 'api/post/Permission/Dictionaries/GetDictionaryList',
+    insertApi: 'api/post/Permission/Dictionaries/InsertNewDictionary',
+    updateApi: 'api/post/Permission/Dictionaries/UpdateDictionary',
+    deleteApi: 'api/post/Permission/Dictionaries/DeleteDictionary'
+  };
   constructor(private dialog: MatDialog) {
    }
-  initDialog(e) {
-    console.log('e');
-    const ref = this.dialog.open(DictionariesInsertDialogComponent,
-      {data: {insertApi: e}, disableClose: true
-     });
-  }
-  initUpdateDialog(e, url) {
-   const ref = this.dialog.open(DictionariesInsertDialogComponent,
-     {data: {updateApi: url, row: e}
+   initDialog(table, row = null) {
+    const ref = this.dialog.open(DictionariesInsertDialogComponent, {
+      data: { table: table, row: row || undefined}
     });
- }
+  }
 }

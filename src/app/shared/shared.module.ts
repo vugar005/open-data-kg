@@ -12,12 +12,14 @@ import { SWIPER_CONFIG } from 'ngx-swiper-wrapper';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 import { FooterComponent } from '../footer/footer.component';
 import { MatRippleModule } from '@angular/material';
+import { SharedUploadModule } from './shared-upload.module';
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
   slidesPerView: 'auto'
 };
 @NgModule({
     imports: [
+      SharedUploadModule,
       TranslateModule.forChild({
         loader: {
           provide: TranslateLoader,

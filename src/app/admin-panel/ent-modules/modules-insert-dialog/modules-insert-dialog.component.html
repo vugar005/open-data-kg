@@ -75,17 +75,15 @@
     </div>
   </div>
   <div class="actions">
-    <button mat-raised-button color="primary"  type="submit" insertTableData
-    *ngIf="data?.insertApi" [disabled]="!f?.valid"
-    [url] ="data?.insertApi"
-    [form]="f"
-    (onClose)="dialogRef.close()"
+    <button mat-raised-button color="primary"  type="submit"  insertTableData [form]="f" [disabled]="f?.dirty && !f?.valid"
+    *ngIf="!data?.row"
+    [table]="data?.table"
     >Add</button>
-    <button mat-raised-button color="primary"  type="submit" updateTableData
-    *ngIf="data?.updateApi" [disabled]="!f?.valid"
-    [url] ="data?.updateApi"
-    [form]="f"
+    <button mat-raised-button color="primary"  type="submit" updateTableData [form]="f"
+    *ngIf="data?.row"
+    [disabled]="f?.dirty && !f?.valid"
     (onClose)="dialogRef.close()"
+    [table]="data?.table"
     >Update</button>
     <button mat-raised-button (click)="dialogRef.close()" type="reset">Cancel</button>
   </div>

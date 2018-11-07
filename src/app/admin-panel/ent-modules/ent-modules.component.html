@@ -14,13 +14,10 @@
  <div class="content">
    <div class="nt-table">
      <ngx-nt-table #table
-     [getApi]="'api/post/Permission/Modules/GetModuleList'"
-     [insertApi]="'api/post/Permission/Modules/InsertNewModule'"
-     [updateApi]="'api/post/Permission/Modules/UpdateModule'"
-     [deleteApi]="'api/post/Permission/Modules/DeleteModule'"
-     (rowAdd)="initDialog(table.insertApi)"
-     (rowEdit)="initUpdateDialog($event, table.updateApi)"
+     (rowAdd)="initDialog(table)"
+     (rowEdit)="initDialog(table, $event)"
      [featureTemplate]="true"
+     [config]="config"
     ></ngx-nt-table>
    </div>
  </div>

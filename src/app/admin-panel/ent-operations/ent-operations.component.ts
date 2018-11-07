@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { NtTableComponent } from 'nt-table';
 import { MatDialog } from '@angular/material';
 import { OperationsInsertDialogComponent } from './operations-insert-dialog/operations-insert-dialog.component';
+import { ApiConfig } from 'nt-table/lib/api-config.model';
 
 @Component({
   selector: 'app-ent-operations',
@@ -9,17 +10,17 @@ import { OperationsInsertDialogComponent } from './operations-insert-dialog/oper
   styleUrls: ['./ent-operations.component.scss']
 })
 export class EntOperationsComponent {
-
   @ViewChild('table') table: NtTableComponent;
+  config: ApiConfig = {
+    getApi: 'api/post/Permission/Operations/GetOperationList',
+    insertApi: 'api/post/Permission/Operations/InsertNewOperation',
+    updateApi: 'api/post/Permission/Operations/UpdateOperation',
+    deleteApi: 'api/post/Permission/Operations/DeleteOperation'
+  };
   constructor(private dialog: MatDialog) { }
-  initDialog(e) {
-    const ref = this.dialog.open(OperationsInsertDialogComponent,
-      {data: {insertApi: e}, disableClose: true
-     });
-  }
-  initUpdateDialog(e, url) {
-   const ref = this.dialog.open(OperationsInsertDialogComponent,
-     {data: {updateApi: url, row: e}
+  initDialog(table: NtTableComponent, row = null) {
+    const ref = this.dialog.open(OperationsInsertDialogComponent, {
+      data: { table: table, row: row || undefined}
     });
- }
+  }
 }

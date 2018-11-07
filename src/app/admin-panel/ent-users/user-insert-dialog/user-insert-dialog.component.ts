@@ -1,13 +1,13 @@
 import { Component, ViewChild, Inject, ViewContainerRef } from '@angular/core';
-import { NgForm, FormControl } from '@angular/forms';
+import { NgForm, } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialog } from '@angular/material';
 import { NgxFormUtils } from 'ngx-form-utils';
-import { SharedAdminService } from '../../shared/shared-admin.service';
 import { Observable } from 'rxjs';
 import { SelectType } from 'src/app/shared/models/select-type.model';
 import { trigger, transition, useAnimation } from '@angular/animations';
-import { slideInDown, bounceInDown , fadeIn} from 'ng-animate';
-import { UploadUserImgComponent } from './upload-user-img/upload-user-img.component';
+import { slideInDown, fadeIn} from 'ng-animate';
+import { SharedService } from 'src/app/shared/shared.service';
+import { UploadFileDialogComponent } from './upload-file-dialog/upload-file-dialog.component';
 @Component({
   selector: 'app-user-insert-dialog',
   templateUrl: './user-insert-dialog.component.html',
@@ -34,7 +34,7 @@ export class UserInsertDialogComponent  {
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<UserInsertDialogComponent>,
     public viewRef: ViewContainerRef,
-    private sharedService: SharedAdminService,
+    private sharedService: SharedService,
     private dialog: MatDialog
   ) {
     this.roles$ = this.sharedService.getModTypes('api/post/Permission/UserRoles/GetUserRoleList');
@@ -50,7 +50,7 @@ export class UserInsertDialogComponent  {
     }
     onUpload() {
       console.log('ded');
-      const dialogRef = this.dialog.open(UploadUserImgComponent);
+      const dialogRef = this.dialog.open(UploadFileDialogComponent);
       dialogRef.afterClosed().subscribe(res => {
         console.log(res);
         if (res) { this.imgId = res; }

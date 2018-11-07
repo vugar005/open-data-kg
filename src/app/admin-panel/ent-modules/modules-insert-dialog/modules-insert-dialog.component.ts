@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import {NgxFormUtils} from 'ngx-form-utils';
 import { Observable } from 'rxjs';
-import { SharedAdminService } from '../../shared/shared-admin.service';
+import { SharedService } from 'src/app/shared/shared.service';
 @Component({
   selector: 'modules-insert-dialog',
   templateUrl: './modules-insert-dialog.component.html',
@@ -16,7 +16,7 @@ export class ModulesInsertDialogComponent implements OnInit{
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<ModulesInsertDialogComponent>,
     public viewRef: ViewContainerRef,
-    private sharedService: SharedAdminService
+    private sharedService: SharedService
   ) {}
   ngOnInit() {
     this.apps$ = this.sharedService.getModTypes('api/get/Permission/Applications/GetApplicationList');

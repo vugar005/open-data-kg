@@ -2,13 +2,13 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
 
 @Component({
-  selector: 'upload-user-img',
-  templateUrl: './upload-user-img.component.html',
-  styleUrls: ['./upload-user-img.component.scss']
+  selector: 'upload-file-dialog',
+  templateUrl: './upload-file-dialog.component.html',
+  styleUrls: ['./upload-file-dialog.component.scss']
 })
-export class UploadUserImgComponent {
+export class UploadFileDialogComponent {
   @Output() uploaded = new EventEmitter<string>();
-  constructor( public dialogRef: MatDialogRef<UploadUserImgComponent>) { }
+  constructor( public dialogRef: MatDialogRef<UploadFileDialogComponent>) { }
 
   onUploaded(res) {
     console.log(res);

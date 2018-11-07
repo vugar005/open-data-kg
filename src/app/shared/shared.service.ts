@@ -1,11 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Ng2IzitoastService } from 'ng2-izitoast';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { Observable } from 'rxjs';
+import { SelectType } from './models/select-type.model';
+import { map } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class SharedService {
   toastRunning: boolean;
-  constructor(public iziToast: Ng2IzitoastService, private jwtService: JwtHelperService) {}
+  constructor(public iziToast: Ng2IzitoastService, private jwtService: JwtHelperService, private http: HttpClient) {}
   createNotification(type: string, message: string, position = 'bottomRight') {
     this.clearOldToats();
     switch (type) {
@@ -64,5 +68,59 @@ canAutoLogin() {
    } catch (er) {
      console.log(er);
    }
+}
+getModTypes(url: string) {
+  return this.http.post(url, {kv: {}})
+  .pipe(
+    map((res: any) =>  {
+      if (!(res && res.tbl[0])) {return; }
+      return res.tbl[0].r.map( row => this.mapModType(row));
+    })
+  );
+}
+private  mapModType(res) {
+   return {
+      value: res.id,
+      label: res.nameEn,
+   };
+}
+
+
+getTypesByParentId(typeId: string, parentId: string): Observable<SelectType[]> {
+  const body = {
+    kv: {
+     dicTypeId: typeId,
+     parentId: parentId
+    }
+  };
+  return this.http.post(`api/post/Permission/Dictionaries/GetDictionaryList`,
+   JSON.stringify(body) )
+  .pipe(
+    map((res: any) =>  {
+      if (!(res && res.tbl[0]) && res.tbl[0].r) {return; }
+      return res.tbl[0].r.map( row => this.mapType(row));
+    })
+  );
+}
+getTypes(id: string): Observable<SelectType[]> {
+  const body = {
+    kv: {
+     dicTypeId: id
+    }
+  };
+  return this.http.post(`api/get/Permission/Dictionaries/GetDictionaryList`,
+   JSON.stringify(body) )
+  .pipe(
+    map((res: any) =>  {
+      if (!(res && res.tbl[0])) {return; }
+      return res.tbl[0].r.map( row => this.mapType(row));
+    })
+  );
+}
+private  mapType(res): SelectType {
+   return {
+      value: res.id,
+      label: res.nameEn,
+   };
 }
 }

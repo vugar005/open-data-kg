@@ -39,6 +39,34 @@ export class AuthEffects {
         ];
        })
     );
+  @Effect()
+  tryRegister = this.actions$
+  .pipe(
+    ofType(AuthActionTypes.TRY_REGISTER),
+    switchMap((res: any) =>
+     this.http.post('registration', res.payload, {
+     observe: 'response'})
+     ),
+     mergeMap((res: HttpResponse<any>) => {
+      if (res.body.code === 'ERROR') {
+        return [{
+          type: AuthActionTypes.LOGIN_FAIL,
+          payload: res.body.message['en']
+        }];
+      }
+       const jwtToken = res.headers.get('Authorisation');
+       const decoded = this.jwtService.decodeToken(jwtToken);
+       return [{
+         type: AuthActionTypes.SET_TOKEN,
+         payload: {decoded, jwtToken}
+       },
+       {
+        type: AuthActionTypes.SET_USER,
+        payload: res.body.data
+      }
+      ];
+     })
+  );
     @Effect({dispatch: false})
     setToken = this.actions$
     .pipe(
@@ -55,8 +83,10 @@ export class AuthEffects {
       tap((res: any) => {
         const user: User = res.payload;
         localStorage.setItem('kg-user', JSON.stringify(user));
-        if (user.userType !== 'User') {
+        if (user.userType !== 'USER') {
           this.router.navigateByUrl('/admin');
+        } else {
+          this.router.navigateByUrl('/');
         }
       })
     );

@@ -14,7 +14,6 @@ import { APIInterceptor } from 'src/app/shared/interceptors/api.interceptor';
      FontAwesomeModule,
      NtTableModule,
      FormUtilsModule,
-     FilePickerModule,
      MatMenuModule,
      MatButtonModule,
      MatFormFieldModule,

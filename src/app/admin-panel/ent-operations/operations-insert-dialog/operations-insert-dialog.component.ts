@@ -3,8 +3,8 @@ import { NgForm } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { ModulesInsertDialogComponent } from '../../ent-modules/modules-insert-dialog/modules-insert-dialog.component';
-import { SharedAdminService } from '../../shared/shared-admin.service';
 import { NgxFormUtils } from 'ngx-form-utils';
+import { SharedService } from 'src/app/shared/shared.service';
 
 @Component({
   selector: 'app-operations-insert-dialog',
@@ -12,14 +12,13 @@ import { NgxFormUtils } from 'ngx-form-utils';
   styleUrls: ['./operations-insert-dialog.component.scss']
 })
 export class OperationsInsertDialogComponent implements OnInit {
-
   @ViewChild('f') ntForm: NgForm;
   modules$: Observable<any>;
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<ModulesInsertDialogComponent>,
     public viewRef: ViewContainerRef,
-    private sharedService: SharedAdminService
+    private sharedService: SharedService
   ) {}
   ngOnInit() {
     this.modules$ = this.sharedService.getModTypes('api/get/Permission/Modules/GetModuleList');
