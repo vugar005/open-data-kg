@@ -17,7 +17,7 @@ export class AdminLoadGuard implements CanLoad {
       take(1),
       map(type => {
         console.log(type);
-        if (type && type.toUpperCase().includes('ADMIN')) {
+        if (type !== 'ADMIN') {
           console.log('admin');
           return true;
         }

@@ -20,8 +20,9 @@ import { UploadFileDialogComponent } from './upload-file-dialog/upload-file-dial
 })
 export class UserInsertDialogComponent  {
   @ViewChild('f') ntForm: NgForm;
-  roles$: Observable<any>;
+  roles$: Observable<SelectType[]>;
   genders$: Observable<SelectType[]>;
+  orgTypes$: Observable<SelectType[]>;
   hide = true;
   hideOld = true;
   maxDate = new Date(1994, 9, 30);
@@ -38,6 +39,7 @@ export class UserInsertDialogComponent  {
     private dialog: MatDialog
   ) {
     this.roles$ = this.sharedService.getModTypes('api/post/Permission/UserRoles/GetUserRoleList');
+    this.orgTypes$ = this.sharedService.getModTypes('api/post/Permission/Organizations/GetOrganizationList');
     this.genders$ = this.sharedService.getTypes('181010384504309277');
   }
   getErrors(str) {

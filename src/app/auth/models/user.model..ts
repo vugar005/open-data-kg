@@ -32,7 +32,7 @@
   }
 
 
-  interface UserModuleOperation {
+  export interface UserModuleOperation {
       id: number;
       typeId: number;
       moduleId: number;

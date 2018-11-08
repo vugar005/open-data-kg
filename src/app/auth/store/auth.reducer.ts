@@ -1,5 +1,5 @@
 import { AuthActionTypes, AuthActions } from './auth.actions';
-import { User } from '../models/user.model.';
+import { User, UserModuleOperation, UserModule } from '../models/user.model.';
 
 
 export interface AuthState {
@@ -7,13 +7,17 @@ export interface AuthState {
  raw_token: string;
  user: User;
  api_url: string;
+ modules: UserModule[];
+ priviliges: {[index: string]: UserModuleOperation[]};
 }
 
 export const initialState: AuthState = {
  token: '',
  raw_token: '',
  user: null,
- api_url: ''
+ api_url: '',
+ modules: null,
+ priviliges: {}
 };
 
 export function reducer(state = initialState, action: AuthActions): AuthState {
@@ -54,6 +58,17 @@ export function reducer(state = initialState, action: AuthActions): AuthState {
      ...state,
      api_url: action.payload
     };
+    case AuthActionTypes.SET_MODULES:
+    return {
+     ...state,
+     modules: action.payload && action.payload.modules
+    };
+    case AuthActionTypes.SET_PRIVILIGES:
+     const priviliges = parseOperations(action.payload);
+    return {
+      ...state,
+      priviliges: priviliges
+    };
     default:
       return state;
   }
@@ -77,7 +92,20 @@ function getUrl(mod) {
     return 'dictionary-types';
     case 'ORG':
     return 'organizations';
+    case 'DTST':
+    return 'datasets';
     default :
     return '';
   }
+}
+
+function parseOperations(user: User): {[index: string]: UserModuleOperation[]}  {
+  const priviliges: {[index: string]: UserModuleOperation[]} = {};
+     if (user && user.modules) {
+      user.modules.forEach(mod => {
+        const id = mod.id.toString();
+        priviliges[id] = mod.operations;
+      });
+     }
+     return priviliges;
 }

@@ -11,7 +11,8 @@ const routes: Routes = [
     {path: 'user-roles', loadChildren: './admin-user-roles/admin-user-roles.module#AdminUserRolesModule'},
     {path: 'dictionaries', loadChildren: './ent-dictionaries/ent-dictionaries.module#EntDictionariesModule'},
     {path: 'dictionary-types', loadChildren: './ent-dictionary-types/ent-dictionary-types.module#EntDictionaryTypesModule'},
-    {path: 'organizations', loadChildren: './ent-organizations/ent-organizations.module#EntOrganizationsModule'}
+    {path: 'organizations', loadChildren: './ent-organizations/ent-organizations.module#EntOrganizationsModule'},
+    {path: 'datasets', loadChildren: './ent-datasets/ent-datasets.module#EntDatasetsModule'}
   ]},
 ];
 

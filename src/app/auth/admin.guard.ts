@@ -17,7 +17,7 @@ export class AdminGuard implements CanActivate {
       take(1),
       map(type => {
         console.log(type);
-        if (type && type.toUpperCase().includes('ADMIN')) {
+        if (type !== 'USER') {
           console.log('admin');
           return true;
         }

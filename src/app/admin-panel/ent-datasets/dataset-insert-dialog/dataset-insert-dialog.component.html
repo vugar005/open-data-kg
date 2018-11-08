@@ -1,0 +1,57 @@
+<form #f="ngForm" patch-form [form]="f" [data]="data?.row" class="nt-form" >
+
+  <div class="inputs">
+    <div class="main-info">
+      <div class="left">
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Name" class="nt-form-input" name="name" ngModel  required>
+          <mat-error>{{getErrors('name')}} </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Description" class="nt-form-input" name="description" ngModel  required>
+          <mat-error>{{getErrors('description')}} </mat-error>
+        </mat-form-field>
+       </div>
+       <div class="right">
+          <mat-form-field class="example-full-width">
+              <input matInput placeholder="OrgName Kg" class="nt-form-input" name="orgKg" ngModel >
+              <mat-error>{{getErrors('orgKg')}} </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="OrgName En" class="nt-form-input" name="orgEn" ngModel >
+              <mat-error>{{getErrors('orgEn')}} </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="OrgName Ru" class="nt-form-input" name="orgRu" ngModel >
+              <mat-error>{{getErrors('orgRu')}} </mat-error>
+            </mat-form-field>
+       </div>
+    </div>
+      <div class="other-info" *ngIf="data.row">
+        <dataset-category-content [id]="data?.row?.id"></dataset-category-content>
+   </div>
+   <div class="other-info" *ngIf="data.row">
+         <dataset-keyword-content [id]="data?.row?.id"></dataset-keyword-content>
+   </div>
+  </div>
+  <input [hidden]="true" name="id" ngModel>
+  <div class="actions">
+    <button mat-raised-button color="primary"  type="submit"  insertTableData [form]="f" [disabled]="f?.dirty && !f?.valid"
+    *ngIf="!data?.row"
+    [table]="data?.table"
+    (onClose)="dialogRef.close()"
+    >Add</button>
+    <button mat-raised-button color="primary"  type="submit" updateTableData [form]="f"
+    *ngIf="data?.row"
+    [disabled]="f?.dirty && !f?.valid"
+    (onClose)="dialogRef.close()"
+    [table]="data?.table"
+    >Update</button>
+    <button mat-raised-button (click)="dialogRef.close()" type="reset">Cancel</button>
+  </div>
+
+</form>

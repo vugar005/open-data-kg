@@ -68,6 +68,15 @@
         <mat-error>{{getErrors('birthDate')}}</mat-error>
       </mat-form-field>
 
+      <mat-form-field>
+        <mat-select placeholder="Org Type" class="nt-form-input" name="orgId" ngModel required>
+          <mat-option *ngFor="let item of (orgTypes$ | async)" [value]="item.value">
+            {{item.label}}
+          </mat-option>
+        </mat-select>
+        <mat-error>{{getErrors('orgId')}}</mat-error>
+      </mat-form-field>
+
 
       <mat-form-field>
         <mat-select placeholder="User Role" class="nt-form-input" name="userRoleId" ngModel required>

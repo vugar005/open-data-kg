@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { User } from '../models/user.model.';
+import { User, UserModule } from '../models/user.model.';
 
 export enum AuthActionTypes {
   SET_TOKEN = '[Auth] SET_TOKEN',
@@ -11,7 +11,9 @@ export enum AuthActionTypes {
   TRY_REGISTER = '[AUTH] TRY_REGISTER',
   LOGIN_FAIL = '[AUTH] LOGIN_FAIL',
   REGISTER_FAIL = '[AUTH] REGISTER_FAIL',
-  SET_API_URL = '[APP CO] SET_API_URL'
+  SET_API_URL = '[APP CO] SET_API_URL',
+  SET_PRIVILIGES = '[AUTH] SET_PRIVILIGES',
+  SET_MODULES = '[AUTH] SET_MODULES'
 }
 
 export class SetToken implements Action {
@@ -53,6 +55,14 @@ export class SetApiUrl implements Action {
   readonly type = AuthActionTypes.SET_API_URL;
   constructor(public payload: string) {}
 }
+export class SetPriviliges implements Action {
+  readonly type = AuthActionTypes.SET_PRIVILIGES;
+  constructor(public payload: User) {}
+}
+export class SetModules implements Action {
+  readonly type = AuthActionTypes.SET_MODULES;
+  constructor(public payload: User) {}
+}
 
 export type AuthActions = SetToken |
 TryLogin |
@@ -63,5 +73,7 @@ AutoSetToken |
 AutoSetUser |
 LoginFail |
 RegisterFail |
-SetApiUrl
+SetApiUrl |
+SetPriviliges |
+SetModules
 ;

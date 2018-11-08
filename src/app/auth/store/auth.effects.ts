@@ -35,6 +35,10 @@ export class AuthEffects {
          {
           type: AuthActionTypes.SET_USER,
           payload: res.body.data
+        },
+        {
+          type: AuthActionTypes.SET_MODULES,
+          payload: res.body.data
         }
         ];
        })
@@ -63,6 +67,10 @@ export class AuthEffects {
        {
         type: AuthActionTypes.SET_USER,
         payload: res.body.data
+      },
+      {
+        type: AuthActionTypes.SET_MODULES,
+        payload: res.body.data
       }
       ];
      })
@@ -82,7 +90,7 @@ export class AuthEffects {
       tap((res: any) => {
         const user: User = res.payload;
         localStorage.setItem('kg-user', JSON.stringify(user));
-        if (user.userType && user.userType.toUpperCase().includes('ADMIN')) {
+        if (user.userType !== 'USER') {
           this.router.navigateByUrl('/admin');
         } else {
           this.router.navigateByUrl('/');

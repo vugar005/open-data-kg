@@ -69,7 +69,7 @@ canAutoLogin() {
      console.log(er);
    }
 }
-getModTypes(url: string) {
+getModTypes(url: string): Observable<SelectType[]> {
   return this.http.post(url, {kv: {}})
   .pipe(
     map((res: any) =>  {
@@ -78,7 +78,7 @@ getModTypes(url: string) {
     })
   );
 }
-private  mapModType(res) {
+private  mapModType(res): SelectType {
    return {
       value: res.id,
       label: res.nameEn,

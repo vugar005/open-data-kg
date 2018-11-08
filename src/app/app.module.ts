@@ -29,6 +29,7 @@ import { TokenInterceptor } from './auth/token.inteceptor';
 import { HeaderToggleDirective } from './shared/directives/header-toggle.directive';
 import { APIInterceptor } from './shared/interceptors/api.interceptor';
 import { AdminGuard } from './auth/admin.guard';
+import { RbacAllowDirective } from './shared/directives/rbac-allow.directive';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -42,7 +43,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     LangNavComponent,
     GlobalNavComponent,
     NavStyleChangeDirective,
-    HeaderToggleDirective
+    HeaderToggleDirective,
+    RbacAllowDirective
   ],
   imports: [
     BrowserModule,

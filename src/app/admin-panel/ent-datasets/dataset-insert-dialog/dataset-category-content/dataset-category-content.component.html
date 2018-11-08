@@ -1,4 +1,5 @@
 <div class="title">
+  <div class="name">Category</div>
   <div class="add-icon" (click)="table.addData()">
     <fa-icon [icon]="faPlusCircle"></fa-icon>
   </div>
@@ -9,6 +10,7 @@
   [config]="config"
   (rowAdd)="initDialog(table)"
   (rowEdit)="initDialog(table, $event)"
+  [multiSelect]="false"
   [pagination]="false"
 ></ngx-nt-table>
 </div>
