@@ -3,12 +3,13 @@ import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { AdminGuard } from './auth/admin.guard';
 
 const routes: Routes = [
   {path: '', component: LandingPageComponent, pathMatch: 'full'},
   {path: 'login', component: LoginComponent },
   {path: 'register', component: RegisterComponent },
-  {path: 'admin', loadChildren: './admin-panel/admin-panel.module#AdminPanelModule'},
+  {path: 'admin', loadChildren: './admin-panel/admin-panel.module#AdminPanelModule', canActivate: [AdminGuard]},
   {path: 'news', loadChildren: './news/news.module#NewsModule'},
   {path: 'blogs', loadChildren: './blog/blog.module#BlogModule'},
   {path: 'announcements', loadChildren: './annoucements/announcements.module#AnnouncementsModule'},

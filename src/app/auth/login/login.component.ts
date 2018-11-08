@@ -25,13 +25,16 @@ export class LoginComponent implements OnInit, OnDestroy, AfterViewInit {
   // @HostBinding('@fadeIn')
   animate = true;
   typed: any;
+  hide = true;
   constructor(private store: Store<AppState>) {
   }
 
   ngOnInit() {
   }
   ngOnDestroy() {
-    this.typed && this.typed.destroy();
+    if (this.typed) {
+      this.typed.destroy();
+    }
   }
   onSubmit(f: NgForm) {
     if (!f.valid) {return; }

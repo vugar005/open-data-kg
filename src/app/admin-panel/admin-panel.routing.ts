@@ -1,5 +1,6 @@
 import { Routes, RouterModule } from '@angular/router';
 import { AdminPanelComponent } from './admin-panel.component';
+import { AdminGuard } from '../auth/admin.guard';
 
 const routes: Routes = [
   {path: '', component: AdminPanelComponent, children: [

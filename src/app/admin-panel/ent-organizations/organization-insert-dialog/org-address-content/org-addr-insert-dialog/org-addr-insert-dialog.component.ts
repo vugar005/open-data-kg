@@ -16,7 +16,8 @@ export class OrgAddrInsertDialogComponent {
     public dialogRef: MatDialogRef<OrgAddrInsertDialogComponent>,
     public viewRef: ViewContainerRef
   ) {
-    console.log(data)
+    console.log(data);
+    console.log(this.data.table.config)
   }
   getErrors(str) {
     if (!this.ntForm || !NgxFormUtils) { return; }

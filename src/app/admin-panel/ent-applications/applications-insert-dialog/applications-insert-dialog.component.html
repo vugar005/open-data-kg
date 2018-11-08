@@ -77,8 +77,10 @@
           </div>
   </div>
   <div class="actions">
-    <button mat-raised-button color="primary"  type="submit"  insertTableData [form]="f" [disabled]="f?.dirty && !f?.valid"
+    <button mat-raised-button color="primary"  type="submit"  insertTableData [form]="f"
     *ngIf="!data?.row"
+    [disabled]="f?.dirty && !f?.valid"
+    (onClose)="dialogRef.close()"
     [table]="data?.table"
     >Add</button>
     <button mat-raised-button color="primary"  type="submit" updateTableData [form]="f"

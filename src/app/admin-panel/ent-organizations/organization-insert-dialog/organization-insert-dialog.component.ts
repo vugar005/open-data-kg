@@ -14,7 +14,6 @@ import { ApiConfig } from 'nt-table/lib/api-config.model';
 })
 export class OrganizationInsertDialogComponent {
   @ViewChild('f') ntForm: NgForm;
-
   apps$: Observable<any>;
   orgTypes$: Observable<SelectType[]>;
   constructor(
@@ -23,6 +22,7 @@ export class OrganizationInsertDialogComponent {
     public viewRef: ViewContainerRef,
     private sharedService: SharedService
   ) {
+    console.log(data)
     this.orgTypes$ = this.sharedService.getTypesByParentId('1000001', '1000001');
   }
   getErrors(str) {

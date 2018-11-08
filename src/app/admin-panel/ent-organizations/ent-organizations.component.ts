@@ -13,7 +13,7 @@ export class EntOrganizationsComponent {
   @ViewChild('table') table: NtTableComponent;
   config: ApiConfig = {
     getApi: 'api/post/Permission/Organizations/GetOrganizationList',
-    insertApi: 'api/post/Permission/Organizations/InsertNewDictionary',
+    insertApi: 'api/post/Permission/Organizations/InsertNewOrganization',
     updateApi: 'api/post/Permission/Organizations/UpdateOrganization',
     deleteApi: 'api/post/Permission/Organizations/DeleteOrganization'
   };

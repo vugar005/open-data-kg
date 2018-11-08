@@ -78,6 +78,7 @@
     <button mat-raised-button color="primary"  type="submit"  insertTableData [form]="f" [disabled]="f?.dirty && !f?.valid"
     *ngIf="!data?.row"
     [table]="data?.table"
+    (onClose)="dialogRef.close()"
     >Add</button>
     <button mat-raised-button color="primary"  type="submit" updateTableData [form]="f"
     *ngIf="data?.row"

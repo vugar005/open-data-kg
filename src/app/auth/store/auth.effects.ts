@@ -72,7 +72,6 @@ export class AuthEffects {
     .pipe(
       ofType(AuthActionTypes.SET_TOKEN),
       tap((res: any) => {
-        console.log(1);
         localStorage.setItem('kg-token', res.payload.jwtToken);
       })
     );
@@ -83,7 +82,7 @@ export class AuthEffects {
       tap((res: any) => {
         const user: User = res.payload;
         localStorage.setItem('kg-user', JSON.stringify(user));
-        if (user.userType !== 'USER') {
+        if (user.userType && user.userType.toUpperCase().includes('ADMIN')) {
           this.router.navigateByUrl('/admin');
         } else {
           this.router.navigateByUrl('/');

@@ -2,6 +2,12 @@
 
   <div class="inputs">
     <div class="left">
+      <mat-form-field>
+        <mat-select placeholder="Contact type" class="nt-form-input" name="typeId" ngModel required>
+          <mat-option *ngFor="let item of (types$ | async)" [value]="item.value"> {{item.label}} </mat-option>
+        </mat-select>
+        <mat-error>{{getErrors('typeId')}}</mat-error>
+      </mat-form-field>
 
       <mat-form-field class="example-full-width">
         <input matInput placeholder="Contact" class="nt-form-input" name="contact" ngModel required>
@@ -15,6 +21,7 @@
     <button mat-raised-button color="primary"  type="submit"  insertTableData [form]="f" [disabled]="f?.dirty && !f?.valid"
     *ngIf="!data?.row"
     [table]="data?.table"
+    (onClose)="dialogRef.close()"
     >Add</button>
     <button mat-raised-button color="primary"  type="submit" updateTableData [form]="f"
     *ngIf="data?.row"

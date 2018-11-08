@@ -28,6 +28,7 @@ import { Ng2IziToastModule } from 'ng2-izitoast';
 import { TokenInterceptor } from './auth/token.inteceptor';
 import { HeaderToggleDirective } from './shared/directives/header-toggle.directive';
 import { APIInterceptor } from './shared/interceptors/api.interceptor';
+import { AdminGuard } from './auth/admin.guard';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -64,6 +65,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   providers: [
     SharedService,
+    AdminGuard,
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: APIInterceptor, multi: true }

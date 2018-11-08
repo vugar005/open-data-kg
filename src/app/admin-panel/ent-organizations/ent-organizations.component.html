@@ -16,7 +16,7 @@
      <ngx-nt-table #table
      [config]="config"
      (rowAdd)="initDialog(table)"
-     (rowEdit)="initDialog(table, $event)"
+     (rowEdit)="initDialog(table, row= $event)"
     ></ngx-nt-table>
    </div>
  </div>

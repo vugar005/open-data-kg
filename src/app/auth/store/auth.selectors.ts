@@ -32,3 +32,8 @@ export const getApiUrl = createSelector(
   selectAuthState,
   auth => auth.api_url
 );
+
+export const getUserType = createSelector(
+  selectAuthState,
+  auth => auth.user && auth.user.userType
+);
