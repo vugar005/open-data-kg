@@ -6,8 +6,6 @@ import { SharedAdminModule } from '../shared/shared-admin.module';
 import { UserInsertDialogComponent } from './user-insert-dialog/user-insert-dialog.component';
 import { MatIconModule, MatDatepickerModule, MAT_DATE_LOCALE, DateAdapter, MAT_DATE_FORMATS } from '@angular/material';
 import { MatMomentDateModule,  MomentDateAdapter } from '@angular/material-moment-adapter';
-import { UploadFileDialogComponent } from './user-insert-dialog/upload-file-dialog/upload-file-dialog.component';
-import { SharedUploadModule } from 'src/app/shared/shared-upload.module';
 export const MY_FORMATS = {
   parse: {
     dateInput: 'L'
@@ -24,7 +22,6 @@ export const MY_FORMATS = {
     CommonModule,
     EntUsersRoutes,
     SharedAdminModule,
-    SharedUploadModule,
     MatIconModule,
     MatDatepickerModule,
     MatMomentDateModule

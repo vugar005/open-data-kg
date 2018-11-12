@@ -8,14 +8,14 @@ import { OrgAddressContentComponent } from './organization-insert-dialog/org-add
 import { OrgAddrInsertDialogComponent } from './organization-insert-dialog/org-address-content/org-addr-insert-dialog/org-addr-insert-dialog.component';
 import { OrgContactContentComponent } from './organization-insert-dialog/org-contact-content/org-contact-content.component';
 import { OrgContactInsertDialogComponent } from './organization-insert-dialog/org-contact-content/org-contact-insert-dialog/org-contact-insert-dialog.component';
-import { MatExpansionModule } from '@angular/material';
+import { MatExpansionModule, MatTabsModule } from '@angular/material';
 
 
 @NgModule({
   imports: [
     CommonModule,
     SharedAdminModule,
-    MatExpansionModule,
+    MatTabsModule,
     EntOrganizationsRoutes,
   ],
   declarations: [

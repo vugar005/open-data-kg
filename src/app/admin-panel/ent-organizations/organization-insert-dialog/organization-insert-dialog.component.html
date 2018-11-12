@@ -1,119 +1,120 @@
 <form #f="ngForm" patch-form [form]="f" [data]="data?.row" class="nt-form">
-
   <div class="inputs">
+    <div class="left">
+        <div class="upload-item-img">
 
-    <mat-accordion>
-      <mat-expansion-panel [expanded]="true">
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            Main Info
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-        <div class="main-info">
-          <div class="left">
+            <ng-container *ngIf="!imgId">
+              <img src="https://dumielauxepices.net/sites/default/files/dome-clipart-town-council-building-509085-7407455.svg" (click)="onUpload()">
+            </ng-container>
 
-            <mat-form-field class="example-full-width">
-              <input matInput placeholder="Name Kg" class="nt-form-input" name="nameKg" ngModel required>
-              <mat-error>{{getErrors('nameKg')}} </mat-error>
-            </mat-form-field>
-
-            <mat-form-field class="example-full-width">
-              <input matInput placeholder="Name En" class="nt-form-input" name="nameEn" ngModel required>
-              <mat-error>{{getErrors('nameEn')}} </mat-error>
-            </mat-form-field>
-
-            <mat-form-field class="example-full-width">
-              <input matInput placeholder="Name Ru" class="nt-form-input" name="nameRu" ngModel required>
-              <mat-error>{{getErrors('nameRu')}} </mat-error>
-            </mat-form-field>
-
-            <mat-form-field class="example-full-width">
-              <input matInput placeholder="Code" class="nt-form-input" name="code" ngModel required>
-              <mat-error>{{getErrors('code')}}</mat-error>
-            </mat-form-field>
-
-            <mat-form-field>
-              <mat-select placeholder="Org Type" class="nt-form-input" name="typeId" ngModel required>
-                <mat-option *ngFor="let item of (orgTypes$ | async)" [value]="item.value">
-                  {{item.label}}
-                </mat-option>
-              </mat-select>
-              <mat-error>{{getErrors('typeId')}}</mat-error>
-            </mat-form-field>
+            <ng-container *ngIf="imgId">
+              <img src="http://192.168.1.23:8080/DispatcherRest/api/get/file/{{imgId}}" (click)="onUpload()" onerror="this.src = './assets/icons/avatar.svg'">
+            </ng-container>
+            <div class="img-corners">
+              <div class="arrow"></div>
+              <div class="arrow-2"></div>
+            </div>
+            <div class="upload-div animated slideInUp">
+              <p>Upload image</p>
+            </div>
 
           </div>
-          <div class="right">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Name Kg" class="nt-form-input" name="nameKg" ngModel required>
+        <mat-error>{{getErrors('nameKg')}} </mat-error>
+      </mat-form-field>
 
-            <mat-form-field class="example-full-width">
-              <input matInput placeholder="Shortname Kg" class="nt-form-input" name="shortNameKg" ngModel required>
-              <mat-error>{{getErrors('shortNameKg')}} </mat-error>
-            </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Name En" class="nt-form-input" name="nameEn" ngModel required>
+        <mat-error>{{getErrors('nameEn')}} </mat-error>
+      </mat-form-field>
 
-            <mat-form-field class="example-full-width">
-              <input matInput placeholder="Shortname En" class="nt-form-input" name="shortNameEn" ngModel required>
-              <mat-error>{{getErrors('shortNameEn')}} </mat-error>
-            </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Name Ru" class="nt-form-input" name="nameRu" ngModel required>
+        <mat-error>{{getErrors('nameRu')}} </mat-error>
+      </mat-form-field>
 
-            <mat-form-field class="example-full-width">
-              <input matInput placeholder="Shortname Ru" class="nt-form-input" name="shortNameRu" ngModel required>
-              <mat-error>{{getErrors('shortNameRu')}} </mat-error>
-            </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Code" class="nt-form-input" name="code" ngModel required>
+        <mat-error>{{getErrors('code')}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-select placeholder="Org Type" class="nt-form-input" name="typeId" ngModel required>
+          <mat-option *ngFor="let item of (orgTypes$ | async)" [value]="item.value">
+            {{item.label}}
+          </mat-option>
+        </mat-select>
+        <mat-error>{{getErrors('typeId')}}</mat-error>
+      </mat-form-field>
+
+    </div>
+    <div class="right">
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Shortname Kg" class="nt-form-input" name="shortNameKg" ngModel required>
+        <mat-error>{{getErrors('shortNameKg')}} </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Shortname En" class="nt-form-input" name="shortNameEn" ngModel required>
+        <mat-error>{{getErrors('shortNameEn')}} </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Shortname Ru" class="nt-form-input" name="shortNameRu" ngModel required>
+        <mat-error>{{getErrors('shortNameRu')}} </mat-error>
+      </mat-form-field>
 
 
-            <mat-form-field class="example-full-width">
-              <input matInput placeholder="About Kg" class="nt-form-input" name="aboutKg" ngModel>
-              <mat-error>{{getErrors('aboutKg')}} </mat-error>
-            </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="About Kg" class="nt-form-input" name="aboutKg" ngModel>
+        <mat-error>{{getErrors('aboutKg')}} </mat-error>
+      </mat-form-field>
 
-            <mat-form-field class="example-full-width">
-              <input matInput placeholder="About En" class="nt-form-input" name="aboutEn" ngModel>
-              <mat-error>{{getErrors('aboutEn')}} </mat-error>
-            </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="About En" class="nt-form-input" name="aboutEn" ngModel>
+        <mat-error>{{getErrors('aboutEn')}} </mat-error>
+      </mat-form-field>
 
-            <mat-form-field class="example-full-width">
-              <input matInput placeholder="About Ru" class="nt-form-input" name="aboutRu" ngModel>
-              <mat-error>{{getErrors('aboutRu')}} </mat-error>
-            </mat-form-field>
-
-
-            <!-- <mat-form-field>
-                          <mat-select placeholder="Module id" class="nt-form-input" name="moduleId" ngModel required >
-                            <mat-option *ngFor="let item of (apps$ | async)" [value]="item.id">
-                              {{item.name}}
-                            </mat-option>
-                          </mat-select>
-                          <mat-error>{{getErrors('moduleId')}}</mat-error>
-                        </mat-form-field> -->
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="About Ru" class="nt-form-input" name="aboutRu" ngModel>
+        <mat-error>{{getErrors('aboutRu')}} </mat-error>
+      </mat-form-field>
 
 
+      <!-- <mat-form-field>
+                    <mat-select placeholder="Module id" class="nt-form-input" name="moduleId" ngModel required >
+                      <mat-option *ngFor="let item of (apps$ | async)" [value]="item.id">
+                        {{item.name}}
+                      </mat-option>
+                    </mat-select>
+                    <mat-error>{{getErrors('moduleId')}}</mat-error>
+                  </mat-form-field> -->
 
-            <input [hidden]="true" name="id" ngModel>
-          </div>
-        </div>
 
-      </mat-expansion-panel>
 
-      <mat-expansion-panel *ngIf="id">
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            Contact
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-        <org-contact-content [id]="id"></org-contact-content>
-
-      </mat-expansion-panel>
-
-      <mat-expansion-panel *ngIf="id">
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            Address
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-        <org-address-content [id]="id"></org-address-content>
-      </mat-expansion-panel>
-    </mat-accordion>
-
+      <input [hidden]="true" name="id" ngModel>
+    </div>
+    <input [hidden]="true" name="logoFileId" value="imgId" [(ngModel)]="imgId" >
   </div>
+    <mat-tab-group style="width: 100%" *ngIf="id">
+      <mat-tab>
+          <ng-template mat-tab-label>
+              <fa-icon [icon]="faAddressCard" class="tab-icon"></fa-icon>
+              Address
+            </ng-template>
+        <org-contact-content [id]="id"></org-contact-content>
+      </mat-tab>
+      <mat-tab>
+          <ng-template mat-tab-label>
+          <fa-icon [icon]="faPhone" class="tab-icon"></fa-icon>
+              Contact
+          </ng-template>
+          <org-address-content [id]="id"></org-address-content>
+      </mat-tab>
+    </mat-tab-group>
+
   <input [hidden]="true" name="id" [(ngModel)]="id">
 
   <div class="actions">

@@ -15,14 +15,15 @@ export class OrgAddressContentComponent implements AfterViewInit {
   @ViewChild('table') table: NtTableComponent;
   config: any = {};
   faPlusCircle = faPlusCircle;
-  constructor(private dialog: MatDialog) { }
+  constructor(private dialog: MatDialog) {
+  }
   initDialog(table: NtTableComponent, row = null) {
    const ref = this.dialog.open(OrgAddrInsertDialogComponent, {
       data: { table: table, row: row || undefined}
     });
   }
   ngAfterViewInit() {
-    this.config = {
+    this.config = {...{
       getApi: 'api/post/Permission/Organizations/GetOrganizationAddressList',
       insertApi: 'api/post/Permission/Organizations/InsertNewOrganizationAddress',
       updateApi: 'api/post/Permission/Organizations/UpdateOrganizationAddress',
@@ -30,7 +31,7 @@ export class OrgAddressContentComponent implements AfterViewInit {
       additionalFormData : {
         ownerId: this.id
       }
-    };
+    }};
   }
 
 }

@@ -17,7 +17,7 @@ export class OrgContactContentComponent implements AfterViewInit {
   faPlusCircle = faPlusCircle;
   constructor(private dialog: MatDialog) { }
   initDialog(table: NtTableComponent, row = null) {
-    const ref  = this.dialog.open(OrgContactInsertDialogComponent, {
+   this.dialog.open(OrgContactInsertDialogComponent, {
       data: { table: table, row: row || undefined}
     });
   }

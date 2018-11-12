@@ -26,7 +26,6 @@ export class RbacAllowDirective implements OnDestroy {
        .pipe(takeUntil(this._onDestroy$))
        .subscribe(res => {
           this.priviliges = res;
-        console.log(res);
         this.showIfUserAllowed();
        });
   }

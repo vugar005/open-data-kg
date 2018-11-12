@@ -47,11 +47,9 @@ export class UserInsertDialogComponent  {
      return NgxFormUtils.getErrors(this.ntForm, str);
     }
     onDateChange(e) {
-      console.log(e);
       console.log(e.value);
     }
     onUpload() {
-      console.log('ded');
       const dialogRef = this.dialog.open(UploadFileDialogComponent);
       dialogRef.afterClosed().subscribe(res => {
         console.log(res);
