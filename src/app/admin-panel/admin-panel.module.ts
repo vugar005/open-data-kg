@@ -11,6 +11,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SharedAdminService } from './shared/shared-admin.service';
 import { AdminPanelService } from './admin-panel.service';
 import { AdminModulesResolver } from './shared/resolvers/admin-modules.resolver';
+import { RbacAllowDirective } from '../shared/directives/rbac-allow.directive';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -30,7 +31,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   declarations: [
     AdminPanelComponent,
     LeftAsideComponent,
-    RightAsideComponent
+    RightAsideComponent,
   ],
   providers: [
     SharedAdminService,

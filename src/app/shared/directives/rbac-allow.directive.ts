@@ -1,5 +1,5 @@
 import { Directive, OnDestroy, TemplateRef, ViewContainerRef, Input } from '@angular/core';
-import { Subscription, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import * as _ from 'lodash';
 import { getUserModules } from 'src/app/auth/store/auth.selectors';
@@ -11,11 +11,11 @@ import { UserModule } from 'src/app/auth/models/user.model.';
 })
 export class RbacAllowDirective implements OnDestroy {
   @Input()
-  set rbacAllow(allowedRole: {moduleCode: string, opCode: string}) {
+  set rbacAllow(allowedRole) {
       this.allowedRole = allowedRole;
       this.showIfUserAllowed();
   }
-  allowedRole: {moduleCode: string, opCode: string};
+  allowedRole = [];
   priviliges: UserModule[];
   _onDestroy$ = new Subject<void>();
   constructor(
@@ -36,23 +36,25 @@ export class RbacAllowDirective implements OnDestroy {
   }
 
   showIfUserAllowed() {
-
-      if ((!this.allowedRole) || (!this.priviliges) ) {
+      if ((!this.allowedRole) || (!this.priviliges)) {
           this.viewContainer.clear();
           return;
       }
 
      //  let  isUserAllowed;
-       const modePriviliges =  this.priviliges.find(mod => mod.code === this.allowedRole.moduleCode);
+       const module =  this.priviliges.find(mod => mod.id === this.allowedRole[0]);
+       if (!(module && module.operations)) {
+         return;
+       }
+       const isAllowed = module.operations.find(op => op.code === this.allowedRole[1]);
+       if (isAllowed) {
+         console.log('alowed');
+         this.viewContainer.createEmbeddedView(this.templateRef);
+       } else {
+        this.viewContainer.clear();
+       }
         // if (!modePriviliges =) {}
            // _.intersection(this.allowedRole, this.priviliges).length > 0;
-
-
-      // if (isUserAllowed) {
-      //     this.viewContainer.createEmbeddedView(this.templateRef);
-      // } else {
-      //     this.viewContainer.clear();
-      // }
 
   }
 

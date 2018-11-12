@@ -8,6 +8,7 @@ import { TokenInterceptor } from 'src/app/auth/token.inteceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import {FilePickerModule} from 'ngx-file-picker';
 import { APIInterceptor } from 'src/app/shared/interceptors/api.interceptor';
+import { RbacAllowDirective } from 'src/app/shared/directives/rbac-allow.directive';
 @NgModule({
   imports: [],
   exports: [
@@ -20,9 +21,12 @@ import { APIInterceptor } from 'src/app/shared/interceptors/api.interceptor';
      MatSelectModule,
      MatInputModule,
      MatDialogModule,
-     FormsModule
+     FormsModule,
+     RbacAllowDirective
     ],
-  declarations: [],
+  declarations: [
+    RbacAllowDirective
+  ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
     {provide: HTTP_INTERCEPTORS, useClass: APIInterceptor, multi: true },

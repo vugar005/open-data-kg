@@ -44,7 +44,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     GlobalNavComponent,
     NavStyleChangeDirective,
     HeaderToggleDirective,
-    RbacAllowDirective
   ],
   imports: [
     BrowserModule,
