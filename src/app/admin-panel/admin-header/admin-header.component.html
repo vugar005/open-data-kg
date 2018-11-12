@@ -1,0 +1,18 @@
+<div class="header-co">
+    <div class="left" [routerLink]="'/'">
+     KYRGYZSTAN REPUBLIC OPEN DATA PORTAL
+    </div>
+    <div class="right" *ngIf="!(isLoggedIn$ | async)">
+      <a class="auth-nav" [routerLink]="['/login']" >LOGIN</a>
+    </div>
+    <div class="right" *ngIf="(isLoggedIn$ | async)">
+      <div class="user">
+        <div class="name">
+          {{ (user$ | async)?.name}} {{(user$ | async)?.surname }}
+        </div>
+          <div class="image" [routerLink]="['/admin']"  >
+              <img src= "https://www.timeshighereducation.com/sites/default/files/byline_photos/default-avatar.png">
+            </div>
+      </div>
+    </div>
+  </div>

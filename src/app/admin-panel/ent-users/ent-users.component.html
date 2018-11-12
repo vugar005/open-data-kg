@@ -3,11 +3,11 @@
    Modules
   </div>
  <div class="actions-template">
-    <button mat-raised-button (click)="table.onPrintSelected()" *ngIf="table.printable">Print</button>
-    <button mat-raised-button (click)="table.addData()">Add data</button>
-    <button mat-raised-button (click)="table.onRemove()" [disabled]="!(table.isRowSelected)">Remove selected</button>
-    <button mat-raised-button [disabled]="!(table.selectedRow)" (click)="table.onRowPin()" *ngIf="table.rowPinnable"> Pin to top</button>
-    <button mat-raised-button (click)="table.onExport()" *ngIf="table.exportable">Export</button>
+    <button mat-raised-button color="primary"  (click)="table.onPrintSelected()" *ngIf="table.printable">Print</button>
+    <button mat-raised-button color="primary"  (click)="table.addData()">Add data</button>
+    <button mat-raised-button color="primary"  (click)="table.onRemove()" [disabled]="!(table.isRowSelected)">Remove selected</button>
+    <button mat-raised-button color="primary"  [disabled]="!(table.selectedRow)" (click)="table.onRowPin()" *ngIf="table.rowPinnable"> Pin to top</button>
+    <button mat-raised-button color="primary"  (click)="table.onExport()" *ngIf="table.exportable">Export</button>
  </div>
  </div>
 

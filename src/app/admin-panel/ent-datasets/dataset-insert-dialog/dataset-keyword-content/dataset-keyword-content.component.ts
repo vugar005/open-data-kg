@@ -21,6 +21,7 @@ export class DatasetKeywordContentComponent implements AfterViewInit {
       data: { table: table, row: row || undefined}
     });
   }
+
   ngAfterViewInit() {
     this.config = {
       getApi: 'api/post/Permission/Datasets/GetDatasetKeywordList',

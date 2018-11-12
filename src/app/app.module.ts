@@ -29,15 +29,15 @@ import { TokenInterceptor } from './auth/token.inteceptor';
 import { HeaderToggleDirective } from './shared/directives/header-toggle.directive';
 import { APIInterceptor } from './shared/interceptors/api.interceptor';
 import { AdminGuard } from './auth/admin.guard';
-import { RbacAllowDirective } from './shared/directives/rbac-allow.directive';
+import { SharedAcrossModule } from './shared/shared-across.module';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 @NgModule({
   declarations: [
     AppComponent,
-    LandingPageComponent,
     HeaderComponent,
+    LandingPageComponent,
     MainPageComponent,
     WaveParticlesComponent,
     LangNavComponent,
@@ -56,6 +56,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     EffectsModule.forRoot([]),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     Ng2IziToastModule,
+    SharedAcrossModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

@@ -9,6 +9,7 @@ import { DatasetInsertDialogComponent } from './dataset-insert-dialog/dataset-in
 import { DatasetCategoryInsertDialogComponent } from './dataset-insert-dialog/dataset-category-content/dataset-category-insert-dialog/dataset-category-insert-dialog.component';
 import { DatasetKeywordInsertDialogComponent } from './dataset-insert-dialog/dataset-keyword-content/dataset-keyword-insert-dialog/dataset-keyword-insert-dialog.component';
 import { MatExpansionModule } from '@angular/material';
+import { DatasetApiInsertComponent } from './dataset-insert-dialog/dataset-api-insert/dataset-api-insert.component';
 
 @NgModule({
   imports: [
@@ -23,12 +24,14 @@ import { MatExpansionModule } from '@angular/material';
     DatasetCategoryContentComponent,
     DatasetCategoryInsertDialogComponent,
     DatasetKeywordInsertDialogComponent,
-    DatasetKeywordContentComponent
+    DatasetKeywordContentComponent,
+    DatasetApiInsertComponent
   ],
   entryComponents: [
     DatasetInsertDialogComponent,
     DatasetCategoryInsertDialogComponent,
-    DatasetKeywordInsertDialogComponent
+    DatasetKeywordInsertDialogComponent,
+    DatasetApiInsertComponent
   ]
 })
 export class EntDatasetsModule {}
