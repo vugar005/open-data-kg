@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { DatasetKeywordContentComponent } from './dataset-keyword-content.component';
+import { DatasetCategoryInsertComponent } from './dataset-category-insert.component';
 
-describe('DatasetKeywordContentComponent', () => {
-  let component: DatasetKeywordContentComponent;
-  let fixture: ComponentFixture<DatasetKeywordContentComponent>;
+describe('DatasetCategoryInsertComponent', () => {
+  let component: DatasetCategoryInsertComponent;
+  let fixture: ComponentFixture<DatasetCategoryInsertComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DatasetKeywordContentComponent ]
+      declarations: [ DatasetCategoryInsertComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DatasetKeywordContentComponent);
+    fixture = TestBed.createComponent(DatasetCategoryInsertComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -49,8 +49,8 @@ $candy-app-accent:  mat-palette('#16a085', A200, A100, A400);*/
 //  $my-app-warn:    mat-palette($mat-deep-orange);
 
  $my-app-primary: mat-palette($mat-custom, A100, 800, 300);
- $my-app-accent:  mat-palette($mat-pink, 500, 900, A100);
- $my-app-warn:  mat-palette($mat-yellow, A700);
+ $my-app-accent:  mat-palette($mat-amber, 500, 900, A100);
+ $my-app-warn:  mat-palette($mat-red, 500);
 
 // Create the theme object (a Sass map containing all of the palettes).
  $my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);

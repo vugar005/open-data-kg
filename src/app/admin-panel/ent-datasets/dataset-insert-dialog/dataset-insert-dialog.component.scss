@@ -1,3 +1,8 @@
+:host {
+  display: block;
+  overflow-y: auto;
+  max-height: 80vh;
+}
 .nt-form {
   display: flex;
   flex-direction: column;
@@ -20,15 +25,19 @@
         padding: 10px;
       }
   }
-  .other-info-content {
 
-  }
-  .other-info {
-    border-top: 1px solid #e0e0e0;
-    padding-top: 10px;
+    .title {
+      display: flex;
+      justify-content: flex-end;
+      padding-top: 10px;
 
+    .add-icon {
+      color: #ffc107;
+      font-size: 22px;
+      cursor: pointer;
+    }
+    }
 
-  }
 }
 
 .actions {

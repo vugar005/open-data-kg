@@ -1,5 +1,7 @@
 :host {
   display: block;
+  overflow-y: auto;
+  max-height: 80vh;
 }
 .animated {
   animation-duration: 500ms;

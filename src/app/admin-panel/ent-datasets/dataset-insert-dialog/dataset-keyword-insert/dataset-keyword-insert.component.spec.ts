@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { DatasetCategoryInsertDialogComponent } from './dataset-category-insert-dialog.component';
+import { DatasetKeywordInsertComponent } from './dataset-keyword-insert.component';
 
-describe('DatasetCategoryInsertDialogComponent', () => {
-  let component: DatasetCategoryInsertDialogComponent;
-  let fixture: ComponentFixture<DatasetCategoryInsertDialogComponent>;
+describe('DatasetKeywordInsertComponent', () => {
+  let component: DatasetKeywordInsertComponent;
+  let fixture: ComponentFixture<DatasetKeywordInsertComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DatasetCategoryInsertDialogComponent ]
+      declarations: [ DatasetKeywordInsertComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DatasetCategoryInsertDialogComponent);
+    fixture = TestBed.createComponent(DatasetKeywordInsertComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

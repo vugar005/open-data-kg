@@ -1,6 +1,8 @@
 :host {
   display: block;
   width: 505px;
+    overflow-y: auto;
+    max-height: 80vh;
 }
 .nt-form {
   display: flex;

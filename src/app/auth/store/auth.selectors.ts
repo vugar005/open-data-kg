@@ -36,5 +36,5 @@ export const getUserType = createSelector(
 
 export const getUserModules = createSelector(
   selectAuthState,
-  auth => auth.user.modules
+  auth => auth.user && auth.user.modules
 );
