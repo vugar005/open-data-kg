@@ -33,7 +33,6 @@ export class DatasetInsertDialogComponent implements OnInit {
     private sharedService: SharedService,
     private dialog: MatDialog
   ) {
-    console.log(data);
     this.orgTypes$ = this.sharedService.getTypesByParentId('1000001', '1000001');
   }
   getErrors(str) {
@@ -43,7 +42,6 @@ export class DatasetInsertDialogComponent implements OnInit {
     onClose(res) {
       if (res && res.kv && res.kv.id) {
         this.newDataId = res.kv.id;
-        console.log(this.newDataId);
         this.setConfigs();
       }
      }

@@ -49,7 +49,6 @@
             </mat-form-field>
        </div>
     </div>
-
     <mat-tab-group style="width: 100%" *ngIf="newDataId || data?.row?.id">
         <mat-tab>
             <ng-template mat-tab-label>
@@ -76,7 +75,8 @@
             <!-- <fa-icon [icon]="faPhone" class="tab-icon"></fa-icon> -->
               Keyword
             </ng-template>
-            <div class="title">
+            <ng-template matTabContent>
+              <div class="title">
                 <div class="add-icon" (click)="table2.addData()">
                   <fa-icon [icon]="faPlusCircle"></fa-icon>
                 </div>
@@ -90,6 +90,8 @@
                 [pagination]="false"
               ></ngx-nt-table>
              </div>
+            </ng-template>
+
         </mat-tab>
         <mat-tab>
             <ng-template mat-tab-label>
