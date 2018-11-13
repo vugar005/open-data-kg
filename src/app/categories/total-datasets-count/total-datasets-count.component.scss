@@ -1,0 +1,27 @@
+:host {
+  display: flex;
+}
+.item {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 50px 0;
+  .icon {
+    height: 70px;
+    width: 70px;
+    padding-bottom: 15px;
+  }
+  .count {
+    font-weight: bold;
+    line-height: 22px;
+    font-size: 20px;
+    color: #FFFFFF;
+    padding-bottom: 5px;
+  }
+  .name {
+    font-weight: 300;
+    line-height: 20px;
+    font-size: 18px;
+    color: #FFFFFF;
+  }
+}

@@ -30,6 +30,7 @@ import { HeaderToggleDirective } from './shared/directives/header-toggle.directi
 import { APIInterceptor } from './shared/interceptors/api.interceptor';
 import { AdminGuard } from './auth/admin.guard';
 import { SharedAcrossModule } from './shared/shared-across.module';
+import { TotalDatasetsCountComponent } from './categories/total-datasets-count/total-datasets-count.component';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -44,6 +45,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     GlobalNavComponent,
     NavStyleChangeDirective,
     HeaderToggleDirective,
+    TotalDatasetsCountComponent
   ],
   imports: [
     BrowserModule,

@@ -2,7 +2,8 @@
   display: block;
   height: 70px;
   width: 100%;
-  position: relative;
+  position: fixed;
+  top:0;
   background-image: linear-gradient(to right, #4e8ec8, #47a8c5);
 }
 

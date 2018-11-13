@@ -1,17 +1,20 @@
 :host {
-  display: block;
-  position: fixed;
-  transition: all 500ms ease-in-out;
+  display: flex;
+  align-items: center;
+  // transition: all 500ms ease-in-out;
   width: 100vw;
-  z-index: 1;
-  left: 0;
+  z-index: 2;
+  min-height: 50px;
+  background: #ffffff;
+  position: sticky;
+  top: 0px;
 }
 
-:host(.bottom) {
-  display: block;
-  bottom: 0;
-  transform: translate3d(0, -15px, 0);
-}
+// :host(.bottom) {
+//   display: block;
+//   bottom: 0;
+//   transform: translate3d(0, -15px, 0);
+// }
 :host(.top) {
   display: block;
   top: 0;
@@ -19,13 +22,25 @@
 }
 .modules {
   display: flex;
-  justify-content: space-around;
-  width: 50%;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
   margin: auto;
-
   .module {
-    font-size: 20px;
-    color: #ffffff;
-    cursor: pointer;
+    display: flex;
+    align-items: center;
+    .icon {
+      height: 30px;
+      width: 30px;
+      padding-right: 10px;
+    }
+    .text {
+      font-size: 14px;
+      font-weight: 600;
+      color: #666666;
+      cursor: pointer;
+      text-transform: capitalize;
+    }
   }
 }
+

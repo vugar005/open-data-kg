@@ -1,22 +1,23 @@
 <div class="main-page-co">
 
-  <div class="search-container">
-    <div class="search-header">
-      <div class="primary-name">
-        {{'BRAND.primaryName' | translate}}
+  <div class="search-container container">
+    <div class="row">
+      <div class="col-5">
+          <div class="search-header">
+              <div class="primary-name">
+                {{'BRAND.primaryName' | translate}}
+              </div>
+              <div class="secondary-name">
+                {{'BRAND.secondaryName' | translate}}
+              </div>
+            </div>
+            <div class="input-co">
+              <input class="ng-input" placeholder="Search data" (click)="resetMouse()" >
+              <div class="search-ico">
+                <fa-icon [icon]="faSearch"></fa-icon>
+              </div>
+            </div>
       </div>
-      <div class="secondary-name">
-        {{'BRAND.secondaryName' | translate}}
-      </div>
-    </div>
-    <div class="input-co">
-      <div class="search-ico">
-        <fa-icon [icon]="faSearch"></fa-icon>
-      </div>
-      <input class="search-input" placeholder="Write any word for search" (click)="resetMouse()" >
-      <div class="submit-ico">
-          <fa-icon [icon]="faChevronRight"></fa-icon>
-        </div>
     </div>
   </div>
 

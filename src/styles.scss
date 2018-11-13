@@ -1,6 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 @import "./assets//themes//custom-theme.scss";
 @import "./assets//themes/ag-theme.scss";
+:root {
+  --color-primary: #539EC0;
+}
 * {
   box-sizing: border-box;
 }
@@ -49,8 +52,8 @@ div {
 }
 img {
   width: 100%;
-  max-height: 100%;
-  object-fit: cover;
+  height: 100%;
+  // object-fit: cover;
 }
 
 ::-webkit-scrollbar {
@@ -76,7 +79,9 @@ img {
   src: url(assets/fonts/Open_Sans/OpenSans-Regular.ttf) format("opentype");
 }
 
-
+.color-primary {
+  color: #539EC0;
+}
 .upload-item-img {
   width: 180px;
   height: 158px;
@@ -141,4 +146,17 @@ img {
       }
     }
 
+}
+
+.ng-input {
+    background: #ffffff;
+    border: 0;
+    outline: 0;
+    margin-right: auto;
+    width: 100%;
+    padding-left: 10px;
+    &::placeholder {
+      font-size: 12px;
+      color: var(--color-primary);
+    }
 }

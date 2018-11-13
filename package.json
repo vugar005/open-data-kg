@@ -48,6 +48,7 @@
     "ngx-file-drop": "^5.0.0",
     "ngx-file-picker": "0.0.5",
     "ngx-form-utils": "0.0.3",
+    "ngx-input": "0.0.1",
     "ngx-swiper-wrapper": "^6.4.0",
     "nt-table": "^1.0.0-rc.17",
     "rxjs": "~6.2.0",

@@ -6,7 +6,9 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { AdminGuard } from './auth/admin.guard';
 
 const routes: Routes = [
-  {path: '', component: LandingPageComponent, pathMatch: 'full'},
+  {path: '', component: LandingPageComponent, pathMatch: 'full', children: [
+    {path: '', loadChildren: './categories/categories.module#CategoriesModule'}
+  ]},
   {path: 'login', component: LoginComponent },
   {path: 'register', component: RegisterComponent },
   {path: 'admin', loadChildren: './admin-panel/admin-panel.module#AdminPanelModule', canActivate: [AdminGuard]},

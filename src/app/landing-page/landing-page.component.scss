@@ -1,6 +1,12 @@
 :host {
   display: block;
   width: 100vw;
-  height: calc(100vh - 70px);
+  height: calc(100vh - 0px); // was - 70px
   background-image: linear-gradient(to right, #4e8ec8, #47a8c5);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/deep/ ::-webkit-scrollbar {
+  display: none;
 }
