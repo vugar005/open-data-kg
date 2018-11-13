@@ -2,11 +2,11 @@
   <div class="left" [routerLink]="'/'">
     <img src="./assets/icons/opendata_final.svg">
   </div>
-  <div class="right" *ngIf="!(isLoggedIn$ | async)">
-    <a class="auth-nav" [routerLink]="['/login']" >LOGIN</a>
-  </div>
-  <div class="right" *ngIf="(isLoggedIn$ | async)">
-    <div class="user">
+
+  <div class="right" >
+      <a class="auth-nav" [routerLink]="['/login']" *ngIf="!(isLoggedIn$ | async)">LOGIN</a>
+
+    <div class="user" *ngIf="(isLoggedIn$ | async)">
       <div class="name">
         {{ (user$ | async)?.name}} {{(user$ | async)?.surname }}
       </div>
@@ -14,5 +14,12 @@
             <img src= "https://www.timeshighereducation.com/sites/default/files/byline_photos/default-avatar.png">
           </div>
     </div>
+    <button class="hamburger hamburger--slider linksButton" type="button" (click)="showMenu = true">
+        <span class="hamburger-box">
+          <span class="hamburger-inner"></span>
+        </span>
+      </button>
   </div>
 </div>
+
+<header-popup *ngIf="showMenu" (close)="showMenu = false"></header-popup>

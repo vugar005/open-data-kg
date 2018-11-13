@@ -31,6 +31,9 @@ import { APIInterceptor } from './shared/interceptors/api.interceptor';
 import { AdminGuard } from './auth/admin.guard';
 import { SharedAcrossModule } from './shared/shared-across.module';
 import { TotalDatasetsCountComponent } from './categories/total-datasets-count/total-datasets-count.component';
+import { HeaderDropdownComponent } from './header/header-dropdown/header-dropdown.component';
+import { ClassChangerDirective } from './shared/directives/class-changer.directive';
+import { HeaderPopupComponent } from './header/header-popup/header-popup.component';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -45,7 +48,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     GlobalNavComponent,
     NavStyleChangeDirective,
     HeaderToggleDirective,
-    TotalDatasetsCountComponent
+    TotalDatasetsCountComponent,
+    ClassChangerDirective,
+    HeaderPopupComponent
   ],
   imports: [
     BrowserModule,

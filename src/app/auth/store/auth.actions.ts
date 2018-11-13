@@ -13,7 +13,8 @@ export enum AuthActionTypes {
   REGISTER_FAIL = '[AUTH] REGISTER_FAIL',
   SET_API_URL = '[APP CO] SET_API_URL',
   SET_PRIVILIGES = '[AUTH] SET_PRIVILIGES',
-  SET_MODULES = '[AUTH] SET_MODULES'
+  SET_MODULES = '[AUTH] SET_MODULES',
+  LOG_OUT= '[HEADER CO] LOGOUT'
 }
 
 export class SetToken implements Action {
@@ -63,6 +64,9 @@ export class SetModules implements Action {
   readonly type = AuthActionTypes.SET_MODULES;
   constructor(public payload: User) {}
 }
+export class Logout implements Action {
+  readonly type = AuthActionTypes.LOG_OUT;
+}
 
 export type AuthActions = SetToken |
 TryLogin |
@@ -75,5 +79,6 @@ LoginFail |
 RegisterFail |
 SetApiUrl |
 SetPriviliges |
-SetModules
+SetModules |
+Logout
 ;

@@ -1,10 +1,11 @@
 :host {
   display: flex;
   flex-direction: column;
-  height: calc(100%);
+  height: calc(100vh);
   padding-left: 13%;
   padding-top: 9%;
   width: 100%;
+  background-image: linear-gradient(to right, #4e8ec8, #47a8c5);
 }
 .swiper-co {
   width: 100%;
@@ -52,7 +53,8 @@
     height: 70px;
     background: #1F93CF;
     cursor: pointer;
-
+    margin-left: 10px;
+    padding: 15px;
     &.left {
       background: transparent;
       transform: rotate(180deg);

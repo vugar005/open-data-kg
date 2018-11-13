@@ -14,6 +14,7 @@ export class HeaderComponent implements OnInit {
   globalNavClass$: Observable<string>;
   isLoggedIn$: Observable<boolean>;
   user$: Observable<User>;
+  showMenu: boolean;
   constructor(private store: Store<AppState>) {
     this.isLoggedIn$ = store.select(isLoggedIn);
     this.user$ = store.select(getUser);

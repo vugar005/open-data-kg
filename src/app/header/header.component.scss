@@ -4,6 +4,7 @@
   width: 100%;
   position: fixed;
   top:0;
+  z-index: 2;
   background-image: linear-gradient(to right, #4e8ec8, #47a8c5);
 }
 
@@ -23,6 +24,8 @@
   }
 
   .right {
+    display: flex;
+    align-items: center;
     z-index: 2;
     position: relative;
     .auth-nav {
@@ -54,5 +57,18 @@
         }
       }
     }
+  }
+}
+.hamburger {
+  display: flex!important;
+}
+.hamburger-inner {
+  background-color: #FFFFFF!important;
+  width: 25px;
+  height: 2px;
+  &::after, &::before {
+    background-color: #FFFFFF!important;
+    width: 25px;
+    height: 2px;
   }
 }

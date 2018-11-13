@@ -115,6 +115,16 @@ export class AuthEffects {
       })
     );
 
+    @Effect({dispatch: false})
+    logout = this.actions$
+    .pipe(
+      ofType(AuthActionTypes.LOG_OUT),
+      tap((res: any) => {
+        localStorage.clear();
+        this.router.navigateByUrl('/');
+      })
+    );
+
   constructor(private actions$: Actions,
      private http: HttpClient ,
      private jwtService: JwtHelperService,

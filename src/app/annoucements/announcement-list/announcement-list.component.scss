@@ -1,8 +1,8 @@
 :host {
   display: flex;
   flex-direction: column;
-  background-image: linear-gradient(to right, #4e8ec8, #47b7c5);
-  height: calc(100vh - 70px);
+  background-image: linear-gradient(to right, #4e8ec8, #47a8c5);
+  height: calc(100vh);
   padding-left: 13%;
   padding-top: 9%;
   overflow: hidden;
@@ -51,6 +51,8 @@
     height: 70px;
     background: #1F93CF;
     cursor: pointer;
+    margin-left: 10px;
+    padding: 15px;
 
     &.left {
       background: transparent;

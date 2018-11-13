@@ -69,6 +69,15 @@ export function reducer(state = initialState, action: AuthActions): AuthState {
       ...state,
       priviliges: priviliges
     };
+    case AuthActionTypes.LOG_OUT:
+    return {
+      ...state,
+      token: '',
+      raw_token: '',
+      user: null,
+      modules: null,
+      priviliges: {}
+    };
     default:
       return state;
   }
