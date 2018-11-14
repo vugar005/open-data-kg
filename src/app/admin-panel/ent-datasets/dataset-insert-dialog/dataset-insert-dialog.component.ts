@@ -26,6 +26,7 @@ export class DatasetInsertDialogComponent implements OnInit {
   config3: ApiConfig;
   faPlusCircle = faPlusCircle;
   newDataId: string;
+  isEditable = true;
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<ModulesInsertDialogComponent>,
@@ -42,6 +43,11 @@ export class DatasetInsertDialogComponent implements OnInit {
     onClose(res) {
       if (res && res.kv && res.kv.id) {
         this.newDataId = res.kv.id;
+        this.ntForm.setValue({
+          ...this.ntForm.value,
+          id: res.kv.id
+        });
+        console.log(this.ntForm.value);
         this.setConfigs();
       }
      }
@@ -90,6 +96,11 @@ export class DatasetInsertDialogComponent implements OnInit {
             };
         }
    ngOnInit() {
-     this.setConfigs();
+   this.setConfigs();
+   console.log(this.ntForm)
+   }
+   tempClick(table) {
+       console.log(table);
+       console.log(this.ntForm.value.id)
    }
 }

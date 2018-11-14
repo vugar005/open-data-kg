@@ -8,10 +8,6 @@
   flex-direction: column;
   align-items: center;
 }
-.inputs {
-  display: flex;
-  flex-direction: column;
-
   .main-info {
   display: flex;
     .left {
@@ -38,7 +34,6 @@
     }
     }
 
-}
 
 .actions {
   button {
