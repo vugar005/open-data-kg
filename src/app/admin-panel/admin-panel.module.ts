@@ -13,12 +13,14 @@ import { AdminPanelService } from './admin-panel.service';
 import { AdminModulesResolver } from './shared/resolvers/admin-modules.resolver';
 import { SharedAcrossModule } from '../shared/shared-across.module';
 import { AdminHeaderComponent } from './admin-header/admin-header.component';
+import { MatMenuModule } from '@angular/material';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 @NgModule({
   imports: [
     CommonModule,
+    MatMenuModule,
     TranslateModule.forChild({
       loader: {
         provide: TranslateLoader,

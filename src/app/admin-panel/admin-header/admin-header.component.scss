@@ -24,6 +24,7 @@
   }
 
   .right {
+    display: flex;
     z-index: 2;
     position: relative;
 
@@ -61,4 +62,24 @@
       }
     }
   }
+}
+
+.hamburger {
+  display: flex!important;
+}
+.hamburger-inner {
+  background-color: #FFFFFF!important;
+  width: 25px;
+  height: 2px;
+  &::after, &::before {
+    background-color: #FFFFFF!important;
+    width: 25px;
+    height: 2px;
+  }
+}
+
+/deep/ .header-menu {
+  position: absolute;
+  right: 40px;
+  top: 53px;
 }

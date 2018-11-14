@@ -1,5 +1,8 @@
 :host {
   display: flex;
+  background: linear-gradient(to right, #4e8ec8, #47a8c5);
+  position: relative;
+  z-index: 2;
 }
 .item {
   display: flex;

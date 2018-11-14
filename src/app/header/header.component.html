@@ -16,10 +16,10 @@
     </div>
     <button class="hamburger hamburger--slider linksButton" type="button" (click)="showMenu = true">
         <span class="hamburger-box">
-          <span class="hamburger-inner"></span>
+          <span  class="hamburger-inner"></span>
         </span>
       </button>
   </div>
 </div>
 
-<header-popup *ngIf="showMenu" (close)="showMenu = false"></header-popup>
+<header-popup [ngStyle]="{'visibility': showMenu ? 'visible' : 'hidden'}"  (close)="showMenu = false"></header-popup>
