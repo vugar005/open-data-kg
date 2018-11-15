@@ -34,6 +34,9 @@ import { TotalDatasetsCountComponent } from './categories/total-datasets-count/t
 import { ClassChangerDirective } from './shared/directives/class-changer.directive';
 import { HeaderPopupComponent } from './header/header-popup/header-popup.component';
 import { HttpClientBusyModule } from 'ngx-httpclient-busy';
+import { NewsSidebarComponent } from './landing-page/news-sidebar/news-sidebar.component';
+import { NewsSidebarItemComponent } from './landing-page/news-sidebar/news-sidebar-item/news-sidebar-item.component';
+import { NewsSidebarItemListComponent } from './landing-page/news-sidebar/news-sidebar-item-list/news-sidebar-item-list.component';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -50,7 +53,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     HeaderToggleDirective,
     TotalDatasetsCountComponent,
     ClassChangerDirective,
-    HeaderPopupComponent
+    HeaderPopupComponent,
+    NewsSidebarComponent,
+    NewsSidebarItemComponent,
+    NewsSidebarItemListComponent
   ],
   imports: [
     BrowserModule,

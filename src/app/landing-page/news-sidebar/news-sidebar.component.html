@@ -1,0 +1,24 @@
+<div class="sidebar-co" *ngIf="render" >
+    <div class="sidebar-header">
+        <img src="./assets/icons/news-top-arrow.svg">
+        <div class="see-all">See all news</div>
+      </div>
+     <div class="items-co">
+        <ng-container  *ngFor ="let item of items;let i= index">
+            <news-sidebar-item [item]="item" [index]="i" *ngIf=" i+1 > startIndex && i +1 <= endIndex "
+              [@slideOutRight]="slideOutRight"
+            ></news-sidebar-item>
+        </ng-container>
+     </div>
+
+      <div class="sidebar-footer">
+          <div class="swiper-arrow" (click)="onPrev()">
+              <img src="./assets/icons/sidebar-arrow-right.svg">
+            </div>
+          <div class="swiper-arrow" (click)="onNext()">
+            <img src="./assets/icons/sidebar-arrow-left.svg">
+          </div>
+
+      </div>
+
+</div>

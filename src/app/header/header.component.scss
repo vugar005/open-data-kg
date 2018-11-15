@@ -10,12 +10,10 @@
 
 
 .header-co {
-  padding-left: 2em;
-  padding-top: 2em;
-  padding-right: 2em;
+ padding: 1em;
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   .left {
     width: 86px;
     height: 30px;
@@ -71,4 +69,11 @@
     width: 25px;
     height: 2px;
   }
+}
+
+.hamburger--slider .hamburger-inner:before {
+  top: 7px;
+}
+.hamburger--slider .hamburger-inner:after {
+  top: 14px;
 }
