@@ -19,8 +19,8 @@
       </button>
 
       <mat-menu #menu="matMenu" class="header-menu">
-        <button mat-menu-item>Go To Dashboard</button>
-        <button mat-menu-item>Logout</button>
+        <button mat-menu-item [routerLink]="['/']"  >Go To Dashboard</button>
+        <button mat-menu-item (click)="onLogout()">Logout</button>
       </mat-menu>
 
     </div>

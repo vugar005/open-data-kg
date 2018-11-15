@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 
-import {tap, switchMap, map, catchError, mergeMap, concat} from 'rxjs/operators';
+import {tap, switchMap, map, catchError, mergeMap, concat, delay} from 'rxjs/operators';
 import { AuthActionTypes, TryLogin } from './auth.actions';
 import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -15,6 +15,7 @@ export class AuthEffects {
     tryLogin = this.actions$
     .pipe(
       ofType(AuthActionTypes.TRY_LOGIN),
+      delay(5000),
       switchMap((res: any) =>
        this.http.post('login', res.payload, {
        observe: 'response'})

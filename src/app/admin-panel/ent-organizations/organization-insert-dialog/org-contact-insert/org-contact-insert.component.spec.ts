@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { OrgAddrInsertDialogComponent } from './org-addr-insert-dialog.component';
+import { OrgContactInsertComponent } from './org-contact-insert.component';
 
-describe('OrgAddrInsertDialogComponent', () => {
-  let component: OrgAddrInsertDialogComponent;
-  let fixture: ComponentFixture<OrgAddrInsertDialogComponent>;
+describe('OrgContactInsertComponent', () => {
+  let component: OrgContactInsertComponent;
+  let fixture: ComponentFixture<OrgContactInsertComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ OrgAddrInsertDialogComponent ]
+      declarations: [ OrgContactInsertComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(OrgAddrInsertDialogComponent);
+    fixture = TestBed.createComponent(OrgContactInsertComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

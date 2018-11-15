@@ -1,7 +1,7 @@
 <form #f="ngForm" patch-form [form]="f" [data]="data?.row" class="nt-form" >
 
-  <mat-vertical-stepper [linear]="true" #stepper >
-    <mat-step [editable]="isEditable" [stepControl]="f">
+  <mat-vertical-stepper [linear]="true" #stepper [selectedIndex]="selectedIndex"  >
+    <mat-step [stepControl]="f">
           <ng-template matStepLabel>Dataset main info</ng-template>
         <div class="main-info">
             <div class="left">
@@ -54,22 +54,23 @@
 
         <div>
           <button mat-raised-button color="primary"  type="submit"  insertTableData [form]="f"
-          *ngIf="!(data?.row || newDataId)"
+          *ngIf="!(f?.value.id)"
           [table]="data?.table"
           (onClose)="onClose($event)"
           >Add</button>
         </div>
     </mat-step>
 
-    <mat-step [editable]="isEditable"  [stepControl]="f" >
+    <mat-step  [stepControl]="f" >
       <ng-template matStepLabel>Keyword data</ng-template>
-      <div class="title">
-          <div class="add-icon" (click)="tempClick(table2)">
+      <ng-container *ngIf="f?.value?.id">
+        <div class="title">
+          <div class="add-icon" (click)="table2.addData()">
             <fa-icon [icon]="faPlusCircle"></fa-icon>
           </div>
          </div>
 
-      <div style="width: 100%;height: 200px;" *ngIf="f?.value?.id">
+      <div style="width: 100%;height: 200px;" >
           <ngx-nt-table #table2
           [config]="config2"
           (rowAdd)="initDialog2(table2)"
@@ -83,17 +84,19 @@
           <button mat-button matStepperPrevious>Back</button>
           <button mat-button matStepperNext>Next</button>
         </div>
+      </ng-container>
   </mat-step>
 
-    <mat-step [editable]="isEditable"  [stepControl]="f" >
+    <mat-step   [stepControl]="f"   >
         <ng-template matStepLabel>Version data</ng-template>
-        <div class="title"  *ngIf="f?.value?.id">
+        <ng-container  *ngIf="f?.value?.id">
+          <div class="title" >
             <div class="add-icon" (click)="table3.addData()">
               <fa-icon [icon]="faPlusCircle"></fa-icon>
             </div>
            </div>
 
-        <div style="width: 100%;height: 200px;"  *ngIf="f?.value?.id">
+        <div style="width: 100%;height: 200px;" >
             <ngx-nt-table #table3
             [config]="config3"
             (rowAdd)="initDialog3(table3)"
@@ -106,13 +109,15 @@
         <div>
             <button mat-button matStepperPrevious>Back</button>
           </div>
+        </ng-container>
     </mat-step>
   </mat-vertical-stepper>
 
-  <input [hidden]="true" name="id" [(ngModel)]="newDataId">
+  <input [hidden]="true" name="id" ngModel>
+
   <div class="actions">
     <button mat-raised-button color="accent"  type="submit" updateTableData [form]="f"
-    *ngIf="data?.row || newDataId"
+    *ngIf="f?.value.id"
     [disabled]="f?.dirty && !f?.valid"
     (onClose)="dialogRef.close()"
     [table]="data?.table"

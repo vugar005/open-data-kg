@@ -23,6 +23,10 @@ export const getUseRoleId = createSelector(
   selectAuthState,
   auth => auth.user.account.role.id
 );
+export const getUserOrg = createSelector(
+  selectAuthState,
+  auth => auth.user.org
+);
 
 export const getApiUrl = createSelector(
   selectAuthState,

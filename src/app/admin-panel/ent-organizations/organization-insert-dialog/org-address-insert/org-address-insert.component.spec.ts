@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { HeaderDropdownComponent } from './header-dropdown.component';
+import { OrgAddressInsertComponent } from './org-address-insert.component';
 
-describe('HeaderDropdownComponent', () => {
-  let component: HeaderDropdownComponent;
-  let fixture: ComponentFixture<HeaderDropdownComponent>;
+describe('OrgAddressInsertComponent', () => {
+  let component: OrgAddressInsertComponent;
+  let fixture: ComponentFixture<OrgAddressInsertComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HeaderDropdownComponent ]
+      declarations: [ OrgAddressInsertComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HeaderDropdownComponent);
+    fixture = TestBed.createComponent(OrgAddressInsertComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

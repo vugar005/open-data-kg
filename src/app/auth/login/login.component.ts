@@ -12,8 +12,6 @@ import { fadeIn } from 'ng-animate';
 import { NgForm } from '@angular/forms';
 import { loadExternalScripts } from '../../shared/methods/loadExternals';
 import { Observable } from 'rxjs';
-import { User } from '../models/user.model.';
-import { getUser } from '../store/auth.selectors';
 declare var Typed;
 @Component({
   selector: 'app-login',
@@ -26,6 +24,7 @@ export class LoginComponent implements OnInit, OnDestroy, AfterViewInit {
   animate = true;
   typed: any;
   hide = true;
+  promiseBtnAction: Observable<any>;
   constructor(private store: Store<AppState>) {
   }
 

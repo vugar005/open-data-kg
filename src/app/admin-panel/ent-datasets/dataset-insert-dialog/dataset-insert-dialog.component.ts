@@ -12,6 +12,10 @@ import { DatasetApiInsertComponent } from './dataset-api-insert/dataset-api-inse
 import { DatasetCategoryInsertComponent } from './dataset-category-insert/dataset-category-insert.component';
 import { DatasetKeywordInsertComponent } from './dataset-keyword-insert/dataset-keyword-insert.component';
 import {faPlusCircle} from '@fortawesome/free-solid-svg-icons';
+import { AppState } from 'src/app/reducers';
+import { Store } from '@ngrx/store';
+import { getUserOrg } from 'src/app/auth/store/auth.selectors';
+import { take } from 'rxjs/operators';
 @Component({
   selector: 'app-dataset-insert-dialog',
   templateUrl: './dataset-insert-dialog.component.html',
@@ -25,16 +29,24 @@ export class DatasetInsertDialogComponent implements OnInit {
   config2: ApiConfig;
   config3: ApiConfig;
   faPlusCircle = faPlusCircle;
-  newDataId: string;
-  isEditable = true;
+  selectedIndex = 0;
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<ModulesInsertDialogComponent>,
     public viewRef: ViewContainerRef,
     private sharedService: SharedService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private store: Store<AppState>
   ) {
-    this.orgTypes$ = this.sharedService.getTypesByParentId('1000001', '1000001');
+    this.store.select(getUserOrg)
+    .pipe(
+      take(1)
+    )
+    .subscribe(res => {
+      if (res.id) {
+        this.orgTypes$ = this.sharedService.getTypesByParentId('1000001', res.id);
+      }
+    });
   }
   getErrors(str) {
     if (!this.ntForm || !NgxFormUtils) { return; }
@@ -42,13 +54,12 @@ export class DatasetInsertDialogComponent implements OnInit {
     }
     onClose(res) {
       if (res && res.kv && res.kv.id) {
-        this.newDataId = res.kv.id;
         this.ntForm.setValue({
           ...this.ntForm.value,
           id: res.kv.id
         });
-        console.log(this.ntForm.value);
         this.setConfigs();
+        this.selectedIndex += 1;
       }
      }
     initDialog(table: NtTableComponent, row = null) {
@@ -73,7 +84,7 @@ export class DatasetInsertDialogComponent implements OnInit {
             updateApi: 'api/post/Permission/Datasets/UpdateDatasetCategory',
             deleteApi: 'api/post/Permission/Datasets/DeleteDatasetCategory',
             additionalFormData : {
-              datasetId: this.data.row ? this.data.row.id : this.newDataId
+              datasetId: this.data.row ? this.data.row.id : this.ntForm.value.id
             }
           };
              this.config2 = {
@@ -82,7 +93,7 @@ export class DatasetInsertDialogComponent implements OnInit {
                updateApi: 'api/post/Permission/Datasets/UpdateDatasetKeyword',
                deleteApi: 'api/post/Permission/Datasets/DeleteDatasetKeyword',
                additionalFormData : {
-                 datasetId: this.data.row ? this.data.row.id : this.newDataId
+                 datasetId: this.data.row ? this.data.row.id : this.ntForm.form.value.id
                }
              };
              this.config3 = {
@@ -91,7 +102,7 @@ export class DatasetInsertDialogComponent implements OnInit {
               updateApi: 'api/post/Permission/Datasets/UpdateDatasetApi',
               deleteApi: 'api/post/Permission/Datasets/DeleteDatasetApi',
               additionalFormData : {
-                datasetId: this.data.row ? this.data.row.id : this.newDataId
+                datasetId: this.data.row ? this.data.row.id : this.ntForm.value.id
               }
             };
         }

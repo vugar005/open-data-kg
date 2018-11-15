@@ -1,12 +1,11 @@
-
-    interface Value {
+  interface Value {
       kg: string;
       en?: any;
       ru?: any;
   }
 
   interface Role {
-      id: number;
+      id: string;
       parentId?: any;
       value: Value;
       aboutValue?: any;
@@ -15,8 +14,8 @@
       type?: any;
   }
 
-   interface Account {
-      id: number;
+  interface Account {
+      id: string;
       username?: any;
       password?: any;
       role: Role;
@@ -31,11 +30,20 @@
       ru: string;
   }
 
+  interface Org {
+      id: string;
+      orgTypeId: string;
+      name: Value;
+      shortName: ShortName;
+      formula: string;
+  }
+
+
 
   export interface UserModuleOperation {
-      id: number;
-      typeId: number;
-      moduleId: number;
+      id: string;
+      typeId: string;
+      moduleId: string;
       permissionUrl: string;
       urlCode?: any;
       code: string;
@@ -43,30 +51,33 @@
   }
 
   export interface UserModule {
-      id: number;
+      id: string;
       name: Value;
-      shortName: ShortName;
-      parentId: number;
+      shortName: Value;
+      parentId?: any;
       orderBy: number;
-      typeId: number;
+      typeId?: any;
       iconPath?: any;
       code: string;
       operations: UserModuleOperation[];
   }
 
   export interface User {
-      id: number;
+      id: string;
       account: Account;
       userName: string;
       name: string;
       surname: string;
       patronymic: string;
       birthdate?: any;
+      org: Org;
+      userType: string;
       gender?: any;
       pin: string;
       sessionActive: boolean;
       isBlocked: boolean;
       modules: UserModule[];
-      userType: string;
       privilegeList: string[];
   }
+
+

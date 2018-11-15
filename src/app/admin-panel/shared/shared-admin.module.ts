@@ -9,6 +9,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { APIInterceptor } from 'src/app/shared/interceptors/api.interceptor';
 import { RbacAllowDirective } from 'src/app/shared/directives/rbac-allow.directive';
 import { SharedUploadModule } from 'src/app/shared/shared-upload.module';
+import { HttpClientBusyModule } from 'ngx-httpclient-busy';
 @NgModule({
   imports: [],
   exports: [
@@ -24,7 +25,9 @@ import { SharedUploadModule } from 'src/app/shared/shared-upload.module';
      FormsModule,
      RbacAllowDirective,
      SharedUploadModule,
-     MatStepperModule
+     MatStepperModule,
+     MatIconModule,
+    HttpClientBusyModule
     ],
   declarations: [
     RbacAllowDirective

@@ -4,20 +4,17 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { NgxFormUtils } from 'ngx-form-utils';
 
 @Component({
-  selector: 'app-org-addr-insert-dialog',
-  templateUrl: './org-addr-insert-dialog.component.html',
-  styleUrls: ['./org-addr-insert-dialog.component.scss']
+  selector: 'app-org-address-insert',
+  templateUrl: './org-address-insert.component.html',
+  styleUrls: ['./org-address-insert.component.scss']
 })
-export class OrgAddrInsertDialogComponent {
-
+export class OrgAddressInsertComponent  {
   @ViewChild('f') ntForm: NgForm;
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
-    public dialogRef: MatDialogRef<OrgAddrInsertDialogComponent>,
+    public dialogRef: MatDialogRef<OrgAddressInsertComponent>,
     public viewRef: ViewContainerRef
   ) {
-    console.log(data);
-    console.log(this.data.table.config)
   }
   getErrors(str) {
     if (!this.ntForm || !NgxFormUtils) { return; }

@@ -104,7 +104,7 @@ export class UserOperationsTableComponent implements OnInit {
      this.store.select(getUseRoleId)
      .pipe(
        first(),
-       tap(res => this.userRoleId = res),
+       tap(res => this.userRoleId = +res),
        switchMap( res => this.geTableData(this.userRoleId),
        ))
      .subscribe(res => {

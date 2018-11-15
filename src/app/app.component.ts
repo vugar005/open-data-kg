@@ -41,7 +41,7 @@ export class AppComponent implements OnInit {
     this.store.dispatch(new AutoSetToken({jwtToken, decoded}));
     this.store.dispatch(new AutoSetUser(user));
    } catch (er) {
-     console.log(er)
+     console.log(er);
    }
   }
  setHostname() {
@@ -50,8 +50,8 @@ export class AppComponent implements OnInit {
     if (URL === 'http://192.168.1.23/DispatcherRest') {
       URL = 'http://192.168.1.23:8080/DispatcherRest';
     }
-    if (URL === 'http://192.168.1.8/DispatcherRest') {
-      URL = 'http://192.168.1.23:8080/DispatcherRest';
+    if (URL === 'http://185.18.245.89/DispatcherRest') {
+      URL = 'http://185.18.245.89:9090/DispatcherRest';
     }
     console.log(URL);
     this.store.dispatch(new SetApiUrl(URL));
