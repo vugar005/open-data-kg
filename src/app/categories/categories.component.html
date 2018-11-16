@@ -1,2 +1,33 @@
-
-<router-outlet> </router-outlet>
+<div class="container">
+  <div class="row justify-content-between pt-4">
+    <div class="col-2">
+     <div class="mod-name">Categories</div>
+    </div>
+    <div class="col-2">
+      <div class="count">8 Results</div>
+    </div>
+  </div>
+  <div class="row  pt-4 align-items-center">
+    <div class="col-3">
+     <div class="route-tree">
+      Open data > Categories > Family
+     </div>
+    </div>
+    <div class="col-9">
+      <div class="search-box">
+        <input placeholder="Search dataset" class="ng-input">
+        <div class="search-ico">
+          <fa-icon [icon]="faSearch"></fa-icon>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-3">
+      <module-sidebar></module-sidebar>
+    </div>
+    <div class="col-9">
+      <dataset-box></dataset-box>
+    </div>
+  </div>
+</div>

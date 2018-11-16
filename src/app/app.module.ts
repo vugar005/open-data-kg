@@ -37,6 +37,8 @@ import { HttpClientBusyModule } from 'ngx-httpclient-busy';
 import { NewsSidebarComponent } from './landing-page/news-sidebar/news-sidebar.component';
 import { NewsSidebarItemComponent } from './landing-page/news-sidebar/news-sidebar-item/news-sidebar-item.component';
 import { NewsSidebarItemListComponent } from './landing-page/news-sidebar/news-sidebar-item-list/news-sidebar-item-list.component';
+import { CategoryOverviewComponent } from './global-nav/category-overview/category-overview.component';
+import { DatasetBoxComponent } from './shared/components/dataset-box/dataset-box.component';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -56,7 +58,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     HeaderPopupComponent,
     NewsSidebarComponent,
     NewsSidebarItemComponent,
-    NewsSidebarItemListComponent
+    NewsSidebarItemListComponent,
+    CategoryOverviewComponent,
   ],
   imports: [
     BrowserModule,

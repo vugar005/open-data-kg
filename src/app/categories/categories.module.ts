@@ -6,13 +6,15 @@ import { CategorySidebarComponent } from './category-sidebar/category-sidebar.co
 import { CategoriesRoutes } from './categories.routing';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {InputModule} from 'ngx-input';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     CategoriesRoutes,
     FontAwesomeModule,
-    InputModule
+    InputModule,
+    SharedModule
   ],
   declarations: [CategoriesComponent, CategoryListComponent, CategorySidebarComponent]
 })

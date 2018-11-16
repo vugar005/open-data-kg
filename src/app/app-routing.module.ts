@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
-import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { AdminGuard } from './auth/admin.guard';
+import { CategoryOverviewComponent } from './global-nav/category-overview/category-overview.component';
 
 const routes: Routes = [
-  {path: '', component: LandingPageComponent, pathMatch: 'full', children: [
-    {path: '', loadChildren: './categories/categories.module#CategoriesModule'}
+  {path: '', component: LandingPageComponent, children: [
+    {path: 'categories', loadChildren: './categories/categories.module#CategoriesModule'},
+    {path: '', component: CategoryOverviewComponent, pathMatch: 'full'}
   ]},
-  {path: 'login', component: LoginComponent },
   {path: 'register', component: RegisterComponent },
   {path: 'admin', loadChildren: './admin-panel/admin-panel.module#AdminPanelModule', canActivate: [AdminGuard]},
   {path: 'news', loadChildren: './news/news.module#NewsModule'},

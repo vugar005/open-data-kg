@@ -1,5 +1,45 @@
 :host {
   display: block;
+ // padding-top: 3em;
+ background: #E5E5E5;
 }
 
 
+.mod-name {
+  font-weight: bold;
+  font-size: 26px;
+  color: #4C9EC7;
+}
+
+.count {
+  font-weight: bold;
+  font-size: 20px;
+  text-align: right;
+
+  color: #4C9EC7;
+}
+.route-tree {
+  font-size: 12px;
+  color: #333333;
+}
+
+.search-box {
+  display: flex;
+   padding: 14px 28px;
+   width: 100%;
+   background: #ffffff;
+   .ng-input {
+    &::placeholder {
+      font-size: 14px;
+     color: #969696;
+    }
+    .search-ico {
+      color:  #969696;
+      padding: 0 21px;
+      font-size: 18px;
+      opacity: 0.8;
+      position: absolute;
+      right: 0;
+    }
+   }
+}

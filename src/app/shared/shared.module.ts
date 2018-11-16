@@ -13,12 +13,21 @@ import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 import { FooterComponent } from '../footer/footer.component';
 import { MatRippleModule } from '@angular/material';
 import { SharedUploadModule } from './shared-upload.module';
+import { ModuleSidebarComponent } from './components/module-sidebar/module-sidebar.component';
+import { CommonModule } from '@angular/common';
+import { DatasetBoxComponent } from './components/dataset-box/dataset-box.component';
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
   slidesPerView: 'auto'
 };
 @NgModule({
+  declarations: [
+    ModuleSidebarComponent,
+    DatasetBoxComponent,
+    FooterComponent
+  ],
     imports: [
+      CommonModule,
       SharedUploadModule,
       TranslateModule.forChild({
         loader: {
@@ -33,15 +42,15 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
       TranslateModule,
       SwiperModule,
       FooterComponent,
-      MatRippleModule
+      MatRippleModule,
+      ModuleSidebarComponent,
     ],
     providers: [
       {
         provide: SWIPER_CONFIG,
         useValue: DEFAULT_SWIPER_CONFIG
       }
-    ],
-    declarations: [FooterComponent]
+    ]
   }
 )
 export class SharedModule {

@@ -1,0 +1,18 @@
+:host {
+  display: flex;
+  background: #ffffff;
+  padding: 37px 53px;
+}
+.left {
+  display: flex;
+  flex-direction: column;
+  .item-title {
+    font-size: 16px;
+  color: #333333;
+  text-transform: uppercase;
+  }
+  .item-content {
+    font-size: 14px;
+    color: #333333;
+  }
+}

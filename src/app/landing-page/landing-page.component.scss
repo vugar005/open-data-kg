@@ -10,3 +10,8 @@
 /deep/ ::-webkit-scrollbar {
   display: none;
 }
+
+.bottom {
+  z-index: 4;
+  position: relative;
+}

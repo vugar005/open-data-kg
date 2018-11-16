@@ -1,0 +1,28 @@
+:host {
+  display: block;
+ padding-top: 39px;
+
+}
+.module-title {
+  padding: 10px 24px;
+  background: linear-gradient(90.07deg, #4C9EC7 0.02%, #4C9EC7 99.99%);
+  border-radius: 9px;
+  color: #ffffff;
+}
+
+.items-co {
+  margin-top: 20px;
+  padding: 25px;
+  background: #FFFFFF;
+  border-radius: 10px;
+ .item {
+   display: flex;
+   cursor: pointer;
+  padding-bottom: 40px;
+  .name {
+    font-size: 14px;
+    color: #333333;
+  }
+
+ }
+}
