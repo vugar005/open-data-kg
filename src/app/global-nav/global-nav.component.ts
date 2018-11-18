@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'global-nav',
   templateUrl: './global-nav.component.html',
-  styleUrls: ['./global-nav.component.scss']
+  styleUrls: ['./global-nav.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class GlobalNavComponent implements OnInit {
+export class GlobalNavComponent  {
 
   constructor() { }
 
-  ngOnInit() {
-  }
-
+onClick() {
+  console.log('on click')
+}
 }

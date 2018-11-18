@@ -22,8 +22,8 @@ export class WaveParticlesComponent
   @ViewChild('container')
   elementRef: ElementRef;
   SEPARATION = 100;
-  AMOUNTX = 50; // 35
-  AMOUNTY = 50; // 35
+  AMOUNTX = 30; // 35
+  AMOUNTY = 40; // 35
   particles = [];
   particle;
   count = 0;

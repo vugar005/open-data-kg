@@ -1,25 +1,61 @@
-import { Directive, ElementRef, AfterViewInit, Renderer2, OnDestroy } from '@angular/core';
+import { Directive, ElementRef, AfterViewInit, Renderer2, OnDestroy, HostBinding, Input } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { Subject, fromEvent } from 'rxjs';
 import { takeUntil, tap } from 'rxjs/operators';
 
 @Directive({
-  selector: '[navStyleChange]'
+  selector: '[navStyleChange]',
+  exportAs: 'navStyleChange'
 })
 export class NavStyleChangeDirective implements AfterViewInit, OnDestroy {
   mainModules = ['news', 'announcements', 'blogs', ''];
   hideInModules = ['login', 'register', 'admin'];
   _onDestroy$ = new Subject<void>();
+ // @HostBinding('class') @Input() classList = 'modules';
+   active = false;
   constructor(
     private element: ElementRef,
     private router: Router,
     private renderer: Renderer2
     ) { }
-  ngAfterViewInit() {
-    console.log('de')
-   // this.listenToScrollChange();
- //  this.listenToRouteChange();
-  }
+    ngAfterViewInit() {
+      // this.listenToModuleClick();
+    }
+    listenToModuleClick() {
+    //  const modules = document.getElementsByClassName('global-module');
+    //  Array.from(modules).forEach(mod => {
+    //   mod.addEventListener('click', this.pinTop.bind(this));
+    //  });
+     fromEvent(document, 'click')
+     .pipe(
+       tap((e: Event) => {
+        let clickedComponent: any = e.target;
+        const mouseComponent = document.getElementsByClassName('scroll-btn');
+        console.log(mouseComponent)
+        console.log(e.target)
+      do {
+        if (clickedComponent === this.element.nativeElement) {
+          if (clickedComponent === mouseComponent) {
+            this.active = !this.active;
+            console.log('1');
+            break;
+          }
+            this.active = true;
+            break;
+        }  else {
+          clickedComponent = clickedComponent.parentNode;
+          console.log('3')
+         // this.active = false;
+        }
+      } while (clickedComponent);
+      if (!clickedComponent) {
+         this.active = false;
+      }
+    //  console.log(this.active)
+ //     this.toggleClass(this.active);
+        })
+     ).subscribe();
+    }
   listenToRouteChange() {
     this.router.events.subscribe(res => {
       if (res instanceof NavigationEnd) {
@@ -45,19 +81,29 @@ export class NavStyleChangeDirective implements AfterViewInit, OnDestroy {
       takeUntil(this._onDestroy$),
     ).subscribe((res: WheelEvent) => this.handleScrollEvent(res), (er) => console.log(er));
   }
+
   handleScrollEvent(e: WheelEvent) {
    console.log(e);
   }
   ngOnDestroy() {
     this._onDestroy$.next();
   }
+  toggleBlockClass(e: MouseEvent) {
+    e.preventDefault();
+    if (this.active) {
+      this.pinBottom();
+    } else {
+       this.pinTop();
+    }
+    this.active = !this.active;
+  }
   pinTop() {
-    this.renderer.removeClass(this.element.nativeElement, 'bottom');
+    console.log('top called')
     this.renderer.addClass(this.element.nativeElement, 'top');
   }
   pinBottom() {
+    console.log('bottom called')
     this.renderer.removeClass(this.element.nativeElement, 'top');
-    this.renderer.addClass(this.element.nativeElement, 'bottom');
   }
   // hide() {
   //   this.renderer.removeClass(this.element.nativeElement, 'top');

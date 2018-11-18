@@ -38,7 +38,9 @@ import { NewsSidebarComponent } from './landing-page/news-sidebar/news-sidebar.c
 import { NewsSidebarItemComponent } from './landing-page/news-sidebar/news-sidebar-item/news-sidebar-item.component';
 import { NewsSidebarItemListComponent } from './landing-page/news-sidebar/news-sidebar-item-list/news-sidebar-item-list.component';
 import { CategoryOverviewComponent } from './global-nav/category-overview/category-overview.component';
-import { DatasetBoxComponent } from './shared/components/dataset-box/dataset-box.component';
+import { MouseScrollIconComponent } from './shared/components/mouse-scroll-icon/mouse-scroll-icon.component';
+import { ClickOutsideModule } from 'ng-click-outside';
+
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -60,6 +62,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     NewsSidebarItemComponent,
     NewsSidebarItemListComponent,
     CategoryOverviewComponent,
+    MouseScrollIconComponent
   ],
   imports: [
     BrowserModule,
@@ -73,6 +76,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     Ng2IziToastModule,
     SharedAcrossModule,
+    ClickOutsideModule,
     HttpClientBusyModule.forRoot(),
     TranslateModule.forRoot({
       loader: {

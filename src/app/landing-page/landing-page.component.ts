@@ -15,5 +15,8 @@ export class LandingPageComponent implements OnInit {
 
   ngOnInit() {
   }
+  onClickOutside(e) {
+    console.log(e)
+  }
 
 }

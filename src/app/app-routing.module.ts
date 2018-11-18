@@ -4,12 +4,14 @@ import { RegisterComponent } from './auth/register/register.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { AdminGuard } from './auth/admin.guard';
 import { CategoryOverviewComponent } from './global-nav/category-overview/category-overview.component';
+import { LoginComponent } from './auth/login/login.component';
 
 const routes: Routes = [
   {path: '', component: LandingPageComponent, children: [
-    {path: 'categories', loadChildren: './categories/categories.module#CategoriesModule'},
     {path: '', component: CategoryOverviewComponent, pathMatch: 'full'}
   ]},
+  {path: 'categories', loadChildren: './categories/categories.module#CategoriesModule'},
+  {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent },
   {path: 'admin', loadChildren: './admin-panel/admin-panel.module#AdminPanelModule', canActivate: [AdminGuard]},
   {path: 'news', loadChildren: './news/news.module#NewsModule'},
