@@ -14,7 +14,9 @@
             <img src= "https://www.timeshighereducation.com/sites/default/files/byline_photos/default-avatar.png">
           </div>
     </div>
-    <button class="hamburger hamburger--slider linksButton" type="button" (click)="showMenu = true">
+    <button class="hamburger hamburger--slider linksButton" type="button"
+    [ngStyle]="{'visibility': showMenu ? 'hidden' : 'visible'}" (click)="showMenu = true"
+    >
         <span class="hamburger-box">
           <span  class="hamburger-inner"></span>
         </span>
@@ -22,4 +24,4 @@
   </div>
 </div>
 
-<header-popup [ngStyle]="{'visibility': showMenu ? 'visible' : 'hidden'}"  (close)="showMenu = false"></header-popup>
+<header-popup [ngStyle]="{'display': showMenu ? 'flex' : 'none'}"  (close)="showMenu = false"></header-popup>

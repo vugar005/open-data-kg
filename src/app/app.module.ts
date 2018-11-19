@@ -30,7 +30,6 @@ import { HeaderToggleDirective } from './shared/directives/header-toggle.directi
 import { APIInterceptor } from './shared/interceptors/api.interceptor';
 import { AdminGuard } from './auth/admin.guard';
 import { SharedAcrossModule } from './shared/shared-across.module';
-import { TotalDatasetsCountComponent } from './categories/total-datasets-count/total-datasets-count.component';
 import { ClassChangerDirective } from './shared/directives/class-changer.directive';
 import { HeaderPopupComponent } from './header/header-popup/header-popup.component';
 import { HttpClientBusyModule } from 'ngx-httpclient-busy';
@@ -40,6 +39,10 @@ import { NewsSidebarItemListComponent } from './landing-page/news-sidebar/news-s
 import { CategoryOverviewComponent } from './global-nav/category-overview/category-overview.component';
 import { MouseScrollIconComponent } from './shared/components/mouse-scroll-icon/mouse-scroll-icon.component';
 import { ClickOutsideModule } from 'ng-click-outside';
+import { DesktopComponent } from './landing-page/desktop/desktop.component';
+import { FooterComponent } from './shared/components/footer/footer.component';
+import { TotalDatasetsCountComponent } from './global-nav/total-datasets-count/total-datasets-count.component';
+import { MatTabsModule } from '@angular/material';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -62,7 +65,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     NewsSidebarItemComponent,
     NewsSidebarItemListComponent,
     CategoryOverviewComponent,
-    MouseScrollIconComponent
+    MouseScrollIconComponent,
+    DesktopComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -77,6 +82,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     Ng2IziToastModule,
     SharedAcrossModule,
     ClickOutsideModule,
+    MatTabsModule,
     HttpClientBusyModule.forRoot(),
     TranslateModule.forRoot({
       loader: {

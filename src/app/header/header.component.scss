@@ -60,6 +60,9 @@
 .hamburger {
   display: flex!important;
 }
+.hamburger-box {
+  height: 19px!important;
+}
 .hamburger-inner {
   background-color: #FFFFFF!important;
   width: 25px;
@@ -70,7 +73,9 @@
     height: 2px;
   }
 }
-
+.hamburger {
+  padding-right: 0!important;
+}
 .hamburger--slider .hamburger-inner:before {
   top: 7px;
 }

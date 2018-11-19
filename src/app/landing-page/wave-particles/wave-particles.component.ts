@@ -22,8 +22,8 @@ export class WaveParticlesComponent
   @ViewChild('container')
   elementRef: ElementRef;
   SEPARATION = 100;
-  AMOUNTX = 30; // 35
-  AMOUNTY = 40; // 35
+  AMOUNTX = 35; // 35
+  AMOUNTY = 35; // 35
   particles = [];
   particle;
   count = 0;
@@ -149,7 +149,7 @@ export class WaveParticlesComponent
     }
     this.renderer.render(this.scene, this.camera);
     // This increases or decreases speed
-    this.count += 0.1;
+    this.count += 0.07;
   }
   onDocumentMouseMove(event) {
     this.mouseX = event.clientX - this.windowHalfX;

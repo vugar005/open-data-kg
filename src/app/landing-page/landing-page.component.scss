@@ -1,25 +1,22 @@
 :host {
   display: block;
   width: 100vw;
-  height: calc(100vh - 70px); // was - 70px
+  height: calc(100vh - 70px);
   background-image: linear-gradient(to right, #4e8ec8, #47a8c5);
-  overflow-y: auto;
+  overflow-y: hidden;
   overflow-x: hidden;
 
   position: relative;
 }
 
 /deep/ ::-webkit-scrollbar {
- //  display: none;
+ width: 10px;
 }
-.modules-wrapper {
-    z-index: 2;
-    width: 100vw;
-    position: absolute;
-    height: 100vh;
-    top: calc(100vh - 197px);
+/deep/::-webkit-scrollbar-thumb {
+   border-radius: 4px;
 }
-.modules{
+
+.bottom{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -27,6 +24,14 @@
   position: absolute;
   transition: top 0.25s ease-out;
   top: calc(100vh - 197px);
+  width: calc(100vw);
+  background-image: linear-gradient(to right, #4e8ec8, #47a8c5);
+  .content {
+    display: block;
+    width: 100%;
+    max-height: calc(100vh - 180px);
+    overflow-y: auto;
+  }
   &.bottom {
    // top: calc(100vh - 140px);
   }
