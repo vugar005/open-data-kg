@@ -42,8 +42,15 @@ import { ClickOutsideModule } from 'ng-click-outside';
 import { DesktopComponent } from './landing-page/desktop/desktop.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { TotalDatasetsCountComponent } from './global-nav/total-datasets-count/total-datasets-count.component';
-import { MatTabsModule } from '@angular/material';
+import { MatTabsModule, MatCheckboxModule } from '@angular/material';
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
+import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+import { CategoryService } from './categories/category.service';
 
+const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
+  suppressScrollX: true
+};
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -83,6 +90,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     SharedAcrossModule,
     ClickOutsideModule,
     MatTabsModule,
+    MatCheckboxModule,
+    PerfectScrollbarModule,
     HttpClientBusyModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
@@ -95,9 +104,14 @@ export function HttpLoaderFactory(http: HttpClient) {
   providers: [
     SharedService,
     AdminGuard,
+    CategoryService,
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
-    {provide: HTTP_INTERCEPTORS, useClass: APIInterceptor, multi: true }
+    {provide: HTTP_INTERCEPTORS, useClass: APIInterceptor, multi: true },
+    {
+      provide: PERFECT_SCROLLBAR_CONFIG,
+      useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
+    }
   ],
   bootstrap: [AppComponent]
 })

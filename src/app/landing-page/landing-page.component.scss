@@ -5,16 +5,15 @@
   background-image: linear-gradient(to right, #4e8ec8, #47a8c5);
   overflow-y: hidden;
   overflow-x: hidden;
-
   position: relative;
 }
 
-/deep/ ::-webkit-scrollbar {
- width: 10px;
-}
-/deep/::-webkit-scrollbar-thumb {
-   border-radius: 4px;
-}
+// /deep/ ::-webkit-scrollbar {
+//  width: 10px;
+// }
+// /deep/::-webkit-scrollbar-thumb {
+//    border-radius: 4px;
+// }
 
 .bottom{
   display: flex;
@@ -29,7 +28,7 @@
   .content {
     display: block;
     width: 100%;
-    max-height: calc(100vh - 180px);
+    height: calc(100vh - 180px);
     overflow-y: auto;
   }
   &.bottom {

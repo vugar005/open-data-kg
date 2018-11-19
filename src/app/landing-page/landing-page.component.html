@@ -1,9 +1,9 @@
 <desktop></desktop>
 
-    <div class="bottom" navStyleChange  #dir="navStyleChange"   (clickOutside)="dir.pinBottom()" [delayClickOutsideInit]="true">
+    <div class="bottom" navStyleChange  #dir="navStyleChange"   (clickOutside)="dir.pinBottom()" >
        <mouse-scroll-icon (click)="dir.toggleBlockClass($event)"></mouse-scroll-icon>
         <global-nav (click)="dir.pinTop()" ></global-nav>
-       <div class="content">
+       <div class="content" >
           <router-outlet></router-outlet>
           <total-datasets-count></total-datasets-count>
           <app-footer></app-footer>

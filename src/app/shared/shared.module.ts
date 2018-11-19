@@ -11,11 +11,12 @@ import { SwiperModule } from 'ngx-swiper-wrapper';
 import { SWIPER_CONFIG } from 'ngx-swiper-wrapper';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 import { FooterComponent } from '../footer/footer.component';
-import { MatRippleModule } from '@angular/material';
+import { MatRippleModule, MatCheckboxModule } from '@angular/material';
 import { SharedUploadModule } from './shared-upload.module';
 import { ModuleSidebarComponent } from './components/module-sidebar/module-sidebar.component';
 import { CommonModule } from '@angular/common';
 import { DatasetBoxComponent } from './components/dataset-box/dataset-box.component';
+import { ReactiveFormsModule } from '@angular/forms';
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
   slidesPerView: 'auto'
@@ -29,6 +30,8 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     imports: [
       CommonModule,
       SharedUploadModule,
+      ReactiveFormsModule,
+      MatCheckboxModule,
       TranslateModule.forChild({
         loader: {
           provide: TranslateLoader,
@@ -44,7 +47,9 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
       FooterComponent,
       MatRippleModule,
       ModuleSidebarComponent,
-      DatasetBoxComponent
+      DatasetBoxComponent,
+      MatCheckboxModule,
+      ReactiveFormsModule,
     ],
     providers: [
       {

@@ -10,72 +10,17 @@
           </div>
     </div> -->
   </div>
-  <div class="row justify-content-between">
-          <div class="col-4">
-           <div class="category-block">
-             <div class="field" (click) ="onNavigate($event)" >Administration</div>
-             <div class="field">Agricalture</div>
-             <div class="field">Administration</div>
-             <div class="field">Agricalture</div>
-             <div class="field">Administration</div>
-             <div class="field">Agricalture</div>
+  <div class="row justify-content-start">
+          <div class="col-2" *ngFor="let item of (categories$ | async)" (click) ="onNavigate(item.id)">
+           <div class="category-block" *ngIf="item" >
+             <div class="icon">
+                <img src="./assets/icons/seeding.svg">
+             </div>
+             <div class="name">{{item.name}}</div>
            </div>
           </div>
 
-          <div class="col-4">
-              <div class="category-block">
-                <div class="field">Administration</div>
-                <div class="field">Agricalture</div>
-                <div class="field">Administration</div>
-                <div class="field">Agricalture</div>
-                <div class="field">Administration</div>
-                <div class="field">Agricalture</div>
-              </div>
-             </div>
 
-             <div class="col-4">
-                <div class="category-block">
-                  <div class="field">Administration</div>
-                  <div class="field">Agricalture</div>
-                  <div class="field">Administration</div>
-                  <div class="field">Agricalture</div>
-                  <div class="field">Administration</div>
-                  <div class="field">Agricalture</div>
-                </div>
-               </div>
-
-               <div class="col-4">
-                  <div class="category-block">
-                    <div class="field">Administration</div>
-                    <div class="field">Agricalture</div>
-                    <div class="field">Administration</div>
-                    <div class="field">Agricalture</div>
-                    <div class="field">Administration</div>
-                    <div class="field">Agricalture</div>
-                  </div>
-                 </div>
-
-                 <div class="col-4">
-                    <div class="category-block">
-                      <div class="field">Administration</div>
-                      <div class="field">Agricalture</div>
-                      <div class="field">Administration</div>
-                      <div class="field">Agricalture</div>
-                      <div class="field">Administration</div>
-                      <div class="field">Agricalture</div>
-                    </div>
-                   </div>
-
-                   <div class="col-4">
-                      <div class="category-block">
-                        <div class="field">Administration</div>
-                        <div class="field">Agricalture</div>
-                        <div class="field">Administration</div>
-                        <div class="field">Agricalture</div>
-                        <div class="field">Administration</div>
-                        <div class="field">Agricalture</div>
-                      </div>
-                     </div>
   </div>
 
 </div>

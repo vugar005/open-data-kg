@@ -17,11 +17,13 @@
   border-radius: 10px;
  .item {
    display: flex;
+   align-items: center;
    cursor: pointer;
   padding-bottom: 40px;
   .name {
     font-size: 14px;
     color: #333333;
+    margin-left: 10px;
   }
 
  }

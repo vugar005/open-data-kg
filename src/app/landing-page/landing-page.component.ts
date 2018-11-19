@@ -8,7 +8,11 @@ import { Store } from '@ngrx/store';
   styleUrls: ['./landing-page.component.scss']
 })
 export class LandingPageComponent implements OnInit {
-
+  config = {
+      wheelSpeed: 0.2,
+      minScrollbarLength: 20,
+      swipeEasing: true
+    };
   constructor(private store: Store<AppState>) {
 
    }
@@ -18,5 +22,7 @@ export class LandingPageComponent implements OnInit {
   onClickOutside(e) {
     console.log(e)
   }
-
+onYStart(e) {
+  console.log(e)
+}
 }

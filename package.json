@@ -52,6 +52,7 @@
     "ngx-form-utils": "0.0.3",
     "ngx-httpclient-busy": "^0.2.2",
     "ngx-input": "0.0.1",
+    "ngx-perfect-scrollbar": "^7.0.0",
     "ngx-swiper-wrapper": "^6.4.0",
     "nt-table": "^1.0.0-rc.17",
     "rxjs": "~6.2.0",

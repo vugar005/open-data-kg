@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {faSearch} from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import {  Category } from 'src/app/categories/models/category.model';
+import { CategoryService } from 'src/app/categories/category.service';
 
 @Component({
   selector: 'category-overview',
@@ -9,16 +12,17 @@ import { Router } from '@angular/router';
 })
 export class CategoryOverviewComponent implements OnInit {
   faSearch = faSearch;
-  constructor(private router: Router) { }
+  categories$: Observable<Category[]>;
+  constructor(private router: Router, private categoryService: CategoryService) { }
 
   ngOnInit() {
+   this.categories$ = this.categoryService.getCategories();
   }
-  onNavigate(e: MouseEvent) {
-   e.preventDefault();
+  onNavigate(id: string) {
    // console.log(e);
     setTimeout(() => {
-      this.router.navigateByUrl('/categories');
-    }, 10)
+      this.router.navigate(['/categories', id ]);
+    }, 10);
   }
 
 }
