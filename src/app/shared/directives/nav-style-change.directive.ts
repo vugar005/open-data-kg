@@ -1,7 +1,7 @@
 import { Directive, ElementRef, AfterViewInit, Renderer2, OnDestroy, HostBinding, Input } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { Subject, fromEvent } from 'rxjs';
-import { takeUntil, tap } from 'rxjs/operators';
+import { takeUntil, tap, buffer, bufferCount, bufferTime } from 'rxjs/operators';
 
 @Directive({
   selector: '[navStyleChange]',
@@ -20,6 +20,7 @@ export class NavStyleChangeDirective implements AfterViewInit, OnDestroy {
     ) { }
     ngAfterViewInit() {
       // this.listenToModuleClick();
+      this.listenToScrollChange();
     }
     listenToModuleClick() {
     //  const modules = document.getElementsByClassName('global-module');
@@ -76,14 +77,16 @@ export class NavStyleChangeDirective implements AfterViewInit, OnDestroy {
     });
   }
   listenToScrollChange() {
-    fromEvent(document, 'wheel')
+    fromEvent(document, 'mousewheel')
     .pipe(
       takeUntil(this._onDestroy$),
     ).subscribe((res: WheelEvent) => this.handleScrollEvent(res), (er) => console.log(er));
   }
 
   handleScrollEvent(e: WheelEvent) {
-   console.log(e);
+   if (e.wheelDelta < 0) {
+     this.pinTop();
+   }
   }
   ngOnDestroy() {
     this._onDestroy$.next();

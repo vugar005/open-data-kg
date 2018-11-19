@@ -1,18 +1,142 @@
 :host {
   display: flex;
+  align-items: center;
   background: #ffffff;
-  padding: 37px 53px;
+  padding: 32px 40px;
+  margin-top: 5px;
+  border-radius: 10px;
+  margin-top: 22px;
 }
 .left {
   display: flex;
   flex-direction: column;
   .item-title {
     font-size: 16px;
-  color: #333333;
-  text-transform: uppercase;
+    font-weight: bold;
+    color: #333333;
+    text-transform: uppercase;
   }
   .item-content {
     font-size: 14px;
     color: #333333;
+    padding-bottom: 5px;
   }
+  .item-rating {
+    display: flex;
+    align-items: flex-end;
+    padding-top: 10px;
+    .title {
+      font-weight: 300;
+      font-size: 12px;
+      color: #666666;
+      padding-right: 5px;
+    }
+   .star-content {
+     display: flex;
+    .star {
+      width: 14px;
+      margin-left: 2px;
+    }
+   }
+    .count {
+      display: flex;
+      align-items: flex-end;
+      margin-left: 33px;
+      .icon {
+        width: 12px;
+        margin-right: 7px;
+      }
+      .text {
+        font-weight: 300;
+        font-size: 12px;
+        color: #666666;
+      }
+    }
+  }
+  .item-formats {
+    display: flex;
+    padding-top: 22px;
+    .icon {
+      margin-right: 8px;
+      padding: 7px 10px;
+       width: 68px;
+       border-radius: 15px;
+       text-transform: uppercase;
+      color: #ffffff;
+      text-align: center;
+      cursor: pointer;
+       &.zip {
+        background: #4ABBDF;
+       }
+       &.json {
+        background: #7E7E7E;
+       }
+       &.cvs {
+        background: #73CB49;
+       }
+    }
+  }
+}
+
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.right {
+  display: flex;
+  align-items: center;
+  .box-perspective {
+    perspective: 100px;
+    width: 46px;
+    height: 44px;
+    .open-box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      background: #4AAAC6;
+      position: relative;
+      border-radius: 5px;
+      transition: all 300ms ease-in-out;
+      cursor: pointer;
+      .icon {
+        width: 7px;
+       position: absolute;
+      }
+
+
+    }
+  }
+  .text {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    &.animated {
+      animation-duration: 300ms;
+    }
+    p {
+      padding-left: 13px;
+      line-height: 17px;
+      font-size: 12px;
+      text-transform: uppercase;
+      color: #48B1C5;
+      border-radius: 9px;
+    }
+
+  }
+  &:hover {
+    .text {
+      display: flex;
+    }
+    .box-perspective {
+      .open-box {
+      transform: rotateY(45deg);
+      }
+    }
+  }
+
+
 }

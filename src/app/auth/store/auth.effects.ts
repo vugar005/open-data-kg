@@ -15,7 +15,6 @@ export class AuthEffects {
     tryLogin = this.actions$
     .pipe(
       ofType(AuthActionTypes.TRY_LOGIN),
-      delay(5000),
       switchMap((res: any) =>
        this.http.post('login', res.payload, {
        observe: 'response'})

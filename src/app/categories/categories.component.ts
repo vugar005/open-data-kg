@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import {faSearch} from '@fortawesome/free-solid-svg-icons';
 @Component({
-  selector: 'app-categories',
+  selector: 'categories',
   templateUrl: './categories.component.html',
   styleUrls: ['./categories.component.scss'],
 })
