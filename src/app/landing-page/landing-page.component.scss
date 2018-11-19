@@ -20,6 +20,9 @@
     top: calc(100vh - 197px);
 }
 .modules{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   z-index: 2;
   position: absolute;
   transition: top 0.25s ease-out;

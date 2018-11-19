@@ -95,14 +95,15 @@ export class NavStyleChangeDirective implements AfterViewInit, OnDestroy {
     } else {
        this.pinTop();
     }
-    this.active = !this.active;
   }
   pinTop() {
-    console.log('top called')
+    this.active = true;
+  //  console.log('top called')
     this.renderer.addClass(this.element.nativeElement, 'top');
   }
   pinBottom() {
-    console.log('bottom called')
+    this.active = false;
+  //  console.log('bottom called')
     this.renderer.removeClass(this.element.nativeElement, 'top');
   }
   // hide() {
