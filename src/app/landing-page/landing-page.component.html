@@ -1,8 +1,8 @@
 <desktop></desktop>
 
-    <div class="bottom" navStyleChange  #dir="navStyleChange"   (clickOutside)="dir.pinBottom()" >
+    <div class="global-navbar" navStyleChange  #dir="navStyleChange"   (clickOutside)="dir.pinBottom()" >
        <mouse-scroll-icon (click)="dir.toggleBlockClass($event)"></mouse-scroll-icon>
-        <global-nav (click)="dir.pinTop()" ></global-nav>
+        <global-nav (navChanged)="onNavChange($event)" (click)="dir.pinTop()" class="bottom" ></global-nav>
        <div class="content" >
           <router-outlet></router-outlet>
           <total-datasets-count></total-datasets-count>

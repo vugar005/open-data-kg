@@ -1,40 +1,16 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-
       <div class="global-modules">
 
-          <a class="global-module">
+          <a class="global-module" *ngFor="let mod of modules" (click)="onNavigate(mod.link)">
             <div class="icon">
-              <img src="./assets/icons/database.svg">
+              <img src="{{mod?.icon_url}}">
             </div>
-            <div class="text">Categories</div>
+            <div class="text">{{mod?.name}}</div>
           </a>
-          <a class="global-module" >
-              <div class="icon">
-                <img src="./assets/icons/database_2.svg">
-              </div>
-              <div class="text">Organizations</div>
-          </a>
-          <a class="global-module" >
-              <div class="icon">
-                  <img src="./assets/icons/user_1.svg">
-                </div>
-                <div class="text">
-                    Community
-                </div>
-              </a>
-          <a class="global-module" >
-              <div class="icon">
-                  <img src="./assets/icons/database_3.svg">
-                </div>
-                <div class="text">
-                    Popular
-                </div>
-            </a>
         </div>
 
     </div>
   </div>
-
 </div>

@@ -1,17 +1,24 @@
 :host {
   display: block;
- padding-top: 39px;
-
+}
+/deep/ .animated {
+  animation-duration: 700ms;
 }
 .module-title {
-  padding: 10px 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 24px;
   background: linear-gradient(90.07deg, #4C9EC7 0.02%, #4C9EC7 99.99%);
   border-radius: 9px;
   color: #ffffff;
+  font-size: 18px;
+  font-weight: bold;
+  height: 60px;
 }
 
 .items-co {
-  margin-top: 20px;
+  margin-top: 14px;
   padding: 25px;
   background: #FFFFFF;
   border-radius: 10px;

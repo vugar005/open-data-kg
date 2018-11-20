@@ -1,0 +1,33 @@
+:host {
+  display: block;
+}
+/deep/ .mat-expansion-panel {
+  background: #f7f7f7!important;;
+  box-shadow: none!important;
+  margin-bottom: 14px!important;
+}
+/deep/ .mat-expansion-panel-body {
+  padding: 0 0 16px!important;
+}
+/deep/ .mat-expansion-panel-header {
+      background-color: var(--color-primary)!important;
+      font-size: 18px!important;
+      font-family: 'OpensSans', sans-serif!important;
+      border-radius: 9px!important;
+      font-weight: bold;
+      padding: 0 31px!important;
+  }
+/deep/ .mat-expansion-panel-header-title {
+  color: #ffffff!important;
+  margin-left: 25px!important;
+}
+/deep/ .mat-expansion-indicator::after {
+  color: #ffffff!important;
+}
+
+/deep/ .mat-content {
+  order: 1;
+}
+/deep/ .mat-expansion-indicator  {
+ // transform: rotate(-90deg)!important;
+}

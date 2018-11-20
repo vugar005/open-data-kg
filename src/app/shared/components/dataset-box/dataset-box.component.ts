@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'dataset-box',
@@ -6,10 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dataset-box.component.scss']
 })
 export class DatasetBoxComponent implements OnInit {
-
+  @Input() dataset: any;
   constructor() { }
 
   ngOnInit() {
+    console.log(this.dataset.datasetRating)
   }
 
 }

@@ -20,7 +20,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { WaveParticlesComponent } from './landing-page/wave-particles/wave-particles.component';
 import { HeaderComponent } from './header/header.component';
 import { LangNavComponent } from './lang-nav/lang-nav.component';
-import { GlobalNavComponent } from './global-nav/global-nav.component';
 import { NavStyleChangeDirective } from './shared/directives/nav-style-change.directive';
 import { SharedService } from './shared/shared.service';
 import { ErrorInterceptor } from './shared/interceptors/error.interceptor';
@@ -40,13 +39,13 @@ import { CategoryOverviewComponent } from './global-nav/category-overview/catego
 import { MouseScrollIconComponent } from './shared/components/mouse-scroll-icon/mouse-scroll-icon.component';
 import { ClickOutsideModule } from 'ng-click-outside';
 import { DesktopComponent } from './landing-page/desktop/desktop.component';
-import { FooterComponent } from './shared/components/footer/footer.component';
 import { TotalDatasetsCountComponent } from './global-nav/total-datasets-count/total-datasets-count.component';
-import { MatTabsModule, MatCheckboxModule } from '@angular/material';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { CategoryService } from './categories/category.service';
+import { SharedModule } from './shared/shared.module';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -55,50 +54,47 @@ export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    LandingPageComponent,
-    MainPageComponent,
-    WaveParticlesComponent,
-    LangNavComponent,
-    GlobalNavComponent,
-    NavStyleChangeDirective,
-    HeaderToggleDirective,
-    TotalDatasetsCountComponent,
-    ClassChangerDirective,
-    HeaderPopupComponent,
-    NewsSidebarComponent,
-    NewsSidebarItemComponent,
-    NewsSidebarItemListComponent,
-    CategoryOverviewComponent,
-    MouseScrollIconComponent,
-    DesktopComponent,
-    FooterComponent
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
-    AuthModule,
-    FontAwesomeModule,
-    HttpClientModule,
-    StoreModule.forRoot(reducers, { metaReducers }),
-    EffectsModule.forRoot([]),
-    !environment.production ? StoreDevtoolsModule.instrument() : [],
-    Ng2IziToastModule,
-    SharedAcrossModule,
-    ClickOutsideModule,
-    MatTabsModule,
-    MatCheckboxModule,
-    PerfectScrollbarModule,
-    HttpClientBusyModule.forRoot(),
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
+   declarations: [
+      AppComponent,
+      HeaderComponent,
+      LandingPageComponent,
+      MainPageComponent,
+      WaveParticlesComponent,
+      LangNavComponent,
+      NavStyleChangeDirective,
+      HeaderToggleDirective,
+      TotalDatasetsCountComponent,
+      ClassChangerDirective,
+      HeaderPopupComponent,
+      NewsSidebarComponent,
+      NewsSidebarItemComponent,
+      NewsSidebarItemListComponent,
+      CategoryOverviewComponent,
+      MouseScrollIconComponent,
+      DesktopComponent,
+      NotFoundComponent,
+   ],
+   imports: [
+      BrowserModule,
+      BrowserAnimationsModule,
+      AppRoutingModule,
+      AuthModule,
+      HttpClientModule,
+      StoreModule.forRoot(reducers, {metaReducers}),
+      EffectsModule.forRoot([]),
+      !environment.production ? StoreDevtoolsModule.instrument() : [],
+      Ng2IziToastModule,
+      SharedAcrossModule,
+      ClickOutsideModule,
+      SharedModule,
+      PerfectScrollbarModule,
+      HttpClientBusyModule.forRoot(),
+      TranslateModule.forRoot({
+        loader: {
+          provide: TranslateLoader,
+          useFactory: HttpLoaderFactory,
+          deps: [HttpClient]
+        }
     }),
   ],
   providers: [

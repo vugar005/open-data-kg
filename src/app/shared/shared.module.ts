@@ -10,13 +10,16 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SwiperModule } from 'ngx-swiper-wrapper';
 import { SWIPER_CONFIG } from 'ngx-swiper-wrapper';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
-import { FooterComponent } from '../footer/footer.component';
-import { MatRippleModule, MatCheckboxModule } from '@angular/material';
+import { MatRippleModule, MatCheckboxModule, MatExpansionModule } from '@angular/material';
 import { SharedUploadModule } from './shared-upload.module';
 import { ModuleSidebarComponent } from './components/module-sidebar/module-sidebar.component';
 import { CommonModule } from '@angular/common';
 import { DatasetBoxComponent } from './components/dataset-box/dataset-box.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DatasetListComponent } from './components/dataset-list/dataset-list.component';
+import { GlobalNavComponent } from '../global-nav/global-nav.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { StarRatingComponent } from './components/star-rating/star-rating.component';
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
   slidesPerView: 'auto'
@@ -25,13 +28,17 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   declarations: [
     ModuleSidebarComponent,
     DatasetBoxComponent,
-    FooterComponent
+    DatasetListComponent,
+    FooterComponent,
+    GlobalNavComponent,
+    StarRatingComponent
   ],
     imports: [
       CommonModule,
       SharedUploadModule,
       ReactiveFormsModule,
       MatCheckboxModule,
+      MatExpansionModule,
       TranslateModule.forChild({
         loader: {
           provide: TranslateLoader,
@@ -41,6 +48,7 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
       }),
     ],
     exports: [
+      CommonModule,
       FontAwesomeModule,
       TranslateModule,
       SwiperModule,
@@ -48,8 +56,12 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
       MatRippleModule,
       ModuleSidebarComponent,
       DatasetBoxComponent,
+      DatasetListComponent,
       MatCheckboxModule,
       ReactiveFormsModule,
+      MatExpansionModule,
+      GlobalNavComponent,
+      StarRatingComponent
     ],
     providers: [
       {

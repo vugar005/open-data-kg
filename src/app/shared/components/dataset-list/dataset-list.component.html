@@ -1,0 +1,15 @@
+<!-- <dataset-box *ngFor="let item of (list$ | async)?.tbl[0]?.r"
+      [item]="item"
+      ></dataset-box> -->
+<mat-accordion [displayMode]="'flat'" *ngIf="(list$ | async)?.tbl" [multi]="true">
+  <mat-expansion-panel *ngFor="let item of (list$ | async)?.tbl;let first=first" class="animated fadeIn" [expanded]="first">
+    <mat-expansion-panel-header [collapsedHeight]="'60px'" [expandedHeight]="'60px'">
+      <mat-panel-title>
+        {{item?.tn}}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <dataset-box *ngFor="let dataset of item?.r"
+    [dataset]="dataset"
+    ></dataset-box>
+  </mat-expansion-panel>
+</mat-accordion>

@@ -5,10 +5,12 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { AdminGuard } from './auth/admin.guard';
 import { CategoryOverviewComponent } from './global-nav/category-overview/category-overview.component';
 import { LoginComponent } from './auth/login/login.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
   {path: '', component: LandingPageComponent, children: [
-    {path: '', component: CategoryOverviewComponent, pathMatch: 'full'}
+    {path: '', redirectTo: 'categories-overview', pathMatch: 'full'},
+    {path: 'categories-overview', component: CategoryOverviewComponent}
   ]},
   {path: 'categories/:id', loadChildren: './categories/categories.module#CategoriesModule'},
   {path: 'login', component: LoginComponent},
@@ -17,6 +19,8 @@ const routes: Routes = [
   {path: 'news', loadChildren: './news/news.module#NewsModule'},
   {path: 'blogs', loadChildren: './blog/blog.module#BlogModule'},
   {path: 'announcements', loadChildren: './annoucements/announcements.module#AnnouncementsModule'},
+  {path: '404', component: NotFoundComponent},
+  {path: '**', redirectTo: '404'}
 ];
 
 @NgModule({

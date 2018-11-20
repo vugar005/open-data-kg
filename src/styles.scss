@@ -11,6 +11,13 @@
 #ngx-nt-table {
   height: 100%!important;
 }
+@media all and  (min-width: 1430px){
+  .container {
+    max-width: 1430px;
+}
+}
+
+
 
 html, body {
   width: 100%;
@@ -171,3 +178,4 @@ img {
 .ps .ps__rail-x:hover, .ps .ps__rail-y:hover {
   background-color: transparent!important;
 }
+
