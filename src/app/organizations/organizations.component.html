@@ -2,7 +2,7 @@
 <div class="container">
   <div class="row justify-content-between pt-4">
     <div class="col-2">
-     <div class="mod-name">Categories</div>
+     <div class="mod-name">Organizations</div>
     </div>
     <div class="col-2">
       <div class="count">8 Results</div>
@@ -32,16 +32,16 @@
              <img src="./assets/icons/caret.svg" class="icon">
             </div>
       </div>
-      <input [hidden]="true" name="categoryId" [(ngModel)]="categoryQuery.categoryId">
+      <input [hidden]="true" name="orgId" [(ngModel)]="orgQuery.orgId">
     </form>
     </div>
   </div>
   <div class="row pt-3">
     <div class="col-3">
-      <module-sidebar (checkboxId)="catIdChanged($event)" [type]="'category'"></module-sidebar>
+      <module-sidebar (checkboxId)="checkboxIdChanged($event)" [type]="'organization'"></module-sidebar>
     </div>
     <div class="col-9">
-       <dataset-list [categoryQuery]= "categoryQuery" #dataset_list [type]="'category'"></dataset-list>
+       <dataset-list [orgQuery]= "orgQuery" #dataset_list [type]="'organization'"></dataset-list>
     </div>
   </div>
 </div>

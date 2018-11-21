@@ -11,7 +11,6 @@ export class DatasetBoxComponent implements OnInit {
 
   ngOnInit() {
    this.dataset.allFormat.split(' ').forEach(element => {
-     console.log(element)
    });
   }
 

@@ -1,4 +1,5 @@
 import { Component, OnInit, AfterViewInit, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'global-nav',
@@ -31,7 +32,13 @@ export class GlobalNavComponent  {
     }
   ];
   state = 'categories';
-  constructor() { }
+  constructor(private router: Router) {
+  if (this.router.url.includes('categories')) {
+    this.state = 'categories';
+  } else if (this.router.url.includes('organizations')) {
+    this.state = 'organizations';
+  }
+  }
 
 onNavigate(link: string) {
   this.state = link;

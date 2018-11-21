@@ -46,6 +46,7 @@ import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { CategoryService } from './categories/category.service';
 import { SharedModule } from './shared/shared.module';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { OrganizationOverviewComponent } from './global-nav/organization-overview/organization-overview.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -73,6 +74,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       MouseScrollIconComponent,
       DesktopComponent,
       NotFoundComponent,
+      OrganizationOverviewComponent
    ],
    imports: [
       BrowserModule,

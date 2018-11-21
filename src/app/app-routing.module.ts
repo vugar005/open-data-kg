@@ -6,13 +6,12 @@ import { AdminGuard } from './auth/admin.guard';
 import { CategoryOverviewComponent } from './global-nav/category-overview/category-overview.component';
 import { LoginComponent } from './auth/login/login.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { OrganizationOverviewComponent } from './global-nav/organization-overview/organization-overview.component';
 
 const routes: Routes = [
-  {path: '', component: LandingPageComponent, children: [
-    {path: '', redirectTo: 'categories-overview', pathMatch: 'full'},
-    {path: 'categories-overview', component: CategoryOverviewComponent}
-  ]},
+  {path: '', component: LandingPageComponent},
   {path: 'categories/:id', loadChildren: './categories/categories.module#CategoriesModule'},
+  {path: 'organizations/:id', loadChildren: './organizations/organizations.module#OrganizationsModule'},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent },
   {path: 'admin', loadChildren: './admin-panel/admin-panel.module#AdminPanelModule', canActivate: [AdminGuard]},

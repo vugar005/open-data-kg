@@ -1,9 +1,10 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { CategoryService } from 'src/app/categories/category.service';
 import { Category } from 'src/app/categories/models/category.model';
 import { Observable } from 'rxjs';
 import { FormControl, FormBuilder, FormGroup, FormArray } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { OrganizationService } from 'src/app/organizations/organization.service';
 
 @Component({
   selector: 'module-sidebar',
@@ -11,27 +12,33 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./module-sidebar.component.scss']
 })
 export class ModuleSidebarComponent implements OnInit {
+  @Input() type: string;
   @Output() datasetGroups = new EventEmitter();
-  @Output() catId = new EventEmitter();
- items: Category[];
+  @Output() checkboxId = new EventEmitter();
+ itemList: Category[];
  form: FormGroup;
- catIds: string[] = [];
+ checkboxIds: string[] = [];
+ orgIds: string[] = [];
  ready = false;
- constructor(private categoryService: CategoryService, private formBuilder: FormBuilder, private route: ActivatedRoute) {
+ constructor(private categoryService: CategoryService, private formBuilder: FormBuilder,
+  private route: ActivatedRoute, private organizationService: OrganizationService) {
    }
 
   ngOnInit() {
-    this.getCategories();
+    this.getItemList();
      this.route.params.subscribe(res => {
-      this.catIds.push(res['id']);
-      this.catId.emit(res['id']);
+      this.handleRouteId(res);
    //  this.initForm();
      });
   }
+  handleRouteId(res) {
+    this.checkboxIds.push(res['id']);
+    this.checkboxId.emit(res['id']);
+  }
   buildFormControls() {
-    const controls = this.items.map(cat => new FormControl(this.catIds.includes(cat.id)));
+    const controls = this.itemList.map(cat => new FormControl(this.checkboxIds.includes(cat.id)));
     this.form = this.formBuilder.group({
-      categories: new FormArray(controls)
+      items: new FormArray(controls)
     });
     this.ready = true;
     this.listenToFormChange();
@@ -40,16 +47,31 @@ export class ModuleSidebarComponent implements OnInit {
  // this.form.valueChanges.subscribe(res => console.log(res))
   }
   onCheckChange(state: boolean, id: string) {
-    this.catIds = [id];
-    this.catId.emit(id);
+    this.checkboxIds = [id];
+    this.checkboxId.emit(id);
     this.buildFormControls();
   }
+  getItemList() {
+    if (this.type === 'category') {
+      this.getCategories();
+    }
+    if (this.type === 'organization') {
+      this.getOrganizations();
+    }
+  }
   getCategories() {
-    this.categoryService.getCategories()
+      this.categoryService.getCategories()
+      .subscribe((res: Category[]) => {
+        this.itemList = res;
+        this.buildFormControls();
+      });
+  }
+  getOrganizations() {
+    this.organizationService.getOrganizations()
     .subscribe((res: Category[]) => {
-      this.items = res;
+      this.itemList = res;
       this.buildFormControls();
     });
-  }
+}
 
 }

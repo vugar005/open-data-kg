@@ -1,25 +1,28 @@
-import { Component, OnInit, ChangeDetectionStrategy, ViewChild, EventEmitter, Output } from '@angular/core';
-import {faSearch} from '@fortawesome/free-solid-svg-icons';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { DatasetListComponent } from '../shared/components/dataset-list/dataset-list.component';
-import { CategoryQuery } from './models/category-query.model';
-import { SelectType } from '../shared/models/select-type.model';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { CategoryQuery } from '../categories/models/category-query.model';
 import { Observable } from 'rxjs';
+import { SelectType } from '../shared/models/select-type.model';
 import { SharedService } from '../shared/shared.service';
 import { Router } from '@angular/router';
+import { OrgQuery } from './models/orgQuery.model';
+
 @Component({
-  selector: 'categories',
-  templateUrl: './categories.component.html',
-  styleUrls: ['./categories.component.scss'],
+  selector: 'organizations',
+  templateUrl: './organizations.component.html',
+  styleUrls: ['./organizations.component.scss']
 })
-export class CategoriesComponent implements OnInit {
+export class OrganizationsComponent implements OnInit {
+
   @ViewChild('f') form: NgForm;
   @ViewChild('dataset_list') list: DatasetListComponent;
   faSearch = faSearch;
-  categoryQuery: CategoryQuery = {
-    categoryId: '',
+  orgQuery: OrgQuery = {
+    orgId: '',
     formatId: '',
-    datasetFullname: ''
+    datasetFullName: ''
   };
   formatTypes$: Observable<SelectType[]>;
   constructor(private sharedService: SharedService, private router: Router) {
@@ -29,7 +32,7 @@ export class CategoriesComponent implements OnInit {
   ngOnInit() {
   }
   onSubmit() {
-   this.categoryQuery = {...this.form.value};
+   this.orgQuery = {...this.form.value};
    this.list.getList();
   }
   onInputEnter(e: KeyboardEvent) {
@@ -37,13 +40,14 @@ export class CategoriesComponent implements OnInit {
      this.onSubmit();
     }
   }
-  catIdChanged(e: string) {
-   this.categoryQuery = {
-     ...this.categoryQuery,
-     categoryId: e
+  checkboxIdChanged(e: string) {
+   this.orgQuery = {
+     ...this.orgQuery,
+     orgId: e
    };
   }
   onNavChanged(e) {
+    console.log(e)
    this.router.navigate([e, '']);
   }
 

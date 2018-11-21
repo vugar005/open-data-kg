@@ -4,7 +4,10 @@
        <mouse-scroll-icon (click)="dir.toggleBlockClass($event)"></mouse-scroll-icon>
         <global-nav (navChanged)="onNavChange($event)" (click)="dir.pinTop()" class="bottom" ></global-nav>
        <div class="content" >
-          <router-outlet></router-outlet>
+         <div class="overview-box">
+            <category-overview *ngIf="state==='categories'" class="animated fadeIn"></category-overview>
+            <organization-overview *ngIf="state==='organizations'" class="animated fadeIn"></organization-overview>
+         </div>
           <total-datasets-count></total-datasets-count>
           <app-footer></app-footer>
        </div>

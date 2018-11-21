@@ -14,6 +14,7 @@ export class LandingPageComponent implements OnInit {
       minScrollbarLength: 20,
       swipeEasing: true
     };
+    state = 'categories';
   constructor(private store: Store<AppState>, private router: Router) {
 
    }
@@ -24,8 +25,8 @@ export class LandingPageComponent implements OnInit {
     console.log(e);
   }
   onNavChange(link: string) {
-    console.log(link);
-   this.router.navigateByUrl(`${link}-overview`);
+    this.state = link;
+ //  this.router.navigateByUrl(`${link}-overview`);
   }
 onYStart(e) {
   console.log(e);

@@ -1,10 +1,10 @@
-<div class="module-title">Categories</div>
+<div class="module-title">{{type | uppercase}}</div>
 <div class="items-co" *ngIf="ready" >
   <form [formGroup]="form" >
-    <div class="item" formArrayName="categories" *ngFor="let cat of form.controls['categories'].controls; let i = index" >
-        <mat-checkbox  [formControlName]="i" (change)="onCheckChange($event, items[i].id)" color="primary" >
-            <div class="name" [attr.id]="items[i].id">
-          {{items[i].name}} ({{items[i].countCategory}})
+    <div class="item" formArrayName="items" *ngFor="let cat of form.controls['items'].controls; let i = index" >
+        <mat-checkbox  [formControlName]="i" (change)="onCheckChange($event, itemList[i].id)" color="primary" >
+            <div class="name" [attr.id]="itemList[i].id">
+          {{itemList[i].name}} ({{itemList[i].countCategory}})
               </div>
         </mat-checkbox>
     </div>
