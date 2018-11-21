@@ -24,11 +24,7 @@
                </div>
              </div>
               <div class="item-formats" *ngFor="let item of ((dataset?.allFormat).split(' '))">
-               <ng-container *ngIf="item?.length > 0">
-                  <div class="icon zip">ZIP</div>
-                <div class="icon json">json</div>
-                <div class="icon cvs">cvs</div>
-               </ng-container>
+                  <div class="icon {{item}}"  >{{item}}</div>
               </div>
         </div>
      </div>
@@ -49,6 +45,5 @@
   </div>
 
   </div>
-
-<!-- <div class="overlay">
-  </div> -->
+<div class="overlay">
+  </div>

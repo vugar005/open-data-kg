@@ -24,4 +24,4 @@
   </div>
 </div>
 
-<header-popup [ngStyle]="{'display': showMenu ? 'flex' : 'none'}"  (close)="showMenu = false"></header-popup>
+<header-popup *ngIf="showMenu" (close)="showMenu = false"></header-popup>

@@ -10,7 +10,9 @@ export class DatasetBoxComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.dataset.datasetRating)
+   this.dataset.allFormat.split(' ').forEach(element => {
+     console.log(element)
+   });
   }
 
 }

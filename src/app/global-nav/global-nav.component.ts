@@ -30,10 +30,11 @@ export class GlobalNavComponent  {
       link: 'popular'
     }
   ];
+  state = 'categories';
   constructor() { }
 
 onNavigate(link: string) {
-  console.log('on click');
+  this.state = link;
   this.navChanged.emit(link);
 }
 }

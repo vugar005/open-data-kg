@@ -8,9 +8,9 @@
               <img src="{{mod?.icon_url}}">
             </div>
             <div class="text">{{mod?.name}}</div>
+            <div class="outline"  [ngStyle]="{'width': state === mod.link ? '100%' : '0'}" ></div>
           </a>
         </div>
-
     </div>
   </div>
 </div>

@@ -37,10 +37,9 @@ export class ModuleSidebarComponent implements OnInit {
     this.listenToFormChange();
   }
   listenToFormChange() {
-  this.form.valueChanges.subscribe(res => console.log(res))
+ // this.form.valueChanges.subscribe(res => console.log(res))
   }
   onCheckChange(state: boolean, id: string) {
-    console.log(id);
     this.catIds = [id];
     this.catId.emit(id);
     this.buildFormControls();

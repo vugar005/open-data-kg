@@ -4,6 +4,7 @@ import { Category } from './models/category.model';
 import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { DatasetByCategoryGroupByOrg } from '../shared/models/DatasetByCategoryGroupByOrg.model';
+import { CategoryQuery } from './models/category-query.model';
 
 @Injectable({
   providedIn: 'root'
@@ -17,13 +18,13 @@ export class CategoryService {
       map((res: any) => res && res.tbl[0].r )
     );
   }
-  getDatasetsWithGroupByOrg(catId: string): Observable<DatasetByCategoryGroupByOrg> {
+  getDatasetsWithGroupByOrg(query: CategoryQuery): Observable<DatasetByCategoryGroupByOrg> {
     const body = {
       kv: {
-        categoryId: catId
+        ...query
       }
     };
-    return this.http.post<DatasetByCategoryGroupByOrg>('api/get/Permission/Datasets/getDatasetListByCategoryIdWithGroupByOrg', body);
+    return this.http.post<DatasetByCategoryGroupByOrg>('api/get/Permission/Datasets/GetDatasetListByCategoryIdWithGroupByOrg', body);
   }
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, HostBinding } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, HostBinding, ElementRef } from '@angular/core';
 import {faTimes} from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
 import { AppState } from 'src/app/reducers';
@@ -19,10 +19,12 @@ export class HeaderPopupComponent implements OnInit {
   @Output() close = new EventEmitter<void>();
   faTimes = faTimes;
   fadeIn = fadeIn;
+  ready = true;
  // @HostBinding('@bounce') routeAnimation = true;
   constructor(private router: Router, private store: Store<AppState>) { }
 
   ngOnInit() {
+    setTimeout(() => this.ready = true, 1500);
   }
 onNavigate(route: string) {
   this.close.next();
@@ -31,5 +33,11 @@ onNavigate(route: string) {
 onLogout() {
   this.close.next();
 this.store.dispatch(new Logout());
+}
+onClose(el: HTMLElement) {
+  this.close.next();
+  // el.style.animationDirection = 'reverse';
+  // el.style.animation = 'checked-anim 1s ease both';
+  // setTimeout(() => this.close.next(), 300);
 }
 }

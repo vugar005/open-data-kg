@@ -15,20 +15,33 @@
      </div>
     </div>
     <div class="col-9">
-      <div class="search-box">
-        <input placeholder="Search dataset" class="ng-input">
-        <div class="search-ico">
-          <fa-icon [icon]="faSearch"></fa-icon>
+       <form #f="ngForm" class=" filter-form" >
+        <div class="search-box">
+          <input placeholder="Search dataset" class="ng-input" name="datasetFullname" ngModel (keydown)="onInputEnter($event)">
+          <div class="search-ico" (click)="onSubmit()">
+            <fa-icon [icon]="faSearch"></fa-icon>
+          </div>
         </div>
+
+        <div class="format-select">
+            <select  name="formatId" ngModel id="format_select" (ngModelChange)="onSubmit()">
+              <option value="" class="default" >Select format</option>
+              <option  *ngFor="let type of (formatTypes$ | async)" [value]="type?.value">{{type?.label}}</option>
+            </select>
+            <div class="custom-caret">
+             <img src="./assets/icons/caret.svg" class="icon">
+            </div>
       </div>
+      <input [hidden]="true" name="categoryId" [(ngModel)]="categoryQuery.categoryId">
+    </form>
     </div>
   </div>
   <div class="row pt-3">
     <div class="col-3">
-      <module-sidebar (catId)="catId = $event"></module-sidebar>
+      <module-sidebar (catId)="catIdChanged($event)"></module-sidebar>
     </div>
     <div class="col-9">
-       <dataset-list [catId]= "catId"></dataset-list>
+       <dataset-list [categoryQuery]= "categoryQuery" #dataset_list [type]="'category'"></dataset-list>
     </div>
   </div>
 </div>

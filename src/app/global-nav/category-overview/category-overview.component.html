@@ -10,49 +10,15 @@
           </div>
     </div> -->
   </div>
-  <div class="row justify-content-center">
-          <div class="col-2" *ngFor="let item of (categories$ | async)" (click) ="onNavigate(item.id)">
-           <div class="category-block" *ngIf="item" >
+  <div class="row justify-content-start">
+          <div class="col-2" *ngFor="let item of (categories$ | async);let first=first" (click) ="onNavigate(item.id)">
+           <div class="category-block" *ngIf="!first" >
              <div class="icon">
                 <img src="./assets/icons/seeding.svg">
              </div>
-             <div class="name">{{item.name}}</div>
+             <div class="name">{{item?.name}}</div>
            </div>
           </div>
-          <div class="col-2" *ngFor="let item of (categories$ | async)" (click) ="onNavigate(item.id)">
-              <div class="category-block" *ngIf="item" >
-                <div class="icon">
-                   <img src="./assets/icons/seeding.svg">
-                </div>
-                <div class="name">{{item.name}}</div>
-              </div>
-             </div>
-             <div class="col-2" *ngFor="let item of (categories$ | async)" (click) ="onNavigate(item.id)">
-                <div class="category-block" *ngIf="item" >
-                  <div class="icon">
-                     <img src="./assets/icons/seeding.svg">
-                  </div>
-                  <div class="name">{{item.name}}</div>
-                </div>
-               </div>
-          <div class="col-2" *ngFor="let item of (categories$ | async)" (click) ="onNavigate(item.id)">
-              <div class="category-block" *ngIf="item" >
-                <div class="icon">
-                   <img src="./assets/icons/seeding.svg">
-                </div>
-                <div class="name">{{item.name}}</div>
-              </div>
-             </div>
-             <div class="col-2" *ngFor="let item of (categories$ | async)" (click) ="onNavigate(item.id)">
-                <div class="category-block" *ngIf="item" >
-                  <div class="icon">
-                     <img src="./assets/icons/seeding.svg">
-                  </div>
-                  <div class="name">{{item.name}}</div>
-                </div>
-               </div>
-
-
   </div>
 
 </div>
