@@ -20,6 +20,8 @@ import { DatasetListComponent } from './components/dataset-list/dataset-list.com
 import { GlobalNavComponent } from '../global-nav/global-nav.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { StarRatingComponent } from './components/star-rating/star-rating.component';
+import { DatasetDetailComponent } from './components/dataset-detail/dataset-detail.component';
+import { RouterModule } from '@angular/router';
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
   slidesPerView: 'auto'
@@ -29,6 +31,7 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     ModuleSidebarComponent,
     DatasetBoxComponent,
     DatasetListComponent,
+    DatasetDetailComponent,
     FooterComponent,
     GlobalNavComponent,
     StarRatingComponent
@@ -42,6 +45,7 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
       MatFormFieldModule,
       MatSelectModule,
       FormsModule,
+      RouterModule,
       TranslateModule.forChild({
         loader: {
           provide: TranslateLoader,
@@ -67,7 +71,8 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
       StarRatingComponent,
       MatFormFieldModule,
       MatSelectModule,
-      FormsModule
+      FormsModule,
+      RouterModule
     ],
     providers: [
       {

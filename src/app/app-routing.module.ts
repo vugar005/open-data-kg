@@ -3,15 +3,15 @@ import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { RegisterComponent } from './auth/register/register.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { AdminGuard } from './auth/admin.guard';
-import { CategoryOverviewComponent } from './global-nav/category-overview/category-overview.component';
 import { LoginComponent } from './auth/login/login.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { OrganizationOverviewComponent } from './global-nav/organization-overview/organization-overview.component';
+import { DatasetDetailComponent } from './shared/components/dataset-detail/dataset-detail.component';
 
 const routes: Routes = [
   {path: '', component: LandingPageComponent},
   {path: 'categories/:id', loadChildren: './categories/categories.module#CategoriesModule'},
   {path: 'organizations/:id', loadChildren: './organizations/organizations.module#OrganizationsModule'},
+  {path: 'datasets/:id', component: DatasetDetailComponent },
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent },
   {path: 'admin', loadChildren: './admin-panel/admin-panel.module#AdminPanelModule', canActivate: [AdminGuard]},

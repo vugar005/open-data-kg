@@ -3,8 +3,10 @@ import { Ng2IzitoastService } from 'ng2-izitoast';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable } from 'rxjs';
 import { SelectType } from './models/select-type.model';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
+import { Dataset } from './models/dataset.model';
+import { DatasetApi } from './models/datasetApi.model';
 
 @Injectable()
 export class SharedService {
@@ -122,5 +124,31 @@ private  mapType(res): SelectType {
       value: res.id,
       label: res.nameEn,
    };
+}
+getDatasetById(id: string): Observable<Dataset> {
+  const body = {
+    kv: {
+    id: id,
+    }
+  };
+  return this.http.post<Dataset>(`api/get/Permission/Datasets/GetDatasetDetails`,
+   JSON.stringify(body))
+  .pipe(
+    tap(res => console.log(res)));
+}
+getApiByDatasetById(id: string): Observable<DatasetApi[]> {
+  const body = {
+    kv: {
+   datasetId: id,
+    }
+  };
+  return this.http.post<DatasetApi[]>(`api/get/Permission/Datasets/GetApiByDatasetId`,
+   JSON.stringify(body))
+  .pipe(
+    map((res: any) => {
+     if (res && res.tbl && res.tbl[0]) {
+       return res.tbl[0].r;
+     }
+    }));
 }
 }
