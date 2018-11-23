@@ -15,8 +15,6 @@ import { reducers, metaReducers } from './reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
-import { MainPageComponent } from './landing-page/main-page/main-page.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { WaveParticlesComponent } from './landing-page/wave-particles/wave-particles.component';
 import { HeaderComponent } from './header/header.component';
 import { LangNavComponent } from './lang-nav/lang-nav.component';
@@ -47,7 +45,6 @@ import { CategoryService } from './categories/category.service';
 import { SharedModule } from './shared/shared.module';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { OrganizationOverviewComponent } from './global-nav/organization-overview/organization-overview.component';
-
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
 };
@@ -59,7 +56,6 @@ export function HttpLoaderFactory(http: HttpClient) {
       AppComponent,
       HeaderComponent,
       LandingPageComponent,
-      MainPageComponent,
       WaveParticlesComponent,
       LangNavComponent,
       NavStyleChangeDirective,
