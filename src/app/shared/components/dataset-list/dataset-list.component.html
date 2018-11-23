@@ -10,7 +10,7 @@
     </mat-expansion-panel-header>
     <dataset-box *ngFor="let dataset of item?.r"
     [dataset]="dataset"
-    routerLink="/datasets/{{dataset.datasetId}}"
+    (click)="boxSelected.emit(dataset.datasetId)"
     ></dataset-box>
   </mat-expansion-panel>
 </mat-accordion>

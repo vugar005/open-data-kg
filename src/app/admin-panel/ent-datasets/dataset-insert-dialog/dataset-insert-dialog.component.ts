@@ -28,6 +28,7 @@ export class DatasetInsertDialogComponent implements OnInit {
   config: ApiConfig;
   config2: ApiConfig;
   config3: ApiConfig;
+  config4: ApiConfig;
   faPlusCircle = faPlusCircle;
   selectedIndex = 0;
   constructor(
@@ -77,6 +78,11 @@ export class DatasetInsertDialogComponent implements OnInit {
             data: { table: table, row: row || undefined}
           });
         }
+      initDialog4(table: NtTableComponent, row = null) {
+        this.dialog.open(DatasetCategoryInsertComponent, {
+            data: { table: table, row: row || undefined}
+          });
+        }
         setConfigs() {
           this.config = {
             getApi: 'api/post/Permission/Datasets/GetDatasetCategoryList',
@@ -104,8 +110,17 @@ export class DatasetInsertDialogComponent implements OnInit {
               additionalFormData : {
                 datasetId: this.data.row ? this.data.row.id : this.ntForm.value.id
               }
-            };
-        }
+        };
+        this.config4 = {
+          getApi: 'api/post/Permission/Datasets/GetDatasetCategoryList',
+          insertApi: 'api/post/Permission/Datasets/InsertNewDatasetCategory',
+          updateApi: 'api/post/Permission/Datasets/UpdateDatasetCategory',
+          deleteApi: 'api/post/Permission/Datasets/DeleteDatasetCategory',
+          additionalFormData : {
+            datasetId: this.data.row ? this.data.row.id : this.ntForm.value.id
+          }
+      };
+      }
    ngOnInit() {
    this.setConfigs();
    console.log(this.ntForm)

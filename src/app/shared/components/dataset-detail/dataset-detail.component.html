@@ -1,7 +1,7 @@
 
 <div class="container-fluid" *ngIf="(dataset$ | async)?.kv as dataset">
   <div class="row justify-content-end">
-     <div class="col-8">
+     <div class="col-12">
         <div class="main-info">
             <div class="item-title">{{dataset?.name}}</div>
              <div class="item-content">
@@ -30,9 +30,9 @@
       <section id="api">
         <div class="section-title">Data and Resources</div>
         <div class="section-content">
-         <div class="item">
-          <div class="item-icon ZIP"> ZIP</div>
-          <div class="item-description">ArcGIS Open Dataset</div>
+         <div class="item" *ngFor ="let api of (datasetApi$ | async)?.r">
+          <div class="item-icon ZIP"> {{api?.format}}</div>
+          <div class="item-description">{{api?.descriptionEn}}</div>
           <div class="item-links">
             <div class="info-link">
               <img src='./assets/icons/info.svg'>
@@ -42,6 +42,44 @@
             </div>
           </div>
          </div>
+        </div>
+      </section>
+      <section id="keywords">
+          <div class="section-title">Additional Info</div>
+        <div class="section-content">
+         <div class="item" *ngFor= "let keyword of (datasetKeywords$ | async)?.r">
+          {{keyword?.keyword}}
+         </div>
+        </div>
+      </section>
+      <section id="additionalInfo">
+        <div class="section-content">
+                <table class="table table-striped" *ngIf="(dataset$ | async)?.kv as dataset">
+                    <thead>
+                      <tr>
+                        <th scope="col">Field</th>
+                        <th scope="col">Value</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">Status</th>
+                        <td>{{dataset?.status}}</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Create Data</th>
+                        <td>{{dataset?.createDate}}</td>
+                      </tr>
+                      <tr>
+                          <th scope="row">Update Data</th>
+                          <td>{{dataset?.updateDate}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Organization</th>
+                            <td>{{dataset?.org}}</td>
+                          </tr>
+                    </tbody>
+                  </table>
         </div>
       </section>
      </div>

@@ -22,6 +22,7 @@ export class CategoriesComponent implements OnInit {
     datasetFullname: ''
   };
   formatTypes$: Observable<SelectType[]>;
+  datasetId: string;
   constructor(private sharedService: SharedService, private router: Router) {
     this.formatTypes$ = this.sharedService.getTypes('181116173908947318');
    }
@@ -42,6 +43,7 @@ export class CategoriesComponent implements OnInit {
      ...this.categoryQuery,
      categoryId: e
    };
+   this.datasetId = undefined;
   }
   onNavChanged(e) {
    this.router.navigate([e, '']);

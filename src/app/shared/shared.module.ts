@@ -64,6 +64,7 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
       ModuleSidebarComponent,
       DatasetBoxComponent,
       DatasetListComponent,
+      DatasetDetailComponent,
       MatCheckboxModule,
       ReactiveFormsModule,
       MatExpansionModule,

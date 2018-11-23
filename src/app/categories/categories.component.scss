@@ -3,10 +3,16 @@
  // padding-top: 3em;
  background: #f5f6fa;
  height: calc(100vh - 70px);
- overflow: auto;
+// overflow: hidden;
 }
 
+.animated {
 
+}
+.dataset-content {
+  height: calc(100vh - 286px);
+  overflow: auto;
+}
 .mod-name {
   font-weight: bold;
   font-size: 26px;

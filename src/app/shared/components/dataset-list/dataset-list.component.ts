@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CategoryService } from 'src/app/categories/category.service';
 import { CategoryQuery } from 'src/app/categories/models/category-query.model';
@@ -13,6 +13,7 @@ import { OrganizationService } from 'src/app/organizations/organization.service'
 })
 export class DatasetListComponent implements OnInit, OnChanges {
   @Input() type: string;
+  @Output() boxSelected = new EventEmitter();
   list$: Observable<any>;
   @Input() categoryQuery: CategoryQuery;
   @Input() orgQuery: OrgQuery;
