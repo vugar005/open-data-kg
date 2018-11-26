@@ -162,7 +162,24 @@ img {
     }
 
 }
-
+.ta-results {
+  top: 53px;
+  width: 100%;
+  left: 0;
+ background: transparent!important;
+}
+.ta-item:nth-child(1){
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+}
+.ta-item:last-child {
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+}
+.list-group-item {
+  // padding: 0!important;
+ // box-shadow: none;
+}
 .ng-input {
     background: #ffffff;
     border: 0;

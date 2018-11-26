@@ -51,15 +51,16 @@
       margin-top: 8px;
       border-radius: 100px;
       padding: 14px;
-      .input {
-        .search-ico {
-          color: var(--color-primary);
-          padding: 0 21px;
-          font-size: 18px;
-          opacity: 0.8;
-          position: absolute;
-          right: 0;
-        }
+      .ng-input {
+
+      }
+      .search-ico {
+        color: var(--color-primary);
+        padding: 0 21px;
+        font-size: 18px;
+        opacity: 0.8;
+        position: absolute;
+        right: 0;
       }
       .typehead-box {
         position: absolute;
@@ -74,4 +75,8 @@
     }
   }
 
+}
+/deep/.ta-item:nth-child(1){
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
 }

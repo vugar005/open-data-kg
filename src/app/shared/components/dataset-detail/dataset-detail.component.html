@@ -1,8 +1,11 @@
 
-<div class="container-fluid" *ngIf="(dataset$ | async)?.kv as dataset">
-  <div class="row justify-content-end">
-     <div class="col-12">
+<div [class]="isInner ? 'container-fluid' : 'container'" *ngIf="(dataset$ | async)?.kv as dataset">
+  <div class="row justify-content-center">
+     <div [class]="isInner ? 'col-12' : 'col-9'">
         <div class="main-info">
+          <div class="back-ico" *ngIf="isInner" (click)="navBack.emit()">
+              <i class="fas fa-chevron-left"></i>
+          </div>
             <div class="item-title">{{dataset?.name}}</div>
              <div class="item-content">
               {{dataset?.description}}

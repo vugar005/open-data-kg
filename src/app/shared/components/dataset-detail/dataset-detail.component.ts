@@ -1,10 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { SharedService } from '../../shared.service';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Dataset } from '../../models/dataset.model';
 import { map } from 'rxjs/operators';
-
+import {faChevronLeft} from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'dataset-detail',
   templateUrl: './dataset-detail.component.html',
@@ -12,9 +12,12 @@ import { map } from 'rxjs/operators';
 })
 export class DatasetDetailComponent implements OnInit {
   @Input() id: string;
+  @Input() isInner = false;
+  @Output() navBack = new EventEmitter<void>();
   dataset$: Observable<Dataset>;
   datasetApi$: Observable<any>;
   datasetKeywords$: Observable<any>;
+  left = faChevronLeft;
   constructor(private sharedService: SharedService, private route: ActivatedRoute) { }
 
   ngOnInit() {

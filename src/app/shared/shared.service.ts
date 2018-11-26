@@ -156,8 +156,7 @@ export class SharedService {
       .post<Dataset>(
         `api/get/Permission/Datasets/GetDatasetDetails`,
         JSON.stringify(body)
-      )
-      .pipe(tap(res => console.log(res)));
+      );
   }
   getApiByDatasetById(id: string): Observable<DatasetApi[]> {
     const body = {

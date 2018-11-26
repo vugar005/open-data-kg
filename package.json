@@ -54,6 +54,7 @@
     "ngx-input": "0.0.1",
     "ngx-perfect-scrollbar": "^7.0.0",
     "ngx-swiper-wrapper": "^6.4.0",
+    "ngx-typehead-dir": "0.0.4",
     "nt-table": "^1.0.0-rc.17",
     "rxjs": "~6.2.0",
     "swiper": "^4.4.1",

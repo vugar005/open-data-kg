@@ -30,8 +30,11 @@ export class CategoriesComponent implements OnInit {
   ngOnInit() {
   }
   onSubmit() {
-   this.categoryQuery = {...this.form.value};
-   this.list.getList();
+    this.exitDetail();
+    setTimeout(() => {
+      this.categoryQuery = {...this.form.value};
+      this.list.getList();
+    }, 0);
   }
   onInputEnter(e: KeyboardEvent) {
     if (e.keyCode === 13) {
@@ -43,10 +46,13 @@ export class CategoriesComponent implements OnInit {
      ...this.categoryQuery,
      categoryId: e
    };
-   this.datasetId = undefined;
+   this.exitDetail();
   }
   onNavChanged(e) {
    this.router.navigate([e, '']);
   }
+ exitDetail() {
+  this.datasetId = undefined;
+ }
 
 }

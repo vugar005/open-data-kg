@@ -12,19 +12,16 @@
           </div>
         </div>
         <div class="input-co">
-          <div class="input">
-            <input class="ng-input" placeholder="Search data" (click)="resetMouse()">
+            <input class="ng-input" placeholder="Search data" (click)="resetMouse()"
+            typehead-co
+            [url]="'api/get/Permission/Datasets/GlobalSearchForDataset'"
+            [apiKey]="'datasetFullname'"
+            [listItemLabel]="'name'"
+            (selected)="handleResultSelected($event)"
+            >
             <div class="search-ico">
               <fa-icon [icon]="faSearch"></fa-icon>
             </div>
-          </div>
-         <!--  <div class="typehead-box">
-            <div>Something</div>
-            <div>Something 2</div>
-            <div>Something 2</div>
-            <div>Something 2</div>
-            <div>Something 2</div>
-          </div> -->
         </div>
       </div>
       <div class="col-12 col-md-6 col-xl-3">

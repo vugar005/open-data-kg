@@ -11,6 +11,7 @@ import { WaveParticlesComponent } from '../wave-particles/wave-particles.compone
 import { Store } from '@ngrx/store';
 import { AppState } from '../../reducers';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 @Component({
   selector: 'desktop',
   templateUrl: './desktop.component.html',
@@ -23,7 +24,7 @@ export class DesktopComponent implements OnInit, AfterViewInit {
   faChevronRight = faChevronRight;
   globalNavClass$: Observable<string>;
   typed: any;
-  constructor(private store: Store<AppState>) {
+  constructor(private store: Store<AppState>, private router: Router) {
   }
 
   ngOnInit() {}
@@ -35,4 +36,8 @@ export class DesktopComponent implements OnInit, AfterViewInit {
   }
   ngAfterViewInit() {
   }
+handleResultSelected(e: any) {
+  console.log(e);
+  this.router.navigate(['/datasets', e.id]);
+}
 }

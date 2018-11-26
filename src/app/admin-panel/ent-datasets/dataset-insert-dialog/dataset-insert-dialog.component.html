@@ -1,55 +1,65 @@
 <form #f="ngForm" patch-form [form]="f" [data]="data?.row" class="nt-form" >
 
   <mat-vertical-stepper [linear]="true" #stepper [selectedIndex]="selectedIndex"  >
-    <mat-step [stepControl]="f">
+    <mat-step [stepControl]="f" [optional]="true">
           <ng-template matStepLabel>Dataset main info</ng-template>
         <div class="main-info">
-            <div class="left">
+            <div class="row-1">
+                <div class="left">
 
-              <mat-form-field class="example-full-width">
-                <input matInput placeholder="Name Kg" class="nt-form-input" name="nameKg" ngModel  required>
-                <mat-error>{{getErrors('nameKg')}} </mat-error>
-              </mat-form-field>
-              <mat-form-field class="example-full-width">
-                <input matInput placeholder="Name En" class="nt-form-input" name="nameEn" ngModel  required>
-                <mat-error>{{getErrors('nameEn')}} </mat-error>
-              </mat-form-field>
-              <mat-form-field class="example-full-width">
-                <input matInput placeholder="Name Ru" class="nt-form-input" name="nameRu" ngModel  required>
-                <mat-error>{{getErrors('nameRu')}} </mat-error>
-              </mat-form-field>
+                    <mat-form-field class="example-full-width">
+                      <input matInput placeholder="Name Kg" class="nt-form-input" name="nameKg" ngModel  required>
+                      <mat-error>{{getErrors('nameKg')}} </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width">
+                      <input matInput placeholder="Name En" class="nt-form-input" name="nameEn" ngModel  required>
+                      <mat-error>{{getErrors('nameEn')}} </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width">
+                      <input matInput placeholder="Name Ru" class="nt-form-input" name="nameRu" ngModel  required>
+                      <mat-error>{{getErrors('nameRu')}} </mat-error>
+                    </mat-form-field>
 
-              <mat-form-field class="example-full-width">
-                <input matInput placeholder="Description Kg" class="nt-form-input" name="descriptionKg" ngModel  required>
+
+
+
+                   </div>
+                   <div class="right">
+                      <mat-form-field class="example-full-width">
+                          <input matInput placeholder="OrgName Kg" class="nt-form-input" name="orgKg" ngModel >
+                          <mat-error>{{getErrors('orgKg')}} </mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field class="example-full-width">
+                          <input matInput placeholder="OrgName En" class="nt-form-input" name="orgEn" ngModel >
+                          <mat-error>{{getErrors('orgEn')}} </mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field class="example-full-width">
+                          <input matInput placeholder="OrgName Ru" class="nt-form-input" name="orgRu" ngModel >
+                          <mat-error>{{getErrors('orgRu')}} </mat-error>
+                        </mat-form-field>
+
+                   </div>
+            </div>
+
+          <div class="row-2">
+          <mat-form-field class="text-area">
+              <textarea rows=2 cols="50"  matInput placeholder="Description En" class="nt-form-input" name="descriptionEn" ngModel  required> </textarea>
+              <mat-error>{{getErrors('descriptionEn')}} </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="text-area">
+                <textarea   rows=2  matInput placeholder="Description Kg" class="nt-form-input" name="descriptionKg" ngModel  required> </textarea>
                 <mat-error>{{getErrors('descriptionKg')}} </mat-error>
               </mat-form-field>
 
-              <mat-form-field class="example-full-width">
-                  <input matInput placeholder="Description En" class="nt-form-input" name="descriptionEn" ngModel  required>
-                  <mat-error>{{getErrors('descriptionEn')}} </mat-error>
-                </mat-form-field>
+            <mat-form-field class="text-area">
+                <textarea rows = 2  matInput placeholder="Description Ru" class="nt-form-input" name="descriptionRu" ngModel  required> </textarea>
+                <mat-error>{{getErrors('descriptionRu')}} </mat-error>
+              </mat-form-field>
+          </div>
 
-                <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Description Ru" class="nt-form-input" name="descriptionRu" ngModel  required>
-                    <mat-error>{{getErrors('descriptionRu')}} </mat-error>
-                  </mat-form-field>
-             </div>
-             <div class="right">
-                <mat-form-field class="example-full-width">
-                    <input matInput placeholder="OrgName Kg" class="nt-form-input" name="orgKg" ngModel >
-                    <mat-error>{{getErrors('orgKg')}} </mat-error>
-                  </mat-form-field>
-
-                  <mat-form-field class="example-full-width">
-                    <input matInput placeholder="OrgName En" class="nt-form-input" name="orgEn" ngModel >
-                    <mat-error>{{getErrors('orgEn')}} </mat-error>
-                  </mat-form-field>
-
-                  <mat-form-field class="example-full-width">
-                    <input matInput placeholder="OrgName Ru" class="nt-form-input" name="orgRu" ngModel >
-                    <mat-error>{{getErrors('orgRu')}} </mat-error>
-                  </mat-form-field>
-             </div>
           </div>
 
         <div>
@@ -61,7 +71,7 @@
         </div>
     </mat-step>
 
-    <mat-step  [stepControl]="f" >
+    <mat-step  [stepControl]="f" [optional]="true">
       <ng-template matStepLabel>Category</ng-template>
       <ng-container *ngIf="f?.value?.id">
         <div class="title">
@@ -87,7 +97,7 @@
       </ng-container>
   </mat-step>
 
-    <mat-step  [stepControl]="f" >
+    <mat-step  [stepControl]="f" [optional]="true" >
       <ng-template matStepLabel>Keyword data</ng-template>
       <ng-container *ngIf="f?.value?.id">
         <div class="title">
@@ -113,7 +123,7 @@
       </ng-container>
   </mat-step>
 
-    <mat-step   [stepControl]="f"   >
+    <mat-step   [stepControl]="f" [optional]="true"  >
         <ng-template matStepLabel>Version data</ng-template>
         <ng-container  *ngIf="f?.value?.id">
           <div class="title" >

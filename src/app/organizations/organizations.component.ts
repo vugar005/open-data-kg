@@ -24,6 +24,7 @@ export class OrganizationsComponent implements OnInit {
     formatId: '',
     datasetFullName: ''
   };
+  datasetId: string;
   formatTypes$: Observable<SelectType[]>;
   constructor(private sharedService: SharedService, private router: Router) {
     this.formatTypes$ = this.sharedService.getTypes('181116173908947318');
@@ -32,8 +33,11 @@ export class OrganizationsComponent implements OnInit {
   ngOnInit() {
   }
   onSubmit() {
-   this.orgQuery = {...this.form.value};
-   this.list.getList();
+    this.exitDetail();
+    setTimeout(() => {
+      this.orgQuery = {...this.form.value};
+      this.list.getList();
+    }, 0);
   }
   onInputEnter(e: KeyboardEvent) {
     if (e.keyCode === 13) {
@@ -45,10 +49,14 @@ export class OrganizationsComponent implements OnInit {
      ...this.orgQuery,
      orgId: e
    };
+   this.exitDetail();
   }
   onNavChanged(e) {
-    console.log(e)
+    console.log(e);
    this.router.navigate([e, '']);
+  }
+  exitDetail() {
+    this.datasetId = undefined;
   }
 
 }
