@@ -3,10 +3,17 @@
   <form [formGroup]="form" >
     <div class="item" formArrayName="items" *ngFor="let cat of form.controls['items'].controls; let i = index" >
         <mat-checkbox  [formControlName]="i" (change)="onCheckChange($event, itemList[i].id)" color="primary" >
-            <div class="name" [attr.id]="itemList[i].id">
+
+            <!-- <div class="name" [attr.id]="itemList[i].id">
           {{itemList[i].name}} ({{itemList[i].countCategory}})
-              </div>
+              </div> -->
         </mat-checkbox>
+        <div class="item-box"  [attr.id]="itemList[i].id" >
+            <div class="icon">
+               <img src="./assets/icons/seeding.svg">
+            </div>
+            <div class="name"> {{itemList[i].name}} ({{itemList[i].countCategory}})</div>
+          </div>
     </div>
   </form>
 </div>

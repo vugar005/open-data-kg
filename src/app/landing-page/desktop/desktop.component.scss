@@ -76,7 +76,7 @@
   }
 
 }
-/deep/.ta-item:nth-child(1){
-  border-top-left-radius: 25px;
-  border-top-right-radius: 25px;
+/deep/.ta-item:first-child{
+  border-top-left-radius: 25px!important;
+  border-top-right-radius: 25px!important;
 }

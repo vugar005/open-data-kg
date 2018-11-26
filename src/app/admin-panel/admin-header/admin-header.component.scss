@@ -83,3 +83,31 @@
   right: 40px;
   top: 53px;
 }
+
+.hamburger {
+  display: flex!important;
+}
+.hamburger-box {
+  height: 19px!important;
+}
+.hamburger-inner {
+  background-color: #FFFFFF!important;
+  width: 25px;
+  height: 2px;
+  &::after, &::before {
+    background-color: #FFFFFF!important;
+    width: 25px;
+    height: 2px;
+  }
+}
+.hamburger {
+  padding-right: 0!important;
+}
+.hamburger--slider .hamburger-inner:before {
+  top: 7px;
+  width: 19px;
+  right: 0;
+}
+.hamburger--slider .hamburger-inner:after {
+  top: 14px;
+}

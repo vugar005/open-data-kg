@@ -54,5 +54,10 @@ export class CategoriesComponent implements OnInit {
  exitDetail() {
   this.datasetId = undefined;
  }
+ onReturn() {
+   setTimeout(() => {
+    this.exitDetail();
+   }, 600);
+ }
 
 }

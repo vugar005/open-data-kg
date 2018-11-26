@@ -41,8 +41,11 @@
       <module-sidebar (checkboxId)="catIdChanged($event)" [type]="'category'"></module-sidebar>
     </div>
     <div class="col-9 dataset-content">
-       <dataset-list [categoryQuery]= "categoryQuery" *ngIf="!datasetId" #dataset_list [type]="'category'" (boxSelected)="datasetId = $event"></dataset-list>
-      <dataset-detail class="animated fadeIn" [id]="datasetId" *ngIf="datasetId" [isInner]="true" (navBack)="exitDetail()"></dataset-detail>
+       <dataset-list [categoryQuery]= "categoryQuery" *ngIf="!datasetId"
+        #dataset_list [type]="'category'"
+
+         (boxSelected)="datasetId = $event"></dataset-list>
+      <dataset-detail  [id]="datasetId" *ngIf="datasetId" [isInner]="true" (navBack)="exitDetail()"></dataset-detail>
     </div>
   </div>
 </div>

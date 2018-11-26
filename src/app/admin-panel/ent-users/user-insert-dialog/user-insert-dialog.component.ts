@@ -48,6 +48,7 @@ export class UserInsertDialogComponent  {
     }
     onDateChange(e) {
       console.log(e.value);
+    console.log(this.data);
     }
     onUpload() {
       const dialogRef = this.dialog.open(UploadFileDialogComponent);

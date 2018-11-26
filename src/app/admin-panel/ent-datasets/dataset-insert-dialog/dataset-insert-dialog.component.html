@@ -1,7 +1,7 @@
 <form #f="ngForm" patch-form [form]="f" [data]="data?.row" class="nt-form" >
 
-  <mat-vertical-stepper [linear]="true" #stepper [selectedIndex]="selectedIndex"  >
-    <mat-step [stepControl]="f" [optional]="true">
+  <mat-vertical-stepper [linear]="true" #stepper [selectedIndex]="selectedIndex"  color="accent">
+    <mat-step [stepControl]="f" [optional]="true" color="accent">
           <ng-template matStepLabel>Dataset main info</ng-template>
         <div class="main-info">
             <div class="row-1">
@@ -152,7 +152,7 @@
   <input [hidden]="true" name="id" ngModel>
 
   <div class="actions">
-    <button mat-raised-button color="accent"  type="submit" updateTableData [form]="f"
+    <button mat-raised-button color="primary"  type="submit" updateTableData [form]="f"
     *ngIf="f?.value.id"
     [disabled]="f?.dirty && !f?.valid"
     (onClose)="dialogRef.close()"

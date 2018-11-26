@@ -4,6 +4,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { NgxFormUtils } from 'ngx-form-utils';
 import { Observable } from 'rxjs';
 import { SharedService } from 'src/app/shared/shared.service';
+import { SelectType } from 'src/app/shared/models/select-type.model';
 
 @Component({
   selector: 'app-dictionaries-insert-dialog',
@@ -13,6 +14,7 @@ import { SharedService } from 'src/app/shared/shared.service';
 export class DictionariesInsertDialogComponent  {
   @ViewChild('f') ntForm: NgForm;
   dicTypes$: Observable<any>;
+  parentIds$: Observable<SelectType[]>;
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<DictionariesInsertDialogComponent>,
@@ -20,6 +22,7 @@ export class DictionariesInsertDialogComponent  {
     private sharedService: SharedService
   ) {
    this.dicTypes$ = sharedService.getModTypes('api/post/Permission/DictionaryTypes/GetDictionaryTypeList');
+   this.parentIds$ = sharedService.getTypes('1000003');
   }
   getErrors(str) {
     if (!this.ntForm || !NgxFormUtils) { return; }

@@ -3,6 +3,10 @@
   overflow-y: auto;
   max-height: 80vh;
 }
+/deep/ .mat-step-header .mat-step-icon {
+  background-color: #ffc107;
+  color: rgba(255,255,255,.87);
+}
 .nt-form {
   display: flex;
   flex-direction: column;

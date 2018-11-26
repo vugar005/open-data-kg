@@ -16,7 +16,7 @@ import { Observable } from 'rxjs';
 })
 export class UserOperationsTableComponent implements OnInit {
   @Input() userRoleIdForChange: number;
-  userRoleId: number;
+  userRoleId: string;
   rowData: any;
   gridApi: GridApi;
   gridColumnApi: ColumnApi;
@@ -71,7 +71,7 @@ export class UserOperationsTableComponent implements OnInit {
     this.columnDefs = this.columnDefs.filter(col => (this.neededColumns.includes(col.field)));
     this.gridApi.setColumnDefs(this.columnDefs);
   }
-  geTableData(roleId: number): Observable<any> {
+  geTableData(roleId: string): Observable<any> {
    return this.adminService.getTableData(roleId,
       'api/get/Permission/UserRoles/GetUserRolePrivilege');
   }
@@ -104,17 +104,18 @@ export class UserOperationsTableComponent implements OnInit {
      this.store.select(getUseRoleId)
      .pipe(
        first(),
-       tap(res => this.userRoleId = +res),
-       switchMap( res => this.geTableData(this.userRoleId),
+       tap(res => this.userRoleId = res),
+       switchMap( res => this.geTableData(this.userRoleId.toString()),
        ))
      .subscribe(res => {
       this.buildTableData(res);
-      this.getUserPriviliges(this.userRoleIdForChange);
+      this.getUserPriviliges(this.userRoleIdForChange.toString());
      });
   }
-  getUserPriviliges(id: number) {
-     this.geTableData(id)
+  getUserPriviliges(id: string) {
+     this.geTableData(id.toString())
      .subscribe(res => {
+       if (!(res && res.tbl && res.tbl[0] && res.tbl[0].r)) {return; }
       const rowData = res.tbl[0].r;
       const newRowData = [...rowData].map((row, index) => {
         return row.id;

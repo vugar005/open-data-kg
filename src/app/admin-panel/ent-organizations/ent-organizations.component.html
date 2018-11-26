@@ -4,14 +4,14 @@
   </div>
  <div class="actions-template" >
     <button mat-raised-button (click)="table.onPrintSelected()" *ngIf="table.printable">Print</button>
-    <button mat-raised-button (click)="table.addData()"  >Add data</button>
-    <button mat-raised-button (click)="table.onRemove()" [disabled]="!(table.isRowSelected)">Remove selected</button>
+    <button mat-raised-button (click)="table.addData()" *rbacAllow="[1000009, 'ADD']"  >Add data</button>
+    <button mat-raised-button (click)="table.onRemove()" [disabled]="!(table.isRowSelected)" *rbacAllow="[1000009, 'DELETE']" >Remove selected</button>
     <button mat-raised-button [disabled]="!(table.selectedRow)" (click)="table.onRowPin()" *ngIf="table.rowPinnable"> Pin to top</button>
     <button mat-raised-button (click)="table.onExport()" *ngIf="table.exportable">Export</button>
  </div>
  </div>
 
- <div class="content">
+ <div class="content" *rbacAllow="[1000009, 'ALL_VIEW']" >
    <div class="nt-table">
      <ngx-nt-table #table
      [config]="config"

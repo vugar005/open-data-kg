@@ -4,7 +4,7 @@ import { AppState } from './reducers';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { AutoSetToken, AutoSetUser, SetApiUrl } from './auth/store/auth.actions';
+import { AutoSetToken, AutoSetUser, SetApiUrl, SetModules } from './auth/store/auth.actions';
 import * as globalVars from './app.globals';
 @Component({
   selector: 'app-root',
@@ -40,6 +40,7 @@ export class AppComponent implements OnInit {
     if (!decoded) {return; }
     this.store.dispatch(new AutoSetToken({jwtToken, decoded}));
     this.store.dispatch(new AutoSetUser(user));
+    this.store.dispatch(new SetModules(user));
    } catch (er) {
      console.log(er);
    }
