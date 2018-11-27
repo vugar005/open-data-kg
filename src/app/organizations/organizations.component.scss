@@ -3,6 +3,8 @@
  // padding-top: 3em;
  background: #f5f6fa;
  height: calc(100vh - 70px);
+ position: relative;
+z-index: 4; // more than app-header
 }
 
 .content-wrapper {
@@ -22,6 +24,7 @@
      width: 100%;
      position: relative;
      background: #ffffff;
+     border-radius: 9px;
      .ng-input {
       &::placeholder {
         font-size: 14px;

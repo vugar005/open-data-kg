@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Ng2IzitoastService } from 'ng2-izitoast';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { SelectType } from './models/select-type.model';
 import { map, tap, shareReplay, share } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
@@ -11,6 +11,7 @@ import { DatasetApi } from './models/datasetApi.model';
 @Injectable()
 export class SharedService {
   toastRunning: boolean;
+  toggleHeader = new Subject();
   constructor(
     public iziToast: Ng2IzitoastService,
     private jwtService: JwtHelperService,
@@ -169,4 +170,5 @@ export class SharedService {
       JSON.stringify(body)
     ).pipe( share());
   }
+
 }

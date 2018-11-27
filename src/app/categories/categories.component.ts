@@ -1,12 +1,13 @@
-import { Component, OnInit, ChangeDetectionStrategy, ViewChild, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ViewChild, EventEmitter, Output, HostListener } from '@angular/core';
 import {faSearch} from '@fortawesome/free-solid-svg-icons';
 import { NgForm } from '@angular/forms';
 import { DatasetListComponent } from '../shared/components/dataset-list/dataset-list.component';
 import { CategoryQuery } from './models/category-query.model';
 import { SelectType } from '../shared/models/select-type.model';
-import { Observable } from 'rxjs';
+import { Observable, fromEvent } from 'rxjs';
 import { SharedService } from '../shared/shared.service';
 import { Router } from '@angular/router';
+import { tap} from 'rxjs/operators';
 @Component({
   selector: 'categories',
   templateUrl: './categories.component.html',
@@ -29,6 +30,9 @@ export class CategoriesComponent implements OnInit {
 
   ngOnInit() {
   }
+
+
+
   onSubmit() {
     this.exitDetail();
     setTimeout(() => {
@@ -61,6 +65,9 @@ export class CategoriesComponent implements OnInit {
  }
  handleResultSelected(e: any) {
   this.datasetId = e.id;
+}
+toggleHeader(e: HTMLElement) {
+this.sharedService.toggleHeader.next(e);
 }
 
 }

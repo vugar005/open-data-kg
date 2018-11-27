@@ -23,7 +23,7 @@ import { StarRatingComponent } from './components/star-rating/star-rating.compon
 import { DatasetDetailComponent } from './components/dataset-detail/dataset-detail.component';
 import { RouterModule } from '@angular/router';
 import { TypeheadModule } from 'ngx-typehead-dir';
-import { APIInterceptor } from './interceptors/api.interceptor';
+import { ScrollListenerDirective } from './directives/scroll-listener.directive';
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
   slidesPerView: 'auto'
@@ -36,7 +36,8 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     DatasetDetailComponent,
     FooterComponent,
     GlobalNavComponent,
-    StarRatingComponent
+    StarRatingComponent,
+    ScrollListenerDirective
   ],
     imports: [
       CommonModule,
@@ -77,7 +78,8 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
       MatSelectModule,
       FormsModule,
       TypeheadModule,
-      RouterModule
+      RouterModule,
+      ScrollListenerDirective
     ],
     providers: [
       {

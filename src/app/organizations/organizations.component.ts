@@ -60,5 +60,8 @@ export class OrganizationsComponent implements OnInit {
   handleResultSelected(e: any) {
     this.datasetId = e.id;
   }
+  toggleHeader(e: HTMLElement) {
+    this.sharedService.toggleHeader.next(e);
+    }
 
 }
