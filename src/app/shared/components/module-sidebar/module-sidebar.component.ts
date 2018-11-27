@@ -1,20 +1,23 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, HostBinding } from '@angular/core';
 import { CategoryService } from 'src/app/categories/category.service';
 import { Category } from 'src/app/categories/models/category.model';
-import { Observable } from 'rxjs';
 import { FormControl, FormBuilder, FormGroup, FormArray } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { OrganizationService } from 'src/app/organizations/organization.service';
+import { trigger, transition, useAnimation } from '@angular/animations';
+import { fadeIn } from 'ng-animate';
 
 @Component({
   selector: 'module-sidebar',
   templateUrl: './module-sidebar.component.html',
-  styleUrls: ['./module-sidebar.component.scss']
+  styleUrls: ['./module-sidebar.component.scss'],
+  animations: [trigger('fadeIn', [transition(':enter', useAnimation(fadeIn, {params: {timing: 0.5, delay: 0}}))])]
 })
 export class ModuleSidebarComponent implements OnInit {
   @Input() type: string;
   @Output() datasetGroups = new EventEmitter();
   @Output() checkboxId = new EventEmitter();
+  @HostBinding('@fadeIn')
  itemList: Category[];
  form: FormGroup;
  checkboxIds: string[] = [];
@@ -32,7 +35,6 @@ export class ModuleSidebarComponent implements OnInit {
      });
   }
   handleRouteId(res) {
-    console.log(res['id'])
     const id = res['id'] || '0';
     this.checkboxIds.push(id);
     this.checkboxId.emit(id);
@@ -75,5 +77,11 @@ export class ModuleSidebarComponent implements OnInit {
       this.buildFormControls();
     });
 }
+  onItemClick(index: string) {
+    console.log(index)
+    this.checkboxIds.push(index);
+    this.checkboxId.emit(index);
+    this.buildFormControls();
+  }
 
 }
