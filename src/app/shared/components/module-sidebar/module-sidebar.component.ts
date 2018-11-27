@@ -32,8 +32,10 @@ export class ModuleSidebarComponent implements OnInit {
      });
   }
   handleRouteId(res) {
-    this.checkboxIds.push(res['id']);
-    this.checkboxId.emit(res['id']);
+    console.log(res['id'])
+    const id = res['id'] || '0';
+    this.checkboxIds.push(id);
+    this.checkboxId.emit(id);
   }
   buildFormControls() {
     const controls = this.itemList.map(cat => new FormControl(this.checkboxIds.includes(cat.id)));

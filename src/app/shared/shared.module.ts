@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HTTP_INTERCEPTORS} from '@angular/common/http';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -22,6 +22,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { StarRatingComponent } from './components/star-rating/star-rating.component';
 import { DatasetDetailComponent } from './components/dataset-detail/dataset-detail.component';
 import { RouterModule } from '@angular/router';
+import { TypeheadModule } from 'ngx-typehead-dir';
+import { APIInterceptor } from './interceptors/api.interceptor';
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
   slidesPerView: 'auto'
@@ -46,6 +48,7 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
       MatSelectModule,
       FormsModule,
       RouterModule,
+      TypeheadModule,
       TranslateModule.forChild({
         loader: {
           provide: TranslateLoader,
@@ -73,13 +76,14 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
       MatFormFieldModule,
       MatSelectModule,
       FormsModule,
+      TypeheadModule,
       RouterModule
     ],
     providers: [
       {
         provide: SWIPER_CONFIG,
         useValue: DEFAULT_SWIPER_CONFIG
-      }
+      },
     ]
   }
 )

@@ -167,8 +167,11 @@ img {
   width: 100%;
   left: 0;
  background: transparent!important;
+ z-index: 1;
+ border-radius: 25px;
+ box-shadow: 0px 6px 28px -6px rgba(0,0,0,0.75);
 }
-.ta-item:nth-child(1){
+.ta-item:nth-child(2){
   border-top-left-radius: 25px;
   border-top-right-radius: 25px;
 }
@@ -176,9 +179,8 @@ img {
   border-bottom-left-radius: 25px;
   border-bottom-right-radius: 25px;
 }
-.list-group-item {
-  // padding: 0!important;
- // box-shadow: none;
+.ta-item {
+  padding: 15px 20px
 }
 .ng-input {
     background: #ffffff;

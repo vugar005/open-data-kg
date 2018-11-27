@@ -7,6 +7,8 @@ import { CategoriesRoutes } from './categories.routing';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {InputModule} from 'ngx-input';
 import { SharedModule } from '../shared/shared.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { APIInterceptor } from '../shared/interceptors/api.interceptor';
 
 @NgModule({
   imports: [
@@ -14,8 +16,11 @@ import { SharedModule } from '../shared/shared.module';
     CategoriesRoutes,
     FontAwesomeModule,
     InputModule,
-    SharedModule
+    SharedModule,
   ],
-  declarations: [CategoriesComponent, CategoryListComponent, CategorySidebarComponent]
+  declarations: [CategoriesComponent, CategoryListComponent, CategorySidebarComponent],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: APIInterceptor, multi: true}
+  ]
 })
 export class CategoriesModule { }

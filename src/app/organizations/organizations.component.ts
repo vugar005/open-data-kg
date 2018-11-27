@@ -52,11 +52,13 @@ export class OrganizationsComponent implements OnInit {
    this.exitDetail();
   }
   onNavChanged(e) {
-    console.log(e);
    this.router.navigate([e, '']);
   }
   exitDetail() {
     this.datasetId = undefined;
+  }
+  handleResultSelected(e: any) {
+    this.datasetId = e.id;
   }
 
 }

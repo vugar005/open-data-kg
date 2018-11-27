@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { AppState } from 'src/app/reducers';
 import { Store } from '@ngrx/store';
 import { getApiUrl } from 'src/app/auth/store/auth.selectors';
-import { take, switchMap } from 'rxjs/operators';
+import { take, switchMap, tap } from 'rxjs/operators';
 
 @Injectable()
 export class APIInterceptor implements HttpInterceptor {

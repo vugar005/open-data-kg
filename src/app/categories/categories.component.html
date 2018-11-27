@@ -17,7 +17,13 @@
     <div class="col-9">
        <form #f="ngForm" class=" filter-form" >
         <div class="search-box">
-          <input placeholder="Search dataset" class="ng-input" name="datasetFullname" ngModel (keydown)="onInputEnter($event)">
+          <input placeholder="Search dataset" class="ng-input" name="datasetFullname"
+          typehead-co
+          [url]="'api/get/Permission/Datasets/GlobalSearchForDataset'"
+          [apiKey]="'datasetFullname'"
+          [listItemLabel]="'name'"
+          (selected)="handleResultSelected($event)"
+          ngModel (keydown)="onInputEnter($event)">
           <div class="search-ico" (click)="onSubmit()">
             <fa-icon [icon]="faSearch"></fa-icon>
           </div>
@@ -37,10 +43,10 @@
     </div>
   </div>
   <div class="row pt-3">
-    <div class="col-3">
+    <div class="col-12 col-sm-5 col-md-4 col-lg-3">
       <module-sidebar (checkboxId)="catIdChanged($event)" [type]="'category'"></module-sidebar>
     </div>
-    <div class="col-9 dataset-content">
+    <div class="col-12 col-sm-7 col-md-8 col-lg-9 dataset-content">
        <dataset-list [categoryQuery]= "categoryQuery" *ngIf="!datasetId"
         #dataset_list [type]="'category'"
 

@@ -9,6 +9,8 @@ import { DatasetDetailComponent } from './shared/components/dataset-detail/datas
 
 const routes: Routes = [
   {path: '', component: LandingPageComponent},
+  {path: 'categories', redirectTo: 'categories/0', pathMatch: 'full'},
+  {path: 'organizations', redirectTo: 'organizations/0', pathMatch: 'full'},
   {path: 'categories/:id', loadChildren: './categories/categories.module#CategoriesModule'},
   {path: 'organizations/:id', loadChildren: './organizations/organizations.module#OrganizationsModule'},
   {path: 'datasets/:id', component: DatasetDetailComponent },

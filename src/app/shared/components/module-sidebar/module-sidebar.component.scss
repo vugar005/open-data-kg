@@ -1,5 +1,6 @@
 :host {
   display: block;
+  height: 100%;
 }
 /deep/ .animated {
   animation-duration: 700ms;
@@ -8,8 +9,8 @@
   transition: all 300ms ease-in-out!important;
 }
 /deep/ .mat-checkbox-layout:hover {
-  transform: rotateY(45deg);
-  width: 50px;
+ // transform: rotateY(45deg);
+ // width: 50px;
 }
 /deep/ .mat-checkbox {
   perspective: 160px;
@@ -31,6 +32,8 @@
   margin-top: 14px;
   padding: 5px;
   border-radius: 10px;
+  height: calc(97% - 74px);
+  overflow: auto;
  .item {
    display: flex;
    align-items: center;

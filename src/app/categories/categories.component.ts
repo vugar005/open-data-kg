@@ -59,5 +59,8 @@ export class CategoriesComponent implements OnInit {
     this.exitDetail();
    }, 600);
  }
+ handleResultSelected(e: any) {
+  this.datasetId = e.id;
+}
 
 }
