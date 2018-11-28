@@ -46,7 +46,6 @@ import { SharedModule } from './shared/shared.module';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { OrganizationOverviewComponent } from './global-nav/organization-overview/organization-overview.component';
 import {TypeheadModule} from 'ngx-typehead-dir';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
 };

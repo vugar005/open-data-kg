@@ -103,6 +103,8 @@ function getUrl(mod) {
     return 'organizations';
     case 'DTST':
     return 'datasets';
+    case 'CMMNT':
+    return 'comments';
     default :
     return '';
   }

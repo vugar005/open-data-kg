@@ -129,7 +129,7 @@ export class SharedService {
     };
     return this.http
       .post(
-        `api/get/Permission/Dictionaries/GetDictionaryList`,
+        `api/post/Permission/Dictionaries/GetDictionaryListByType`,
         JSON.stringify(body)
       )
       .pipe(

@@ -173,18 +173,18 @@ img {
   top: 53px;
   width: 100%;
   left: 0;
- background: transparent!important;
+ background: white;
  z-index: 1;
- border-radius: 25px;
+ // border-radius: 25px;
  box-shadow: 0px 6px 28px -6px rgba(0,0,0,0.75);
 }
 .ta-item:nth-child(2){
-  border-top-left-radius: 25px;
-  border-top-right-radius: 25px;
+ // border-top-left-radius: 25px;
+ // border-top-right-radius: 25px;
 }
 .ta-item:last-child {
-  border-bottom-left-radius: 25px;
-  border-bottom-right-radius: 25px;
+ // border-bottom-left-radius: 25px;
+ // border-bottom-right-radius: 25px;
 }
 .ta-item {
   padding: 15px 20px
