@@ -1,8 +1,7 @@
 <div class="module-title">{{type | uppercase}}</div>
-<div class="items-co" *ngIf="ready" >
-  <form [formGroup]="form" >
-    <div class="item" formArrayName="items" *ngFor="let cat of form.controls['items'].controls; let i = index" >
-        <mat-checkbox  [formControlName]="i" (change)="onCheckChange($event, itemList[i].id)" color="primary" >
+<div class="items-co">
+    <div class="item"  *ngFor="let cat of itemList; let i = index" (click)="onItemClick(cat.id)"
+    [ngClass]="{'active': itemList[i].id === selectedIndex}">
 
           <div class="item-box"  [attr.id]="itemList[i].id" >
             <div class="icon">
@@ -10,9 +9,6 @@
             </div>
             <div class="name"> {{itemList[i].name}} ({{itemList[i].countCategory}})</div>
           </div>
-        </mat-checkbox>
 
     </div>
-
-  </form>
 </div>

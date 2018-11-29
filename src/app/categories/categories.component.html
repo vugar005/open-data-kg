@@ -37,7 +37,7 @@
     </div>
     <div class="row">
       <div class="col-12 col-sm-5 col-md-4 col-lg-3 pr-0">
-        <module-sidebar (checkboxId)="catIdChanged($event)" [type]="'category'"></module-sidebar>
+        <module-sidebar (selected)="catIdChanged($event)"  [type]="'category'"></module-sidebar>
       </div>
       <div class="col-12 col-sm-7 col-md-8 col-lg-9 ">
          <dataset-list [categoryQuery]= "categoryQuery" *ngIf="!datasetId"
