@@ -1,0 +1,43 @@
+<div class="title">
+Are you satisfied ?
+</div>
+<div class="content">
+    <div class="left">
+        Please help us serve you better by taking a moment to give us your feedback.
+        Feel free to use the “comments” section to elaborate on your answers.
+    </div>
+    <div class="right">
+      <div class="smile-box">
+        <div class="smile-icon">
+            <img src="./assets/icons/very_bad.svg" *ngIf="index !=1 " (mouseenter)="enter(1)" >
+            <img src="./assets/icons/very_bad_active.svg" *ngIf="index === 1" class="active" (mouseleave)="leave()">
+        </div>
+
+        <div class="smile-icon">
+            <img src="./assets/icons/bad.svg" *ngIf="index !=2" (mouseenter)="enter(2)" >
+            <img src="./assets/icons/bad_active.svg" *ngIf="index === 2" class="active"  (mouseleave)="leave()">
+        </div>
+
+        <div class="smile-icon">
+            <img src="./assets/icons/average.svg" *ngIf="index !=3" (mouseenter)="enter(3)" >
+            <img src="./assets/icons/average_active.svg" *ngIf="index === 3" class="active"  (mouseleave)="leave()">
+        </div>
+
+        <div class="smile-icon">
+            <img src="./assets/icons/good.svg" *ngIf="index !=4" (mouseenter)="enter(4)" >
+            <img src="./assets/icons/good_active.svg" *ngIf="index === 4" class="active"  (mouseleave)="leave()">
+        </div>
+
+        <div class="smile-icon">
+            <img src="./assets/icons/awesome.svg" *ngIf="index !=5" (mouseenter)="enter(5)" >
+            <img src="./assets/icons/awesome_active.svg" *ngIf="index === 5" class="active"  (mouseleave)="leave()">
+        </div>
+
+
+        <!-- <img src="./assets/icons/bad.svg" class="ng-icon">
+        <img src="./assets/icons/average.svg" class="ng-icon">
+        <img src="./assets/icons/good.svg" class="ng-icon">
+        <img src="./assets/icons/awesome.svg" class="ng-icon"> -->
+      </div>
+    </div>
+</div>

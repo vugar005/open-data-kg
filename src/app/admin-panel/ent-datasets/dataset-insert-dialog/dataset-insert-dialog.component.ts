@@ -31,6 +31,7 @@ export class DatasetInsertDialogComponent implements OnInit {
   config4: ApiConfig;
   faPlusCircle = faPlusCircle;
   selectedIndex = 0;
+  startDate = new Date(1990, 0, 1);
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<ModulesInsertDialogComponent>,

@@ -1,0 +1,41 @@
+<div class="container-fluid" *ngIf="user$ | async as user">
+  <div class="row">
+    <div class="col-12 p-0">
+      <div class="profile-main-info">
+        <div class="item-left">
+          <div class="item-image">
+            <img src="https://www.timeshighereducation.com/sites/default/files/byline_photos/default-avatar.png">
+          </div>
+        </div>
+        <div class="item-center">
+          <div class="item-name">{{user.name}}  {{user.surname}}</div>
+          <div class="item-birthdate">
+            <div class="key">Born: {{user.birthdate}} </div>
+            <div class="value"></div>
+          </div>
+          <div class="item-nationality">
+            <div class="key">Nationality:</div>
+            <div class="value"></div>
+          </div>
+        </div>
+        <div class="item-right">
+          <div class="icon">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <div class="value">Baku Azerbaijan</div>
+        </div>
+        <div class="main-logo">
+           <img src='./assets/icons/opendata_final.svg'>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-3">
+
+      </div>
+      <div class="col-9"></div>
+    </div>
+  </div>

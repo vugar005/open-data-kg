@@ -1,0 +1,53 @@
+:host {
+  display:flex;
+  flex-direction: column;
+  padding: 20px 0;
+}
+
+.ng-top {
+  display: flex;
+  justify-content: space-between;
+  .user-content {
+    display: flex;
+    align-items: center;
+    .user-img {
+    width: 45px;
+    height: 45px;
+    margin-right: 10px;
+      img {
+      border-radius: 50%;
+      }
+    }
+    .user-info {
+      display: flex;
+      flex-direction: column;
+      .user-name {
+        font-weight: 600;
+        line-height: normal;
+        font-size: 12px;
+        color: #666666;
+      }
+      .comment-date {
+        font-size: 9px;
+        color: #ADADAD;
+      }
+    }
+
+  }
+  .reply-icon {
+    width: 15px;
+    height: 15px;
+  }
+
+}
+.ng-bottom {
+  padding-top: 12px;
+  font-size: 14px;
+  color: #555555;
+  border-bottom: 0.5px solid #B6B6B6;
+  padding-bottom: 20px;
+}
+
+.ng-bottom:last-child {
+ // border: none;
+}

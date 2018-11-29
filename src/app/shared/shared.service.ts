@@ -121,7 +121,7 @@ export class SharedService {
         })
       );
   }
-  getTypes(id: string): Observable<SelectType[]> {
+  getTypes(id: string, type= 'Common', method = 'get'): Observable<SelectType[]> {
     const body = {
       kv: {
         dicTypeId: id
@@ -129,7 +129,7 @@ export class SharedService {
     };
     return this.http
       .post(
-        `api/post/Permission/Dictionaries/GetDictionaryListByType`,
+        `api/${method}/Permission/Dictionaries/GetDictionaryListByType${type}`,
         JSON.stringify(body)
       )
       .pipe(
@@ -168,7 +168,7 @@ export class SharedService {
     return this.http.post<DatasetApi[]>(
       `api/get/Permission/Datasets/GetApiByDatasetId`,
       JSON.stringify(body)
-    ).pipe( share());
+    );
   }
 
 }

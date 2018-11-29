@@ -1,0 +1,71 @@
+:host {
+  display: block;
+  font-size: 16px;
+}
+
+.profile-main-info {
+  display: flex;
+  align-items: center;
+  padding-top: 3rem;
+  padding-bottom: 8rem;
+  padding-left: 7rem;
+  position: relative;
+  background: linear-gradient(99.85deg, #242B42 2.84%, #434F74 100%);
+  .item-left {
+    .item-image {
+      width: 8.8rem;
+      height: 8.8rem;
+      margin-right: 2rem;
+      img {
+        border-radius: 50%;
+      }
+    }
+  }
+
+  .item-center {
+    display: flex;
+    flex-direction: column;
+    .item-name {
+      font-weight: 800;
+      font-size: 1.56em;
+      color: #FFFFFF;
+      padding-bottom: 1.6rem;
+    }
+    .item-birthdate, .item-nationality {
+     display: flex;
+      .key {
+        font-weight: bold;
+        font-size: 1.1em;
+        color: #FFFFFF;
+      }
+      .value {
+        font-weight: 300;
+        font-size: 1.1em;
+        color: #FFFFFF;
+
+      }
+    }
+  }
+  .item-right {
+    display: flex;
+    align-items: flex-end;
+    padding-left: 4rem;
+    .icon {
+      color: #FFFFFF;
+    }
+    .value {
+      padding-left: 0.5rem;
+      font-style: normal;
+      font-size: 0.9em;
+      color: #4AA7C6;
+    }
+  }
+  .main-logo {
+    position: absolute;
+    width: 29rem;
+    height: 10rem;
+    right: 0;
+    top:6rem;
+    opacity: 0.1;
+  }
+}

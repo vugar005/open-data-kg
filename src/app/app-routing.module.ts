@@ -6,6 +6,7 @@ import { AdminGuard } from './auth/admin.guard';
 import { LoginComponent } from './auth/login/login.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { DatasetDetailComponent } from './shared/components/dataset-detail/dataset-detail.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 const routes: Routes = [
   {path: '', component: LandingPageComponent},
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path: 'organizations/:id', loadChildren: './organizations/organizations.module#OrganizationsModule'},
   {path: 'datasets/:id', component: DatasetDetailComponent },
   {path: 'login', component: LoginComponent},
+  {path: 'user-profile', component: UserProfileComponent},
   {path: 'register', component: RegisterComponent },
   {path: 'admin', loadChildren: './admin-panel/admin-panel.module#AdminPanelModule', canActivate: [AdminGuard]},
   {path: 'news', loadChildren: './news/news.module#NewsModule'},

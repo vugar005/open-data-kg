@@ -37,6 +37,10 @@ export const getUserType = createSelector(
   selectAuthState,
   auth => auth.user && auth.user.userType
 );
+export const isAdmin = createSelector(
+  getUserType,
+  type => type === 'ADMIN' ||  type === 'SYSADMIN'
+);
 
 export const getUserModules = createSelector(
   selectAuthState,

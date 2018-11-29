@@ -25,20 +25,23 @@
 
                    </div>
                    <div class="right">
-                      <mat-form-field class="example-full-width">
-                          <input matInput placeholder="OrgName Kg" class="nt-form-input" name="orgKg" ngModel >
-                          <mat-error>{{getErrors('orgKg')}} </mat-error>
-                        </mat-form-field>
 
-                        <mat-form-field class="example-full-width">
-                          <input matInput placeholder="OrgName En" class="nt-form-input" name="orgEn" ngModel >
-                          <mat-error>{{getErrors('orgEn')}} </mat-error>
-                        </mat-form-field>
+                    <mat-form-field>
+                      <input matInput [matDatepicker]="picker" placeholder="Publish Date" name="createDateVersion" ngModel
+                        >
+                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                      <mat-datepicker #picker [startAt]="startDate" startView="year"></mat-datepicker>
+                      <mat-error>{{getErrors('createDateVersion')}}</mat-error>
+                    </mat-form-field>
 
-                        <mat-form-field class="example-full-width">
-                          <input matInput placeholder="OrgName Ru" class="nt-form-input" name="orgRu" ngModel >
-                          <mat-error>{{getErrors('orgRu')}} </mat-error>
-                        </mat-form-field>
+                    <mat-form-field>
+                      <input matInput [matDatepicker]="picker2" placeholder="Update Date" name="updateDateVersion" ngModel
+                        >
+                      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                      <mat-datepicker #picker2 [startAt]="startDate" startView="year"></mat-datepicker>
+                      <mat-error>{{getErrors('updateDateVersion')}}</mat-error>
+                    </mat-form-field>
+
 
                    </div>
             </div>

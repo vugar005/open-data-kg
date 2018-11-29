@@ -24,6 +24,8 @@ import { DatasetDetailComponent } from './components/dataset-detail/dataset-deta
 import { RouterModule } from '@angular/router';
 import { TypeheadModule } from 'ngx-typehead-dir';
 import { ScrollListenerDirective } from './directives/scroll-listener.directive';
+import { FeedbackBoxComponent } from './components/feedback-box/feedback-box.component';
+import { CommentsModule } from '../comments/comments.module';
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
   slidesPerView: 'auto'
@@ -37,7 +39,8 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     FooterComponent,
     GlobalNavComponent,
     StarRatingComponent,
-    ScrollListenerDirective
+    ScrollListenerDirective,
+    FeedbackBoxComponent,
   ],
     imports: [
       CommonModule,
@@ -50,6 +53,7 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
       FormsModule,
       RouterModule,
       TypeheadModule,
+      CommentsModule,
       TranslateModule.forChild({
         loader: {
           provide: TranslateLoader,
@@ -79,7 +83,7 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
       FormsModule,
       TypeheadModule,
       RouterModule,
-      ScrollListenerDirective
+      ScrollListenerDirective,
     ],
     providers: [
       {

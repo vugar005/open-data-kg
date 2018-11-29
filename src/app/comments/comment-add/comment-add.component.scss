@@ -1,0 +1,31 @@
+:host {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.co-add-top {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  .co-add-msg-icon {
+  flex: 0 0 45px;
+  height: 45px;
+  margin-right: 23px;
+  }
+  .co-add-content {
+   width: calc(100% - 68px);
+   .co-add-textarea {
+     width: 100%;
+     border-radius: 10px;
+     border: #ffffff;
+     padding: 15px 20px;
+     padding-bottom: 0;
+   }
+  }
+}
+.co-add-bottom {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}

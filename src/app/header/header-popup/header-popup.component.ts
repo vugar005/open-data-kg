@@ -6,6 +6,8 @@ import { Store } from '@ngrx/store';
 import { Logout } from 'src/app/auth/store/auth.actions';
 import {fadeIn, bounce} from 'ng-animate';
 import { trigger, transition, useAnimation } from '@angular/animations';
+import { Observable } from 'rxjs';
+import { isLoggedIn, isAdmin } from 'src/app/auth/store/auth.selectors';
 @Component({
   selector: 'header-popup',
   templateUrl: './header-popup.component.html',
@@ -20,8 +22,13 @@ export class HeaderPopupComponent implements OnInit {
   faTimes = faTimes;
   fadeIn = fadeIn;
   ready = true;
+  isLoggedIn$: Observable<boolean>;
+  isAdmin$: Observable<boolean>;
  // @HostBinding('@bounce') routeAnimation = true;
-  constructor(private router: Router, private store: Store<AppState>) { }
+  constructor(private router: Router, private store: Store<AppState>) {
+    this.isLoggedIn$ = store.select(isLoggedIn);
+    this.isAdmin$ =  this.store.select(isAdmin);
+   }
 
   ngOnInit() {
     setTimeout(() => this.ready = true, 1500);

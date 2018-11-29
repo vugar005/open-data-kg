@@ -1,92 +1,135 @@
+<div class="content-wrapper" [ngClass]="{'with-overflow': !isInner }" >
 
-<div [class]="isInner ? 'container-fluid' : 'container'" *ngIf="(dataset$ | async)?.kv as dataset">
-  <div class="row justify-content-center">
-     <div [class]="isInner ? 'col-12' : 'col-9'">
-        <div class="main-info">
-          <div class="back-ico" *ngIf="isInner" (click)="navBack.emit()">
-              <i class="fas fa-chevron-left"></i>
-          </div>
-            <div class="item-title">{{dataset?.name}}</div>
-             <div class="item-content">
-              {{dataset?.description}}
-             </div>
-             <div class="item-rating">
-               <div class="title">
-                 Rating:
-               </div>
-               <div class="star-content" >
-                 <star-rating [rating]="dataset?.rating"></star-rating>
-               </div>
-               <div class="count">
-                 <div class="icon">
-                    <img src="./assets/icons/focus (1).svg">
-                 </div>
-                 <div class="text">
-                   {{dataset?.reviewCount}}
-                 </div>
-               </div>
-             </div>
-              <!-- <div class="item-formats" *ngFor="let item of ((dataset?.allFormat).split(' '))">
-                  <div class="icon {{item}}"  >{{item}}</div>
-              </div> -->
-        </div>
-      <section id="api">
-        <div class="section-title">Data and Resources</div>
-        <div class="section-content">
-         <div class="item" *ngFor ="let api of (datasetApi$ | async)?.r">
-          <div class="item-icon ZIP"> {{api?.format}}</div>
-          <div class="item-description">{{api?.descriptionEn}}</div>
-          <div class="item-links">
-            <div class="info-link">
-              <img src='./assets/icons/info.svg'>
+<div [class]="isInner ? 'container-fluid' : 'container'" *ngIf="dataset">
+    <div class="row main-row">
+       <div [class]="isInner ? 'col-12' : 'col-9'">
+          <div class="main-info">
+            <div class="back-ico" *ngIf="isInner" (click)="navBack.emit()">
+                <i class="fas fa-chevron-left"></i>
             </div>
-            <div class="api-link">
-              <img src="./assets/icons/attach.svg">
-            </div>
+              <div class="item-title">{{dataset?.kv.name}}</div>
+               <div class="item-desc">
+                {{dataset?.kv?.description}}
+               </div>
+               <div class="item-actions">
+                  <div class="box-perspective">
+                      <div class="rotating-box">
+                          <div class="icon">
+                              <img src="./assets/icons/reply.svg">
+                          </div>
+                       </div>
+                       <div class="text">
+                          <p>SHARE</p>
+                        </div>
+                  </div>
+                  <div class="item-rating">
+                      <div class="title">
+                        Rating:
+                      </div>
+                      <div class="star-content" >
+                        <star-rating [rating]="dataset?.kv?.rating"></star-rating>
+                      </div>
+                      <div class="count">
+                        <div class="icon">
+                           <img src="./assets/icons/focus (1).svg">
+                        </div>
+                        <div class="text">
+                          {{dataset?.kv?.reviewCount}}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="box-perspective right">
+                        <div class="text pr-2">
+                            <p>SAVE DATA</p>
+                          </div>
+                        <div class="rotating-box">
+                            <div class="icon">
+                                <img src="./assets/icons/folder.svg">
+                            </div>
+                         </div>
+                    </div>
+               </div>
+
+                <!-- <div class="item-formats" *ngFor="let item of ((dataset?.allFormat).split(' '))">
+                    <div class="icon {{item}}"  >{{item}}</div>
+                </div> -->
           </div>
-         </div>
-        </div>
-      </section>
-      <section id="keywords">
-          <div class="section-title">Additional Info</div>
-        <div class="section-content">
-         <div class="item" *ngFor= "let keyword of (datasetKeywords$ | async)?.r">
-          {{keyword?.keyword}}
-         </div>
-        </div>
-      </section>
-      <section id="additionalInfo">
-        <div class="section-content">
-                <table class="table table-striped" *ngIf="(dataset$ | async)?.kv as dataset">
-                    <thead>
-                      <tr>
-                        <th scope="col">Field</th>
-                        <th scope="col">Value</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row">Status</th>
-                        <td>{{dataset?.status}}</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">Create Data</th>
-                        <td>{{dataset?.createDate}}</td>
-                      </tr>
-                      <tr>
-                          <th scope="row">Update Data</th>
-                          <td>{{dataset?.updateDate}}</td>
+        <section id="api">
+          <div class="section-title">Data and Resources</div>
+          <div class="section-content">
+           <div class="item" *ngFor ="let api of (datasetApi)?.r">
+            <div class="item-icon {{api?.format}}"> {{api?.format}}</div>
+            <div class="item-description">{{api?.descriptionEn}}</div>
+            <div class="item-links">
+              <div class="info-link">
+                <img src='./assets/icons/info.svg'>
+              </div>
+              <div class="api-link">
+                <img src="./assets/icons/attach.svg">
+              </div>
+            </div>
+           </div>
+          </div>
+        </section>
+        <section id="keywords">
+            <div class="section-title">Additional Info</div>
+          <div class="section-content">
+           <div class="item" *ngFor= "let keyword of (datasetKeywords)?.r">
+            {{keyword?.keyword}}
+           </div>
+          </div>
+        </section>
+        <section id="additionalInfo">
+          <div class="section-content">
+                  <table class="table table-striped" *ngIf="(dataset)?.kv">
+                      <thead>
+                        <tr>
+                          <th scope="col">Field</th>
+                          <th scope="col">Value</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">Status</th>
+                          <td>{{dataset?.kv?.status}}</td>
                         </tr>
                         <tr>
-                            <th scope="row">Organization</th>
-                            <td>{{dataset?.org}}</td>
+                          <th scope="row">Create Data</th>
+                          <td>{{dataset?.kv?.createDate}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Update Data</th>
+                            <td>{{dataset?.kv?.updateDate}}</td>
                           </tr>
-                    </tbody>
-                  </table>
-        </div>
-      </section>
-     </div>
-  </div>
+                          <tr>
+                              <th scope="row">Organization</th>
+                              <td>{{dataset?.kv?.org}}</td>
+                            </tr>
+                      </tbody>
+                    </table>
+          </div>
+        </section>
 
-  </div>
+       </div>
+    </div>
 
+    <div class="row">
+      <div class="col-12 p-0">
+        <section id="feedback">
+          <feedback-box [defaultIndex]="5"></feedback-box>
+        </section>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 p-0">
+        <section id="comments">
+           <comments></comments>
+          </section>
+      </div>
+    </div>
+
+    </div>
+
+
+</div>

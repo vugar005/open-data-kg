@@ -27,11 +27,17 @@
                 <div class="name">Blogs</div>
               </div>
 
-              <div class="item animated fadeIn" (click)="onNavigate('/')"  routerLinkActive="router-link-active" >
+              <div class="item animated fadeIn"  >
                   <div class="icon">
                     <img src="./assets/icons/nav-dashboard.svg">
                   </div>
-                  <div class="name">Go to Dashboard</div>
+                  <div class="name"   (click)="onNavigate('/')">Go to Dashboard</div>
+                </div>
+              <div class="item animated fadeIn"   *ngIf="(isAdmin$ | async)" >
+                  <div class="icon">
+                    <img src="./assets/icons/nav-dashboard.svg">
+                  </div>
+                  <div class="name" (click)="onNavigate('/admin')">Go to Admin</div>
                 </div>
 
             <div class="item animated fadeIn " >
@@ -44,7 +50,8 @@
               <div class="icon">
                 <img src="./assets/icons/nav-logout.svg">
               </div>
-              <div class="name">Logout</div>
+              <div class="name" *ngIf="isLoggedIn$ | async">Logout</div>
+              <div class="name" *ngIf="!(isLoggedIn$ | async)">Login</div>
             </div>
           </div>
      </div>
