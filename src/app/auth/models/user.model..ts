@@ -74,6 +74,8 @@
       userType: string;
       gender?: any;
       pin: string;
+      photoFileId: string;
+      photoUrl: string;
       sessionActive: boolean;
       isBlocked: boolean;
       modules: UserModule[];

@@ -90,10 +90,8 @@ export class NewsSidebarComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log('ini');
     setTimeout(() => {
       this.render = true;
-      console.log()
     }, 3000);
   }
   onPrev() {

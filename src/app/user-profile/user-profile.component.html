@@ -4,7 +4,7 @@
       <div class="profile-main-info">
         <div class="item-left">
           <div class="item-image">
-            <img src="https://www.timeshighereducation.com/sites/default/files/byline_photos/default-avatar.png">
+            <img src="{{apiUrl$ | async}}/api/get/file/{{(user$ | async)?.photoFileId}}"  onerror="this.src= './assets/img/default-avatar.png '">
           </div>
         </div>
         <div class="item-center">

@@ -8,7 +8,7 @@
           {{ (user$ | async)?.name}} {{(user$ | async)?.surname }}
         </div>
           <div class="image" >
-              <img src= "https://www.timeshighereducation.com/sites/default/files/byline_photos/default-avatar.png">
+            <img src="{{apiUrl$ | async}}/api/get/file/{{(user$ | async)?.photoFileId}}"  onerror="this.src= './assets/img/default-avatar.png '">
             </div>
       </div>
 

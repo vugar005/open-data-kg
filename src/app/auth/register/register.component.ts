@@ -9,6 +9,7 @@ import { SharedService } from 'src/app/shared/shared.service';
 import { TryRegister } from '../store/auth.actions';
 import { MatDialog } from '@angular/material';
 import { UploadFileDialogComponent } from '../../admin-panel/ent-users/user-insert-dialog/upload-file-dialog/upload-file-dialog.component';
+import { getApiUrl } from '../store/auth.selectors';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -26,9 +27,11 @@ export class RegisterComponent implements OnInit, OnDestroy, AfterViewInit {
   imgId: string;
   bounceInDown = true;
   fadeIn = true;
+  apiUrl$: Observable<string>;
   constructor(private store: Store<AppState>, private sharedService: SharedService, private dialog: MatDialog) {
    // this.roles$ = this.sharedService.getModTypes('api/get/Permission/UserRoles/GetUserRoleList');
     this.genders$ = this.sharedService.getTypes('181010384504309277');
+    this.apiUrl$ = this.store.select(getApiUrl);
   }
 
   ngOnInit() {

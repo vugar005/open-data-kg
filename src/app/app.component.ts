@@ -23,8 +23,8 @@ export class AppComponent implements OnInit {
      ) {
   }
   ngOnInit() {
-    this.tryAutoLogin();
     this.setHostname();
+    this.tryAutoLogin();
     this.setDefaultLang();
   }
   tryAutoLogin() {

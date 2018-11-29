@@ -22,7 +22,7 @@
             </ng-container>
 
             <ng-container *ngIf="imgId">
-              <img src="http://192.168.1.23:8080/DispatcherRest/api/get/file/{{imgId}}" (click)="onUpload()" onerror="this.src = './assets/icons/avatar.svg'">
+              <img src="{{apiUrl$ | async}}/api/get/file/{{imgId}}" (click)="onUpload()" onerror="this.src = './assets/icons/avatar.svg'">
             </ng-container>
             <div class="img-corners">
               <div class="arrow"></div>

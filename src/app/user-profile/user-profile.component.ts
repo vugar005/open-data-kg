@@ -3,7 +3,7 @@ import { AppState } from '../reducers';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { User } from '../auth/models/user.model.';
-import { getUser } from '../auth/store/auth.selectors';
+import { getUser, getApiUrl } from '../auth/store/auth.selectors';
 
 @Component({
   selector: 'app-user-profile',
@@ -12,9 +12,11 @@ import { getUser } from '../auth/store/auth.selectors';
 })
 export class UserProfileComponent implements OnInit {
  user$: Observable<User>;
+ apiUrl$: Observable<string>;
   constructor(private store: Store<AppState>) {
     this.user$ = store.select(getUser);
-    this.user$.subscribe(res => console.log(res))
+    this.user$.subscribe(res => console.log(res));
+    this.apiUrl$ = store.select(getApiUrl);
   }
 
   ngOnInit() {

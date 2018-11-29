@@ -36,10 +36,10 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-4 col-md-3">
+      <div class="col-12 col-sm-5 col-md-4 col-lg-3 pr-0">
         <module-sidebar (checkboxId)="checkboxIdChanged($event)" [type]="'organization'"></module-sidebar>
       </div>
-      <div class="col-8 col-md-9">
+      <div class="col-12 col-sm-7 col-md-8 col-lg-9 ">
           <dataset-list [orgQuery]= "orgQuery" #dataset_list [type]="'organization'" (boxSelected)="datasetId = $event" *ngIf="!datasetId"></dataset-list>
           <dataset-detail class="animated fadeIn" [id]="datasetId"  *ngIf="datasetId" [isInner]="true" (navBack)="exitDetail()"></dataset-detail>
       </div>

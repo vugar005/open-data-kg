@@ -2,7 +2,7 @@ import { Component, OnInit, HostBinding } from '@angular/core';
 import { AppState } from '../reducers';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { isLoggedIn, getUser } from '../auth/store/auth.selectors';
+import { isLoggedIn, getUser, getApiUrl } from '../auth/store/auth.selectors';
 import { User } from '../auth/models/user.model.';
 import { trigger, transition, useAnimation, state, style, animate } from '@angular/animations';
 import { fadeIn, zoomOut, zoomIn, fadeOut } from 'ng-animate';
@@ -31,11 +31,13 @@ export class HeaderComponent implements OnInit {
   isLoggedIn$: Observable<boolean>;
   user$: Observable<User>;
   showMenu: boolean;
+  apiUrl$: Observable<string>;
    @HostBinding('@enterAnimation') enter = 0;
  //  @HostBinding('@fadeOut') leave = true;
   constructor(private store: Store<AppState>) {
     this.isLoggedIn$ = store.select(isLoggedIn);
     this.user$ = store.select(getUser);
+    this.apiUrl$ = store.select(getApiUrl);
   }
 
   ngOnInit() {
