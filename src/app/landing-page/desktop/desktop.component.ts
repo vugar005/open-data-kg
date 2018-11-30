@@ -23,7 +23,7 @@ export class DesktopComponent implements OnInit, AfterViewInit {
   faSearch = faSearch;
   faChevronRight = faChevronRight;
   globalNavClass$: Observable<string>;
-  typed: any;
+  inputValue: string;
   constructor(private store: Store<AppState>, private router: Router) {
   }
 
@@ -38,6 +38,13 @@ export class DesktopComponent implements OnInit, AfterViewInit {
   }
 handleResultSelected(e: any) {
   console.log(e);
+  if (!e) {
+    this.handleShowAll();
+   return;
+  }
   this.router.navigate(['/datasets', e.id]);
+}
+handleShowAll() {
+ this.router.navigate(['dataset-results'], {queryParams: {search: this.inputValue}});
 }
 }

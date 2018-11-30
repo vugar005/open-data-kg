@@ -16,7 +16,7 @@
             [apiKey]="'datasetFullname'"
             [listItemLabel]="'name'"
             (selected)="handleResultSelected($event)"
-            ngModel (keydown)="onInputEnter($event)">
+            [(ngModel)]="inputValue" (keydown)="onInputEnter($event)">
             <div class="search-ico" (click)="onSubmit()">
               <fa-icon [icon]="faSearch"></fa-icon>
             </div>

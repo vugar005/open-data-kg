@@ -17,6 +17,14 @@
      [config]="config"
      (rowAdd)="initDialog(table)"
      (rowEdit)="initDialog(table, $event)"
+     [editTemplate]="editer"
+     (optClick)="onOptClick($event, table)"
     ></ngx-nt-table>
    </div>
  </div>
+ <ng-template #editer>
+    <button [attr.t-btn]="'edit'">Edit</button>
+    <button [attr.t-btn]="'remove'">Remove</button>
+    <button [attr.t-btn]="'activate'">Activate</button>
+    <button [attr.t-btn]="'deactivate'">Deactivate</button>
+  </ng-template>

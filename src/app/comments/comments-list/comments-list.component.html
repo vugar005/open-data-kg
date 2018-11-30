@@ -1,5 +1,5 @@
 <div class="co-title">
-  3 Comments
+  {{comments?.length}} Comments
 </div>
 <comment-box *ngFor="let item of comments"
   [comment]="item"

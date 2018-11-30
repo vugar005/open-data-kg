@@ -34,16 +34,6 @@
   .overlay {
      opacity: 1;
   }
- .right {
-  .box-perspective {
-    .rotating-box{
-      transform: rotateY(30deg);
-      }
-      .text {
-        visibility: visible!important;
-      }
-  }
- }
 }
 .overlay {
   opacity: 0;

@@ -7,6 +7,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { DatasetDetailComponent } from './shared/components/dataset-detail/dataset-detail.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { DatasetSearchResultComponent } from './shared/components/dataset-search-result/dataset-search-result.component';
 
 const routes: Routes = [
   {path: '', component: LandingPageComponent},
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path: 'categories/:id', loadChildren: './categories/categories.module#CategoriesModule'},
   {path: 'organizations/:id', loadChildren: './organizations/organizations.module#OrganizationsModule'},
   {path: 'datasets/:id', component: DatasetDetailComponent },
+  {path: 'dataset-results', component: DatasetSearchResultComponent},
   {path: 'login', component: LoginComponent},
   {path: 'user-profile', component: UserProfileComponent},
   {path: 'register', component: RegisterComponent },

@@ -24,6 +24,7 @@ export class CategoriesComponent implements OnInit {
   };
   formatTypes$: Observable<SelectType[]>;
   datasetId: string;
+  inputValue: string;
   constructor(private sharedService: SharedService, private router: Router) {
     this.formatTypes$ = this.sharedService.getTypes('181116173908947318');
    }
@@ -64,8 +65,15 @@ export class CategoriesComponent implements OnInit {
    }, 600);
  }
  handleResultSelected(e: any) {
+  if (!e) {
+    this.handleShowAll();
+   return;
+  }
   this.datasetId = e.id;
 }
+handleShowAll() {
+  this.router.navigate(['dataset-results'], {queryParams: {search: this.inputValue}});
+ }
 toggleHeader(e: HTMLElement) {
 this.sharedService.toggleHeader.next(e);
 }

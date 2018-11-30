@@ -11,7 +11,9 @@
         {{ (user$ | async)?.name}} {{(user$ | async)?.surname }}
       </div>
         <div class="image" [routerLink]="['/user-profile']"  >
-            <img src="{{apiUrl$ | async}}/api/get/file/{{(user$ | async)?.photoFileId}}"  onerror="this.src= './assets/img/default-avatar.png '">
+            <img *ngIf="!(user$ | async).photoFileId" src="./assets/img/default-avatar.png">
+            <img *ngIf="(user$ | async).photoFileId" src="{{apiUrl$ | async}}/api/get/file/{{(user$ | async)?.photoFileId}}"
+             onerror="this.src= './assets/img/default-avatar.png '">
           </div>
     </div>
     <button class="hamburger hamburger--slider linksButton" type="button"

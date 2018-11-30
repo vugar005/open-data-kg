@@ -47,8 +47,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { OrganizationOverviewComponent } from './global-nav/organization-overview/organization-overview.component';
 import {TypeheadModule} from 'ngx-typehead-dir';
 import { UserProfileComponent } from './user-profile/user-profile.component';
-import { FeedbackBoxComponent } from './shared/components/feedback-box/feedback-box.component';
-import { CommentsModule } from './comments/comments.module';
+import { DatasetSearchBoxComponent } from './shared/components/dataset-search-box/dataset-search-box.component';
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
 };
@@ -92,6 +91,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       SharedModule,
       PerfectScrollbarModule,
       TypeheadModule,
+      SharedModule,
       HttpClientBusyModule.forRoot(),
       TranslateModule.forRoot({
         loader: {

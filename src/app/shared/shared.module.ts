@@ -26,6 +26,8 @@ import { TypeheadModule } from 'ngx-typehead-dir';
 import { ScrollListenerDirective } from './directives/scroll-listener.directive';
 import { FeedbackBoxComponent } from './components/feedback-box/feedback-box.component';
 import { CommentsModule } from '../comments/comments.module';
+import { DatasetSearchResultComponent } from './components/dataset-search-result/dataset-search-result.component';
+import { DatasetSearchBoxComponent } from './components/dataset-search-box/dataset-search-box.component';
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
   slidesPerView: 'auto'
@@ -36,11 +38,13 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     DatasetBoxComponent,
     DatasetListComponent,
     DatasetDetailComponent,
+    DatasetSearchResultComponent,
     FooterComponent,
     GlobalNavComponent,
     StarRatingComponent,
     ScrollListenerDirective,
     FeedbackBoxComponent,
+    DatasetSearchBoxComponent
   ],
     imports: [
       CommonModule,
@@ -73,6 +77,7 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
       DatasetBoxComponent,
       DatasetListComponent,
       DatasetDetailComponent,
+      DatasetSearchResultComponent,
       MatCheckboxModule,
       ReactiveFormsModule,
       MatExpansionModule,
@@ -85,6 +90,7 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
       RouterModule,
       CommentsModule,
       ScrollListenerDirective,
+      DatasetSearchBoxComponent
     ],
     providers: [
       {

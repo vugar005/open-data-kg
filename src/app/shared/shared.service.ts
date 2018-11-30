@@ -170,5 +170,23 @@ export class SharedService {
       JSON.stringify(body)
     );
     }
+    getDatasetByQuery(query: string): Observable<Dataset[]> {
+      const body = {
+        kv: {
+          datasetFullname: query
+        }
+      };
+      return this.http
+        .post<Dataset[]>(
+          `api/get/Permission/Datasets/GlobalSearchForDataset`,
+          JSON.stringify(body)
+        ).pipe(
+          map((res: any) => {
+            if (res && res.tbl && res.tbl[0] && res.tbl[0].r) {
+             return res.tbl[0].r;
+            }
+          })
+        );
+    }
 
 }

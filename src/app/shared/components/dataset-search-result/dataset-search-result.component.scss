@@ -1,0 +1,33 @@
+:host {
+  display: block;
+}
+
+.input-co {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  width: 100%;
+  background: #ffffff;
+  margin-top: 8px;
+  border-radius: 100px;
+  padding: 8px;
+  .search-ico {
+    color: var(--color-primary);
+    padding: 0 21px;
+    font-size: 18px;
+    opacity: 0.8;
+    position: absolute;
+    right: 0;
+  }
+  .typehead-box {
+    position: absolute;
+   }
+
+  .submit-ico {
+    color: white;
+    background: #1F93CF;
+    padding: 19px 23px;
+    cursor: pointer;
+  }
+}

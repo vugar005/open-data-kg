@@ -18,7 +18,6 @@ export class FeedbackBoxComponent implements OnInit {
   ngOnInit() {
    this.ceilDefaultIndex = Math.ceil(+this.defaultIndex);
     this.index = this.ceilDefaultIndex;
-    console.log(this.index);
   }
   enter(i: number) {
     this.index = i;
