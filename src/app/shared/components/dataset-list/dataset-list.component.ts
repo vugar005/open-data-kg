@@ -24,7 +24,7 @@ export class DatasetListComponent implements OnInit, OnChanges {
   constructor(private categoryService: CategoryService, private orgService: OrganizationService) { }
 
   ngOnInit() {
-      this.getList();
+    //  this.getList();
   }
   isExpanded(i) {
    // return setTimeout(() => i === 0, 300);

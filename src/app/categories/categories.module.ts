@@ -9,6 +9,8 @@ import {InputModule} from 'ngx-input';
 import { SharedModule } from '../shared/shared.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { APIInterceptor } from '../shared/interceptors/api.interceptor';
+import { TokenInterceptor } from '../auth/token.inteceptor';
+import { ErrorInterceptor } from '../shared/interceptors/error.interceptor';
 
 @NgModule({
   imports: [
@@ -20,7 +22,9 @@ import { APIInterceptor } from '../shared/interceptors/api.interceptor';
   ],
   declarations: [CategoriesComponent, CategoryListComponent, CategorySidebarComponent],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: APIInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: APIInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
   ]
 })
 export class CategoriesModule { }

@@ -105,6 +105,14 @@
                               <th scope="row">Organization</th>
                               <td>{{dataset?.kv?.org}}</td>
                             </tr>
+                            <tr>
+                              <th scope="row">Categories</th>
+                              <td>
+                                 <ng-container *ngFor="let cat of (datasetCategories)?.r">
+                                    <span>{{cat?.categoryEn}}</span>
+                                 </ng-container>
+                            </td>
+                            </tr>
                       </tbody>
                     </table>
           </div>
@@ -116,7 +124,10 @@
     <div class="row">
       <div class="col-12 p-0">
         <section id="feedback">
-          <feedback-box [defaultIndex]="5"></feedback-box>
+          <feedback-box [defaultIndex]="dataset.kv.rating" [insertApi]="'api/post/Permission/Datasets/UpdateDatasetRating'"
+          (ratingUpdated)="onRatingUpdated($event)"
+          [datasetId]="dataset.kv.id"
+          ></feedback-box>
         </section>
       </div>
     </div>
@@ -124,7 +135,11 @@
     <div class="row">
       <div class="col-12 p-0">
         <section id="comments">
-           <comments></comments>
+           <comments
+            [getApi]="'api/get/Permission/Comments/GetDatasetCommentListCommon'"
+            [insertApi]="'api/post/Permission/Comments/InsertNewDatasetComment'"
+            [datasetId]="dataset.kv.id"
+           ></comments>
           </section>
       </div>
     </div>

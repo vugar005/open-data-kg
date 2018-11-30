@@ -89,9 +89,9 @@
 
 
           <mat-form-field class="example-full-width" >
-            <input matInput placeholder="Password" class="nt-form-input" name="passwd" ngModel [type]="hideOld ? 'password' : 'text'">
+            <input matInput placeholder="Password" class="nt-form-input" name="password" ngModel [type]="hideOld ? 'password' : 'text'">
             <mat-icon matSuffix (click)="hideOld = !hideOld">{{hideOld ? 'visibility_off' : 'visibility'}}</mat-icon>
-            <mat-error>{{getErrors('passwd')}}</mat-error>
+            <mat-error>{{getErrors('password')}}</mat-error>
           </mat-form-field>
 
           <mat-form-field class="example-full-width">

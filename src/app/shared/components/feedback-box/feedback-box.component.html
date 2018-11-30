@@ -9,28 +9,28 @@ Are you satisfied ?
     <div class="right">
       <div class="smile-box">
         <div class="smile-icon">
-            <img src="./assets/icons/very_bad.svg" *ngIf="index !=1 " (mouseenter)="enter(1)" >
-            <img src="./assets/icons/very_bad_active.svg" *ngIf="index === 1" class="active" (mouseleave)="leave()">
+            <img src="./assets/icons/very_bad.svg" *ngIf="index !=1 " (mouseenter)="enter(1)">
+            <img src="./assets/icons/very_bad_active.svg" *ngIf="index === 1" class="active" (mouseleave)="leave()" (click)="updateRating(1)">
         </div>
 
         <div class="smile-icon">
             <img src="./assets/icons/bad.svg" *ngIf="index !=2" (mouseenter)="enter(2)" >
-            <img src="./assets/icons/bad_active.svg" *ngIf="index === 2" class="active"  (mouseleave)="leave()">
+            <img src="./assets/icons/bad_active.svg" *ngIf="index === 2" class="active"  (mouseleave)="leave()" (click)="updateRating(2)">
         </div>
 
         <div class="smile-icon">
             <img src="./assets/icons/average.svg" *ngIf="index !=3" (mouseenter)="enter(3)" >
-            <img src="./assets/icons/average_active.svg" *ngIf="index === 3" class="active"  (mouseleave)="leave()">
+            <img src="./assets/icons/average_active.svg" *ngIf="index === 3" class="active"  (mouseleave)="leave()" (click)="updateRating(3)">
         </div>
 
         <div class="smile-icon">
             <img src="./assets/icons/good.svg" *ngIf="index !=4" (mouseenter)="enter(4)" >
-            <img src="./assets/icons/good_active.svg" *ngIf="index === 4" class="active"  (mouseleave)="leave()">
+            <img src="./assets/icons/good_active.svg" *ngIf="index === 4" class="active"  (mouseleave)="leave()" (click)="updateRating(4)">
         </div>
 
         <div class="smile-icon">
             <img src="./assets/icons/awesome.svg" *ngIf="index !=5" (mouseenter)="enter(5)" >
-            <img src="./assets/icons/awesome_active.svg" *ngIf="index === 5" class="active"  (mouseleave)="leave()">
+            <img src="./assets/icons/awesome_active.svg" *ngIf="index === 5" class="active"  (mouseleave)="leave()" (click)="updateRating(5)">
         </div>
 
 

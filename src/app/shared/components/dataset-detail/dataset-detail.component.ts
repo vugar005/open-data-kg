@@ -23,6 +23,7 @@ export class DatasetDetailComponent implements OnInit {
   dataset: Dataset;
   datasetApi: any;
   datasetKeywords: any;
+  datasetCategories: any;
   left = faChevronLeft;
   @HostBinding('@slideInRight') animate = this.isInner;
 //  @HostBinding('@zoomInLeft') leave = true;
@@ -46,15 +47,12 @@ export class DatasetDetailComponent implements OnInit {
    this.dataset = res;
    this.datasetApi = this.dataset.tbl.find(tb => tb.tn === 'API');
    this.datasetKeywords = this.dataset.tbl.find(tb => tb.tn === 'KEYWORD');
+   this.datasetCategories = this.dataset.tbl.find(tb => tb.tn === 'CATEGORY');
+   console.log(this.datasetCategories);
  });
-  //  this.datasetApi$ = this.dataset$
-  //  .pipe(
-  //    map(dataset => dataset.tbl.find(tb => tb.tn === 'API'))
-  //  );
-  //  this.datasetKeywords$ = this.dataset$
-  //  .pipe(
-  //    map(dataset => dataset.tbl.find(tb => tb.tn === 'KEYWORD'))
-  //  );
+  }
+  onRatingUpdated() {
+  //  console.log('udpated');
   }
 
 }

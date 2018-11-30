@@ -83,6 +83,7 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
       FormsModule,
       TypeheadModule,
       RouterModule,
+      CommentsModule,
       ScrollListenerDirective,
     ],
     providers: [

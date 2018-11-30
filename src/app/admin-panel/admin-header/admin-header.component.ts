@@ -17,11 +17,11 @@ export class AdminHeaderComponent implements OnInit {
   isLoggedIn$: Observable<boolean>;
   user$: Observable<User>;
   showMenu: boolean;
-  apiUrl: Observable<string>;
+  apiUrl$: Observable<string>;
   constructor(private store: Store<AppState>, private router: Router) {
     this.isLoggedIn$ = store.select(isLoggedIn);
     this.user$ = store.select(getUser);
-    this.apiUrl = store.select(getApiUrl);
+    this.apiUrl$ = store.select(getApiUrl);
   }
 
   ngOnInit() {

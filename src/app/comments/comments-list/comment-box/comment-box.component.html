@@ -4,7 +4,7 @@
       <img src="https://www.timeshighereducation.com/sites/default/files/byline_photos/default-avatar.png">
     </div>
     <div class="user-info">
-      <div class="user-name">Justin Timberlake</div>
+      <div class="user-name">{{comment?.createUserFirstname}} {{comment?.createUserLastname}}</div>
      <div class="comment-date">4 days ago</div>
     </div>
   </div>
@@ -14,7 +14,5 @@
 </div>
 
 <div class="ng-bottom">
-  It's fundamentally uncountable but people do occasionally use it as plural, e.g., Contrary to popular belief,
-   Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin
-   literature from 45 BC, making it over 2000 years old.
+    {{comment?.comment}}
 </div>
