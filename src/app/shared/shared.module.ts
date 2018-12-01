@@ -12,51 +12,28 @@ import { SWIPER_CONFIG } from 'ngx-swiper-wrapper';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 import { MatRippleModule, MatCheckboxModule, MatExpansionModule, MatFormFieldModule, MatSelectModule } from '@angular/material';
 import { SharedUploadModule } from './shared-upload.module';
-import { ModuleSidebarComponent } from './components/module-sidebar/module-sidebar.component';
 import { CommonModule } from '@angular/common';
-import { DatasetBoxComponent } from './components/dataset-box/dataset-box.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { DatasetListComponent } from './components/dataset-list/dataset-list.component';
-import { GlobalNavComponent } from '../global-nav/global-nav.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { StarRatingComponent } from './components/star-rating/star-rating.component';
-import { DatasetDetailComponent } from './components/dataset-detail/dataset-detail.component';
 import { RouterModule } from '@angular/router';
 import { TypeheadModule } from 'ngx-typehead-dir';
 import { ScrollListenerDirective } from './directives/scroll-listener.directive';
-import { FeedbackBoxComponent } from './components/feedback-box/feedback-box.component';
 import { CommentsModule } from '../comments/comments.module';
-import { DatasetSearchResultComponent } from './components/dataset-search-result/dataset-search-result.component';
-import { DatasetSearchBoxComponent } from './components/dataset-search-box/dataset-search-box.component';
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
   slidesPerView: 'auto'
 };
 @NgModule({
   declarations: [
-    ModuleSidebarComponent,
-    DatasetBoxComponent,
-    DatasetListComponent,
-    DatasetDetailComponent,
-    DatasetSearchResultComponent,
     FooterComponent,
-    GlobalNavComponent,
-    StarRatingComponent,
     ScrollListenerDirective,
-    FeedbackBoxComponent,
-    DatasetSearchBoxComponent
   ],
     imports: [
       CommonModule,
       SharedUploadModule,
       ReactiveFormsModule,
-      MatCheckboxModule,
-      MatExpansionModule,
-      MatFormFieldModule,
-      MatSelectModule,
       FormsModule,
       RouterModule,
-      TypeheadModule,
       CommentsModule,
       TranslateModule.forChild({
         loader: {
@@ -73,24 +50,10 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
       SwiperModule,
       FooterComponent,
       MatRippleModule,
-      ModuleSidebarComponent,
-      DatasetBoxComponent,
-      DatasetListComponent,
-      DatasetDetailComponent,
-      DatasetSearchResultComponent,
-      MatCheckboxModule,
       ReactiveFormsModule,
-      MatExpansionModule,
-      GlobalNavComponent,
-      StarRatingComponent,
-      MatFormFieldModule,
-      MatSelectModule,
       FormsModule,
-      TypeheadModule,
       RouterModule,
-      CommentsModule,
       ScrollListenerDirective,
-      DatasetSearchBoxComponent
     ],
     providers: [
       {

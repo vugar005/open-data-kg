@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div class="col-7">
+        <div class="input-co">
+            <input class="ng-input" placeholder="Search data"
+            typehead-co
+            [url]="'api/get/Permission/Datasets/GlobalSearchForDataset'"
+            [apiKey]="'datasetFullname'"
+            [listItemLabel]="'name'"
+            (selected)="handleResultSelected($event)"
+            [(ngModel)]="inputValue"
+            >
+            <div class="search-ico" (click)="handleShowAll()">
+                <i class="fas fa-search"></i>
+            </div>
+        </div>
+
+    </div>
+  </div>
+  <div class="row">
+      <div class="col-10">
+       <dataset-search-box *ngFor="let dataset of (datasets$ | async)"  [dataset]="dataset"
+       routerLink="/datasets/details/{{dataset.id}}"
+       ></dataset-search-box>
+      </div>
+    </div>
+</div>

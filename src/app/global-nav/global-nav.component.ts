@@ -13,12 +13,12 @@ export class GlobalNavComponent  {
     {
       name: 'Categories',
       icon_url: './assets/icons/database.png',
-      link: 'categories'
+      link: 'category'
     },
     {
       name: 'Organizations',
       icon_url: './assets/icons/database(2).png',
-      link: 'organizations'
+      link: 'organization'
     },
     {
       name: 'Community',
@@ -33,10 +33,10 @@ export class GlobalNavComponent  {
   ];
   state = 'categories';
   constructor(private router: Router) {
-  if (this.router.url.includes('categories')) {
-    this.state = 'categories';
-  } else if (this.router.url.includes('organizations')) {
-    this.state = 'organizations';
+  if (this.router.url.includes('category')) {
+    this.state = 'category';
+  } else if (this.router.url.includes('organization')) {
+    this.state = 'organization';
   }
   }
 

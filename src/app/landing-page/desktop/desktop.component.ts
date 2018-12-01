@@ -42,9 +42,9 @@ handleResultSelected(e: any) {
     this.handleShowAll();
    return;
   }
-  this.router.navigate(['/datasets', e.id]);
+  this.router.navigate(['/datasets/details', e.id]);
 }
 handleShowAll() {
- this.router.navigate(['dataset-results'], {queryParams: {search: this.inputValue}});
+ this.router.navigate(['/datasets/searchResults'], {queryParams: {search: this.inputValue}});
 }
 }

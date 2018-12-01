@@ -5,18 +5,11 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { AdminGuard } from './auth/admin.guard';
 import { LoginComponent } from './auth/login/login.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { DatasetDetailComponent } from './shared/components/dataset-detail/dataset-detail.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
-import { DatasetSearchResultComponent } from './shared/components/dataset-search-result/dataset-search-result.component';
 
 const routes: Routes = [
   {path: '', component: LandingPageComponent},
-  {path: 'categories', redirectTo: 'categories/0', pathMatch: 'full'},
-  {path: 'organizations', redirectTo: 'organizations/0', pathMatch: 'full'},
-  {path: 'categories/:id', loadChildren: './categories/categories.module#CategoriesModule'},
-  {path: 'organizations/:id', loadChildren: './organizations/organizations.module#OrganizationsModule'},
-  {path: 'datasets/:id', component: DatasetDetailComponent },
-  {path: 'dataset-results', component: DatasetSearchResultComponent},
+  {path: 'datasets', loadChildren: './datasets/datasets.module#DatasetsModule'},
   {path: 'login', component: LoginComponent},
   {path: 'user-profile', component: UserProfileComponent},
   {path: 'register', component: RegisterComponent },

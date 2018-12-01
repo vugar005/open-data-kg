@@ -41,13 +41,12 @@ import { TotalDatasetsCountComponent } from './global-nav/total-datasets-count/t
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
-import { CategoryService } from './categories/category.service';
 import { SharedModule } from './shared/shared.module';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { OrganizationOverviewComponent } from './global-nav/organization-overview/organization-overview.component';
 import {TypeheadModule} from 'ngx-typehead-dir';
 import { UserProfileComponent } from './user-profile/user-profile.component';
-import { DatasetSearchBoxComponent } from './shared/components/dataset-search-box/dataset-search-box.component';
+import { SharedGlobalNavModule } from './shared/shared-global-nav.module';
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
 };
@@ -79,6 +78,7 @@ export function HttpLoaderFactory(http: HttpClient) {
    imports: [
       BrowserModule,
       BrowserAnimationsModule,
+      SharedGlobalNavModule,
       AppRoutingModule,
       AuthModule,
       HttpClientModule,
@@ -90,8 +90,8 @@ export function HttpLoaderFactory(http: HttpClient) {
       ClickOutsideModule,
       SharedModule,
       PerfectScrollbarModule,
-      TypeheadModule,
       SharedModule,
+      TypeheadModule,
       HttpClientBusyModule.forRoot(),
       TranslateModule.forRoot({
         loader: {
@@ -104,7 +104,6 @@ export function HttpLoaderFactory(http: HttpClient) {
   providers: [
     SharedService,
     AdminGuard,
-    CategoryService,
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: APIInterceptor, multi: true },

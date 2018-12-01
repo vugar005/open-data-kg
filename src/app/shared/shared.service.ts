@@ -5,7 +5,7 @@ import { Observable, Subject } from 'rxjs';
 import { SelectType } from './models/select-type.model';
 import { map, tap, shareReplay, share } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
-import { Dataset } from './models/dataset.model';
+import { Dataset } from '../datasets/models/dataset.model';
 import { DatasetApi } from './models/datasetApi.model';
 
 @Injectable()
@@ -147,46 +147,6 @@ export class SharedService {
       label: res.nameEn
     };
   }
-  getDatasetById(id: string): Observable<Dataset> {
-    const body = {
-      kv: {
-        id: id
-      }
-    };
-    return this.http
-      .post<Dataset>(
-        `api/get/Permission/Datasets/GetDatasetDetails`,
-        JSON.stringify(body)
-      );
-  }
-  getApiByDatasetById(id: string): Observable<DatasetApi[]> {
-    const body = {
-      kv: {
-        datasetId: id
-      }
-    };
-    return this.http.post<DatasetApi[]>(
-      `api/get/Permission/Datasets/GetApiByDatasetId`,
-      JSON.stringify(body)
-    );
-    }
-    getDatasetByQuery(query: string): Observable<Dataset[]> {
-      const body = {
-        kv: {
-          datasetFullname: query
-        }
-      };
-      return this.http
-        .post<Dataset[]>(
-          `api/get/Permission/Datasets/GlobalSearchForDataset`,
-          JSON.stringify(body)
-        ).pipe(
-          map((res: any) => {
-            if (res && res.tbl && res.tbl[0] && res.tbl[0].r) {
-             return res.tbl[0].r;
-            }
-          })
-        );
-    }
+
 
 }
