@@ -4,7 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { DatasetsService } from '../datasets.service';
 @Component({
-  selector: 'app-dataset-search-result',
+  selector: 'dataset-search-result',
   templateUrl: './dataset-search-result.component.html',
   styleUrls: ['./dataset-search-result.component.scss']
 })
@@ -16,8 +16,8 @@ export class DatasetSearchResultComponent implements OnInit {
 
   ngOnInit() {
    this.route.queryParams.subscribe(res => {
-     if (res['search']) {
-        this.searchByQuery(res['search']);
+     if (res['query']) {
+        this.searchByQuery(res['query']);
      }
    });
   }
@@ -31,9 +31,9 @@ export class DatasetSearchResultComponent implements OnInit {
      return;
     }
     this.datasetService.getDatasetByQuery(e).subscribe(res => console.log(res));
-    this.router.navigate(['/datasets', e.id]);
+    this.router.navigate(['/datasets/', e.id, 'details']);
   }
   handleShowAll() {
-   this.router.navigate(['dataset-results'], {queryParams: {search: this.inputValue}});
+   this.router.navigate(['/datasets/searchResults'], {queryParams: {query: this.inputValue}});
   }
 }

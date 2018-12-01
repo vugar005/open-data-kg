@@ -6,7 +6,7 @@
   justify-content: flex-start;
   align-items: center;
   z-index: 1;
-  left: 2em;
+  left: 1em;
   top: 0;
 }
 .lang-list {
@@ -25,7 +25,9 @@
   }
   .horizontal-line {
     height: 60px;
-    width: 2px;
+    width: 1px;
+    left: 4px;
     background: #ffffff;
+    position: relative;
   }
 }

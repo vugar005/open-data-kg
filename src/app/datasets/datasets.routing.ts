@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: 'by-category', component: DatasetByCatComponent },
   {path: 'by-organization', component: DatasetByOrgComponent},
   {path: 'searchResults', component: DatasetSearchResultComponent},
-  {path: 'details/:id', component: DatasetDetailComponent}
+  {path: ':id/details', component: DatasetDetailComponent}
 ];
 
 export const DatasetsRoutes = RouterModule.forChild(routes);

@@ -65,7 +65,7 @@ export class DatasetByOrgComponent implements OnInit {
     this.datasetId = e.id;
   }
   handleShowAll() {
-    this.router.navigate(['/datasets/searchResults'], {queryParams: {search: this.inputValue}});
+    this.router.navigate(['/datasets/searchResults'], {queryParams: {query: this.inputValue}});
    }
   toggleHeader(e: HTMLElement) {
     this.sharedService.toggleHeader.next(e);

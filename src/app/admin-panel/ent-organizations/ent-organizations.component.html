@@ -3,11 +3,11 @@
    Organizations
   </div>
  <div class="actions-template" >
-    <button mat-raised-button (click)="table.onPrintSelected()" *ngIf="table.printable">Print</button>
+    <button mat-raised-button (click)="table.onPrintSelected()" *ngIf="table?.printable">Print</button>
     <button mat-raised-button (click)="table.addData()" *rbacAllow="[1000009, 'ADD']"  >Add data</button>
     <button mat-raised-button (click)="table.onRemove()" [disabled]="!(table.isRowSelected)" *rbacAllow="[1000009, 'DELETE']" >Remove selected</button>
-    <button mat-raised-button [disabled]="!(table.selectedRow)" (click)="table.onRowPin()" *ngIf="table.rowPinnable"> Pin to top</button>
-    <button mat-raised-button (click)="table.onExport()" *ngIf="table.exportable">Export</button>
+    <button mat-raised-button [disabled]="!(table.selectedRow)" (click)="table.onRowPin()" *ngIf="table?.rowPinnable"> Pin to top</button>
+    <button mat-raised-button (click)="table.onExport()" *ngIf="table?.exportable">Export</button>
  </div>
  </div>
 

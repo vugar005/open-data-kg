@@ -25,14 +25,15 @@ export class ModuleSidebarComponent implements OnInit {
 
   ngOnInit() {
     this.getItemList();
-     this.route.params.subscribe(res => {
+     this.route.queryParams.subscribe(res => {
       this.handleRouteId(res);
      });
   }
   handleRouteId(res) {
     const id = res['id'] || '0';
     this.selectedIndex = id;
-    this.selected.next(id);
+    /** SetTimeout just to fix expressionChanged error. Not important */
+   setTimeout(() => this.selected.next(id), 0);
   }
 
   getItemList() {

@@ -1,5 +1,7 @@
 :host {
   display: block;
+  height: calc(100vh - 70px);
+  overflow: auto;
 }
 
 .input-co {
@@ -7,9 +9,9 @@
   align-items: center;
   justify-content: space-between;
   position: relative;
-  width: 100%;
+  width: 60%;
   background: #ffffff;
-  margin-top: 8px;
+  margin-top:22px;
   border-radius: 100px;
   padding: 8px;
   .search-ico {

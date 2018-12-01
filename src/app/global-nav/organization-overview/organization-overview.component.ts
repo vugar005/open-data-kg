@@ -22,7 +22,7 @@ export class OrganizationOverviewComponent implements OnInit {
   onNavigate(id: string) {
    // console.log(e);
     setTimeout(() => {
-      this.router.navigate(['/datasets/by-organization']);
+      this.router.navigate(['/datasets/by-organization'], { queryParams: {id: id} });
     }, 10);
   }
 }

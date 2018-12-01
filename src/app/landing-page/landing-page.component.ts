@@ -14,7 +14,7 @@ export class LandingPageComponent implements OnInit {
       minScrollbarLength: 20,
       swipeEasing: true
     };
-    state = 'categories';
+    state = 'category';
   constructor(private store: Store<AppState>, private router: Router) {
 
    }

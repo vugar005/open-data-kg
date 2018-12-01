@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
   templateUrl: './dataset-by-cat.component.html',
   styleUrls: ['./dataset-by-cat.component.scss']
 })
-export class DatasetByCatComponent implements OnInit {
+export class DatasetByCatComponent {
 
   @ViewChild('f') form: NgForm;
   @ViewChild('dataset_list') list: DatasetGroupListComponent;
@@ -29,12 +29,6 @@ export class DatasetByCatComponent implements OnInit {
   constructor(private sharedService: SharedService, private router: Router) {
     this.formatTypes$ = this.sharedService.getTypes('181116173908947318');
    }
-
-  ngOnInit() {
-  }
-
-
-
   onSubmit() {
     this.exitDetail();
     setTimeout(() => {
@@ -48,10 +42,10 @@ export class DatasetByCatComponent implements OnInit {
     }
   }
   catIdChanged(e: string) {
-   this.categoryQuery = {
-     ...this.categoryQuery,
-     categoryId: e
-   };
+    this.categoryQuery = {
+      ...this.categoryQuery,
+      categoryId: e
+    };
    this.exitDetail();
   }
   onNavChanged(e) {
@@ -73,7 +67,7 @@ export class DatasetByCatComponent implements OnInit {
   this.datasetId = e.id;
 }
 handleShowAll() {
-  this.router.navigate(['/datasets/searchResults'], {queryParams: {search: this.inputValue}});
+  this.router.navigate(['/datasets/searchResults'], {queryParams: {query: this.inputValue}});
  }
 toggleHeader(e: HTMLElement) {
 this.sharedService.toggleHeader.next(e);

@@ -18,6 +18,10 @@ import { StarRatingComponent } from '../shared/components/star-rating/star-ratin
 import { DatasetBoxComponent } from './dataset-box/dataset-box.component';
 import { DatasetSearchResultComponent } from './dataset-search-result/dataset-search-result.component';
 import { DatasetSearchBoxComponent } from './dataset-search-box/dataset-search-box.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ErrorInterceptor } from '../shared/interceptors/error.interceptor';
+import { TokenInterceptor } from '../auth/token.inteceptor';
+import { APIInterceptor } from '../shared/interceptors/api.interceptor';
 
 @NgModule({
   imports: [
@@ -43,6 +47,11 @@ import { DatasetSearchBoxComponent } from './dataset-search-box/dataset-search-b
      ModuleSidebarComponent,
      FeedbackBoxComponent,
      StarRatingComponent
+    ],
+    providers: [
+      { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+      {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
+      {provide: HTTP_INTERCEPTORS, useClass: APIInterceptor, multi: true },
     ]
 })
 export class DatasetsModule { }

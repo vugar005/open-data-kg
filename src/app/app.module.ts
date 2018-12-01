@@ -17,7 +17,6 @@ import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { WaveParticlesComponent } from './landing-page/wave-particles/wave-particles.component';
 import { HeaderComponent } from './header/header.component';
-import { LangNavComponent } from './lang-nav/lang-nav.component';
 import { NavStyleChangeDirective } from './shared/directives/nav-style-change.directive';
 import { SharedService } from './shared/shared.service';
 import { ErrorInterceptor } from './shared/interceptors/error.interceptor';
@@ -59,7 +58,6 @@ export function HttpLoaderFactory(http: HttpClient) {
       HeaderComponent,
       LandingPageComponent,
       WaveParticlesComponent,
-      LangNavComponent,
       NavStyleChangeDirective,
       HeaderToggleDirective,
       TotalDatasetsCountComponent,

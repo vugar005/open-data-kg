@@ -31,7 +31,7 @@ export class GlobalNavComponent  {
       link: 'popular'
     }
   ];
-  state = 'categories';
+  state = 'category';
   constructor(private router: Router) {
   if (this.router.url.includes('category')) {
     this.state = 'category';

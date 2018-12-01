@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { CategoryQuery } from 'src/app/datasets/models/category-query.model';
 import { OrgQuery } from 'src/app/datasets/models/orgQuery.model';
 import { DatasetsService } from '../datasets.service';
+import { shareReplay } from 'rxjs/operators';
 
 @Component({
   selector: 'dataset-group-list',
@@ -24,16 +25,15 @@ export class DatasetGroupListComponent implements OnInit, OnChanges {
   constructor(private datasetService: DatasetsService) { }
 
   ngOnInit() {
-    //  this.getList();
   }
   isExpanded(i) {
    // return setTimeout(() => i === 0, 300);
   }
   ngOnChanges(changes: SimpleChanges) {
-    if (changes['categoryQuery']) {
+    if (changes['categoryQuery'] && changes['categoryQuery'].currentValue.categoryId) {
       this.getList();
     }
-    if (changes['orgQuery']) {
+    if (changes['orgQuery'] && changes['orgQuery'].currentValue.orgId) {
       this.getList();
     }
   }

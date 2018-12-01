@@ -5,8 +5,8 @@
         <global-nav (navChanged)="onNavChange($event)" (click)="dir.pinTop()" class="bottom" ></global-nav>
        <div class="content" >
          <div class="overview-box">
-            <category-overview *ngIf="state==='categories'" class="animated fadeIn"></category-overview>
-            <organization-overview *ngIf="state==='organizations'" class="animated fadeIn"></organization-overview>
+            <category-overview *ngIf="state==='category'" class="animated fadeIn"></category-overview>
+            <organization-overview *ngIf="state==='organization'" class="animated fadeIn"></organization-overview>
          </div>
           <total-datasets-count></total-datasets-count>
           <app-footer></app-footer>

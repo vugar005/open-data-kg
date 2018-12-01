@@ -46,7 +46,6 @@ export class DatasetDetailComponent implements OnInit {
    this.datasetApi = this.dataset.tbl.find(tb => tb.tn === 'API');
    this.datasetKeywords = this.dataset.tbl.find(tb => tb.tn === 'KEYWORD');
    this.datasetCategories = this.dataset.tbl.find(tb => tb.tn === 'CATEGORY');
-   console.log(this.datasetCategories);
  });
   }
   onRatingUpdated() {

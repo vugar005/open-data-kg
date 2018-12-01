@@ -12,27 +12,9 @@
   transition: all 300ms ease-in-out;
 }
 
-// :host:before {
-//   pointer-events: none;
-//   position: absolute;
-//   z-index: -1;
-//   content: '';
-//   top: 100%;
-//   left: 5%;
-//   height: 10px;
-//   width: 90%;
-//   opacity: 0;
-//   background: -webkit-radial-gradient(center, ellipse, rgba(0,0,0,.35) 0%, rgba(0, 0, 0, 0) 80%);
-//   background: radial-gradient(ellipse at center, rgba(0,0,0,.35) 0%,rgba(0,0,0,0) 80%);
-//   transition: all 300ms ease-in-out;
-// }
-// :host:hover:before {
-//   opacity: 1;
-//   transform: translateY(5px);
-// }
-.host:hover {
+:host:hover {
   .overlay {
-     opacity: 1;
+     opacity: 0.5;
   }
  .right {
   .box-perspective {
@@ -46,19 +28,18 @@
  }
 }
 .overlay {
-  opacity: 0;
-  background: rgba(0, 0, 0, 0.17);
-  filter: blur(20px);
-  border-radius: 10px;
-  width: 732px;
-  height: 92px;
+  filter: blur(20px) grayscale(20%);
   position: absolute;
-  bottom: -12px;
-  z-index: -1;
+  width: 60%;
+  height:40px;
   left: 0;
   right: 0;
+  opacity: 0;
+  background: black;
+  z-index: -1;
+  bottom: -17px;
   margin: 0 auto;
-  transition: all 300ms ease-in-out;
+  transition: all 700ms ease-in-out;
 }
 .left {
   display: flex;
@@ -103,6 +84,7 @@
       .text {
         font-weight: 300;
         font-size: 12px;
+        line-height: 16px;
         color: #666666;
       }
     }

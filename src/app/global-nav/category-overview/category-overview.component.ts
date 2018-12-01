@@ -22,7 +22,7 @@ export class CategoryOverviewComponent implements OnInit {
    // console.log(e);
     setTimeout(() => {
    //   this.router.navigate(['/categories', id ]);
-      this.router.navigate(['/datasets/by-category' ]);
+      this.router.navigate(['/datasets/by-category'], { queryParams: {id: id} });
     }, 10);
   }
 
