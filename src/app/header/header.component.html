@@ -8,7 +8,7 @@
 
     <div class="user" *ngIf="(isLoggedIn$ | async)">
       <div class="name">
-        {{ (user$ | async)?.name}} {{(user$ | async)?.surname }}
+        <p> {{ (user$ | async)?.name}} {{(user$ | async)?.surname }} </p>
       </div>
         <div class="image" [routerLink]="['/user-profile']"  >
             <img *ngIf="!(user$ | async).photoFileId" src="./assets/img/default-avatar.png">
