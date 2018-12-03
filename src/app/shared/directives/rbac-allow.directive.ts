@@ -47,7 +47,6 @@ export class RbacAllowDirective implements OnDestroy {
        }
        const isAllowed = module.operations.find(op => op.code === this.allowedRole[1]);
        if (isAllowed) {
-         console.log('alowed');
          this.viewContainer.createEmbeddedView(this.templateRef);
        } else {
         this.viewContainer.clear();

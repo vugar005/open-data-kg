@@ -4,8 +4,8 @@
   </div>
  <div class="actions-template">
     <button mat-raised-button color="primary" (click)="table.onPrintSelected()" *ngIf="table.printable">Print</button>
-    <button mat-raised-button color="primary" (click)="table.addData()">Add data</button>
-    <button mat-raised-button color="primary" (click)="table.onRemove()" [disabled]="!(table.isRowSelected)">Remove selected</button>
+    <button mat-raised-button color="primary"  *rbacAllow="['1000002', 'ADD']" (click)="table.addData()">Add data</button>
+    <button mat-raised-button color="primary"  *rbacAllow="['1000002', 'DELETE']" (click)="table.onRemove()" [disabled]="!(table.isRowSelected)">Remove selected</button>
     <button mat-raised-button color="primary" [disabled]="!(table.selectedRow)" (click)="table.onRowPin()" *ngIf="table.rowPinnable"> Pin to top</button>
     <button mat-raised-button color="primary" (click)="table.onExport()" *ngIf="table.exportable">Export</button>
  </div>
@@ -21,3 +21,8 @@
     ></ngx-nt-table>
    </div>
  </div>
+
+ <ng-template #editer>
+  <button [attr.t-btn]="'edit'"   *rbacAllow="['1000002', 'EDIT']">Edit</button>
+  <button [attr.t-btn]="'remove'" *rbacAllow="['1000002', 'DELETE']">Remove</button>
+</ng-template>

@@ -4,9 +4,9 @@
   </div>
  <div class="actions-template">
     <button mat-raised-button color="primary" (click)="table.onPrintSelected()" *ngIf="table.printable">Print</button>
-    <button mat-raised-button color="primary" (click)="table.addData()">Add data</button>
-    <button mat-raised-button color="primary"  (click)="table.onRemove()" [disabled]="!(table.isRowSelected)">Remove selected</button>
-    <button mat-raised-button color="primary"  [disabled]="!(table.selectedRow)" (click)="table.onRowPin()" *ngIf="table.rowPinnable"> Pin to top</button>
+    <button mat-raised-button color="primary" *rbacAllow="['1000011', 'ADD']" (click)="table.addData()">Add data</button>
+    <button mat-raised-button color="primary"  *rbacAllow="['1000011', 'DELETE']" (click)="table.onRemove()" [disabled]="!(table.isRowSelected)">Remove selected</button>
+    <button mat-raised-button color="primary" disabled]="!(table.selectedRow)" (click)="table.onRowPin()"> Pin to top</button>
     <button mat-raised-button color="primary"  (click)="table.onExport()" *ngIf="table.exportable">Export</button>
  </div>
  </div>
@@ -22,8 +22,8 @@
    </div>
  </div>
  <ng-template #editer>
-  <button [attr.t-btn]="'edit'">Edit</button>
-  <button [attr.t-btn]="'remove'">Remove</button>
-  <button [attr.t-btn]="'confirm'">Confirm</button>
-  <button [attr.t-btn]="'unConfirm'">UnConfirm</button>
+  <button [attr.t-btn]="'edit'"   *rbacAllow="['1000011', 'EDIT']">Edit</button>
+  <button [attr.t-btn]="'remove'" *rbacAllow="['1000011', 'DELETE']">Remove</button>
+  <button [attr.t-btn]="'confirm'" *rbacAllow="['1000011', 'CONFIRM']">Confirm</button>
+  <button [attr.t-btn]="'unConfirm'" *rbacAllow="['1000011', 'UNCONFIRM']">UnConfirm</button>
 </ng-template>

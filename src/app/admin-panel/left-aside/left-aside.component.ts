@@ -34,11 +34,7 @@ export class LeftAsideComponent implements OnInit {
   }
   navigateToFirstModule() {
     if (!(this.modules && this.modules.length > 0)) {return; }
-    console.log(this.router)
-    console.log(this.route)
     const paths = this.router.url.split('/');
-    console.log(paths);
-    console.log(paths.length);
     if (paths.length <= 2) {
       this.router.navigate([`/admin/${this.modules[0].url}`]);
     }

@@ -8,6 +8,7 @@ import { Category } from './models/category.model';
 import { CategoryQuery } from './models/category-query.model';
 import { DatasetByCategoryGroupByOrg } from '../shared/models/DatasetByCategoryGroupByOrg.model';
 import { OrgQuery } from './models/orgQuery.model';
+import { TableModel } from '../shared/models/table.model';
 
 @Injectable({
   providedIn: 'root'
@@ -56,10 +57,10 @@ getApiByDatasetById(id: string): Observable<DatasetApi[]> {
         })
       );
   }
-  getCategories(): Observable<Category[]> {
-    return this.http.post<Category[]>('api/get/Permission/Datasets/GetDatasetCategoryWithCount', {})
+  getCategories(): Observable<Category[] | null> {
+    return this.http.post<TableModel>('api/get/Permission/Datasets/GetDatasetCategoryWithCount', {})
     .pipe(
-      map((res: any) => res && res.tbl[0].r )
+      map( res => this.extractTableRows(res))
     );
   }
   getDatasetsWithGroupByOrg(query: CategoryQuery): Observable<DatasetByCategoryGroupByOrg> {
@@ -71,9 +72,9 @@ getApiByDatasetById(id: string): Observable<DatasetApi[]> {
     return this.http.post<DatasetByCategoryGroupByOrg>('api/get/Permission/Datasets/GetDatasetListByCategoryIdWithGroupByOrg', body);
   }
   getOrganizations(): Observable<Category[]> {
-    return this.http.post<Category[]>('api/get/Permission/Datasets/GetOrganizationWithCategoryCount', {})
+    return this.http.post<TableModel>('api/get/Permission/Datasets/GetOrganizationWithCategoryCount', {})
     .pipe(
-      map((res: any) => res && res.tbl[0].r ),
+      map( res => this.extractTableRows(res))
     );
   }
   getDatasetsWithGroupByCat(query: OrgQuery): Observable<DatasetByCategoryGroupByOrg> {
@@ -83,6 +84,13 @@ getApiByDatasetById(id: string): Observable<DatasetApi[]> {
       }
     };
     return this.http.post<DatasetByCategoryGroupByOrg>('api/get/Permission/Datasets/GetDatasetListByOrgIdWithGroupByCategory', body);
+  }
+  private extractTableRows(table: TableModel) {
+    if (table && table.tbl && table.tbl[0].r) {
+      return table.tbl[0].r;
+    } else {
+      return null;
+    }
   }
 
 }

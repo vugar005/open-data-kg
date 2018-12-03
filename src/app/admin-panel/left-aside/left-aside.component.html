@@ -7,10 +7,12 @@
   </div>
 </div>
 <div class="modules-list">
-    <a class="module" *ngFor = "let module of (modules)" routerLink= "{{module.url}}" routerLinkActive="active" >
-        <div class="icon">
-        <fa-icon [icon]="faAccusoft"></fa-icon>
-        </div>
-        <p  class="link">{{module.name.en | titlecase}} </p>
-      </a>
+   <ng-container *ngFor = "let module of (modules)">
+    <a class="module" *rbacAllow="[module.id, 'ALL_VIEW']" routerLink= "{{module.url}}" routerLinkActive="active" >
+      <div class="icon">
+      <fa-icon [icon]="faAccusoft"></fa-icon>
+      </div>
+      <p  class="link">{{module.name.en | titlecase}} </p>
+    </a>
+   </ng-container>
 </div>

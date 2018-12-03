@@ -2,7 +2,7 @@ import { Component, OnInit, Renderer2 } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { AppState } from './reducers';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Observable, fromEvent } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { AutoSetToken, AutoSetUser, SetApiUrl, SetModules } from './auth/store/auth.actions';
 import * as globalVars from './app.globals';
@@ -26,6 +26,11 @@ export class AppComponent implements OnInit {
     this.setHostname();
     this.tryAutoLogin();
     this.setDefaultLang();
+    this.listenToOnlineChanges();
+  }
+  listenToOnlineChanges() {
+    fromEvent(window, 'offline')
+    .subscribe(res => console.log(res))
   }
   tryAutoLogin() {
    try {

@@ -200,7 +200,7 @@ img {
     padding-left: 10px;
     &::placeholder {
       font-size: 12px;
-      color: var(--color-primary);
+      color: grey;
     }
 }
 .ps .ps__rail-x:hover, .ps .ps__rail-y:hover {

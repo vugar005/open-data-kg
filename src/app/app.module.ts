@@ -46,6 +46,7 @@ import { OrganizationOverviewComponent } from './global-nav/organization-overvie
 import {TypeheadModule} from 'ngx-typehead-dir';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { SharedGlobalNavModule } from './shared/shared-global-nav.module';
+import { SharedRbacModule } from './shared/shared-rbac.module';
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
 };
@@ -90,6 +91,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       PerfectScrollbarModule,
       SharedModule,
       TypeheadModule,
+      SharedRbacModule,
       HttpClientBusyModule.forRoot(),
       TranslateModule.forRoot({
         loader: {

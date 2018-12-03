@@ -74,11 +74,11 @@
         </div>
     </mat-step>
 
-    <mat-step  [stepControl]="f" [optional]="true">
+    <mat-step  [stepControl]="f" [optional]="true"  *rbacAllow="['1000010', 'ALL_VIEW_CATEGORY']">
       <ng-template matStepLabel>Category</ng-template>
       <ng-container *ngIf="f?.value?.id">
         <div class="title">
-          <div class="add-icon" (click)="table4.addData()">
+          <div class="add-icon" (click)="table4.addData()" *rbacAllow="['1000010', 'ADD_CTGR']">
             <fa-icon [icon]="faPlusCircle"></fa-icon>
           </div>
          </div>
@@ -90,8 +90,14 @@
           (rowEdit)="initDialog4(table4, $event)"
           [multiSelect]="false"
           [pagination]="false"
+          [editTemplate]="editerCat"
         ></ngx-nt-table>
        </div>
+
+      <ng-template #editerCat>
+        <button [attr.t-btn]="'edit'" *rbacAllow="['1000010', 'EDIT_CTGR']">Edit</button>
+        <button [attr.t-btn]="'remove'" *rbacAllow="['1000010', 'DELETE_CTGR']">Remove</button>
+      </ng-template>
 
       <div>
           <button mat-button matStepperPrevious>Back</button>
@@ -100,11 +106,11 @@
       </ng-container>
   </mat-step>
 
-    <mat-step  [stepControl]="f" [optional]="true" >
+    <mat-step  [stepControl]="f" [optional]="true"  *rbacAllow="['1000010', 'ALL_VIEW_KEYWORD']">
       <ng-template matStepLabel>Keyword data</ng-template>
       <ng-container *ngIf="f?.value?.id">
         <div class="title">
-          <div class="add-icon" (click)="table2.addData()">
+          <div class="add-icon" (click)="table2.addData()" *rbacAllow="['1000010', 'ADD_KYWD']">
             <fa-icon [icon]="faPlusCircle"></fa-icon>
           </div>
          </div>
@@ -116,8 +122,13 @@
           (rowEdit)="initDialog2(table2, $event)"
           [multiSelect]="false"
           [pagination]="false"
+          [editTemplate]="editerKeyword"
         ></ngx-nt-table>
        </div>
+       <ng-template #editerKeyword>
+        <button [attr.t-btn]="'edit'" *rbacAllow="['1000010', 'EDIT_KYWD']">Edit</button>
+        <button [attr.t-btn]="'remove'" *rbacAllow="['1000010', 'DELETE_KYWD']">Remove</button>
+      </ng-template>
 
       <div>
           <button mat-button matStepperPrevious>Back</button>
@@ -126,11 +137,11 @@
       </ng-container>
   </mat-step>
 
-    <mat-step   [stepControl]="f" [optional]="true"  >
+    <mat-step   [stepControl]="f" [optional]="true" *rbacAllow="['1000010', 'ALL_VIEW_API']" >
         <ng-template matStepLabel>Version data</ng-template>
         <ng-container  *ngIf="f?.value?.id">
           <div class="title" >
-            <div class="add-icon" (click)="table3.addData()">
+            <div class="add-icon" (click)="table3.addData()"  *rbacAllow="['1000010', 'ADD_API']">
               <fa-icon [icon]="faPlusCircle"></fa-icon>
             </div>
            </div>
@@ -142,8 +153,14 @@
             (rowEdit)="initDialog3(table3, $event)"
             [multiSelect]="false"
             [pagination]="false"
+            [editTemplate]="editerApi"
           ></ngx-nt-table>
          </div>
+
+         <ng-template #editerApi>
+          <button [attr.t-btn]="'edit'" *rbacAllow="['1000010', 'EDIT_API']">Edit</button>
+          <button [attr.t-btn]="'remove'" *rbacAllow="['1000010', 'DELETE_API']">Remove</button>
+        </ng-template>
 
         <div>
             <button mat-button matStepperPrevious>Back</button>

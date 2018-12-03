@@ -13,6 +13,7 @@ import { RbacAllowDirective } from 'src/app/shared/directives/rbac-allow.directi
 import { SharedUploadModule } from 'src/app/shared/shared-upload.module';
 import { HttpClientBusyModule } from 'ngx-httpclient-busy';
 import { MatMomentDateModule, MomentDateAdapter } from '@angular/material-moment-adapter';
+import { SharedRbacModule } from 'src/app/shared/shared-rbac.module';
 export const MY_FORMATS = {
   parse: {
     dateInput: 'L'
@@ -37,16 +38,15 @@ export const MY_FORMATS = {
      MatInputModule,
      MatDialogModule,
      FormsModule,
-     RbacAllowDirective,
      SharedUploadModule,
      MatStepperModule,
      MatIconModule,
     HttpClientBusyModule,
     MatDatepickerModule,
-    MatMomentDateModule
+    MatMomentDateModule,
+    SharedRbacModule
     ],
   declarations: [
-    RbacAllowDirective
   ],
   providers: [
     NtTableService,
