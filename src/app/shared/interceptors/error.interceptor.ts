@@ -23,7 +23,6 @@ export class ErrorInterceptor implements HttpInterceptor {
         catchError(er => this.handleHttpError()),
        tap((response) => {
           if (response instanceof HttpResponse) {
-            console.log('res', response.body.err)
             if (response.body && response.body.err && response.body.err.length > 0) {
               console.log(response.body.err)
               const errors = response.body.err;

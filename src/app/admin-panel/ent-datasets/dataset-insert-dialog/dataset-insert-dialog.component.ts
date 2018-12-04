@@ -124,10 +124,11 @@ export class DatasetInsertDialogComponent implements OnInit {
       }
    ngOnInit() {
    this.setConfigs();
-   console.log(this.ntForm)
+  // console.log(this.ntForm);
+  // this.ntForm.statusChanges.subscribe(res => console.log(res))
    }
    tempClick(table) {
        console.log(table);
-       console.log(this.ntForm.value.id)
+       console.log(this.ntForm.value.id);
    }
 }

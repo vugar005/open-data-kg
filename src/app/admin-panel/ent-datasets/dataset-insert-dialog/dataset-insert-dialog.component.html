@@ -4,27 +4,55 @@
     <mat-step [stepControl]="f" [optional]="true" color="accent">
           <ng-template matStepLabel>Dataset main info</ng-template>
         <div class="main-info">
-            <div class="row-1">
-                <div class="left">
+          <ng-template #tabTmpl></ng-template>
+            <mat-tab-group >
+                <mat-tab label="EN" >
 
-                    <mat-form-field class="example-full-width">
-                      <input matInput placeholder="Name Kg" class="nt-form-input" name="nameKg" ngModel  required>
-                      <mat-error>{{getErrors('nameKg')}} </mat-error>
-                    </mat-form-field>
-                    <mat-form-field class="example-full-width">
-                      <input matInput placeholder="Name En" class="nt-form-input" name="nameEn" ngModel  required>
-                      <mat-error>{{getErrors('nameEn')}} </mat-error>
-                    </mat-form-field>
-                    <mat-form-field class="example-full-width">
-                      <input matInput placeholder="Name Ru" class="nt-form-input" name="nameRu" ngModel  required>
-                      <mat-error>{{getErrors('nameRu')}} </mat-error>
-                    </mat-form-field>
+                   <div class="tab-wrapper">
+                      <mat-form-field class="example-full-width">
+                          <input matInput placeholder="Name En" class="nt-form-input" name="nameEn" ngModel  required>
+                          <mat-error>{{getErrors('nameEn')}} </mat-error>
+                        </mat-form-field>
 
-
-
-
+                        <mat-form-field class="text-area">
+                            <textarea rows=2 cols="50"  matInput placeholder="Description En" class="nt-form-input" name="descriptionEn" ngModel  required> </textarea>
+                            <mat-error>{{getErrors('descriptionEn')}} </mat-error>
+                          </mat-form-field>
                    </div>
-                   <div class="right">
+
+                </mat-tab>
+
+                <mat-tab label="KG">
+                    <div class="tab-wrapper">
+                      <mat-form-field class="example-full-width">
+                          <input matInput placeholder="Name Kg" class="nt-form-input" name="nameKg" ngModel  required>
+                          <mat-error>{{getErrors('nameKg')}} </mat-error>
+                        </mat-form-field>
+
+
+                    <mat-form-field class="text-area">
+                        <textarea   rows=2  matInput placeholder="Description Kg" class="nt-form-input" name="descriptionKg" ngModel  required> </textarea>
+                        <mat-error>{{getErrors('descriptionKg')}} </mat-error>
+                      </mat-form-field>
+                    </div>
+
+                </mat-tab>
+                <mat-tab label="RU">
+                    <div class="tab-wrapper">
+                      <mat-form-field class="example-full-width">
+                          <input matInput placeholder="Name Ru" class="nt-form-input" name="nameRu" ngModel  required>
+                          <mat-error>{{getErrors('nameRu')}} </mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field class="text-area">
+                            <textarea rows = 2  matInput placeholder="Description Ru" class="nt-form-input" name="descriptionRu" ngModel  required> </textarea>
+                            <mat-error>{{getErrors('descriptionRu')}} </mat-error>
+                          </mat-form-field>
+                    </div>
+
+                </mat-tab>
+              </mat-tab-group>
+            <div class="row-1">
 
                     <mat-form-field>
                       <input matInput [matDatepicker]="picker" placeholder="Publish Date" name="createDateVersion" ngModel
@@ -42,26 +70,8 @@
                       <mat-error>{{getErrors('updateDateVersion')}}</mat-error>
                     </mat-form-field>
 
-
-                   </div>
             </div>
 
-          <div class="row-2">
-          <mat-form-field class="text-area">
-              <textarea rows=2 cols="50"  matInput placeholder="Description En" class="nt-form-input" name="descriptionEn" ngModel  required> </textarea>
-              <mat-error>{{getErrors('descriptionEn')}} </mat-error>
-            </mat-form-field>
-
-            <mat-form-field class="text-area">
-                <textarea   rows=2  matInput placeholder="Description Kg" class="nt-form-input" name="descriptionKg" ngModel  required> </textarea>
-                <mat-error>{{getErrors('descriptionKg')}} </mat-error>
-              </mat-form-field>
-
-            <mat-form-field class="text-area">
-                <textarea rows = 2  matInput placeholder="Description Ru" class="nt-form-input" name="descriptionRu" ngModel  required> </textarea>
-                <mat-error>{{getErrors('descriptionRu')}} </mat-error>
-              </mat-form-field>
-          </div>
 
           </div>
 

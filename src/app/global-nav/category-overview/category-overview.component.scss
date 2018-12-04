@@ -1,13 +1,18 @@
 :host {
   display: block;
   width: 100%;
-  background: #F7FAFC;
   position: relative;
   padding-top: 30px;
-  background: #f5f6fa;
 }
-
-
+.y-icon svg {
+  fill: yellowgreen!important;
+}
+// .icon {
+//   width: 24px;
+//   height: 24px;
+//   background-color: yellow;
+//   mask: url(https://upload.wikimedia.org/wikipedia/commons/f/f7/Bananas.svg) no-repeat center;
+// }
 .co-header {
   display: flex;
   align-items: center;

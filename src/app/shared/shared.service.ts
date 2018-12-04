@@ -5,9 +5,8 @@ import { Observable, Subject } from 'rxjs';
 import { SelectType } from './models/select-type.model';
 import { map, tap, shareReplay, share } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
-import { Dataset } from '../datasets/models/dataset.model';
-import { DatasetApi } from './models/datasetApi.model';
-
+import { MatIconRegistry } from '@angular/material/icon';
+import { DomSanitizer } from '@angular/platform-browser';
 @Injectable()
 export class SharedService {
   toastRunning: boolean;
@@ -15,7 +14,9 @@ export class SharedService {
   constructor(
     public iziToast: Ng2IzitoastService,
     private jwtService: JwtHelperService,
-    private http: HttpClient
+    private http: HttpClient,
+    private matIconRegistry: MatIconRegistry,
+    private domSanitizer: DomSanitizer
   ) {}
   createNotification(type: string, message: string, position = 'bottomRight') {
     this.clearOldToats();
@@ -148,5 +149,11 @@ export class SharedService {
     };
   }
 
+addCustomMaterialIcon(name: string, url: string) {
+  this.matIconRegistry.addSvgIcon(
+    name,
+    this.domSanitizer.bypassSecurityTrustResourceUrl(`${url}`)
+  );
+}
 
 }

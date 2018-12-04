@@ -4,7 +4,7 @@
   // transition: all 500ms ease-in-out;
   width: 100%;
   min-height: 70px;
-  background: #ffffff;
+  background: var(--kg-box-background);
   position: sticky;
   z-index: 2;
 }

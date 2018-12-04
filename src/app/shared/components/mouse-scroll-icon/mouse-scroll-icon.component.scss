@@ -4,7 +4,8 @@
   top: 0;
   z-index: 3;
    width: 100%;
-   background-image: linear-gradient(to right, #4e8ec8, #47a8c5);
+   background-image: var(--kg-background-image);
+   transition: backgrounImage 300ms ease-in-out;
 }
 .scroll-text {
   font-size: 9px;

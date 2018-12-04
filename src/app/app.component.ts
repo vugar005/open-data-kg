@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
   title = 'open-data-kg';
   headerClass$: Observable<string>;
   globalNavClass$: Observable<string>;
-
+  root: HTMLElement;
   constructor(
     private translateService: TranslateService,
     private store: Store<AppState>,
@@ -29,8 +29,19 @@ export class AppComponent implements OnInit {
     this.listenToOnlineChanges();
   }
   listenToOnlineChanges() {
+    this.root = document.documentElement;
     fromEvent(window, 'offline')
-    .subscribe(res => console.log(res))
+    .subscribe(res => {
+      this.root.style.setProperty('--kg-background-image', 'linear-gradient(to right,#84817a, #aaa69d)');
+      this.root.style.setProperty('--kg-box-background', '#84817a');
+      this.root.style.setProperty('--kg-wrapper-background', '#84817a');
+    });
+    fromEvent(window, 'online')
+    .subscribe(res => {
+      this.root.style.setProperty('--kg-background-image', 'linear-gradient(to right, #4e8ec8, #47a8c5)');
+      this.root.style.setProperty('--kg-box-background', '#ffffff');
+      this.root.style.setProperty('--kg-wrapper-background', '#f5f6fa');
+    });
   }
   tryAutoLogin() {
    try {

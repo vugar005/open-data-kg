@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import {  Category } from 'src/app/datasets/models/category.model';
 import { DatasetsService } from 'src/app/datasets/datasets.service';
+import { SharedService } from 'src/app/shared/shared.service';
 
 @Component({
   selector: 'category-overview',
@@ -13,10 +14,11 @@ import { DatasetsService } from 'src/app/datasets/datasets.service';
 export class CategoryOverviewComponent implements OnInit {
   faSearch = faSearch;
   categories$: Observable<Category[]>;
-  constructor(private router: Router, private datasetService: DatasetsService) { }
+  constructor(private router: Router, private datasetService: DatasetsService, private sharedService: SharedService) { }
 
   ngOnInit() {
    this.categories$ = this.datasetService.getCategories();
+   this.addMaterialIcons();
   }
   onNavigate(id: string) {
    // console.log(e);
@@ -24,6 +26,9 @@ export class CategoryOverviewComponent implements OnInit {
    //   this.router.navigate(['/categories', id ]);
       this.router.navigate(['/datasets/by-category'], { queryParams: {id: id} });
     }, 10);
+  }
+  addMaterialIcons() {
+   this.sharedService.addCustomMaterialIcon('banana', './assets/icons/count-orgs.svg');
   }
 
 }

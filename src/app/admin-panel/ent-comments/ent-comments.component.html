@@ -1,12 +1,12 @@
 <div class="content-header">
   <div class="moduleName">
-   Applications
+  Comments
   </div>
  <div class="actions-template">
     <button mat-raised-button color="primary" (click)="table.onPrintSelected()" *ngIf="table.printable">Print</button>
     <button mat-raised-button color="primary" *rbacAllow="['1000011', 'ADD']" (click)="table.addData()">Add data</button>
     <button mat-raised-button color="primary"  *rbacAllow="['1000011', 'DELETE']" (click)="table.onRemove()" [disabled]="!(table.isRowSelected)">Remove selected</button>
-    <button mat-raised-button color="primary" disabled]="!(table.selectedRow)" (click)="table.onRowPin()"> Pin to top</button>
+    <button mat-raised-button color="primary" [disabled]="!(table.selectedRow)" (click)="table.onRowPin()"> Pin to top</button>
     <button mat-raised-button color="primary"  (click)="table.onExport()" *ngIf="table.exportable">Export</button>
  </div>
  </div>

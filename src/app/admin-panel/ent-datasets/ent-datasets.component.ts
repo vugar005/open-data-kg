@@ -19,7 +19,7 @@ export class EntDatasetsComponent {
   constructor(private dialog: MatDialog, private http: HttpClient) { }
   initDialog(table: NtTableComponent, row = null) {
     const ref = this.dialog.open(DatasetInsertDialogComponent, {
-      data: { table: table, row: row || undefined}
+      data: { table: table, row: row || undefined},
     });
   }
   onOptClick(opt: any, table: NtTableComponent) {

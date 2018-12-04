@@ -4,6 +4,10 @@
 @import "./assets//themes/ag-theme.scss";
 :root {
   --color-primary: #539EC0;
+  --kg-background-image: linear-gradient(to right, #4e8ec8, #47a8c5);
+  --kg-box-background:  #ffffff;
+  --kg-wrapper-background: #f5f6fa;
+ // --kg-background-image: linear-gradient(to right,#84817a, #aaa69d);
 }
 * {
   box-sizing: border-box;
@@ -22,7 +26,7 @@
 html, body {
   width: 100%;
   height: 100%;
-  background: #f5f6fa;
+  background: var(--kg-wrapper-background);
   font-size: 100%;
 }
 .mat-dialog-container::before {
@@ -205,10 +209,6 @@ img {
 }
 .ps .ps__rail-x:hover, .ps .ps__rail-y:hover {
   background-color: transparent!important;
-}
-
-.ng-button {
-
 }
 
 

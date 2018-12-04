@@ -2,10 +2,11 @@
   display: block;
   width: 100vw;
   height: calc(100vh - 70px);
-  background-image: linear-gradient(to right, #4e8ec8, #47a8c5);
+  background-image: var(--kg-background-image);
   overflow-y: hidden;
   overflow-x: hidden;
   position: relative;
+  transition: all 3000ms ease-in-out;
 }
 
 // /deep/ ::-webkit-scrollbar {
@@ -18,7 +19,7 @@
 .overview-box {
   width: 100%;
   min-height: 220px;
-  background: #f5f6fa;
+  background: var(--kg-wrapper-background);
   transition: height 500ms ease-in-out;
 }
 .global-navbar{
