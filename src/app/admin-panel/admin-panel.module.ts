@@ -15,6 +15,7 @@ import { SharedAcrossModule } from '../shared/shared-across.module';
 import { AdminHeaderComponent } from './admin-header/admin-header.component';
 import { MatMenuModule } from '@angular/material';
 import { SharedRbacModule } from '../shared/shared-rbac.module';
+import { AdminProfilePopupComponent } from './right-aside/admin-profile-popup/admin-profile-popup.component';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -36,6 +37,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   declarations: [
     AdminPanelComponent,
+    AdminProfilePopupComponent,
     AdminHeaderComponent,
     LeftAsideComponent,
     RightAsideComponent,

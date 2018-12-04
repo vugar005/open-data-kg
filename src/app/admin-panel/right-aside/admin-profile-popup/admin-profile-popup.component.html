@@ -1,0 +1,36 @@
+<div class="co-backdrop" (click)="dialogClose.next()">
+    <div class="co-wrapper" *ngIf="user" [@fadeInRight]="true" [@fadeOutRight]="true">
+        <div class="user-info">
+          <div class="user-img">
+            <div class="icon">
+                <img src="{{apiUrl$ | async}}/api/get/file/{{(user)?.photoFileId}}"  onerror="this.src= './assets/icons/admin-avatar.svg'">
+            </div>
+          </div>
+          <div class="user-name">
+            {{user.name}} {{user.surname}}
+          </div>
+            <div class="today-date">Ceshember axsmi 2018</div>
+            <div class="user-role">- {{user.userType}} -</div>
+            <div class="user-org">"{{user.org?.name?.en}}"</div>
+        </div>
+        <div class="user-actions">
+
+          <div class="user-action" [routerLink]="['/']" >
+              <div class="icon">
+                <img src="./assets/icons/nav-dashboard.svg">
+              </div>
+              <div class="name">Go To Main Page</div>
+            </div>
+
+            <div class="user-action" (click)="onLogout()">
+                <div class="icon">
+                  <img src="./assets/icons/power-button.svg">
+                </div>
+                <div class="name">LOG OUT</div>
+              </div>
+        </div>
+      </div>
+
+</div>
+
+

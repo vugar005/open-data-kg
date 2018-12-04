@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
- @import "./assets//themes/custom-theme.scss";
-
-@import "./assets//themes/ag-theme.scss";
+ @import "./assets/themes/custom-theme.scss";
+ @import "./assets/themes/ag-theme.scss";
+ @import "./assets/styles/shared-admin-panel.scss";
 :root {
   --color-primary: #539EC0;
   --kg-background-image: linear-gradient(to right, #4e8ec8, #47a8c5);

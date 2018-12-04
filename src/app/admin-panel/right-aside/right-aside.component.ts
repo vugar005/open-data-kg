@@ -1,14 +1,11 @@
-import { Component} from '@angular/core';
-import {faUser} from '@fortawesome/free-solid-svg-icons';
-import {faBell} from '@fortawesome/free-solid-svg-icons';
+import { Component, Output, EventEmitter} from '@angular/core';
 @Component({
   selector: 'right-aside',
   templateUrl: './right-aside.component.html',
   styleUrls: ['./right-aside.component.scss']
 })
 export class RightAsideComponent {
- faUser = faUser;
- faBell = faBell;
+  @Output() userClicked = new EventEmitter<void>();
   constructor() {
    }
 

@@ -47,14 +47,12 @@
   }
   .icon {
     max-width: 43px;
+    /deep/ .logo-img:hover path {
+      transition: all 500ms ease-in-out;
+      fill: #FFA800!important;
+    }
   }
   &:hover {
     box-shadow: 5px 15px 22px rgba(0, 0, 0, 0.1);
-    .icon {
-      /deep/ .logo-img path {
-        transition: all 500ms ease-in-out;
-        fill: #FFA800!important;
-      }
-    }
   }
 }

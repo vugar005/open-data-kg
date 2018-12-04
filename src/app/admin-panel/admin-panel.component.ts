@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class AdminPanelComponent implements OnInit, OnDestroy {
  modules: any;
+ showPopup = false;
   constructor(private store: Store<AppState>, private router: Router) {
    }
 

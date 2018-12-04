@@ -2,12 +2,16 @@
   display: block;
   position: relative;
   height: 100vh;
+  overflow: auto;
   z-index: 2;
   background: #f2f2f2;
+  box-shadow: 1px 4px 18px rgba(0, 0, 0, 0.05);
+
 }
 .color-filter:before {
     position: fixed;
     top:0;
+    left: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(255,166,87,.3);
@@ -16,17 +20,14 @@
     content: ' ';
     z-index: 99999;
 }
-.c-p {
-padding: 0 6px;
-padding-left: 0;
-}
-.c-height {
-  height: calc(100vh - 59px);
-}
-.co-p {
-  padding: 0 4em 0 0!important;
-}
 
+.wrapper-div {
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  padding: 16px 0;
+}
 /deep/ ::-webkit-scrollbar {
   width: 6px;
 }

@@ -1,12 +1,15 @@
 <div class="side-nav">
-  <div class="profile-img">
-    <div class="icon">
-      <fa-icon [icon]="faUser"></fa-icon>
+ <div class="nav-top">
+    <div class="profile-img" (click)="userClicked.next()">
+      <div class="icon">
+        <img src="./assets/icons/admin-avatar.svg">
+      </div>
     </div>
-  </div>
-  <div class="notifications">
-    <img src="./assets/icons/bell-ring.svg" alt="">
-  </div>
+    <div class="notifications">
+      <img src="./assets/icons/ring-bells.svg" alt="">
+    </div>
+ </div>
+
   <div class="app-links">
     <!-- <div class="link" *ngFor="let app of apps">
         <div class="icon">

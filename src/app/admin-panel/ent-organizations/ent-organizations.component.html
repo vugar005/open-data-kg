@@ -1,8 +1,8 @@
-<div class="content-header">
+<div class="ng-admin-co-header">
   <div class="moduleName">
    Organizations
   </div>
- <div class="actions-template" >
+ <div class="ng-admin-actions-template" >
     <button mat-raised-button (click)="table.onPrintSelected()" *ngIf="table?.printable">Print</button>
     <button mat-raised-button (click)="table.addData()" *rbacAllow="[1000009, 'ADD']"  >Add data</button>
     <button mat-raised-button (click)="table.onRemove()"*rbacAllow="['1000009', 'DELETE']" [disabled]="!(table?.isRowSelected)" >Remove selected</button>
@@ -11,8 +11,8 @@
  </div>
  </div>
 
- <div class="content" *rbacAllow="[1000009, 'ALL_VIEW']" >
-   <div class="nt-table">
+ <div class="ng-admin-content" *rbacAllow="[1000009, 'ALL_VIEW']" >
+   <div class="ng-admin-table">
      <ngx-nt-table #table
      [config]="config"
      (rowAdd)="initDialog(table)"

@@ -1,17 +1,20 @@
 
-<div class="container-fluid color-filter pl-0">
-  <div class="row">
+<div class="container-fluid color-filter">
+  <!-- <div class="row">
     <div class="col-12 p-0 ">
       <admin-header></admin-header>
     </div>
-  </div>
+  </div> -->
   <div class="row">
-    <div class="col-3 col-xl-2 c-p">
+    <div class="col-3 col-xl-2 p-0">
       <left-aside></left-aside>
     </div>
-    <div class="col-9 col-xl-10 p-0 d-flex c-height">
+    <div class="col-9 col-xl-10 p-0 d-flex">
+     <div class="wrapper-div">
       <router-outlet></router-outlet>
-      <right-aside></right-aside>
+      <admin-profile-popup *ngIf="showPopup" (dialogClose)="showPopup = false"></admin-profile-popup>
+      <right-aside (userClicked)="showPopup = true"></right-aside>
+     </div>
     </div>
   </div>
 </div>
