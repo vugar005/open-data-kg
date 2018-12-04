@@ -1,9 +1,10 @@
-import { Component, OnInit, Output, EventEmitter, Input, HostBinding } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, HostBinding, ChangeDetectorRef, AfterViewInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { trigger, transition, useAnimation } from '@angular/animations';
 import { fadeIn } from 'ng-animate';
 import { DatasetsService } from '../datasets.service';
 import { Category } from '../models/category.model';
+import { SharedService } from 'src/app/shared/shared.service';
 
 @Component({
   selector: 'module-sidebar',
@@ -11,7 +12,7 @@ import { Category } from '../models/category.model';
   styleUrls: ['./module-sidebar.component.scss'],
   animations: [trigger('fadeIn', [transition(':enter', useAnimation(fadeIn, {params: {timing: 0.5, delay: 0}}))])]
 })
-export class ModuleSidebarComponent implements OnInit {
+export class ModuleSidebarComponent implements OnInit, AfterViewInit {
   @Input() type: string;
   @Output() datasetGroups = new EventEmitter();
   @Output() selected = new EventEmitter();
@@ -20,7 +21,8 @@ export class ModuleSidebarComponent implements OnInit {
   orgIds: string[] = [];
   ready = false;
   selectedIndex: string;
- constructor(private route: ActivatedRoute, private datasetService: DatasetsService) {
+ constructor(private route: ActivatedRoute, private datasetService: DatasetsService,
+  private sharedService: SharedService, private changeRef: ChangeDetectorRef) {
    }
 
   ngOnInit() {
@@ -48,17 +50,29 @@ export class ModuleSidebarComponent implements OnInit {
       this.datasetService.getCategories()
       .subscribe((res: Category[]) => {
         this.itemList = res;
+        this.replaceImgWithSvg();
       });
   }
   getOrganizations() {
     this.datasetService.getOrganizations()
     .subscribe((res: Category[]) => {
       this.itemList = res;
+      this.replaceImgWithSvg();
     });
 }
   onItemClick(id: string) {
     this.selectedIndex = id;
     this.selected.next(id);
+  }
+  replaceImgWithSvg() {
+    setTimeout(() => {
+    this.sharedService.replaceSvgWitInline();
+    }, 10);
+  }
+  ngAfterViewInit() {
+    if (this.itemList) {
+    this.replaceImgWithSvg();
+    }
   }
 
 }

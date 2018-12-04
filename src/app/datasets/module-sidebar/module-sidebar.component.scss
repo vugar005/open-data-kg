@@ -71,6 +71,12 @@
 
     &:hover {
       box-shadow: 5px 2px 22px #539ec05e;
+      .icon {
+        /deep/ .logo-img path {
+          transition: all 500ms ease-in-out;
+          fill: #FFA800!important;
+        }
+      }
     }
 
     &.active {

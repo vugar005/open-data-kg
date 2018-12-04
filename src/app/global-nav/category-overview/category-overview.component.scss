@@ -4,15 +4,8 @@
   position: relative;
   padding-top: 30px;
 }
-.y-icon svg {
-  fill: yellowgreen!important;
-}
-// .icon {
-//   width: 24px;
-//   height: 24px;
-//   background-color: yellow;
-//   mask: url(https://upload.wikimedia.org/wikipedia/commons/f/f7/Bananas.svg) no-repeat center;
-// }
+
+
 .co-header {
   display: flex;
   align-items: center;
@@ -54,8 +47,15 @@
   }
   .icon {
     max-width: 43px;
+
   }
   &:hover {
     box-shadow: 5px 15px 22px rgba(0, 0, 0, 0.1);
+    .icon {
+      /deep/ .logo-img path {
+        transition: all 500ms ease-in-out;
+        fill: #FFA800!important;
+      }
+    }
   }
 }

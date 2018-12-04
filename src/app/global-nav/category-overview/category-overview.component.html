@@ -11,12 +11,10 @@
     </div> -->
   </div>
   <div class="row justify-content-start">
-          <div class="col-2" *ngFor="let item of (categories$ | async);let first=first" (click) ="onNavigate(item.id)">
+          <div class="col-2" *ngFor="let item of (categories);let first=first" (click) ="onNavigate(item.id)">
            <div class="item-box" *ngIf="!first" >
              <div class="icon">
-                <!-- <mat-icon svgIcon="banana" class="y-icon" color="primary"></mat-icon> -->
-
-                <img src="./assets/icons/seeding.svg">
+                <img src="./assets/icons/seeding.svg" class="svg logo-img">
              </div>
              <div class="name">{{item?.name}}</div>
            </div>

@@ -9,6 +9,7 @@ import { CategoryQuery } from './models/category-query.model';
 import { DatasetByCategoryGroupByOrg } from '../shared/models/DatasetByCategoryGroupByOrg.model';
 import { OrgQuery } from './models/orgQuery.model';
 import { TableModel } from '../shared/models/table.model';
+import { Organization } from './models/organization.model';
 
 @Injectable({
   providedIn: 'root'
@@ -71,7 +72,7 @@ getApiByDatasetById(id: string): Observable<DatasetApi[]> {
     };
     return this.http.post<DatasetByCategoryGroupByOrg>('api/get/Permission/Datasets/GetDatasetListByCategoryIdWithGroupByOrg', body);
   }
-  getOrganizations(): Observable<Category[]> {
+  getOrganizations(): Observable<Organization[]> {
     return this.http.post<TableModel>('api/get/Permission/Datasets/GetOrganizationWithCategoryCount', {})
     .pipe(
       map( res => this.extractTableRows(res))

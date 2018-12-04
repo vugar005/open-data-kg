@@ -1,34 +1,47 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import {faSearch} from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import {  Category } from 'src/app/datasets/models/category.model';
 import { DatasetsService } from 'src/app/datasets/datasets.service';
 import { SharedService } from 'src/app/shared/shared.service';
+import { shareReplay } from 'rxjs/operators';
 
 @Component({
   selector: 'category-overview',
   templateUrl: './category-overview.component.html',
-  styleUrls: ['./category-overview.component.scss']
+  styleUrls: ['./category-overview.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CategoryOverviewComponent implements OnInit {
+export class CategoryOverviewComponent implements OnInit, AfterViewInit {
   faSearch = faSearch;
-  categories$: Observable<Category[]>;
-  constructor(private router: Router, private datasetService: DatasetsService, private sharedService: SharedService) { }
+  categories: Category[];
+  constructor(private router: Router, private datasetService: DatasetsService, private sharedService: SharedService,
+     private changeRef: ChangeDetectorRef) { }
 
   ngOnInit() {
-   this.categories$ = this.datasetService.getCategories();
-   this.addMaterialIcons();
+  this.getCategories();
+  }
+  getCategories() {
+    this.datasetService.getCategories()
+    .subscribe(res => {
+      this.categories = res;
+      this.replaceImgWithSvg();
+      this.changeRef.detectChanges();
+    });
   }
   onNavigate(id: string) {
-   // console.log(e);
-    setTimeout(() => {
-   //   this.router.navigate(['/categories', id ]);
       this.router.navigate(['/datasets/by-category'], { queryParams: {id: id} });
+  }
+  replaceImgWithSvg() {
+    setTimeout(() => {
+    this.sharedService.replaceSvgWitInline();
     }, 10);
   }
-  addMaterialIcons() {
-   this.sharedService.addCustomMaterialIcon('banana', './assets/icons/count-orgs.svg');
+  ngAfterViewInit() {
+    if (this.categories) {
+    this.replaceImgWithSvg();
+    }
   }
 
 }
