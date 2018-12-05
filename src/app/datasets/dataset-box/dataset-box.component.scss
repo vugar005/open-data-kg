@@ -9,15 +9,35 @@
   position: relative;
   cursor: pointer;
 }
+:host:after {
+  content: "";
+  filter: blur(20px) grayscale(20%);
+  position: absolute;
+  width: 80%;
+  height:40px;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  background: black;
+  z-index: 1;
+  transition: opacity 500ms ease-in-out;
+  bottom: -7px;
+  margin: 0 auto;
+}
+:host:hover:after {
+  opacity: 0.5;
+}
 .wrapper-div {
   z-index: 2;
-  padding: 30px;
+  padding: 22px 30px;
   background: #ffffff;
+  border-radius: 10px;
 }
 :host:hover {
-  .overlay {
-     opacity: 0.5;
-  }
+  // .overlay {
+  //   transition: opacity 500ms ease-in-out;
+  //    opacity: 0.5;
+  // }
  .right {
   .box-perspective {
     .rotating-box{
@@ -40,7 +60,7 @@
   background: black;
   z-index: 1;
   transition: opacity 500ms ease-in-out;
-  bottom: 9px;
+  bottom: -7px;
   margin: 0 auto;
 }
 .left {
@@ -55,7 +75,6 @@
   .item-content {
     font-size: 14px;
     color: #333333;
-    padding-bottom: 5px;
     padding-top: 10px;
   }
   .item-rating {
@@ -93,7 +112,7 @@
   }
   .item-formats {
     display: flex;
-    padding-top: 22px;
+    padding-top: 12px;
     .icon {
       margin-right: 8px;
       padding: 7px 10px;
