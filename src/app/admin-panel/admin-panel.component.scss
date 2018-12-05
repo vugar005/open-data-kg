@@ -1,13 +1,18 @@
 :host {
   display: block;
   position: relative;
+  width: 100vw;;
   height: 100vh;
   overflow: auto;
   z-index: 2;
   background: #f2f2f2;
   box-shadow: 1px 4px 18px rgba(0, 0, 0, 0.05);
 
+
+
 }
+
+
 .color-filter:before {
     position: fixed;
     top:0;
@@ -20,24 +25,17 @@
     content: ' ';
     z-index: 99999;
 }
+.wrapper-co {
+  width: 100%;
+  display: flex;
+}
 
 .wrapper-div {
   display: flex;
   position: relative;
-  width: 100%;
+  width: calc(100% - 256px);
+  min-width: 860px;
+  overflow: hidden;
   height: 100vh;
-  padding: 16px 0;
-}
-/deep/ ::-webkit-scrollbar {
-  width: 6px;
-}
-
-/deep/ ::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 4px rgba(0,0,0,0.3);
-  border-radius: 5px;
-}
-
-/deep/ ::-webkit-scrollbar-thumb {
-  border-radius: 5px;
-  -webkit-box-shadow: inset 0 0 4px rgba(0,0,0,0.5);
+  padding: 1rem 0;
 }

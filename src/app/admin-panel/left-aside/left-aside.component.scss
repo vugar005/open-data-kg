@@ -1,8 +1,8 @@
 :host {
   display: block;
-  width: 100%;
+  width: 256px;
   height: 100vh;
-  padding: 16px;
+  padding: 1rem;
   height: calc(100vh);
 }
 
@@ -12,11 +12,11 @@
   align-items: center;
   width: 100%;
   border-bottom: solid 1px #ece9fa;
-  padding: 17px 38px;
-  margin-bottom: 16px;
+  padding: 1.06rem 2.37rem;
+  margin-bottom: 1rem;
   background: #ffffff;
   border-radius: 5px;
-  box-shadow: 1px 4px 18px rgba(0, 0, 0, 0.05);
+  box-shadow: 0.06rem 0.25rem 1.125rem rgba(0, 0, 0, 0.05);
 
   .cover-photo {
     width: 180px;
@@ -26,32 +26,32 @@
     }
   }
   .name {
-    font-size: 20px;
-    padding-top: 12px;
+    font-size: 1.25rem;
+    padding-top: 0.75rem;
   }
 }
 .modules-list {
-  padding: 20px 0px;
+  padding: 1.25rem 0rem;
   background: #ffffff;
-  border-radius: 5px;
-  box-shadow: 1px 4px 18px rgba(0, 0, 0, 0.05);
+  border-radius: 0.31rem;
+  box-shadow: 0.06rem 0.25rem 1.1rem rgba(0, 0, 0, 0.05);
 
   .module {
     display: flex;
-    padding: 9px 0;
+    padding: 0.5625rem 0;
     transition: color 300ms ease-in-out;
-    padding-left: 24px;
+    padding-left: 1.5rem;
     font-weight: bold;
     .icon {
       flex: 0 0 20px;
       cursor: pointer;
     }
     .link {
-      padding-left: 32px;
+      padding-left: 2rem;
       text-decoration: none;
       font-weight: 600;
-      line-height: 24px;
-      font-size: 14px;
+      line-height: 1.5rem;
+      font-size: 0.875rem;
     }
     &:hover {
      // background: #f2f2f2;
@@ -60,5 +60,10 @@
     &.active {
       color: var(--color-primary);
     }
+  }
+}
+@media all and (min-width: 1199px) {
+  :host {
+    width: 300px;
   }
 }

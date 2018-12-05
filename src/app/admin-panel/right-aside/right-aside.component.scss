@@ -18,15 +18,15 @@
     flex-direction: column;
     align-items: center;
     background-color: #ffffff;
-    margin-bottom: 16px;
+    margin-bottom: 1rem;
     width: 100%;
-    height: 145px;
-    padding: 0 15px;
-    margin-bottom: 16px;
-    border-radius: 5px;
-    box-shadow: 1px 4px 18px rgba(0, 0, 0, 0.05);
+    height: 9.06rem;
+    padding: 0 0.94rem;
+    margin-bottom: 1rem;
+    border-radius: 0.31rem;
+    box-shadow: 0.06rem 0.25rem 1.13rem rgba(0, 0, 0, 0.05);
     .profile-img {
-      padding-top: 20px;
+      padding-top: 1.25rem;
       cursor: pointer;
       .icon {
         display: flex;
@@ -35,16 +35,16 @@
         color: grey;
         margin: 0 auto;
         border-radius: 50%;
-        border: solid 4px #ffffff;
-        width: 35px;
-        height: 35px;
-        font-size: 17px;
+        border: solid 0.25rem #ffffff;
+        width: 2.19rem;
+        height: 2.19rem;
+        font-size: 1.06rem;
       }
     }
 
     .notifications {
       margin-top: auto;
-      padding-bottom: 28px;
+      padding-bottom: 1.75rem;
       cursor: pointer;
     }
   }
@@ -54,11 +54,11 @@
     justify-content: center;
     align-items: center;
     background: #ffffff;
-    height: 64px;
-    padding-bottom: 5px;
+    height: 4rem;
+    padding-bottom: 0.31rem;
     width: 100%;
-    border-radius: 5px;
-    box-shadow: 1px 4px 18px rgba(0, 0, 0, 0.05);
+    border-radius: 0.31rem;
+    box-shadow: 0.06rem 0.25rem 1.13rem rgba(0, 0, 0, 0.05);
     .link {
       cursor: pointer;
       border-radius: 50%;
@@ -66,8 +66,8 @@
 
       .icon {
         transform: rotateY(-180deg);
-        width: 23px;
-        height: 20px;
+        width: 1.44rem;
+        height: 1.25rem;
       }
 
       &:hover {

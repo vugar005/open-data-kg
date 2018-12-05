@@ -80,16 +80,3 @@ z-index: 6; // more than app-header
       }
   }
 }
-/deep/ ::-webkit-scrollbar {
-  width: 6px;
-}
-
-/deep/ ::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 4px rgba(0,0,0,0.3);
-  border-radius: 5px;
-}
-
-/deep/ ::-webkit-scrollbar-thumb {
-  border-radius: 5px;
-  -webkit-box-shadow: inset 0 0 4px rgba(0,0,0,0.5);
-}
