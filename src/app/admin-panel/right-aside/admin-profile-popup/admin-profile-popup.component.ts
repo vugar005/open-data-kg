@@ -15,7 +15,7 @@ import { Logout } from 'src/app/auth/store/auth.actions';
   templateUrl: './admin-profile-popup.component.html',
   styleUrls: ['./admin-profile-popup.component.scss'],
   animations: [
-    trigger('fadeInRight', [transition(':enter', useAnimation(fadeInRight, {params: {timing: 0.3}}))]),
+    trigger('fadeInRight', [transition(':enter', useAnimation(fadeInRight, {params: {timing: 0.5}}))]),
     trigger('fadeOutRight', [transition(':leave', useAnimation(fadeOutLeft, {params: {timing: 0.3}}))]),
   ]
 })

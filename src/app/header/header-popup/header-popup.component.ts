@@ -14,7 +14,6 @@ import { isLoggedIn, isAdmin } from 'src/app/auth/store/auth.selectors';
   styleUrls: ['./header-popup.component.scss'],
   animations: [
     trigger('fadeIn', [transition(':enter', useAnimation(fadeIn, {params: {timing: 5}}))]),
-    trigger('bounce', [transition('* => *', useAnimation(bounce))])
   ]
 })
 export class HeaderPopupComponent implements OnInit {

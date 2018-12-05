@@ -2,7 +2,7 @@
   display: block;
   margin-left: auto;
   height: 100vh;
-  width: 55px;
+  width: 64px;
   border-radius: 5px;
   margin-right: 16px;
 }
@@ -11,7 +11,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  z-index: 1001;
+  position: relative;
   .nav-top {
     display: flex;
     flex-direction: column;
@@ -49,14 +50,23 @@
   }
 
   .app-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ffffff;
+    height: 64px;
+    padding-bottom: 5px;
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: 1px 4px 18px rgba(0, 0, 0, 0.05);
     .link {
       cursor: pointer;
-      padding: 10px;
       border-radius: 50%;
       transition: background 200ms ease-in-out;
 
       .icon {
-        width: 20px;
+        transform: rotateY(-180deg);
+        width: 23px;
         height: 20px;
       }
 

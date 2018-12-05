@@ -20,7 +20,7 @@
 
   .cover-photo {
     width: 180px;
-    height: 100px;
+    height: 110px;
     img {
       width: 100%;
     }
@@ -31,7 +31,7 @@
   }
 }
 .modules-list {
-  padding-top: 54px;
+  padding: 20px 0px;
   background: #ffffff;
   border-radius: 5px;
   box-shadow: 1px 4px 18px rgba(0, 0, 0, 0.05);
@@ -39,8 +39,9 @@
   .module {
     display: flex;
     padding: 9px 0;
-    transition: background 300ms ease-in-out;
+    transition: color 300ms ease-in-out;
     padding-left: 24px;
+    font-weight: bold;
     .icon {
       flex: 0 0 20px;
       cursor: pointer;
@@ -48,15 +49,16 @@
     .link {
       padding-left: 32px;
       text-decoration: none;
-      font-weight: 500;
+      font-weight: 600;
       line-height: 24px;
       font-size: 14px;
     }
     &:hover {
-      background: #f2f2f2;
+     // background: #f2f2f2;
+     color: var(--color-primary);
     }
     &.active {
-      background: #f2f2f2;
+      color: var(--color-primary);
     }
   }
 }
