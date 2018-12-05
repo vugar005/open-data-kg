@@ -18,7 +18,6 @@ export class HeaderToggleDirective implements OnInit {
     ) { }
   ngOnInit() {
     console.log('on init')
-    this.hide();
    this.listenToRouteChange();
    this.listenToScrollToggle();
   }
@@ -54,6 +53,8 @@ export class HeaderToggleDirective implements OnInit {
   if (this.active) {
     this.viewContainer.clear();
     this.active = false;
+    const root = document.documentElement;
+      root.style.setProperty('--kg-header-height', '0px');
   }
 //    this.renderer.setStyle(this.element.nativeElement, 'display', 'none');
   }
@@ -62,6 +63,8 @@ export class HeaderToggleDirective implements OnInit {
  if (this.active) {return; }
   this.viewContainer.createEmbeddedView(this.templateRef);
   this.active = true;
+  const root = document.documentElement;
+  root.style.setProperty('--kg-header-height', '4.3rem');
   }
 
 }

@@ -2,16 +2,18 @@
   display: flex;
   align-items: center;
   background: var(--kg-box-background);;
-  padding: 30px;
   //padding: 32px 40px;
   margin-top: 5px;
   border-radius: 10px;
   margin-top: 22px;
   position: relative;
   cursor: pointer;
-  transition: all 300ms ease-in-out;
 }
-
+.wrapper-div {
+  z-index: 2;
+  padding: 30px;
+  background: #ffffff;
+}
 :host:hover {
   .overlay {
      opacity: 0.5;
@@ -36,10 +38,10 @@
   right: 0;
   opacity: 0;
   background: black;
-  z-index: -1;
+  z-index: 1;
+  transition: opacity 500ms ease-in-out;
   bottom: 9px;
   margin: 0 auto;
-  transition: all 300ms ease-in-out;
 }
 .left {
   display: flex;
