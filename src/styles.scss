@@ -12,6 +12,7 @@
 }
 * {
   box-sizing: border-box;
+  font-family: 'OpensSans', sans-serif;
 }
 #ngx-nt-table {
   height: 100%!important;
@@ -21,9 +22,9 @@
     max-width: 1430px;
 }
 }
-
-
-
+ a, p, h1, h2, h3, h4, h5 {
+  margin: 0;
+}
 html, body {
   width: 100%;
   height: 100%;
@@ -46,9 +47,17 @@ z-1 {
   z-index: 1;
 }
 button {
-  height: auto!important;
-  border: 0!important;
-  outline: 0!important;
+  height: auto;
+  border: 0;
+  outline: 0;
+  padding: 0 16px;
+  background: transparent;
+  text-align: center;
+  height: 48px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
   a {
     color: #333333;;
@@ -58,14 +67,6 @@ button {
       color: #333333;
     }
   }
-p {
-  margin: 0;
-  font-family: 'OpensSans', sans-serif;
-}
-div {
-  outline: 0;
-  font-family: 'OpensSans', sans-serif;
-}
 img {
   width: 100%;
   height: 100%;
@@ -244,6 +245,8 @@ img {
       }
   }
 }
+
+
 ::-webkit-scrollbar {
   width: 7px;
   height: 7px;

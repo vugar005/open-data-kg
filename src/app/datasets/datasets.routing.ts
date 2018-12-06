@@ -6,10 +6,10 @@ import { DatasetDetailComponent } from './dataset-detail/dataset-detail.componen
 
 const routes: Routes = [
   {path: '', redirectTo: 'by-category', pathMatch: 'full'},
-  { path: 'by-category', component: DatasetByCatComponent },
-  {path: 'by-organization', component: DatasetByOrgComponent},
+  { path: 'by-category', component: DatasetByCatComponent, data: { breadcrumb: 'by-category'} },
+  {path: 'by-organization', component: DatasetByOrgComponent, data: {breadcrumb: 'by organization'}},
   {path: 'searchResults', component: DatasetSearchResultComponent},
-  {path: ':id/details', component: DatasetDetailComponent}
+  {path: ':id/details', component: DatasetDetailComponent, data: {breadcrumb: 'details'}}
 ];
 
 export const DatasetsRoutes = RouterModule.forChild(routes);

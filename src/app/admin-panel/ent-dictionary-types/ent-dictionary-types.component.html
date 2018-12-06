@@ -1,13 +1,15 @@
 <div class="ng-admin-co-header">
   <div class="moduleName">
-  Dictionary Types
+    {{'--dictionaryTypes' | translate}}
   </div>
- <div class="ng-admin-actions-template">
-    <button mat-raised-button  (click)="table.onPrintSelected()" *ngIf="table.printable">Print</button>
-    <button mat-raised-button *rbacAllow="['1000008', 'ADD']" (click)="table.addData()">Add data</button>
-    <button mat-raised-button *rbacAllow="['1000008', 'DELETE']" (click)="table.onRemove()" [disabled]="!(table.isRowSelected)">Remove selected</button>
-    <button mat-raised-button  [disabled]="!(table.selectedRow)" (click)="table.onRowPin()" *ngIf="table.rowPinnable"> Pin to top</button>
-    <button mat-raised-button  (click)="table.onExport()" *ngIf="table.exportable">Export</button>
+  <div class="ng-admin-actions-template"  >
+    <button (click)="table.onPrintSelected()" >{{'--print' | translate}}</button>
+    <button  *rbacAllow="['1000008', 'ADD']" (click)="table.addData()" >{{'--addData' | translate}}</button>
+    <button  *rbacAllow="['1000008', 'DELETE']" (click)="table.onRemove()"
+     [disabled]="!(table?.isRowSelected)">{{'--removeSelected' | translate}}</button>
+    <button  [disabled]="!(table.selectedRow)"
+    (click)="table.onRowPin()" > {{'--pinToTop' | translate}}</button>
+    <button (click)="table.onExport()" >{{'--export' | translate}}</button>
  </div>
  </div>
 
@@ -24,6 +26,6 @@
  </div>
 
  <ng-template #editer>
-  <button [attr.t-btn]="'edit'"   *rbacAllow="['1000008', 'EDIT']">Edit</button>
-  <button [attr.t-btn]="'remove'" *rbacAllow="['1000008', 'DELETE']">Remove</button>
+  <button [attr.t-btn]="'edit'"   *rbacAllow="['1000008', 'EDIT']">{{'--edit' | translate}}</button>
+  <button [attr.t-btn]="'remove'" *rbacAllow="['1000008', 'DELETE']">{{'--delete' | translate}}</button>
 </ng-template>

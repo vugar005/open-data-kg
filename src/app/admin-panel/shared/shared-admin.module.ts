@@ -14,6 +14,7 @@ import { SharedUploadModule } from 'src/app/shared/shared-upload.module';
 import { HttpClientBusyModule } from 'ngx-httpclient-busy';
 import { MatMomentDateModule, MomentDateAdapter } from '@angular/material-moment-adapter';
 import { SharedRbacModule } from 'src/app/shared/shared-rbac.module';
+import { SharedTranslateModule } from 'src/app/shared/shared-translate.module';
 export const MY_FORMATS = {
   parse: {
     dateInput: 'L'
@@ -44,7 +45,8 @@ export const MY_FORMATS = {
     HttpClientBusyModule,
     MatDatepickerModule,
     MatMomentDateModule,
-    SharedRbacModule
+    SharedRbacModule,
+    SharedTranslateModule
     ],
   declarations: [
   ],

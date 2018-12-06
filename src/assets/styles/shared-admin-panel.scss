@@ -6,6 +6,7 @@
   border-radius: 6px;
   height: 64px;
   padding: 17px 30px;
+  padding-right: 0;
   margin-bottom: 16px;
   position: relative;
   background: #ffffff;
@@ -20,13 +21,36 @@
   .ng-admin-actions-template {
     button {
       margin-right: 5px;
+      color: #767676;
+      transition: color 300ms ease-in-out;
+      border-right: 1px solid rgba(0, 0, 0, 0.12);
+      height: 24px;
+      font-size: 15px;
+      padding: 0 25px;
+      &:disabled {
+        color: #7676764d;
+       background: transparent;
+      }
+      &:hover {
+        background: transparent;
+      }
+      &:hover:not(:disabled) {
+        background: transparent;
+        color: var(--color-primary);
+      }
+      &:focus {
+        outline: 0;
+      }
+    }
+    button:last-child() {
+      border-right: none;
     }
   }
 
 }
 .ng-admin-content {
+  flex: 1 1 0;
   width: 100%;
-  height: calc(100% - 86px);
 }
 .ng-admin-table {
   width: 100%;

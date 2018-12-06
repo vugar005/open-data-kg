@@ -7,6 +7,8 @@ import { map, tap, shareReplay, share } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
+import { ActivatedRoute } from '@angular/router';
+import { BreadCrumb } from './models/breadcrumb.model';
 @Injectable()
 export class SharedService {
   toastRunning: boolean;
@@ -156,13 +158,10 @@ addCustomMaterialIcon(name: string, url: string) {
   );
 }
 replaceSvgWitInline() {
-  console.log('called')
-  console.log(document.querySelectorAll('img.svg'));
  Array.from( document.querySelectorAll('img.svg')).forEach(function(img: any) {
    const imgID = img.id;
    const imgClass = img.className;
    const imgURL = img.src;
-   console.log(img.src)
     fetch(imgURL).then(function(response) {
         return response.text();
     }).then(function(text) {
@@ -196,6 +195,26 @@ replaceSvgWitInline() {
     });
 
 });
+}
+buildBreadCrumb(route: ActivatedRoute, url: string = '',
+                breadcrumbs: Array<BreadCrumb> = []): Array<BreadCrumb> {
+    // If no routeConfig is avalailable we are on the root path
+    const label = route.routeConfig ? route.routeConfig.data[ 'breadcrumb' ] : 'Home';
+    const path = route.routeConfig ? route.routeConfig.path : '';
+    // In the routeConfig the complete path is not available,
+    // so we rebuild it each time
+    const nextUrl = `${url}${path}/`;
+    const breadcrumb = {
+        label: label,
+        url: nextUrl
+    };
+    const newBreadcrumbs = [ ...breadcrumbs, breadcrumb ];
+    if (route.firstChild) {
+        // there will be more children to look after, to build our breadcumb
+        return this.buildBreadCrumb(route.firstChild, nextUrl, newBreadcrumbs);
+    }
+   // console.log(newBreadcrumbs)
+    return newBreadcrumbs;
 }
 
 }

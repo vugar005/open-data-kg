@@ -1,12 +1,20 @@
 import { UIActionTypes, UIActions } from './ui.actions';
 
 export interface UIState {
-  test: string;
+  app_language: string;
 }
 const initialState: UIState = {
-  test: ''
+  app_language: ''
 };
 export function reducer(state = initialState, action: UIActions) {
-
+  switch (action.type) {
+   case UIActionTypes.SET_APP_LANGUAGE:
+   return {
+     ...state,
+     app_language: action.payload
+   };
+   default:
+   return state;
+  }
 }
 

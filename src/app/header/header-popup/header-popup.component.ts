@@ -34,7 +34,10 @@ export class HeaderPopupComponent implements OnInit {
   }
 onNavigate(route: string) {
   this.close.next();
- this.router.navigateByUrl(route);
+  /** Timeout because of header animation */
+ setTimeout(() => {
+  this.router.navigateByUrl(route);
+ }, 10);
 }
 onLogout() {
   this.close.next();

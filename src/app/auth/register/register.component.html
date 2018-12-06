@@ -1,15 +1,15 @@
 <div class="auth-co">
   <div class="brand-logo" [routerLink]="['/']"  >
     <div class="primary-name">
-      {{'BRAND.primaryName' | translate}}
+      {{'--primaryName' | translate}}
     </div>
     <div class="secondary-name">
-        {{'BRAND.secondaryName' | translate}}
+        {{'--secondaryName' | translate}}
     </div>
   </div>
 
   <div class="auth-box">
-     <div class="form-header">Register</div>
+     <div class="form-header">{{'--register' | translate}}</div>
      <form #f="ngForm" class="nt-form" (ngSubmit)="onSubmit(f)">
 
       <div class="inputs">
@@ -29,39 +29,37 @@
               <div class="arrow-2"></div>
             </div>
             <div class="upload-div animated slideInUp">
-              <p>Upload image</p>
+              <p>{{'--uploadImage' | translate}}</p>
             </div>
 
           </div>
 
           <mat-form-field class="example-full-width">
-            <input matInput placeholder="User Name" class="nt-form-input" name="userName" ngModel required>
+            <input matInput placeholder="{{'--username' | translate}}" class="nt-form-input" name="userName" ngModel required>
             <mat-error>{{getErrors('userName')}}</mat-error>
           </mat-form-field>
 
           <mat-form-field class="example-full-width">
-            <input matInput placeholder="First Name" class="nt-form-input" name="name" ngModel required>
+            <input matInput placeholder="{{'--firstname' | translate}}" class="nt-form-input" name="name" ngModel required>
             <mat-error>{{getErrors('name')}}</mat-error>
           </mat-form-field>
 
           <mat-form-field class="example-full-width">
-            <input matInput placeholder="Last Name" class="nt-form-input" name="surname" ngModel required>
+            <input matInput placeholder="{{'--lastname' | translate}}" class="nt-form-input" name="surname" ngModel required>
             <mat-error>{{getErrors('surname')}}</mat-error>
           </mat-form-field>
 
           <mat-form-field class="example-full-width">
-            <input matInput placeholder="Middle Name" class="nt-form-input" name="mname" ngModel required>
+            <input matInput placeholder="{{'--middlename' | translate}}" class="nt-form-input" name="mname" ngModel required>
             <mat-error>{{getErrors('mname')}}</mat-error>
           </mat-form-field>
-
-
 
         </div>
 
         <div class="right">
 
           <mat-form-field>
-            <mat-select placeholder="Gender" class="nt-form-input" name="genderId" ngModel required>
+            <mat-select placeholder="{{'--gender' | translate}}" class="nt-form-input" name="genderId" ngModel required>
               <mat-option *ngFor="let item of (genders$ | async)" [value]="item.value"> {{item.label}} </mat-option>
             </mat-select>
             <mat-error>{{getErrors('genderId')}}</mat-error>
@@ -69,33 +67,21 @@
 
 
           <mat-form-field>
-            <input matInput [matDatepicker]="picker" placeholder="Birthdate" name="birthdate" ngModel required
+            <input matInput [matDatepicker]="picker" placeholder="{{'--birthdate' | translate}}" name="birthdate" ngModel required
               [max]="maxDate">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker [startAt]="startDate" startView="year"></mat-datepicker>
             <mat-error>{{getErrors('birthdate')}}</mat-error>
           </mat-form-field>
 
-
-          <!-- <mat-form-field>
-            <mat-select placeholder="User Role" class="nt-form-input" name="userRoleId" ngModel required>
-              <mat-option *ngFor="let item of (roles$ | async)" [value]="item.value">
-                {{item.label}}
-              </mat-option>
-            </mat-select>
-            <mat-error>{{getErrors('userRoleId')}}</mat-error>
-          </mat-form-field> -->
-
-
-
           <mat-form-field class="example-full-width" >
-            <input matInput placeholder="Password" class="nt-form-input" name="password" ngModel [type]="hideOld ? 'password' : 'text'">
+            <input matInput placeholder="{{'--password' | translate}}" class="nt-form-input" name="password" ngModel [type]="hideOld ? 'password' : 'text'">
             <mat-icon matSuffix (click)="hideOld = !hideOld">{{hideOld ? 'visibility_off' : 'visibility'}}</mat-icon>
             <mat-error>{{getErrors('password')}}</mat-error>
           </mat-form-field>
 
           <mat-form-field class="example-full-width">
-            <input matInput placeholder="Confirm Password" class="nt-form-input" name="confPasswd"  [type]="hide ? 'password' : 'text'"
+            <input matInput placeholder="{{'--confirmPassword' | translate}}" class="nt-form-input" name="confPasswd"  [type]="hide ? 'password' : 'text'"
              >
             <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
             <mat-error>{{getErrors('confPasswd')}}</mat-error>
@@ -108,36 +94,13 @@
       </div>
       <div class="actions">
         <button mat-raised-button  type="submit"
-         > Register </button>
+         > {{'register' | translate}} </button>
       </div>
 
     </form>
 
-
-
-     <!-- <form #f="ngForm" class="login-form">
-      <div class="controls">
-          <div class="left">
-              <input placeholder="{{'AUTH.username' | translate}}" name="user" ngModel class="input">
-              <input placeholder="{{'AUTH.email' | translate}}" name="email" ngModel class="input">
-              <input placeholder="{{'AUTH.password' | translate}}" name="password" ngModel class="input">
-              <input placeholder="{{'AUTH.confirmPassword' | translate}}" class="input">
-          </div>
-          <div class="right">
-              <input placeholder="{{'AUTH.name' | translate}}" name="name" ngModel class="input">
-              <input placeholder="{{'AUTH.middlename' | translate}}" name="middlename" ngModel class="input">
-              <input placeholder="{{'AUTH.surname' | translate}}" name="surname" ngModel class="input">
-              <input placeholder="{{'AUTH.gender' | translate}}" name="gender" ngModel class="input">
-              <input placeholder="{{'AUTH.birthdate' | translate}}" name="birthdate" ngModel class="input">
-          </div>
-      </div>
-        <div class="bottom">
-            <button class="kg-btn login" [routerLink]="['/']">Register</button>
-        </div>
-
-     </form> -->
      <div class="toRegister">
-        for <a [routerLink]="'/login'">Login</a>
+        for <a [routerLink]="'/login'">{{'login' | translate}}</a>
      </div>
   </div>
 </div>

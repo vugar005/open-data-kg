@@ -1,3 +1,4 @@
+import { SharedService } from './shared/shared.service';
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { AppState } from './reducers';
@@ -6,6 +7,8 @@ import { Observable, fromEvent } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { AutoSetToken, AutoSetUser, SetApiUrl, SetModules } from './auth/store/auth.actions';
 import * as globalVars from './app.globals';
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
+import { filter, distinctUntilChanged, map } from 'rxjs/operators';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -19,7 +22,10 @@ export class AppComponent implements OnInit {
   constructor(
     private translateService: TranslateService,
     private store: Store<AppState>,
-    private jwtService: JwtHelperService
+    private jwtService: JwtHelperService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private sharedService: SharedService
      ) {
   }
   ngOnInit() {
@@ -27,6 +33,15 @@ export class AppComponent implements OnInit {
     this.tryAutoLogin();
     this.setDefaultLang();
     this.listenToOnlineChanges();
+ //   this.initBreadCrumb();
+  }
+  initBreadCrumb() {
+    this.router.events
+    .pipe(
+      filter(event => event instanceof NavigationEnd),
+      distinctUntilChanged(),
+      map(event =>  this.sharedService.buildBreadCrumb(this.route.root))
+    ).subscribe(res => console.log(res));
   }
   listenToOnlineChanges() {
     this.root = document.documentElement;
@@ -75,6 +90,7 @@ export class AppComponent implements OnInit {
    // localStorage.setItem('uni_hostname', URL);
   }
   setDefaultLang() {
-    this.translateService.setDefaultLang('en');
+    const language = localStorage.getItem('kg-language') || 'en';
+    this.translateService.setDefaultLang(language);
   }
 }

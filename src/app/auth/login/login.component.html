@@ -1,30 +1,30 @@
 <div class="auth-co">
   <div class="brand-logo" [routerLink]="['/']"  >
     <div class="primary-name">
-      {{'BRAND.primaryName' | translate}}
+      {{'--primaryName' | translate}}
     </div>
     <div class="secondary-name">
-        {{'BRAND.secondaryName' | translate}}
+        {{'--secondaryName' | translate}}
     </div>
   </div>
 
   <div class="auth-box">
-     <div class="form-header">Login</div>
+     <div class="form-header"> {{'--login' | translate}}</div>
      <form #f="ngForm" class="login-form" (ngSubmit)="onSubmit(f)">
         <mat-form-field class="field-style" >
-            <input matInput placeholder="{{'AUTH.username' | translate}}" class="nt-form-input" name="username" ngModel required>
+            <input matInput placeholder="{{'--username' | translate}}" class="nt-form-input" name="username" ngModel required>
           </mat-form-field>
 
           <mat-form-field class="field-style" >
-              <input matInput placeholder="{{'AUTH.password' | translate}}" class="nt-form-input"
+              <input matInput placeholder="{{'--password' | translate}}" class="nt-form-input"
                      name="password" ngModel required [type]="hide ? 'password' : 'text'">
               <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
          </mat-form-field>
 
-       <button mat-raised-button type="submit" >Login</button>
+       <button mat-raised-button type="submit" > {{'--login' | translate}}</button>
      </form>
      <div class="toRegister">
-        for <a [routerLink]="'/register'" >Register</a>
+        for <a [routerLink]="'/register'" >  {{'--login' | translate}}</a>
      </div>
   </div>
 </div>

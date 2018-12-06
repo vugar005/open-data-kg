@@ -3,13 +3,34 @@
     <div class="col-12">
       <div class="global-modules">
 
-          <a class="global-module" *ngFor="let mod of modules" (click)="onNavigate(mod.link)">
+          <a class="global-module" *ngFor="let mod of modules;let i = index" (click)="onNavigate(mod.link)">
             <div class="icon">
-              <img src="{{mod?.icon_url}}">
+              <img [src]="mod?.icon_url">
+            </div>
+            <div class="text" translate>{{mod?.name}}</div>
+            <div class="outline"  [ngStyle]="{'width': state === mod.link ? '100%' : '0'}" ></div>
+          </a>
+          <!-- <a class="global-module">
+            <div class="icon">
+              <img src="./assets/icons/database(2).png">
             </div>
             <div class="text">{{mod?.name}}</div>
             <div class="outline"  [ngStyle]="{'width': state === mod.link ? '100%' : '0'}" ></div>
           </a>
+          <a class="global-module">
+            <div class="icon">
+              <img src="./assets/icons/user(1).png">
+            </div>
+            <div class="text">{{mod?.name}}</div>
+            <div class="outline"  [ngStyle]="{'width': state === mod.link ? '100%' : '0'}" ></div>
+          </a>
+          <a class="global-module">
+            <div class="icon">
+              <img src="./assets/icons/database(3).png">
+            </div>
+            <div class="text">{{mod?.name}}</div>
+            <div class="outline"  [ngStyle]="{'width': state === mod.link ? '100%' : '0'}" ></div>
+          </a> -->
         </div>
     </div>
   </div>

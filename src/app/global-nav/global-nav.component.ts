@@ -11,22 +11,22 @@ export class GlobalNavComponent  {
   @Output() navChanged = new EventEmitter<string>();
   modules = [
     {
-      name: 'Categories',
+      name: '--categories',
       icon_url: './assets/icons/database.png',
       link: 'category'
     },
     {
-      name: 'Organizations',
+      name: '--organizations',
       icon_url: './assets/icons/database(2).png',
       link: 'organization'
     },
     {
-      name: 'Community',
+      name: '--latest',
       icon_url: './assets/icons/user(1).png',
       link: 'community'
     },
     {
-      name: 'Popular',
+      name: '--popular',
       icon_url: './assets/icons/database(3).png',
       link: 'popular'
     }
