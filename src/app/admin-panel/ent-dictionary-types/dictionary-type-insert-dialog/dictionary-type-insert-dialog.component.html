@@ -4,33 +4,33 @@
 
           <div class="right">
             <mat-form-field class="example-full-width">
-              <input matInput placeholder="Name En" class="nt-form-input" name="nameEn" ngModel required>
+              <input matInput placeholder="{{'~name' | translate}} (En)" class="nt-form-input" name="nameEn" ngModel required>
               <mat-error>{{getErrors('nameEn')}}</mat-error>
             </mat-form-field>
 
             <mat-form-field class="example-full-width">
-                <input matInput placeholder="Name Ru" class="nt-form-input" name="nameRu" ngModel >
+                <input matInput placeholder="{{'~name' | translate}} (Ru)" class="nt-form-input" name="nameRu" ngModel >
                 <mat-error>{{getErrors('nameRu')}}</mat-error>
               </mat-form-field>
 
               <mat-form-field class="example-full-width">
-                  <input matInput placeholder="Name Kg" class="nt-form-input" name="nameKg" ngModel>
+                  <input matInput placeholder="{{'~name' | translate}} (Kg)" class="nt-form-input" name="nameKg" ngModel>
                   <mat-error>{{getErrors('nameKg')}}</mat-error>
                 </mat-form-field>
 
             <mat-form-field class="example-full-width">
-              <input matInput placeholder="Code" class="nt-form-input" name="code" ngModel required>
+              <input matInput placeholder="{{'~code' | translate}}" class="nt-form-input" name="code" ngModel required>
               <mat-error>{{getErrors('code')}}</mat-error>
             </mat-form-field>
 
 
             <mat-form-field class="example-full-width">
-              <input matInput placeholder="Type" class="nt-form-input" name="type" ngModel >
+              <input matInput placeholder="{{'~type' | translate}}" class="nt-form-input" name="type" ngModel >
               <mat-error>{{getErrors('type')}}</mat-error>
             </mat-form-field>
 
             <mat-form-field>
-              <mat-select placeholder="ProtectedTypes" class="nt-form-input" name="protectedTypes" ngModel required>
+              <mat-select placeholder="{{'~protectedType' | translate}}" class="nt-form-input" name="protectedTypes" ngModel required>
                 <mat-option  value="0"> 0 </mat-option>
                 <mat-option  value="1"> 1 </mat-option>
               </mat-select>
@@ -44,14 +44,14 @@
     *ngIf="!data?.row"
     [table]="data?.table"
     (onClose)="dialogRef.close()"
-    >Add</button>
+    >{{'~add' | translate}}</button>
     <button mat-raised-button color="primary"  type="submit" updateTableData [form]="f"
     *ngIf="data?.row"
     [disabled]="f?.dirty && !f?.valid"
     (onClose)="dialogRef.close()"
     [table]="data?.table"
-    >Update</button>
-    <button mat-raised-button (click)="dialogRef.close()" type="reset">Cancel</button>
+    >{{'~update' | translate}}</button>
+    <button mat-raised-button (click)="dialogRef.close()" type="reset">{{'~cancel' | translate}}</button>
   </div>
 
 </form>

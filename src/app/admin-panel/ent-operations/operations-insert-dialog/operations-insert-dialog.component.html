@@ -4,26 +4,26 @@
     <div class="left">
 
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="Order By" class="nt-form-input" name="orderBy" ngModel  >
+        <input matInput placeholder="{{'~orderBy' | translate}}" class="nt-form-input" name="orderBy" ngModel  >
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="Name Kg" class="nt-form-input" name="nameKg" ngModel  required>
+        <input matInput placeholder="{{'~name' | translate}} (Kg)" class="nt-form-input" name="nameKg" ngModel  required>
         <mat-error>{{getErrors('nameAz')}} </mat-error>
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="Name En" class="nt-form-input" name="nameEn" ngModel required >
+        <input matInput placeholder="{{'~name' | translate}} (En)" class="nt-form-input" name="nameEn" ngModel required >
         <mat-error>{{getErrors('nameEn')}} </mat-error>
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="Name Ru" class="nt-form-input" name="nameRu" ngModel required >
+        <input matInput placeholder="{{'~name' | translate}} (Ru)" class="nt-form-input" name="nameRu" ngModel required >
         <mat-error>{{getErrors('nameRu')}} </mat-error>
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="Permission Url" class="nt-form-input" name="permissionUrl" ngModel required >
+        <input matInput placeholder="{{'~permissionUrl' | translate}}" class="nt-form-input" name="permissionUrl" ngModel required >
         <mat-error>{{getErrors('permissionUrl')}} </mat-error>
       </mat-form-field>
 
@@ -32,7 +32,7 @@
 
           <div class="right">
             <mat-form-field>
-              <mat-select placeholder="Module id" class="nt-form-input" name="moduleId" ngModel required >
+              <mat-select placeholder="{{'~moduleId' | translate}}" class="nt-form-input" name="moduleId" ngModel required >
                 <mat-option *ngFor="let item of (modules$ | async)" [value]="item.value">
                   {{item.label}}
                 </mat-option>
@@ -41,17 +41,17 @@
             </mat-form-field>
 
             <mat-form-field class="example-full-width">
-              <input matInput placeholder="Parent Id" class="nt-form-input" name="parentId" ngModel required>
+              <input matInput placeholder="{{'~parentId' | translate}}" class="nt-form-input" name="parentId" ngModel required>
               <mat-error>{{getErrors('parentId')}}</mat-error>
             </mat-form-field>
 
             <mat-form-field class="example-full-width">
-                <input matInput placeholder="Type" class="nt-form-input" name="type" ngModel type="number" >
+                <input matInput placeholder="{{'~type' | translate}}" class="nt-form-input" name="type" ngModel type="number" >
                 <mat-error>{{getErrors('type')}}</mat-error>
               </mat-form-field>
 
               <mat-form-field class="example-full-width">
-                <input matInput placeholder="Code" class= "nt-form-input" name="code" ngModel required >
+                <input matInput placeholder="{{'~code' | translate}}" class= "nt-form-input" name="code" ngModel required >
                 <mat-error>{{getErrors('code')}}</mat-error>
               </mat-form-field>
 
@@ -63,14 +63,14 @@
     *ngIf="!data?.row"
     [table]="data?.table"
     (onClose)="dialogRef.close()"
-    >Add</button>
+    >{{'~add' | translate}}</button>
     <button mat-raised-button color="primary"  type="submit" updateTableData [form]="f"
     *ngIf="data?.row"
     [disabled]="f?.dirty && !f?.valid"
     (onClose)="dialogRef.close()"
     [table]="data?.table"
-    >Update</button>
-    <button mat-raised-button (click)="dialogRef.close()" type="reset">Cancel</button>
+    >{{'~update' | translate}}</button>
+    <button mat-raised-button (click)="dialogRef.close()" type="reset">{{'~cancel' | translate}}</button>
   </div>
 
 </form>

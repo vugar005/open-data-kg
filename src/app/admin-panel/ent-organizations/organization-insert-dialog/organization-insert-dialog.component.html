@@ -2,7 +2,7 @@
 
   <mat-vertical-stepper [linear]="true" #stepper [selectedIndex]="selectedIndex" >
     <mat-step [stepControl]="f">
-          <ng-template matStepLabel>Organization main data</ng-template>
+          <ng-template matStepLabel>{{'~orgMainData' | translate}}</ng-template>
 
           <div class="main-info">
             <div class="left">
@@ -20,32 +20,32 @@
                       <div class="arrow-2"></div>
                     </div>
                     <div class="upload-div animated slideInUp">
-                      <p>Upload image</p>
+                      <p>{{'~uploadImage' | translate}}</p>
                     </div>
 
                   </div>
               <mat-form-field class="example-full-width">
-                <input matInput placeholder="Name Kg" class="nt-form-input" name="nameKg" ngModel required>
+                <input matInput placeholder="{{'~name' | translate}} (Kg)" class="nt-form-input" name="nameKg" ngModel required>
                 <mat-error>{{getErrors('nameKg')}} </mat-error>
               </mat-form-field>
 
               <mat-form-field class="example-full-width">
-                <input matInput placeholder="Name En" class="nt-form-input" name="nameEn" ngModel required>
+                <input matInput placeholder="{{'~name' | translate}} (En)" class="nt-form-input" name="nameEn" ngModel required>
                 <mat-error>{{getErrors('nameEn')}} </mat-error>
               </mat-form-field>
 
               <mat-form-field class="example-full-width">
-                <input matInput placeholder="Name Ru" class="nt-form-input" name="nameRu" ngModel required>
+                <input matInput placeholder="{{'~name' | translate}} (Ru)" class="nt-form-input" name="nameRu" ngModel required>
                 <mat-error>{{getErrors('nameRu')}} </mat-error>
               </mat-form-field>
 
               <mat-form-field class="example-full-width">
-                <input matInput placeholder="Code" class="nt-form-input" name="code" ngModel required>
+                <input matInput placeholder="{{'~code' | translate}}" class="nt-form-input" name="code" ngModel required>
                 <mat-error>{{getErrors('code')}}</mat-error>
               </mat-form-field>
 
               <mat-form-field>
-                <mat-select placeholder="Org Type" class="nt-form-input" name="typeId" ngModel required>
+                <mat-select placeholder="{{'~orgType' | translate}}" class="nt-form-input" name="typeId" ngModel required>
                   <mat-option *ngFor="let item of (orgTypes$ | async)" [value]="item.value">
                     {{item.label}}
                   </mat-option>
@@ -57,47 +57,35 @@
             <div class="right">
 
               <mat-form-field class="example-full-width">
-                <input matInput placeholder="Shortname Kg" class="nt-form-input" name="shortNameKg" ngModel required>
+                <input matInput placeholder="{{'~shortName' | translate}} (Kg)" class="nt-form-input" name="shortNameKg" ngModel required>
                 <mat-error>{{getErrors('shortNameKg')}} </mat-error>
               </mat-form-field>
 
               <mat-form-field class="example-full-width">
-                <input matInput placeholder="Shortname En" class="nt-form-input" name="shortNameEn" ngModel required>
+                <input matInput placeholder="{{'~shortName' | translate}} (En)" class="nt-form-input" name="shortNameEn" ngModel required>
                 <mat-error>{{getErrors('shortNameEn')}} </mat-error>
               </mat-form-field>
 
               <mat-form-field class="example-full-width">
-                <input matInput placeholder="Shortname Ru" class="nt-form-input" name="shortNameRu" ngModel required>
+                <input matInput placeholder="{{'~shortName' | translate}} (Ru)" class="nt-form-input" name="shortNameRu" ngModel required>
                 <mat-error>{{getErrors('shortNameRu')}} </mat-error>
               </mat-form-field>
 
 
               <mat-form-field class="example-full-width">
-                <input matInput placeholder="About Kg" class="nt-form-input" name="aboutKg" ngModel>
+                <input matInput placeholder="{{'~about' | translate}} (Kg)" class="nt-form-input" name="aboutKg" ngModel>
                 <mat-error>{{getErrors('aboutKg')}} </mat-error>
               </mat-form-field>
 
               <mat-form-field class="example-full-width">
-                <input matInput placeholder="About En" class="nt-form-input" name="aboutEn" ngModel>
+                <input matInput placeholder="{{'~about' | translate}} (En)" class="nt-form-input" name="aboutEn" ngModel>
                 <mat-error>{{getErrors('aboutEn')}} </mat-error>
               </mat-form-field>
 
               <mat-form-field class="example-full-width">
-                <input matInput placeholder="About Ru" class="nt-form-input" name="aboutRu" ngModel>
+                <input matInput placeholder="{{'~about' | translate}} (Ru)" class="nt-form-input" name="aboutRu" ngModel>
                 <mat-error>{{getErrors('aboutRu')}} </mat-error>
               </mat-form-field>
-
-
-              <!-- <mat-form-field>
-                            <mat-select placeholder="Module id" class="nt-form-input" name="moduleId" ngModel required >
-                              <mat-option *ngFor="let item of (apps$ | async)" [value]="item.id">
-                                {{item.name}}
-                              </mat-option>
-                            </mat-select>
-                            <mat-error>{{getErrors('moduleId')}}</mat-error>
-                          </mat-form-field> -->
-
-
 
               <input [hidden]="true" name="id" ngModel>
             </div>
@@ -108,12 +96,12 @@
           *ngIf="!(f?.value.id)"
           [table]="data?.table"
           (onClose)="onClose($event)"
-          >Add</button>
+          >{{'~add' | translate}}</button>
         </div>
     </mat-step>
 
     <mat-step  [stepControl]="f" >
-      <ng-template matStepLabel>Address data</ng-template>
+      <ng-template matStepLabel>{{'~addressData' | translate}}</ng-template>
       <ng-container *ngIf="f?.value?.id">
         <div class="title">
           <div class="add-icon" (click)="table.addData()">
@@ -131,14 +119,14 @@
        </div>
 
       <div>
-          <button mat-raised-button matStepperPrevious>Back</button>
-          <button mat-raised-button matStepperNext>Next</button>
+          <button mat-raised-button matStepperPrevious>{{'~back' | translate}}</button>
+          <button mat-raised-button matStepperNext>{{'~next' | translate}}</button>
         </div>
       </ng-container>
   </mat-step>
 
     <mat-step  [stepControl]="f">
-        <ng-template matStepLabel>Contact data</ng-template>
+        <ng-template matStepLabel>{{'~contactData' | translate}}</ng-template>
         <ng-template matStepperIcon="edit">
           <mat-icon>phone</mat-icon>
         </ng-template>
@@ -164,7 +152,7 @@
          </div>
 
         <div>
-            <button mat-raised-button matStepperPrevious>Back</button>
+            <button mat-raised-button matStepperPrevious>{{'~back' | translate}}</button>
           </div>
         </ng-container>
     </mat-step>
@@ -177,8 +165,8 @@
     [disabled]="f?.dirty && !f?.valid"
     (onClose)="dialogRef.close()"
     [table]="data?.table"
-    >Update</button>
-    <button mat-raised-button (click)="dialogRef.close()" type="reset">Cancel</button>
+    >{{'~update' | translate}}</button>
+    <button mat-raised-button (click)="dialogRef.close()" type="reset">{{'~cancel' | translate}}l</button>
   </div>
 
 </form>

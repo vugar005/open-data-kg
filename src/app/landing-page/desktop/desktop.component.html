@@ -5,14 +5,14 @@
       <div class="col-12 col-md-5">
         <div class="search-header">
           <div class="primary-name">
-            {{'--primaryName' | translate}}
+            {{'~primaryName' | translate}}
           </div>
           <div class="secondary-name">
-            {{'--secondaryName' | translate}}
+            {{'~secondaryName' | translate}}
           </div>
         </div>
         <div class="input-co">
-            <input class="ng-input" placeholder="{{'--searchDataset' | translate}}" (click)="resetMouse()"
+            <input class="ng-input" placeholder="{{'~searchDataset' | translate}}" (click)="resetMouse()"
             typehead-co
             [url]="'api/get/Permission/Datasets/GlobalSearchForDataset'"
             [apiKey]="'datasetFullname'"

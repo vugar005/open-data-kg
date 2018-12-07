@@ -1,15 +1,15 @@
 <div class="ng-admin-co-header">
   <div class="moduleName">
-    {{'--datasets' | translate}}
+    {{'~datasets' | translate}}
   </div>
   <div class="ng-admin-actions-template"  >
-    <button (click)="table.onPrintSelected()" >{{'--print' | translate}}</button>
-    <button  *rbacAllow="['1000010', 'ADD']" (click)="table.addData()" >{{'--addData' | translate}}</button>
+    <button (click)="table.onPrintSelected()" >{{'~print' | translate}}</button>
+    <button  *rbacAllow="['1000010', 'ADD']" (click)="table.addData()" >{{'~addData' | translate}}</button>
     <button  *rbacAllow="['1000010', 'DELETE']" (click)="table.onRemove()"
-     [disabled]="!(table?.isRowSelected)">{{'--removeSelected' | translate}}</button>
+     [disabled]="!(table?.isRowSelected)">{{'~removeSelected' | translate}}</button>
     <button  [disabled]="!(table.selectedRow)"
-    (click)="table.onRowPin()" > {{'--pinToTop' | translate}}</button>
-    <button (click)="table.onExport()" >{{'--export' | translate}}</button>
+    (click)="table.onRowPin()" > {{'~pinToTop' | translate}}</button>
+    <button (click)="table.onExport()" >{{'~export' | translate}}</button>
  </div>
  </div>
 
@@ -25,8 +25,8 @@
    </div>
  </div>
  <ng-template #editer>
-  <button [attr.t-btn]="'edit'"   *rbacAllow="['1000010', 'EDIT']">{{'--edit' | translate}}</button>
-  <button [attr.t-btn]="'remove'" *rbacAllow="['1000010', 'DELETE']">{{'--delete' | translate}}</button>
-    <button [attr.t-btn]="'activate'" *rbacAllow="['1000010', 'ACTIVE']">{{'--activate' | translate}}</button>
-    <button [attr.t-btn]="'deactivate'" *rbacAllow="['1000010', 'DEACTIVE']">{{'--deactivate' | translate}}</button>
+  <button [attr.t-btn]="'edit'"   *rbacAllow="['1000010', 'EDIT']">{{'~edit' | translate}}</button>
+  <button [attr.t-btn]="'remove'" *rbacAllow="['1000010', 'DELETE']">{{'~delete' | translate}}</button>
+    <button [attr.t-btn]="'activate'" *rbacAllow="['1000010', 'ACTIVE']">{{'~activate' | translate}}</button>
+    <button [attr.t-btn]="'deactivate'" *rbacAllow="['1000010', 'DEACTIVE']">{{'~deactivate' | translate}}</button>
   </ng-template>

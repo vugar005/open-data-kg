@@ -10,7 +10,7 @@
       <div class="col-9">
          <form #f="ngForm" class=" filter-form" >
           <div class="search-box">
-            <input placeholder="{{'--searchDataset' | translate}}" class="ng-input" name="datasetFullname"
+            <input placeholder="{{'~searchDataset' | translate}}" class="ng-input" name="datasetFullname"
             typehead-co
             [url]="'api/get/Permission/Datasets/GlobalSearchForDataset'"
             [apiKey]="'datasetFullname'"
@@ -24,7 +24,7 @@
 
           <div class="format-select">
               <select  name="formatId" ngModel id="format_select" (ngModelChange)="onSubmit()">
-                <option value="" class="default" >{{'--selectFormat' | translate}}</option>
+                <option value="" class="default" >{{'~selectFormat' | translate}}</option>
                 <option  *ngFor="let type of (formatTypes$ | async)" [value]="type?.value">{{type?.label}}</option>
               </select>
               <div class="custom-caret">

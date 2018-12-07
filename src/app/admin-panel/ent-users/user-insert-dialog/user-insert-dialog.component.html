@@ -17,33 +17,33 @@
           <div class="arrow-2"></div>
         </div>
         <div class="upload-div animated slideInUp">
-          <p>Upload image</p>
+          <p>{{'~uploadImg' | translate}}</p>
         </div>
 
       </div>
 
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="User Name" class="nt-form-input" name="userName" ngModel required>
+        <input matInput placeholder="{{'~username' | translate}}" class="nt-form-input" name="userName" ngModel required>
         <mat-error>{{getErrors('userName')}}</mat-error>
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="First Name" class="nt-form-input" name="fname" ngModel required>
+        <input matInput placeholder="{{'~firstname' | translate}}" class="nt-form-input" name="fname" ngModel required>
         <mat-error>{{getErrors('fName')}}</mat-error>
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="Last Name" class="nt-form-input" name="lname" ngModel required>
+        <input matInput placeholder="{{'~lastname' | translate}}" class="nt-form-input" name="lname" ngModel required>
         <mat-error>{{getErrors('lname')}}</mat-error>
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="Middle Name" class="nt-form-input" name="mname" ngModel required>
+        <input matInput placeholder="{{'~middleName' | translate}}" class="nt-form-input" name="mname" ngModel required>
         <mat-error>{{getErrors('mname')}}</mat-error>
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="Pin Code" class="nt-form-input" name="pincode" ngModel required>
+        <input matInput placeholder="{{'~pinCode' | translate}}" class="nt-form-input" name="pincode" ngModel required>
         <mat-error>{{getErrors('pincode')}}</mat-error>
 
       </mat-form-field>
@@ -53,7 +53,7 @@
     <div class="right">
 
       <mat-form-field>
-        <mat-select placeholder="Gender" class="nt-form-input" name="genderId" ngModel required>
+        <mat-select placeholder="{{'~gender' | translate}}" class="nt-form-input" name="genderId" ngModel required>
           <mat-option *ngFor="let item of (genders$ | async)" [value]="item.value"> {{item.label}} </mat-option>
         </mat-select>
         <mat-error>{{getErrors('genderId')}}</mat-error>
@@ -61,7 +61,7 @@
 
 
       <mat-form-field>
-        <input matInput [matDatepicker]="picker" placeholder="Birthdate" name="birthDate" ngModel required (dateInput)="onDateChange($event)"
+        <input matInput [matDatepicker]="picker" placeholder="{{'~birthdate' | translate}}" name="birthDate" ngModel required (dateInput)="onDateChange($event)"
           [max]="maxDate">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker [startAt]="startDate" startView="year"></mat-datepicker>
@@ -69,8 +69,8 @@
       </mat-form-field>
 
       <mat-form-field>
-        <mat-select placeholder="Org Type" class="nt-form-input" name="orgId" ngModel required>
-          <mat-option value="">Choose</mat-option>
+        <mat-select placeholder="{{'~orgType' | translate}}" class="nt-form-input" name="orgId" ngModel required>
+          <mat-option value="">{{'~choose' | translate}}</mat-option>
           <mat-option *ngFor="let item of (orgTypes$ | async)" [value]="item.value">
             {{item.label}}
           </mat-option>
@@ -80,7 +80,7 @@
 
 
       <mat-form-field>
-        <mat-select placeholder="User Role" class="nt-form-input" name="userRoleId" ngModel required>
+        <mat-select placeholder="{{'~userRole' | translate}}" class="nt-form-input" name="userRoleId" ngModel required>
           <mat-option *ngFor="let item of (roles$ | async)" [value]="item.value?.toString()">
             {{item.label}}
           </mat-option>
@@ -90,13 +90,13 @@
 
 
       <mat-form-field class="example-full-width" *ngIf="data?.row">
-        <input matInput placeholder="Old Password" class="nt-form-input" name="oldPasswd" ngModel [type]="hideOld ? 'password' : 'text'">
+        <input matInput placeholder="{{'~oldPassword' | translate}}" class="nt-form-input" name="oldPasswd" ngModel [type]="hideOld ? 'password' : 'text'">
         <mat-icon matSuffix (click)="hideOld = !hideOld">{{hideOld ? 'visibility_off' : 'visibility'}}</mat-icon>
         <mat-error>{{getErrors('oldPasswd')}}</mat-error>
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
-        <input matInput placeholder="Password" class="nt-form-input" name="passwd" ngModel [type]="hide ? 'password' : 'text'"
+        <input matInput placeholder="{{'~password' | translate}}" class="nt-form-input" name="passwd" ngModel [type]="hide ? 'password' : 'text'"
           [required]="!data.row">
         <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         <mat-error>{{getErrors('passwd')}}</mat-error>
@@ -112,14 +112,14 @@
     *ngIf="!data?.row"
     [table]="data?.table"
     (onClose)="dialogRef.close()"
-    >Add</button>
+    >{{'~add' | translate}}</button>
     <button mat-raised-button color="primary"  type="submit" updateTableData [form]="f"
     *ngIf="data?.row"
     [disabled]="f?.dirty && !f?.valid"
     (onClose)="dialogRef.close()"
     [table]="data?.table"
-    >Update</button>
-    <button mat-raised-button (click)="dialogRef.close()" type="reset">Cancel</button>
+    >{{'~update' | translate}}</button>
+    <button mat-raised-button (click)="dialogRef.close()" type="reset">{{'~cancel' | translate}}</button>
   </div>
 
 </form>

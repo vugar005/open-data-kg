@@ -1,15 +1,15 @@
 <div class="auth-co">
   <div class="brand-logo" [routerLink]="['/']"  >
     <div class="primary-name">
-      {{'--primaryName' | translate}}
+      {{'~primaryName' | translate}}
     </div>
     <div class="secondary-name">
-        {{'--secondaryName' | translate}}
+        {{'~secondaryName' | translate}}
     </div>
   </div>
 
   <div class="auth-box">
-     <div class="form-header">{{'--register' | translate}}</div>
+     <div class="form-header">{{'~register' | translate}}</div>
      <form #f="ngForm" class="nt-form" (ngSubmit)="onSubmit(f)">
 
       <div class="inputs">
@@ -29,28 +29,28 @@
               <div class="arrow-2"></div>
             </div>
             <div class="upload-div animated slideInUp">
-              <p>{{'--uploadImage' | translate}}</p>
+              <p>{{'~uploadImage' | translate}}</p>
             </div>
 
           </div>
 
           <mat-form-field class="example-full-width">
-            <input matInput placeholder="{{'--username' | translate}}" class="nt-form-input" name="userName" ngModel required>
+            <input matInput placeholder="{{'~username' | translate}}" class="nt-form-input" name="userName" ngModel required>
             <mat-error>{{getErrors('userName')}}</mat-error>
           </mat-form-field>
 
           <mat-form-field class="example-full-width">
-            <input matInput placeholder="{{'--firstname' | translate}}" class="nt-form-input" name="name" ngModel required>
+            <input matInput placeholder="{{'~firstname' | translate}}" class="nt-form-input" name="name" ngModel required>
             <mat-error>{{getErrors('name')}}</mat-error>
           </mat-form-field>
 
           <mat-form-field class="example-full-width">
-            <input matInput placeholder="{{'--lastname' | translate}}" class="nt-form-input" name="surname" ngModel required>
+            <input matInput placeholder="{{'~lastname' | translate}}" class="nt-form-input" name="surname" ngModel required>
             <mat-error>{{getErrors('surname')}}</mat-error>
           </mat-form-field>
 
           <mat-form-field class="example-full-width">
-            <input matInput placeholder="{{'--middlename' | translate}}" class="nt-form-input" name="mname" ngModel required>
+            <input matInput placeholder="{{'~middlename' | translate}}" class="nt-form-input" name="mname" ngModel required>
             <mat-error>{{getErrors('mname')}}</mat-error>
           </mat-form-field>
 
@@ -59,7 +59,7 @@
         <div class="right">
 
           <mat-form-field>
-            <mat-select placeholder="{{'--gender' | translate}}" class="nt-form-input" name="genderId" ngModel required>
+            <mat-select placeholder="{{'~gender' | translate}}" class="nt-form-input" name="genderId" ngModel required>
               <mat-option *ngFor="let item of (genders$ | async)" [value]="item.value"> {{item.label}} </mat-option>
             </mat-select>
             <mat-error>{{getErrors('genderId')}}</mat-error>
@@ -67,7 +67,7 @@
 
 
           <mat-form-field>
-            <input matInput [matDatepicker]="picker" placeholder="{{'--birthdate' | translate}}" name="birthdate" ngModel required
+            <input matInput [matDatepicker]="picker" placeholder="{{'~birthdate' | translate}}" name="birthdate" ngModel required
               [max]="maxDate">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker [startAt]="startDate" startView="year"></mat-datepicker>
@@ -75,13 +75,13 @@
           </mat-form-field>
 
           <mat-form-field class="example-full-width" >
-            <input matInput placeholder="{{'--password' | translate}}" class="nt-form-input" name="password" ngModel [type]="hideOld ? 'password' : 'text'">
+            <input matInput placeholder="{{'~password' | translate}}" class="nt-form-input" name="password" ngModel [type]="hideOld ? 'password' : 'text'">
             <mat-icon matSuffix (click)="hideOld = !hideOld">{{hideOld ? 'visibility_off' : 'visibility'}}</mat-icon>
             <mat-error>{{getErrors('password')}}</mat-error>
           </mat-form-field>
 
           <mat-form-field class="example-full-width">
-            <input matInput placeholder="{{'--confirmPassword' | translate}}" class="nt-form-input" name="confPasswd"  [type]="hide ? 'password' : 'text'"
+            <input matInput placeholder="{{'~confirmPassword' | translate}}" class="nt-form-input" name="confPasswd"  [type]="hide ? 'password' : 'text'"
              >
             <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
             <mat-error>{{getErrors('confPasswd')}}</mat-error>

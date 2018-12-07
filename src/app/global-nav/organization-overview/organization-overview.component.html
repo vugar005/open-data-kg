@@ -1,14 +1,5 @@
 <div class="container">
   <div class="row">
-    <!-- <div class="col-12">
-        <div class="co-header">
-
-            <input class="ng-input search-bar" placeholder="Search dataset">
-            <div class="search-ico">
-                <fa-icon [icon]="faSearch"></fa-icon>
-              </div>
-          </div>
-    </div> -->
   </div>
   <div class="row justify-content-start">
           <div class="col-2" *ngFor="let item of (items$ | async);let first=first" (click) ="onNavigate(item.id)">
