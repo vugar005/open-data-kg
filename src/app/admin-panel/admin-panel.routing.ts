@@ -1,4 +1,6 @@
-import { Routes, RouterModule } from '@angular/router';
+import { AppCustomPreloader } from './../app-custom-preloader';
+import { delay } from 'rxjs/operators';
+import { Routes, RouterModule, PreloadingStrategy } from '@angular/router';
 import { AdminPanelComponent } from './admin-panel.component';
 import { AdminGuard } from '../auth/admin.guard';
 
@@ -13,7 +15,7 @@ const routes: Routes = [
     {path: 'dictionary-types', loadChildren: './ent-dictionary-types/ent-dictionary-types.module#EntDictionaryTypesModule'},
     {path: 'organizations', loadChildren: './ent-organizations/ent-organizations.module#EntOrganizationsModule'},
     {path: 'datasets', loadChildren: './ent-datasets/ent-datasets.module#EntDatasetsModule'},
-    {path: 'comments', loadChildren: './ent-comments/ent-comments.module#EntCommentsModule'}
+    {path: 'comments', loadChildren: './ent-comments/ent-comments.module#EntCommentsModule'},
   ]},
 ];
 

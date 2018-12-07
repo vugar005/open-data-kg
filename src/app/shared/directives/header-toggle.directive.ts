@@ -64,7 +64,7 @@ export class HeaderToggleDirective implements OnInit {
   this.viewContainer.createEmbeddedView(this.templateRef);
   this.active = true;
   const root = document.documentElement;
-  root.style.setProperty('--kg-header-height', '4.3rem');
+  root.style.setProperty('--kg-header-height', '4.375rem');
   }
 
 }

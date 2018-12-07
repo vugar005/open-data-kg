@@ -10,35 +10,28 @@
               <div class="icon">
                 <img src="./assets/icons/nav-news.svg">
               </div>
-              <div class="name">News</div>
+              <div class="name">{{'~news' | translate}}</div>
             </div>
 
             <div class="item animated fadeIn " (click)="onNavigate('announcements')" >
               <div class="icon">
                 <img src="./assets/icons/nav-annoucement.svg">
               </div>
-              <div class="name">Announcements</div>
+              <div class="name">{{'~announcements' | translate}}</div>
             </div>
 
             <div class="item animated  fadeIn" (click)="onNavigate('blogs')" routerLinkActive="router-link-active" >
                 <div class="icon">
                   <img src="./assets/icons/nav-blog.svg">
                 </div>
-                <div class="name">Blogs</div>
+                <div class="name">{{'~blogs' | translate}}</div>
               </div>
-
-              <div class="item animated fadeIn"  >
-                  <div class="icon">
-                    <img src="./assets/icons/nav-dashboard.svg">
-                  </div>
-                  <div class="name"   (click)="onNavigate('/')">Go to Dashboard</div>
-                </div>
 
               <div class="item animated fadeIn"   *ngIf="(isAdmin$ | async)" >
                   <div class="icon">
                     <img src="./assets/icons/nav-dashboard.svg">
                   </div>
-                  <div class="name" (click)="onNavigate('/admin')">Go to Dashboard</div>
+                  <div class="name" (click)="onNavigate('/admin')">{{'~goToDashboard' | translate}}</div>
                 </div>
 
             <div class="item animated fadeIn " >
@@ -51,8 +44,8 @@
               <div class="icon">
                 <img src="./assets/icons/nav-logout.svg">
               </div>
-              <div class="name" *ngIf="isLoggedIn$ | async">Logout</div>
-              <div class="name" *ngIf="!(isLoggedIn$ | async)">Login</div>
+              <div class="name" *ngIf="isLoggedIn$ | async">{{'~logout' | translate}}</div>
+              <div class="name" *ngIf="!(isLoggedIn$ | async)">{{'~login' | translate}}</div>
             </div>
           </div>
      </div>

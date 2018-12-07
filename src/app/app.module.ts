@@ -1,3 +1,4 @@
+import { AppCustomPreloader } from './app-custom-preloader';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, LOCALE_ID } from '@angular/core';
 

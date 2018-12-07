@@ -6,10 +6,12 @@ import { AdminGuard } from './auth/admin.guard';
 import { LoginComponent } from './auth/login/login.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { AppCustomPreloader } from './app-custom-preloader';
 
 const routes: Routes = [
   {path: '', component: LandingPageComponent, data: { breadcrumb: 'Home'}},
-  {path: 'datasets', loadChildren: './datasets/datasets.module#DatasetsModule', data: { breadcrumb: 'datasets'}},
+  {path: 'datasets', loadChildren: './datasets/datasets.module#DatasetsModule',
+  data: {  breadcrumb: 'details'}},
   {path: 'login', component: LoginComponent},
   {path: 'user-profile', component: UserProfileComponent},
   {path: 'register', component: RegisterComponent },
@@ -22,7 +24,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {useHash: true, preloadingStrategy: PreloadAllModules})],
-  exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes, {useHash: true, preloadingStrategy: AppCustomPreloader})],
+  exports: [RouterModule],
+  providers: [AppCustomPreloader]
 })
 export class AppRoutingModule { }

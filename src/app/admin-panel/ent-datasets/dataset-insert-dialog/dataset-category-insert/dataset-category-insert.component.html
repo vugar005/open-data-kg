@@ -3,7 +3,7 @@
     <div class="inputs">
       <div class="left">
             <mat-form-field>
-              <mat-select placeholder="Category" class="nt-form-input" name="categoryId" ngModel required>
+              <mat-select placeholder="{{'~category' | translate}}" class="nt-form-input" name="categoryId" ngModel required>
                 <mat-option *ngFor="let item of (catTypes$ | async)" [value]="item.value">
                   {{item.label}}
                 </mat-option>
@@ -19,14 +19,14 @@
       *ngIf="!data?.row"
       [table]="data?.table"
       (onClose)="dialogRef.close()"
-      >Add</button>
+      >{{'~add' | translate}}</button>
       <button mat-raised-button color="primary"  type="submit" updateTableData [form]="f"
       *ngIf="data?.row"
       [disabled]="f?.dirty && !f?.valid"
       (onClose)="dialogRef.close()"
       [table]="data?.table"
-      >Update</button>
-      <button mat-raised-button (click)="dialogRef.close()" type="reset">Cancel</button>
+      >{{'~update' | translate}}</button>
+      <button mat-raised-button (click)="dialogRef.close()" type="reset">{{'~cancel' | translate}}</button>
     </div>
 
   </form>

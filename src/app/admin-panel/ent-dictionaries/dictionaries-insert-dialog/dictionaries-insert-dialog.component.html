@@ -28,7 +28,7 @@
       </mat-form-field>
 
       <mat-form-field>
-        <mat-select placeholder="{{'~dicationryType' | translate}}" class="nt-form-input" name="dicTypeId" ngModel required >
+        <mat-select placeholder="{{'~dictionaryType' | translate}}" class="nt-form-input" name="dicTypeId" ngModel required >
           <mat-option *ngFor="let item of (dicTypes$ | async)" [value]="item.value">
             {{item.label}}
           </mat-option>
