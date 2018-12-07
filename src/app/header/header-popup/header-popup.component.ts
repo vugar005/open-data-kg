@@ -37,7 +37,7 @@ onNavigate(route: string) {
   /** Timeout because of header animation */
  setTimeout(() => {
   this.router.navigateByUrl(route);
- }, 10);
+ }, 0);
 }
 onLogout() {
   this.close.next();

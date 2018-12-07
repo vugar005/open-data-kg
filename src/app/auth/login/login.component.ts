@@ -10,8 +10,8 @@ import { TryLogin } from '../store/auth.actions';
 import { trigger, transition, useAnimation } from '@angular/animations';
 import { fadeIn } from 'ng-animate';
 import { NgForm } from '@angular/forms';
-import { loadExternalScripts } from '../../shared/methods/loadExternals';
 import { Observable } from 'rxjs';
+import { loadExternalScripts } from 'src/app/shared/shared-methods';
 declare var Typed;
 @Component({
   selector: 'app-login',

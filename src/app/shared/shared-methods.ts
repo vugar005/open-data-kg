@@ -1,6 +1,11 @@
 const scripts = [];
 const styles = [];
+export function getCurentLocale(): string {
+  return localStorage.getItem('kg-language') || 'en';
+}
+
 export function loadExternalScripts(url: string) {
+
  const isLoaded = scripts.find(scr => scr === url);
  if (isLoaded) { return Promise.resolve(true); }
   return new Promise((resolve, reject) => {

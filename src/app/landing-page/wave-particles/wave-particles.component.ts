@@ -9,7 +9,7 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef
 } from '@angular/core';
-import { loadExternalScripts } from '../../shared/methods/loadExternals';
+import { loadExternalScripts } from 'src/app/shared/shared-methods';
 declare var THREE;
 @Component({
   selector: 'wave-particles',
@@ -56,9 +56,11 @@ export class WaveParticlesComponent
   }
   constructor(private changeDetectorRef: ChangeDetectorRef) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.loadThreejs();
+  }
   ngAfterViewInit() {
-    this.initWaves();
+   // this.initWaves();
     // this.loadThreejs()
     //   .then(res => {
     //     this.initWaves();
@@ -73,7 +75,8 @@ export class WaveParticlesComponent
     cancelAnimationFrame(this.req);
   }
   loadThreejs() {
-    return loadExternalScripts('./assets/scripts/threejs/three-compact.js');
+    return loadExternalScripts('./assets/scripts/threejs/three-compact.js')
+    .then(res => this.initWaves());
   }
   resetMouse() {
     this.mouseX = 170;

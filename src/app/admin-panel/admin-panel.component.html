@@ -5,6 +5,6 @@
     <div class="wrapper-div">
      <router-outlet></router-outlet>
      <admin-profile-popup *ngIf="showPopup" (dialogClose)="showPopup = false"></admin-profile-popup>
-     <right-aside (userClicked)="showPopup = true"></right-aside>
+     <right-aside (userClicked)="showPopup =!showPopup"></right-aside>
     </div>
   </div>

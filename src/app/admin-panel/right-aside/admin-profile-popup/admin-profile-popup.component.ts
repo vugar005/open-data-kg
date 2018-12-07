@@ -23,10 +23,12 @@ export class AdminProfilePopupComponent implements OnInit {
   user: User;
   apiUrl$: Observable<string>;
   @Output() dialogClose = new EventEmitter();
+  currentDate: Date;
  // @HostBinding('@fadeInRight') fadeInRight = true;
   // @HostBinding('@fadeOutRight') fadeOutRight = true;
   constructor(private store: Store<AppState>, private router: Router) {
     this.apiUrl$ = store.select(getApiUrl);
+    this.currentDate = new Date();
    }
 
   ngOnInit() {

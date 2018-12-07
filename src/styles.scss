@@ -8,6 +8,7 @@
   --kg-background-image: linear-gradient(to right, #4e8ec8, #47a8c5);
   --kg-box-background:  #ffffff;
   --kg-wrapper-background: #f5f6fa;
+  --kg-admin-padding: 0.5rem;
  // --kg-background-image: linear-gradient(to right,#84817a, #aaa69d);
 }
 * {
@@ -58,6 +59,9 @@ button {
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 100%;
+  &:focus {
+    outline: 0;
+  }
 }
   a {
     color: #333333;;
@@ -167,10 +171,7 @@ img {
  // border-radius: 25px;
  box-shadow: 0px 6px 28px -6px rgba(0,0,0,0.75);
 }
-.ta-item:nth-child(2){
- // border-top-left-radius: 25px;
- // border-top-right-radius: 25px;
-}
+
 .ta-item:last-child {
  // border-bottom-left-radius: 25px;
  // border-bottom-right-radius: 25px;
@@ -189,9 +190,6 @@ img {
       font-size: 12px;
       color: grey;
     }
-}
-.ps .ps__rail-x:hover, .ps .ps__rail-y:hover {
-  background-color: transparent!important;
 }
 
 
@@ -262,21 +260,13 @@ img {
   background-color: rgba(0,0,0,0.2);
 }
 
-// ::-webkit-scrollbar {
-//   width: 10px;
-//   height: 10px;
-// }
-
-// ::-webkit-scrollbar-track {
-//   background-color: rgba(255, 255, 255, 0.1);
-// }
-
-// ::-webkit-scrollbar-thumb {
-//   background-color: rgba(255, 255, 255, 0.5);
-// }
-
-// ::-webkit-scrollbar-button {
-//   /*   width: 10px;
-//   height: 10px;
-//   background-color: rgba(255, 255, 255, 0.5); */
-// }
+@media all and (max-width: 1199px) {
+ html {
+  font-size: 15px;
+ }
+}
+@media all and (max-width: 992px) {
+  html {
+   font-size: 14px;
+  }
+ }

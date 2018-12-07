@@ -1,3 +1,4 @@
+import { SetAppLanguage } from './shared/store/ui.actions';
 import { SharedService } from './shared/shared.service';
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
@@ -9,11 +10,13 @@ import { AutoSetToken, AutoSetUser, SetApiUrl, SetModules } from './auth/store/a
 import * as globalVars from './app.globals';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { filter, distinctUntilChanged, map } from 'rxjs/operators';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
+
 export class AppComponent implements OnInit {
   title = 'open-data-kg';
   headerClass$: Observable<string>;
@@ -29,6 +32,9 @@ export class AppComponent implements OnInit {
      ) {
   }
   ngOnInit() {
+    setTimeout(() => {
+      this.store.dispatch(new SetAppLanguage('kg'));
+    }, 10000);
     this.setHostname();
     this.tryAutoLogin();
     this.setDefaultLang();
@@ -93,4 +99,5 @@ export class AppComponent implements OnInit {
     const language = localStorage.getItem('kg-language') || 'en';
     this.translateService.setDefaultLang(language);
   }
+
 }

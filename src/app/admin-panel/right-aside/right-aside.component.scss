@@ -4,7 +4,7 @@
   height: 100vh;
   width: 64px;
   border-radius: 5px;
-  margin-right: 16px;
+  margin-right: var(--kg-admin-padding);
 }
 
 .side-nav {
@@ -18,11 +18,11 @@
     flex-direction: column;
     align-items: center;
     background-color: #ffffff;
-    margin-bottom: 1rem;
+    margin-bottom: var(--kg-admin-padding);
     width: 100%;
     height: 9.06rem;
     padding: 0 0.94rem;
-    margin-bottom: 1rem;
+    margin-bottom: var(--kg-admin-padding);
     border-radius: 0.31rem;
     box-shadow: 0.06rem 0.25rem 1.13rem rgba(0, 0, 0, 0.05);
     .profile-img {

@@ -13,7 +13,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'user-profile', component: UserProfileComponent},
   {path: 'register', component: RegisterComponent },
- {path: 'admin', loadChildren: './admin-panel/admin-panel.module#AdminPanelModule', canActivate: [AdminGuard]},
+  {path: 'admin', loadChildren: './admin-panel/admin-panel.module#AdminPanelModule', canActivate: [AdminGuard]},
   {path: 'news', loadChildren: './news/news.module#NewsModule'},
   {path: 'blogs', loadChildren: './blog/blog.module#BlogModule'},
   {path: 'announcements', loadChildren: './annoucements/announcements.module#AnnouncementsModule'},

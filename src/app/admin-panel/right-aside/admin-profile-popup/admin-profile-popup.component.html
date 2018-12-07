@@ -9,7 +9,7 @@
           <div class="user-name">
             {{user.name}} {{user.surname}}
           </div>
-            <div class="today-date">Ceshember axsmi 2018</div>
+            <div class="today-date">{{currentDate | date: 'EEEE MMMM d yyyy' | titlecase}}</div>
             <div class="user-role">- {{user.userType}} -</div>
             <div class="user-org">"{{user.org?.name?.en}}"</div>
         </div>
@@ -27,4 +27,4 @@
 
 </div>
 
-
+<!-- Ceshember axsmi 2018 -->

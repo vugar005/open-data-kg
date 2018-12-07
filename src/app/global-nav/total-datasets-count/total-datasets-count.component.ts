@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { loadExternalScripts } from 'src/app/shared/methods/loadExternals';
+import { loadExternalScripts } from 'src/app/shared/shared-methods';
 declare var CountUp;
 @Component({
   selector: 'total-datasets-count',

@@ -34,9 +34,6 @@
               "src/styles.scss"
             ],
             "scripts": [
-              "node_modules/three/build/three.min.js",
-              "node_modules/three/examples/js/renderers/Projector.js",
-              "node_modules/three/examples/js/renderers/CanvasRenderer.js",
               "node_modules/three/examples/js/libs/stats.min.js",
               "node_modules/izitoast/dist/js/iziToast.min.js"
 

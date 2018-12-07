@@ -3,7 +3,7 @@
   flex-direction: column;
   width: 256px;
   height: 100vh;
-  padding: 1rem;
+  padding: var(--kg-admin-padding);
   height: calc(100vh);
 }
 
@@ -15,7 +15,7 @@
   width: 100%;
   border-bottom: solid 1px #ece9fa;
   padding: 1.06rem 2.37rem;
-  margin-bottom: 1rem;
+  margin-bottom: var(--kg-admin-padding);
   background: #ffffff;
   border-radius: 5px;
   box-shadow: 0.06rem 0.25rem 1.125rem rgba(0, 0, 0, 0.05);

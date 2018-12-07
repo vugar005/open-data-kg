@@ -216,5 +216,8 @@ buildBreadCrumb(route: ActivatedRoute, url: string = '',
    // console.log(newBreadcrumbs)
     return newBreadcrumbs;
 }
+ getCurentLocale(): string {
+  return localStorage.getItem('kg-language') || 'en';
+}
 
 }

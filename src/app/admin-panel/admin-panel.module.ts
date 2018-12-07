@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AdminPanelComponent } from './admin-panel.component';
 import { AdminPanelRoutes } from './admin-panel.routing';
@@ -45,7 +45,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   providers: [
     SharedAdminService,
     AdminPanelService,
-    AdminModulesResolver
+    AdminModulesResolver,
   ]
 })
 export class AdminPanelModule { }
