@@ -8,7 +8,7 @@ position: relative;
 z-index: 6; // less than app-header
 }
 .content-wrapper {
-  height: 100%;
+  height: calc(100% - var(--kg-global-nav-height));
   overflow: auto;
 }
 .animated {

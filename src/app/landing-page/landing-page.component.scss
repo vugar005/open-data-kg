@@ -1,7 +1,7 @@
 :host {
   display: block;
   width: 100vw;
-  height: calc(100vh - 70px);
+  height: calc(100vh - var(--kg-header-height));
   background-image: var(--kg-background-image);
   overflow-y: hidden;
   overflow-x: hidden;
@@ -21,7 +21,7 @@
   z-index: 2;
   position: absolute;
   transition: top 0.25s ease-out;
-  top: calc(100vh - 197px);
+  top: calc(100vh - var(--kg-mouse-scroll-icon-height) - var(--kg-global-nav-height) - var(--kg-header-height));
   width: calc(100vw);
   background-image: linear-gradient(to right, #4e8ec8, #47a8c5);
   .content {

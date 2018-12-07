@@ -3,7 +3,7 @@
   align-items: center;
   // transition: all 500ms ease-in-out;
   width: 100%;
-  min-height: 70px;
+  height: var(--kg-global-nav-height);
   background: var(--kg-box-background);
   position: sticky;
   z-index: 2;
