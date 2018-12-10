@@ -52,6 +52,7 @@ import { MatIconModule } from '@angular/material';
 import { getCurentLocale } from './shared/shared-methods';
 import { registerLocaleData } from '@angular/common';
 import localeKy from '@angular/common/locales/ky';
+import { LangInterceptor } from './shared/interceptors/lang.interceptor';
 registerLocaleData(localeKy);
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -112,10 +113,10 @@ export function HttpLoaderFactory(http: HttpClient) {
   providers: [
     SharedService,
     AdminGuard,
-   { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+ //  { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: APIInterceptor, multi: true },
-//    {provide: HTTP_INTERCEPTORS, useClass: LangInterceptor,  multi: true },
+    {provide: HTTP_INTERCEPTORS, useClass: LangInterceptor,  multi: true },
     { provide: LOCALE_ID,
       deps: [SharedService],
       useFactory: (sharedService) => sharedService.getCurentLocale()

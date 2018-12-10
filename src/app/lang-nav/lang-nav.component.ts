@@ -14,17 +14,21 @@ export class LangNavComponent implements OnInit {
   constructor(private translateService: TranslateService, private store: Store<AppState>) { }
 
   ngOnInit() {
-    this.listenToCurrentLang();
+    this.currentLang = this.translateService.getDefaultLang();
   }
   onLangChange(lang: string) {
+    this.currentLang = undefined;
     this.translateService.setDefaultLang(lang);
     this.store.dispatch(new SetAppLanguage(lang));
     localStorage.setItem('kg-language', lang);
+    location.reload();
   }
   listenToCurrentLang() {
    this.translateService.onDefaultLangChange.subscribe(res => {
      if (res) {
-     this.currentLang = res['lang'];
+    setTimeout(() => {
+      this.currentLang = res['lang'];
+    }, 100);
      }
    });
   }

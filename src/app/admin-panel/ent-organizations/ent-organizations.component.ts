@@ -5,7 +5,7 @@ import { OrganizationInsertDialogComponent } from './organization-insert-dialog/
 import { ApiConfig } from 'nt-table/lib/api-config.model';
 
 @Component({
-  selector: 'app-ent-organizations',
+  selector: 'ent-organizations',
   templateUrl: './ent-organizations.component.html',
   styleUrls: ['./ent-organizations.component.scss']
 })

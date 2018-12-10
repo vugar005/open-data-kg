@@ -5,7 +5,7 @@ import { UserRolesInsertDialogComponent } from './user-roles-insert-dialog/user-
 import { ApiConfig } from 'nt-table/lib/api-config.model';
 
 @Component({
-  selector: 'app-admin-user-roles',
+  selector: 'admin-user-roles',
   templateUrl: './admin-user-roles.component.html',
   styleUrls: ['./admin-user-roles.component.scss']
 })

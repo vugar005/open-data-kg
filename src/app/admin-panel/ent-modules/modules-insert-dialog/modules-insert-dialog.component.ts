@@ -12,6 +12,7 @@ import { SharedService } from 'src/app/shared/shared.service';
 export class ModulesInsertDialogComponent implements OnInit{
   @ViewChild('f') ntForm: NgForm;
   apps$: Observable<any>;
+  modules$: Observable<any>;
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<ModulesInsertDialogComponent>,
@@ -20,6 +21,7 @@ export class ModulesInsertDialogComponent implements OnInit{
   ) {}
   ngOnInit() {
     this.apps$ = this.sharedService.getModTypes('api/get/Permission/Applications/GetApplicationList');
+    this.modules$ = this.sharedService.getModTypes('api/post/Permission/Modules/GetModuleList');
   }
   getErrors(str) {
     if (!this.ntForm || !NgxFormUtils) { return; }

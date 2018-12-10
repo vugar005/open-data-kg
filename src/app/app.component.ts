@@ -32,9 +32,6 @@ export class AppComponent implements OnInit {
      ) {
   }
   ngOnInit() {
-    setTimeout(() => {
-      this.store.dispatch(new SetAppLanguage('kg'));
-    }, 10000);
     this.setHostname();
     this.tryAutoLogin();
     this.setDefaultLang();
@@ -98,6 +95,7 @@ export class AppComponent implements OnInit {
   setDefaultLang() {
     const language = localStorage.getItem('kg-language') || 'en';
     this.translateService.setDefaultLang(language);
+    this.store.dispatch(new SetAppLanguage(language));
   }
 
 }

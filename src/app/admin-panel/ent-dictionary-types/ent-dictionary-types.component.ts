@@ -5,7 +5,7 @@ import { DictionaryTypeInsertDialogComponent } from './dictionary-type-insert-di
 import { ApiConfig } from 'nt-table/lib/api-config.model';
 
 @Component({
-  selector: 'app-ent-dictionary-types',
+  selector: 'ent-dictionary-types',
   templateUrl: './ent-dictionary-types.component.html',
   styleUrls: ['./ent-dictionary-types.component.scss']
 })

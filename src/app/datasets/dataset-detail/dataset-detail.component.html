@@ -19,12 +19,12 @@
                           </div>
                        </div>
                        <div class="text">
-                          <p>SHARE</p>
+                          <p>  {{'~share' | translate}}</p>
                         </div>
                   </div>
                   <div class="item-rating">
                       <div class="title">
-                        Rating:
+                        {{'~rating' | translate}}:
                       </div>
                       <div class="star-content" >
                         <star-rating [rating]="dataset?.kv?.rating"></star-rating>
@@ -40,7 +40,7 @@
                     </div>
                     <div class="box-perspective right">
                         <div class="text pr-2">
-                            <p>SAVE DATA</p>
+                            <p>{{'~saveData' | translate}}</p>
                           </div>
                         <div class="rotating-box">
                             <div class="icon">
@@ -52,7 +52,7 @@
 
           </div>
         <section id="api">
-          <div class="section-title">Data and Resources</div>
+          <div class="section-title">{{'~dataAndResources' | translate}}</div>
           <div class="section-content">
            <div class="item" *ngFor ="let api of (datasetApi)?.r">
             <div class="item-icon {{api?.format}}"> {{api?.format}}</div>
@@ -61,15 +61,15 @@
               <div class="info-link">
                 <img src='./assets/icons/info.svg'>
               </div>
-              <div class="api-link">
+              <a class="api-link" href="{{api?.openPortalLink}} ? {{api?.openPortalLink}} : javascript.void()" target="_blank" title="open link">
                 <img src="./assets/icons/attach.svg">
-              </div>
+              </a>
             </div>
            </div>
           </div>
         </section>
         <section id="keywords">
-            <div class="section-title">Additional Info</div>
+            <div class="section-title">{{'~additionalInfo' | translate}}</div>
           <div class="section-content">
            <div class="item" *ngFor= "let keyword of (datasetKeywords)?.r">
             {{keyword?.keyword}}
@@ -81,29 +81,29 @@
                   <table class="table table-striped" *ngIf="(dataset)?.kv">
                       <thead>
                         <tr>
-                          <th scope="col">Field</th>
-                          <th scope="col">Value</th>
+                          <th scope="col">{{'~field' | translate}}</th>
+                          <th scope="col">{{'~value' | translate}}</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <th scope="row">Status</th>
+                          <th scope="row">{{'~status' | translate}}</th>
                           <td>{{dataset?.kv?.status}}</td>
                         </tr>
                         <tr>
-                          <th scope="row">Create Data</th>
+                          <th scope="row">{{'~createDate' | translate}}</th>
                           <td>{{dataset?.kv?.createDate}}</td>
                         </tr>
                         <tr>
-                            <th scope="row">Update Data</th>
+                            <th scope="row">{{'~updateDate' | translate}}</th>
                             <td>{{dataset?.kv?.updateDate}}</td>
                           </tr>
                           <tr>
-                              <th scope="row">Organization</th>
+                              <th scope="row">{{'~organization' | translate}}</th>
                               <td>{{dataset?.kv?.org}}</td>
                             </tr>
                             <tr>
-                              <th scope="row">Categories</th>
+                              <th scope="row">{{'~categories' | translate}}</th>
                               <td>
                                  <ng-container *ngFor="let cat of (datasetCategories)?.r">
                                     <span>{{cat?.categoryEn}}</span>

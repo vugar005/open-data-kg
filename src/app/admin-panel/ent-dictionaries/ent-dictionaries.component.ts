@@ -5,7 +5,7 @@ import { DictionariesInsertDialogComponent } from './dictionaries-insert-dialog/
 import { ApiConfig } from 'nt-table/lib/api-config.model';
 
 @Component({
-  selector: 'app-ent-dictionaries',
+  selector: 'ent-dictionaries',
   templateUrl: './ent-dictionaries.component.html',
   styleUrls: ['./ent-dictionaries.component.scss']
 })

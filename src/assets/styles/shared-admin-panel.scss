@@ -19,6 +19,7 @@
     color: rgba(0, 0, 0, 0.87);
   }
   .ng-admin-actions-template {
+    display: flex;
     button {
       margin-right: 0.313rem;
       color: #767676;
@@ -62,4 +63,5 @@
 
 .ag-theme-material .ag-ltr .ag-cell-focus{
   border: 1px solid transparent;
+  color: black!important;
 }

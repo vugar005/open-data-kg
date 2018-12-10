@@ -5,7 +5,7 @@ import { NtTableComponent } from 'nt-table';
 import { MatDialog } from '@angular/material';
 
 @Component({
-  selector: 'app-ent-comments',
+  selector: 'ent-comments',
   templateUrl: './ent-comments.component.html',
   styleUrls: ['./ent-comments.component.scss']
 })

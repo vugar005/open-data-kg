@@ -5,7 +5,7 @@ import { OperationsInsertDialogComponent } from './operations-insert-dialog/oper
 import { ApiConfig } from 'nt-table/lib/api-config.model';
 
 @Component({
-  selector: 'app-ent-operations',
+  selector: 'ent-operations',
   templateUrl: './ent-operations.component.html',
   styleUrls: ['./ent-operations.component.scss']
 })

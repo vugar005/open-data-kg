@@ -5,7 +5,7 @@ import { UserInsertDialogComponent } from './user-insert-dialog/user-insert-dial
 import { ApiConfig } from 'nt-table/lib/api-config.model';
 
 @Component({
-  selector: 'app-ent-users',
+  selector: 'ent-users',
   templateUrl: './ent-users.component.html',
   styleUrls: ['./ent-users.component.scss']
 })

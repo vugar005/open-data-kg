@@ -5,7 +5,7 @@ import { ModulesInsertDialogComponent } from './modules-insert-dialog/modules-in
 import { ApiConfig } from 'nt-table/lib/api-config.model';
 
 @Component({
-  selector: 'app-ent-modules',
+  selector: 'ent-modules',
   templateUrl: './ent-modules.component.html',
   styleUrls: ['./ent-modules.component.scss']
 })

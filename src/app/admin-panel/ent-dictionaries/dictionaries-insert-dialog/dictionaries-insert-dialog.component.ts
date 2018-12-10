@@ -14,6 +14,7 @@ import { SelectType } from 'src/app/shared/models/select-type.model';
 export class DictionariesInsertDialogComponent  {
   @ViewChild('f') ntForm: NgForm;
   dicTypes$: Observable<any>;
+  dictionaries$: Observable<any>;
   parentIds$: Observable<SelectType[]>;
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -23,6 +24,7 @@ export class DictionariesInsertDialogComponent  {
   ) {
    this.dicTypes$ = sharedService.getModTypes('api/post/Permission/DictionaryTypes/GetDictionaryTypeList');
    this.parentIds$ = sharedService.getTypes('1000003');
+   this.dictionaries$ = sharedService.getModTypes('api/post/Permission/Dictionaries/GetDictionaryList');
   }
   getErrors(str) {
     if (!this.ntForm || !NgxFormUtils) { return; }

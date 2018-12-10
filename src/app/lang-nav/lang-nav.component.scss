@@ -9,6 +9,9 @@
   left: 1em;
   top: 0;
 }
+.animated {
+  animation-duration: 500ms;
+}
 .lang-list {
   display: flex;
   flex-direction: column;
@@ -21,6 +24,9 @@
     transition: font-weight 0ms ease-in-out;
     &.active {
       font-weight: bold;
+    }
+    &.selected {
+
     }
   }
   .horizontal-line {

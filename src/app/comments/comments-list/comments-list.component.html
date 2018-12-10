@@ -1,5 +1,5 @@
 <div class="co-title">
-  {{comments?.length}} Comments
+  {{comments?.length}} {{'~comments' | translate}}
 </div>
 <comment-box *ngFor="let item of comments"
   [comment]="item"

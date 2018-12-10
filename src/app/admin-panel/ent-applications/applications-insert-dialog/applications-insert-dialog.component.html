@@ -69,10 +69,17 @@
               <input matInput placeholder="{{'~about' | translate}} (Ru)" class="nt-form-input" name="aboutRu" ngModel >
             </mat-form-field>
 
-            <mat-form-field class="example-full-width">
-              <input matInput placeholder="{{'~parentId' | translate}}" class= "nt-form-input" name="parentId" ngModel required>
-              <mat-error>{{getErrors('parentId')}}</mat-error>
-            </mat-form-field>
+
+      <mat-form-field>
+          <mat-select placeholder="{{'~parentId' | translate}}" class="nt-form-input" name="parentId" ngModel>
+            <mat-option value="">Choose</mat-option>
+            <mat-option *ngFor="let item of (apps$ | async)" [value]="item.value">
+              {{item.label}}
+            </mat-option>
+          </mat-select>
+          <mat-error>{{getErrors('parentId')}}</mat-error>
+        </mat-form-field>
+
              <input [hidden]="true" name="id" ngModel>
           </div>
   </div>
