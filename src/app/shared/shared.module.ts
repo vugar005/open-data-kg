@@ -1,3 +1,4 @@
+import { GlobalNavComponent } from './../global-nav/global-nav.component';
 import { NgModule } from '@angular/core';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
@@ -10,15 +11,15 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SwiperModule } from 'ngx-swiper-wrapper';
 import { SWIPER_CONFIG } from 'ngx-swiper-wrapper';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
-import { MatRippleModule, MatCheckboxModule, MatExpansionModule, MatFormFieldModule, MatSelectModule } from '@angular/material';
+import { MatRippleModule} from '@angular/material';
 import { SharedUploadModule } from './shared-upload.module';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FooterComponent } from './components/footer/footer.component';
 import { RouterModule } from '@angular/router';
-import { TypeheadModule } from 'ngx-typehead-dir';
 import { ScrollListenerDirective } from './directives/scroll-listener.directive';
 import { CommentsModule } from '../comments/comments.module';
+import { LangNavComponent } from '../lang-nav/lang-nav.component';
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
   slidesPerView: 'auto'
@@ -27,6 +28,8 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   declarations: [
     FooterComponent,
     ScrollListenerDirective,
+    GlobalNavComponent,
+    LangNavComponent
   ],
     imports: [
       CommonModule,
@@ -54,6 +57,8 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
       FormsModule,
       RouterModule,
       ScrollListenerDirective,
+      GlobalNavComponent,
+      LangNavComponent
     ],
     providers: [
       {

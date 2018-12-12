@@ -15,6 +15,8 @@ import { MatMomentDateModule, MomentDateAdapter } from '@angular/material-moment
 import { SharedRbacModule } from 'src/app/shared/shared-rbac.module';
 import { SharedTranslateModule } from 'src/app/shared/shared-translate.module';
 import { SharedService } from 'src/app/shared/shared.service';
+import { ErrorInterceptor } from 'src/app/shared/interceptors/error.interceptor';
+import { LangInterceptor } from 'src/app/shared/interceptors/lang.interceptor';
 
 export const MY_FORMATS = {
   parse: {
@@ -53,8 +55,10 @@ export const MY_FORMATS = {
   ],
   providers: [
     NtTableService,
-    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: APIInterceptor, multi: true },
+    {provide: HTTP_INTERCEPTORS, useClass: LangInterceptor,  multi: true },
     {provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE]},
     {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
     { provide: MAT_DATE_LOCALE,

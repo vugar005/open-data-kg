@@ -12,7 +12,6 @@ import { ModuleSidebarComponent } from './module-sidebar/module-sidebar.componen
 import { DatasetsRoutes } from './datasets.routing';
 import { MatExpansionModule } from '@angular/material';
 import { SharedModule } from '../shared/shared.module';
-import { SharedGlobalNavModule } from '../shared/shared-global-nav.module';
 import { DatasetDetailComponent } from './dataset-detail/dataset-detail.component';
 import { StarRatingComponent } from '../shared/components/star-rating/star-rating.component';
 import { DatasetBoxComponent } from './dataset-box/dataset-box.component';
@@ -31,7 +30,6 @@ import { APIInterceptor } from '../shared/interceptors/api.interceptor';
     MatExpansionModule,
     SharedModule,
     MatExpansionModule,
-    SharedGlobalNavModule,
     TypeheadModule,
     CommentsModule
   ],

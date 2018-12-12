@@ -6,7 +6,7 @@ import { LeftAsideComponent } from './left-aside/left-aside.component';
 import { RightAsideComponent } from './right-aside/right-aside.component';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SharedAdminService } from './shared/shared-admin.service';
 import { AdminPanelService } from './admin-panel.service';
@@ -16,6 +16,10 @@ import { AdminHeaderComponent } from './admin-header/admin-header.component';
 import { MatMenuModule } from '@angular/material';
 import { SharedRbacModule } from '../shared/shared-rbac.module';
 import { AdminProfilePopupComponent } from './right-aside/admin-profile-popup/admin-profile-popup.component';
+import { ErrorInterceptor } from '../shared/interceptors/error.interceptor';
+import { TokenInterceptor } from '../auth/token.inteceptor';
+import { APIInterceptor } from '../shared/interceptors/api.interceptor';
+import { LangInterceptor } from '../shared/interceptors/lang.interceptor';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -46,6 +50,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     SharedAdminService,
     AdminPanelService,
     AdminModulesResolver,
+
   ]
 })
 export class AdminPanelModule { }

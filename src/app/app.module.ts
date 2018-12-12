@@ -1,130 +1,28 @@
-import { AppCustomPreloader } from './app-custom-preloader';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, LOCALE_ID } from '@angular/core';
+import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
-import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import { HttpClient, HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { AuthModule } from './auth/auth.module';
-import { LandingPageComponent } from './landing-page/landing-page.component';
-import { StoreModule } from '@ngrx/store';
-import { reducers, metaReducers } from './reducers';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { environment } from '../environments/environment';
-import { EffectsModule } from '@ngrx/effects';
-import { WaveParticlesComponent } from './landing-page/wave-particles/wave-particles.component';
-import { HeaderComponent } from './header/header.component';
-import { NavStyleChangeDirective } from './shared/directives/nav-style-change.directive';
-import { SharedService } from './shared/shared.service';
-import { ErrorInterceptor } from './shared/interceptors/error.interceptor';
-import { Ng2IziToastModule } from 'ng2-izitoast';
-import { TokenInterceptor } from './auth/token.inteceptor';
-import { HeaderToggleDirective } from './shared/directives/header-toggle.directive';
-import { APIInterceptor } from './shared/interceptors/api.interceptor';
-import { AdminGuard } from './auth/admin.guard';
-import { SharedAcrossModule } from './shared/shared-across.module';
-import { ClassChangerDirective } from './shared/directives/class-changer.directive';
-import { HeaderPopupComponent } from './header/header-popup/header-popup.component';
-import { HttpClientBusyModule } from 'ngx-httpclient-busy';
-import { NewsSidebarComponent } from './landing-page/news-sidebar/news-sidebar.component';
-import { NewsSidebarItemComponent } from './landing-page/news-sidebar/news-sidebar-item/news-sidebar-item.component';
-import { NewsSidebarItemListComponent } from './landing-page/news-sidebar/news-sidebar-item-list/news-sidebar-item-list.component';
-import { CategoryOverviewComponent } from './global-nav/category-overview/category-overview.component';
-import { MouseScrollIconComponent } from './shared/components/mouse-scroll-icon/mouse-scroll-icon.component';
-import { ClickOutsideModule } from 'ng-click-outside';
-import { DesktopComponent } from './landing-page/desktop/desktop.component';
-import { TotalDatasetsCountComponent } from './global-nav/total-datasets-count/total-datasets-count.component';
-import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
-import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
-import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
-import { SharedModule } from './shared/shared.module';
-import { NotFoundComponent } from './not-found/not-found.component';
-import { OrganizationOverviewComponent } from './global-nav/organization-overview/organization-overview.component';
-import {TypeheadModule} from 'ngx-typehead-dir';
-import { UserProfileComponent } from './user-profile/user-profile.component';
-import { SharedGlobalNavModule } from './shared/shared-global-nav.module';
-import { SharedRbacModule } from './shared/shared-rbac.module';
-import { MatIconModule } from '@angular/material';
-import { getCurentLocale } from './shared/shared-methods';
-import { registerLocaleData } from '@angular/common';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+
+import { registerLocaleData, CommonModule } from '@angular/common';
 import localeKy from '@angular/common/locales/ky';
-import { LangInterceptor } from './shared/interceptors/lang.interceptor';
+import { CoreModule } from './core.module';
 registerLocaleData(localeKy);
 
-const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
-  suppressScrollX: true
-};
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 @NgModule({
    declarations: [
-      AppComponent,
-      HeaderComponent,
-      LandingPageComponent,
-      WaveParticlesComponent,
-      NavStyleChangeDirective,
-      HeaderToggleDirective,
-      TotalDatasetsCountComponent,
-      ClassChangerDirective,
-      HeaderPopupComponent,
-      NewsSidebarComponent,
-      NewsSidebarItemComponent,
-      NewsSidebarItemListComponent,
-      CategoryOverviewComponent,
-      MouseScrollIconComponent,
-      DesktopComponent,
-      NotFoundComponent,
-      OrganizationOverviewComponent,
-      UserProfileComponent,
+      AppComponent
    ],
    imports: [
       BrowserModule,
-      BrowserAnimationsModule,
-      SharedGlobalNavModule,
-      AppRoutingModule,
-      AuthModule,
-      HttpClientModule,
-      StoreModule.forRoot(reducers, {metaReducers}),
-      EffectsModule.forRoot([]),
-      !environment.production ? StoreDevtoolsModule.instrument() : [],
-      Ng2IziToastModule,
-      SharedAcrossModule,
-      ClickOutsideModule,
-      SharedModule,
-      PerfectScrollbarModule,
-      SharedModule,
-      TypeheadModule,
-      SharedRbacModule,
-      MatIconModule,
-      HttpClientBusyModule.forRoot(),
-      TranslateModule.forRoot({
-        loader: {
-          provide: TranslateLoader,
-          useFactory: HttpLoaderFactory,
-          deps: [HttpClient]
-        }
-    }),
+      CoreModule
   ],
   providers: [
-    SharedService,
-    AdminGuard,
- //  { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-    {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
-    {provide: HTTP_INTERCEPTORS, useClass: APIInterceptor, multi: true },
-    {provide: HTTP_INTERCEPTORS, useClass: LangInterceptor,  multi: true },
-    { provide: LOCALE_ID,
-      deps: [SharedService],
-      useFactory: (sharedService) => sharedService.getCurentLocale()
-    },
-    {
-      provide: PERFECT_SCROLLBAR_CONFIG,
-      useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
-    }
   ],
   bootstrap: [AppComponent]
 })

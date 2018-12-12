@@ -3,16 +3,25 @@
     <img src= "./assets/icons/logo-admin.svg">
   </div>
 </div>
-<div class="modules-list">
-   <ng-container *ngFor = "let module of (modules)">
-    <a class="module" *rbacAllow="[module.id, 'ALL_VIEW']" routerLink= "{{module.url}}" routerLinkActive="active" >
-      <div class="icon">
-      <fa-icon [icon]="faAccusoft"></fa-icon>
+<div class="modules-content-wrapper">
+    <div class="modules-list">
+        <ng-container *ngFor = "let module of (modules)">
+         <a class="module" *rbacAllow="[module.id, 'ALL_VIEW']" routerLink= "{{module.url}}" routerLinkActive="active" >
+           <div class="icon">
+           <fa-icon [icon]="faAccusoft"></fa-icon>
+           </div>
+           <p  class="link">{{module.name.en | titlecase}} </p>
+         </a>
+        </ng-container>
+     </div>
+     <div class="app-copyrights">
+        <div class="app-logo">
+        <img src="./assets/icons/opendata_final.svg">
+        </div>
+        <div class="app-name">
+           <div class="primary-name">Data Administration System</div>
+           <div class="secondary-name">Open Data Portal</div>
+        </div>
       </div>
-      <p  class="link">{{module.name.en | titlecase}} </p>
-    </a>
-   </ng-container>
 </div>
-<div class="app-logo">
-  <img src="./assets/icons/Group 10.1.svg">
-</div>
+

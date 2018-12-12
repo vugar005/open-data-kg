@@ -59,7 +59,11 @@ getApiByDatasetById(id: string): Observable<DatasetApi[]> {
       );
   }
   getCategories(): Observable<Category[] | null> {
-    return this.http.post<TableModel>('api/get/Permission/Datasets/GetDatasetCategoryWithCount', {})
+    const body = {
+      kv: {
+      }
+    };
+    return this.http.post<TableModel>('api/get/Permission/Datasets/GetDatasetCategoryWithCount', JSON.stringify(body))
     .pipe(
       map( res => this.extractTableRows(res))
     );
@@ -70,7 +74,8 @@ getApiByDatasetById(id: string): Observable<DatasetApi[]> {
         ...query
       }
     };
-    return this.http.post<DatasetByCategoryGroupByOrg>('api/get/Permission/Datasets/GetDatasetListByCategoryIdWithGroupByOrg', body);
+    return this.http.post<DatasetByCategoryGroupByOrg>('api/get/Permission/Datasets/GetDatasetListByCategoryIdWithGroupByOrg',
+     JSON.stringify(body));
   }
   getOrganizations(): Observable<Organization[]> {
     return this.http.post<TableModel>('api/get/Permission/Datasets/GetOrganizationWithCategoryCount', {})
@@ -84,7 +89,8 @@ getApiByDatasetById(id: string): Observable<DatasetApi[]> {
         ...query
       }
     };
-    return this.http.post<DatasetByCategoryGroupByOrg>('api/get/Permission/Datasets/GetDatasetListByOrgIdWithGroupByCategory', body);
+    return this.http.post<DatasetByCategoryGroupByOrg>('api/get/Permission/Datasets/GetDatasetListByOrgIdWithGroupByCategory',
+     JSON.stringify(body));
   }
   private extractTableRows(table: TableModel) {
     if (table && table.tbl && table.tbl[0].r) {
