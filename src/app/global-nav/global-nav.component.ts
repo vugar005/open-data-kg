@@ -22,8 +22,8 @@ export class GlobalNavComponent  {
     },
     {
       name: '~latest',
-      icon_url: './assets/icons/user(1).png',
-      link: 'community'
+      icon_url: './assets/icons/latest.png',
+      link: 'latest'
     },
     {
       name: '~popular',

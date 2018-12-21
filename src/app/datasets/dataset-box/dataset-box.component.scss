@@ -152,6 +152,23 @@
       visibility: visible;
     }
   }
+  .open-box {
+    display: flex;
+  }
+  .remove-box {
+    display: flex;
+    .rotating-box {
+      background: #E85F5F;
+      .icon {
+        width: 10px;
+      }
 
-
+    }
+    .text {
+     p {
+      color: #E85F5F;
+     }
+    }
+  }
 }
+

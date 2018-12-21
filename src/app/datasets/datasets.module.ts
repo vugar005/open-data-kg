@@ -12,15 +12,15 @@ import { ModuleSidebarComponent } from './module-sidebar/module-sidebar.componen
 import { DatasetsRoutes } from './datasets.routing';
 import { MatExpansionModule } from '@angular/material';
 import { SharedModule } from '../shared/shared.module';
-import { DatasetDetailComponent } from './dataset-detail/dataset-detail.component';
-import { StarRatingComponent } from '../shared/components/star-rating/star-rating.component';
-import { DatasetBoxComponent } from './dataset-box/dataset-box.component';
 import { DatasetSearchResultComponent } from './dataset-search-result/dataset-search-result.component';
 import { DatasetSearchBoxComponent } from './dataset-search-box/dataset-search-box.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ErrorInterceptor } from '../shared/interceptors/error.interceptor';
 import { TokenInterceptor } from '../auth/token.inteceptor';
 import { APIInterceptor } from '../shared/interceptors/api.interceptor';
+import { DatasetDetailComponent } from './dataset-detail/dataset-detail.component';
+import { DatasetBoxModule } from './dataset-box.module';
+import { StarRatingModule } from '../shared/star-rating.module';
 
 @NgModule({
   imports: [
@@ -31,20 +31,20 @@ import { APIInterceptor } from '../shared/interceptors/api.interceptor';
     SharedModule,
     MatExpansionModule,
     TypeheadModule,
-    CommentsModule
+    CommentsModule,
+    DatasetBoxModule,
+    StarRatingModule
   ],
   declarations: [
      DatasetsComponent,
      DatasetByCatComponent,
      DatasetByOrgComponent,
      DatasetGroupListComponent,
-     DatasetBoxComponent,
+     DatasetDetailComponent,
      DatasetSearchBoxComponent,
      DatasetSearchResultComponent,
-     DatasetDetailComponent,
      ModuleSidebarComponent,
      FeedbackBoxComponent,
-     StarRatingComponent
     ],
     providers: [
       { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },

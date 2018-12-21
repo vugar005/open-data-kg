@@ -1,147 +1,146 @@
-<div class="content-wrapper" [ngClass]="{'with-overflow': !isInner }" >
-
-<div [class]="isInner ? 'container-fluid' : 'container'" *ngIf="dataset">
-    <div class="row main-row">
-       <div [class]="isInner ? 'col-12' : 'col-9'">
+<div class="content-wrapper" [ngClass]="{ 'with-overflow': !isInner }">
+  <div [class]="isInner ? 'container-fluid' : 'container'" *ngIf="dataset">
+    <div class="row justify-content-center">
+      <div [ngClass]="{ 'col-12': isInner, 'col-9': !isInner }">
+        <div class="main-info-wrapper">
           <div class="main-info">
             <div class="back-ico" *ngIf="isInner" (click)="navBack.emit()">
-                <i class="fas fa-chevron-left"></i>
+              <i class="fas fa-chevron-left"></i>
             </div>
-              <div class="item-title">{{dataset?.kv.name}}</div>
-               <div class="item-desc">
-                {{dataset?.kv?.description}}
-               </div>
-               <div class="item-actions">
-                  <div class="box-perspective">
-                      <div class="rotating-box">
-                          <div class="icon">
-                              <img src="./assets/icons/reply.svg">
-                          </div>
-                       </div>
-                       <div class="text">
-                          <p>  {{'~share' | translate}}</p>
-                        </div>
-                  </div>
-                  <div class="item-rating">
-                      <div class="title">
-                        {{'~rating' | translate}}:
-                      </div>
-                      <div class="star-content" >
-                        <star-rating [rating]="dataset?.kv?.rating"></star-rating>
-                      </div>
-                      <div class="count">
-                        <div class="icon">
-                           <img src="./assets/icons/focus (1).svg">
-                        </div>
-                        <div class="text">
-                          {{dataset?.kv?.reviewCount}}
-                        </div>
-                      </div>
-                    </div>
-                    <div class="box-perspective right">
-                        <div class="text pr-2">
-                            <p>{{'~saveData' | translate}}</p>
-                          </div>
-                        <div class="rotating-box">
-                            <div class="icon">
-                                <img src="./assets/icons/folder.svg">
-                            </div>
-                         </div>
-                    </div>
-               </div>
-
-          </div>
-        <section id="api">
-          <div class="section-title">{{'~dataAndResources' | translate}}</div>
-          <div class="section-content">
-           <div class="item" *ngFor ="let api of (datasetApi)?.r">
-            <div class="item-icon {{api?.format}}"> {{api?.format}}</div>
-            <div class="item-description">{{api?.descriptionEn}}</div>
-            <div class="item-links">
-              <div class="info-link">
-                <img src='./assets/icons/info.svg'>
+            <div class="item-title">{{ dataset?.kv.name }}</div>
+            <div class="item-desc">{{ dataset?.kv?.description }}</div>
+            <div class="item-actions">
+              <div class="box-perspective">
+                <div class="rotating-box">
+                  <div class="icon"><img src="./assets/icons/reply.svg" /></div>
+                </div>
+                <div class="text">
+                  <p>{{ '~share' | translate }}</p>
+                </div>
               </div>
-              <a class="api-link" href="{{api?.openPortalLink}} ? {{api?.openPortalLink}} : javascript.void()" target="_blank" title="open link">
-                <img src="./assets/icons/attach.svg">
-              </a>
+              <div class="item-rating">
+                <div class="title">{{ '~rating' | translate }}:</div>
+                <div class="star-content">
+                  <star-rating [rating]="dataset?.kv?.rating"></star-rating>
+                </div>
+                <div class="count">
+                  <div class="icon">
+                    <img src="./assets/icons/focus (1).svg" />
+                  </div>
+                  <div class="text">{{ dataset?.kv?.reviewCount }}</div>
+                </div>
+              </div>
+              <div class="box-perspective right">
+                <div class="text pr-2">
+                  <p>{{ '~saveData' | translate }}</p>
+                </div>
+                <div class="rotating-box">
+                  <div class="icon">
+                    <img src="./assets/icons/folder.svg" />
+                  </div>
+                </div>
+              </div>
             </div>
-           </div>
           </div>
-        </section>
-        <section id="keywords">
-            <div class="section-title">{{'~additionalInfo' | translate}}</div>
-          <div class="section-content">
-           <div class="item" *ngFor= "let keyword of (datasetKeywords)?.r">
-            {{keyword?.keyword}}
-           </div>
-          </div>
-        </section>
-        <section id="additionalInfo">
-          <div class="section-content">
-                  <table class="table table-striped" *ngIf="(dataset)?.kv">
-                      <thead>
-                        <tr>
-                          <th scope="col">{{'~field' | translate}}</th>
-                          <th scope="col">{{'~value' | translate}}</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <th scope="row">{{'~status' | translate}}</th>
-                          <td>{{dataset?.kv?.status}}</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">{{'~createDate' | translate}}</th>
-                          <td>{{dataset?.kv?.createDate}}</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">{{'~updateDate' | translate}}</th>
-                            <td>{{dataset?.kv?.updateDate}}</td>
-                          </tr>
-                          <tr>
-                              <th scope="row">{{'~organization' | translate}}</th>
-                              <td>{{dataset?.kv?.org}}</td>
-                            </tr>
-                            <tr>
-                              <th scope="row">{{'~categories' | translate}}</th>
-                              <td>
-                                 <ng-container *ngFor="let cat of (datasetCategories)?.r">
-                                    <span>{{cat?.categoryEn}}</span>
-                                 </ng-container>
-                            </td>
-                            </tr>
-                      </tbody>
-                    </table>
-          </div>
-        </section>
-
-       </div>
+          <section id="api">
+            <div class="section-title">
+              {{ '~dataAndResources' | translate }}
+            </div>
+            <div class="section-content">
+              <div class="item" *ngFor="let api of datasetApi?.r">
+                <div class="item-icon {{ api?.format }}">{{ api?.format }}</div>
+                <div class="item-description">{{ api?.descriptionEn }}</div>
+                <div class="item-links">
+                  <div class="info-link">
+                    <img src="./assets/icons/info.svg" />
+                  </div>
+                  <a
+                    class="api-link"
+                    href="{{ api?.openPortalLink }} ? {{
+                      api?.openPortalLink
+                    }} : javascript.void()"
+                    target="_blank"
+                    title="open link"
+                  >
+                    <img src="./assets/icons/attach.svg" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section id="keywords">
+            <div class="section-title">{{ '~additionalInfo' | translate }}</div>
+            <div class="section-content">
+              <div class="item" *ngFor="let keyword of datasetKeywords?.r">
+                {{ keyword?.keyword }}
+              </div>
+            </div>
+          </section>
+          <section id="additionalInfo">
+            <div class="section-content">
+              <table class="table table-striped" *ngIf="dataset?.kv">
+                <thead>
+                  <tr>
+                    <th scope="col">{{ '~field' | translate }}</th>
+                    <th scope="col">{{ '~value' | translate }}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">{{ '~status' | translate }}</th>
+                    <td>{{ dataset?.kv?.status }}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">{{ '~createDate' | translate }}</th>
+                    <td>{{ dataset?.kv?.createDate }}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">{{ '~updateDate' | translate }}</th>
+                    <td>{{ dataset?.kv?.updateDate }}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">{{ '~organization' | translate }}</th>
+                    <td>{{ dataset?.kv?.org }}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">{{ '~categories' | translate }}</th>
+                    <td>
+                      <ng-container *ngFor="let cat of datasetCategories?.r">
+                        <span>{{ cat?.categoryEn }}</span>
+                      </ng-container>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+      </div>
     </div>
 
-    <div class="row">
-      <div class="col-12 p-0">
+    <div class="row justify-content-center">
+      <div [ngClass]="{ 'col-12': isInner, 'col-9': !isInner }">
         <section id="feedback">
-          <feedback-box [defaultIndex]="dataset.kv.rating" [insertApi]="'api/post/Permission/Datasets/UpdateDatasetRating'"
-          (ratingUpdated)="onRatingUpdated($event)"
-          [datasetId]="dataset.kv.id"
+          <feedback-box
+            [defaultIndex]="dataset.kv.rating"
+            [insertApi]="'api/post/Permission/Datasets/UpdateDatasetRating'"
+            (ratingUpdated)="onRatingUpdated($event)"
+            [datasetId]="dataset.kv.id"
           ></feedback-box>
         </section>
       </div>
     </div>
 
-    <div class="row">
-      <div class="col-12 p-0">
+    <div class="row justify-content-center">
+      <div [ngClass]="{ 'col-12': isInner, 'col-9': !isInner }">
         <section id="comments">
-           <comments
+          <comments
             [getApi]="'api/get/Permission/Comments/GetDatasetCommentListCommon'"
             [insertApi]="'api/post/Permission/Comments/InsertNewDatasetComment'"
             [datasetId]="dataset.kv.id"
-           ></comments>
-          </section>
+          ></comments>
+        </section>
       </div>
     </div>
-
-    </div>
-
-
+  </div>
 </div>

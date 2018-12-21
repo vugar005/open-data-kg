@@ -1,7 +1,7 @@
 
 <div class="container-fluid wrapper-div">
   <div class="row">
-     <div class="col-10">
+     <div class="col-9">
         <div class="left">
             <div class="item-title">{{dataset?.datasetName}}</div>
              <div class="item-content">
@@ -28,17 +28,29 @@
               </div>
         </div>
      </div>
-      <div class="col-2 center pr-0">
+      <div class="col-3 center pr-0">
           <div class="right">
             <div class="box-perspective">
-                <div class="rotating-box">
-                    <div class="icon">
-                        <img src="./assets/icons/right-arrow.svg">
+              <div class="open-box" *ngIf="mode === 'show'">
+                  <div class="rotating-box">
+                      <div class="icon">
+                          <img src="./assets/icons/right-arrow.svg">
+                      </div>
+                   </div>
+                   <div class="text animated fadeIn">
+                      <p>open</p>
                     </div>
-                 </div>
-                 <div class="text animated fadeIn">
-                    <p>open</p>
-                  </div>
+              </div>
+              <div class="remove-box" *ngIf="mode === 'remove'">
+                  <div class="rotating-box">
+                      <div class="icon">
+                          <img src="./assets/icons/delete-dataset.svg">
+                      </div>
+                   </div>
+                   <div class="text animated fadeIn">
+                      <p>DELETE</p>
+                    </div>
+              </div>
             </div>
 
         </div>

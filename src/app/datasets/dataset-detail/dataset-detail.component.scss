@@ -35,11 +35,12 @@
   cursor: pointer;
 }
 
-.main-row {
-  background: #ffffff;
+.main-info-wrapper {
   border-radius: 10px;
-  padding: 0 10px;
+  padding: 0 25px;
   justify-content: center;
+  background: #ffffff;
+
 }
 .main-info{
   display: flex;

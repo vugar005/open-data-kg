@@ -2,7 +2,6 @@ import { DatasetsService } from './../../datasets/datasets.service';
 import { Component, OnInit } from '@angular/core';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { Observable } from 'rxjs';
-import { Category } from 'src/app/datasets/models/category.model';
 import { Router } from '@angular/router';
 import { Organization } from 'src/app/datasets/models/organization.model';
 

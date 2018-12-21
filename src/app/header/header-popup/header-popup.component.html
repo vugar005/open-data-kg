@@ -45,7 +45,7 @@
                 <img src="./assets/icons/nav-logout.svg">
               </div>
               <div class="name" *ngIf="isLoggedIn$ | async">{{'~logout' | translate}}</div>
-              <div class="name" *ngIf="!(isLoggedIn$ | async)">{{'~login' | translate}}</div>
+              <div class="name" *ngIf="!(isLoggedIn$ | async)" [routerLink]="['/login']" >{{'~login' | translate}}</div>
             </div>
           </div>
      </div>

@@ -1,3 +1,5 @@
+import { LatestDatasetsComponent } from './global-nav/latest-datasets/latest-datasets.component';
+import { DatasetBoxModule } from './datasets/dataset-box.module';
 import { NgModule, LOCALE_ID, SkipSelf, Optional } from '@angular/core';
 import { SharedService } from './shared/shared.service';
 import { AdminGuard } from './auth/admin.guard';
@@ -43,6 +45,7 @@ import { MatIconModule } from '@angular/material';
 import { HttpClientBusyModule } from 'ngx-httpclient-busy';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { HttpLoaderFactory } from './shared/shared-translate.module';
+import { PopularDatasetsComponent } from './global-nav/popular-datasets/popular-datasets.component';
 
 @NgModule({
 declarations: [
@@ -58,6 +61,8 @@ declarations: [
   NewsSidebarItemComponent,
   NewsSidebarItemListComponent,
   CategoryOverviewComponent,
+  LatestDatasetsComponent,
+  PopularDatasetsComponent,
   MouseScrollIconComponent,
   DesktopComponent,
   NotFoundComponent,
@@ -81,6 +86,7 @@ imports: [
   TypeheadModule,
   SharedRbacModule,
   MatIconModule,
+  DatasetBoxModule,
   HttpClientBusyModule.forRoot(),
   TranslateModule.forRoot({
     loader: {

@@ -2,7 +2,8 @@ import {
   Component,
   OnInit,
   OnDestroy,
-  AfterViewInit
+  AfterViewInit,
+  ViewChild
 } from '@angular/core';
 import { AppState } from '../../reducers';
 import { Store } from '@ngrx/store';
@@ -12,6 +13,7 @@ import { fadeIn } from 'ng-animate';
 import { NgForm } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { loadExternalScripts } from 'src/app/shared/shared-methods';
+import { NgxFormUtils } from 'ngx-form-utils';
 declare var Typed;
 @Component({
   selector: 'app-login',
@@ -21,6 +23,7 @@ declare var Typed;
 })
 export class LoginComponent implements OnInit, OnDestroy, AfterViewInit {
   // @HostBinding('@fadeIn')
+  @ViewChild('f') ntForm: NgForm;
   animate = true;
   typed: any;
   hide = true;
@@ -35,6 +38,10 @@ export class LoginComponent implements OnInit, OnDestroy, AfterViewInit {
       this.typed.destroy();
     }
   }
+  getErrors(str) {
+    if (!this.ntForm || !NgxFormUtils) { return; }
+     return NgxFormUtils.getErrors(this.ntForm, str);
+    }
   onSubmit(f: NgForm) {
     if (!f.valid) {return; }
     this.store.dispatch(new TryLogin(f.form.value));

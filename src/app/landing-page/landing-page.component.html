@@ -7,6 +7,8 @@
          <div class="overview-box">
             <category-overview *ngIf="state ==='category'" class="animated fadeIn"></category-overview>
             <organization-overview *ngIf="state ==='organization'" class="animated fadeIn"></organization-overview>
+            <latest-datasets *ngIf="state ==='latest'" class="animated fadeIn"></latest-datasets>
+            <popular-datasets *ngIf="state ==='popular'" class="animated fadeIn"></popular-datasets>
          </div>
           <total-datasets-count></total-datasets-count>
           <app-footer></app-footer>

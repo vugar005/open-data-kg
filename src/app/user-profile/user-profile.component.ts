@@ -13,6 +13,8 @@ import { getUser, getApiUrl } from '../auth/store/auth.selectors';
 export class UserProfileComponent implements OnInit {
  user$: Observable<User>;
  apiUrl$: Observable<string>;
+ mockDatasets: any;
+ currentMod = 'show';
   constructor(private store: Store<AppState>) {
     this.user$ = store.select(getUser);
     this.user$.subscribe(res => console.log(res));
@@ -20,6 +22,8 @@ export class UserProfileComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.mockDatasets = JSON.parse(localStorage.getItem('datasets'));
+    console.log(this.mockDatasets)
   }
 
 }

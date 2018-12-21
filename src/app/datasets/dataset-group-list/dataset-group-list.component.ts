@@ -48,6 +48,7 @@ export class DatasetGroupListComponent implements OnInit, OnChanges {
   }
   getListByCategory() {
    this.list$ = this.datasetService.getDatasetsWithGroupByOrg(this.categoryQuery);
+   this.list$.subscribe(res => localStorage.setItem('datasets', JSON.stringify(res)))
   }
   getListByOrganization() {
     this.list$ = this.datasetService.getDatasetsWithGroupByCat(this.orgQuery);

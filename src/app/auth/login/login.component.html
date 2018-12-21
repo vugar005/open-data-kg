@@ -12,7 +12,8 @@
      <div class="form-header"> {{'~login' | translate}}</div>
      <form #f="ngForm" class="login-form" (ngSubmit)="onSubmit(f)">
         <mat-form-field class="field-style" >
-            <input matInput placeholder="{{'~username' | translate}}" class="nt-form-input" name="username" ngModel required>
+            <input matInput placeholder="Email" class="nt-form-input" name="username" ngModel required type="email">
+            <mat-error>{{getErrors('username')}}</mat-error>
           </mat-form-field>
 
           <mat-form-field class="field-style" >
@@ -24,7 +25,7 @@
        <button mat-raised-button type="submit" > {{'~login' | translate}}</button>
      </form>
      <div class="toRegister">
-        for <a [routerLink]="'/register'" >  {{'~login' | translate}}</a>
+        for <a [routerLink]="'/register'" >  {{'~register' | translate}}</a>
      </div>
   </div>
 </div>

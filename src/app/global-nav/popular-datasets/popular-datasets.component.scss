@@ -1,0 +1,33 @@
+:host {
+  display: block;
+}
+.co-title {
+  font-weight: bold;
+  line-height: normal;
+  font-size: 26px;
+  text-align: center;
+  color: #333333;
+  padding: 40px 0;
+}
+
+.item-list {
+  display: flex;
+  flex-direction: column;
+  .item-box {
+    border-radius: 9px;
+    padding: 30px 40px;
+    margin-bottom: 30px;
+    cursor: pointer;
+    text-align: center;
+    transition: box-shadow 300ms ease-in;
+    &:hover {
+      box-shadow: 5px 15px 22px rgba(0, 0, 0, 0.1);
+    }
+    .item-name {
+      font-weight: 600;
+      line-height: 17px;
+      font-size: 16px;
+      color: #505050;
+    }
+  }
+}

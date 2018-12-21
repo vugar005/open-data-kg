@@ -1,41 +1,63 @@
-<div class="container-fluid" *ngIf="user$ | async as user">
-  <div class="row">
-    <div class="col-12 p-0">
-      <div class="profile-main-info">
-        <div class="item-left">
-          <div class="item-image">
-            <img src="{{apiUrl$ | async}}/api/get/file/{{(user$ | async)?.photoFileId}}"  onerror="this.src= './assets/img/default-avatar.png '">
-          </div>
-        </div>
-        <div class="item-center">
-          <div class="item-name">{{user.name}}  {{user.surname}}</div>
-          <div class="item-birthdate">
-            <div class="key">Born: {{user.birthdate}} </div>
-            <div class="value"></div>
-          </div>
-          <div class="item-nationality">
-            <div class="key">Nationality:</div>
-            <div class="value"></div>
-          </div>
-        </div>
-        <div class="item-right">
-          <div class="icon">
-            <i class="fas fa-map-marker-alt"></i>
-          </div>
-          <div class="value">Baku Azerbaijan</div>
-        </div>
-        <div class="main-logo">
-           <img src='./assets/icons/opendata_final.svg'>
-        </div>
-      </div>
-    </div>
-  </div>
-  </div>
-  <div class="container">
-    <div class="row">
-      <div class="col-3">
+<div class="main-info-wrapper">
+    <div class="main-info-background"></div>
+    <div class="container " *ngIf="user$ | async as user">
 
-      </div>
-      <div class="col-9"></div>
-    </div>
-  </div>
+        <div class="row">
+          <div class="col-12 p-0">
+
+            <div class="profile-main-info">
+
+              <div class="item-left">
+                <div class="item-image">
+                  <img src="{{apiUrl$ | async}}/api/get/file/{{(user$ | async)?.photoFileId}}"  onerror="this.src= './assets/img/default-avatar.png '">
+                </div>
+              </div>
+              <div class="item-center">
+                <div class="item-name">{{user.name}}  {{user.surname}}</div>
+                <div class="item-birthdate">
+                  <div class="key">Born: {{user.birthdate}} </div>
+                  <div class="value"></div>
+                </div>
+                <div class="item-nationality">
+                  <div class="key">Nationality:</div>
+                  <div class="value"></div>
+                </div>
+              </div>
+              <div class="item-right">
+                <div class="icon">
+                  <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div class="value">Baku Azerbaijan</div>
+              </div>
+              <div class="main-logo">
+                 <img src='./assets/icons/opendata_final.svg'>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+</div>
+
+
+     <div class="container">
+       <div class="row">
+         <div class="col-4">
+          <div class="profile-modules-wrapper">
+            <div class="profile-save-module" (click)="currentMod = 'show'">
+              <div class="mod-icon"><img src="./assets/icons/folder (1).svg"></div>
+              <div class="mod-text">Saved Data</div>
+            </div>
+            <div class="profile-remove-module" (click)="currentMod = 'remove'">
+              <div class="mod-icon"><img src="./assets/icons/delete.svg"></div>
+              <div class="mod-text">Remove from list</div>
+            </div>
+          </div>
+         </div>
+         <div class="col-8">
+           <div class="list" *ngFor="let dataset of mockDatasets?.tbl[0]?.r">
+              <dataset-box [dataset]="dataset" *ngIf="currentMod === 'show'"></dataset-box>
+              <dataset-box [dataset]="dataset" [mode]="'remove'" *ngIf="currentMod === 'remove'"></dataset-box>
+           </div>
+         </div>
+       </div>
+     </div>
