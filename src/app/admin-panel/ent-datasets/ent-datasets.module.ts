@@ -8,14 +8,15 @@ import { MatExpansionModule, MatTabsModule, MatDatepickerModule } from '@angular
 import { DatasetApiInsertComponent } from './dataset-insert-dialog/dataset-api-insert/dataset-api-insert.component';
 import { DatasetKeywordInsertComponent } from './dataset-insert-dialog/dataset-keyword-insert/dataset-keyword-insert.component';
 import { DatasetCategoryInsertComponent } from './dataset-insert-dialog/dataset-category-insert/dataset-category-insert.component';
-
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 @NgModule({
   imports: [
     CommonModule,
     SharedAdminModule,
     EntDatasetsRoutes,
     MatExpansionModule,
-    MatTabsModule
+    MatTabsModule,
+    CKEditorModule
   ],
   declarations: [
     EntDatasetsComponent,

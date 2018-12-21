@@ -1,3 +1,4 @@
+import { DatasetInsertDialogComponent } from './dataset-insert-dialog/dataset-insert-dialog.component';
 import { Routes, RouterModule } from '@angular/router';
 import { EntDatasetsComponent } from './ent-datasets.component';
 

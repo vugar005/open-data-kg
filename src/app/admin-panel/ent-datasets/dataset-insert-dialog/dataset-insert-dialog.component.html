@@ -1,181 +1,187 @@
-<form #f="ngForm" patch-form [form]="f" [data]="data?.row" class="nt-form" >
+        <form #f="ngForm" patch-form [form]="f" [data]="data?.row" class="nt-form" >
+            <mat-vertical-stepper [linear]="true" #stepper [selectedIndex]="selectedIndex"  color="accent">
+              <mat-step [stepControl]="f" [optional]="true" color="accent">
+                <ng-template matStepLabel>Dataset main info</ng-template>
+                <div class="main-info">
+                    <div class="row-1">
+                        <div class="left">
 
-  <mat-vertical-stepper [linear]="true" #stepper [selectedIndex]="selectedIndex"  color="accent">
-    <mat-step [stepControl]="f" [optional]="true" color="accent">
-      <ng-template matStepLabel>Dataset main info</ng-template>
-      <div class="main-info">
-          <div class="row-1">
-              <div class="left">
+                            <mat-form-field class="example-full-width">
+                              <input matInput placeholder="{{'~name' | translate}} (Kg)" class="nt-form-input" name="nameKg" ngModel  required>
+                              <mat-error>{{getErrors('nameKg')}} </mat-error>
+                            </mat-form-field>
+                            <mat-form-field class="example-full-width">
+                              <input matInput placeholder="{{'~name' | translate}} (En)" class="nt-form-input" name="nameEn" ngModel  required>
+                              <mat-error>{{getErrors('nameEn')}} </mat-error>
+                            </mat-form-field>
+                            <mat-form-field class="example-full-width">
+                              <input matInput placeholder="{{'~name' | translate}} (Ru)" class="nt-form-input" name="nameRu" ngModel  required>
+                              <mat-error>{{getErrors('nameRu')}} </mat-error>
+                            </mat-form-field>
 
-                  <mat-form-field class="example-full-width">
-                    <input matInput placeholder="{{'~name' | translate}} (Kg)" class="nt-form-input" name="nameKg" ngModel  required>
-                    <mat-error>{{getErrors('nameKg')}} </mat-error>
-                  </mat-form-field>
-                  <mat-form-field class="example-full-width">
-                    <input matInput placeholder="{{'~name' | translate}} (En)" class="nt-form-input" name="nameEn" ngModel  required>
-                    <mat-error>{{getErrors('nameEn')}} </mat-error>
-                  </mat-form-field>
-                  <mat-form-field class="example-full-width">
-                    <input matInput placeholder="{{'~name' | translate}} (Ru)" class="nt-form-input" name="nameRu" ngModel  required>
-                    <mat-error>{{getErrors('nameRu')}} </mat-error>
-                  </mat-form-field>
+                           </div>
+                           <div class="right">
 
+                            <mat-form-field>
+                              <input matInput [matDatepicker]="picker" placeholder="{{'~publishDate' | translate}}" name="createDateVersion" ngModel
+                                >
+                              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                              <mat-datepicker #picker [startAt]="startDate" startView="year"></mat-datepicker>
+                              <mat-error>{{getErrors('createDateVersion')}}</mat-error>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                              <input matInput [matDatepicker]="picker2" placeholder="{{'~updateDate' | translate}}" name="updateDateVersion" ngModel
+                                >
+                              <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                              <mat-datepicker #picker2 [startAt]="startDate" startView="year"></mat-datepicker>
+                              <mat-error>{{getErrors('updateDateVersion')}}</mat-error>
+                            </mat-form-field>
+
+
+                           </div>
+                    </div>
+
+                  <div class="row-2">
+                      <ckeditor [editor]="Editor" data="<p>Hello, world!</p>"
+                        [config]="editorConfig"
+                        name="descriptionEn" ngModel  ></ckeditor>
+
+                  <!-- <mat-form-field class="text-area">
+
+                      <textarea rows=2 cols="50"  matInput placeholder="{{'~description' | translate}} (En)" class="nt-form-input" name="descriptionEn" ngModel  required> </textarea>
+                      <mat-error>{{getErrors('descriptionEn')}} </mat-error>
+                    </mat-form-field>  -->
+
+                    <mat-form-field class="text-area">
+                        <textarea   rows=2  matInput placeholder="{{'~description' | translate}} (Kg)" class="nt-form-input" name="descriptionKg" ngModel  required> </textarea>
+                        <mat-error>{{getErrors('descriptionKg')}} </mat-error>
+                      </mat-form-field>
+
+                    <mat-form-field class="text-area">
+                        <textarea rows = 2  matInput placeholder="{{'~description' | translate}} (Ru)" class="nt-form-input" name="descriptionRu" ngModel  required> </textarea>
+                        <mat-error>{{getErrors('descriptionRu')}} </mat-error>
+                      </mat-form-field>
+                  </div>
+
+                  </div>
+
+                <div>
+                  <button mat-raised-button color="primary"  type="submit"  insertTableData [form]="f"
+                  *ngIf="!(f?.value.id)"
+                  [table]="data?.table"
+                  (onClose)="onClose($event)"
+                  >{{'~add' | translate}}</button>
+                </div>
+              </mat-step>
+
+              <mat-step  [stepControl]="f" [optional]="true"  *rbacAllow="['1000010', 'ALL_VIEW_CATEGORY']">
+                <ng-template matStepLabel>{{'~categoryData' | translate}}</ng-template>
+                <ng-container *ngIf="f?.value?.id">
+                  <div class="title">
+                    <div class="add-icon" (click)="table4.addData()" *rbacAllow="['1000010', 'ADD_CTGR']">
+                      <fa-icon [icon]="faPlusCircle"></fa-icon>
+                    </div>
+                   </div>
+
+                <div style="width: 100%;height: 200px;" >
+                    <ngx-nt-table #table4
+                    [config]="config4"
+                    (rowAdd)="initDialog4(table4)"
+                    (rowEdit)="initDialog4(table4, $event)"
+                    [multiSelect]="false"
+                    [pagination]="false"
+                    [editTemplate]="editerCat"
+                  ></ngx-nt-table>
                  </div>
-                 <div class="right">
 
-                  <mat-form-field>
-                    <input matInput [matDatepicker]="picker" placeholder="{{'~publishDate' | translate}}" name="createDateVersion" ngModel
-                      >
-                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker [startAt]="startDate" startView="year"></mat-datepicker>
-                    <mat-error>{{getErrors('createDateVersion')}}</mat-error>
-                  </mat-form-field>
+                <ng-template #editerCat>
+                  <button [attr.t-btn]="'edit'" *rbacAllow="['1000010', 'EDIT_CTGR']">{{'~edit' | translate}}</button>
+                  <button [attr.t-btn]="'remove'" *rbacAllow="['1000010', 'DELETE_CTGR']">{{'~' | translate}}</button>
+                </ng-template>
 
-                  <mat-form-field>
-                    <input matInput [matDatepicker]="picker2" placeholder="{{'~updateDate' | translate}}" name="updateDateVersion" ngModel
-                      >
-                    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-                    <mat-datepicker #picker2 [startAt]="startDate" startView="year"></mat-datepicker>
-                    <mat-error>{{getErrors('updateDateVersion')}}</mat-error>
-                  </mat-form-field>
+                <div>
+                    <button mat-button matStepperPrevious>{{'~back' | translate}}</button>
+                    <button mat-button matStepperNext>{{'~next' | translate}}</button>
+                  </div>
+                </ng-container>
+            </mat-step>
 
+              <mat-step  [stepControl]="f" [optional]="true"  *rbacAllow="['1000010', 'ALL_VIEW_KEYWORD']">
+                <ng-template matStepLabel>{{'~keywordData' | translate}}</ng-template>
+                <ng-container *ngIf="f?.value?.id">
+                  <div class="title">
+                    <div class="add-icon" (click)="table2.addData()" *rbacAllow="['1000010', 'ADD_KYWD']">
+                      <fa-icon [icon]="faPlusCircle"></fa-icon>
+                    </div>
+                   </div>
 
+                <div style="width: 100%;height: 200px;" >
+                    <ngx-nt-table #table2
+                    [config]="config2"
+                    (rowAdd)="initDialog2(table2)"
+                    (rowEdit)="initDialog2(table2, $event)"
+                    [multiSelect]="false"
+                    [pagination]="false"
+                    [editTemplate]="editerKeyword"
+                  ></ngx-nt-table>
                  </div>
-          </div>
+                 <ng-template #editerKeyword>
+                  <button [attr.t-btn]="'edit'" *rbacAllow="['1000010', 'EDIT_KYWD']">{{'~edit' | translate}}</button>
+                  <button [attr.t-btn]="'remove'" *rbacAllow="['1000010', 'DELETE_KYWD']">{{'~remove' | translate}}</button>
+                </ng-template>
 
-        <div class="row-2">
-        <mat-form-field class="text-area">
-            <textarea rows=2 cols="50"  matInput placeholder="{{'~description' | translate}} (En)" class="nt-form-input" name="descriptionEn" ngModel  required> </textarea>
-            <mat-error>{{getErrors('descriptionEn')}} </mat-error>
-          </mat-form-field>
+                <div>
+                    <button mat-button matStepperPrevious>{{'~back' | translate}}</button>
+                    <button mat-button matStepperNext>{{'~next' | translate}}</button>
+                  </div>
+                </ng-container>
+            </mat-step>
 
-          <mat-form-field class="text-area">
-              <textarea   rows=2  matInput placeholder="{{'~description' | translate}} (Kg)" class="nt-form-input" name="descriptionKg" ngModel  required> </textarea>
-              <mat-error>{{getErrors('descriptionKg')}} </mat-error>
-            </mat-form-field>
+              <mat-step   [stepControl]="f" [optional]="true" *rbacAllow="['1000010', 'ALL_VIEW_API']" >
+                  <ng-template matStepLabel>{{'~apiData' | translate}}</ng-template>
+                  <ng-container  *ngIf="f?.value?.id">
+                    <div class="title" >
+                      <div class="add-icon" (click)="table3.addData()"  *rbacAllow="['1000010', 'ADD_API']">
+                        <fa-icon [icon]="faPlusCircle"></fa-icon>
+                      </div>
+                     </div>
 
-          <mat-form-field class="text-area">
-              <textarea rows = 2  matInput placeholder="{{'~description' | translate}} (Ru)" class="nt-form-input" name="descriptionRu" ngModel  required> </textarea>
-              <mat-error>{{getErrors('descriptionRu')}} </mat-error>
-            </mat-form-field>
-        </div>
+                  <div style="width: 100%;height: 200px;" >
+                      <ngx-nt-table #table3
+                      [config]="config3"
+                      (rowAdd)="initDialog3(table3)"
+                      (rowEdit)="initDialog3(table3, $event)"
+                      [multiSelect]="false"
+                      [pagination]="false"
+                      [editTemplate]="editerApi"
+                    ></ngx-nt-table>
+                   </div>
 
-        </div>
+                   <ng-template #editerApi>
+                    <button [attr.t-btn]="'edit'" *rbacAllow="['1000010', 'EDIT_API']">{{'~edit' | translate}}</button>
+                    <button [attr.t-btn]="'remove'" *rbacAllow="['1000010', 'DELETE_API']">{{'~remove' | translate}}</button>
+                  </ng-template>
 
-      <div>
-        <button mat-raised-button color="primary"  type="submit"  insertTableData [form]="f"
-        *ngIf="!(f?.value.id)"
-        [table]="data?.table"
-        (onClose)="onClose($event)"
-        >{{'~add' | translate}}</button>
-      </div>
-    </mat-step>
+                  <div>
+                      <button mat-button matStepperPrevious>{{'~back' | translate}}</button>
+                    </div>
+                  </ng-container>
+              </mat-step>
+            </mat-vertical-stepper>
 
-    <mat-step  [stepControl]="f" [optional]="true"  *rbacAllow="['1000010', 'ALL_VIEW_CATEGORY']">
-      <ng-template matStepLabel>{{'~categoryData' | translate}}</ng-template>
-      <ng-container *ngIf="f?.value?.id">
-        <div class="title">
-          <div class="add-icon" (click)="table4.addData()" *rbacAllow="['1000010', 'ADD_CTGR']">
-            <fa-icon [icon]="faPlusCircle"></fa-icon>
-          </div>
-         </div>
+            <input [hidden]="true" name="id" ngModel>
 
-      <div style="width: 100%;height: 200px;" >
-          <ngx-nt-table #table4
-          [config]="config4"
-          (rowAdd)="initDialog4(table4)"
-          (rowEdit)="initDialog4(table4, $event)"
-          [multiSelect]="false"
-          [pagination]="false"
-          [editTemplate]="editerCat"
-        ></ngx-nt-table>
-       </div>
-
-      <ng-template #editerCat>
-        <button [attr.t-btn]="'edit'" *rbacAllow="['1000010', 'EDIT_CTGR']">{{'~edit' | translate}}</button>
-        <button [attr.t-btn]="'remove'" *rbacAllow="['1000010', 'DELETE_CTGR']">{{'~' | translate}}</button>
-      </ng-template>
-
-      <div>
-          <button mat-button matStepperPrevious>{{'~back' | translate}}</button>
-          <button mat-button matStepperNext>{{'~next' | translate}}</button>
-        </div>
-      </ng-container>
-  </mat-step>
-
-    <mat-step  [stepControl]="f" [optional]="true"  *rbacAllow="['1000010', 'ALL_VIEW_KEYWORD']">
-      <ng-template matStepLabel>{{'~keywordData' | translate}}</ng-template>
-      <ng-container *ngIf="f?.value?.id">
-        <div class="title">
-          <div class="add-icon" (click)="table2.addData()" *rbacAllow="['1000010', 'ADD_KYWD']">
-            <fa-icon [icon]="faPlusCircle"></fa-icon>
-          </div>
-         </div>
-
-      <div style="width: 100%;height: 200px;" >
-          <ngx-nt-table #table2
-          [config]="config2"
-          (rowAdd)="initDialog2(table2)"
-          (rowEdit)="initDialog2(table2, $event)"
-          [multiSelect]="false"
-          [pagination]="false"
-          [editTemplate]="editerKeyword"
-        ></ngx-nt-table>
-       </div>
-       <ng-template #editerKeyword>
-        <button [attr.t-btn]="'edit'" *rbacAllow="['1000010', 'EDIT_KYWD']">{{'~edit' | translate}}</button>
-        <button [attr.t-btn]="'remove'" *rbacAllow="['1000010', 'DELETE_KYWD']">{{'~remove' | translate}}</button>
-      </ng-template>
-
-      <div>
-          <button mat-button matStepperPrevious>{{'~back' | translate}}</button>
-          <button mat-button matStepperNext>{{'~next' | translate}}</button>
-        </div>
-      </ng-container>
-  </mat-step>
-
-    <mat-step   [stepControl]="f" [optional]="true" *rbacAllow="['1000010', 'ALL_VIEW_API']" >
-        <ng-template matStepLabel>{{'~apiData' | translate}}</ng-template>
-        <ng-container  *ngIf="f?.value?.id">
-          <div class="title" >
-            <div class="add-icon" (click)="table3.addData()"  *rbacAllow="['1000010', 'ADD_API']">
-              <fa-icon [icon]="faPlusCircle"></fa-icon>
+            <div class="actions">
+              <button mat-raised-button color="primary"  type="submit" updateTableData [form]="f"
+              *ngIf="f?.value.id"
+              [disabled]="f?.dirty && !f?.valid"
+              (onClose)="dialogRef.close()"
+              [table]="data?.table"
+              >{{'~update' | translate}}</button>
+              <button mat-raised-button (click)="dialogRef.close()" type="reset">{{'~cancel' | translate}}</button>
             </div>
-           </div>
 
-        <div style="width: 100%;height: 200px;" >
-            <ngx-nt-table #table3
-            [config]="config3"
-            (rowAdd)="initDialog3(table3)"
-            (rowEdit)="initDialog3(table3, $event)"
-            [multiSelect]="false"
-            [pagination]="false"
-            [editTemplate]="editerApi"
-          ></ngx-nt-table>
-         </div>
+          </form>
 
-         <ng-template #editerApi>
-          <button [attr.t-btn]="'edit'" *rbacAllow="['1000010', 'EDIT_API']">{{'~edit' | translate}}</button>
-          <button [attr.t-btn]="'remove'" *rbacAllow="['1000010', 'DELETE_API']">{{'~remove' | translate}}</button>
-        </ng-template>
 
-        <div>
-            <button mat-button matStepperPrevious>{{'~back' | translate}}</button>
-          </div>
-        </ng-container>
-    </mat-step>
-  </mat-vertical-stepper>
-
-  <input [hidden]="true" name="id" ngModel>
-
-  <div class="actions">
-    <button mat-raised-button color="primary"  type="submit" updateTableData [form]="f"
-    *ngIf="f?.value.id"
-    [disabled]="f?.dirty && !f?.valid"
-    (onClose)="dialogRef.close()"
-    [table]="data?.table"
-    >{{'~update' | translate}}</button>
-    <button mat-raised-button (click)="dialogRef.close()" type="reset">{{'~cancel' | translate}}</button>
-  </div>
-
-</form>

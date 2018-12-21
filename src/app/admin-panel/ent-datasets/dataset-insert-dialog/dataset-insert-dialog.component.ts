@@ -16,6 +16,8 @@ import { AppState } from 'src/app/reducers';
 import { Store } from '@ngrx/store';
 import { getUserOrg } from 'src/app/auth/store/auth.selectors';
 import { take } from 'rxjs/operators';
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+
 @Component({
   selector: 'app-dataset-insert-dialog',
   templateUrl: './dataset-insert-dialog.component.html',
@@ -23,6 +25,7 @@ import { take } from 'rxjs/operators';
 })
 export class DatasetInsertDialogComponent implements OnInit {
   @ViewChild('f') ntForm: NgForm;
+  public Editor = ClassicEditor;
   apps$: Observable<any>;
   orgTypes$: Observable<SelectType[]>;
   config: ApiConfig;
@@ -32,6 +35,9 @@ export class DatasetInsertDialogComponent implements OnInit {
   faPlusCircle = faPlusCircle;
   selectedIndex = 0;
   startDate = new Date(1990, 0, 1);
+  editorConfig = {
+    toolbar: [ 'heading', '|', 'Bold', 'Italic', 'link', 'Unlink' ]
+  };
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<ModulesInsertDialogComponent>,
@@ -124,11 +130,6 @@ export class DatasetInsertDialogComponent implements OnInit {
       }
    ngOnInit() {
    this.setConfigs();
-  // console.log(this.ntForm);
-  // this.ntForm.statusChanges.subscribe(res => console.log(res))
    }
-   tempClick(table) {
-       console.log(table);
-       console.log(this.ntForm.value.id);
-   }
+
 }
