@@ -24,7 +24,10 @@ export class SharedService {
   ) {}
   createNotification(type: string, message: string, position = 'bottomRight') {
     this.clearOldToats();
-    switch (type) {
+    switch (type.toLowerCase()) {
+      case 'sucess':
+      this.createSucessNotification(message, position);
+      break;
       case 'error':
         this.createErrorNotification(message, position);
         break;
@@ -33,28 +36,36 @@ export class SharedService {
         break;
     }
   }
-  createErrorNotification(message: string, position) {
-    this.iziToast.show({
-      title: 'Error',
+  createSucessNotification(message: string, position) {
+    this.iziToast.success({
+      title: 'Sucess',
       class: 'foo',
-      color: 'red',
+      color: 'green',
       timeout: 3000,
       message: message,
       icon: 'fas fa-exclamation-circle',
-      progressBarColor: '#9D787A',
+      close: false,
+      position: position
+    });
+  }
+  createErrorNotification(message: string, position) {
+    this.iziToast.error({
+      title: 'Error',
+      class: 'foo',
+      timeout: 3000,
+      message: message,
+      icon: 'fas fa-exclamation-circle',
       close: false,
       position: position
     });
   }
   createWarnNotification(message: string, position) {
-    this.iziToast.show({
+    this.iziToast.warning({
       title: 'Warning',
       class: 'foo',
-      color: '#FACBA0',
       timeout: 3000,
       message: message,
       icon: 'fas fa-exclamation',
-      progressBarColor: '#9D787A',
       transitionOut: 'flipOutX',
       close: false,
       position: position

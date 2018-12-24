@@ -1,3 +1,4 @@
+import { SharedService } from 'src/app/shared/shared.service';
 import { DatasetDetail } from '../models/dataset-detail.model';
 import { Component, OnInit, Input, Output, EventEmitter, HostBinding } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -25,7 +26,8 @@ export class DatasetDetailComponent implements OnInit {
   left = faChevronLeft;
   @HostBinding('@slideInRight') animate = this.isInner;
   constructor(private datasetService: DatasetsService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private sharedService: SharedService
     ) { }
 
   ngOnInit() {
@@ -53,7 +55,9 @@ export class DatasetDetailComponent implements OnInit {
   //  console.log('udpated');
   }
   onFavoriteMark(id: string) {
-    this.datasetService.markDatasetAsFavorite(id).subscribe(res => console.log(res));
+    this.datasetService.markDatasetAsFavorite(id).subscribe(res => {
+      this.sharedService.createNotification('Sucess', 'Saving Dataset');
+    });
   }
   onUnFavoriteMark(id: string) {
 
