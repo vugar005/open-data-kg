@@ -102,5 +102,8 @@
        "~scrollMe": "Scroll me",
        "~writeFeedbackHere": "Write Feedback here",
        "~rating": "Rating",
-       "~reviewCount": "Review Count"
+       "~reviewCount": "Review Count",
+
+      "~unSaveData": "UNSAVE DATA"
+
 }

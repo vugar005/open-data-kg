@@ -10,6 +10,7 @@ export interface Dataset {
   reviewCount: string;
   orgRu: string;
   id: string;
+  datasetId?: string;
   orgShortName: string;
   descriptionKg: string;
   createDate: string;

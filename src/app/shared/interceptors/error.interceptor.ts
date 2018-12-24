@@ -24,9 +24,9 @@ export class ErrorInterceptor implements HttpInterceptor {
        tap((response) => {
           if (response instanceof HttpResponse) {
             if (response.body && response.body.err && response.body.err.length > 0) {
-              console.log(response.body.err)
               const errors = response.body.err;
              this.handleHttpError(errors[0].val);
+            throw new Error('something went wrong')
             }
             if (response.body && response.body.code === 'UNAUTHORIZED') {
               // this.sharedService.createNotification('error', `${req.urlWithParams}`, 'Unauthorized');
@@ -39,6 +39,7 @@ export class ErrorInterceptor implements HttpInterceptor {
         }, (err: any) => {
           if (err instanceof HttpErrorResponse) {
             this.handleHttpError();
+
          //   this.sharedService.createNotification('error', `Xəta baş verdi`, 'Error');
           }
         })

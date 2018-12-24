@@ -25,6 +25,14 @@
         }
     }
   }
+  &.delete {
+    .rotating-box {
+      background: #E85F5F;
+    }
+    .text p {
+      color: #E85F5F;
+    }
+  }
 
 }
 .back-ico {

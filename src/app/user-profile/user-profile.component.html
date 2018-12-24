@@ -50,7 +50,7 @@
           </div>
          </div>
          <div class="col-8">
-           <div class="list" *ngFor="let dataset of datasets">
+           <div class="list" *ngFor="let dataset of datasets ">
               <dataset-box [dataset]="dataset"
               routerLink="/datasets/{{dataset.datasetId}}/details"
               ></dataset-box>

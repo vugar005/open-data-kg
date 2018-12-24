@@ -6,6 +6,7 @@ import {faChevronLeft} from '@fortawesome/free-solid-svg-icons';
 import { trigger, useAnimation, transition } from '@angular/animations';
 import {slideInRight, zoomInLeft} from 'ng-animate';
 import { DatasetsService } from '../datasets.service';
+import { Dataset } from '../models/dataset.model';
 @Component({
   selector: 'dataset-detail',
   templateUrl: './dataset-detail.component.html',
@@ -24,6 +25,8 @@ export class DatasetDetailComponent implements OnInit {
   datasetKeywords: any;
   datasetCategories: any;
   left = faChevronLeft;
+
+  favouriteDatasets: Dataset[];
   @HostBinding('@slideInRight') animate = this.isInner;
   constructor(private datasetService: DatasetsService,
     private route: ActivatedRoute,
@@ -36,6 +39,7 @@ export class DatasetDetailComponent implements OnInit {
    } else {
      this.getRoutId();
    }
+   this.getFavoriteDatasets();
   }
   getRoutId() {
    this.route.params.subscribe(res => {
@@ -56,11 +60,22 @@ export class DatasetDetailComponent implements OnInit {
   }
   onFavoriteMark(id: string) {
     this.datasetService.markDatasetAsFavorite(id).subscribe(res => {
-      this.sharedService.createNotification('Sucess', 'Saving Dataset');
+     this.sharedService.createNotification('Sucess', 'Saving Dataset');
+      this.getFavoriteDatasets();
     });
   }
   onUnFavoriteMark(id: string) {
-
+    this.datasetService.unmarkDatasetAsFavorite(id).subscribe(res => {
+      this.sharedService.createNotification('Sucess', 'Unsaving Dataset');
+      this.getFavoriteDatasets();
+    });
+  }
+  getFavoriteDatasets() {
+    this.sharedService.getTableData('api/post/Permission/Datasets/GetFavoriteDatasetList')
+    .subscribe(res => this.favouriteDatasets = res);
+  }
+  isFavorite() {
+    return this.favouriteDatasets.find(f => f.datasetId === this.dataset.kv.id);
   }
 
 }

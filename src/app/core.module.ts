@@ -136,7 +136,7 @@ exports: [
 providers: [
   SharedService,
   AdminGuard,
- // { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+ { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
   {provide: HTTP_INTERCEPTORS, useClass: APIInterceptor, multi: true },
   {provide: HTTP_INTERCEPTORS, useClass: LangInterceptor,  multi: true },

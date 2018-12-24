@@ -1,3 +1,4 @@
+import { EffectsModule } from '@ngrx/effects';
 import { CommentsModule } from './../comments/comments.module';
 import { TypeheadModule } from 'ngx-typehead-dir';
 import { FeedbackBoxComponent } from './../shared/components/feedback-box/feedback-box.component';
@@ -21,6 +22,9 @@ import { APIInterceptor } from '../shared/interceptors/api.interceptor';
 import { DatasetDetailComponent } from './dataset-detail/dataset-detail.component';
 import { DatasetBoxModule } from './dataset-box.module';
 import { StarRatingModule } from '../shared/star-rating.module';
+import { StoreModule } from '@ngrx/store';
+import * as fromStore from './store/dataset.reducer';
+import { DatasetEffects } from './store/dataset.effects';
 
 @NgModule({
   imports: [
@@ -33,7 +37,9 @@ import { StarRatingModule } from '../shared/star-rating.module';
     TypeheadModule,
     CommentsModule,
     DatasetBoxModule,
-    StarRatingModule
+    StarRatingModule,
+    StoreModule.forFeature('dataset', fromStore.reducer),
+    EffectsModule.forFeature([DatasetEffects])
   ],
   declarations: [
      DatasetsComponent,
