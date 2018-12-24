@@ -33,8 +33,8 @@
   .main-info {
   display: flex;
   flex-direction: column;
-  /deep/ .mat-form-field-infix {
-    font-size: 14px;
+  /deep/ .mat-input-element {
+    font-size: 15px;
   }
    .row-1 {
      display: flex;
@@ -74,6 +74,6 @@
 
 .actions {
   button {
-    margin: 0 5px;
+    margin: 5px;
   }
 }

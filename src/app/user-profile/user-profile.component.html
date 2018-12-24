@@ -47,16 +47,13 @@
               <div class="mod-icon"><img src="./assets/icons/folder (1).svg"></div>
               <div class="mod-text">Saved Data</div>
             </div>
-            <div class="profile-remove-module" (click)="currentMod = 'remove'">
-              <div class="mod-icon"><img src="./assets/icons/delete.svg"></div>
-              <div class="mod-text">Remove from list</div>
-            </div>
           </div>
          </div>
          <div class="col-8">
-           <div class="list" *ngFor="let dataset of mockDatasets?.tbl[0]?.r">
-              <dataset-box [dataset]="dataset" *ngIf="currentMod === 'show'"></dataset-box>
-              <dataset-box [dataset]="dataset" [mode]="'remove'" *ngIf="currentMod === 'remove'"></dataset-box>
+           <div class="list" *ngFor="let dataset of datasets">
+              <dataset-box [dataset]="dataset"
+              routerLink="/datasets/{{dataset.datasetId}}/details"
+              ></dataset-box>
            </div>
          </div>
        </div>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SharedService } from 'src/app/shared/shared.service';
+import { Dataset } from 'src/app/datasets/models/dataset.model';
 
 @Component({
   selector: 'popular-datasets',
@@ -6,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./popular-datasets.component.scss']
 })
 export class PopularDatasetsComponent implements OnInit {
-
-  constructor() { }
+  datasets: Dataset[];
+  constructor(private sharedService: SharedService) { }
 
   ngOnInit() {
+    this.getPopularDatasets()
   }
-
+  getPopularDatasets() {
+    this.sharedService.getTableData('api/get/Permission/Datasets/GetPopularDatasetList')
+    .subscribe( res => this.datasets = res);
+  }
 }

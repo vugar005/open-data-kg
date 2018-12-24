@@ -13,8 +13,3 @@ interface Tbl {
   startLimit: string;
   tn?: string;
 }
-// interface C {
-//   i: "categoryEn"
-//   n: "categoryEn"
-//   t: "STRING"
-// }

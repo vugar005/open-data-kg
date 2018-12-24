@@ -30,7 +30,7 @@
                   <div class="text">{{ dataset?.kv?.reviewCount }}</div>
                 </div>
               </div>
-              <div class="box-perspective right">
+              <div class="box-perspective right" (click)="onFavoriteMark(dataset.kv.id)">
                 <div class="text pr-2">
                   <p>{{ '~saveData' | translate }}</p>
                 </div>
@@ -106,7 +106,7 @@
                     <th scope="row">{{ '~categories' | translate }}</th>
                     <td>
                       <ng-container *ngFor="let cat of datasetCategories?.r">
-                        <span>{{ cat?.categoryEn }}</span>
+                        <span>{{ cat?.categoryEn }}, </span>
                       </ng-container>
                     </td>
                   </tr>

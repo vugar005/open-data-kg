@@ -1,3 +1,4 @@
+import { SharedService } from 'src/app/shared/shared.service';
 import { Component, OnInit } from '@angular/core';
 import { AppState } from '../reducers';
 import { Store } from '@ngrx/store';
@@ -13,17 +14,24 @@ import { getUser, getApiUrl } from '../auth/store/auth.selectors';
 export class UserProfileComponent implements OnInit {
  user$: Observable<User>;
  apiUrl$: Observable<string>;
- mockDatasets: any;
+ datasets: any;
  currentMod = 'show';
-  constructor(private store: Store<AppState>) {
+  constructor(private store: Store<AppState>, private sharedService: SharedService) {
     this.user$ = store.select(getUser);
     this.user$.subscribe(res => console.log(res));
     this.apiUrl$ = store.select(getApiUrl);
   }
 
   ngOnInit() {
-    this.mockDatasets = JSON.parse(localStorage.getItem('datasets'));
-    console.log(this.mockDatasets)
+   // this.mockDatasets = JSON.parse(localStorage.getItem('datasets'));
+   this.getFavoriteDatasets();
+  }
+  getFavoriteDatasets() {
+   this.sharedService.getTableData('api/post/Permission/Datasets/GetFavoriteDatasetList')
+   .subscribe(res => {
+     this.datasets = res;
+     console.log(res);
+   });
   }
 
 }

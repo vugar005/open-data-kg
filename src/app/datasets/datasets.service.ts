@@ -1,5 +1,5 @@
+import { DatasetDetail } from './models/dataset-detail.model';
 import { Injectable } from '@angular/core';
-import { Dataset } from './models/dataset.model';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
 import { DatasetApi } from './models/datasetApi.model';
@@ -10,6 +10,7 @@ import { DatasetByCategoryGroupByOrg } from '../shared/models/DatasetByCategoryG
 import { OrgQuery } from './models/orgQuery.model';
 import { TableModel } from '../shared/models/table.model';
 import { Organization } from './models/organization.model';
+import { Dataset } from './models/dataset.model';
 
 @Injectable({
   providedIn: 'root'
@@ -17,14 +18,14 @@ import { Organization } from './models/organization.model';
 export class DatasetsService {
 
 constructor(private http: HttpClient) { }
-getDatasetById(id: string): Observable<Dataset> {
+getDatasetById(id: string): Observable<DatasetDetail> {
   const body = {
     kv: {
       id: id
     }
   };
   return this.http
-    .post<Dataset>(
+    .post<DatasetDetail>(
       `api/get/Permission/Datasets/GetDatasetDetails`,
       JSON.stringify(body)
     );
@@ -40,7 +41,7 @@ getApiByDatasetById(id: string): Observable<DatasetApi[]> {
     JSON.stringify(body)
   );
   }
-  getDatasetByQuery(query: string): Observable<Dataset[]> {
+  getDatasetByQuery(query: string): Observable<Dataset> {
     const body = {
       kv: {
         datasetFullname: query
@@ -51,12 +52,8 @@ getApiByDatasetById(id: string): Observable<DatasetApi[]> {
         `api/get/Permission/Datasets/GlobalSearchForDataset`,
         JSON.stringify(body)
       ).pipe(
-        map((res: any) => {
-          if (res && res.tbl && res.tbl[0] && res.tbl[0].r) {
-           return res.tbl[0].r;
-          }
-        })
-      );
+        map((res: any) => (res && res.tbl && res.tbl[0] && res.tbl[0].r)
+      ));
   }
   getCategories(): Observable<Category[] | null> {
     const body = {
@@ -98,6 +95,22 @@ getApiByDatasetById(id: string): Observable<DatasetApi[]> {
     } else {
       return null;
     }
+  }
+  markDatasetAsFavorite(id: string) {
+    const obj = {
+      kv: {
+        datasetId: id
+      }
+    };
+    return this.http.post('api/post/Permission/Datasets/InsertFavoriteDataset', JSON.stringify(obj));
+  }
+  unmarkDatasetAsFavorite(id: string) {
+    const obj = {
+      kv: {
+        datasetId: id
+      }
+    };
+    return this.http.post('api/post/Permission/Datasets/DeleteFavoriteDataset', JSON.stringify(obj));
   }
 
 }

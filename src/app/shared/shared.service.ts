@@ -3,12 +3,14 @@ import { Ng2IzitoastService } from 'ng2-izitoast';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable, Subject } from 'rxjs';
 import { SelectType } from './models/select-type.model';
-import { map, tap, shareReplay, share } from 'rxjs/operators';
+import { map} from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { BreadCrumb } from './models/breadcrumb.model';
+import { TableModel } from './models/table.model';
+import { Dataset } from '../datasets/models/dataset.model';
 @Injectable()
 export class SharedService {
   toastRunning: boolean;
@@ -218,6 +220,11 @@ buildBreadCrumb(route: ActivatedRoute, url: string = '',
 }
  getCurentLocale(): string {
   return localStorage.getItem('kg-language') || 'en';
+}
+getTableData(url: string, kv: Object = {}): Observable<Dataset[]> {
+  return this.http.post<TableModel>(url, JSON.stringify(kv)).pipe(
+    map(res => res && res.tbl && res.tbl[0] && res.tbl[0].r)
+  );
 }
 
 }

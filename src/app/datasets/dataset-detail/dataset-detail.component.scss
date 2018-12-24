@@ -155,10 +155,11 @@ section#keywords {
   padding-top: 2em;
   .section-content {
     display: flex;
+    flex-wrap: wrap;
     padding-top: 1em;
   }
   .item {
-    margin-right: 10px;
+    margin: 2px;
     background: #C4C4C4;
     color: #ffffff;
     padding: 7px 20px;
@@ -168,10 +169,11 @@ section#keywords {
 section#additionalInfo {
   .section-content {
     display: flex;
+    flex-wrap: wrap;
     padding-top: 1em;
   }
   .item {
-    margin-right: 10px;
+    margin: 2px;
     background: #C4C4C4;
     color: #ffffff;
     padding: 7px 20px;
