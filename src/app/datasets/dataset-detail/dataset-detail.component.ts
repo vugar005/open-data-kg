@@ -1,3 +1,4 @@
+import { AppState } from './../../reducers/index';
 import { SharedService } from 'src/app/shared/shared.service';
 import { DatasetDetail } from '../models/dataset-detail.model';
 import { Component, OnInit, Input, Output, EventEmitter, HostBinding } from '@angular/core';
@@ -7,6 +8,9 @@ import { trigger, useAnimation, transition } from '@angular/animations';
 import {slideInRight, zoomInLeft} from 'ng-animate';
 import { DatasetsService } from '../datasets.service';
 import { Dataset } from '../models/dataset.model';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { isLoggedIn } from 'src/app/auth/store/auth.selectors';
 @Component({
   selector: 'dataset-detail',
   templateUrl: './dataset-detail.component.html',
@@ -25,13 +29,16 @@ export class DatasetDetailComponent implements OnInit {
   datasetKeywords: any;
   datasetCategories: any;
   left = faChevronLeft;
-
   favouriteDatasets: Dataset[];
+  isLoggedIn$: Observable<boolean>;
   @HostBinding('@slideInRight') animate = this.isInner;
   constructor(private datasetService: DatasetsService,
     private route: ActivatedRoute,
-    private sharedService: SharedService
-    ) { }
+    private sharedService: SharedService,
+    private store: Store<AppState>
+    ) {
+      this.isLoggedIn$ = store.select(isLoggedIn);
+    }
 
   ngOnInit() {
    if (this.id) {
@@ -66,7 +73,7 @@ export class DatasetDetailComponent implements OnInit {
   }
   onUnFavoriteMark(id: string) {
     this.datasetService.unmarkDatasetAsFavorite(id).subscribe(res => {
-      this.sharedService.createNotification('Sucess', 'Unsaving Dataset');
+  //    this.sharedService.createNotification('Sucess', 'Unsaving Dataset');
       this.getFavoriteDatasets();
     });
   }
@@ -75,6 +82,7 @@ export class DatasetDetailComponent implements OnInit {
     .subscribe(res => this.favouriteDatasets = res);
   }
   isFavorite() {
+    if(!this.favouriteDatasets) {return;}
     return this.favouriteDatasets.find(f => f.datasetId === this.dataset.kv.id);
   }
 

@@ -26,7 +26,6 @@ export class ErrorInterceptor implements HttpInterceptor {
             if (response.body && response.body.err && response.body.err.length > 0) {
               const errors = response.body.err;
              this.handleHttpError(errors[0].val);
-            throw new Error('something went wrong')
             }
             if (response.body && response.body.code === 'UNAUTHORIZED') {
               // this.sharedService.createNotification('error', `${req.urlWithParams}`, 'Unauthorized');

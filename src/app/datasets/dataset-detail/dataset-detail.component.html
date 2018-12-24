@@ -31,31 +31,34 @@
                 </div>
               </div>
 
+           <ng-container *ngIf="(isLoggedIn$ | async)">
               <div class="box-perspective right" (click)="onFavoriteMark(dataset.kv.id)" *ngIf="!isFavorite() else unsave">
-                <div class="text pr-2">
-                  <p>{{ '~saveData' | translate }}</p>
-                </div>
-                <div class="rotating-box">
-                  <div class="icon">
-                    <img src="./assets/icons/folder.svg" />
+                  <div class="text pr-2">
+                    <p>{{ '~saveData' | translate }}</p>
+                  </div>
+                  <div class="rotating-box">
+                    <div class="icon">
+                      <img src="./assets/icons/folder.svg" />
+                    </div>
                   </div>
                 </div>
-              </div>
 
-            <ng-template #unsave>
+              <ng-template #unsave>
 
-              <div class="box-perspective right delete" (click)="onUnFavoriteMark(dataset.kv.id)">
-                <div class="text pr-2">
-                  <p>{{ '~unSaveData' | translate }}</p>
-                </div>
-                <div class="rotating-box">
-                  <div class="icon">
-                    <img src="./assets/icons/unsave.svg" />
+                <div class="box-perspective right delete" (click)="onUnFavoriteMark(dataset.kv.id)">
+                  <div class="text pr-2">
+                    <p>{{ '~unSaveData' | translate }}</p>
+                  </div>
+                  <div class="rotating-box">
+                    <div class="icon">
+                      <img src="./assets/icons/unsave.svg" />
+                    </div>
                   </div>
                 </div>
-              </div>
 
-            </ng-template>
+              </ng-template>
+
+           </ng-container>
 
             </div>
           </div>
