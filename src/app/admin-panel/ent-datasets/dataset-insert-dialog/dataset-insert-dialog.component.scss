@@ -7,23 +7,45 @@
   background-color: #ffc107;
   color: rgba(255,255,255,.87);
 }
+/deep/ .mat-stepper-vertical {
+  width: 60vw;
+}
 .nt-form {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+.ckeditor-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border-bottom: 1px solid grey;
+  margin-bottom: 10px;
+  .field-title{
+  color: #999591;
+  font-size: 14px;
+  }
+  .ckeditor-element {
+    width: 100%;
+  }
 
+}
   .main-info {
   display: flex;
   flex-direction: column;
+  /deep/ .mat-form-field-infix {
+    font-size: 14px;
+  }
    .row-1 {
      display: flex;
     .left {
+      flex: 2;
       display: flex;
       flex-direction: column;
       padding: 10px;
       }
       .right {
+        flex: 1;
         display: flex;
         flex-direction: column;
         padding: 10px;

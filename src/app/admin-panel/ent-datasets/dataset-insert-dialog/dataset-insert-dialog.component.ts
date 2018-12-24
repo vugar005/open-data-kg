@@ -16,16 +16,16 @@ import { AppState } from 'src/app/reducers';
 import { Store } from '@ngrx/store';
 import { getUserOrg } from 'src/app/auth/store/auth.selectors';
 import { take } from 'rxjs/operators';
-import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import * as InlineEdtior from '@ckeditor/ckeditor5-build-inline';
 
 @Component({
   selector: 'app-dataset-insert-dialog',
   templateUrl: './dataset-insert-dialog.component.html',
   styleUrls: ['./dataset-insert-dialog.component.scss']
 })
-export class DatasetInsertDialogComponent implements OnInit {
+export class DatasetInsertDialogComponent implements OnInit, AfterViewInit {
   @ViewChild('f') ntForm: NgForm;
-  public Editor = ClassicEditor;
+  public Editor = InlineEdtior;
   apps$: Observable<any>;
   orgTypes$: Observable<SelectType[]>;
   config: ApiConfig;
@@ -36,7 +36,7 @@ export class DatasetInsertDialogComponent implements OnInit {
   selectedIndex = 0;
   startDate = new Date(1990, 0, 1);
   editorConfig = {
-    toolbar: [ 'heading', '|', 'Bold', 'Italic', 'link', 'Unlink' ]
+    toolbar: [ 'heading', '|', 'Bold', 'Italic', 'link',  ]
   };
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -59,6 +59,9 @@ export class DatasetInsertDialogComponent implements OnInit {
   getErrors(str) {
     if (!this.ntForm || !NgxFormUtils) { return; }
      return NgxFormUtils.getErrors(this.ntForm, str);
+    }
+    ngAfterViewInit() {
+      this.ntForm.valueChanges.subscribe(res => console.log(res))
     }
     onClose(res) {
       if (res && res.kv && res.kv.id) {

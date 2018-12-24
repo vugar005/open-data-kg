@@ -43,9 +43,24 @@
                     </div>
 
                   <div class="row-2">
-                      <ckeditor [editor]="Editor" data="<p>Hello, world!</p>"
-                        [config]="editorConfig"
-                        name="descriptionEn" ngModel  ></ckeditor>
+                  <div class="ckeditor-wrapper">
+                    <p class="field-title">{{'~description' | translate}} (En)</p>
+                    <ckeditor [editor]="Editor" class="ckeditor-element"
+                      [config]="editorConfig"
+                      name="descriptionEn" ngModel  ></ckeditor>
+                  </div>
+                  <div class="ckeditor-wrapper">
+                    <p class="field-title">{{'~description' | translate}} (Kg)</p>
+                    <ckeditor [editor]="Editor" class="ckeditor-element"
+                      [config]="editorConfig"
+                      name="descriptionKg" ngModel  ></ckeditor>
+                  </div>
+                  <div class="ckeditor-wrapper">
+                    <p class="field-title">{{'~description' | translate}} (Ru)</p>
+                    <ckeditor [editor]="Editor" class="ckeditor-element"
+                      [config]="editorConfig"
+                      name="descriptionRu" ngModel  ></ckeditor>
+                  </div>
 
                   <!-- <mat-form-field class="text-area">
 
@@ -53,15 +68,6 @@
                       <mat-error>{{getErrors('descriptionEn')}} </mat-error>
                     </mat-form-field>  -->
 
-                    <mat-form-field class="text-area">
-                        <textarea   rows=2  matInput placeholder="{{'~description' | translate}} (Kg)" class="nt-form-input" name="descriptionKg" ngModel  required> </textarea>
-                        <mat-error>{{getErrors('descriptionKg')}} </mat-error>
-                      </mat-form-field>
-
-                    <mat-form-field class="text-area">
-                        <textarea rows = 2  matInput placeholder="{{'~description' | translate}} (Ru)" class="nt-form-input" name="descriptionRu" ngModel  required> </textarea>
-                        <mat-error>{{getErrors('descriptionRu')}} </mat-error>
-                      </mat-form-field>
                   </div>
 
                   </div>
