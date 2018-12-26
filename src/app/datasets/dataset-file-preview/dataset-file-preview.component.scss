@@ -1,0 +1,36 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  background: var(--kg-wrapper-background);
+  left: 0;
+}
+.dataset-info-wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 32px 40px;
+  background: #ffffff;
+  border-radius: 10px;
+  .dataset-name {
+    font-size: 18px;
+    color: #333333;
+    padding-bottom: 30px;
+    font-weight: bold;
+  }
+  .dataset-description {
+    font-size: 14px;
+    text-align: justify;
+    color: #333333;
+  }
+}
+
+.file-box {
+  flex: 1;
+  .file-iframe {
+   width: 100%;
+   height: 100%;
+  }
+}

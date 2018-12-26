@@ -1,3 +1,4 @@
+import { DatasetFilePreviewComponent } from './dataset-file-preview/dataset-file-preview.component';
 import { ForLoggedInDirective } from './../shared/directives/forLoggedIn.directive';
 import { EffectsModule } from '@ngrx/effects';
 import { CommentsModule } from './../comments/comments.module';
@@ -50,6 +51,7 @@ import { SharedRbacModule } from '../shared/shared-rbac.module';
      DatasetByOrgComponent,
      DatasetGroupListComponent,
      DatasetDetailComponent,
+     DatasetFilePreviewComponent,
      DatasetSearchBoxComponent,
      DatasetSearchResultComponent,
      ModuleSidebarComponent,

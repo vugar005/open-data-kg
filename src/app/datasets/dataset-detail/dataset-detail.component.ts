@@ -31,6 +31,7 @@ export class DatasetDetailComponent implements OnInit {
   left = faChevronLeft;
   favouriteDatasets: Dataset[];
   isLoggedIn$: Observable<boolean>;
+  datasetPreview: Dataset;
   @HostBinding('@slideInRight') animate = this.isInner;
   constructor(private datasetService: DatasetsService,
     private route: ActivatedRoute,
@@ -72,7 +73,9 @@ export class DatasetDetailComponent implements OnInit {
     });
   }
   onUnFavoriteMark(id: string) {
-    this.datasetService.unmarkDatasetAsFavorite(id).subscribe(res => {
+  const favDataset = this.getFavoriteDataset();
+  console.log(favDataset)
+    this.datasetService.unmarkDatasetAsFavorite(favDataset.id).subscribe(res => {
   //    this.sharedService.createNotification('Sucess', 'Unsaving Dataset');
       this.getFavoriteDatasets();
     });
@@ -82,7 +85,10 @@ export class DatasetDetailComponent implements OnInit {
     .subscribe(res => this.favouriteDatasets = res);
   }
   isFavorite() {
-    if(!this.favouriteDatasets) {return;}
+    if (!this.favouriteDatasets) {return; }
+    return this.getFavoriteDataset();
+  }
+  getFavoriteDataset(): Dataset {
     return this.favouriteDatasets.find(f => f.datasetId === this.dataset.kv.id);
   }
 
