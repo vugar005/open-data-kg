@@ -1,4 +1,4 @@
-<form #f="ngForm" (ngSubmit)="onSubmit(f)">
+<form #f="ngForm" >
   <div class="co-add-top">
     <div class="co-add-msg-icon">
       <img src="./assets/icons/msg-icon.svg">
@@ -9,7 +9,7 @@
  </div>
  <input hidden name="datasetId" [(ngModel)]="datasetId">
  <div class="co-add-bottom">
-   <button mat-raised-button color="primary"  type="submit"
+   <button mat-raised-button color="primary"  type="submit" forLoggedIn (clicked)="onSubmit(f)"
    >{{'~send' | translate}}</button>
  </div>
 

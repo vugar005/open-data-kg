@@ -41,11 +41,12 @@ import { SharedModule } from './shared/shared.module';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { TypeheadModule } from 'ngx-typehead-dir';
 import { SharedRbacModule } from './shared/shared-rbac.module';
-import { MatIconModule } from '@angular/material';
+import { MatIconModule, MatButtonModule } from '@angular/material';
 import { HttpClientBusyModule } from 'ngx-httpclient-busy';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { HttpLoaderFactory } from './shared/shared-translate.module';
 import { PopularDatasetsComponent } from './global-nav/popular-datasets/popular-datasets.component';
+import { NotLoggedInDialogComponent } from './not-loggedIn-dialog/not-loggedIn-dialog.component';
 
 @NgModule({
 declarations: [
@@ -69,6 +70,7 @@ declarations: [
   OrganizationOverviewComponent,
   UserProfileComponent
 ],
+entryComponents: [NotLoggedInDialogComponent],
 imports: [
   CommonModule,
   AppRoutingModule,
@@ -85,6 +87,7 @@ imports: [
   PerfectScrollbarModule,
   TypeheadModule,
   SharedRbacModule,
+  MatButtonModule,
   MatIconModule,
   DatasetBoxModule,
   HttpClientBusyModule.forRoot(),
@@ -132,6 +135,7 @@ exports: [
   MatIconModule,
   HttpClientBusyModule,
   TranslateModule,
+  MatButtonModule
 ],
 providers: [
   SharedService,

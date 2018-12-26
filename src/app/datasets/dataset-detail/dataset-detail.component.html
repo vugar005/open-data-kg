@@ -31,8 +31,7 @@
                 </div>
               </div>
 
-           <ng-container *ngIf="(isLoggedIn$ | async)">
-              <div class="box-perspective right" (click)="onFavoriteMark(dataset.kv.id)" *ngIf="!isFavorite() else unsave">
+              <div class="box-perspective right" forLoggedIn (clicked)="onFavoriteMark(dataset.kv.id)" *ngIf="!isFavorite() else unsave">
                   <div class="text pr-2">
                     <p>{{ '~saveData' | translate }}</p>
                   </div>
@@ -45,7 +44,7 @@
 
               <ng-template #unsave>
 
-                <div class="box-perspective right delete" (click)="onUnFavoriteMark(dataset.kv.id)">
+                <div class="box-perspective right delete" forLoggedIn (clicked)="onUnFavoriteMark(dataset.kv.id)">
                   <div class="text pr-2">
                     <p>{{ '~unSaveData' | translate }}</p>
                   </div>
@@ -58,7 +57,6 @@
 
               </ng-template>
 
-           </ng-container>
 
             </div>
           </div>
@@ -150,6 +148,11 @@
         </section>
       </div>
     </div>
+    <!-- <div class="row">
+      <div class="col-12">
+        <iframe src="https://1drv.ms/x/s!AgQasXqSLzgkl3jNZwi3E8Oew1YQ"></iframe>
+      </div>
+    </div> -->
 
     <div class="row justify-content-center">
       <div [ngClass]="{ 'col-12': isInner, 'col-9': !isInner }">

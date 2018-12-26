@@ -7,13 +7,15 @@ import { CommentAddComponent } from './comment-add/comment-add.component';
 import { MatButtonModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { SharedTranslateModule } from '../shared/shared-translate.module';
+import { SharedRbacModule } from '../shared/shared-rbac.module';
 
 @NgModule({
   imports: [
     CommonModule,
     MatButtonModule,
     FormsModule,
-    SharedTranslateModule
+    SharedTranslateModule,
+    SharedRbacModule
   ],
   declarations: [CommentsComponent, CommentsListComponent, CommentBoxComponent, CommentAddComponent],
   exports: [CommentsComponent, CommentsListComponent, CommentBoxComponent, CommentAddComponent]

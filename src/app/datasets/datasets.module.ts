@@ -1,3 +1,4 @@
+import { ForLoggedInDirective } from './../shared/directives/forLoggedIn.directive';
 import { EffectsModule } from '@ngrx/effects';
 import { CommentsModule } from './../comments/comments.module';
 import { TypeheadModule } from 'ngx-typehead-dir';
@@ -11,7 +12,7 @@ import { DatasetsComponent } from './datasets.component';
 import { DatasetByOrgComponent } from './dataset-by-org/dataset-by-org.component';
 import { ModuleSidebarComponent } from './module-sidebar/module-sidebar.component';
 import { DatasetsRoutes } from './datasets.routing';
-import { MatExpansionModule } from '@angular/material';
+import { MatExpansionModule} from '@angular/material';
 import { SharedModule } from '../shared/shared.module';
 import { DatasetSearchResultComponent } from './dataset-search-result/dataset-search-result.component';
 import { DatasetSearchBoxComponent } from './dataset-search-box/dataset-search-box.component';
@@ -25,6 +26,7 @@ import { StarRatingModule } from '../shared/star-rating.module';
 import { StoreModule } from '@ngrx/store';
 import * as fromStore from './store/dataset.reducer';
 import { DatasetEffects } from './store/dataset.effects';
+import { SharedRbacModule } from '../shared/shared-rbac.module';
 
 @NgModule({
   imports: [
@@ -38,6 +40,7 @@ import { DatasetEffects } from './store/dataset.effects';
     CommentsModule,
     DatasetBoxModule,
     StarRatingModule,
+    SharedRbacModule,
     StoreModule.forFeature('dataset', fromStore.reducer),
     EffectsModule.forFeature([DatasetEffects])
   ],

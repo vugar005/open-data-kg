@@ -107,7 +107,7 @@ getApiByDatasetById(id: string): Observable<DatasetApi[]> {
   unmarkDatasetAsFavorite(id: string) {
     const obj = {
       kv: {
-        datasetId: id
+        id: id
       }
     };
     return this.http.post('api/post/Permission/Datasets/DeleteFavoriteDataset', JSON.stringify(obj));
