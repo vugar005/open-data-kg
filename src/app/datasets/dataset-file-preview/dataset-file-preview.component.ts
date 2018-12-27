@@ -1,3 +1,5 @@
+import { DatasetDetail } from './../models/dataset-detail.model';
+import { DatasetsService } from 'src/app/datasets/datasets.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { Dataset } from '../models/dataset.model';
 
@@ -7,11 +9,12 @@ import { Dataset } from '../models/dataset.model';
   styleUrls: ['./dataset-file-preview.component.scss']
 })
 export class DatasetFilePreviewComponent implements OnInit {
- @Input() datasetPreview: Dataset;
-  constructor() { }
+ @Input() dataset: DatasetDetail;
+ show = 'excel';
+  constructor(private datasetService: DatasetsService) { }
 
   ngOnInit() {
-    console.log(this.datasetPreview);
+    this.dataset = this.datasetService.resourceDataset;
   }
 
 }

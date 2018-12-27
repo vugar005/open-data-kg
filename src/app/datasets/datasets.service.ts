@@ -16,7 +16,7 @@ import { Dataset } from './models/dataset.model';
   providedIn: 'root'
 })
 export class DatasetsService {
-
+resourceDataset: DatasetDetail;
 constructor(private http: HttpClient) { }
 getDatasetById(id: string): Observable<DatasetDetail> {
   const body = {

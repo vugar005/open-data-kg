@@ -69,7 +69,7 @@
                 <div class="item-icon {{ api?.format }}">{{ api?.format }}</div>
                 <div class="item-description">{{ api?.descriptionEn }}</div>
                 <div class="item-links">
-                  <div class="info-link" (click)="datasetPreview=dataset.kv">
+                  <div class="info-link" (click)="onResourcesNavigate(dataset.kv.id)">
                     <img src="./assets/icons/info.svg" />
                   </div>
                   <a
@@ -168,4 +168,4 @@
   </div>
 </div>
 
-<dataset-file-preview *ngIf="datasetPreview" [datasetPreview]="datasetPreview"></dataset-file-preview>
+<!-- <dataset-file-preview *ngIf="datasetPreview" [datasetPreview]="datasetPreview"></dataset-file-preview> -->

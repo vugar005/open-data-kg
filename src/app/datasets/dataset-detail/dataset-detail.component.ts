@@ -2,7 +2,7 @@ import { AppState } from './../../reducers/index';
 import { SharedService } from 'src/app/shared/shared.service';
 import { DatasetDetail } from '../models/dataset-detail.model';
 import { Component, OnInit, Input, Output, EventEmitter, HostBinding } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import {faChevronLeft} from '@fortawesome/free-solid-svg-icons';
 import { trigger, useAnimation, transition } from '@angular/animations';
 import {slideInRight, zoomInLeft} from 'ng-animate';
@@ -36,7 +36,8 @@ export class DatasetDetailComponent implements OnInit {
   constructor(private datasetService: DatasetsService,
     private route: ActivatedRoute,
     private sharedService: SharedService,
-    private store: Store<AppState>
+    private store: Store<AppState>,
+    private router: Router
     ) {
       this.isLoggedIn$ = store.select(isLoggedIn);
     }
@@ -90,6 +91,10 @@ export class DatasetDetailComponent implements OnInit {
   }
   getFavoriteDataset(): Dataset {
     return this.favouriteDatasets.find(f => f.datasetId === this.dataset.kv.id);
+  }
+  onResourcesNavigate(id: string) {
+    this.datasetService.resourceDataset = this.dataset;
+    this.router.navigate([`datasets/${id}/resources/1`]);
   }
 
 }

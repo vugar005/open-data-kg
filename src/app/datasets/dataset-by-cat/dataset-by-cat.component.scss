@@ -17,7 +17,7 @@ z-index: 6; // less than app-header
 
 
 .route-tree {
-  font-size: 12px;
+  font-size: 13px;
   color: #333333;
 }
 
@@ -25,11 +25,12 @@ z-index: 6; // less than app-header
   display: flex;
   .search-box {
     display: flex;
-     padding: 11px 28px;
+    flex: 1 1 0;
+     padding: 6px 40px;
      width: 100%;
      background: #ffffff;
      position: relative;
-     border-radius: 9px;
+     border-radius: 100px;
      .ng-input {
       &::placeholder {
         font-size: 14px;
@@ -54,12 +55,15 @@ z-index: 6; // less than app-header
         width: 100%;
         height: 100%;
         border:0;
+        color: #969696;
+        font-size: 14px;
+        height: 40px;
         outline: none;
-        border-radius: 9px;
+        border-radius: 100px;
         -moz-appearance:none;
         -webkit-appearance:none;
         appearance:none;
-        padding-left: 20%;
+        padding: 12px 0 9px 20%;
         cursor: pointer;
         .default {
           padding: 15px 50px;
@@ -73,17 +77,22 @@ z-index: 6; // less than app-header
         position: absolute;
         right: 0;
         top: 0;
-        width: 45px;
-        height: 100%;
+        bottom: 0;
+        margin: auto;
+        width: 30px;
+        height: 30px;
+        padding-top: 2px;
+        margin-right: 7px;
         cursor: pointer;
         background: #49ACC6;
-        border-radius: 0px 9px 9px 0px;
+        border-radius: 100px;
         pointer-events: none;
         .icon {
-          width: 14px;
+          width: 12px;
         }
       }
-  }
+    }
+
 }
 /deep/ ::-webkit-scrollbar {
   width: 6px;

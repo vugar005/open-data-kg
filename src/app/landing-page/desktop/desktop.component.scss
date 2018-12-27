@@ -79,3 +79,9 @@
   border-top-left-radius: 25px!important;
   border-top-right-radius: 25px!important;
 }
+
+  @media all and (min-width: 1430px) {
+   .container {
+   //  max-width: 1700px;
+   }
+  }

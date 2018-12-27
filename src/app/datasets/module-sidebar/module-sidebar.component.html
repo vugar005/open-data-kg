@@ -1,4 +1,7 @@
-<div class="module-title">{{type | uppercase}}</div>
+<div class="module-title">
+  <div class="arrow-icon"> </div>
+ <p> {{type | titlecase}}</p>
+</div>
 <div class="items-co">
     <div class="item"  *ngFor="let cat of itemList; let i = index" (click)="onItemClick(cat.id)"
     [ngClass]="{'active': itemList[i].id === selectedIndex}">

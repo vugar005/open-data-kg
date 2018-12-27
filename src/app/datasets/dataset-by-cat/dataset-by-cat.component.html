@@ -4,7 +4,7 @@
     <div class="row  pt-4 pb-4 align-items-center">
       <div class="col-3">
        <div class="route-tree">
-        Open data > Categories > Family
+        Open data &nbsp; > &nbsp; Categories &nbsp; > &nbsp;Family
        </div>
       </div>
       <div class="col-9">
@@ -18,7 +18,7 @@
             (selected)="handleResultSelected($event)"
             [(ngModel)]="inputValue" (keydown)="onInputEnter($event)">
             <div class="search-ico" (click)="onSubmit()">
-              <fa-icon [icon]="faSearch"></fa-icon>
+              <img src="./assets/icons/search-icon.svg">
             </div>
           </div>
 
@@ -43,7 +43,6 @@
          <dataset-group-list [categoryQuery]= "categoryQuery" *ngIf="!datasetId"
           #dataset_list [type]="'category'"
            (boxSelected)="datasetId = $event"></dataset-group-list>
-
          <dataset-detail  [id]="datasetId" *ngIf="datasetId" [isInner]="true" (navBack)="exitDetail()"></dataset-detail>
       </div>
     </div>
