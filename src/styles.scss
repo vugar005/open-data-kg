@@ -216,7 +216,7 @@ img {
     }
   }
   .text {
-    visibility: hidden;
+    visibility: visible;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -272,3 +272,9 @@ img {
    font-size: 14px;
   }
  }
+// @media (min-width: 576px), (max-width: 768px) {
+//   .container {
+//     max-width: 100%;
+//     width: 100%;
+//   }
+// }

@@ -5,12 +5,8 @@ import { Component, OnInit, Input } from '@angular/core';
   templateUrl: './dataset-box.component.html',
   styleUrls: ['./dataset-box.component.scss']
 })
-export class DatasetBoxComponent implements OnInit {
+export class DatasetBoxComponent {
   @Input() dataset: any;
   @Input() mode = 'show';
   constructor() { }
-
-  ngOnInit() {
-  }
-
 }

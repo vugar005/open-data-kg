@@ -140,5 +140,6 @@ interface R {
   keywordEn?: string;
   keyword?: string;
   keywordRu?: string;
+  openPortalLink: string;
 }
 

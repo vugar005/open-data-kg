@@ -5,17 +5,16 @@
       <div class="dataset-info-wrapper" >
         <div class="dataset-name">{{dataset?.kv.name}}</div>
         <div class="dataset-description">{{dataset?.kv.description}}</div>
-        <button mat-button (click)="show = 'excel'">Excel Sample</button>
-        <button mat-button (click)="show = 'pdf'" style="margin-top: 15px;">PDf Sample</button>
       </div>
 
       <div class="file-box">
-        <div class="iframe-wrapper" *ngIf="show == 'excel'">
+        <!-- <div class="iframe-wrapper" *ngIf="show == 'excel'">
             <iframe src="https://onedrive.live.com/embed?cid=24382F927AB11A04&resid=24382F927AB11A04%213093&authkey=ALJ2krwDqlAJGd0&em=2"
         frameborder="0" scrolling="no" ></iframe>
-        </div>
-        <div class="iframe-wrapper"  *ngIf="show == 'pdf'">
-            <iframe  src="http://www.pdf995.com/samples/pdf.pdf"></iframe>
+        </div> -->
+        <div class="iframe-wrapper" *ngIf="dataset?.tbl[0]?.r[0]?.openPortalLink" >
+            <!-- <iframe  src="http://www.pdf995.com/samples/pdf.pdf"></iframe> -->
+            <iframe  [src]="getSafeUrl(dataset?.tbl[0].r[0].openPortalLink)"></iframe>
         </div>
 
       </div>

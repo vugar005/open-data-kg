@@ -1,7 +1,7 @@
+import { DomSanitizer } from '@angular/platform-browser';
 import { DatasetDetail } from './../models/dataset-detail.model';
 import { DatasetsService } from 'src/app/datasets/datasets.service';
 import { Component, OnInit, Input } from '@angular/core';
-import { Dataset } from '../models/dataset.model';
 
 @Component({
   selector: 'dataset-file-preview',
@@ -11,10 +11,13 @@ import { Dataset } from '../models/dataset.model';
 export class DatasetFilePreviewComponent implements OnInit {
  @Input() dataset: DatasetDetail;
  show = 'excel';
-  constructor(private datasetService: DatasetsService) { }
+  constructor(private datasetService: DatasetsService, private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
     this.dataset = this.datasetService.resourceDataset;
+  }
+  getSafeUrl(url: string) {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 
 }
