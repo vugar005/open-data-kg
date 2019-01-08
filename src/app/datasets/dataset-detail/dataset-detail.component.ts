@@ -94,7 +94,7 @@ export class DatasetDetailComponent implements OnInit {
   }
   onResourcesNavigate(id: string) {
     this.datasetService.resourceDataset = this.dataset;
-    this.router.navigate([`datasets/${id}/resources/1`]);
+    this.router.navigate([`datasets/${id}/resources`]);
   }
 
 }

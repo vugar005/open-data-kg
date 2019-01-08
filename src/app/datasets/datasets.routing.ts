@@ -9,7 +9,7 @@ const routes: Routes = [
   {path: '', redirectTo: 'by-category', pathMatch: 'full'},
   { path: 'by-category', component: DatasetByCatComponent, data: { breadcrumb: 'by-category'} },
   {path: 'by-organization', component: DatasetByOrgComponent, data: {breadcrumb: 'by organization'}},
-  {path: ':id/resources/:id', component: DatasetFilePreviewComponent},
+  {path: ':id/resources', component: DatasetFilePreviewComponent},
   {path: 'searchResults', component: DatasetSearchResultComponent},
   {path: ':id/details', component: DatasetDetailComponent, data: {breadcrumb: 'details'}}
 ];

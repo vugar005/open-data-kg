@@ -28,6 +28,7 @@ import { StoreModule } from '@ngrx/store';
 import * as fromStore from './store/dataset.reducer';
 import { DatasetEffects } from './store/dataset.effects';
 import { SharedRbacModule } from '../shared/shared-rbac.module';
+import { DatasetFiltersComponent } from './dataset-filters/dataset-filters.component';
 
 @NgModule({
   imports: [
@@ -56,6 +57,7 @@ import { SharedRbacModule } from '../shared/shared-rbac.module';
      DatasetSearchResultComponent,
      ModuleSidebarComponent,
      FeedbackBoxComponent,
+     DatasetFiltersComponent
     ],
     providers: [
       { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },

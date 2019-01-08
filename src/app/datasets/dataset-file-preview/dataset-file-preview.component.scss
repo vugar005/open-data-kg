@@ -3,6 +3,13 @@
   position: relative;
   background: var(--kg-wrapper-background);
 }
+.co-header {
+  .back-icon {
+    width: 30px;
+    cursor: pointer;
+    margin-left: -32px;
+  }
+}
 .dataset-file-preview-wrapper {
   display: flex;
   flex-direction: column;

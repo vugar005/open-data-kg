@@ -19,7 +19,7 @@ const routes: Routes = [
   {path: 'news', loadChildren: './news/news.module#NewsModule'},
   {path: 'blogs', loadChildren: './blog/blog.module#BlogModule'},
   {path: 'announcements', loadChildren: './annoucements/announcements.module#AnnouncementsModule'},
-  {path: '404', component: NotFoundComponent},
+//  {path: '404', component: NotFoundComponent},
  {path: '**', redirectTo: '404'}
 ];
 

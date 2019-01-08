@@ -105,6 +105,12 @@ function getUrl(mod) {
     return 'datasets';
     case 'CMMNT':
     return 'comments';
+    case 'NWS':
+    return 'news';
+    case 'BLG':
+    return 'blogs';
+    case 'ANNCMNT':
+    return 'annoucements';
     default :
     return '';
   }

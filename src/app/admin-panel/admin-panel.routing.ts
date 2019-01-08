@@ -16,6 +16,9 @@ const routes: Routes = [
     {path: 'organizations', loadChildren: './ent-organizations/ent-organizations.module#EntOrganizationsModule'},
     {path: 'datasets', loadChildren: './ent-datasets/ent-datasets.module#EntDatasetsModule'},
     {path: 'comments', loadChildren: './ent-comments/ent-comments.module#EntCommentsModule'},
+    {path: 'news', loadChildren: './ent-news/ent-news.module#EntNewsModule'},
+    {path: 'blogs', loadChildren: './ent-blogs/ent-blogs.module#EntBlogsModule'},
+   // {path: 'annoucements', loadChildren: './ent-annoucements/ent-annoucements.module#EntAnnoucementsModule'},
   ]},
 ];
 

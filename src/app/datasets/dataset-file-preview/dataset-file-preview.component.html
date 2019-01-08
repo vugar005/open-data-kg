@@ -1,6 +1,15 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
+        <div class="co-header">
+        <div class="back-icon">
+        <img src="./assets/icons/arrow-left.svg"  [routerLink]="['/datasets/by-category']" >
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
      <div class="dataset-file-preview-wrapper">
       <div class="dataset-info-wrapper" >
         <div class="dataset-name">{{dataset?.kv.name}}</div>
