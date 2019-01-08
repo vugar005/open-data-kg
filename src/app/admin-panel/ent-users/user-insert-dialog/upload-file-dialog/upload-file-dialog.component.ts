@@ -1,3 +1,5 @@
+import { HttpClient } from '@angular/common/http';
+import { CustomFilePickerAdapter } from './../../../../shared/adapters/custom-file-picker.adapter';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
 
@@ -8,11 +10,15 @@ import { MatDialogRef } from '@angular/material';
 })
 export class UploadFileDialogComponent {
   @Output() uploaded = new EventEmitter<string>();
-  constructor( public dialogRef: MatDialogRef<UploadFileDialogComponent>) { }
+  adapter = new CustomFilePickerAdapter(this.http);
+  constructor( public dialogRef: MatDialogRef<UploadFileDialogComponent>, private http: HttpClient) { }
 
   onUploaded(res) {
     console.log(res);
     this.dialogRef.close(res);
+  }
+  onValidationError(er) {
+    console.log(er)
   }
 
 }

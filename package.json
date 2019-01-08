@@ -50,6 +50,7 @@
     "ng-animate": "^0.3.4",
     "ng-click-outside": "^4.0.0",
     "ng2-izitoast": "^2.0.0",
+    "ngx-awesome-uploader": "0.0.2",
     "ngx-file-drop": "^5.0.0",
     "ngx-file-picker": "0.0.5",
     "ngx-form-utils": "0.0.3",

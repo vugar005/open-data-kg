@@ -1,6 +1,7 @@
 <ngx-file-picker
-[fileType]="'image'"
-[allowedSize]="100"
-[uploadType]="'single'"
-(uploaded)="onUploaded($event)"
+[fileMaxSize]="5"
+[adapter]="adapter"
+[uploadType]="'multi'"
+(validationError)="onValidationError($event)"
+(uploadSuccess)="onUploaded($event)"
 ></ngx-file-picker>
