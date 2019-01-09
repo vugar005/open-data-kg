@@ -6,7 +6,7 @@
     [apiKey]="'datasetFullname'"
     [listItemLabel]="'name'"
     (selected)="selected.next($event)" ngModel
-    name="inputValue" (keydown)="onInputEnter($event)">
+    name="inputValue" (keydown)="onInputEnter($event, f)">
     <div class="search-ico" (click)="onSubmit(f)">
       <img src="./assets/icons/search-icon.svg">
     </div>

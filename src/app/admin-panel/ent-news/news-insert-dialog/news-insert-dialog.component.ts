@@ -15,6 +15,8 @@ import { UploadFileDialogComponent } from '../../ent-users/user-insert-dialog/up
 export class NewsInsertDialogComponent  {
   cats$: Observable<any>;
   imgId: string;
+  maxDate = new Date();
+  startDate = new Date();
   @ViewChild('f') ntForm: NgForm;
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,

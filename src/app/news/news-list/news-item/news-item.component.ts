@@ -11,6 +11,7 @@ import { transition, trigger, useAnimation } from '@angular/animations';
 import { fadeInRight } from 'ng-animate';
 import { timer, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { NewsItem } from '../../models/news-item.model';
 
 @Component({
   selector: 'news-item',
@@ -30,7 +31,7 @@ import { takeUntil } from 'rxjs/operators';
 })
 export class NewsItemComponent implements OnInit, DoCheck, OnDestroy {
   @Input()
-  news: any;
+  news: NewsItem;
   @Input()
   index: number;
   fadeInRight = fadeInRight;

@@ -88,9 +88,8 @@ export class AppComponent implements OnInit {
     if (URL === 'http://185.18.245.89/DispatcherRest') {
       URL = 'http://185.18.245.89:9090/DispatcherRest';
     }
-    console.log(URL);
+   localStorage.setItem('kg_hostname', URL);
     this.store.dispatch(new SetApiUrl(URL));
-   // localStorage.setItem('uni_hostname', URL);
   }
   setDefaultLang() {
     const language = localStorage.getItem('kg-language') || 'en';

@@ -2,6 +2,9 @@ import { Component, OnInit, ViewChild, AfterViewInit, OnDestroy } from '@angular
 import { AppState } from '../../reducers';
 import { Store } from '@ngrx/store';
 import { SwiperConfigInterface, SwiperDirective } from 'ngx-swiper-wrapper';
+import { SharedService } from 'src/app/shared/shared.service';
+import { Observable } from 'rxjs';
+import { NewsItem } from '../models/news-item.model';
 @Component({
   selector: 'app-news-list',
   templateUrl: './news-list.component.html',
@@ -60,10 +63,12 @@ export class NewsListComponent implements OnInit, AfterViewInit, OnDestroy {
     //   date: '27 august 14:35'
     // }
   ];
-  constructor(private store: Store<AppState>) {
+  newsList$: Observable<NewsItem[]>;
+  constructor(private sharedService: SharedService) {
   }
 
   ngOnInit() {
+    this.getNews();
   this.newsList =  this.newsList.concat(this.newsList).concat(this.newsList);
   }
   ngAfterViewInit() {
@@ -83,5 +88,8 @@ export class NewsListComponent implements OnInit, AfterViewInit, OnDestroy {
     if (!this.swiper) {return; }
    this.swiper.nextSlide();
   }
+  getNews() {
+   this.newsList$ = this.sharedService.getTableData('api/get/Permission/Sharing/GetNewsForCommon');
+    }
 
 }

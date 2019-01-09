@@ -1,0 +1,26 @@
+<div class="container" *ngIf="newsItem">
+  <div class="row">
+    <div class="col-12">
+      <div class="content-wrapper">
+        <!-- <div class="co-title">Blog</div> -->
+        <div class="item-title">
+         {{newsItem.title}}
+        </div>
+      <div class="item-content">
+        <div class="item-img"  style="float: left" >
+            <img [src]="newsItem.fileId">
+            <!-- <img src="./assets/img/joshua-rawson-harris-664381-unsplash.png"> -->
+        </div>
+       {{newsItem.content}}
+      </div>
+    </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-8">
+      <div class="other-items">
+       <other-item *ngFor="let item of otherItems" [item]="item" routerLink="/news/{{item.id}}"></other-item>
+      </div>
+    </div>
+  </div>
+</div>

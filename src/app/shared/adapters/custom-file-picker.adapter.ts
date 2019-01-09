@@ -26,7 +26,7 @@ export class CustomFilePickerAdapter extends FilePickerAdapter {
   }
     public removeFile(id: string, fileItem): Observable<any> {
       console.log(id);
-    const removeApi = 'https://file-remove-demo.free.beeceptor.com';
+    const removeApi = `/api/post/file/${id}/remove`;
     return this.http.post(removeApi, {});
     }
 }

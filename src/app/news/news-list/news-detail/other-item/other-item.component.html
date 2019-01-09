@@ -1,0 +1,10 @@
+<div class="card-wrapper" *ngIf="item">
+  <div class="card-image">
+      <img [src]="item.fileId">
+  </div>
+  <div class="ng-card-content">
+    <div class="ng-card-title">{{item.title}}</div>
+    <div class="card-text">{{item.content}}</div>
+    <div class="card-date">{{item.publishDate}}</div>
+  </div>
+</div>

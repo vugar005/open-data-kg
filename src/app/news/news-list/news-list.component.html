@@ -1,5 +1,5 @@
 <div class="module-name">
-  {{'NEWS.moduleName' | translate}}
+  {{'news' | translate | titlecase}}
 </div>
 
 <div class="date-filters">
@@ -13,8 +13,8 @@
 <div class="swiper-co">
   <div  class="swiper-container" [swiper]="config" style="width: 100%" #swiper >
     <div class="swiper-wrapper">
-      <div class="swiper-slide" *ngFor="let news of newsList;let i=index;let first=first" [ngClass]="{'wide': i=== 0 }" >
-              <news-item [news]="news" [index]="i" ></news-item>
+      <div class="swiper-slide" *ngFor="let news of (newsList$ | async);let i=index;let first=first" [ngClass]="{'wide': i=== 0 }" >
+              <news-item [news]="news" [index]="i" routerLink="/news/{{news.id}}" ></news-item>
       </div>
     </div>
     <div class="en-pagination" >

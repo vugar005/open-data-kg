@@ -1,27 +1,37 @@
+import { AppState } from 'src/app/reducers';
 import { Injectable } from '@angular/core';
 import { Ng2IzitoastService } from 'ng2-izitoast';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable, Subject } from 'rxjs';
 import { SelectType } from './models/select-type.model';
-import { map} from 'rxjs/operators';
+import { map, take, tap} from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { BreadCrumb } from './models/breadcrumb.model';
 import { TableModel } from './models/table.model';
-import { Dataset } from '../datasets/models/dataset.model';
+import { Store } from '@ngrx/store';
+import { getApiUrl } from '../auth/store/auth.selectors';
 @Injectable()
 export class SharedService {
   toastRunning: boolean;
   toggleHeader = new Subject();
+  hostname: string;
   constructor(
     public iziToast: Ng2IzitoastService,
     private jwtService: JwtHelperService,
     private http: HttpClient,
     private matIconRegistry: MatIconRegistry,
-    private domSanitizer: DomSanitizer
-  ) {}
+    private domSanitizer: DomSanitizer,
+    private store: Store<AppState>
+  ) {
+    // this.store.select(getApiUrl).pipe(take(1)).subscribe(res => {
+    //   this.hostname = res;
+    //   console.log(res)
+    // });
+    this.hostname = localStorage.getItem('kg_hostname');
+  }
   createNotification(type: string, message: string, position = 'bottomRight') {
     this.clearOldToats();
     switch (type.toLowerCase()) {
@@ -232,10 +242,21 @@ buildBreadCrumb(route: ActivatedRoute, url: string = '',
  getCurentLocale(): string {
   return localStorage.getItem('kg-language') || 'en';
 }
-getTableData(url: string, kv: Object = {}): Observable<Dataset[]> {
+getTableData(url: string, kv: Object = {}): Observable<any> {
   return this.http.post<TableModel>(url, JSON.stringify(kv)).pipe(
-    map(res => res && res.tbl && res.tbl[0] && res.tbl[0].r)
-  );
+    map(res => res && res.tbl && res.tbl[0] && res.tbl[0].r),
+    map(res => this.mapFileId(res)));
+}
+private mapFileId(res: any) {
+ return res.map(data => {
+    if (data.fileId) {
+      return {
+        ...data,
+        fileId: `${this.hostname}/api/get/file/${data.fileId}`
+      };
+    }
+    return data;
+  });
 }
 
 }

@@ -1,16 +1,16 @@
-<div class="news-card" *ngIf="ready" [@fadeInRight]="fadeInRight" >
+<div class="news-card" *ngIf="ready" [@fadeInRight]="fadeInRight"  >
   <div class="cardImage">
-    <img src="./assets/img/{{news.imgPath}}.png">
+    <img [src]="news.fileId">
   </div>
    <div class="cardBody">
       <div class="cardTitle">
           {{news.title}}
         </div>
     <div class="cardContent">
-      {{news.shortContent}}
+      {{news.content}}
     </div>
     <div class="cardFooter">
-      {{news.date}}
+      {{news.publishDate}}
     </div>
    </div>
 </div>
