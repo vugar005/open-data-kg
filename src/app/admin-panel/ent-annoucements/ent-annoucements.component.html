@@ -1,11 +1,11 @@
 <div class="ng-admin-co-header">
   <div class="moduleName">
-    {{'~blogs' | translate}}
+    {{'~news' | translate}}
   </div>
    <div class="ng-admin-actions-template"  >
     <button (click)="table.onPrintSelected()" >{{'~print' | translate}}</button>
-    <button  *rbacAllow="['1000013', 'ADD']" (click)="table.addData()" >{{'~addData' | translate}}</button>
-    <button  *rbacAllow="['1000013', 'DELETE']" (click)="table.onRemove()"
+    <button  *rbacAllow="['1000014', 'ADD']" (click)="table.addData()" >{{'~addData' | translate}}</button>
+    <button  *rbacAllow="['1000014', 'DELETE']" (click)="table.onRemove()"
      [disabled]="!(table?.isRowSelected)">{{'~removeSelected' | translate}}</button>
     <button  [disabled]="!(table.selectedRow)"
     (click)="table.onRowPin()" > {{'~pinToTop' | translate}}</button>
@@ -26,8 +26,8 @@
  </div>
 
  <ng-template #editer>
-  <button [attr.t-btn]="'edit'"   *rbacAllow="['1000013', 'EDIT']">{{'~edit' | translate}}</button>
-  <button [attr.t-btn]="'remove'" *rbacAllow="['1000013', 'DELETE']">{{'~delete' | translate}}</button>
-  <button [attr.t-btn]="'confirm'" *rbacAllow="['1000013', 'CONFIRM']">{{'~confirm' | translate}}</button>
-<button [attr.t-btn]="'unConfirm'" *rbacAllow="['1000013', 'UNCONFIRM']">{{'~unconfirm' | translate}}</button>
+  <button [attr.t-btn]="'edit'"   *rbacAllow="['1000014', 'EDIT']">{{'~edit' | translate}}</button>
+  <button [attr.t-btn]="'remove'" *rbacAllow="['1000014', 'DELETE']">{{'~delete' | translate}}</button>
+  <button [attr.t-btn]="'confirm'" *rbacAllow="['1000014', 'CONFIRM']">{{'~confirm' | translate}}</button>
+<button [attr.t-btn]="'unConfirm'" *rbacAllow="['1000014', 'UNCONFIRM']">{{'~unconfirm' | translate}}</button>
 </ng-template>

@@ -1,0 +1,103 @@
+<form #f="ngForm" patch-form [form]="f" [data]="data?.row" class="nt-form" >
+
+  <div class="inputs">
+   <div class="row-1">
+      <div class="left">
+          <div class="upload-item-img">
+
+              <ng-container *ngIf="!imgId">
+                <img src="./assets/icons/avatar.svg" (click)="onUpload()">
+              </ng-container>
+
+              <ng-container *ngIf="imgId">
+                <img src="http://192.168.1.23:8080/DispatcherRest/api/get/file/{{imgId}}" (click)="onUpload()" onerror="this.src = './assets/icons/avatar.svg'">
+              </ng-container>
+              <div class="img-corners">
+                <div class="arrow"></div>
+                <div class="arrow-2"></div>
+              </div>
+              <div class="upload-div animated slideInUp">
+                <p>{{'~uploadImg' | translate}}</p>
+              </div>
+
+            </div>
+
+
+            <mat-form-field>
+              <input matInput [matDatepicker]="picker" placeholder="{{'~publishDate' | translate}}" name="publishDate" ngModel required
+                [max]="maxDate">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker [startAt]="startDate" startView="year"></mat-datepicker>
+              <mat-error>{{getErrors('publishDate')}}</mat-error>
+            </mat-form-field>
+
+       </div>
+
+            <div class="right">
+
+              <mat-form-field class="example-full-width input-title" >
+                <input matInput placeholder="{{'~title' | translate}} (Kg)" class="nt-form-input" name="titleKg" ngModel >
+                <mat-error>{{getErrors('titleKg')}}</mat-error>
+              </mat-form-field>
+
+              <mat-form-field class="example-full-width input-title" >
+                <input matInput placeholder="{{'~title' | translate}} (En)" class="nt-form-input" name="titleEn" ngModel >
+                <mat-error>{{getErrors('titleEn')}}</mat-error>
+
+              </mat-form-field>
+
+              <mat-form-field class="example-full-width input-title" >
+                <input matInput placeholder="{{'~title' | translate}} (Ru)" class="nt-form-input" name="titleRu" ngModel >
+                <mat-error>{{getErrors('titleRu')}}</mat-error>
+
+              </mat-form-field>
+
+
+        <mat-form-field>
+            <mat-select placeholder="{{'~categoryId' | translate}}" class="nt-form-input" name="categoryId" ngModel>
+              <mat-option value="">Choose</mat-option>
+              <mat-option *ngFor="let item of (cats$ | async)" [value]="item.value">
+                {{item.label}}
+              </mat-option>
+            </mat-select>
+            <mat-error>{{getErrors('categoryId')}}</mat-error>
+          </mat-form-field>
+
+               <input [hidden]="true" name="id" ngModel>
+            </div>
+   </div>
+     <div class="row-2">
+            <mat-form-field class="example-full-width">
+                <textarea matInput placeholder="{{'~content' | translate}} (Kg)" class="nt-form-input input-textarea" name="contentKg" ngModel    required> </textarea>
+                <mat-error>{{getErrors('contentKg')}}</mat-error>
+              </mat-form-field>
+
+              <mat-form-field class="example-full-width">
+                  <textarea matInput placeholder="{{'~content' | translate}} (En)" class="nt-form-input input-textarea" name="contentEn" ngModel    required> </textarea>
+                <mat-error>{{getErrors('contenEn')}}</mat-error>
+              </mat-form-field>
+
+              <mat-form-field class="example-full-width">
+                  <textarea  matInput placeholder="{{'~content' | translate}} (Ru)" class="nt-form-input input-textarea" name="contentRu" ngModel    required> </textarea>
+                <mat-error>{{getErrors('contentRu')}}</mat-error>
+              </mat-form-field>
+     </div>
+  </div>
+  <div class="actions">
+    <button mat-raised-button color="primary"  type="submit"  insertTableData [form]="f"
+    *ngIf="!data?.row"
+    [disabled]="f?.dirty && !f?.valid"
+    (onClose)="dialogRef.close()"
+    [table]="data?.table"
+    >{{'~add' | translate}}</button>
+    <button mat-raised-button color="primary"  type="submit" updateTableData [form]="f"
+    *ngIf="data?.row"
+    [disabled]="f?.dirty && !f?.valid"
+    (onClose)="dialogRef.close()"
+    [table]="data?.table"
+    >{{'~update' | translate}}</button>
+    <button mat-raised-button (click)="dialogRef.close()" type="reset">{{'~cancel' | translate}}</button>
+  </div>
+  <input [hidden]="true" name="fileId" value="imgId" [(ngModel)]="imgId" >
+
+</form>

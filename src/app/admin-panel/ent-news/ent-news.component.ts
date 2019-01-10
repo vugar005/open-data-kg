@@ -16,6 +16,8 @@ export class EntNewsComponent  {
     insertApi: 'api/post/Permission/Sharing/InsertNewNews',
     updateApi: 'api/post/Permission/Sharing/UpdateNews',
     deleteApi: 'api/post/Permission/Sharing/DeleteNews',
+    confirmApi: 'api/post/Permission/Sharing/ConfirmNews',
+    unConfirmApi: 'api/post/Permission/Sharing/UnconfirmNews'
   };
   @ViewChild('table') table: NtTableComponent;
   constructor(private dialog: MatDialog) {}

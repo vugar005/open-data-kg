@@ -11,10 +11,12 @@ import { MatDialog } from '@angular/material';
 })
 export class EntBlogsComponent  {
   config: ApiConfig = {
-    getApi: 'api/post/Permission/Sharing/GetNewsList',
-    insertApi: 'api/post/Permission/Sharing/InsertNewNews',
-    updateApi: 'api/post/Permission/Sharing/UpdateNews',
-    deleteApi: 'api/post/Permission/Sharing/DeleteNews',
+    getApi: 'api/post/Permission/Sharing/GetBlogList',
+    insertApi: 'api/post/Permission/Sharing/InsertNewBlog',
+    updateApi: 'api/post/Permission/Sharing/UpdateBlog',
+    deleteApi: 'api/post/Permission/Sharing/DeleteBlog',
+    confirmApi: 'api/post/Permission/Sharing/ConfirmBlog',
+    unConfirmApi: 'api/post/Permission/Sharing/UnconfirmBlog'
   };
   @ViewChild('table') table: NtTableComponent;
   constructor(private dialog: MatDialog) {

@@ -18,7 +18,7 @@ const routes: Routes = [
     {path: 'comments', loadChildren: './ent-comments/ent-comments.module#EntCommentsModule'},
     {path: 'news', loadChildren: './ent-news/ent-news.module#EntNewsModule'},
     {path: 'blogs', loadChildren: './ent-blogs/ent-blogs.module#EntBlogsModule'},
-   // {path: 'annoucements', loadChildren: './ent-annoucements/ent-annoucements.module#EntAnnoucementsModule'},
+    {path: 'annoucements', loadChildren: './ent-annoucements/ent-annoucements.module#EntAnnoucementsModule'},
   ]},
 ];
 
