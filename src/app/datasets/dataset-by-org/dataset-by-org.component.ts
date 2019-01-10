@@ -15,7 +15,6 @@ import { OrgQuery } from '../models/orgQuery.model';
 })
 export class DatasetByOrgComponent implements OnInit {
 
-  @ViewChild('f') form: NgForm;
   @ViewChild('dataset_list') list: DatasetGroupListComponent;
   faSearch = faSearch;
   orgQuery: OrgQuery = {
@@ -32,17 +31,12 @@ export class DatasetByOrgComponent implements OnInit {
 
   ngOnInit() {
   }
-  onSubmit() {
+  onSubmit(form: NgForm) {
     this.exitDetail();
     setTimeout(() => {
-      this.orgQuery = {...this.form.value};
+      this.orgQuery = {...form.value};
       this.list.getList();
     }, 0);
-  }
-  onInputEnter(e: KeyboardEvent) {
-    if (e.keyCode === 13) {
-     this.onSubmit();
-    }
   }
   checkboxIdChanged(e: string) {
    this.orgQuery = {
@@ -58,14 +52,14 @@ export class DatasetByOrgComponent implements OnInit {
     this.datasetId = undefined;
   }
   handleResultSelected(e: any) {
-    if (!e) {
-      this.handleShowAll();
+    if (!e.data) {
+      this.handleShowAll(e.form);
      return;
     }
-    this.datasetId = e.id;
+    this.datasetId = e.data.id;
   }
-  handleShowAll() {
-    this.router.navigate(['/datasets/searchResults'], {queryParams: {query: this.inputValue}});
+  handleShowAll(f: NgForm) {
+    this.router.navigate(['/datasets/searchResults'], {queryParams: {query: f.value.inputValue}});
    }
   toggleHeader(e: HTMLElement) {
     this.sharedService.toggleHeader.next(e);

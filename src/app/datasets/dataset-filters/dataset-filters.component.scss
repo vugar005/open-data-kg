@@ -5,9 +5,8 @@
   display: flex;
   .search-box {
     display: flex;
-    flex: 1 1 0;
      padding: 6px 40px;
-     width: 100%;
+     width: 70%;
      background: #ffffff;
      position: relative;
      border-radius: 100px;
@@ -28,8 +27,8 @@
      }
   }
   .format-select {
-      width: 270px;
-      margin-left: 30px;
+      width: 26%;
+      margin-left: auto;
       position: relative;
       select {
         width: 100%;

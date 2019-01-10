@@ -13,15 +13,14 @@ export class DatasetFiltersComponent implements OnInit {
   @Input() id: string;
   @Input() name: string;
   @Output() formSubmit = new EventEmitter<NgForm>();
-  @Output() public selected = new EventEmitter<Event>();
-  @Output() public keyDown = new EventEmitter<Event>();
+  @Output() public selected = new EventEmitter<any>();
   formatTypes$: Observable<SelectType[]>;
   constructor(private sharedService: SharedService) {
     this.formatTypes$ = this.sharedService.getTypes('181116173908947318');
    }
 
   ngOnInit() {
-    console.log(this.id)
+   // console.log(this.id)
   }
   onInputEnter(e: KeyboardEvent, form) {
     if (e.keyCode === 13) {
@@ -29,8 +28,10 @@ export class DatasetFiltersComponent implements OnInit {
     }
   }
   onSubmit(form: NgForm) {
-    console.log(form)
     this.formSubmit.next(form);
+  }
+  onSelected(e, f: NgForm) {
+   this.selected.next({data: e, form: f});
   }
 
 }

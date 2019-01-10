@@ -1,7 +1,7 @@
 import { AppState } from './../../reducers/index';
 import { SharedService } from 'src/app/shared/shared.service';
 import { DatasetDetail } from '../models/dataset-detail.model';
-import { Component, OnInit, Input, Output, EventEmitter, HostBinding } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, HostBinding, OnChanges, SimpleChanges } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import {faChevronLeft} from '@fortawesome/free-solid-svg-icons';
 import { trigger, useAnimation, transition } from '@angular/animations';
@@ -20,7 +20,7 @@ import { isLoggedIn } from 'src/app/auth/store/auth.selectors';
     trigger('zoomInLeft', [transition(':leave', useAnimation(zoomInLeft, {params: {timing: 0.6}}))])
   ]
 })
-export class DatasetDetailComponent implements OnInit {
+export class DatasetDetailComponent implements OnInit, OnChanges {
   @Input() id: string;
   @Input() isInner = false;
   @Output() navBack = new EventEmitter<void>();
@@ -49,6 +49,11 @@ export class DatasetDetailComponent implements OnInit {
      this.getRoutId();
    }
    this.getFavoriteDatasets();
+  }
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes && changes['id']) {
+     this.getDatasetById(changes['id'].currentValue);
+    }
   }
   getRoutId() {
    this.route.params.subscribe(res => {
