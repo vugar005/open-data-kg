@@ -13,6 +13,7 @@ import { BreadCrumb } from './models/breadcrumb.model';
 import { TableModel } from './models/table.model';
 import { Store } from '@ngrx/store';
 import { getApiUrl } from '../auth/store/auth.selectors';
+import { getHostname } from '../app.utils';
 @Injectable()
 export class SharedService {
   toastRunning: boolean;
@@ -30,7 +31,7 @@ export class SharedService {
     //   this.hostname = res;
     //   console.log(res)
     // });
-    this.hostname = localStorage.getItem('kg_hostname');
+    this.hostname = getHostname();
   }
   createNotification(type: string, message: string, position = 'bottomRight') {
     this.clearOldToats();

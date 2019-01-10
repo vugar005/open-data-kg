@@ -2,77 +2,83 @@
   display: flex;
   flex-direction: column;
   background-image: linear-gradient(to right, #4e8ec8, #47a8c5);
-  height: calc(100vh );
+  height: calc(100vh - var(--kg-header-height));
+  width: 100vw;;
   padding-left: 13%;
-  padding-top: 9%;
-  overflow: hidden;
 }
-.swiper-co {
+.co-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 90%;
   width: 100%;
-  padding-right: 2em;
-}
-.swiper-container {
-  width: 100%;
-  padding-top: 32px;
-}
-
-.swiper-slide {
-  width: 240px!important;
-  &.wide {
-  // /  width: 480px!important;
+  .swiper-co {
+    width: 100%;
+    padding-right: 2em;
   }
-}
-.module-name {
-  font-weight: bold;
-  font-size: 36px;
-  color: #ffffff;
-  padding-bottom: 16px;
-}
-
-.date-filters {
-  display: flex;
-
-  .date-filter {
-    font-size: 11px;
-    color: #FFFFFF;
-    padding-right: 15px;
-    line-height: 15px;
-    cursor: pointer;
+  .swiper-container {
+    width: 100%;
+    padding-top: 32px;
   }
-}
 
-.news-list {
-  display: flex;
-  padding-top: 30px;
-}
+  .swiper-slide {
+    width: 240px!important;
+    &.wide {
+    // /  width: 480px!important;
+    }
+  }
+  .module-name {
+    font-weight: bold;
+    font-size: 36px;
+    color: #ffffff;
+    padding-bottom: 16px;
+  }
 
-.en-pagination {
-  display: flex;
-  justify-content: flex-end;
-  padding-top: 100px;
-  .arrow {
+  .date-filters {
     display: flex;
-    justify-content: center;
-    width: 70px;
-    height: 70px;
-    background: #1F93CF;
-    transition: box-shadow 300ms ease-in-out;
-    margin-left: 10px;
-    padding: 15px;
-    cursor: pointer;
-    img {
-      pointer-events: none;
-    }
-    &:active:focus{
-     // box-shadow: 1px 0px 22px 1px rgba(0, 0, 0, 0.2);
-     }
 
-    &.left {
-      background: transparent;
-      transform: rotate(180deg);
+    .date-filter {
+      font-size: 11px;
+      color: #FFFFFF;
+      padding-right: 15px;
+      line-height: 15px;
+      cursor: pointer;
     }
+  }
 
-    &.right {
+  .news-list {
+    display: flex;
+    padding-top: 30px;
+  }
+
+  .en-pagination {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 20px;
+    .arrow {
+      display: flex;
+      justify-content: center;
+      width: 70px;
+      height: 70px;
+      background: #1F93CF;
+      transition: box-shadow 300ms ease-in-out;
+      margin-left: 10px;
+      padding: 15px;
+      cursor: pointer;
+      img {
+        pointer-events: none;
+      }
+      &:active:focus{
+       // box-shadow: 1px 0px 22px 1px rgba(0, 0, 0, 0.2);
+       }
+
+      &.left {
+        background: transparent;
+        transform: rotate(180deg);
+      }
+
+      &.right {
+      }
     }
   }
 }
