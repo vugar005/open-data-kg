@@ -1,8 +1,6 @@
 import { DatasetFilePreviewComponent } from './dataset-file-preview/dataset-file-preview.component';
-import { ForLoggedInDirective } from './../shared/directives/forLoggedIn.directive';
 import { EffectsModule } from '@ngrx/effects';
 import { CommentsModule } from './../comments/comments.module';
-import { TypeheadModule } from 'ngx-typehead-dir';
 import { FeedbackBoxComponent } from './../shared/components/feedback-box/feedback-box.component';
 import { FormsModule } from '@angular/forms';
 import { DatasetGroupListComponent } from './dataset-group-list/dataset-group-list.component';
@@ -38,7 +36,6 @@ import { DatasetFiltersComponent } from './dataset-filters/dataset-filters.compo
     MatExpansionModule,
     SharedModule,
     MatExpansionModule,
-    TypeheadModule,
     CommentsModule,
     DatasetBoxModule,
     StarRatingModule,

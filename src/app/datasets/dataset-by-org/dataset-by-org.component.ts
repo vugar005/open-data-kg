@@ -59,7 +59,7 @@ export class DatasetByOrgComponent implements OnInit {
     this.datasetId = e.data.id;
   }
   handleShowAll(f: NgForm) {
-    this.router.navigate(['/datasets/searchResults'], {queryParams: {query: f.value.inputValue}});
+    this.router.navigate(['/datasets/searchResults'], {queryParams: {query: f.value.datasetFullName}});
    }
   toggleHeader(e: HTMLElement) {
     this.sharedService.toggleHeader.next(e);

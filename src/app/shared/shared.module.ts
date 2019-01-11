@@ -20,6 +20,7 @@ import { RouterModule } from '@angular/router';
 import { ScrollListenerDirective } from './directives/scroll-listener.directive';
 import { CommentsModule } from '../comments/comments.module';
 import { LangNavComponent } from '../lang-nav/lang-nav.component';
+import { TypeheadModule } from 'ngx-typehead-dir';
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
   slidesPerView: 'auto'
@@ -38,6 +39,7 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
       FormsModule,
       RouterModule,
       CommentsModule,
+      TypeheadModule,
       TranslateModule.forChild({
         loader: {
           provide: TranslateLoader,
@@ -58,7 +60,8 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
       RouterModule,
       ScrollListenerDirective,
       GlobalNavComponent,
-      LangNavComponent
+      LangNavComponent,
+      TypeheadModule
     ],
     providers: [
       {

@@ -7,19 +7,30 @@ import { SharedModule } from '../shared/shared.module';
 import { NewsItemComponent } from './news-list/news-item/news-item.component';
 import { NewsDetailComponent } from './news-list/news-detail/news-detail.component';
 import { OtherItemComponent } from './news-list/news-detail/other-item/other-item.component';
+import { NewsFiltersComponent } from './news-list/news-filters/news-filters.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ErrorInterceptor } from '../shared/interceptors/error.interceptor';
+import { TokenInterceptor } from '../auth/token.inteceptor';
+import { APIInterceptor } from '../shared/interceptors/api.interceptor';
 
 @NgModule({
   imports: [
     CommonModule,
     NewsRoutes,
-    SharedModule
+    SharedModule,
   ],
   declarations: [
     NewsComponent,
     NewsListComponent,
     NewsItemComponent,
     NewsDetailComponent,
-    OtherItemComponent
+    OtherItemComponent,
+    NewsFiltersComponent
+  ],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: APIInterceptor, multi: true },
   ]
 })
 export class NewsModule { }

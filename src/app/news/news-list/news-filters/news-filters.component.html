@@ -1,12 +1,12 @@
 <form #f="ngForm" class=" filter-form" >
   <div class="search-box">
-    <input placeholder="{{'~searchDataset' | translate}}" class="ng-input" name="datasetFullname"
+    <input placeholder="{{'~searchNews' | translate}}" class="ng-input" name="datasetFullname"
     typehead-co
-    [url]="'api/get/Permission/Datasets/GlobalSearchForDataset'"
-    [apiKey]="'datasetFullname'"
-    [listItemLabel]="'name'"
+    [url]="'api/get/Permission/Sharing/GetNewsForCommon'"
+    [apiKey]="'title'"
+    [listItemLabel]="'title'"
     (selected)="onSelected($event, f)" ngModel
-   (keydown)="onInputEnter($event, f)">
+    name="inputValue" (keydown)="onInputEnter($event, f)">
     <div class="search-ico" (click)="onSubmit(f)">
       <img src="./assets/icons/search-icon.svg">
     </div>
@@ -14,7 +14,7 @@
 
   <div class="format-select">
       <select  name="formatId" ngModel id="format_select" (ngModelChange)="onSubmit(f)">
-        <option value="" class="default" >{{'~selectFormat' | translate}}</option>
+        <option value="" class="default" >{{'~category' | translate}}</option>
         <option  *ngFor="let type of (formatTypes$ | async)" [value]="type?.value">{{type?.label}}</option>
       </select>
       <div class="custom-caret">

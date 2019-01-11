@@ -14,7 +14,6 @@
   width: 100%;
   .swiper-co {
     width: 100%;
-    padding-right: 2em;
   }
   .swiper-container {
     width: 100%;
@@ -22,7 +21,7 @@
   }
 
   .swiper-slide {
-    width: 240px!important;
+    width: 260px!important;
     &.wide {
     // /  width: 480px!important;
     }
@@ -34,17 +33,7 @@
     padding-bottom: 16px;
   }
 
-  .date-filters {
-    display: flex;
 
-    .date-filter {
-      font-size: 11px;
-      color: #FFFFFF;
-      padding-right: 15px;
-      line-height: 15px;
-      cursor: pointer;
-    }
-  }
 
   .news-list {
     display: flex;
@@ -55,6 +44,8 @@
     display: flex;
     justify-content: flex-end;
     padding-top: 20px;
+    padding-right: 2em;
+
     .arrow {
       display: flex;
       justify-content: center;
@@ -78,6 +69,23 @@
       }
 
       &.right {
+        transform: rotate(-180deg);
+      }
+    }
+  }
+  .news-filters {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 30px;
+    .date-filters {
+      display: flex;
+
+      .date-filter {
+        font-size: 11px;
+        color: #FFFFFF;
+        padding-right: 15px;
+        line-height: 15px;
+        cursor: pointer;
       }
     }
   }

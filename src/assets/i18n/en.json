@@ -103,5 +103,7 @@
        "~writeFeedbackHere": "Write Feedback here",
        "~rating": "Rating",
        "~reviewCount": "Review Count",
-      "~unSaveData": "UNSAVE DATA"
+      "~unSaveData": "UNSAVE DATA",
+      "~searchNews": "Search News",
+      "~category": "Category"
 }
