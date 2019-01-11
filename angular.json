@@ -35,8 +35,8 @@
             ],
             "scripts": [
               "node_modules/three/examples/js/libs/stats.min.js",
-              "node_modules/izitoast/dist/js/iziToast.min.js"
-
+              "node_modules/izitoast/dist/js/iziToast.min.js",
+              "node_modules/swiper/dist/js/swiper.min.js"
             ]
           },
           "configurations": {

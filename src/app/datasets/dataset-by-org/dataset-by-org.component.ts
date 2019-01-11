@@ -34,7 +34,7 @@ export class DatasetByOrgComponent implements OnInit {
   onSubmit(form: NgForm) {
     this.exitDetail();
     setTimeout(() => {
-      this.orgQuery = {...form.value};
+      this.orgQuery = {...form.value, orgId: this.orgQuery.orgId};
       this.list.getList();
     }, 0);
   }

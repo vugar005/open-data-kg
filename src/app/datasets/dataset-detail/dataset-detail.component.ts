@@ -88,7 +88,7 @@ export class DatasetDetailComponent implements OnInit, OnChanges {
   }
   getFavoriteDatasets() {
     this.sharedService.getTableData('api/post/Permission/Datasets/GetFavoriteDatasetList')
-    .subscribe(res => this.favouriteDatasets = res);
+    .subscribe(res => this.favouriteDatasets = res.r);
   }
   isFavorite() {
     if (!this.favouriteDatasets) {return; }

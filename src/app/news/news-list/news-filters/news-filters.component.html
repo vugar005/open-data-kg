@@ -1,26 +1,25 @@
 <form #f="ngForm" class=" filter-form" >
   <div class="search-box">
-    <input placeholder="{{'~searchNews' | translate}}" class="ng-input" name="datasetFullname"
+    <input placeholder="{{'~searchNews' | translate}}" class="ng-input"
     typehead-co
     [url]="'api/get/Permission/Sharing/GetNewsForCommon'"
     [apiKey]="'title'"
     [listItemLabel]="'title'"
-    (selected)="onSelected($event, f)" ngModel
-    name="inputValue" (keydown)="onInputEnter($event, f)">
+    (selected)="onSelected($event,f)" ngModel
+    name="title" (keydown)="onInputEnter($event, f)">
     <div class="search-ico" (click)="onSubmit(f)">
       <img src="./assets/icons/search-icon.svg">
     </div>
   </div>
 
   <div class="format-select">
-      <select  name="formatId" ngModel id="format_select" (ngModelChange)="onSubmit(f)">
+      <select  name="categoryId" ngModel id="format_select" (ngModelChange)="onSubmit(f)">
         <option value="" class="default" >{{'~category' | translate}}</option>
-        <option  *ngFor="let type of (formatTypes$ | async)" [value]="type?.value">{{type?.label}}</option>
+        <option  *ngFor="let type of (catTypes$ | async)" [value]="type?.value">{{type?.label}}</option>
       </select>
       <div class="custom-caret">
        <img src="./assets/icons/caret.svg" class="icon">
       </div>
 </div>
-<input [hidden]="true" name="{{name}}" [(ngModel)]="id">
 </form>
 

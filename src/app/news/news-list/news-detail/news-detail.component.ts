@@ -29,7 +29,7 @@ export class NewsDetailComponent implements OnInit {
         };
         this.sharedService.getTableData('api/get/Permission/Sharing/GetNewsForCommon', body)
         .subscribe(res => {
-          this.newsItem = res && res[0];
+          this.newsItem = res && res.r[0];
           this.getNewsByCategory();
         });
       }
@@ -44,7 +44,7 @@ export class NewsDetailComponent implements OnInit {
     };
     this.sharedService.getTableData('api/get/Permission/Sharing/GetNewsForCommon', body)
     .subscribe(res => {
-      this.otherItems = res;
+      this.otherItems = res.r;
     });
   }
 

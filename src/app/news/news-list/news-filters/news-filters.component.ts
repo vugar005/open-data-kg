@@ -10,13 +10,11 @@ import { SharedService } from 'src/app/shared/shared.service';
   styleUrls: ['./news-filters.component.scss']
 })
 export class NewsFiltersComponent {
-  @Input() id: string;
-  @Input() name: string;
   @Output() formSubmit = new EventEmitter<NgForm>();
   @Output() public selected = new EventEmitter<any>();
-  formatTypes$: Observable<SelectType[]>;
+  catTypes$: Observable<SelectType[]>;
   constructor(private sharedService: SharedService) {
-    this.formatTypes$ = this.sharedService.getTypes('1000008');
+    this.catTypes$ = this.sharedService.getTypes('1000008');
    }
 
   onInputEnter(e: KeyboardEvent, form) {
@@ -28,7 +26,8 @@ export class NewsFiltersComponent {
     this.formSubmit.next(form);
   }
   onSelected(e, f: NgForm) {
-   this.selected.next({data: e, form: f});
+    f.controls['title'].setValue(e.title);
+    this.onSubmit(f);
   }
 
 }

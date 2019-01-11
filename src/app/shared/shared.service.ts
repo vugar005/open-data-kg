@@ -245,11 +245,12 @@ buildBreadCrumb(route: ActivatedRoute, url: string = '',
 }
 getTableData(url: string, kv: Object = {}): Observable<any> {
   return this.http.post<TableModel>(url, JSON.stringify(kv)).pipe(
-    map(res => res && res.tbl && res.tbl[0] && res.tbl[0].r),
+    map(res => res && res.tbl && res.tbl[0] && res.tbl[0]),
     map(res => this.mapFileId(res)));
 }
 private mapFileId(res: any) {
- return res.map(data => {
+  if (!(res && res.r)) {return; }
+ const newRows = res.r.map(data => {
     if (data.fileId) {
       return {
         ...data,
@@ -258,6 +259,8 @@ private mapFileId(res: any) {
     }
     return data;
   });
+  res.r = newRows;
+  return res;
 }
 
 }

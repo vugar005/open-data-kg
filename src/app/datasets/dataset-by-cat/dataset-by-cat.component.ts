@@ -31,7 +31,7 @@ export class DatasetByCatComponent {
   onSubmit(form: NgForm) {
     this.exitDetail();
     setTimeout(() => {
-      this.categoryQuery = {...form.value};
+      this.categoryQuery = {...form.value, categoryId: this.categoryQuery.categoryId};
       this.list.getList();
     }, 0);
   }

@@ -16,6 +16,6 @@ export class PopularDatasetsComponent implements OnInit {
   }
   getPopularDatasets() {
     this.sharedService.getTableData('api/get/Permission/Datasets/GetPopularDatasetList')
-    .subscribe( res => this.datasets = res);
+    .subscribe( res => this.datasets = res.r);
   }
 }

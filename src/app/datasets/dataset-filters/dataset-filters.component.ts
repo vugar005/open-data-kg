@@ -10,8 +10,6 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./dataset-filters.component.scss']
 })
 export class DatasetFiltersComponent implements OnInit {
-  @Input() id: string;
-  @Input() name: string;
   @Output() formSubmit = new EventEmitter<NgForm>();
   @Output() public selected = new EventEmitter<any>();
   formatTypes$: Observable<SelectType[]>;
