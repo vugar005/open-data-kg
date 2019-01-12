@@ -12,7 +12,8 @@ import { CommentModel } from './models/comment.model';
 export class CommentsComponent implements OnInit {
   @Input() getApi: string;
   @Input() insertApi: string;
-  @Input() datasetId: string;
+  @Input() kvKey: string;
+  @Input() id: string;
   comments$: Observable<CommentModel[]>;
   constructor(protected http: HttpClient) { }
 
@@ -22,10 +23,11 @@ export class CommentsComponent implements OnInit {
   getCommentList(api: string) {
     const body = {
       kv: {
-        datasetId: this.datasetId,
+     //   datasetId: this.datasetId,
       }
     };
-    this.comments$ = this.http.post<CommentModel[]>(this.getApi,  JSON.stringify(body))
+    body.kv[this.kvKey] = this.id;
+    this.comments$ = this.http.post<CommentModel[]>(api,  JSON.stringify(body))
     .pipe(
       map((res: any) => {
       if (res && res.tbl && res.tbl[0] && res.tbl[0].r) {
@@ -39,10 +41,10 @@ export class CommentsComponent implements OnInit {
   insertNewComment(value) {
     const body = {
       kv: {
-        datasetId: value.datasetId,
         comment: value.comment
       }
     };
+    body.kv[this.kvKey] = this.id;
     console.log(body);
     this.http.post(this.insertApi, JSON.stringify(body))
     .pipe(tap(res => console.log(res)))

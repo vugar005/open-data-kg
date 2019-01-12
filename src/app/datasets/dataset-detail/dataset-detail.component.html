@@ -161,7 +161,8 @@
           <comments
             [getApi]="'api/get/Permission/Comments/GetDatasetCommentListCommon'"
             [insertApi]="'api/post/Permission/Comments/InsertNewDatasetComment'"
-            [datasetId]="dataset.kv.id"
+            [kvKey]="'datasetId'"
+            [id]="dataset.kv.id"
           ></comments>
         </section>
       </div>

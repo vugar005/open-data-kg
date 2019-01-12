@@ -61,7 +61,8 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
       ScrollListenerDirective,
       GlobalNavComponent,
       LangNavComponent,
-      TypeheadModule
+      TypeheadModule,
+      CommentsModule
     ],
     providers: [
       {
