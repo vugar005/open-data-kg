@@ -7,7 +7,8 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./comment-add.component.scss']
 })
 export class CommentAddComponent implements OnInit {
-  @Input() datasetId: string;
+  @Input() id: string;
+  @Input() kvKey: string;
   @Output() commentSubmit = new EventEmitter();
   constructor() { }
 

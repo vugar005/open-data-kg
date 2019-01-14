@@ -1,3 +1,3 @@
 
 <comments-list [comments]="comments$ | async"></comments-list>
-<comment-add [datasetId]="datasetId" (commentSubmit)="onSubmit($event)"></comment-add>
+<comment-add [id]="id"  [kvKey]="kvKey" (commentSubmit)="onSubmit($event)"></comment-add>

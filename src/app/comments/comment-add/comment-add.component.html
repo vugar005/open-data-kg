@@ -7,7 +7,7 @@
       <textarea placeholder="Write feedback here" class="co-add-textarea" name="comment" required ngModel></textarea>
     </div>
  </div>
- <input hidden name="datasetId" [(ngModel)]="datasetId">
+ <input hidden name="kvKey" [(ngModel)]="id">
  <div class="co-add-bottom">
    <button mat-raised-button color="primary"  type="submit" forLoggedIn (clicked)="onSubmit(f)"
    >{{'~send' | translate}}</button>
