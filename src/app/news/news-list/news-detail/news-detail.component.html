@@ -19,7 +19,7 @@
   <div class="row">
     <div class="col-8 col-xl-6">
       <div class="other-items">
-       <other-item *ngFor="let item of otherItems" [item]="item" routerLink="/news/{{item.id}}"></other-item>
+       <other-item *ngFor="let item of otherItems" [item]="item" routerLink="/news/{{item.id}}" [queryParams]="{type: type}"> </other-item>
       </div>
     </div>
   </div>
@@ -27,12 +27,17 @@
     <div class="col-12">
       <section id="comments">
         <comments
-          [getApi]="'api/post/Permission/Sharing/GetSharingCommentList'"
-          [insertApi]="'api/post/Permission/Sharing/InsertSharingComment'"
+          [getApi]="'api/get/Permission/Sharing/GetSharingCommentListForCommon'"
+          [insertApi]="'api/post/Permission/Sharing/InsertNewSharingComment'"
           [kvKey]="'sharingId'"
           [id]="newsItem.id"
         ></comments>
       </section>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 p-0">
+      <app-footer></app-footer>
     </div>
   </div>
 </div>

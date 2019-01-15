@@ -1,10 +1,10 @@
 <div class="co-wrapper" >
   <div class="co-header">
       <div class="module-name">
-          {{'news' | translate | titlecase}}
+          {{type | translate | titlecase}}
         </div>
         <div class="news-filters">
-            <news-filters (formSubmit)="onNewsFilter($event)"></news-filters>
+            <news-filters (formSubmit)="onNewsFilter($event)" [type]="type"></news-filters>
         </div>
   </div>
 
@@ -17,7 +17,7 @@
     <div  class="swiper-container" [swiper]="config" style="width: 100%" #swiper >
       <div class="swiper-wrapper">
         <div class="swiper-slide" *ngFor="let news of newsList;let i=index;let first=first" [ngClass]="{'wide': i=== 0 }" >
-                <news-item [news]="news" [index]="i" routerLink="/news/{{news.id}}" ></news-item>
+                <news-item [news]="news" [index]="i" routerLink="/news/{{news.id}}" [queryParams]= "{type: type}" ></news-item>
         </div>
 
       </div>
@@ -35,3 +35,4 @@
   </div>
 
 </div>
+

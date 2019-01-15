@@ -10,6 +10,7 @@ import { SharedService } from 'src/app/shared/shared.service';
   styleUrls: ['./news-filters.component.scss']
 })
 export class NewsFiltersComponent {
+  @Input() type: string;
   @Output() formSubmit = new EventEmitter<NgForm>();
   @Output() public selected = new EventEmitter<any>();
   catTypes$: Observable<SelectType[]>;

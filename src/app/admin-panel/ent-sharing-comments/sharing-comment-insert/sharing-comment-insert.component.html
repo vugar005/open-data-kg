@@ -7,6 +7,7 @@
           <textarea matInput placeholder="{{'~comment' | translate}} (Kg)" class="nt-form-input input-textarea" name="comment" ngModel  required> </textarea>
           <mat-error>{{getErrors('comment')}}</mat-error>
         </mat-form-field>
+        <input [hidden]="true" name="sharingId" ngModel>
         <input [hidden]="true" name="id" ngModel>
        </div>
    </div>
@@ -26,5 +27,4 @@
     >{{'~update' | translate}}</button>
     <button mat-raised-button (click)="dialogRef.close()" type="reset">{{'~cancel' | translate}}</button>
   </div>
-
 </form>

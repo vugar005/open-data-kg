@@ -103,8 +103,10 @@ function getUrl(mod) {
     return 'organizations';
     case 'DTST':
     return 'datasets';
-    case 'CMMNT':
+    case 'DTSTCMMNT':
     return 'comments';
+    case 'SHRNGCMMNT':
+    return 'sharing-comments';
     case 'NWS':
     return 'news';
     case 'BLG':

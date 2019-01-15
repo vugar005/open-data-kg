@@ -32,11 +32,11 @@ export class HeaderPopupComponent implements OnInit {
   ngOnInit() {
     setTimeout(() => this.ready = true, 1500);
   }
-onNavigate(route: string) {
+onNavigate(route: string, type: string) {
   this.close.next();
   /** Timeout because of header animation */
  setTimeout(() => {
-  this.router.navigateByUrl(route);
+  this.router.navigate([route], {queryParams: {type: type}});
  }, 0);
 }
 onLogout() {

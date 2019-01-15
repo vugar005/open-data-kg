@@ -13,26 +13,31 @@ export class NewsDetailComponent implements OnInit {
   mockText = MockText;
   newsItem: NewsItem;
   otherItems: NewsItem[];
-  constructor(private sharedService: SharedService, private route: ActivatedRoute) { }
+  type: string;
+  constructor(private sharedService: SharedService, private route: ActivatedRoute) {
+   }
 
   ngOnInit() {
+    this.route.queryParams.subscribe(res => {
+      if (!res['type']) {return; }
+      this.type = res['type'];
     this.getNewsDetail();
+    });
   }
   getNewsDetail() {
     this.route.params.subscribe(params => {
       const id = params['id'];
-      if (id) {
+      if (!id) { return; }
         const body = {
           kv: {
             id: id
           }
         };
-        this.sharedService.getTableData('api/get/Permission/Sharing/GetNewsForCommon', body)
+        this.sharedService.getTableData(`api/get/Permission/Sharing/Get${this.type}ForCommon`, body)
         .subscribe(res => {
           this.newsItem = res && res.r[0];
           this.getNewsByCategory();
         });
-      }
     });
   }
   getNewsByCategory() {
@@ -42,7 +47,7 @@ export class NewsDetailComponent implements OnInit {
         endLimit: 3
       }
     };
-    this.sharedService.getTableData('api/get/Permission/Sharing/GetNewsForCommon', body)
+    this.sharedService.getTableData(`api/get/Permission/Sharing/Get${this.type}ForCommon`, body)
     .subscribe(res => {
       this.otherItems = res.r;
     });

@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit, ViewChild, AfterViewInit, OnDestroy, HostListener } from '@angular/core';
 import { SwiperConfigInterface, SwiperDirective } from 'ngx-swiper-wrapper';
 import { SharedService } from 'src/app/shared/shared.service';
@@ -21,16 +22,23 @@ export class NewsListComponent implements OnInit, AfterViewInit, OnDestroy {
   newsQuery = new NewsQuery();
   rowCount: number;
   rangeArray = [];
+  type: string; // news, blogs or annoucements
   @HostListener('window:resize', ['$event']) resize() {this.onWindowResize(); }
-  constructor(private sharedService: SharedService) {
+  constructor(private sharedService: SharedService, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
-    this.getSlidesPerView();
-    this.initSwiper();
-    this.getNews();
+    this.route.queryParams.subscribe(res => {
+      this.type = res['type'];
+      this.getSlidesPerView();
+      this.initSwiper();
+      this.getNews();
+    });
   }
   ngAfterViewInit() {
+  }
+  onNewsDetailNavigate() {
+
   }
   ngOnDestroy() {
     this.swiper && this.swiper.destroy();
@@ -64,11 +72,11 @@ export class NewsListComponent implements OnInit, AfterViewInit, OnDestroy {
   buildPagination(startIndex: number) {
    this.rangeArray = getPaginationRange(startIndex, this.rowCount);
   }
-  onWindowResize() {
+  onWindowResize(): void {
     this.getSlidesPerView();
     this.initSwiper();
   }
-  getSlidesPerView() {
+  getSlidesPerView(): number {
     let value: number;
     if (window.innerWidth > 1500) {
       value = this.slidesPerView = 6;
@@ -80,9 +88,10 @@ export class NewsListComponent implements OnInit, AfterViewInit, OnDestroy {
     return value;
   }
   buidRange(p: number): string {
+    const count = 5;
     if (isNaN(p)) {return '....'; }
-    if (this.slidesPerView * p > this.rowCount) {return; }
-   return  `[${(p - 1) * this.slidesPerView} - ${this.slidesPerView * p}]`;
+    if (count  * p > this.rowCount) {return; }
+   return  `[${(p - 1) * count } - ${count * p}]`;
   }
   initSwiper() {
     const config = this.getSwiperConfig();
@@ -112,7 +121,7 @@ export class NewsListComponent implements OnInit, AfterViewInit, OnDestroy {
         ...query
       }
     };
-   this.sharedService.getTableData('api/get/Permission/Sharing/GetNewsForCommon', body)
+   this.sharedService.getTableData(`api/get/Permission/Sharing/Get${this.type}ForCommon`, body)
    .subscribe(res => {
      if (!res) {return; }
      this.newsList = (res.r);
