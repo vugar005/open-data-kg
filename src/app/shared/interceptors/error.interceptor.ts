@@ -20,7 +20,7 @@ export class ErrorInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<any> {
     return next.handle(req)
       .pipe(
-        catchError(er => this.handleHttpError()),
+        catchError(er => this.handleHttpError(er)),
        tap((response) => {
           if (response instanceof HttpResponse) {
             if (response.body && response.body.err && response.body.err.length > 0) {
@@ -37,7 +37,7 @@ export class ErrorInterceptor implements HttpInterceptor {
           }
         }, (err: any) => {
           if (err instanceof HttpErrorResponse) {
-            this.handleHttpError();
+            this.handleHttpError(err.message);
 
          //   this.sharedService.createNotification('error', `Xəta baş verdi`, 'Error');
           }
@@ -45,6 +45,7 @@ export class ErrorInterceptor implements HttpInterceptor {
       );
   }
   handleHttpError(msg = 'Something went wrong !'): Observable<any> {
+    console.log(msg)
     return of(this.sharedService.createNotification('error', msg));
   }
 

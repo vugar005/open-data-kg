@@ -1,34 +1,43 @@
-<div class="container">
+<div class="container" *ngIf="dataset">
   <div class="row">
     <div class="col-12">
-        <div class="co-header">
+      <div class="co-header">
         <div class="back-icon">
-        <img src="./assets/icons/arrow-left.svg"  [routerLink]="['/datasets/by-category']" >
+          <img
+            src="./assets/icons/arrow-left.svg"
+            [routerLink]="['/datasets/by-category']"
+          />
         </div>
       </div>
     </div>
   </div>
   <div class="row">
     <div class="col-12">
-     <div class="dataset-file-preview-wrapper">
-      <div class="dataset-info-wrapper" >
-        <div class="dataset-name">{{dataset?.kv.name}}</div>
-        <div class="dataset-description">{{dataset?.kv.description}}</div>
-      </div>
+      <div class="dataset-file-preview-wrapper">
+        <div class="dataset-info-wrapper">
+          <div class="dataset-name">{{ dataset?.kv.name }}</div>
+          <div class="dataset-description">{{ dataset?.kv.description }}</div>
+        </div>
 
-      <div class="file-box">
-        <!-- <div class="iframe-wrapper" *ngIf="show == 'excel'">
+        <div class="file-box">
+          <!-- <div class="iframe-wrapper" *ngIf="show == 'excel'">
             <iframe src="https://onedrive.live.com/embed?cid=24382F927AB11A04&resid=24382F927AB11A04%213093&authkey=ALJ2krwDqlAJGd0&em=2"
         frameborder="0" scrolling="no" ></iframe>
         </div> -->
-        <div class="iframe-wrapper" *ngIf="dataset?.tbl[0]?.r[0]?.openPortalLink" >
+          <div
+            class="iframe-wrapper"
+
+          >
             <!-- <iframe  src="http://www.pdf995.com/samples/pdf.pdf"></iframe> -->
-            <iframe  [src]="getSafeUrl(dataset?.tbl[0].r[0].openPortalLink)"></iframe>
+
+            <!-- <iframe
+              [src]="getSafeUrl((dataset?.tbl)[0].r[0].openPortalLink)"
+            ></iframe> -->
+
+            <geojson-preview *ngIf="apiFormat === 'GeoJSON'" ></geojson-preview>
+          </div>
         </div>
-
       </div>
-     </div>
-
     </div>
   </div>
 </div>

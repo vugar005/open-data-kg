@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { DatasetDetail } from './../models/dataset-detail.model';
 import { DatasetsService } from 'src/app/datasets/datasets.service';
@@ -9,15 +10,41 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./dataset-file-preview.component.scss']
 })
 export class DatasetFilePreviewComponent implements OnInit {
- @Input() dataset: DatasetDetail;
- show = 'excel';
-  constructor(private datasetService: DatasetsService, private sanitizer: DomSanitizer) { }
+  dataset: DatasetDetail;
+  datasetApi: any;
+  show = 'excel';
+  apiFormat: string;
+  constructor(
+    private datasetService: DatasetsService,
+    private sanitizer: DomSanitizer,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
-    this.dataset = this.datasetService.resourceDataset;
+    this.getRoutId();
+    this.getQueryParams();
+  }
+  getRoutId() {
+    this.route.params.subscribe(res => {
+      if (!res['id']) {
+        return;
+      }
+      this.getDatasetById(res['id']);
+    });
+  }
+  getQueryParams() {
+    this.route.queryParams.subscribe(res => {
+    this.apiFormat = res['type'];
+    console.log(this.apiFormat)
+    });
+  }
+
+  getDatasetById(id: string) {
+    this.datasetService.getDatasetById(id).subscribe(res => {
+      this.dataset = res;
+    });
   }
   getSafeUrl(url: string) {
     return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
-
 }

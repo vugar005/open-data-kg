@@ -80,7 +80,6 @@ export class DatasetDetailComponent implements OnInit, OnChanges {
   }
   onUnFavoriteMark(id: string) {
   const favDataset = this.getFavoriteDataset();
-  console.log(favDataset)
     this.datasetService.unmarkDatasetAsFavorite(favDataset.id).subscribe(res => {
   //    this.sharedService.createNotification('Sucess', 'Unsaving Dataset');
       this.getFavoriteDatasets();
@@ -88,7 +87,11 @@ export class DatasetDetailComponent implements OnInit, OnChanges {
   }
   getFavoriteDatasets() {
     this.sharedService.getTableData('api/post/Permission/Datasets/GetFavoriteDatasetList')
-    .subscribe(res => this.favouriteDatasets = res.r);
+    .subscribe(res => {
+      if (res && res.r) {
+        this.favouriteDatasets = res.r;
+      }
+    });
   }
   isFavorite() {
     if (!this.favouriteDatasets) {return; }
@@ -97,9 +100,9 @@ export class DatasetDetailComponent implements OnInit, OnChanges {
   getFavoriteDataset(): Dataset {
     return this.favouriteDatasets.find(f => f.datasetId === this.dataset.kv.id);
   }
-  onResourcesNavigate(id: string) {
+  onResourcesNavigate(id: string, format: string) {
     this.datasetService.resourceDataset = this.dataset;
-    this.router.navigate([`datasets/${id}/resources`]);
+    this.router.navigate([`datasets/${id}/resources`], {queryParams: {type: format}});
   }
 
 }

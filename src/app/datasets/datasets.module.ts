@@ -1,3 +1,4 @@
+import { GeojsonPreviewComponent } from './dataset-file-preview/geojson-preview/geojson-preview.component';
 import { DatasetFilePreviewComponent } from './dataset-file-preview/dataset-file-preview.component';
 import { EffectsModule } from '@ngrx/effects';
 import { CommentsModule } from './../comments/comments.module';
@@ -54,7 +55,8 @@ import { DatasetFiltersComponent } from './dataset-filters/dataset-filters.compo
      DatasetSearchResultComponent,
      ModuleSidebarComponent,
      FeedbackBoxComponent,
-     DatasetFiltersComponent
+     DatasetFiltersComponent,
+     GeojsonPreviewComponent
     ],
     providers: [
       { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },

@@ -70,7 +70,7 @@
                 <div class="item-icon {{ api?.format }}">{{ api?.format }}</div>
                 <div class="item-description">{{ api?.descriptionEn }}</div>
                 <div class="item-links">
-                  <div class="info-link" (click)="onResourcesNavigate(dataset.kv.id)">
+                  <div class="info-link" (click)="onResourcesNavigate(dataset.kv.id, api.format)">
                     <img src="./assets/icons/info.svg" />
                   </div>
                   <a
