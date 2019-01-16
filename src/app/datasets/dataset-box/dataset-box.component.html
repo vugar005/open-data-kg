@@ -23,7 +23,7 @@
                  </div>
                </div>
              </div>
-              <div class="item-formats">
+              <div class="item-formats" *ngIf="dataset.allFormat">
                   <div *ngFor="let item of (dataset?.allFormat.split(','))"  class="icon {{item}}" >{{item}}</div>
               </div>
         </div>

@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NtTableComponent } from 'nt-table';
 import { MatDialog } from '@angular/material';
@@ -17,10 +18,27 @@ export class EntUsersComponent  {
     updateApi: 'api/post/Permission/Users/UpdateUser',
     deleteApi: 'api/post/Permission/Users/DeleteUser'
   };
-  constructor(private dialog: MatDialog) { }
+  constructor(private dialog: MatDialog, private http: HttpClient) { }
   initDialog(table: NtTableComponent, row = null) {
     const ref = this.dialog.open(UserInsertDialogComponent, {
       data: { table: table, row: row || undefined}
     });
+  }
+  onOptClick(e) {
+   if (e.attribute === 'active') {
+     const body = {
+       kv: {
+         id: e.row.id
+       }
+     };
+    this.http.post('api/post/Permission/Users/ActiveUser', JSON.stringify(body)).subscribe();
+   } else if (e.attribute === 'deactive') {
+    const body = {
+      kv: {
+        id: e.row.id
+      }
+    };
+   this.http.post('api/post/Permission/Users/DeactiveUser', JSON.stringify(body)).subscribe();
+   }
   }
 }

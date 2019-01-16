@@ -9,4 +9,7 @@ export class DatasetBoxComponent {
   @Input() dataset: any;
   @Input() mode = 'show';
   constructor() { }
+  getFormat() {
+
+  }
 }

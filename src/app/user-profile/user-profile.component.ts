@@ -21,12 +21,10 @@ export class UserProfileComponent implements OnInit {
  currentMod = 'show';
   constructor(private store: Store<AppState>, private sharedService: SharedService) {
     this.user$ = store.select(getUser);
-    this.user$.subscribe(res => console.log(res));
     this.apiUrl$ = store.select(getApiUrl);
   }
 
   ngOnInit() {
-   // this.mockDatasets = JSON.parse(localStorage.getItem('datasets'));
    this.getFavoriteDatasets();
   }
   getFavoriteDatasets() {
