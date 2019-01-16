@@ -121,7 +121,7 @@ section#api {
        border-bottom: 0.5px solid #B6B6B6;
       .item-icon {
           padding: 7px 10px;
-          width: 68px;
+          min-width: 68px;
           border-radius: 15px;
           text-transform: uppercase;
           color: #ffffff;

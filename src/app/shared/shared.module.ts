@@ -1,3 +1,4 @@
+import { ProgressSpinnerComponent } from './../progress-spinner/progress-spinner.component';
 import { GlobalNavComponent } from './../global-nav/global-nav.component';
 import { NgModule } from '@angular/core';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
@@ -11,7 +12,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SwiperModule } from 'ngx-swiper-wrapper';
 import { SWIPER_CONFIG } from 'ngx-swiper-wrapper';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
-import { MatRippleModule} from '@angular/material';
+import { MatRippleModule, MatProgressSpinnerModule} from '@angular/material';
 import { SharedUploadModule } from './shared-upload.module';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
@@ -30,7 +31,8 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     FooterComponent,
     ScrollListenerDirective,
     GlobalNavComponent,
-    LangNavComponent
+    LangNavComponent,
+    ProgressSpinnerComponent
   ],
     imports: [
       CommonModule,
@@ -40,6 +42,7 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
       RouterModule,
       CommentsModule,
       TypeheadModule,
+      MatProgressSpinnerModule,
       TranslateModule.forChild({
         loader: {
           provide: TranslateLoader,
@@ -62,7 +65,9 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
       GlobalNavComponent,
       LangNavComponent,
       TypeheadModule,
-      CommentsModule
+      CommentsModule,
+      MatProgressSpinnerModule,
+      ProgressSpinnerComponent
     ],
     providers: [
       {

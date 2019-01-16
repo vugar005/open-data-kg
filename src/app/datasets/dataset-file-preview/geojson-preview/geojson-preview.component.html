@@ -1,1 +1,2 @@
-<div id="chart"></div>
+<div id="map"  [style.visibility]="loaded ? 'visible' : 'hidden'" ></div>
+<progress-spinner *ngIf="!loaded"></progress-spinner>
