@@ -7,7 +7,7 @@ import { RouterModule } from '@angular/router';
 @NgModule({
   imports: [CommonModule, StarRatingModule, RouterModule],
   declarations: [
-    DatasetBoxComponent
+    DatasetBoxComponent,
   ],
   exports: [DatasetBoxComponent]
 })

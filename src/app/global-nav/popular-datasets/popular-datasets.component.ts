@@ -12,7 +12,7 @@ export class PopularDatasetsComponent implements OnInit {
   constructor(private sharedService: SharedService) { }
 
   ngOnInit() {
-    this.getPopularDatasets()
+    this.getPopularDatasets();
   }
   getPopularDatasets() {
     this.sharedService.getTableData('api/get/Permission/Datasets/GetPopularDatasetList')

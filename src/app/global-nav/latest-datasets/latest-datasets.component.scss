@@ -12,11 +12,13 @@
 
 .item-list {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  width: 100%;
   .item-box {
     border-radius: 9px;
     padding: 30px 40px;
     margin-bottom: 30px;
+    width: 50%;
     cursor: pointer;
     text-align: center;
     transition: box-shadow 300ms ease-in;

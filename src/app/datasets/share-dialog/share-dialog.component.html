@@ -1,0 +1,15 @@
+<div class="social-buttons">
+  <div class="icon-wrapper facebook" (click)="popupFacebook()">
+      <i class="fab fa-facebook"></i>
+  </div>
+  <div class="icon-wrapper twitter"  (click)="popupTweet()">
+      <i class="fab fa-twitter"></i>
+  </div>
+  <div class="icon-wrapper linkedin"  (click)="popupLinkedin()">
+      <i class="fab fa-linkedin"></i>
+  </div>
+</div>
+<div class="copy-link-renderer">
+    <input [value]="shareLink" #linkInput>
+    <button class="copy-button" (click)="onCopy(linkInput.value)">Copy</button>
+</div>

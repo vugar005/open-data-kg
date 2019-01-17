@@ -1,12 +1,14 @@
 <div class="sidebar-co" *ngIf="render" >
     <div class="sidebar-header">
         <img src="./assets/icons/news-top-arrow.svg">
-        <div class="see-all" [routerLink]="['/news']">{{'~seeAllNews' | translate}}</div>
+        <div class="see-all" [routerLink]="['/news']" [queryParams]="{type: 'News'}">{{'~seeAllNews' | translate}}</div>
       </div>
      <div class="items-co">
         <ng-container  *ngFor ="let item of items;let i= index">
             <news-sidebar-item [item]="item" [index]="i" *ngIf=" i+1 > startIndex && i +1 <= endIndex "
               [@slideOutRight]="slideOutRight"
+              routerLink="/news/{{item.id}}"
+              [queryParams]="{type: 'News'}"
             ></news-sidebar-item>
         </ng-container>
      </div>

@@ -12,7 +12,7 @@ import { DatasetsComponent } from './datasets.component';
 import { DatasetByOrgComponent } from './dataset-by-org/dataset-by-org.component';
 import { ModuleSidebarComponent } from './module-sidebar/module-sidebar.component';
 import { DatasetsRoutes } from './datasets.routing';
-import { MatExpansionModule} from '@angular/material';
+import { MatExpansionModule, MatDialogModule} from '@angular/material';
 import { SharedModule } from '../shared/shared.module';
 import { DatasetSearchResultComponent } from './dataset-search-result/dataset-search-result.component';
 import { DatasetSearchBoxComponent } from './dataset-search-box/dataset-search-box.component';
@@ -28,6 +28,7 @@ import * as fromStore from './store/dataset.reducer';
 import { DatasetEffects } from './store/dataset.effects';
 import { SharedRbacModule } from '../shared/shared-rbac.module';
 import { DatasetFiltersComponent } from './dataset-filters/dataset-filters.component';
+import { ShareDialogComponent } from './share-dialog/share-dialog.component';
 
 @NgModule({
   imports: [
@@ -36,7 +37,7 @@ import { DatasetFiltersComponent } from './dataset-filters/dataset-filters.compo
     DatasetsRoutes,
     MatExpansionModule,
     SharedModule,
-    MatExpansionModule,
+    MatDialogModule,
     CommentsModule,
     DatasetBoxModule,
     StarRatingModule,
@@ -56,8 +57,10 @@ import { DatasetFiltersComponent } from './dataset-filters/dataset-filters.compo
      ModuleSidebarComponent,
      FeedbackBoxComponent,
      DatasetFiltersComponent,
-     GeojsonPreviewComponent
+     GeojsonPreviewComponent,
+     ShareDialogComponent
     ],
+    entryComponents: [ShareDialogComponent],
     providers: [
       { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
       {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},

@@ -1,6 +1,10 @@
+import { concat } from 'rxjs/operators';
 import { Component, OnInit } from '@angular/core';
 import { trigger, transition, useAnimation } from '@angular/animations';
 import { slideInRight, slideInLeft, slideOutRight } from 'ng-animate';
+import { NewsItem } from 'src/app/news/models/news-item.model';
+import { NewsQuery } from 'src/app/news/models/news-query.model';
+import { SharedService } from 'src/app/shared/shared.service';
 
 @Component({
   selector: 'news-sidebar',
@@ -14,85 +18,16 @@ export class NewsSidebarComponent implements OnInit {
   render = false;
   startIndex = 7;
   endIndex = 10;
-  slideOutRight= true;
-  items = [
-    {
-      imgUrl: './assets/img/image.png',
-      title: 'Why do we use it 1',
-      content: `It is a long established fact that a reader will be
-       distracted by the readable content of ... `,
-      date: `27.08.2018 `
-    },
-    {
-      imgUrl: './assets/img/image.png',
-      title: 'Why do we use it 2',
-      content: `It is a long established fact that a reader will be
-       distracted by the readable content of ... `,
-      date: `27.08.2018 `
-    },
-    {
-      imgUrl: './assets/img/image.png',
-      title: 'Why do we use it 3',
-      content: `It is a long established fact that a reader will be
-       distracted by the readable content of ... `,
-      date: `27.08.2018 `
-    },
-     {
-      imgUrl: './assets/img/joshua-rawson-harris-664381-unsplash.png',
-      title: 'Today news 4',
-      content: `It is a long established fact that a reader will be
-       distracted by the readable content of ... `,
-      date: `27.08.2018 `
-    },
-     {
-      imgUrl: './assets/img/joshua-rawson-harris-664381-unsplash.png',
-      title: 'Today news 5',
-      content: `It is a long established fact that a reader will be
-       distracted by the readable content of ... `,
-      date: `27.08.2018 `
-    },
-     {
-      imgUrl: './assets/img/joshua-rawson-harris-664381-unsplash.png',
-      title: 'Today news 6',
-      content: `It is a long established fact that a reader will be
-       distracted by the readable content of ... `,
-      date: `27.08.2018 `
-    },
-     {
-      imgUrl: './assets/img/joshua-rawson-harris-664381-unsplash.png',
-      title: 'Today news 7',
-      content: `It is a long established fact that a reader will be
-       distracted by the readable content of ... `,
-      date: `27.08.2018 `
-    },
-     {
-      imgUrl: './assets/img/joshua-rawson-harris-664381-unsplash.png',
-      title: 'Today news 8',
-      content: `It is a long established fact that a reader will be
-       distracted by the readable content of ... `,
-      date: `27.08.2018 `
-    },
-     {
-      imgUrl: './assets/img/joshua-rawson-harris-664381-unsplash.png',
-      title: 'Today news 9',
-      content: `It is a long established fact that a reader will be
-       distracted by the readable content of ... `,
-      date: `27.08.2018 `
-    },
-     {
-      imgUrl: './assets/img/joshua-rawson-harris-664381-unsplash.png',
-      title: 'Today news 10',
-      content: `It is a long established fact that a reader will be
-       distracted by the readable content of ... `,
-      date: `27.08.2018 `
-    },
-  ];
-  constructor() { }
+  slideOutRight = true;
+  items: NewsItem[];
+  rowCount: number;
+  constructor(private sharedService: SharedService) { }
 
   ngOnInit() {
     setTimeout(() => {
       this.render = true;
-    }, 3000);
+      this.getNews();
+    }, 2000);
   }
   onPrev() {
     if (this.startIndex === 0) {return; }
@@ -100,9 +35,27 @@ export class NewsSidebarComponent implements OnInit {
     this.endIndex -= 1;
   }
   onNext() {
-    if (this.endIndex === 10) {return; }
+    if (this.endIndex ===  this.rowCount) {return; }
     this.startIndex += 1;
     this.endIndex += 1;
+  }
+  getNews(query = new NewsQuery()) {
+    this.items = [];
+    const body = {
+      kv: {
+        startLimit: 0,
+        endLimit: 10,
+        ...query
+      }
+    };
+   this.sharedService.getTableData(`api/get/Permission/Sharing/GetNewsForCommon`, body)
+   .subscribe(res => {
+     if (!res) {return; }
+     this.items = res.r;
+     this.rowCount = res.rowCount;
+     this.endIndex = this.rowCount;
+     this.startIndex = this.rowCount - 3;
+    });
   }
 
 

@@ -18,7 +18,6 @@ import { ClassChangerDirective } from './shared/directives/class-changer.directi
 import { HeaderPopupComponent } from './header/header-popup/header-popup.component';
 import { NewsSidebarComponent } from './landing-page/news-sidebar/news-sidebar.component';
 import { NewsSidebarItemComponent } from './landing-page/news-sidebar/news-sidebar-item/news-sidebar-item.component';
-import { NewsSidebarItemListComponent } from './landing-page/news-sidebar/news-sidebar-item-list/news-sidebar-item-list.component';
 import { CategoryOverviewComponent } from './global-nav/category-overview/category-overview.component';
 import { MouseScrollIconComponent } from './shared/components/mouse-scroll-icon/mouse-scroll-icon.component';
 import { DesktopComponent } from './landing-page/desktop/desktop.component';
@@ -60,7 +59,6 @@ declarations: [
   HeaderPopupComponent,
   NewsSidebarComponent,
   NewsSidebarItemComponent,
-  NewsSidebarItemListComponent,
   CategoryOverviewComponent,
   LatestDatasetsComponent,
   PopularDatasetsComponent,
@@ -113,7 +111,6 @@ exports: [
   HeaderPopupComponent,
   NewsSidebarComponent,
   NewsSidebarItemComponent,
-  NewsSidebarItemListComponent,
   CategoryOverviewComponent,
   MouseScrollIconComponent,
   DesktopComponent,

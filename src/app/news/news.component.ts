@@ -8,7 +8,6 @@ import { Observable } from 'rxjs';
   styleUrls: ['./news.component.scss']
 })
 export class NewsComponent implements OnInit {
-  newsList$: Observable<any>;
   constructor( ) {
   }
 

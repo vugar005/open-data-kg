@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Dataset } from 'src/app/datasets/models/dataset.model';
+import { SharedService } from 'src/app/shared/shared.service';
 
 @Component({
   selector: 'latest-datasets',
@@ -6,10 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./latest-datasets.component.scss']
 })
 export class LatestDatasetsComponent implements OnInit {
-
-  constructor() { }
-
+  datasets: Dataset[];
+  constructor(private sharedService: SharedService) { }
   ngOnInit() {
+    this.getPopularDatasets();
   }
-
+  getPopularDatasets() {
+    this.sharedService.getTableData('api/get/Permission/Datasets/GetLatestDatasetList')
+    .subscribe( res => this.datasets = res.r);
+  }
 }

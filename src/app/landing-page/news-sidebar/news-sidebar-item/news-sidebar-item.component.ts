@@ -3,6 +3,7 @@ import { trigger, transition, useAnimation } from '@angular/animations';
 import { slideInLeft, slideInRight } from 'ng-animate';
 import { Subject, timer } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { NewsItem } from 'src/app/news/models/news-item.model';
 
 @Component({
   selector: 'news-sidebar-item',
@@ -14,7 +15,7 @@ import { takeUntil } from 'rxjs/operators';
   changeDetection: ChangeDetectionStrategy.Default
 })
 export class NewsSidebarItemComponent implements OnInit, OnDestroy, OnChanges {
-  @Input() item;
+  @Input() item: NewsItem;
   @Input()
   index: number;
   slideInRight = true;

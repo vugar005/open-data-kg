@@ -17,6 +17,7 @@ import { SharedTranslateModule } from 'src/app/shared/shared-translate.module';
 import { SharedService } from 'src/app/shared/shared.service';
 import { ErrorInterceptor } from 'src/app/shared/interceptors/error.interceptor';
 import { LangInterceptor } from 'src/app/shared/interceptors/lang.interceptor';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 export const MY_FORMATS = {
   parse: {
@@ -30,7 +31,9 @@ export const MY_FORMATS = {
   }
 };
 @NgModule({
-  imports: [],
+  imports: [
+    CKEditorModule
+  ],
   exports: [
     FontAwesomeModule,
     NtTableModule,
@@ -49,7 +52,8 @@ export const MY_FORMATS = {
     MatDatepickerModule,
     MatMomentDateModule,
     SharedRbacModule,
-    SharedTranslateModule
+    SharedTranslateModule,
+    CKEditorModule
     ],
   declarations: [
   ],

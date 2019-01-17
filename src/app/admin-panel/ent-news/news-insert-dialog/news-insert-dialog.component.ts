@@ -6,6 +6,7 @@ import { ApplicationsInsertDialogComponent } from '../../ent-applications/applic
 import { SharedService } from 'src/app/shared/shared.service';
 import { NgxFormUtils } from 'ngx-form-utils';
 import { UploadFileDialogComponent } from '../../ent-users/user-insert-dialog/upload-file-dialog/upload-file-dialog.component';
+import * as InlineEdtior from '@ckeditor/ckeditor5-build-inline';
 
 @Component({
   selector: 'app-news-insert-dialog',
@@ -17,6 +18,10 @@ export class NewsInsertDialogComponent  {
   imgId: string;
   maxDate = new Date();
   startDate = new Date();
+  public Editor = InlineEdtior;
+  editorConfig = {
+    toolbar: [ 'heading', '|', 'Bold', 'Italic', 'link',  ]
+  };
   @ViewChild('f') ntForm: NgForm;
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,

@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { NewsSidebarItemListComponent } from './news-sidebar-item-list.component';
+import { ShareDialogComponent } from './share-dialog.component';
 
-describe('NewsSidebarItemListComponent', () => {
-  let component: NewsSidebarItemListComponent;
-  let fixture: ComponentFixture<NewsSidebarItemListComponent>;
+describe('ShareDialogComponent', () => {
+  let component: ShareDialogComponent;
+  let fixture: ComponentFixture<ShareDialogComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NewsSidebarItemListComponent ]
+      declarations: [ ShareDialogComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NewsSidebarItemListComponent);
+    fixture = TestBed.createComponent(ShareDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

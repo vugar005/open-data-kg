@@ -36,6 +36,9 @@ export class SharedService {
   createNotification(type: string, message: string, position = 'bottomRight') {
     this.clearOldToats();
     switch (type.toLowerCase()) {
+      case 'info':
+      this.createInfoNotification(message, position);
+      break;
       case 'sucess':
       this.createSucessNotification(message, position);
       break;
@@ -46,6 +49,17 @@ export class SharedService {
         this.createWarnNotification(message, position);
         break;
     }
+  }
+  createInfoNotification(message: string, position) {
+    this.iziToast.info({
+      title: 'Info',
+      class: 'foo',
+      timeout: 3000,
+      message: message,
+      icon: 'fas fa-exclamation-circle',
+      close: false,
+      position: position
+    });
   }
   createSucessNotification(message: string, position) {
     this.iziToast.success({

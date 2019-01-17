@@ -1,3 +1,5 @@
+import { ShareDialogComponent } from './../share-dialog/share-dialog.component';
+import { MatDialog } from '@angular/material';
 import { AppState } from './../../reducers/index';
 import { SharedService } from 'src/app/shared/shared.service';
 import { DatasetDetail } from '../models/dataset-detail.model';
@@ -33,11 +35,13 @@ export class DatasetDetailComponent implements OnInit, OnChanges {
   isLoggedIn$: Observable<boolean>;
   datasetPreview: Dataset;
   @HostBinding('@slideInRight') animate = this.isInner;
-  constructor(private datasetService: DatasetsService,
+  constructor(
+    private datasetService: DatasetsService,
     private route: ActivatedRoute,
     private sharedService: SharedService,
     private store: Store<AppState>,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog
     ) {
       this.isLoggedIn$ = store.select(isLoggedIn);
     }
@@ -103,6 +107,13 @@ export class DatasetDetailComponent implements OnInit, OnChanges {
   onResourcesNavigate(id: string, format: string) {
     this.datasetService.resourceDataset = this.dataset;
     this.router.navigate([`datasets/${id}/resources`], {queryParams: {type: format}});
+  }
+  onShareClick() {
+    console.log(this.dataset.kv.id)
+  const ref = this.dialog.open(ShareDialogComponent, {
+    data: this.dataset.kv.id,
+    autoFocus: false
+  });
   }
 
 }

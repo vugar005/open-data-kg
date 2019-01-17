@@ -12,7 +12,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SwiperModule } from 'ngx-swiper-wrapper';
 import { SWIPER_CONFIG } from 'ngx-swiper-wrapper';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
-import { MatRippleModule, MatProgressSpinnerModule} from '@angular/material';
+import { MatRippleModule, MatProgressSpinnerModule, MatButtonModule } from '@angular/material';
 import { SharedUploadModule } from './shared-upload.module';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
@@ -43,6 +43,7 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
       CommentsModule,
       TypeheadModule,
       MatProgressSpinnerModule,
+      MatButtonModule,
       TranslateModule.forChild({
         loader: {
           provide: TranslateLoader,
@@ -65,6 +66,7 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
       GlobalNavComponent,
       LangNavComponent,
       TypeheadModule,
+      MatButtonModule,
       CommentsModule,
       MatProgressSpinnerModule,
       ProgressSpinnerComponent

@@ -67,20 +67,27 @@
               </div>
      </div>
        <div class="row-2">
-              <mat-form-field class="example-full-width">
-                  <textarea matInput placeholder="{{'~content' | translate}} (Kg)" class="nt-form-input input-textarea" name="contentKg" ngModel    required> </textarea>
-                  <mat-error>{{getErrors('contentKg')}}</mat-error>
-                </mat-form-field>
+          <div class="ckeditor-wrapper">
+              <p class="field-title">{{'~content' | translate}} (En)</p>
+              <ckeditor [editor]="Editor" class="ckeditor-element"
+                [config]="editorConfig"
+                name="contentKg" ngModel  ></ckeditor>
+            </div>
 
-                <mat-form-field class="example-full-width">
-                    <textarea matInput placeholder="{{'~content' | translate}} (En)" class="nt-form-input input-textarea" name="contentEn" ngModel    required> </textarea>
-                  <mat-error>{{getErrors('contenEn')}}</mat-error>
-                </mat-form-field>
+          <div class="ckeditor-wrapper">
+              <p class="field-title">{{'~content' | translate}} (En)</p>
+              <ckeditor [editor]="Editor" class="ckeditor-element"
+                [config]="editorConfig"
+                name="contentEn" ngModel  ></ckeditor>
+            </div>
 
-                <mat-form-field class="example-full-width">
-                    <textarea  matInput placeholder="{{'~content' | translate}} (Ru)" class="nt-form-input input-textarea" name="contentRu" ngModel    required> </textarea>
-                  <mat-error>{{getErrors('contentRu')}}</mat-error>
-                </mat-form-field>
+          <div class="ckeditor-wrapper">
+              <p class="field-title">{{'~content' | translate}} (En)</p>
+              <ckeditor [editor]="Editor" class="ckeditor-element"
+                [config]="editorConfig"
+                name="contentRu" ngModel  ></ckeditor>
+            </div>
+
        </div>
     </div>
     <div class="actions">
