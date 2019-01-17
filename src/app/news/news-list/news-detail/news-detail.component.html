@@ -11,7 +11,7 @@
             <img [src]="newsItem.fileId">
             <!-- <img src="./assets/img/joshua-rawson-harris-664381-unsplash.png"> -->
         </div>
-       {{newsItem.content}}
+       <div class="content-text" [innerHTML]="newsItem.content"></div>
       </div>
     </div>
     </div>

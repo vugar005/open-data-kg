@@ -1,15 +1,15 @@
 import { FilePreviewModel } from 'ngx-awesome-uploader';
 import { HttpClient } from '@angular/common/http';
 import { CustomFilePickerAdapter } from './../../../../shared/adapters/custom-file-picker.adapter';
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { MatDialogRef } from '@angular/material';
+import { Component, OnInit, Output, EventEmitter, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
   selector: 'upload-file-dialog',
   templateUrl: './upload-file-dialog.component.html',
   styleUrls: ['./upload-file-dialog.component.scss']
 })
-export class UploadFileDialogComponent {
+export class UploadFileDialogComponent implements OnInit {
   @Output() uploaded = new EventEmitter<string>();
   adapter = new CustomFilePickerAdapter(this.http);
   cropperOptions = {
@@ -22,13 +22,17 @@ export class UploadFileDialogComponent {
     aspectRatio: 1.25,
     cropBoxResizable: true
   };
-  constructor( public dialogRef: MatDialogRef<UploadFileDialogComponent>, private http: HttpClient) { }
-
+  constructor( @Inject(MAT_DIALOG_DATA) public data: any,
+               public dialogRef: MatDialogRef<UploadFileDialogComponent>,
+               private http: HttpClient) {}
+  ngOnInit() {
+    if (this.data.adapter) {this.adapter = this.data.adapter; }
+  }
   onUploaded(res: FilePreviewModel) {
    this.dialogRef.close(res.fileId);
   }
   onValidationError(er) {
-    console.log(er)
+    console.log(er);
   }
 
 }

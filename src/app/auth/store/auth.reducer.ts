@@ -113,6 +113,8 @@ function getUrl(mod) {
     return 'blogs';
     case 'ANNCMNT':
     return 'annoucements';
+    case 'FLMNGR':
+    return 'file-manager';
     default :
     return '';
   }
