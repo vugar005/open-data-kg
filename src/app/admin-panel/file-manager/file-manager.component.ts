@@ -1,3 +1,4 @@
+import { FileManagerItem } from './file-manager-item.model';
 import { HttpClient } from '@angular/common/http';
 import { FileManagerUploaderAdapter } from './file-manager-uploader.adapter';
 import { UploadFileDialogComponent } from './../ent-users/user-insert-dialog/upload-file-dialog/upload-file-dialog.component';
@@ -11,7 +12,7 @@ import { SharedService } from 'src/app/shared/shared.service';
   styleUrls: ['./file-manager.component.scss']
 })
 export class FileManagerComponent implements OnInit {
-  fileList;
+  items: FileManagerItem[];
   adapter = new FileManagerUploaderAdapter(this.http);
   constructor(private sharedService: SharedService, private dialog: MatDialog, private http: HttpClient) { }
 
@@ -19,8 +20,8 @@ export class FileManagerComponent implements OnInit {
     this.getFileList();
   }
   getFileList() {
-    this.http.post('api/get/DispatcherRest/api/post/getFileListForManager', {})
-    .subscribe(res => this.fileList = res);
+    this.http.post('api/post/getFileListForManager', {})
+    .subscribe((res: any) => this.items = res.data);
   }
   onFileAdd() {
    const ref = this.dialog.open(UploadFileDialogComponent, {data: {
@@ -30,7 +31,12 @@ export class FileManagerComponent implements OnInit {
       this.onFileAdded(res);
     });
   }
+  onFileRemove(id: string) {
+    const removeApi = `api/post/file/${id}/remove`;
+    this.http.post(removeApi, {}).subscribe((res) => this.getFileList());
+  }
   onFileAdded(id: string) {
     console.log(id);
+    this.getFileList();
   }
 }

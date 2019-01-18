@@ -1,3 +1,4 @@
+import { FileManagerModule } from './file-manager/file-manager.module';
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AdminPanelComponent } from './admin-panel.component';
@@ -37,7 +38,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     }),
     FontAwesomeModule,
     AdminPanelRoutes,
-    SharedAcrossModule
+    SharedAcrossModule,
+    FileManagerModule
   ],
   declarations: [
     AdminPanelComponent,

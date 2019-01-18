@@ -1,3 +1,5 @@
+import { FileManagerComponent } from './../file-manager/file-manager.component';
+import { SharedAcrossModule } from './../../shared/shared-across.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgModule} from '@angular/core';
 import {NtTableModule, NtTableService} from 'nt-table';
@@ -18,6 +20,9 @@ import { SharedService } from 'src/app/shared/shared.service';
 import { ErrorInterceptor } from 'src/app/shared/interceptors/error.interceptor';
 import { LangInterceptor } from 'src/app/shared/interceptors/lang.interceptor';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { EditorModule } from '@tinymce/tinymce-angular';
+import { FileManagerModule } from '../file-manager/file-manager.module';
+import { ImgSrcPipeModule } from 'src/app/shared/pipes/img-src-pipe.module';
 
 export const MY_FORMATS = {
   parse: {
@@ -32,7 +37,11 @@ export const MY_FORMATS = {
 };
 @NgModule({
   imports: [
-    CKEditorModule
+    CKEditorModule,
+    SharedAcrossModule,
+    EditorModule,
+    ImgSrcPipeModule,
+    FileManagerModule
   ],
   exports: [
     FontAwesomeModule,
@@ -53,7 +62,11 @@ export const MY_FORMATS = {
     MatMomentDateModule,
     SharedRbacModule,
     SharedTranslateModule,
-    CKEditorModule
+    CKEditorModule,
+    SharedAcrossModule,
+    EditorModule,
+    ImgSrcPipeModule,
+    FileManagerModule
     ],
   declarations: [
   ],

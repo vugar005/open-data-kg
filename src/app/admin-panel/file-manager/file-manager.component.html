@@ -3,11 +3,11 @@
       {{'~file-manager' | translate}}
     </div>
     <div class="ng-admin-actions-template"  >
-      <button  *rbacAllow="['1000017', 'ADD']" (click)="onFileAdd()" >{{'~addData' | translate}}</button>
+      <button  *rbacAllow="['1000017', 'ADD']" (click)="onFileAdd()" >{{'~addFile' | translate}}</button>
    </div>
    </div>
 
    <div class="ng-admin-content">
-    <file-list > </file-list>
+    <file-list [items]="items" (remove)="onFileRemove($event)"> </file-list>
    </div>
 

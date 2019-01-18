@@ -1,3 +1,1 @@
-<p>
-  file-list works!
-</p>
+<file-item *ngFor="let item of items" [item]="item" (remove)="remove.next($event)"> </file-item>

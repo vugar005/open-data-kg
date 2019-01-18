@@ -1,3 +1,4 @@
+import { FileManagerDialogComponent } from './file-manager-dialog/file-manager-dialog.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EntDatasetsComponent } from './ent-datasets.component';
@@ -15,20 +16,22 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     SharedAdminModule,
     EntDatasetsRoutes,
     MatExpansionModule,
-    MatTabsModule,
+    MatTabsModule
   ],
   declarations: [
     EntDatasetsComponent,
     DatasetInsertDialogComponent,
     DatasetApiInsertComponent,
     DatasetCategoryInsertComponent,
-    DatasetKeywordInsertComponent
+    DatasetKeywordInsertComponent,
+    FileManagerDialogComponent
   ],
   entryComponents: [
     DatasetInsertDialogComponent,
     DatasetApiInsertComponent,
     DatasetKeywordInsertComponent,
-    DatasetCategoryInsertComponent
+    DatasetCategoryInsertComponent,
+    FileManagerDialogComponent
   ]
 })
 export class EntDatasetsModule {}

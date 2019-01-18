@@ -1,3 +1,4 @@
+import { FileManagerComponent } from './file-manager/file-manager.component';
 import { AppCustomPreloader } from './../app-custom-preloader';
 import { delay } from 'rxjs/operators';
 import { Routes, RouterModule, PreloadingStrategy } from '@angular/router';
@@ -20,7 +21,7 @@ const routes: Routes = [
     {path: 'news', loadChildren: './ent-news/ent-news.module#EntNewsModule'},
     {path: 'blogs', loadChildren: './ent-blogs/ent-blogs.module#EntBlogsModule'},
     {path: 'annoucements', loadChildren: './ent-annoucements/ent-annoucements.module#EntAnnoucementsModule'},
-    {path: 'file-manager', loadChildren: './file-manager/file-manager.module#FileManagerModule'},
+    {path: 'file-manager', component: FileManagerComponent},
   ]},
 ];
 

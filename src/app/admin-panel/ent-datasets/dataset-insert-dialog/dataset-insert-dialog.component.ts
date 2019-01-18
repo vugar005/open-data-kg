@@ -1,4 +1,9 @@
-import { Component, OnInit, ViewChild, Inject, ViewContainerRef, AfterViewInit } from '@angular/core';
+import { FileManagerDialogComponent } from './../file-manager-dialog/file-manager-dialog.component';
+import { FileManagerComponent } from './../../file-manager/file-manager.component';
+import { HttpClient } from '@angular/common/http';
+import { FileManagerUploaderAdapter } from './../../file-manager/file-manager-uploader.adapter';
+import { UploadFileDialogComponent } from './../../ent-users/user-insert-dialog/upload-file-dialog/upload-file-dialog.component';
+import { Component, OnInit, ViewChild, Inject, ViewContainerRef, AfterViewInit, ElementRef } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { SelectType } from 'src/app/shared/models/select-type.model';
@@ -26,6 +31,7 @@ import * as InlineEdtior from '@ckeditor/ckeditor5-build-inline';
 export class DatasetInsertDialogComponent implements OnInit, AfterViewInit {
   @ViewChild('f') ntForm: NgForm;
   public Editor = InlineEdtior;
+  editor: any;
   apps$: Observable<any>;
   orgTypes$: Observable<SelectType[]>;
   config: ApiConfig;
@@ -34,17 +40,20 @@ export class DatasetInsertDialogComponent implements OnInit, AfterViewInit {
   config4: ApiConfig;
   faPlusCircle = faPlusCircle;
   selectedIndex = 0;
+  adapter = new FileManagerUploaderAdapter(this.http);
   startDate = new Date(1990, 0, 1);
   editorConfig = {
     toolbar: [ 'heading', '|', 'Bold', 'Italic', 'link',  ]
   };
+  plugins = {plugins: 'link test', toolbar: 'test'};
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<ModulesInsertDialogComponent>,
     public viewRef: ViewContainerRef,
     private sharedService: SharedService,
     private dialog: MatDialog,
-    private store: Store<AppState>
+    private store: Store<AppState>,
+    private http: HttpClient
   ) {
     this.store.select(getUserOrg)
     .pipe(
@@ -56,13 +65,39 @@ export class DatasetInsertDialogComponent implements OnInit, AfterViewInit {
       }
     });
   }
+  initFileManagerDialog() {
+  const dialogRef =  this.dialog.open(FileManagerDialogComponent, {
+      data: {adapter: this.adapter},
+      disableClose: false
+    });
+    dialogRef.afterClosed().subscribe(res => {
+      console.log(res);
+      this.editor.setContent(`<a href="">${res}</a>`);
+    });
+  }
+  onEditorInit() {
+    const obj =  {
+      plugins: 'link',
+      toolbar: 'addfile',
+      setup: (editor) => {
+        this.editor = editor;
+        editor.addButton('addfile', {
+         // icon: 'insertdatetime',
+          image: './assets/img/file.png',
+          tooltip: 'Add File',
+          onclick:  this.initFileManagerDialog.bind(this)
+        });
+      }
+    };
+    return obj;
+  }
   getErrors(str) {
     if (!this.ntForm || !NgxFormUtils) { return; }
      return NgxFormUtils.getErrors(this.ntForm, str);
     }
     ngAfterViewInit() {
-      this.ntForm.valueChanges.subscribe(res => console.log(res))
     }
+
     onClose(res) {
       if (res && res.kv && res.kv.id) {
         this.ntForm.setValue({
@@ -130,6 +165,9 @@ export class DatasetInsertDialogComponent implements OnInit, AfterViewInit {
             datasetId: this.data.row ? this.data.row.id : this.ntForm.value.id
           }
       };
+      }
+      onExecCommand(e) {
+      console.log(e)
       }
    ngOnInit() {
    this.setConfigs();

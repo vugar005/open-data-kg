@@ -1,3 +1,11 @@
-<p>
-  file-item works!
-</p>
+<div class="file-item" [attr.id]="item.id">
+  <div class="file-item__cover">
+    <img src="{{item.id | imgSrc}}" onerror="this.src='./assets/img/file.png'">
+   </div>
+  <div class="file-item__name">{{item.originalName}}</div>
+  <div class="file-item__actions">
+   <div class="icon-wrapper remove" (click)="remove.next(item.id)">
+    <i class="fas fa-trash-alt"></i>
+   </div>
+  </div>
+</div>
