@@ -4,8 +4,11 @@
    </div>
   <div class="file-item__name">{{item.originalName}}</div>
   <div class="file-item__actions">
-   <div class="icon-wrapper remove" (click)="remove.next(item.id)">
+   <div class="icon-wrapper remove-icon" (click)="remove.next(item.id)">
     <i class="fas fa-trash-alt"></i>
+   </div>
+   <div class="icon-wrapper copy-icon" (click)="copyLink(item)">
+    <i class="fas fa-copy"></i>
    </div>
   </div>
 </div>

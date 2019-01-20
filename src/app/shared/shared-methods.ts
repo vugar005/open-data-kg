@@ -1,3 +1,4 @@
+import { SharedService } from 'src/app/shared/shared.service';
 const scripts = [];
 const styles = [];
 export function getCurentLocale(): string {
@@ -28,4 +29,23 @@ export function loadExternalStyles(url: string) {
      styles.push(url);
      document.head.appendChild(styleElement);
    });
+ }
+
+ export function copyText(text: string, sharedService: SharedService = null) {
+  const selBox = document.createElement('textarea');
+  selBox.style.position = 'fixed';
+  selBox.style.left = '0';
+  selBox.style.top = '0';
+  selBox.style.opacity = '0';
+  selBox.value = text;
+  selBox.id = '1000';
+  selBox.setAttribute('copy-text-value', text);
+  document.body.appendChild(selBox);
+  selBox.focus();
+  selBox.select();
+  document.execCommand('copy');
+ // document.body.removeChild(selBox);
+  if (sharedService) {
+    sharedService.createNotification('info', 'Link copied !', 'bottomCenter');
+  }
  }

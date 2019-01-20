@@ -1,6 +1,7 @@
 import { SharedService } from './../../shared/shared.service';
 import { Component, OnInit, Inject, AfterViewInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { copyText } from 'src/app/shared/shared-methods';
 
 @Component({
   selector: 'share-dialog',
@@ -57,20 +58,6 @@ export class ShareDialogComponent implements OnInit, AfterViewInit {
     }
   }
   onCopy(val: string) {
-    const selBox = document.createElement('textarea');
-    selBox.style.position = 'fixed';
-    selBox.style.left = '0';
-    selBox.style.top = '0';
-    selBox.style.opacity = '0';
-    selBox.value = val;
-    document.body.appendChild(selBox);
-    selBox.focus();
-    selBox.select();
-    document.execCommand('copy');
-    document.body.removeChild(selBox);
-    this.showNotification();
-  }
-  showNotification() {
-   this.sharedService.createNotification('info', 'Link copied !', 'bottomCenter');
+    copyText(val, this.sharedService);
   }
 }

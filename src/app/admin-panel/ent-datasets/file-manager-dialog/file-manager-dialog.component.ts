@@ -12,10 +12,17 @@ export class FileManagerDialogComponent implements OnInit {
     private appRef: ApplicationRef) { }
 
   ngOnInit() {
+    /** Calling app change detection because of detection issue */
+    setTimeout(() => {
+      this.appRef.tick();
+    }, 10);
   }
   onClose() {
-    console.log('on close');
-    this.dialogRef.close();
+    /** Getting copyied text that saved via file-manager=> file-item => copy link method */
+    const copiedTextElement = (<HTMLTextAreaElement>document.querySelector('[copy-text-value]'));
+    let copiedTextValue;
+    if (copiedTextElement) { copiedTextValue = copiedTextElement.value; }
+    this.dialogRef.close(copiedTextValue);
     this.appRef.tick();
   }
 

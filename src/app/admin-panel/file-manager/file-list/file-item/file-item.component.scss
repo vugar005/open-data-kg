@@ -30,6 +30,7 @@
     transition: transform 300ms ease-in-out;
   }
   .file-item__actions {
+    display: flex;
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -38,8 +39,14 @@
   //  box-shadow: inset 0px 0px 4px 0px rgba(41,41,41,.5);
     .icon-wrapper {
       width: 20px;
-      color: indianred;
       cursor: pointer;
+      margin-right: 5px;
+      &.remove-icon {
+        color: indianred;
+      }
+      &.copy-icon {
+        color: #40739e;
+      }
     }
   }
   &:hover {

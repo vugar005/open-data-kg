@@ -18,7 +18,6 @@ import { AppState } from 'src/app/reducers';
 import { Store } from '@ngrx/store';
 import { getUserOrg } from 'src/app/auth/store/auth.selectors';
 import { take } from 'rxjs/operators';
-import * as InlineEdtior from '@ckeditor/ckeditor5-build-inline';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -28,8 +27,6 @@ import { HttpClient } from '@angular/common/http';
 })
 export class DatasetInsertDialogComponent implements OnInit, AfterViewInit {
   @ViewChild('f') ntForm: NgForm;
-  public Editor = InlineEdtior;
-  editor: any;
   apps$: Observable<any>;
   orgTypes$: Observable<SelectType[]>;
   config: ApiConfig;
@@ -40,9 +37,6 @@ export class DatasetInsertDialogComponent implements OnInit, AfterViewInit {
   selectedIndex = 0;
   adapter = new FileManagerUploaderAdapter(this.http);
   startDate = new Date(1990, 0, 1);
-  editorConfig = {
-    toolbar: [ 'heading', '|', 'Bold', 'Italic', 'link',  ]
-  };
   plugins = {plugins: 'link test', toolbar: 'test'};
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -63,30 +57,27 @@ export class DatasetInsertDialogComponent implements OnInit, AfterViewInit {
       }
     });
   }
-  initFileManagerDialog() {
+  initFileManagerDialog(editor) {
   const dialogRef =  this.dialog.open(FileManagerDialogComponent);
     dialogRef.afterClosed().subscribe(res => {
-      console.log(res);
       if (res) {
-        this.editor.setContent(`<a href="${res}">Link</a>`);
+     editor.execCommand('mceInsertContent', false, `<a href="${res}">Link</a>`);
       }
     });
   }
   onEditorInit() {
-    const obj =  {
+    const conf =  {
       plugins: 'link',
       toolbar: 'addfile',
       setup: (editor) => {
-        this.editor = editor;
         editor.addButton('addfile', {
-         // icon: 'insertdatetime',
-          image: './assets/img/file.png',
-          tooltip: 'Add File',
-          onclick:  this.initFileManagerDialog.bind(this)
+          image: './assets/img/add-file.png',
+          tooltip: 'Attach link',
+          onclick:  this.initFileManagerDialog.bind(this,  editor)
         });
       }
     };
-    return obj;
+    return conf;
   }
   getErrors(str) {
     if (!this.ntForm || !NgxFormUtils) { return; }
@@ -162,9 +153,6 @@ export class DatasetInsertDialogComponent implements OnInit, AfterViewInit {
             datasetId: this.data.row ? this.data.row.id : this.ntForm.value.id
           }
       };
-      }
-      onExecCommand(e) {
-      console.log(e)
       }
    ngOnInit() {
    this.setConfigs();

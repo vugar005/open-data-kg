@@ -45,23 +45,30 @@
                   <div class="row-2">
                   <div class="ckeditor-wrapper">
                     <p class="field-title">{{'~description' | translate}} (En)</p>
-                    <!-- <ckeditor [editor]="Editor" class="ckeditor-element"
-                      [config]="editorConfig"
-                      name="descriptionEn" ngModel  ></ckeditor> -->
-                      <editor id="editor" #editor apiKey="226c3doh3igayb75w0e2todaezq0scafnvuksfeuh8sjzyln" [init]="onEditorInit()" ></editor>
+                      <editor class="ckeditor"
+                       ngModel
+                       name="descriptionEn"
+                       required
+                       apiKey="226c3doh3igayb75w0e2todaezq0scafnvuksfeuh8sjzyln" [init]="onEditorInit()" ></editor>
 
                   </div>
                   <div class="ckeditor-wrapper">
                     <p class="field-title">{{'~description' | translate}} (Kg)</p>
-                    <ckeditor [editor]="Editor" class="ckeditor-element"
-                      [config]="editorConfig"
-                      name="descriptionKg" ngModel  ></ckeditor>
+                    <editor class="ckeditor"
+                    ngModel
+                    name="descriptionKg"
+                    required
+                    apiKey="226c3doh3igayb75w0e2todaezq0scafnvuksfeuh8sjzyln" [init]="onEditorInit()" ></editor>
+
                   </div>
                   <div class="ckeditor-wrapper">
                     <p class="field-title">{{'~description' | translate}} (Ru)</p>
-                    <ckeditor [editor]="Editor" class="ckeditor-element"
-                      [config]="editorConfig"
-                      name="descriptionRu" ngModel  ></ckeditor>
+                    <editor class="ckeditor"
+                       ngModel
+                       name="descriptionRu"
+                       required
+                       apiKey="226c3doh3igayb75w0e2todaezq0scafnvuksfeuh8sjzyln" [init]="onEditorInit()" ></editor>
+
                   </div>
 
                   <!-- <mat-form-field class="text-area">
