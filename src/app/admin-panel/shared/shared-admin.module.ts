@@ -1,4 +1,3 @@
-import { FileManagerComponent } from './../file-manager/file-manager.component';
 import { SharedAcrossModule } from './../../shared/shared-across.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgModule} from '@angular/core';
@@ -41,7 +40,8 @@ export const MY_FORMATS = {
     SharedAcrossModule,
     EditorModule,
     ImgSrcPipeModule,
-    FileManagerModule
+    FileManagerModule,
+    MatDialogModule
   ],
   exports: [
     FontAwesomeModule,
@@ -66,7 +66,8 @@ export const MY_FORMATS = {
     SharedAcrossModule,
     EditorModule,
     ImgSrcPipeModule,
-    FileManagerModule
+    FileManagerModule,
+    MatDialogModule
     ],
   declarations: [
   ],

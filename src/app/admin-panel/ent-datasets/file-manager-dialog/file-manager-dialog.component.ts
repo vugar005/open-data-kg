@@ -1,5 +1,5 @@
 import { MatDialogRef } from '@angular/material';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,  Optional, ApplicationRef } from '@angular/core';
 
 @Component({
   selector: 'app-file-manager-dialog',
@@ -8,13 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FileManagerDialogComponent implements OnInit {
 
-  constructor(private dialogRef: MatDialogRef<FileManagerDialogComponent>) { }
+  constructor(@Optional() private dialogRef: MatDialogRef<FileManagerDialogComponent>,
+    private appRef: ApplicationRef) { }
 
   ngOnInit() {
   }
   onClose() {
     console.log('on close');
     this.dialogRef.close();
+    this.appRef.tick();
   }
 
 }
