@@ -69,6 +69,9 @@ export class DatasetInsertDialogComponent implements OnInit, AfterViewInit {
     const conf =  {
       plugins: 'link',
       toolbar: 'addfile',
+      menu: {
+      },
+      toolbar1: 'formatselect | bold italic strikethrough | alignleft aligncenter alignright alignjustify  | numlist bullist addfile',
       setup: (editor) => {
         editor.addButton('addfile', {
           image: './assets/img/add-file.png',
