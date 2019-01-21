@@ -73,6 +73,12 @@ button {
       color: #333333;
     }
   }
+  a.file-link {
+    color: #3498db;
+    &:hover, &:active, &:visited {
+      color: #3498db;
+    }
+  }
 img {
   width: 100%;
   height: 100%;

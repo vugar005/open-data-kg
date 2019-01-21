@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { FileManagerUploaderAdapter } from './file-manager-uploader.adapter';
 import { UploadFileDialogComponent } from './../ent-users/user-insert-dialog/upload-file-dialog/upload-file-dialog.component';
 import { MatDialog } from '@angular/material';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { SharedService } from 'src/app/shared/shared.service';
 
 @Component({
@@ -12,6 +12,7 @@ import { SharedService } from 'src/app/shared/shared.service';
   styleUrls: ['./file-manager.component.scss']
 })
 export class FileManagerComponent implements OnInit {
+  @Output() selected = new EventEmitter<FileManagerItem>();
   items: FileManagerItem[];
   adapter = new FileManagerUploaderAdapter(this.http);
   constructor(private sharedService: SharedService, private dialog: MatDialog, private http: HttpClient) { }

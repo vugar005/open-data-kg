@@ -67,25 +67,31 @@
               </div>
      </div>
        <div class="row-2">
-          <div class="ckeditor-wrapper">
-              <p class="field-title">{{'~content' | translate}} (En)</p>
-              <ckeditor [editor]="Editor" class="ckeditor-element"
-                [config]="editorConfig"
-                name="contentKg" ngModel  ></ckeditor>
+          <div class="editor-wrapper">
+              <p class="field-title">{{'~content' | translate}} (Kg)</p>
+              <editor class="editor"
+              ngModel
+              name="contentKg"
+              required
+              apiKey="226c3doh3igayb75w0e2todaezq0scafnvuksfeuh8sjzyln" [init]="onEditorInit()" ></editor>
             </div>
 
-          <div class="ckeditor-wrapper">
+          <div class="editor-wrapper">
               <p class="field-title">{{'~content' | translate}} (En)</p>
-              <ckeditor [editor]="Editor" class="ckeditor-element"
-                [config]="editorConfig"
-                name="contentEn" ngModel  ></ckeditor>
+              <editor class="editor"
+              ngModel
+              name="contentEn"
+              required
+              apiKey="226c3doh3igayb75w0e2todaezq0scafnvuksfeuh8sjzyln" [init]="onEditorInit()" ></editor>
             </div>
 
-          <div class="ckeditor-wrapper">
-              <p class="field-title">{{'~content' | translate}} (En)</p>
-              <ckeditor [editor]="Editor" class="ckeditor-element"
-                [config]="editorConfig"
-                name="contentRu" ngModel  ></ckeditor>
+          <div class="editor-wrapper">
+              <p class="field-title">{{'~content' | translate}} (Ru)</p>
+              <editor class="editor"
+              ngModel
+              name="contentRu"
+              required
+              apiKey="226c3doh3igayb75w0e2todaezq0scafnvuksfeuh8sjzyln" [init]="onEditorInit()" ></editor>
             </div>
 
        </div>

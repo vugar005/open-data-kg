@@ -115,6 +115,8 @@ function getUrl(mod) {
     return 'annoucements';
     case 'FLMNGR':
     return 'file-manager';
+    case 'MLTLNG':
+    return 'multilang';
     default :
     return '';
   }

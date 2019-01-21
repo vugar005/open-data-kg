@@ -21,6 +21,7 @@ const routes: Routes = [
     {path: 'news', loadChildren: './ent-news/ent-news.module#EntNewsModule'},
     {path: 'blogs', loadChildren: './ent-blogs/ent-blogs.module#EntBlogsModule'},
     {path: 'annoucements', loadChildren: './ent-annoucements/ent-annoucements.module#EntAnnoucementsModule'},
+    {path: 'multilang', loadChildren: './ent-multi-lang/ent-multi-lang.module#EntMultiLangModule'},
     {path: 'file-manager', component: FileManagerComponent},
   ]},
 ];

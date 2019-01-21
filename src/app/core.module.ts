@@ -43,10 +43,9 @@ import { SharedRbacModule } from './shared/shared-rbac.module';
 import { MatIconModule, MatButtonModule } from '@angular/material';
 import { HttpClientBusyModule } from 'ngx-httpclient-busy';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { HttpLoaderFactory } from './shared/shared-translate.module';
 import { PopularDatasetsComponent } from './global-nav/popular-datasets/popular-datasets.component';
 import { NotLoggedInDialogComponent } from './not-loggedIn-dialog/not-loggedIn-dialog.component';
-
+import { HttpLoaderFactory } from './shared/shared-translate.module';
 @NgModule({
 declarations: [
   HeaderComponent,

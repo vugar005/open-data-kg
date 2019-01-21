@@ -22,6 +22,7 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { EditorModule } from '@tinymce/tinymce-angular';
 import { FileManagerModule } from '../file-manager/file-manager.module';
 import { ImgSrcPipeModule } from 'src/app/shared/pipes/img-src-pipe.module';
+import { FileManagerDialogComponent } from '../file-manager-dialog/file-manager-dialog.component';
 
 export const MY_FORMATS = {
   parse: {
@@ -67,10 +68,11 @@ export const MY_FORMATS = {
     EditorModule,
     ImgSrcPipeModule,
     FileManagerModule,
-    MatDialogModule
     ],
   declarations: [
+    FileManagerDialogComponent
   ],
+  entryComponents: [FileManagerDialogComponent],
   providers: [
     NtTableService,
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },

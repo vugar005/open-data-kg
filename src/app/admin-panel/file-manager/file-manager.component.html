@@ -8,6 +8,6 @@
    </div>
 
    <div class="ng-admin-content">
-    <file-list [items]="items" (remove)="onFileRemove($event)"> </file-list>
+    <file-list [items]="items" (remove)="onFileRemove($event)" (itemSelected)="selected.next($event)"> </file-list>
    </div>
 

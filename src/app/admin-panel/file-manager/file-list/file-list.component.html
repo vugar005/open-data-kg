@@ -1,1 +1,1 @@
-<file-item *ngFor="let item of items" [item]="item" (remove)="remove.next($event)"> </file-item>
+<file-item *ngFor="let item of items" (click)="itemSelected.next(item)" [item]="item" (remove)="remove.next($event)"> </file-item>

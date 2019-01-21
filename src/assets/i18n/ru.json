@@ -99,11 +99,18 @@
    "~choose": "Выбрать",
    "~logOut": "Выйти",
 
-   "~areYouSatisfied": "",
-   "~scrollMe": "",
-   "~writeFeedbackHere": "",
-   "~rating": "",
-   "~reviewCount": ""
+   "~feedbackQuestion": "Are you satisfied?",
+   "~scrollMe": "Scroll me",
+   "~writeFeedbackHere": "Write Feedback here",
+   "~rating": "Rating",
+   "~reviewCount": "Review Count",
+  "~unSaveData": "UNSAVE DATA",
+  "~searchNews": "Search News",
+  "~category": "Category",
+  "~multiLang": "",
+  "~fileManager": ""
+
+
  }
 
 

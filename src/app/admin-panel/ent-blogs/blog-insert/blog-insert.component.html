@@ -67,20 +67,32 @@
             </div>
    </div>
      <div class="row-2">
-            <mat-form-field class="example-full-width">
-                <textarea matInput placeholder="{{'~content' | translate}} (Kg)" class="nt-form-input input-textarea" name="contentKg" ngModel    required> </textarea>
-                <mat-error>{{getErrors('contentKg')}}</mat-error>
-              </mat-form-field>
+      <div class="editor-wrapper">
+        <p class="field-title">{{'~content' | translate}} (Kg)</p>
+        <editor class="editor"
+        ngModel
+        name="contentKg"
+        required
+        apiKey="226c3doh3igayb75w0e2todaezq0scafnvuksfeuh8sjzyln" [init]="onEditorInit()" ></editor>
+      </div>
 
-              <mat-form-field class="example-full-width">
-                  <textarea matInput placeholder="{{'~content' | translate}} (En)" class="nt-form-input input-textarea" name="contentEn" ngModel    required> </textarea>
-                <mat-error>{{getErrors('contenEn')}}</mat-error>
-              </mat-form-field>
+    <div class="editor-wrapper">
+        <p class="field-title">{{'~content' | translate}} (En)</p>
+        <editor class="editor"
+        ngModel
+        name="contentEn"
+        required
+        apiKey="226c3doh3igayb75w0e2todaezq0scafnvuksfeuh8sjzyln" [init]="onEditorInit()" ></editor>
+      </div>
 
-              <mat-form-field class="example-full-width">
-                  <textarea  matInput placeholder="{{'~content' | translate}} (Ru)" class="nt-form-input input-textarea" name="contentRu" ngModel    required> </textarea>
-                <mat-error>{{getErrors('contentRu')}}</mat-error>
-              </mat-form-field>
+    <div class="editor-wrapper">
+        <p class="field-title">{{'~content' | translate}} (Ru)</p>
+        <editor class="editor"
+        ngModel
+        name="contentRu"
+        required
+        apiKey="226c3doh3igayb75w0e2todaezq0scafnvuksfeuh8sjzyln" [init]="onEditorInit()" ></editor>
+      </div>
      </div>
   </div>
   <div class="actions">

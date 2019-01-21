@@ -98,12 +98,15 @@
       "~openLink": "Open Link",
       "~choose": "Choose",
       "~logOut": "Log Out",
-      "~areYouSatisfied": "Are you satisfied?",
+      "~feedbackQuestion": "Are you satisfied?",
        "~scrollMe": "Scroll me",
        "~writeFeedbackHere": "Write Feedback here",
        "~rating": "Rating",
        "~reviewCount": "Review Count",
       "~unSaveData": "UNSAVE DATA",
       "~searchNews": "Search News",
-      "~category": "Category"
+      "~category": "Category",
+      "~multiLang": "",
+      "~fileManager": ""
+
 }

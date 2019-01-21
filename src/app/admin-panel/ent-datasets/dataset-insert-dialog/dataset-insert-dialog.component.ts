@@ -1,4 +1,3 @@
-import { FileManagerDialogComponent } from './../file-manager-dialog/file-manager-dialog.component';
 import { FileManagerUploaderAdapter } from './../../file-manager/file-manager-uploader.adapter';
 import { Component, OnInit, ViewChild, Inject, ViewContainerRef, AfterViewInit, ElementRef } from '@angular/core';
 import { NgForm } from '@angular/forms';
@@ -19,6 +18,8 @@ import { Store } from '@ngrx/store';
 import { getUserOrg } from 'src/app/auth/store/auth.selectors';
 import { take } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
+import { addAttachFileToolbar } from 'src/app/shared/shared-methods';
+import { FileManagerDialogComponent } from '../../file-manager-dialog/file-manager-dialog.component';
 
 @Component({
   selector: 'app-dataset-insert-dialog',
@@ -57,30 +58,8 @@ export class DatasetInsertDialogComponent implements OnInit, AfterViewInit {
       }
     });
   }
-  initFileManagerDialog(editor) {
-  const dialogRef =  this.dialog.open(FileManagerDialogComponent);
-    dialogRef.afterClosed().subscribe(res => {
-      if (res) {
-     editor.execCommand('mceInsertContent', false, `<a href="${res}">Link</a>`);
-      }
-    });
-  }
   onEditorInit() {
-    const conf =  {
-      plugins: 'link',
-      toolbar: 'addfile',
-      menu: {
-      },
-      toolbar1: 'formatselect | bold italic strikethrough | alignleft aligncenter alignright alignjustify  | numlist bullist addfile',
-      setup: (editor) => {
-        editor.addButton('addfile', {
-          image: './assets/img/add-file.png',
-          tooltip: 'Attach link',
-          onclick:  this.initFileManagerDialog.bind(this,  editor)
-        });
-      }
-    };
-    return conf;
+    return addAttachFileToolbar(this.dialog, FileManagerDialogComponent);
   }
   getErrors(str) {
     if (!this.ntForm || !NgxFormUtils) { return; }

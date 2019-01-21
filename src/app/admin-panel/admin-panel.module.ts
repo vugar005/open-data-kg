@@ -22,7 +22,7 @@ import { TokenInterceptor } from '../auth/token.inteceptor';
 import { APIInterceptor } from '../shared/interceptors/api.interceptor';
 import { LangInterceptor } from '../shared/interceptors/lang.interceptor';
 export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+  return new TranslateHttpLoader(http, './SHARED/', '.json');
 }
 @NgModule({
   imports: [

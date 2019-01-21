@@ -1,4 +1,3 @@
-import { FileManagerDialogComponent } from './file-manager-dialog/file-manager-dialog.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EntDatasetsComponent } from './ent-datasets.component';
@@ -9,7 +8,6 @@ import { MatExpansionModule, MatTabsModule, MatDatepickerModule, MatDialogModule
 import { DatasetApiInsertComponent } from './dataset-insert-dialog/dataset-api-insert/dataset-api-insert.component';
 import { DatasetKeywordInsertComponent } from './dataset-insert-dialog/dataset-keyword-insert/dataset-keyword-insert.component';
 import { DatasetCategoryInsertComponent } from './dataset-insert-dialog/dataset-category-insert/dataset-category-insert.component';
-import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 @NgModule({
   imports: [
     CommonModule,
@@ -24,14 +22,12 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     DatasetApiInsertComponent,
     DatasetCategoryInsertComponent,
     DatasetKeywordInsertComponent,
-    FileManagerDialogComponent
   ],
   entryComponents: [
     DatasetInsertDialogComponent,
     DatasetApiInsertComponent,
     DatasetKeywordInsertComponent,
     DatasetCategoryInsertComponent,
-    FileManagerDialogComponent
   ]
 })
 export class EntDatasetsModule {}

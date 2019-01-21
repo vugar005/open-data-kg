@@ -55,7 +55,7 @@ export class GeojsonPreviewComponent implements OnInit, AfterViewInit {
         type: 'fill',
         source: {
           type: 'geojson',
-          data: MockGeoData
+          data: data
         },
         layout: {},
         paint: {

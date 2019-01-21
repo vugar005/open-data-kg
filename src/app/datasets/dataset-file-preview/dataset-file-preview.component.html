@@ -16,7 +16,7 @@
       <div class="dataset-file-preview-wrapper">
         <div class="dataset-info-wrapper">
           <div class="dataset-name">{{ dataset?.kv.name }}</div>
-          <div class="dataset-description">{{ dataset?.kv.description }}</div>
+          <div class="dataset-description" [innerHTML]="dataset?.kv.description" ></div>
         </div>
 
         <div class="file-box">

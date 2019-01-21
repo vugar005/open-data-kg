@@ -8,6 +8,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class FileListComponent implements OnInit {
   @Output() public remove = new EventEmitter<string>();
+  @Output() public itemSelected = new EventEmitter<FileManagerItem>();
   @Input() items: FileManagerItem[];
   constructor() { }
 

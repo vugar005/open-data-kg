@@ -7,6 +7,8 @@ import { SharedService } from 'src/app/shared/shared.service';
 import { NgxFormUtils } from 'ngx-form-utils';
 import { UploadFileDialogComponent } from '../../ent-users/user-insert-dialog/upload-file-dialog/upload-file-dialog.component';
 import * as InlineEdtior from '@ckeditor/ckeditor5-build-inline';
+import { addAttachFileToolbar } from 'src/app/shared/shared-methods';
+import { FileManagerDialogComponent } from '../../file-manager-dialog/file-manager-dialog.component';
 
 @Component({
   selector: 'app-news-insert-dialog',
@@ -35,6 +37,9 @@ export class NewsInsertDialogComponent  {
   getErrors(str) {
     if (!this.ntForm || !NgxFormUtils) { return; }
      return NgxFormUtils.getErrors(this.ntForm, str);
+    }
+    onEditorInit() {
+      return addAttachFileToolbar(this.dialog, FileManagerDialogComponent);
     }
     onUpload() {
       const dialogRef = this.dialog.open(UploadFileDialogComponent);

@@ -9,7 +9,7 @@
               <i class="fas fa-chevron-left"></i>
             </div>
             <div class="item-title">{{ dataset?.kv.name }}</div>
-            <div class="item-desc">{{ dataset?.kv?.description }}</div>
+            <div class="item-desc" [innerHTML]="dataset?.kv?.description"></div>
             <div class="item-actions">
               <div class="box-perspective" (click)="onShareClick()">
                 <div class="rotating-box">

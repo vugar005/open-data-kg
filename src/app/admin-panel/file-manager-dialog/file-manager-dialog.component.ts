@@ -1,5 +1,7 @@
 import { MatDialogRef } from '@angular/material';
 import { Component, OnInit,  Optional, ApplicationRef } from '@angular/core';
+import { imgSrcParser } from 'src/app/shared/shared-methods';
+import { FileManagerItem } from '../file-manager/file-manager-item.model';
 
 @Component({
   selector: 'app-file-manager-dialog',
@@ -7,8 +9,7 @@ import { Component, OnInit,  Optional, ApplicationRef } from '@angular/core';
   styleUrls: ['./file-manager-dialog.component.scss']
 })
 export class FileManagerDialogComponent implements OnInit {
-
-  constructor(@Optional() private dialogRef: MatDialogRef<FileManagerDialogComponent>,
+  constructor(@Optional() public dialogRef: MatDialogRef<FileManagerDialogComponent>,
     private appRef: ApplicationRef) { }
 
   ngOnInit() {
@@ -17,13 +18,13 @@ export class FileManagerDialogComponent implements OnInit {
       this.appRef.tick();
     }, 10);
   }
-  onClose() {
-    /** Getting copyied text that saved via file-manager=> file-item => copy link method */
-    const copiedTextElement = (<HTMLTextAreaElement>document.querySelector('[copy-text-value]'));
-    let copiedTextValue;
-    if (copiedTextElement) { copiedTextValue = copiedTextElement.value; }
-    this.dialogRef.close(copiedTextValue);
+  onSelected(item: FileManagerItem) {
+    console.log('clicked');
+    this.dialogRef.close(imgSrcParser(item.id));
     this.appRef.tick();
   }
-
+  onCancel() {
+   this.dialogRef.close();
+   this.appRef.tick();
+  }
 }

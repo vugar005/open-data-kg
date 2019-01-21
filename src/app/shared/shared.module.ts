@@ -1,12 +1,7 @@
+import { SharedTranslateModule } from './shared-translate.module';
 import { ProgressSpinnerComponent } from './../progress-spinner/progress-spinner.component';
 import { GlobalNavComponent } from './../global-nav/global-nav.component';
 import { NgModule } from '@angular/core';
-import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
-import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import { HttpClient, HTTP_INTERCEPTORS} from '@angular/common/http';
-export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
-}
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { SwiperModule } from 'ngx-swiper-wrapper';
@@ -44,18 +39,12 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
       TypeheadModule,
       MatProgressSpinnerModule,
       MatButtonModule,
-      TranslateModule.forChild({
-        loader: {
-          provide: TranslateLoader,
-          useFactory: HttpLoaderFactory,
-          deps: [HttpClient]
-        }
-      }),
+      SharedTranslateModule
     ],
     exports: [
       CommonModule,
       FontAwesomeModule,
-      TranslateModule,
+      SharedTranslateModule,
       SwiperModule,
       FooterComponent,
       MatRippleModule,

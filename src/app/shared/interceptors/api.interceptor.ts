@@ -14,7 +14,7 @@ export class APIInterceptor implements HttpInterceptor {
     .pipe(
       take(1),
       switchMap((api: string) => {
-        if (req.url.includes('assets/i18n')) { return next.handle(req); }
+        if (req.url.includes('.json')) { return next.handle(req); }
         if (req.url.includes('.svg')) { return next.handle(req); }
         if (req.url.includes('geoJSON')) { return next.handle(req); }
         const apiReq = req.clone({ url: `${api}/${req.url}` });

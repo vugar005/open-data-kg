@@ -49,3 +49,32 @@ export function loadExternalStyles(url: string) {
     sharedService.createNotification('info', 'Link copied !', 'bottomCenter');
   }
  }
+ export function imgSrcParser(fileId: string) {
+   const hostname = localStorage.getItem('kg_hostname');
+  return `${hostname}/api/get/file/${fileId}`;
+ }
+  export function addAttachFileToolbar(modal, fileManagerDialog) {
+    function initFileManagerDialog(editor) {
+      const dialogRef =  modal.open(fileManagerDialog);
+        dialogRef.afterClosed().subscribe(res => {
+          if (res) {
+         editor.execCommand('mceInsertContent', false, `<a href="${res}" target="_blank" class="file-link">Link</a> &nbsp; `);
+          }
+        });
+      }
+    const conf =  {
+      plugins: 'link',
+      toolbar: 'addfile',
+      menu: {
+      },
+      toolbar1: 'formatselect | bold italic strikethrough | alignleft aligncenter alignright alignjustify  | numlist bullist addfile',
+      setup: (editor) => {
+        editor.addButton('addfile', {
+          image: './assets/img/add-file.png',
+          tooltip: 'Attach link',
+          onclick:  initFileManagerDialog.bind(this, editor)
+        });
+      }
+    };
+    return conf;
+  }
