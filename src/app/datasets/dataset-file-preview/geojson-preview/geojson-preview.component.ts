@@ -11,18 +11,17 @@ declare var L;
   styleUrls: ['./geojson-preview.component.scss']
 })
 export class GeojsonPreviewComponent implements OnInit, AfterViewInit {
-  @Input() src: string;
-  @Input() dataset: DatasetDetail;
-  datasetApi: DatasetDetail;
+  @Input() link: string;
   loaded: boolean;
   constructor(private http: HttpClient) {}
 
   ngOnInit() {}
   ngAfterViewInit() {
-      this.initMap(MockGeoData);
-    // this.getGeoData('http://demo8764036.mockable.io/sample-geoJSON').subscribe(res => {
-    //   this.initMap(res);
-    // });
+     // this.initMap(MockGeoData);
+     console.log(this.link)
+    this.getGeoData(this.link).subscribe(res => {
+      this.initMap(res);
+    });
   }
   getGeoData(src: string): Observable<any> {
     return this.http.get(src);

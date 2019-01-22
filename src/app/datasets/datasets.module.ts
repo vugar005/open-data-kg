@@ -29,6 +29,7 @@ import { DatasetEffects } from './store/dataset.effects';
 import { SharedRbacModule } from '../shared/shared-rbac.module';
 import { DatasetFiltersComponent } from './dataset-filters/dataset-filters.component';
 import { ShareDialogComponent } from './share-dialog/share-dialog.component';
+import { GoogleDocPreviewComponent } from './dataset-file-preview/google-doc-preview/google-doc-preview.component';
 
 @NgModule({
   imports: [
@@ -58,7 +59,8 @@ import { ShareDialogComponent } from './share-dialog/share-dialog.component';
      FeedbackBoxComponent,
      DatasetFiltersComponent,
      GeojsonPreviewComponent,
-     ShareDialogComponent
+     ShareDialogComponent,
+     GoogleDocPreviewComponent
     ],
     entryComponents: [ShareDialogComponent],
     providers: [

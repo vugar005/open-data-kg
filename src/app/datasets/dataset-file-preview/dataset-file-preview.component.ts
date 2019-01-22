@@ -11,9 +11,9 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class DatasetFilePreviewComponent implements OnInit {
   dataset: DatasetDetail;
-  datasetApi: any;
-  show = 'excel';
+  dataLink: string;
   apiFormat: string;
+  googleDocsFormat = ['DOC', 'XLS', 'PPT', 'DOCX', 'XLSX', 'PPTX'];
   constructor(
     private datasetService: DatasetsService,
     private sanitizer: DomSanitizer,
@@ -35,13 +35,16 @@ export class DatasetFilePreviewComponent implements OnInit {
   getQueryParams() {
     this.route.queryParams.subscribe(res => {
     this.apiFormat = res['type'];
-    console.log(this.apiFormat)
+    console.log(this.apiFormat);
     });
   }
 
   getDatasetById(id: string) {
     this.datasetService.getDatasetById(id).subscribe(res => {
       this.dataset = res;
+      const apiTbl = this.dataset.tbl.find( tbl => tbl.tn === 'API');
+      const apiRow = apiTbl.r.find( row => row.format === this.apiFormat);
+      this.dataLink = apiRow && apiRow.link;
     });
   }
   getSafeUrl(url: string) {

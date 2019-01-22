@@ -23,7 +23,8 @@ import { EditorModule } from '@tinymce/tinymce-angular';
 import { FileManagerModule } from '../file-manager/file-manager.module';
 import { ImgSrcPipeModule } from 'src/app/shared/pipes/img-src-pipe.module';
 import { FileManagerDialogComponent } from '../file-manager-dialog/file-manager-dialog.component';
-
+import { NgxNativeTableModule} from 'ngx-native-table';
+import { SharedAdminService } from './shared-admin.service';
 export const MY_FORMATS = {
   parse: {
     dateInput: 'L'
@@ -42,7 +43,8 @@ export const MY_FORMATS = {
     EditorModule,
     ImgSrcPipeModule,
     FileManagerModule,
-    MatDialogModule
+    MatDialogModule,
+    NgxNativeTableModule
   ],
   exports: [
     FontAwesomeModule,
@@ -68,6 +70,7 @@ export const MY_FORMATS = {
     EditorModule,
     ImgSrcPipeModule,
     FileManagerModule,
+    NgxNativeTableModule
     ],
   declarations: [
     FileManagerDialogComponent
@@ -75,6 +78,7 @@ export const MY_FORMATS = {
   entryComponents: [FileManagerDialogComponent],
   providers: [
     NtTableService,
+    SharedAdminService,
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: APIInterceptor, multi: true },

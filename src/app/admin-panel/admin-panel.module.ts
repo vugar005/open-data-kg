@@ -9,12 +9,11 @@ import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { SharedAdminService } from './shared/shared-admin.service';
 import { AdminPanelService } from './admin-panel.service';
 import { AdminModulesResolver } from './shared/resolvers/admin-modules.resolver';
 import { SharedAcrossModule } from '../shared/shared-across.module';
 import { AdminHeaderComponent } from './admin-header/admin-header.component';
-import { MatMenuModule } from '@angular/material';
+import { MatMenuModule, MatDialogModule } from '@angular/material';
 import { SharedRbacModule } from '../shared/shared-rbac.module';
 import { AdminProfilePopupComponent } from './right-aside/admin-profile-popup/admin-profile-popup.component';
 import { ErrorInterceptor } from '../shared/interceptors/error.interceptor';
@@ -29,6 +28,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     CommonModule,
     MatMenuModule,
     SharedRbacModule,
+    MatDialogModule,
     TranslateModule.forChild({
       loader: {
         provide: TranslateLoader,
@@ -49,10 +49,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     RightAsideComponent,
   ],
   providers: [
-    SharedAdminService,
     AdminPanelService,
     AdminModulesResolver,
-
   ]
 })
 export class AdminPanelModule { }
