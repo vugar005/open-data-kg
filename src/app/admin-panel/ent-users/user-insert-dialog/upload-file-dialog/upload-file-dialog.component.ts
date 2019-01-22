@@ -26,6 +26,7 @@ export class UploadFileDialogComponent implements OnInit {
                public dialogRef: MatDialogRef<UploadFileDialogComponent>,
                private http: HttpClient) {}
   ngOnInit() {
+    console.log(this.data)
     if (this.data.adapter) {this.adapter = this.data.adapter; }
   }
   onUploaded(res: FilePreviewModel) {

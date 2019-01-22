@@ -1,0 +1,93 @@
+<form #f="ngForm" patch-form [form]="f" [data]="data?.user" class="nt-form">
+
+    <div class="inputs">
+      <div class="left">
+
+        <div class="upload-item-img">
+
+          <ng-container *ngIf="!imgId">
+            <img src="./assets/icons/avatar.svg" (click)="onUpload()">
+          </ng-container>
+
+          <ng-container *ngIf="imgId">
+            <img src="http://192.168.1.23:8080/DispatcherRest/api/get/file/{{imgId}}" (click)="onUpload()" onerror="this.src = './assets/icons/avatar.svg'">
+          </ng-container>
+          <div class="img-corners">
+            <div class="arrow"></div>
+            <div class="arrow-2"></div>
+          </div>
+          <div class="upload-div animated slideInUp">
+            <p>{{'~uploadImg' | translate}}</p>
+          </div>
+
+        </div>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="{{'~username' | translate}}" class="nt-form-input" name="userName" ngModel required>
+          <mat-error>{{getErrors('userName')}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="{{'~firstname' | translate}}" class="nt-form-input" name="name" ngModel required>
+          <mat-error>{{getErrors('fName')}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="{{'~lastname' | translate}}" class="nt-form-input" name="surname" ngModel required>
+          <mat-error>{{getErrors('lname')}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="{{'~middlename' | translate}}" class="nt-form-input" name="patronymic" ngModel required>
+          <mat-error>{{getErrors('mname')}}</mat-error>
+        </mat-form-field>
+
+
+      </div>
+
+      <div class="right">
+
+        <mat-form-field>
+          <mat-select placeholder="{{'~gender' | translate}}" class="nt-form-input" name="genderId" ngModel required>
+            <mat-option *ngFor="let item of (genders$ | async)" [value]="item.value"> {{item.label}} </mat-option>
+          </mat-select>
+          <mat-error>{{getErrors('genderId')}}</mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field>
+          <input matInput [matDatepicker]="picker" placeholder="{{'~birthdate' | translate}}" name="birthdate" ngModel required
+            [max]="maxDate">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker [startAt]="startDate" startView="year"></mat-datepicker>
+          <mat-error>{{getErrors('birthDate')}}</mat-error>
+        </mat-form-field>
+
+
+
+        <mat-form-field class="example-full-width" *ngIf="data?.user">
+          <input matInput placeholder="{{'~oldPassword' | translate}}" class="nt-form-input" name="oldPasswd" ngModel [type]="hideOld ? 'password' : 'text'">
+          <mat-icon matSuffix (click)="hideOld = !hideOld">{{hideOld ? 'visibility_off' : 'visibility'}}</mat-icon>
+          <mat-error>{{getErrors('oldPasswd')}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="{{'~password' | translate}}" class="nt-form-input" name="passwd" ngModel [type]="hide ? 'password' : 'text'"
+            [required]="!data.user">
+          <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          <mat-error>{{getErrors('passwd')}}</mat-error>
+        </mat-form-field>
+
+        <input [hidden]="true" name="photoFileId" value="imgId" [(ngModel)]="imgId" >
+        <input [hidden]="true" name="id" ngModel>
+        <input [hidden]="true" name="personId" ngModel>
+      </div>
+    </div>
+    <div class="actions">
+      <button mat-raised-button color="primary"  type="submit"
+      [disabled]="f?.dirty && !f?.valid"
+      >{{'~update' | translate}}</button>
+      <button mat-raised-button (click)="dialogRef.close()" type="reset">{{'~cancel' | translate}}</button>
+    </div>
+
+  </form>

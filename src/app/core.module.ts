@@ -40,12 +40,27 @@ import { SharedModule } from './shared/shared.module';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { TypeheadModule } from 'ngx-typehead-dir';
 import { SharedRbacModule } from './shared/shared-rbac.module';
-import { MatIconModule, MatButtonModule } from '@angular/material';
+import { MatIconModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatDatepickerModule, DateAdapter,
+   MAT_DATE_LOCALE, MAT_DATE_FORMATS, MatSelectModule } from '@angular/material';
 import { HttpClientBusyModule } from 'ngx-httpclient-busy';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { PopularDatasetsComponent } from './global-nav/popular-datasets/popular-datasets.component';
 import { NotLoggedInDialogComponent } from './not-loggedIn-dialog/not-loggedIn-dialog.component';
 import { HttpLoaderFactory } from './shared/shared-translate.module';
+import { MatMomentDateModule, MomentDateAdapter } from '@angular/material-moment-adapter';
+import { FormUtilsModule } from 'ngx-form-utils';
+import { UserProfileEditComponent } from './user-profile/user-profile-edit/user-profile-edit.component';
+export const MY_FORMATS = {
+  parse: {
+    dateInput: 'L'
+  },
+  display: {
+    dateInput: 'DD/MM/YYYY',
+    monthYearLabel: 'MMM YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'MMMM YYYY',
+  }
+};
 @NgModule({
 declarations: [
   HeaderComponent,
@@ -65,9 +80,10 @@ declarations: [
   DesktopComponent,
   NotFoundComponent,
   OrganizationOverviewComponent,
-  UserProfileComponent
+  UserProfileComponent,
+  UserProfileEditComponent
 ],
-entryComponents: [NotLoggedInDialogComponent],
+entryComponents: [NotLoggedInDialogComponent, UserProfileEditComponent],
 imports: [
   CommonModule,
   AppRoutingModule,
@@ -85,7 +101,13 @@ imports: [
   TypeheadModule,
   SharedRbacModule,
   MatButtonModule,
+  MatFormFieldModule,
+  MatInputModule,
   MatIconModule,
+  MatSelectModule,
+  MatDatepickerModule,
+  MatMomentDateModule,
+  FormUtilsModule,
   DatasetBoxModule,
   HttpClientBusyModule.forRoot(),
   TranslateModule.forRoot({
@@ -144,8 +166,13 @@ providers: [
     deps: [SharedService],
     useFactory: (sharedService) => sharedService.getCurentLocale()
   },
+  {provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE]},
+  {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
+  { provide: MAT_DATE_LOCALE,
+    deps: [SharedService],
+    useFactory: (sharedService) => sharedService.getCurentLocale()
+  },
 ]
-
 })
 export class CoreModule {
   constructor(@Optional() @SkipSelf() parentModule: CoreModule) {

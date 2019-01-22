@@ -4,6 +4,7 @@
   height: calc(100vh - var(--kg-header-height));
   overflow-y: auto;
 }
+
 .main-info-wrapper {
   position: relative;
 
@@ -35,23 +36,19 @@
   .item-center {
     display: flex;
     flex-direction: column;
-    .item-name {
-      font-weight: 800;
-      font-size: 1.56em;
-      color: #FFFFFF;
-      padding-bottom: 1.6rem;
-    }
-    .item-birthdate, .item-nationality {
+    .item-center__group{
      display: flex;
+     align-items: flex-end;
       .key {
         font-weight: bold;
         font-size: 1.1em;
         color: #FFFFFF;
+        margin-right: 10px;
       }
       .value {
         font-weight: 300;
-        font-size: 1.1em;
-        color: #FFFFFF;
+        font-size: 1em;
+        color: gainsboro;
 
       }
     }
