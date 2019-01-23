@@ -50,7 +50,7 @@
 
 }
 .ng-admin-content {
-  flex: 1 1 0;
+  height: calc(100% - 64px);
   width: 100%;
 }
 
@@ -60,6 +60,7 @@
   padding: 0 1rem;
   border-radius: 0.313rem;
   background: #ffffff;
+  font-size: 14px;
 }
 
 .ag-theme-material .ag-ltr .ag-cell-focus{

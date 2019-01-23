@@ -1,8 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { NtTableComponent } from 'nt-table';
-import { MatDialog } from '@angular/material';
+import { Component, ViewChild } from '@angular/core';
 import { UserRolesInsertDialogComponent } from './user-roles-insert-dialog/user-roles-insert-dialog.component';
-import { ApiConfig } from 'nt-table/lib/api-config.model';
+import { NgxNativeTableComponent, ApiConfig, TableEditerAction } from 'ngx-native-table';
+import { SharedAdminService } from '../shared/shared-admin.service';
 
 @Component({
   selector: 'admin-user-roles',
@@ -10,7 +9,7 @@ import { ApiConfig } from 'nt-table/lib/api-config.model';
   styleUrls: ['./admin-user-roles.component.scss']
 })
 export class AdminUserRolesComponent {
-  @ViewChild('table') table: NtTableComponent;
+  @ViewChild('table') table: NgxNativeTableComponent;
   config: ApiConfig = {
     getApi: 'api/post/Permission/UserRoles/GetUserRoleList',
     insertApi: 'api/post/Permission/UserRoles/InsertNewUserRole',
@@ -20,11 +19,9 @@ export class AdminUserRolesComponent {
       ownerId: '181109524302827110'
     }
   };
-  constructor(private dialog: MatDialog) { }
-  initDialog(table: NtTableComponent, row = null) {
-    const ref = this.dialog.open(UserRolesInsertDialogComponent, {
-      data: { table: table, row: row || undefined}
-    });
-  }
+  constructor(private sharedAdminService: SharedAdminService) { }
+  onOptClick(action: TableEditerAction, table: NgxNativeTableComponent) {
+    this.sharedAdminService.tableActionImplement(action, table, UserRolesInsertDialogComponent);
+   }
 
 }

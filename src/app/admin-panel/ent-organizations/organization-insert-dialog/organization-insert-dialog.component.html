@@ -109,7 +109,7 @@
           </div>
          </div>
 
-      <div style="width: 100%;height: 200px;" >
+      <div style="width: 400px;height: 200px;" >
         <ngx-native-table #tableAddress
         [config]="configAddress"
         [editTemplate]="editerAddress"
@@ -118,6 +118,10 @@
         (actionClick)="onOptClickAddress($event, tableAddress)"
         >
         </ngx-native-table>
+        <ng-template #editerAddress>
+          <button [attr.t-btn]="'edit'"   *rbacAllow="['1000009', 'EDIT_ADDRS']">{{'~edit' | translate}}</button>
+          <button [attr.t-btn]="'remove'" *rbacAllow="['1000009', 'DELETE_ADDRS']">{{'~delete' | translate}}</button>
+        </ng-template>
        </div>
 
       <div>
@@ -144,14 +148,18 @@
             </div>
            </div>
 
-        <div style="width: 100%;height: 200px;" >
+        <div style="width: 400px;height: 200px;" >
             <ngx-native-table #tableContact
             [config]="configContact"
             [editTemplate]="editerContact"
             [pagination]="false"
             [rowSelection]="false"
-            (actionClick)="onOptClickAddress($event, tableContact)"
+            (actionClick)="onOptClickContact($event, tableContact)"
           ></ngx-native-table>
+          <ng-template #editerContact>
+            <button [attr.t-btn]="'edit'"   *rbacAllow="['1000009', 'EDIT_CNTC']">{{'~edit' | translate}}</button>
+            <button [attr.t-btn]="'remove'" *rbacAllow="['1000009', 'DELETE_CNTC']">{{'~delete' | translate}}</button>
+          </ng-template>
          </div>
 
         <div>

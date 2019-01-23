@@ -3,24 +3,24 @@
       {{'~userRoles' | translate}}
     </div>
     <div class="ng-admin-actions-template"  >
-      <button (click)="table.onPrintSelected()" >{{'~print' | translate}}</button>
+      <button (click)="table.onPrint()" >{{'~print' | translate}}</button>
       <button  *rbacAllow="['1000006', 'ADD']" (click)="table.addData()" >{{'~addData' | translate}}</button>
       <button  *rbacAllow="['1000006', 'DELETE']" (click)="table.onRemove()"
        [disabled]="!(table?.isRowSelected)">{{'~removeSelected' | translate}}</button>
       <button  [disabled]="!(table.selectedRow)"
-      (click)="table.onRowPin()" > {{'~pinToTop' | translate}}</button>
+      (click)="table?.onRowPin()" > {{'~pinToTop' | translate}}</button>
       <button (click)="table.onExport()" >{{'~export' | translate}}</button>
    </div>
    </div>
 
    <div class="ng-admin-content">
      <div class="ng-admin-table">
-       <ngx-nt-table #table
-       [config]="config"
-       (rowAdd)="initDialog(table)"
-       (rowEdit)="initDialog( table, $event)"
-       [editTemplate]="editer"
-      ></ngx-nt-table>
+      <ngx-native-table #table
+      [config]="config"
+      [editTemplate]="editer"
+      (actionClick)="onOptClick($event, table)"
+      >
+      </ngx-native-table>
      </div>
    </div>
 
