@@ -1,9 +1,7 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { NtTableComponent } from 'nt-table';
-import { MatDialog } from '@angular/material';
+import { Component, ViewChild } from '@angular/core';
 import { UserInsertDialogComponent } from './user-insert-dialog/user-insert-dialog.component';
-import { ApiConfig } from 'nt-table/lib/api-config.model';
+import { SharedAdminService } from '../shared/shared-admin.service';
+import { TableEditerAction, NgxNativeTableComponent, ApiConfig } from 'ngx-native-table';
 
 @Component({
   selector: 'ent-users',
@@ -11,34 +9,17 @@ import { ApiConfig } from 'nt-table/lib/api-config.model';
   styleUrls: ['./ent-users.component.scss']
 })
 export class EntUsersComponent  {
-  @ViewChild('table') table: NtTableComponent;
-  config: ApiConfig = {
+  @ViewChild('table') table: NgxNativeTableComponent;
+  config = {
     getApi: 'api/post/Permission/Users/GetUserList',
     insertApi: 'api/post/Permission/Users/InsertNewUser',
     updateApi: 'api/post/Permission/Users/UpdateUser',
-    deleteApi: 'api/post/Permission/Users/DeleteUser'
+    deleteApi: 'api/post/Permission/Users/DeleteUser',
+    activateApi: 'api/post/Permission/Users/ActiveUser',
+    deactivateApi: 'api/post/Permission/Users/DeactiveUser'
   };
-  constructor(private dialog: MatDialog, private http: HttpClient) { }
-  initDialog(table: NtTableComponent, row = null) {
-    const ref = this.dialog.open(UserInsertDialogComponent, {
-      data: { table: table, row: row || undefined}
-    });
-  }
-  onOptClick(e) {
-   if (e.attribute === 'active') {
-     const body = {
-       kv: {
-         id: e.row.id
-       }
-     };
-    this.http.post('api/post/Permission/Users/ActiveUser', JSON.stringify(body)).subscribe();
-   } else if (e.attribute === 'deactive') {
-    const body = {
-      kv: {
-        id: e.row.id
-      }
-    };
-   this.http.post('api/post/Permission/Users/DeactiveUser', JSON.stringify(body)).subscribe();
+  constructor(private sharedAdminService: SharedAdminService) { }
+  onOptClick(action: TableEditerAction, table: NgxNativeTableComponent) {
+    this.sharedAdminService.tableActionImplement(action, table, UserInsertDialogComponent);
    }
-  }
 }

@@ -1,28 +1,25 @@
 import { MultiLangInsertComponent } from './multi-lang-insert/multi-lang-insert.component';
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { NtTableComponent } from 'nt-table';
+import { Component, ViewChild } from '@angular/core';
 import { ApiConfig } from 'nt-table/lib/api-config.model';
-import { MatDialog } from '@angular/material';
+import { SharedAdminService } from '../shared/shared-admin.service';
+import { TableEditerAction, NgxNativeTableComponent } from 'ngx-native-table';
 
 @Component({
-  selector: 'app-ent-multi-lang',
+  selector: 'ent-multi-lang',
   templateUrl: './ent-multi-lang.component.html',
   styleUrls: ['./ent-multi-lang.component.scss']
 })
 export class EntMultiLangComponent  {
-  @ViewChild('table') table: NtTableComponent;
+  @ViewChild('table') table: NgxNativeTableComponent;
   config: ApiConfig = {
     getApi: 'api/post/Permission/Multilang/GetMultilangList',
     insertApi: 'api/post/Permission/Multilang/InsertNewMultilang',
     updateApi: 'api/post/Permission/Multilang/UpdateMultilang',
     deleteApi: 'api/post/Permission/Multilang/DeleteMultilang'
   };
-  constructor(private dialog: MatDialog) {
+  constructor(private sharedAdminService: SharedAdminService) { }
+  onOptClick(action: TableEditerAction, table: NgxNativeTableComponent) {
+    this.sharedAdminService.tableActionImplement(action, table, MultiLangInsertComponent);
    }
-   initDialog(table, row = null) {
-    const ref = this.dialog.open(MultiLangInsertComponent, {
-      data: { table: table, row: row || undefined}
-    });
-  }
 
 }

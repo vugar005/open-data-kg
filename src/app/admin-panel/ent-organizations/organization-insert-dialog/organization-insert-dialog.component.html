@@ -104,18 +104,20 @@
       <ng-template matStepLabel>{{'~addressData' | translate}}</ng-template>
       <ng-container *ngIf="f?.value?.id">
         <div class="title">
-          <div class="add-icon" (click)="table.addData()">
+          <div class="add-icon" (click)="tableAddress.addData()">
             <fa-icon [icon]="faPlusCircle"></fa-icon>
           </div>
          </div>
 
       <div style="width: 100%;height: 200px;" >
-          <ngx-nt-table #table
-          [config]="config"
-          (rowAdd)="initDialog(table)"
-          (rowEdit)="initDialog(table, $event)"
-          [pagination]="false"
-        ></ngx-nt-table>
+        <ngx-native-table #tableAddress
+        [config]="configAddress"
+        [editTemplate]="editerAddress"
+        [pagination]="false"
+        [rowSelection]="false"
+        (actionClick)="onOptClickAddress($event, tableAddress)"
+        >
+        </ngx-native-table>
        </div>
 
       <div>
@@ -137,18 +139,19 @@
 
         <ng-container  *ngIf="f?.value?.id">
           <div class="title" >
-            <div class="add-icon" (click)="table2.addData()">
+            <div class="add-icon" (click)="tableContact.addData()">
               <fa-icon [icon]="faPlusCircle"></fa-icon>
             </div>
            </div>
 
         <div style="width: 100%;height: 200px;" >
-            <ngx-nt-table #table2
-            [config]="config2"
-            (rowAdd)="initDialog2(table2)"
-            (rowEdit)="initDialog2(table2, $event)"
+            <ngx-native-table #tableContact
+            [config]="configContact"
+            [editTemplate]="editerContact"
             [pagination]="false"
-          ></ngx-nt-table>
+            [rowSelection]="false"
+            (actionClick)="onOptClickAddress($event, tableContact)"
+          ></ngx-native-table>
          </div>
 
         <div>

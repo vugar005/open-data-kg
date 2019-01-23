@@ -1,9 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material';
+import { Component } from '@angular/core';
 import { DatasetInsertDialogComponent } from './dataset-insert-dialog/dataset-insert-dialog.component';
-import { NtTableComponent } from 'nt-table';
-import { ApiConfig } from 'nt-table/lib/api-config.model';
-import { HttpClient } from '@angular/common/http';
+import { SharedAdminService } from '../shared/shared-admin.service';
+import { TableEditerAction, NgxNativeTableComponent } from 'ngx-native-table';
 
 @Component({
   selector: 'ent-datasets',
@@ -11,32 +9,20 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./ent-datasets.component.scss']
 })
 export class EntDatasetsComponent {
-  config: ApiConfig = {
+  config = {
     getApi: 'api/post/Permission/Datasets/GetDatasetList',
     insertApi: 'api/post/Permission/Datasets/InsertNewDataset',
     updateApi: 'api/post/Permission/Datasets/UpdateDataset',
-    deleteApi: 'api/post/Permission/Datasets/DeleteDataset'};
-  constructor(private dialog: MatDialog, private http: HttpClient) { }
-  initDialog(table: NtTableComponent, row = null) {
-    const ref = this.dialog.open(DatasetInsertDialogComponent, {
-      data: { table: table, row: row || undefined},
-    });
-  }
-  onOptClick(opt: any, table: NtTableComponent) {
-   if (opt.attribute === 'activate') {
-    const body = {
-      kv: {
-        id: opt.row.id
-      }
-    };
-     this.http.post('api/post/Permission/Datasets/ActiveDataset', JSON.stringify(body)).subscribe(res => table.updateTable());
-   } else if (opt.attribute === 'deactivate') {
-    const body = {
-      kv: {
-        id: opt.row.id
-      }
-    };
-     this.http.post('api/post/Permission/Datasets/DeactiveDataset', JSON.stringify(body)).subscribe(res => table.updateTable());
-   }
+    deleteApi: 'api/post/Permission/Datasets/DeleteDataset',
+    activateApi: 'api/post/Permission/Datasets/ActiveDataset',
+    deactivateApi: 'api/post/Permission/Datasets/DeactiveDataset'
+  };
+  constructor(private sharedAdminService: SharedAdminService) {}
+  onOptClick(action: TableEditerAction, table: NgxNativeTableComponent) {
+    this.sharedAdminService.tableActionImplement(
+      action,
+      table,
+      DatasetInsertDialogComponent
+    );
   }
 }

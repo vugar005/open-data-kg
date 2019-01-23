@@ -1,8 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { ApiConfig } from 'nt-table/lib/api-config.model';
-import { NtTableComponent } from 'nt-table';
-import { MatDialog } from '@angular/material';
+import { Component, ViewChild } from '@angular/core';
 import { AnnouncementInsertComponent } from './announcement-insert/announcement-insert.component';
+import { SharedAdminService } from '../shared/shared-admin.service';
+import { TableEditerAction, ApiConfig } from 'ngx-native-table';
+import { NgxNativeTableComponent } from 'ngx-native-table';
 
 @Component({
   selector: 'app-ent-annoucements',
@@ -19,12 +19,9 @@ export class EntAnnoucementsComponent  {
     confirmApi: 'api/post/Permission/Sharing/ConfirmAnnouncement',
     unConfirmApi: 'api/post/Permission/Sharing/UnconfirmAnnouncement'
   };
-  @ViewChild('table') table: NtTableComponent;
-  constructor(private dialog: MatDialog) {}
-  initDialog(table, row = null) {
-    const ref = this.dialog.open(AnnouncementInsertComponent, {
-      data: { table: table, row: row || undefined}
-    });
-  }
-
+  @ViewChild('table') table: NgxNativeTableComponent;
+  constructor(private sharedAdminService: SharedAdminService) { }
+  onOptClick(action: TableEditerAction, table: NgxNativeTableComponent) {
+    this.sharedAdminService.tableActionImplement(action, table, AnnouncementInsertComponent);
+   }
 }

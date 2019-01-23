@@ -1,8 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { NtTableComponent } from 'nt-table';
-import { MatDialog } from '@angular/material';
+import { Component, ViewChild } from '@angular/core';
 import { DictionariesInsertDialogComponent } from './dictionaries-insert-dialog/dictionaries-insert-dialog.component';
-import { ApiConfig } from 'nt-table/lib/api-config.model';
+import { NgxNativeTableComponent, TableEditerAction, ApiConfig } from 'ngx-native-table';
+import { SharedAdminService } from '../shared/shared-admin.service';
 
 @Component({
   selector: 'ent-dictionaries',
@@ -10,18 +9,15 @@ import { ApiConfig } from 'nt-table/lib/api-config.model';
   styleUrls: ['./ent-dictionaries.component.scss']
 })
 export class EntDictionariesComponent {
-  @ViewChild('table') table: NtTableComponent;
+  @ViewChild('table') table: NgxNativeTableComponent;
   config: ApiConfig = {
     getApi: 'api/post/Permission/Dictionaries/GetDictionaryList',
     insertApi: 'api/post/Permission/Dictionaries/InsertNewDictionary',
     updateApi: 'api/post/Permission/Dictionaries/UpdateDictionary',
     deleteApi: 'api/post/Permission/Dictionaries/DeleteDictionary'
   };
-  constructor(private dialog: MatDialog) {
+  constructor(private sharedAdminService: SharedAdminService) { }
+  onOptClick(action: TableEditerAction, table: NgxNativeTableComponent) {
+    this.sharedAdminService.tableActionImplement(action, table, DictionariesInsertDialogComponent);
    }
-   initDialog(table, row = null) {
-    const ref = this.dialog.open(DictionariesInsertDialogComponent, {
-      data: { table: table, row: row || undefined}
-    });
-  }
 }

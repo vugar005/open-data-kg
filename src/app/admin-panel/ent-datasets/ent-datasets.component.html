@@ -15,18 +15,17 @@
 
  <div class="ng-admin-content">
    <div class="ng-admin-table">
-     <ngx-nt-table #table
-     [config]="config"
-     (rowAdd)="initDialog(table)"
-     (rowEdit)="initDialog(table, $event)"
-     [editTemplate]="editer"
-     (optClick)="onOptClick($event, table)"
-    ></ngx-nt-table>
+    <ngx-native-table #table
+    [config]="config"
+    [editTemplate]="editer"
+    (actionClick)="onOptClick($event, table)"
+    >
+    </ngx-native-table>
    </div>
  </div>
  <ng-template #editer>
   <button [attr.t-btn]="'edit'"   *rbacAllow="['1000010', 'EDIT']">{{'~edit' | translate}}</button>
   <button [attr.t-btn]="'remove'" *rbacAllow="['1000010', 'DELETE']">{{'~delete' | translate}}</button>
-    <button [attr.t-btn]="'activate'" *rbacAllow="['1000010', 'ACTIVE']">{{'~activate' | translate}}</button>
-    <button [attr.t-btn]="'deactivate'" *rbacAllow="['1000010', 'DEACTIVE']">{{'~deactivate' | translate}}</button>
+    <button [attr.t-btn]="'active'" *rbacAllow="['1000010', 'ACTIVE']">{{'~activate' | translate}}</button>
+    <button [attr.t-btn]="'deactive'" *rbacAllow="['1000010', 'DEACTIVE']">{{'~deactivate' | translate}}</button>
   </ng-template>

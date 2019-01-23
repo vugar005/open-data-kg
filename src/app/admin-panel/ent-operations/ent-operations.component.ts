@@ -1,8 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
-import { NtTableComponent } from 'nt-table';
-import { MatDialog } from '@angular/material';
 import { OperationsInsertDialogComponent } from './operations-insert-dialog/operations-insert-dialog.component';
-import { ApiConfig } from 'nt-table/lib/api-config.model';
+import { SharedAdminService } from '../shared/shared-admin.service';
+import { TableEditerAction, NgxNativeTableComponent, ApiConfig } from 'ngx-native-table';
 
 @Component({
   selector: 'ent-operations',
@@ -10,17 +9,15 @@ import { ApiConfig } from 'nt-table/lib/api-config.model';
   styleUrls: ['./ent-operations.component.scss']
 })
 export class EntOperationsComponent {
-  @ViewChild('table') table: NtTableComponent;
+  @ViewChild('table') table: NgxNativeTableComponent;
   config: ApiConfig = {
     getApi: 'api/post/Permission/Operations/GetOperationList',
     insertApi: 'api/post/Permission/Operations/InsertNewOperation',
     updateApi: 'api/post/Permission/Operations/UpdateOperation',
     deleteApi: 'api/post/Permission/Operations/DeleteOperation'
   };
-  constructor(private dialog: MatDialog) { }
-  initDialog(table: NtTableComponent, row = null) {
-    const ref = this.dialog.open(OperationsInsertDialogComponent, {
-      data: { table: table, row: row || undefined}
-    });
-  }
+  constructor(private sharedAdminService: SharedAdminService) { }
+  onOptClick(action: TableEditerAction, table: NgxNativeTableComponent) {
+    this.sharedAdminService.tableActionImplement(action, table, OperationsInsertDialogComponent);
+   }
 }

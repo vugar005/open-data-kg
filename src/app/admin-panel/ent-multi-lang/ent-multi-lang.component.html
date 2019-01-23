@@ -15,13 +15,12 @@
 
  <div class="ng-admin-content">
    <div class="ng-admin-table">
-     <ngx-nt-table #table
-     [config]="config"
-     (rowAdd)="initDialog(table)"
-     (rowEdit)="initDialog(table, $event)"
-     [isAdmin]="true"
-     [editTemplate]="editer"
-    ></ngx-nt-table>
+    <ngx-native-table #table
+    [config]="config"
+    [editTemplate]="editer"
+    (actionClick)="onOptClick($event, table)"
+    >
+    </ngx-native-table>
    </div>
  </div>
  <ng-template #editer>

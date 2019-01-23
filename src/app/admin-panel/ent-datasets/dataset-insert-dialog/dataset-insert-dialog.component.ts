@@ -20,6 +20,9 @@ import { take } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { addAttachFileToolbar } from 'src/app/shared/shared-methods';
 import { FileManagerDialogComponent } from '../../file-manager-dialog/file-manager-dialog.component';
+import { SharedAdminService } from '../../shared/shared-admin.service';
+import { TableEditerAction, NgxNativeTableComponent } from 'ngx-native-table';
+import { ApplicationsInsertDialogComponent } from '../../ent-applications/applications-insert-dialog/applications-insert-dialog.component';
 
 @Component({
   selector: 'app-dataset-insert-dialog',
@@ -30,10 +33,9 @@ export class DatasetInsertDialogComponent implements OnInit, AfterViewInit {
   @ViewChild('f') ntForm: NgForm;
   apps$: Observable<any>;
   orgTypes$: Observable<SelectType[]>;
-  config: ApiConfig;
-  config2: ApiConfig;
-  config3: ApiConfig;
-  config4: ApiConfig;
+  configCat: ApiConfig;
+  configKeyword: ApiConfig;
+  configApi: ApiConfig;
   faPlusCircle = faPlusCircle;
   selectedIndex = 0;
   adapter = new FileManagerUploaderAdapter(this.http);
@@ -46,7 +48,8 @@ export class DatasetInsertDialogComponent implements OnInit, AfterViewInit {
     private sharedService: SharedService,
     private dialog: MatDialog,
     private store: Store<AppState>,
-    private http: HttpClient
+    private http: HttpClient,
+    private sharedAdminService: SharedAdminService
   ) {
     this.store.select(getUserOrg)
     .pipe(
@@ -58,6 +61,15 @@ export class DatasetInsertDialogComponent implements OnInit, AfterViewInit {
       }
     });
   }
+  onOptClickCat(action: TableEditerAction, table: NgxNativeTableComponent) {
+    this.sharedAdminService.tableActionImplement(action, table, DatasetCategoryInsertComponent);
+   }
+  onOptClickKeyword(action: TableEditerAction, table: NgxNativeTableComponent) {
+    this.sharedAdminService.tableActionImplement(action, table, DatasetKeywordInsertComponent);
+   }
+  onOptClickApi(action: TableEditerAction, table: NgxNativeTableComponent) {
+    this.sharedAdminService.tableActionImplement(action, table, DatasetApiInsertComponent);
+   }
   onEditorInit() {
     return addAttachFileToolbar(this.dialog, FileManagerDialogComponent);
   }
@@ -78,28 +90,8 @@ export class DatasetInsertDialogComponent implements OnInit, AfterViewInit {
         this.selectedIndex += 1;
       }
      }
-    initDialog(table: NtTableComponent, row = null) {
-     this.dialog.open(DatasetCategoryInsertComponent, {
-         data: { table: table, row: row || undefined}
-       });
-     }
-     initDialog2(table: NtTableComponent, row = null) {
-      this.dialog.open(DatasetKeywordInsertComponent, {
-          data: { table: table, row: row || undefined}
-        });
-      }
-      initDialog3(table: NtTableComponent, row = null) {
-        this.dialog.open(DatasetApiInsertComponent, {
-            data: { table: table, row: row || undefined}
-          });
-        }
-      initDialog4(table: NtTableComponent, row = null) {
-        this.dialog.open(DatasetCategoryInsertComponent, {
-            data: { table: table, row: row || undefined}
-          });
-        }
         setConfigs() {
-          this.config = {
+          this.configCat = {
             getApi: 'api/post/Permission/Datasets/GetDatasetCategoryList',
             insertApi: 'api/post/Permission/Datasets/InsertNewDatasetCategory',
             updateApi: 'api/post/Permission/Datasets/UpdateDatasetCategory',
@@ -108,7 +100,7 @@ export class DatasetInsertDialogComponent implements OnInit, AfterViewInit {
               datasetId: this.data.row ? this.data.row.id : this.ntForm.value.id
             }
           };
-             this.config2 = {
+             this.configKeyword = {
                getApi: 'api/post/Permission/Datasets/GetDatasetKeywordList',
                insertApi: 'api/post/Permission/Datasets/InsertNewDatasetKeyword',
                updateApi: 'api/post/Permission/Datasets/UpdateDatasetKeyword',
@@ -117,7 +109,7 @@ export class DatasetInsertDialogComponent implements OnInit, AfterViewInit {
                  datasetId: this.data.row ? this.data.row.id : this.ntForm.form.value.id
                }
              };
-             this.config3 = {
+             this.configApi = {
               getApi: 'api/post/Permission/Datasets/GetDatasetApiList',
               insertApi: 'api/post/Permission/Datasets/InsertNewDatasetApi',
               updateApi: 'api/post/Permission/Datasets/UpdateDatasetApi',
@@ -126,15 +118,6 @@ export class DatasetInsertDialogComponent implements OnInit, AfterViewInit {
                 datasetId: this.data.row ? this.data.row.id : this.ntForm.value.id
               }
         };
-        this.config4 = {
-          getApi: 'api/post/Permission/Datasets/GetDatasetCategoryList',
-          insertApi: 'api/post/Permission/Datasets/InsertNewDatasetCategory',
-          updateApi: 'api/post/Permission/Datasets/UpdateDatasetCategory',
-          deleteApi: 'api/post/Permission/Datasets/DeleteDatasetCategory',
-          additionalFormData : {
-            datasetId: this.data.row ? this.data.row.id : this.ntForm.value.id
-          }
-      };
       }
    ngOnInit() {
    this.setConfigs();

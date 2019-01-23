@@ -1,8 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { NtTableComponent } from 'nt-table';
-import { MatDialog } from '@angular/material';
+import { Component, ViewChild } from '@angular/core';
 import { DictionaryTypeInsertDialogComponent } from './dictionary-type-insert-dialog/dictionary-type-insert-dialog.component';
-import { ApiConfig } from 'nt-table/lib/api-config.model';
+import { SharedAdminService } from '../shared/shared-admin.service';
+import { TableEditerAction, NgxNativeTableComponent, ApiConfig } from 'ngx-native-table';
 
 @Component({
   selector: 'ent-dictionary-types',
@@ -10,18 +9,16 @@ import { ApiConfig } from 'nt-table/lib/api-config.model';
   styleUrls: ['./ent-dictionary-types.component.scss']
 })
 export class EntDictionaryTypesComponent  {
-  @ViewChild('table') table: NtTableComponent;
+  @ViewChild('table') table: NgxNativeTableComponent;
   config: ApiConfig = {
     getApi: 'api/post/Permission/DictionaryTypes/GetDictionaryTypeList',
     insertApi: 'api/post/Permission/DictionaryTypes/InsertNewDictionaryType',
     updateApi: 'api/post/Permission/DictionaryTypes/UpdateDictionaryType',
     deleteApi: 'api/post/Permission/DictionaryTypes/DeleteDictionaryType'
   };
-  constructor(private dialog: MatDialog) { }
-  initDialog(table, row = null) {
-    const ref = this.dialog.open(DictionaryTypeInsertDialogComponent, {
-      data: { table: table, row: row || undefined}
-    });
-  }
+  constructor(private sharedAdminService: SharedAdminService) { }
+  onOptClick(action: TableEditerAction, table: NgxNativeTableComponent) {
+    this.sharedAdminService.tableActionImplement(action, table, DictionaryTypeInsertDialogComponent);
+   }
 
 }

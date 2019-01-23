@@ -1,8 +1,7 @@
 import { SharingCommentInsertComponent } from './sharing-comment-insert/sharing-comment-insert.component';
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { ApiConfig } from 'nt-table/lib/api-config.model';
-import { NtTableComponent } from 'nt-table';
-import { MatDialog } from '@angular/material';
+import { Component, ViewChild } from '@angular/core';
+import { SharedAdminService } from '../shared/shared-admin.service';
+import { TableEditerAction, NgxNativeTableComponent, ApiConfig } from 'ngx-native-table';
 
 @Component({
   selector: 'app-ent-sharing-comments',
@@ -22,11 +21,9 @@ export class EntSharingCommentsComponent  {
     //   datasetId: '181119404100269028'
     // }
   };
-  @ViewChild('table') table: NtTableComponent;
-  constructor(private dialog: MatDialog) { }
-  initDialog(table, row = null) {
-    const ref = this.dialog.open(SharingCommentInsertComponent, {
-      data: { table: table, row: row || undefined}
-    });
-  }
+  @ViewChild('table') table: NgxNativeTableComponent;
+  constructor(private sharedAdminService: SharedAdminService) { }
+  onOptClick(action: TableEditerAction, table: NgxNativeTableComponent) {
+    this.sharedAdminService.tableActionImplement(action, table, SharingCommentInsertComponent);
+   }
 }

@@ -94,20 +94,28 @@
                 <ng-template matStepLabel>{{'~categoryData' | translate}}</ng-template>
                 <ng-container *ngIf="f?.value?.id">
                   <div class="title">
-                    <div class="add-icon" (click)="table4.addData()" *rbacAllow="['1000010', 'ADD_CTGR']">
+                    <div class="add-icon" (click)="tableCat.addData()" *rbacAllow="['1000010', 'ADD_CTGR']">
                       <fa-icon [icon]="faPlusCircle"></fa-icon>
                     </div>
                    </div>
 
                 <div style="width: 100%;height: 200px;" >
-                    <ngx-nt-table #table4
+                  <ngx-native-table #tableCat
+                  [config]="configCat"
+                  [editTemplate]="editerCat"
+                  [rowSelection] = "false"
+                  [pagination] ="false"
+                  (actionClick)="onOptClickCat($event, tableCat)"
+                  >
+                  </ngx-native-table>
+                    <!-- <ngx-nt-table #table4
                     [config]="config4"
                     (rowAdd)="initDialog4(table4)"
                     (rowEdit)="initDialog4(table4, $event)"
                     [multiSelect]="false"
                     [pagination]="false"
                     [editTemplate]="editerCat"
-                  ></ngx-nt-table>
+                  ></ngx-nt-table> -->
                  </div>
 
                 <ng-template #editerCat>
@@ -126,20 +134,20 @@
                 <ng-template matStepLabel>{{'~keywordData' | translate}}</ng-template>
                 <ng-container *ngIf="f?.value?.id">
                   <div class="title">
-                    <div class="add-icon" (click)="table2.addData()" *rbacAllow="['1000010', 'ADD_KYWD']">
+                    <div class="add-icon" (click)="tableKeyword.addData()" *rbacAllow="['1000010', 'ADD_KYWD']">
                       <fa-icon [icon]="faPlusCircle"></fa-icon>
                     </div>
                    </div>
 
                 <div style="width: 100%;height: 200px;" >
-                    <ngx-nt-table #table2
-                    [config]="config2"
-                    (rowAdd)="initDialog2(table2)"
-                    (rowEdit)="initDialog2(table2, $event)"
-                    [multiSelect]="false"
-                    [pagination]="false"
-                    [editTemplate]="editerKeyword"
-                  ></ngx-nt-table>
+                  <ngx-native-table #tableKeyword
+                  [config]="configKeyword"
+                  [editTemplate]="editerKeyword"
+                  [rowSelection] = "false"
+                  [pagination] ="false"
+                  (actionClick)="onOptClickKeyword($event, tableKeyword)"
+                  >
+                  </ngx-native-table>
                  </div>
                  <ng-template #editerKeyword>
                   <button [attr.t-btn]="'edit'" *rbacAllow="['1000010', 'EDIT_KYWD']">{{'~edit' | translate}}</button>
@@ -157,20 +165,19 @@
                   <ng-template matStepLabel>{{'~apiData' | translate}}</ng-template>
                   <ng-container  *ngIf="f?.value?.id">
                     <div class="title" >
-                      <div class="add-icon" (click)="table3.addData()"  *rbacAllow="['1000010', 'ADD_API']">
+                      <div class="add-icon" (click)="tableApi.addData()"  *rbacAllow="['1000010', 'ADD_API']">
                         <fa-icon [icon]="faPlusCircle"></fa-icon>
                       </div>
                      </div>
 
                   <div style="width: 100%;height: 200px;" >
-                      <ngx-nt-table #table3
-                      [config]="config3"
-                      (rowAdd)="initDialog3(table3)"
-                      (rowEdit)="initDialog3(table3, $event)"
-                      [multiSelect]="false"
-                      [pagination]="false"
+                      <ngx-native-table #tableApi
+                      [config]="configApi"
                       [editTemplate]="editerApi"
-                    ></ngx-nt-table>
+                      [rowSelection] = "false"
+                      [pagination] ="false"
+                      (actionClick)="onOptClickApi($event, tableApi)"
+                    ></ngx-native-table>
                    </div>
 
                    <ng-template #editerApi>

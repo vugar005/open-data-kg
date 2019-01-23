@@ -3,7 +3,7 @@
     {{'~comments' | translate}}
   </div>
   <div class="ng-admin-actions-template"  >
-    <button (click)="table.onPrintSelected()" >{{'~print' | translate}}</button>
+    <button (click)="table.onPrint()" >{{'~print' | translate}}</button>
     <!-- <button  *rbacAllow="['1000011', 'ADD']" (click)="table.addData()" >{{'~addData' | translate}}</button> -->
     <button  *rbacAllow="['1000011', 'DELETE']" (click)="table.onRemove()"
      [disabled]="!(table?.isRowSelected)">{{'~removeSelected' | translate}}</button>
@@ -15,12 +15,12 @@
 
  <div class="ng-admin-content">
    <div class="ng-admin-table">
-     <ngx-nt-table #table
-     [config]="config"
-     (rowAdd)="initDialog(table)"
-     [editTemplate]="editer"
-     (rowEdit)="initDialog(table, $event)"
-    ></ngx-nt-table>
+    <ngx-native-table #table
+    [config]="config"
+    [editTemplate]="editer"
+    (actionClick)="onOptClick($event, table)"
+    >
+    </ngx-native-table>
    </div>
  </div>
  <ng-template #editer>

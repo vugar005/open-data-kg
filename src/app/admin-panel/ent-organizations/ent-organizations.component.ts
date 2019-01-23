@@ -1,8 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { NtTableComponent } from 'nt-table';
-import { MatDialog } from '@angular/material';
+import { Component, ViewChild } from '@angular/core';
 import { OrganizationInsertDialogComponent } from './organization-insert-dialog/organization-insert-dialog.component';
-import { ApiConfig } from 'nt-table/lib/api-config.model';
+import { SharedAdminService } from '../shared/shared-admin.service';
+import { TableEditerAction, NgxNativeTableComponent, ApiConfig } from 'ngx-native-table';
 
 @Component({
   selector: 'ent-organizations',
@@ -10,18 +9,16 @@ import { ApiConfig } from 'nt-table/lib/api-config.model';
   styleUrls: ['./ent-organizations.component.scss']
 })
 export class EntOrganizationsComponent {
-  @ViewChild('table') table: NtTableComponent;
+  @ViewChild('table') table: NgxNativeTableComponent;
   config: ApiConfig = {
     getApi: 'api/post/Permission/Organizations/GetOrganizationList',
     insertApi: 'api/post/Permission/Organizations/InsertNewOrganization',
     updateApi: 'api/post/Permission/Organizations/UpdateOrganization',
     deleteApi: 'api/post/Permission/Organizations/DeleteOrganization'
   };
-  constructor(private dialog: MatDialog) { }
-  initDialog(table: NtTableComponent, row = null) {
-    const ref = this.dialog.open(OrganizationInsertDialogComponent, {
-      data: { table: table, row: row || undefined}
-    });
-  }
+  constructor(private sharedAdminService: SharedAdminService) { }
+  onOptClick(action: TableEditerAction, table: NgxNativeTableComponent) {
+    this.sharedAdminService.tableActionImplement(action, table, OrganizationInsertDialogComponent);
+   }
 
 }

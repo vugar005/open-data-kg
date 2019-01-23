@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ApiConfig } from 'nt-table/lib/api-config.model';
-import { NtTableComponent } from 'nt-table';
-import { MatDialog } from '@angular/material';
 import { NewsInsertDialogComponent } from './news-insert-dialog/news-insert-dialog.component';
+import { SharedAdminService } from '../shared/shared-admin.service';
+import { TableEditerAction, ApiConfig } from 'ngx-native-table';
+import { NgxNativeTableComponent } from 'ngx-native-table';
 
 @Component({
   selector: 'app-ent-news',
@@ -19,11 +19,9 @@ export class EntNewsComponent  {
     confirmApi: 'api/post/Permission/Sharing/ConfirmNews',
     unConfirmApi: 'api/post/Permission/Sharing/UnconfirmNews'
   };
-  @ViewChild('table') table: NtTableComponent;
-  constructor(private dialog: MatDialog) {}
-  initDialog(table, row = null) {
-    const ref = this.dialog.open(NewsInsertDialogComponent, {
-      data: { table: table, row: row || undefined}
-    });
-  }
+  @ViewChild('table') table: NgxNativeTableComponent;
+  constructor(private sharedAdminService: SharedAdminService) { }
+  onOptClick(action: TableEditerAction, table: NgxNativeTableComponent) {
+    this.sharedAdminService.tableActionImplement(action, table, NewsInsertDialogComponent);
+   }
 }

@@ -1,8 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { ApiConfig } from 'nt-table/lib/api-config.model';
+import { Component, ViewChild } from '@angular/core';
 import { CommentInsertDialogComponent } from './comment-insert-dialog/comment-insert-dialog.component';
-import { NtTableComponent } from 'nt-table';
-import { MatDialog } from '@angular/material';
+import { SharedAdminService } from '../shared/shared-admin.service';
+import { TableEditerAction, ApiConfig } from 'ngx-native-table';
+import { NgxNativeTableComponent } from 'ngx-native-table';
 
 @Component({
   selector: 'ent-comments',
@@ -14,19 +14,17 @@ export class EntCommentsComponent {
     getApi: 'api/post/Permission/Comments/GetDatasetCommentList',
     insertApi: 'api/post/Permission/Comments/InsertNewComment',
     updateApi: 'api/post/Permission/Comments/UpdateDatasetComment',
-    deleteApi: 'api/post/Permission/Comments/DeleteDateastComment',
+    deleteApi: 'api/post/Permission/Comments/DeleteDatasetComment',
     confirmApi: 'api/post/Permission/Comments/ConfirmDatasetComment',
     unConfirmApi: 'api/post/Permission/Comments/UnconfirmDatasetComment'
     // additionalFormData: {
     //   datasetId: '181119404100269028'
     // }
   };
-  @ViewChild('table') table: NtTableComponent;
-  constructor(private dialog: MatDialog) { }
-  initDialog(table, row = null) {
-    const ref = this.dialog.open(CommentInsertDialogComponent, {
-      data: { table: table, row: row || undefined}
-    });
-  }
+  @ViewChild('table') table: NgxNativeTableComponent;
+  constructor(private sharedAdminService: SharedAdminService) { }
+  onOptClick(action: TableEditerAction, table: NgxNativeTableComponent) {
+    this.sharedAdminService.tableActionImplement(action, table, CommentInsertDialogComponent);
+   }
 
 }

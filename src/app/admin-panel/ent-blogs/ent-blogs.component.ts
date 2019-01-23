@@ -1,8 +1,8 @@
 import { BlogInsertComponent } from './blog-insert/blog-insert.component';
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { ApiConfig } from 'nt-table/lib/api-config.model';
-import { NtTableComponent } from 'nt-table';
-import { MatDialog } from '@angular/material';
+import { Component, ViewChild } from '@angular/core';
+import { SharedAdminService } from '../shared/shared-admin.service';
+import { TableEditerAction, ApiConfig } from 'ngx-native-table';
+import { NgxNativeTableComponent } from 'ngx-native-table';
 
 @Component({
   selector: 'app-ent-blogs',
@@ -18,12 +18,9 @@ export class EntBlogsComponent  {
     confirmApi: 'api/post/Permission/Sharing/ConfirmBlog',
     unConfirmApi: 'api/post/Permission/Sharing/UnconfirmBlog'
   };
-  @ViewChild('table') table: NtTableComponent;
-  constructor(private dialog: MatDialog) {
-  }
-  initDialog(table, row = null) {
-    const ref = this.dialog.open(BlogInsertComponent, {
-      data: { table: table, row: row || undefined}
-    });
-  }
+  @ViewChild('table') table: NgxNativeTableComponent;
+  constructor(private sharedAdminService: SharedAdminService) { }
+  onOptClick(action: TableEditerAction, table: NgxNativeTableComponent) {
+    this.sharedAdminService.tableActionImplement(action, table, BlogInsertComponent);
+   }
 }

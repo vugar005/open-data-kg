@@ -1,8 +1,7 @@
 import { SharedAdminService } from './../shared/shared-admin.service';
 import { Component} from '@angular/core';
 import { ApplicationsInsertDialogComponent } from './applications-insert-dialog/applications-insert-dialog.component';
-import { ApiConfig } from 'nt-table/lib/api-config.model';
-import { TableEditerAction } from 'ngx-native-table/table-action.model';
+import { TableEditerAction, ApiConfig } from 'ngx-native-table';
 import { NgxNativeTableComponent } from 'ngx-native-table';
 
 @Component({

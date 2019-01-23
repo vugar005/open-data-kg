@@ -1,7 +1,6 @@
 import { SharedAcrossModule } from './../../shared/shared-across.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgModule} from '@angular/core';
-import {NtTableModule, NtTableService} from 'nt-table';
 import { FormUtilsModule } from 'ngx-form-utils';
 import { FormsModule } from '@angular/forms';
 import { TokenInterceptor } from 'src/app/auth/token.inteceptor';
@@ -34,7 +33,6 @@ import { MaterialModule } from 'src/app/material.module';
   ],
   exports: [
     FontAwesomeModule,
-    NtTableModule,
     FormUtilsModule,
     FormsModule,
     SharedUploadModule,
@@ -55,7 +53,6 @@ import { MaterialModule } from 'src/app/material.module';
   ],
   entryComponents: [FileManagerDialogComponent],
   providers: [
-    NtTableService,
     SharedAdminService,
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
