@@ -7,7 +7,7 @@ import { SelectType } from 'src/app/shared/models/select-type.model';
 import { trigger, transition, useAnimation } from '@angular/animations';
 import { slideInDown, fadeIn} from 'ng-animate';
 import { SharedService } from 'src/app/shared/shared.service';
-import { UploadFileDialogComponent } from './upload-file-dialog/upload-file-dialog.component';
+import { UploadFileDialogComponent } from '../../upload-file-dialog/upload-file-dialog.component';
 @Component({
   selector: 'app-user-insert-dialog',
   templateUrl: './user-insert-dialog.component.html',

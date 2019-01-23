@@ -1,6 +1,6 @@
+import { CustomFilePickerAdapter } from './../../shared/adapters/custom-file-picker.adapter';
 import { FilePreviewModel } from 'ngx-awesome-uploader';
 import { HttpClient } from '@angular/common/http';
-import { CustomFilePickerAdapter } from './../../../../shared/adapters/custom-file-picker.adapter';
 import { Component, OnInit, Output, EventEmitter, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
@@ -22,12 +22,12 @@ export class UploadFileDialogComponent implements OnInit {
     aspectRatio: 1.25,
     cropBoxResizable: true
   };
-  constructor( @Inject(MAT_DIALOG_DATA) public data: any,
+  constructor( @Inject(MAT_DIALOG_DATA) private data: any,
                public dialogRef: MatDialogRef<UploadFileDialogComponent>,
                private http: HttpClient) {}
   ngOnInit() {
-    console.log(this.data)
-    if (this.data.adapter) {this.adapter = this.data.adapter; }
+    console.log(this.data);
+    if (this.data && this.data.adapter) {this.adapter = this.data.adapter; }
   }
   onUploaded(res: FilePreviewModel) {
    this.dialogRef.close(res.fileId);

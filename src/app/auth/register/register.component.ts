@@ -1,3 +1,4 @@
+import { UploadFileDialogComponent } from './../../admin-panel/upload-file-dialog/upload-file-dialog.component';
 import { Component, OnInit, OnDestroy, AfterViewInit, ViewChild } from '@angular/core';
 import { AppState } from '../../reducers';
 import { Store } from '@ngrx/store';
@@ -8,7 +9,6 @@ import { SelectType } from 'src/app/shared/models/select-type.model';
 import { SharedService } from 'src/app/shared/shared.service';
 import { TryRegister } from '../store/auth.actions';
 import { MatDialog } from '@angular/material';
-import { UploadFileDialogComponent } from '../../admin-panel/ent-users/user-insert-dialog/upload-file-dialog/upload-file-dialog.component';
 import { getApiUrl } from '../store/auth.selectors';
 @Component({
   selector: 'app-register',

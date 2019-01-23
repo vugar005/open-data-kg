@@ -14,7 +14,6 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { MatIconModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatDatepickerModule,
   MatButtonModule } from '@angular/material';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
-import { UploadFileDialogComponent } from '../admin-panel/ent-users/user-insert-dialog/upload-file-dialog/upload-file-dialog.component';
 export function tokenGetter() {
   return localStorage.getItem('access_token');
 }
@@ -45,7 +44,7 @@ export function tokenGetter() {
     LoginComponent,
     RegisterComponent,
   ],
-  entryComponents: [UploadFileDialogComponent],
+  entryComponents: [],
   providers: []
 })
 export class AuthModule { }

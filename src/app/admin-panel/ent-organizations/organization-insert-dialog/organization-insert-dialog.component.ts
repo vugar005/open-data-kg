@@ -8,7 +8,6 @@ import { SelectType } from 'src/app/shared/models/select-type.model';
 import { SharedService } from 'src/app/shared/shared.service';
 import {faAddressCard} from '@fortawesome/free-solid-svg-icons';
 import {faPhone} from '@fortawesome/free-solid-svg-icons';
-import { UploadFileDialogComponent } from '../../ent-users/user-insert-dialog/upload-file-dialog/upload-file-dialog.component';
 import { AppState } from 'src/app/reducers';
 import { Store } from '@ngrx/store';
 import { getUserOrg } from 'src/app/auth/store/auth.selectors';
@@ -18,6 +17,7 @@ import { OrgAddressInsertComponent } from './org-address-insert/org-address-inse
 import { NtTableComponent } from 'nt-table';
 import { OrgContactInsertComponent } from './org-contact-insert/org-contact-insert.component';
 import { ApiConfig } from 'nt-table/lib/api-config.model';
+import { UploadFileDialogComponent } from '../../upload-file-dialog/upload-file-dialog.component';
 @Component({
   selector: 'app-organization-insert-dialog',
   templateUrl: './organization-insert-dialog.component.html',

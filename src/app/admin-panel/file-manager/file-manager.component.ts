@@ -1,10 +1,10 @@
 import { FileManagerItem } from './file-manager-item.model';
 import { HttpClient } from '@angular/common/http';
 import { FileManagerUploaderAdapter } from './file-manager-uploader.adapter';
-import { UploadFileDialogComponent } from './../ent-users/user-insert-dialog/upload-file-dialog/upload-file-dialog.component';
 import { MatDialog } from '@angular/material';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { SharedService } from 'src/app/shared/shared.service';
+import { UploadFileDialogComponent } from '../upload-file-dialog/upload-file-dialog.component';
 
 @Component({
   selector: 'file-manager',

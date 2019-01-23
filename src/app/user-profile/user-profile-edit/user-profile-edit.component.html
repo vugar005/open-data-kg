@@ -1,4 +1,4 @@
-<form #f="ngForm" patch-form [form]="f" [data]="data?.user" class="nt-form">
+<form #f="ngForm" patch-form [form]="f" [data]="data?.user" class="nt-form" (ngSubmit)="onSubmit(f)" autocomplete="off">
 
     <div class="inputs">
       <div class="left">
@@ -38,7 +38,7 @@
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="{{'~middlename' | translate}}" class="nt-form-input" name="patronymic" ngModel required>
+          <input matInput placeholder="{{'~middlename' | translate}}" class="nt-form-input" name="patronymic" ngModel >
           <mat-error>{{getErrors('mname')}}</mat-error>
         </mat-form-field>
 
@@ -48,7 +48,7 @@
       <div class="right">
 
         <mat-form-field>
-          <mat-select placeholder="{{'~gender' | translate}}" class="nt-form-input" name="genderId" ngModel required>
+          <mat-select placeholder="{{'~gender' | translate}}" class="nt-form-input" name="genderId" ngModel>
             <mat-option *ngFor="let item of (genders$ | async)" [value]="item.value"> {{item.label}} </mat-option>
           </mat-select>
           <mat-error>{{getErrors('genderId')}}</mat-error>
@@ -56,7 +56,7 @@
 
 
         <mat-form-field>
-          <input matInput [matDatepicker]="picker" placeholder="{{'~birthdate' | translate}}" name="birthdate" ngModel required
+          <input matInput [matDatepicker]="picker" placeholder="{{'~birthdate' | translate}}" name="birthdate" ngModel
             [max]="maxDate">
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker [startAt]="startDate" startView="year"></mat-datepicker>
@@ -65,22 +65,21 @@
 
 
 
-        <mat-form-field class="example-full-width" *ngIf="data?.user">
-          <input matInput placeholder="{{'~oldPassword' | translate}}" class="nt-form-input" name="oldPasswd" ngModel [type]="hideOld ? 'password' : 'text'">
+        <mat-form-field class="example-full-width" >
+          <input matInput placeholder="{{'~oldPassword' | translate}}" class="nt-form-input" name="oldPassword" autocomplete="off" ngModel [type]="hideOld ? 'password' : 'text'">
           <mat-icon matSuffix (click)="hideOld = !hideOld">{{hideOld ? 'visibility_off' : 'visibility'}}</mat-icon>
-          <mat-error>{{getErrors('oldPasswd')}}</mat-error>
+          <mat-error>{{getErrors('oldPassword')}}</mat-error>
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="{{'~password' | translate}}" class="nt-form-input" name="passwd" ngModel [type]="hide ? 'password' : 'text'"
+          <input matInput placeholder="{{'~newPassword' | translate}}" value="" class="nt-form-input" name="passwd" ngModel [type]="hide ? 'password' : 'text'"
             [required]="!data.user">
           <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
           <mat-error>{{getErrors('passwd')}}</mat-error>
         </mat-form-field>
 
-        <input [hidden]="true" name="photoFileId" value="imgId" [(ngModel)]="imgId" >
+        <input [hidden]="true" name="photoFileId" value="photoFileId" [(ngModel)]="imgId" >
         <input [hidden]="true" name="id" ngModel>
-        <input [hidden]="true" name="personId" ngModel>
       </div>
     </div>
     <div class="actions">
