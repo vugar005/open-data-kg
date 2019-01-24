@@ -8,6 +8,16 @@
 .content-wrapper {
   width: 100%;
 }
+.co-header {
+  position: absolute;
+  .back-icon {
+    width: 30px;
+    cursor: pointer;
+    margin-left: -51px;
+    padding: 15px 0;
+  }
+}
+
 .with-overflow {
   overflow: auto;
   height: calc(100vh - 70px);

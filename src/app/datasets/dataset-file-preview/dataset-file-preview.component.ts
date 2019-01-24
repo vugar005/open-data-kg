@@ -44,10 +44,17 @@ export class DatasetFilePreviewComponent implements OnInit {
       this.dataset = res;
       const apiTbl = this.dataset.tbl.find( tbl => tbl.tn === 'API');
       const apiRow = apiTbl.r.find( row => row.format === this.apiFormat);
-      this.dataLink = apiRow && apiRow.link;
+      if (apiRow.formatTypeCode === 'FRMT1') {
+        this.dataLink = apiRow && apiRow.openPortalLink;
+      } else if (apiRow.formatTypeCode === 'FRMT2') {
+        this.dataLink = apiRow && apiRow.link;
+      }
     });
   }
   getSafeUrl(url: string) {
     return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  }
+  onBack() {
+    window.history.back();
   }
 }

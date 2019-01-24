@@ -107,6 +107,6 @@
       "~searchNews": "Search News",
       "~category": "Category",
       "~multiLang": "",
-      "~fileManager": ""
-
+      "~fileManager": "",
+      "~commentAddSuccess": "Comment added and will be shown after confirmation !"
 }

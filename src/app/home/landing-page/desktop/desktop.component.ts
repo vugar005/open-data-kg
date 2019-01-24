@@ -42,7 +42,7 @@ handleResultSelected(e: any) {
     this.handleShowAll();
    return;
   }
-  this.router.navigate(['/home/datasets/', e.id, 'details']);
+  this.router.navigate(['/home/datasets/', e.id]);
 }
 handleShowAll() {
  this.router.navigate(['/home/datasets/searchResults'], {queryParams: {query: this.inputValue}});

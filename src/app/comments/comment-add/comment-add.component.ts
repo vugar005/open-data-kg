@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
@@ -9,14 +10,29 @@ import { NgForm } from '@angular/forms';
 export class CommentAddComponent implements OnInit {
   @Input() id: string;
   @Input() kvKey: string;
+  @Input() insertApi: string;
   @Output() commentSubmit = new EventEmitter();
-  constructor() { }
+  loading: boolean;
+  constructor(private http: HttpClient) { }
 
   ngOnInit() {
   }
   onSubmit(f: NgForm) {
     if (!f.valid) {return; }
-    this.commentSubmit.emit(f.value);
+    this.insertNewComment(f.value);
+  }
+  insertNewComment(value) {
+    this.loading = true;
+    const body = {
+      kv: {
+        comment: value.comment
+      }
+    };
+    body.kv[this.kvKey] = this.id;
+    this.http.post(this.insertApi, JSON.stringify(body))
+    .subscribe(res => {
+      this.commentSubmit.next();
+    });
   }
 
 }

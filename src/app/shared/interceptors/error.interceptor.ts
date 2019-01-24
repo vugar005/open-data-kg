@@ -20,12 +20,12 @@ export class ErrorInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<any> {
     return next.handle(req)
       .pipe(
-        catchError(er => this.handleHttpError(er)),
+       catchError(er => this.handleHttpError(er)),
        tap((response) => {
           if (response instanceof HttpResponse) {
             if (response.body && response.body.err && response.body.err.length > 0) {
               const errors = response.body.err;
-             this.handleHttpError(errors[0].val);
+             this.handleHttpError(errors[0].val).subscribe(res => console.log(res));
             }
             if (response.body && response.body.code === 'UNAUTHORIZED') {
               // this.sharedService.createNotification('error', `${req.urlWithParams}`, 'Unauthorized');
@@ -45,7 +45,6 @@ export class ErrorInterceptor implements HttpInterceptor {
       );
   }
   handleHttpError(msg = 'Something went wrong !'): Observable<any> {
-    console.log(msg)
     return of(this.sharedService.createNotification('error', msg));
   }
 

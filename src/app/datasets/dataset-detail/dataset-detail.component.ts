@@ -105,8 +105,11 @@ export class DatasetDetailComponent implements OnInit, OnChanges {
     return this.favouriteDatasets.find(f => f.datasetId === this.dataset.kv.id);
   }
   onResourcesNavigate(id: string, format: string) {
-    this.datasetService.resourceDataset = this.dataset;
     this.router.navigate([`/home/datasets/${id}/resources`], {queryParams: {type: format}});
+    // window.open(
+    //   `http://localhost:4200/#/home/datasets/${id}/resources?type=${format}`,
+    //   '_blank' // <- This is what makes it open in a new window.
+    // );
   }
   onShareClick() {
     console.log(this.dataset.kv.id)

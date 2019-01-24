@@ -11,7 +11,7 @@ const routes: Routes = [
   {path: 'by-organization', component: DatasetByOrgComponent, data: {breadcrumb: 'by organization'}},
   {path: ':id/resources', component: DatasetFilePreviewComponent},
   {path: 'searchResults', component: DatasetSearchResultComponent},
-  {path: ':id/details', component: DatasetDetailComponent, data: {breadcrumb: 'details'}}
+  {path: ':id', component: DatasetDetailComponent, data: {breadcrumb: 'details'}}
 ];
 
 export const DatasetsRoutes = RouterModule.forChild(routes);

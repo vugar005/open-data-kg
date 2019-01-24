@@ -2,10 +2,9 @@
   <div class="row">
     <div class="col-12">
       <div class="co-header">
-        <div class="back-icon">
+        <div class="back-icon" (click)="onBack()" >
           <img
             src="./assets/icons/arrow-left.svg"
-            [routerLink]="['/home/datasets/by-category']"
           />
         </div>
       </div>
@@ -20,19 +19,10 @@
         </div>
 
         <div class="file-box">
-          <!-- <div class="iframe-wrapper" *ngIf="show == 'excel'">
-            <iframe src="https://onedrive.live.com/embed?cid=24382F927AB11A04&resid=24382F927AB11A04%213093&authkey=ALJ2krwDqlAJGd0&em=2"
-        frameborder="0" scrolling="no" ></iframe>
-        </div> -->
           <div
             class="iframe-wrapper" *ngIf="dataLink"
 
           >
-            <!-- <iframe  src="http://www.pdf995.com/samples/pdf.pdf"></iframe> -->
-
-            <!-- <iframe
-              [src]="getSafeUrl((dataset?.tbl)[0].r[0].openPortalLink)"
-            ></iframe> -->
              <google-doc-preview *ngIf="googleDocsFormat.includes(apiFormat.toUpperCase())" [link]="dataLink"></google-doc-preview>
             <geojson-preview *ngIf="apiFormat === 'GeoJSON'" [link]="dataLink" ></geojson-preview>
           </div>

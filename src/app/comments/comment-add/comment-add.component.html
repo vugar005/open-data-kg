@@ -9,7 +9,7 @@
  </div>
  <input hidden name="kvKey" [(ngModel)]="id">
  <div class="co-add-bottom">
-   <button mat-raised-button color="primary"  type="submit" forLoggedIn (clicked)="onSubmit(f)"
+   <button mat-raised-button color="primary"  type="submit" forLoggedIn (clicked)="onSubmit(f)" [disabled]="loading"
    >{{'~send' | translate}}</button>
  </div>
 

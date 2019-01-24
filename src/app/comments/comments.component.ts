@@ -1,3 +1,5 @@
+import { TranslateService } from '@ngx-translate/core';
+import { SharedService } from './../shared/shared.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
@@ -15,7 +17,7 @@ export class CommentsComponent implements OnInit {
   @Input() kvKey: string;
   @Input() id: string;
   comments$: Observable<CommentModel[]>;
-  constructor(protected http: HttpClient) { }
+  constructor(protected http: HttpClient, private sharedService: SharedService, private translateService: TranslateService) { }
 
   ngOnInit() {
   this.getCommentList(this.getApi);
@@ -35,22 +37,10 @@ export class CommentsComponent implements OnInit {
       }
     }));
   }
-  onSubmit(value) {
-  this.insertNewComment(value);
+  onSubmitted(value) {
+    this.sharedService.createNotification('sucess', this.translateService.instant('~commentAddSuccess'));
+    this.getCommentList(this.getApi);
   }
-  insertNewComment(value) {
-    const body = {
-      kv: {
-        comment: value.comment
-      }
-    };
-    body.kv[this.kvKey] = this.id;
-    console.log(body);
-    this.http.post(this.insertApi, JSON.stringify(body))
-    .pipe(tap(res => console.log(res)))
-    .subscribe(res => {
-      this.getCommentList(this.getApi);
-    });
-  }
+
 
 }

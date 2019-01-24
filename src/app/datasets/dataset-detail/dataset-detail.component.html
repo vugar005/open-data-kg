@@ -1,6 +1,15 @@
 
 <div class="content-wrapper" [ngClass]="{ 'with-overflow': !isInner }">
   <div [class]="isInner ? 'container-fluid' : 'container'" *ngIf="dataset">
+    <div class="row" *ngIf="!isInner">
+        <div class="co-header">
+            <div class="back-icon" [routerLink]="['../']" >
+              <img
+                src="./assets/icons/arrow-left.svg"
+              />
+            </div>
+          </div>
+    </div>
     <div class="row justify-content-center">
       <div [ngClass]="{ 'col-12': isInner, 'col-9': !isInner }">
         <div class="main-info-wrapper">

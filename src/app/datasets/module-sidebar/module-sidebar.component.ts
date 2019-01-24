@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, Input, HostBinding, ChangeDetectorRef, AfterViewInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { trigger, transition, useAnimation } from '@angular/animations';
 import { fadeIn } from 'ng-animate';
 import { DatasetsService } from '../datasets.service';
@@ -22,6 +22,7 @@ export class ModuleSidebarComponent implements OnInit, AfterViewInit {
   ready = false;
   selectedIndex: string;
  constructor(private route: ActivatedRoute, private datasetService: DatasetsService,
+  private router: Router,
   private sharedService: SharedService, private changeRef: ChangeDetectorRef) {
    }
 
@@ -63,6 +64,7 @@ export class ModuleSidebarComponent implements OnInit, AfterViewInit {
   onItemClick(id: string) {
     this.selectedIndex = id;
     this.selected.next(id);
+ //   this.router.navigate([`/home/datasets/by-${this.type}`], {queryParams: {id: id}});
   }
   replaceImgWithSvg() {
     setTimeout(() => {

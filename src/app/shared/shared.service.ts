@@ -34,7 +34,7 @@ export class SharedService {
     this.hostname = getHostname();
   }
   createNotification(type: string, message: string, position = 'bottomRight') {
-    this.clearOldToats();
+   // this.clearOldToats();
     switch (type.toLowerCase()) {
       case 'info':
       this.createInfoNotification(message, position);

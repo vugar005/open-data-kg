@@ -97,6 +97,7 @@ interface R {
   versionRu?: string;
   orgShortName: string;
   formatRu?: string;
+  formatTypeCode: string;
   id: string;
   descriptionKg?: string;
   datasetDescriptionRu: string;
