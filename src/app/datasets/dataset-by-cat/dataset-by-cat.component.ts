@@ -1,11 +1,8 @@
 import { SharedService } from 'src/app/shared/shared.service';
-import { SelectType } from 'src/app/shared/models/select-type.model';
 import { DatasetGroupListComponent } from './../dataset-group-list/dataset-group-list.component';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import { CategoryQuery } from 'src/app/datasets/models/category-query.model';
-import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 
 @Component({
@@ -14,33 +11,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./dataset-by-cat.component.scss']
 })
 export class DatasetByCatComponent {
-
   @ViewChild('dataset_list') list: DatasetGroupListComponent;
   faSearch = faSearch;
-  categoryQuery: CategoryQuery = {
-    categoryId: '',
-    formatId: '',
-    datasetFullname: ''
-  };
-  formatTypes$: Observable<SelectType[]>;
   datasetId: string;
-  inputValue: string;
-  constructor(private sharedService: SharedService, private router: Router) {
-    this.formatTypes$ = this.sharedService.getTypes('181116173908947318');
-   }
+  constructor(private sharedService: SharedService, private router: Router) {}
   onSubmit(form: NgForm) {
     this.exitDetail();
     setTimeout(() => {
-      this.categoryQuery = {...form.value, categoryId: this.categoryQuery.categoryId};
-      this.list.getList();
+     this.list.getListByCategory(form.value);
     }, 0);
-  }
-  catIdChanged(e: string) {
-    this.categoryQuery = {
-      ...this.categoryQuery,
-      categoryId: e
-    };
-   this.exitDetail();
   }
   onNavChanged(e) {
    this.router.navigate([`/home/datasets/by-${e}`]);

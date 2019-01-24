@@ -1,14 +1,14 @@
 <global-nav class="bottom" (navChanged)="onNavChanged($event)"></global-nav>
-<div class="content-wrapper" scrollListener (scrollChange)="toggleHeader($event)">
+<div  class="content-wrapper" scrollListener (scrollChange)="toggleHeader($event)">
   <div class="container">
     <div class="row  pt-4 pb-4 align-items-center">
       <div class="col-3">
        <div class="route-tree">
-        Open data > Categories > Family
+        Open data &nbsp; > &nbsp; Categories &nbsp; > &nbsp;Family
        </div>
       </div>
       <div class="col-9">
-        <dataset-filters
+     <dataset-filters
      (selected)="handleResultSelected($event)"
      (formSubmit)="onSubmit($event)"
      ></dataset-filters>
@@ -16,13 +16,14 @@
     </div>
     <div class="row">
       <div class="col-12 col-sm-5 col-md-4 col-lg-3 pr-0">
-        <module-sidebar (selected)="checkboxIdChanged($event)" [type]="'organization'"></module-sidebar>
+        <module-sidebar  [type]="'organization'"></module-sidebar>
       </div>
-      <div class="col-12 col-sm-7 col-md-8 col-lg-9">
-          <dataset-group-list [orgQuery]= "orgQuery" #dataset_list [type]="'organization'" (boxSelected)="datasetId = $event" *ngIf="!datasetId"></dataset-group-list>
-          <dataset-detail class="animated fadeIn" [id]="datasetId"  *ngIf="datasetId" [isInner]="true" (navBack)="exitDetail()"></dataset-detail>
+      <div class="col-12 col-sm-7 col-md-8 col-lg-9 ">
+         <dataset-group-list  *ngIf="!datasetId"
+          #dataset_list [type]="'organization'"
+           (boxSelected)="datasetId = $event"></dataset-group-list>
+         <dataset-detail  [id]="datasetId" *ngIf="datasetId" [isInner]="true" (navBack)="exitDetail()"></dataset-detail>
       </div>
     </div>
   </div>
-
 </div>

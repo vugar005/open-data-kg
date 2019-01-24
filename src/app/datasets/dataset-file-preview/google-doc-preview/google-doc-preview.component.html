@@ -1,3 +1,4 @@
-<embed [src]="safeUrl">
-  <!-- <iframe src='https://docs.google.com/viewer?url=http://homepages.inf.ed.ac.uk/neilb/TestWordDoc.doc&embedded=true' width='px' height='px' frameborder='0'>
-  </iframe> -->
+<iframe [src]="safeUrl" (load)="onIframeLoad()" *ngIf="link" ></iframe>
+<progress-spinner *ngIf="!(iframeLoaded$ | async)"></progress-spinner>
+<!-- <iframe src="https://docs.google.com/viewer?url=http://infolab.stanford.edu/pub/papers/google.pdf&embedded=true" style="width:600px; height:500px;" frameborder="0"></iframe> -->
+

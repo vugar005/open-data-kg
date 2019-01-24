@@ -13,56 +13,41 @@ import { OrgQuery } from '../models/orgQuery.model';
   templateUrl: './dataset-by-org.component.html',
   styleUrls: ['./dataset-by-org.component.scss']
 })
-export class DatasetByOrgComponent implements OnInit {
+export class DatasetByOrgComponent  {
 
   @ViewChild('dataset_list') list: DatasetGroupListComponent;
   faSearch = faSearch;
-  orgQuery: OrgQuery = {
-    orgId: '',
-    formatId: '',
-    datasetFullName: ''
-  };
   datasetId: string;
-  formatTypes$: Observable<SelectType[]>;
-  inputValue: string;
-  constructor(private sharedService: SharedService, private router: Router) {
-    this.formatTypes$ = this.sharedService.getTypes('181116173908947318');
-   }
-
-  ngOnInit() {
-  }
+  constructor(private sharedService: SharedService, private router: Router) {}
   onSubmit(form: NgForm) {
     this.exitDetail();
     setTimeout(() => {
-      this.orgQuery = {...form.value, orgId: this.orgQuery.orgId};
-      this.list.getList();
+     this.list.getListByOrganization(form.value);
     }, 0);
   }
-  checkboxIdChanged(e: string) {
-   this.orgQuery = {
-     ...this.orgQuery,
-     orgId: e
-   };
-   this.exitDetail();
-  }
   onNavChanged(e) {
-    this.router.navigate([`/home/datasets/by-${e}`]);
+   this.router.navigate([`/home/datasets/by-${e}`]);
   }
-  exitDetail() {
-    this.datasetId = undefined;
+ exitDetail() {
+  this.datasetId = undefined;
+ }
+ onReturn() {
+   setTimeout(() => {
+    this.exitDetail();
+   }, 100);
+ }
+ handleResultSelected(e: any) {
+  if (!e.data) {
+    this.handleShowAll(e.form);
+   return;
   }
-  handleResultSelected(e: any) {
-    if (!e.data) {
-      this.handleShowAll(e.form);
-     return;
-    }
-    this.datasetId = e.data.id;
-  }
-  handleShowAll(f: NgForm) {
-    this.router.navigate(['/home/datasets/searchResults'], {queryParams: {query: f.value.datasetFullName}});
-   }
-  toggleHeader(e: HTMLElement) {
-    this.sharedService.toggleHeader.next(e);
-    }
+  this.datasetId = e.data.id;
+}
+handleShowAll(f: NgForm) {
+  this.router.navigate(['/home/datasets/searchResults'], {queryParams: {query: f.value.datasetFullName}});
+ }
+toggleHeader(e: HTMLElement) {
+this.sharedService.toggleHeader.next(e);
+}
 
 }

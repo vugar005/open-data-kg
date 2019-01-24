@@ -1,11 +1,10 @@
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit, Output, EventEmitter, Input, SimpleChanges, OnChanges } from '@angular/core';
 import { trigger, transition, useAnimation } from '@angular/animations';
 import { fadeIn } from 'ng-animate';
 import { Observable } from 'rxjs';
-import { CategoryQuery } from 'src/app/datasets/models/category-query.model';
-import { OrgQuery } from 'src/app/datasets/models/orgQuery.model';
 import { DatasetsService } from '../datasets.service';
-import { shareReplay } from 'rxjs/operators';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'dataset-group-list',
@@ -14,43 +13,44 @@ import { shareReplay } from 'rxjs/operators';
   animations: [trigger('fadeIn', [transition(':enter', useAnimation(fadeIn, {params: {timing: 0.5, delay: 0}}))])]
 })
 export class DatasetGroupListComponent implements OnInit, OnChanges {
-
   @Output() boxSelected = new EventEmitter();
-  @Input() allCount = new EventEmitter();
   @Input() type: string;
   list$: Observable<any>;
-  @Input() categoryQuery: CategoryQuery;
-  @Input() orgQuery: OrgQuery;
   fadeIn = true;
-  constructor(private datasetService: DatasetsService) { }
+  id: string;
+  emptyQuery = {formatId: '', datasetFullName: ''};
+  constructor(private datasetService: DatasetsService, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.listenToRouteQuery();
   }
   isExpanded(i) {
    // return setTimeout(() => i === 0, 300);
   }
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes['categoryQuery'] && changes['categoryQuery'].currentValue.categoryId) {
-      this.getList();
-    }
-    if (changes['orgQuery'] && changes['orgQuery'].currentValue.orgId) {
-      this.getList();
-    }
+  listenToRouteQuery() {
+    this.route.queryParams.subscribe(res => {
+      this.id  = res['id'];
+       if (!this.id) {
+         this.id = '0';
+       }
+       this.getList(this.emptyQuery);
+    });
   }
-  getList() {
+  ngOnChanges(changes: SimpleChanges) {
+  }
+  getList(value) {
     if (this.type === 'category') {
-      this.getListByCategory();
+      this.getListByCategory(value);
       return;
     }
     if (this.type === 'organization') {
-      this.getListByOrganization();
+      this.getListByOrganization(value);
     }
   }
-  getListByCategory() {
-   this.list$ = this.datasetService.getDatasetsWithGroupByOrg(this.categoryQuery);
-   this.list$.subscribe(res => localStorage.setItem('datasets', JSON.stringify(res)))
+  getListByCategory(value) {
+   this.list$ = this.datasetService.getDatasetsWithGroupByOrg({...value, categoryId: this.id});
   }
-  getListByOrganization() {
-    this.list$ = this.datasetService.getDatasetsWithGroupByCat(this.orgQuery);
+  getListByOrganization(value) {
+    this.list$ = this.datasetService.getDatasetsWithGroupByOrg({...value, orgId: this.id});
   }
 }

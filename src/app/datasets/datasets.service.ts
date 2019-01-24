@@ -65,7 +65,7 @@ getApiByDatasetById(id: string): Observable<DatasetApi[]> {
       map( res => this.extractTableRows(res))
     );
   }
-  getDatasetsWithGroupByOrg(query: CategoryQuery): Observable<DatasetByCategoryGroupByOrg> {
+  getDatasetsWithGroupByOrg(query: Object): Observable<DatasetByCategoryGroupByOrg> {
     const body = {
       kv: {
         ...query
@@ -80,7 +80,7 @@ getApiByDatasetById(id: string): Observable<DatasetApi[]> {
       map( res => this.extractTableRows(res))
     );
   }
-  getDatasetsWithGroupByCat(query: OrgQuery): Observable<DatasetByCategoryGroupByOrg> {
+  getDatasetsWithGroupByCat(query: Object): Observable<DatasetByCategoryGroupByOrg> {
     const body = {
       kv: {
         ...query
