@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { UserProfileEditComponent } from './user-profile-edit/user-profile-edit.component';
 import { MatDialog } from '@angular/material';
 import { LoadFavoriteDatasets } from './../datasets/store/dataset.actions';
@@ -22,7 +23,7 @@ export class UserProfileComponent implements OnInit {
  apiUrl$: Observable<string>;
  datasets: Dataset[];
  currentMod = 'show';
-  constructor(private store: Store<AppState>, private sharedService: SharedService,
+  constructor(private store: Store<AppState>, private sharedService: SharedService, private http: HttpClient,
     private dialog: MatDialog
     ) {
   store.select(getUser).pipe(take(1)).subscribe(res => this.user = res);
@@ -30,6 +31,8 @@ export class UserProfileComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.http.post('api/post/user/check', {}).subscribe(res => console.log(res));
+
    this.getFavoriteDatasets();
   }
   getFavoriteDatasets() {

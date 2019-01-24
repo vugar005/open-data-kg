@@ -7,9 +7,11 @@ import { LoginComponent } from './auth/login/login.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { AppCustomPreloader } from './app-custom-preloader';
+import { UserResolver } from './shared/resolvers/user.resolver';
 
 const routes: Routes = [
-  {path: '', component: LandingPageComponent, data: { breadcrumb: 'Home'}},
+  {path: '', redirectTo: 'home', pathMatch: 'full'},
+  {path: 'home', component: LandingPageComponent, data: { breadcrumb: 'Home'}, resolve: [UserResolver]},
   {path: 'datasets', loadChildren: './datasets/datasets.module#DatasetsModule',
   data: {  breadcrumb: 'details'}},
   {path: 'login', component: LoginComponent},

@@ -51,6 +51,7 @@ export function loadExternalStyles(url: string) {
  }
  export function imgSrcParser(fileId: string) {
    const hostname = localStorage.getItem('kg_hostname');
+   console.log(hostname)
   return `${hostname}/api/get/file/${fileId}`;
  }
   export function addAttachFileToolbar(modal, fileManagerDialog) {

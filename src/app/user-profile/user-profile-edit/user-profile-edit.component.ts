@@ -1,3 +1,4 @@
+import { ProfileUploaderAdapter } from './../profile-uploader.adapter';
 import { HttpClient } from '@angular/common/http';
 import { SharedService } from './../../shared/shared.service';
 import { SelectType } from './../../shared/models/select-type.model';
@@ -22,8 +23,9 @@ export class UserProfileEditComponent implements OnInit {
   hideOld = true;
   maxDate = new Date(1994, 9, 30);
   startDate = new Date(1990, 0, 1);
+  adapter = new ProfileUploaderAdapter(this.http);
   constructor( @Inject(MAT_DIALOG_DATA) public data: any,
-  public dialogRef: MatDialogRef<UserProfileEditComponent>,
+  private dialogRef: MatDialogRef<UserProfileEditComponent>,
   private dialog: MatDialog,
   private sharedService: SharedService,
   private http: HttpClient
@@ -38,7 +40,7 @@ export class UserProfileEditComponent implements OnInit {
      return NgxFormUtils.getErrors(this.ntForm, str);
     }
     onUpload() {
-      const dialogRef = this.dialog.open(UploadFileDialogComponent);
+      const dialogRef = this.dialog.open(UploadFileDialogComponent, {data: {adapter: this.adapter}});
       dialogRef.afterClosed().subscribe(res => {
         console.log(res);
         if (res) { this.imgId = res; }
@@ -46,11 +48,13 @@ export class UserProfileEditComponent implements OnInit {
       });
     }
     onSubmit(f: NgForm) {
-      const body = {
-        kv: {}
-      };
-      Object.keys(f.value).forEach( key => body.kv[key] = f.controls[key].value);
-     this.http.post('api/post/profile/change',  body).subscribe(res => console.log(res));
+     this.http.post('api/post/profile/change',  f.value).subscribe((res: any) => {
+     if (res.code === 'INVALID_PARAMS') {
+      this.sharedService.createNotification('error', res.message['kg']);
+     } else {
+       this.dialogRef.close();
+     }
+     });
     }
 
 }

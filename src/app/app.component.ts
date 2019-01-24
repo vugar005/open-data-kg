@@ -6,7 +6,7 @@ import { AppState } from './reducers';
 import { Store } from '@ngrx/store';
 import { Observable, fromEvent } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { AutoSetToken, AutoSetUser, SetApiUrl, SetModules } from './auth/store/auth.actions';
+import { AutoSetToken, SetApiUrl, SetModules, SetUser } from './auth/store/auth.actions';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { filter, distinctUntilChanged, map } from 'rxjs/operators';
 import { getHostname } from './app.utils';
@@ -64,8 +64,7 @@ export class AppComponent implements OnInit {
   tryAutoLogin() {
    try {
     const jwtToken = localStorage.getItem('kg-token');
-    const user = JSON.parse(localStorage.getItem('kg-user'));
-    if (!(jwtToken && user)) {
+    if (!(jwtToken)) {
         return;
     }
     const isExpired = this.jwtService.isTokenExpired(jwtToken);
@@ -73,8 +72,6 @@ export class AppComponent implements OnInit {
     const decoded = this.jwtService.decodeToken(jwtToken);
     if (!decoded) {return; }
     this.store.dispatch(new AutoSetToken({jwtToken, decoded}));
-    this.store.dispatch(new AutoSetUser(user));
-    this.store.dispatch(new SetModules(user));
    } catch (er) {
      console.log(er);
    }

@@ -9,7 +9,7 @@
 
               <div class="item-left">
                 <div class="item-image">
-                  <img src="{{apiUrl$ | async}}/api/get/file/{{(user$ | async)?.photoFileId}}"  onerror="this.src= './assets/img/default-avatar.png '">
+                  <img src="{{user.photoFileId | imgSrc }}"  onerror="this.src= './assets/img/default-avatar.png '">
                 </div>
               </div>
               <div class="item-center">
@@ -34,7 +34,7 @@
 
                 <div class="item-center__group">
                   <div class="key">Gender: </div>
-                  <div class="value">{{user.gender}}</div>
+                  <div class="value">{{user.gender.value['en']}}</div>
                 </div>
 
               </div>

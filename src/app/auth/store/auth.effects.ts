@@ -89,7 +89,6 @@ export class AuthEffects {
       ofType(AuthActionTypes.SET_USER),
       tap((res: any) => {
         const user: User = res.payload;
-        localStorage.setItem('kg-user', JSON.stringify(user));
         if (user.userType !== 'USER' ) {
           this.router.navigateByUrl('/admin');
         } else {

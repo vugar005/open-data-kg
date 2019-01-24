@@ -48,6 +48,8 @@ import { HttpLoaderFactory } from './shared/shared-translate.module';
 import { FormUtilsModule } from 'ngx-form-utils';
 import { UserProfileEditComponent } from './user-profile/user-profile-edit/user-profile-edit.component';
 import { MaterialModule } from './material.module';
+import { UserResolver } from './shared/resolvers/user.resolver';
+import { ImgSrcPipeModule } from './shared/pipes/img-src-pipe.module';
 
 @NgModule({
 declarations: [
@@ -91,6 +93,7 @@ imports: [
   FormUtilsModule,
   DatasetBoxModule,
   MaterialModule,
+  ImgSrcPipeModule,
   HttpClientBusyModule.forRoot(),
   TranslateModule.forRoot({
     loader: {
@@ -134,10 +137,12 @@ exports: [
   SharedRbacModule,
   HttpClientBusyModule,
   TranslateModule,
-  MaterialModule
+  MaterialModule,
+  ImgSrcPipeModule
 ],
 providers: [
   SharedService,
+  UserResolver,
   AdminGuard,
  { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
