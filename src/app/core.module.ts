@@ -9,18 +9,13 @@ import { TokenInterceptor } from './auth/token.inteceptor';
 import { APIInterceptor } from './shared/interceptors/api.interceptor';
 import { LangInterceptor } from './shared/interceptors/lang.interceptor';
 import { HeaderComponent } from './header/header.component';
-import { LandingPageComponent } from './landing-page/landing-page.component';
-import { WaveParticlesComponent } from './landing-page/wave-particles/wave-particles.component';
 import { NavStyleChangeDirective } from './shared/directives/nav-style-change.directive';
 import { HeaderToggleDirective } from './shared/directives/header-toggle.directive';
 import { TotalDatasetsCountComponent } from './global-nav/total-datasets-count/total-datasets-count.component';
 import { ClassChangerDirective } from './shared/directives/class-changer.directive';
 import { HeaderPopupComponent } from './header/header-popup/header-popup.component';
-import { NewsSidebarComponent } from './landing-page/news-sidebar/news-sidebar.component';
-import { NewsSidebarItemComponent } from './landing-page/news-sidebar/news-sidebar-item/news-sidebar-item.component';
 import { CategoryOverviewComponent } from './global-nav/category-overview/category-overview.component';
 import { MouseScrollIconComponent } from './shared/components/mouse-scroll-icon/mouse-scroll-icon.component';
-import { DesktopComponent } from './landing-page/desktop/desktop.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { OrganizationOverviewComponent } from './global-nav/organization-overview/organization-overview.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
@@ -50,6 +45,11 @@ import { UserProfileEditComponent } from './user-profile/user-profile-edit/user-
 import { MaterialModule } from './material.module';
 import { UserResolver } from './shared/resolvers/user.resolver';
 import { ImgSrcPipeModule } from './shared/pipes/img-src-pipe.module';
+import { LandingPageComponent } from './home/landing-page/landing-page.component';
+import { WaveParticlesComponent } from './home/landing-page/wave-particles/wave-particles.component';
+import { NewsSidebarComponent } from './home/landing-page/news-sidebar/news-sidebar.component';
+import { NewsSidebarItemComponent } from './home/landing-page/news-sidebar/news-sidebar-item/news-sidebar-item.component';
+import { DesktopComponent } from './home/landing-page/desktop/desktop.component';
 
 @NgModule({
 declarations: [

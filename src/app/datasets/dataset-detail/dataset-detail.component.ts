@@ -106,7 +106,7 @@ export class DatasetDetailComponent implements OnInit, OnChanges {
   }
   onResourcesNavigate(id: string, format: string) {
     this.datasetService.resourceDataset = this.dataset;
-    this.router.navigate([`datasets/${id}/resources`], {queryParams: {type: format}});
+    this.router.navigate([`/home/datasets/${id}/resources`], {queryParams: {type: format}});
   }
   onShareClick() {
     console.log(this.dataset.kv.id)

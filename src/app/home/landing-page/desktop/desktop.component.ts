@@ -9,9 +9,9 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { WaveParticlesComponent } from '../wave-particles/wave-particles.component';
 import { Store } from '@ngrx/store';
-import { AppState } from '../../reducers';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { AppState } from 'src/app/reducers';
 @Component({
   selector: 'desktop',
   templateUrl: './desktop.component.html',
@@ -42,9 +42,9 @@ handleResultSelected(e: any) {
     this.handleShowAll();
    return;
   }
-  this.router.navigate(['/datasets/', e.id, 'details']);
+  this.router.navigate(['/home/datasets/', e.id, 'details']);
 }
 handleShowAll() {
- this.router.navigate(['/datasets/searchResults'], {queryParams: {query: this.inputValue}});
+ this.router.navigate(['/home/datasets/searchResults'], {queryParams: {query: this.inputValue}});
 }
 }

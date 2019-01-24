@@ -8,7 +8,6 @@ import { MAT_DIALOG_DATA, MatDialogRef, MatDialog } from '@angular/material';
 import { NgForm } from '@angular/forms';
 import { NgxFormUtils } from 'ngx-form-utils';
 import { Observable } from 'rxjs';
-import { stringify } from '@angular/core/src/util';
 
 @Component({
   selector: 'app-user-profile-edit',
@@ -25,7 +24,7 @@ export class UserProfileEditComponent implements OnInit {
   startDate = new Date(1990, 0, 1);
   adapter = new ProfileUploaderAdapter(this.http);
   constructor( @Inject(MAT_DIALOG_DATA) public data: any,
-  private dialogRef: MatDialogRef<UserProfileEditComponent>,
+  public  dialogRef: MatDialogRef<UserProfileEditComponent>,
   private dialog: MatDialog,
   private sharedService: SharedService,
   private http: HttpClient

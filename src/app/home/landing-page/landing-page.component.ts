@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AppState } from '../reducers';
 import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
+import { AppState } from 'src/app/reducers';
 
 @Component({
   selector: 'landing-page',

@@ -7,6 +7,7 @@ import { registerLocaleData} from '@angular/common';
 import localeKy from '@angular/common/locales/ky';
 import { CoreModule } from './core.module';
 import { NotLoggedInDialogComponent } from './not-loggedIn-dialog/not-loggedIn-dialog.component';
+import { HomeComponent } from './home/home.component';
 registerLocaleData(localeKy);
 
 
@@ -14,6 +15,7 @@ registerLocaleData(localeKy);
    declarations: [
       AppComponent,
       NotLoggedInDialogComponent,
+      HomeComponent
    ],
    imports: [
       BrowserModule,

@@ -10,7 +10,7 @@
       <div class="name">
         <p> {{ (user$ | async)?.name}} {{(user$ | async)?.surname }} </p>
       </div>
-        <div class="image" [routerLink]="['/user-profile']"  >
+        <div class="image" [routerLink]="['/home/user-profile']"  >
             <img *ngIf="!(user$ | async).photoFileId" src="./assets/img/default-avatar.png">
             <img *ngIf="(user$ | async).photoFileId" src="{{apiUrl$ | async}}/api/get/file/{{(user$ | async)?.photoFileId}}"
              onerror="this.src= './assets/img/default-avatar.png '">

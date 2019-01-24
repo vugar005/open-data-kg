@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router, ActivatedRoute, RouterStateSnapshot } from '@angular/router';
 
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, take, tap } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 import { SetUser } from 'src/app/auth/store/auth.actions';
 import { Injectable } from '@angular/core';
@@ -17,7 +17,7 @@ export class UserResolver {
     ): Observable<any> | Promise<any> {
     return this.http.post('api/post/user/check', {})
     .pipe(
-      map((res: any) => {
+      tap((res: any) => {
         const user = res.data;
         if (user) {
           console.log(user)

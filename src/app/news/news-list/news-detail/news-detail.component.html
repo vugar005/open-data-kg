@@ -19,7 +19,7 @@
   <div class="row">
     <div class="col-8 col-xl-6">
       <div class="other-items">
-       <other-item *ngFor="let item of otherItems" [item]="item" routerLink="/news/{{item.id}}" [queryParams]="{type: type}"> </other-item>
+       <other-item *ngFor="let item of otherItems" [item]="item" routerLink="/home/news/{{item.id}}" [queryParams]="{type: type}"> </other-item>
       </div>
     </div>
   </div>

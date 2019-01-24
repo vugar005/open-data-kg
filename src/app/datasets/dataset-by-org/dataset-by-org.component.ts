@@ -46,7 +46,7 @@ export class DatasetByOrgComponent implements OnInit {
    this.exitDetail();
   }
   onNavChanged(e) {
-    this.router.navigate([`/datasets/by-${e}`]);
+    this.router.navigate([`/home/datasets/by-${e}`]);
   }
   exitDetail() {
     this.datasetId = undefined;
@@ -59,7 +59,7 @@ export class DatasetByOrgComponent implements OnInit {
     this.datasetId = e.data.id;
   }
   handleShowAll(f: NgForm) {
-    this.router.navigate(['/datasets/searchResults'], {queryParams: {query: f.value.datasetFullName}});
+    this.router.navigate(['/home/datasets/searchResults'], {queryParams: {query: f.value.datasetFullName}});
    }
   toggleHeader(e: HTMLElement) {
     this.sharedService.toggleHeader.next(e);

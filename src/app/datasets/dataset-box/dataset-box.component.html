@@ -4,8 +4,7 @@
      <div class="col-9">
         <div class="left">
             <div class="item-title">{{dataset?.datasetName}}</div>
-             <div class="item-content">
-              {{dataset?.datasetDescription}}
+              <div class="item-content" [innerHTML]="dataset?.datasetDescription">
              </div>
              <div class="item-rating">
                <div class="title">

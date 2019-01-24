@@ -17,7 +17,7 @@
     <div  class="swiper-container" [swiper]="config" style="width: 100%" #swiper >
       <div class="swiper-wrapper">
         <div class="swiper-slide" *ngFor="let news of newsList;let i=index;let first=first" [ngClass]="{'wide': i=== 0 }" >
-                <news-item [news]="news" [index]="i" routerLink="/news/{{news.id}}" [queryParams]= "{type: type}" ></news-item>
+                <news-item [news]="news" [index]="i" routerLink="/home/news/{{news.id}}" [queryParams]= "{type: type}" ></news-item>
         </div>
 
       </div>
