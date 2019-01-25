@@ -19,7 +19,7 @@ export class ShareDialogComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.baseUrl = 'http://opendata.neuron.az/#';
-    this.shareLink = `${this.baseUrl}/datasets/${this.data}/details`;
+    this.shareLink = `${this.baseUrl}/home/datasets/${this.data}`;
   }
   ngAfterViewInit() {
   }
