@@ -7,7 +7,6 @@ import { MAT_DIALOG_DATA, MatDialogRef, MatDialog } from '@angular/material';
 import { ModulesInsertDialogComponent } from '../../ent-modules/modules-insert-dialog/modules-insert-dialog.component';
 import { SharedService } from 'src/app/shared/shared.service';
 import { NgxFormUtils } from 'ngx-form-utils';
-import { NtTableComponent } from 'nt-table';
 import { ApiConfig } from 'nt-table/lib/api-config.model';
 import { DatasetApiInsertComponent } from './dataset-api-insert/dataset-api-insert.component';
 import { DatasetCategoryInsertComponent } from './dataset-category-insert/dataset-category-insert.component';
@@ -22,7 +21,6 @@ import { addAttachFileToolbar } from 'src/app/shared/shared-methods';
 import { FileManagerDialogComponent } from '../../file-manager-dialog/file-manager-dialog.component';
 import { SharedAdminService } from '../../shared/shared-admin.service';
 import { TableEditerAction, NgxNativeTableComponent } from 'ngx-native-table';
-import { ApplicationsInsertDialogComponent } from '../../ent-applications/applications-insert-dialog/applications-insert-dialog.component';
 
 @Component({
   selector: 'app-dataset-insert-dialog',
@@ -41,6 +39,7 @@ export class DatasetInsertDialogComponent implements OnInit, AfterViewInit {
   adapter = new FileManagerUploaderAdapter(this.http);
   startDate = new Date(1990, 0, 1);
   plugins = {plugins: 'link test', toolbar: 'test'};
+  catTypes$: Observable<SelectType[]>;
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<ModulesInsertDialogComponent>,
@@ -51,6 +50,7 @@ export class DatasetInsertDialogComponent implements OnInit, AfterViewInit {
     private http: HttpClient,
     private sharedAdminService: SharedAdminService
   ) {
+    this.catTypes$ = this.sharedService.getTypes('1000004');
     this.store.select(getUserOrg)
     .pipe(
       take(1)

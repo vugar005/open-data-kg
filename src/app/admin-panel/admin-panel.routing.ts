@@ -7,7 +7,7 @@ import { AdminGuard } from '../auth/admin.guard';
 import { UserResolver } from '../shared/resolvers/user.resolver';
 
 const routes: Routes = [
-  {path: '', component: AdminPanelComponent, canActivate: [AdminGuard], children: [
+  {path: '', component: AdminPanelComponent,   resolve: [UserResolver], children: [
   //  {path: '', redirectTo: 'applications', pathMatch: 'full'},
     {path: 'modules', loadChildren: './ent-modules/ent-modules.module#EntModulesModule'},
     {path: 'applications', loadChildren: './ent-applications/ent-applications.module#EntApplicationsModule'},

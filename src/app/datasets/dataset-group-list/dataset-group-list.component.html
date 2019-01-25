@@ -1,3 +1,4 @@
+
       <mat-accordion [displayMode]="'flat'"  [multi]="true" >
         <mat-expansion-panel *ngFor="let item of (list$ | async)?.tbl;let first=first" [expanded]="true">
           <mat-expansion-panel-header [collapsedHeight]="'60px'" [expandedHeight]="'60px'">
@@ -11,5 +12,3 @@
           ></dataset-box>
         </mat-expansion-panel>
       </mat-accordion>
-      <!-- (click)="boxSelected.emit(dataset.datasetId)" -->
-      <!-- [queryParams]="{datasetId: dataset.id}" -->

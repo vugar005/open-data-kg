@@ -19,7 +19,7 @@ export class GeojsonPreviewComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
      // this.initMap(MockGeoData);
      console.log(this.link)
-    this.getGeoData(`${this.link}?type=serverApi`).subscribe(res => {
+    this.getGeoData(`${this.link}&type=serverApi`).subscribe(res => {
       this.initMap(res);
     });
   }

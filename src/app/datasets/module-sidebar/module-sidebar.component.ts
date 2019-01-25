@@ -28,12 +28,13 @@ export class ModuleSidebarComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.getItemList();
-     this.route.queryParams.subscribe(res => {
+     this.route.params.subscribe(res => {
       this.handleRouteId(res);
      });
   }
   handleRouteId(res) {
     const id = res['id'] || '0';
+    console.log(res)
     this.selectedIndex = id;
     /** SetTimeout just to fix expressionChanged error. Not important */
    setTimeout(() => this.selected.next(id), 0);
@@ -69,11 +70,11 @@ export class ModuleSidebarComponent implements OnInit, AfterViewInit {
   replaceImgWithSvg() {
     setTimeout(() => {
     this.sharedService.replaceSvgWitInline();
-    }, 10);
+    }, 3000);
   }
   ngAfterViewInit() {
     if (this.itemList) {
-    this.replaceImgWithSvg();
+      this.replaceImgWithSvg();
     }
   }
 
