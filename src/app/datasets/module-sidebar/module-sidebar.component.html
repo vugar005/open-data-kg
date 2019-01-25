@@ -9,7 +9,7 @@
 
             <div class="item-box"  [attr.id]="itemList[i].id" >
               <div class="icon">
-                  <img src="./assets/icons/categories/{{itemList[i].id}}.svg"
+                  <img src="./assets/icons/categories/{{itemList[i].id}}.svg" (load)="onImgLoad()"
                   onerror="this.src='./assets/icons/categories/181110344301612908.svg'"  class="svg logo-img">
                  <!-- <img src="./assets/icons/seeding.svg" class="svg logo-img"> -->
               </div>

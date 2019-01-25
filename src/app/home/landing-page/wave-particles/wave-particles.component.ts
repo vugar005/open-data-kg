@@ -38,19 +38,19 @@ export class WaveParticlesComponent
   req: any;
   mouseX = 170;
   mouseY = -294;
-  @HostListener('mousemove')
-  mousemove() {
+  @HostListener('mousemove', ['$event'])
+  mousemove(event) {
     this.onDocumentMouseMove(event);
   }
-  @HostListener('touchstart')
-  touchstart() {
+  @HostListener('touchstart', ['$event'])
+  touchstart(event) {
     this.onDocumentTouchStart(event);
   }
-  @HostListener('touchemove')
-  touchemove() {
+  @HostListener('touchemove', ['$event'])
+  touchemove(event) {
     this.onDocumentTouchMove(event);
   }
-  @HostListener('window:resize')
+  @HostListener('window:resize', ['$event'])
   resize() {
     this.onWindowResize();
   }

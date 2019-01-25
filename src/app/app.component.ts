@@ -10,6 +10,8 @@ import { AutoSetToken, SetApiUrl, SetModules, SetUser } from './auth/store/auth.
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { filter, distinctUntilChanged, map } from 'rxjs/operators';
 import { getHostname } from './app.utils';
+import cssVars from 'css-vars-ponyfill';
+
 
 @Component({
   selector: 'app-root',
@@ -30,6 +32,9 @@ export class AppComponent implements OnInit {
     private route: ActivatedRoute,
     private sharedService: SharedService
      ) {
+     setTimeout(() => {
+    //  cssVars();
+     }, 3000)
   }
   ngOnInit() {
     this.setHostname();

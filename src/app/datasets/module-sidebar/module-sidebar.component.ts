@@ -21,6 +21,7 @@ export class ModuleSidebarComponent implements OnInit, AfterViewInit {
   orgIds: string[] = [];
   ready = false;
   selectedIndex: string;
+  loadedImgCount = 0;
  constructor(private route: ActivatedRoute, private datasetService: DatasetsService,
   private router: Router,
   private sharedService: SharedService, private changeRef: ChangeDetectorRef) {
@@ -28,18 +29,26 @@ export class ModuleSidebarComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.getItemList();
+    const match  = this.router.url.match(/[0-9]+/);
+    if (match) {
+        this.handleRouteId(match[0]);
+    }
      this.route.params.subscribe(res => {
-      this.handleRouteId(res);
+    //  this.handleRouteId(res);
      });
   }
-  handleRouteId(res) {
-    const id = res['id'] || '0';
-    console.log(res)
+  handleRouteId(routeId) {
+    const id = routeId || '0';
     this.selectedIndex = id;
     /** SetTimeout just to fix expressionChanged error. Not important */
    setTimeout(() => this.selected.next(id), 0);
   }
-
+   onImgLoad() {
+    this.loadedImgCount++;
+    if (this.loadedImgCount === this.itemList.length) {
+      this.replaceImgWithSvg();
+    }
+   }
   getItemList() {
     if (this.type === 'category') {
       this.getCategories();
@@ -68,13 +77,11 @@ export class ModuleSidebarComponent implements OnInit, AfterViewInit {
     this.router.navigate([`/home/datasets/by-${this.type}/${id}`]);
   }
   replaceImgWithSvg() {
-    setTimeout(() => {
     this.sharedService.replaceSvgWitInline();
-    }, 3000);
   }
   ngAfterViewInit() {
     if (this.itemList) {
-      this.replaceImgWithSvg();
+    //  this.replaceImgWithSvg();
     }
   }
 
