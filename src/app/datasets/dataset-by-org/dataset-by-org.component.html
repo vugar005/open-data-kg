@@ -19,10 +19,7 @@
         <module-sidebar  [type]="'organization'"></module-sidebar>
       </div>
       <div class="col-12 col-sm-7 col-md-8 col-lg-9 ">
-         <dataset-group-list  *ngIf="!datasetId"
-          #dataset_list [type]="'organization'"
-           (boxSelected)="datasetId = $event"></dataset-group-list>
-         <dataset-detail  [id]="datasetId" *ngIf="datasetId" [isInner]="true" (navBack)="exitDetail()"></dataset-detail>
+        <router-outlet></router-outlet>
       </div>
     </div>
   </div>

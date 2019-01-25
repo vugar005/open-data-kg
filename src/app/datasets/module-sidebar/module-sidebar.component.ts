@@ -62,9 +62,9 @@ export class ModuleSidebarComponent implements OnInit, AfterViewInit {
     });
 }
   onItemClick(id: string) {
-   // this.selectedIndex = id;
+    this.selectedIndex = id;
  //   this.selected.next(id);
-    this.router.navigate([`/home/datasets/by-${this.type}`], {queryParams: {id: id}});
+    this.router.navigate([`/home/datasets/by-${this.type}/${id}`]);
   }
   replaceImgWithSvg() {
     setTimeout(() => {

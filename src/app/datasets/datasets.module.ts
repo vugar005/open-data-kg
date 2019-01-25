@@ -30,6 +30,7 @@ import { SharedRbacModule } from '../shared/shared-rbac.module';
 import { DatasetFiltersComponent } from './dataset-filters/dataset-filters.component';
 import { ShareDialogComponent } from './share-dialog/share-dialog.component';
 import { GoogleDocPreviewComponent } from './dataset-file-preview/google-doc-preview/google-doc-preview.component';
+import { OtherJsonPreviewComponent } from './dataset-file-preview/other-json-preview/other-json-preview.component';
 
 @NgModule({
   imports: [
@@ -60,7 +61,8 @@ import { GoogleDocPreviewComponent } from './dataset-file-preview/google-doc-pre
      DatasetFiltersComponent,
      GeojsonPreviewComponent,
      ShareDialogComponent,
-     GoogleDocPreviewComponent
+     GoogleDocPreviewComponent,
+     OtherJsonPreviewComponent
     ],
     entryComponents: [ShareDialogComponent],
     providers: [

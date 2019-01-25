@@ -27,6 +27,7 @@ export class SharedAdminService {
         console.log('on edit');
         break;
       case 'confirm':
+      console.log('confirm')
       this.onStatusUpdate(table.config.confirmApi, actionObject.data);
         break;
       case 'unConfirm':

@@ -14,7 +14,7 @@
       <div [ngClass]="{ 'col-12': isInner, 'col-9': !isInner }">
         <div class="main-info-wrapper">
           <div class="main-info">
-            <div class="back-ico" *ngIf="isInner" (click)="navBack.emit()">
+            <div class="back-ico" *ngIf="isInner" [routerLink]="['../']" >
               <i class="fas fa-chevron-left"></i>
             </div>
             <div class="item-title">{{ dataset?.kv.name }}</div>

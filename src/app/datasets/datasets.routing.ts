@@ -1,3 +1,4 @@
+import { DatasetGroupListComponent } from './dataset-group-list/dataset-group-list.component';
 import { Routes, RouterModule } from '@angular/router';
 import { DatasetByCatComponent } from './dataset-by-cat/dataset-by-cat.component';
 import { DatasetByOrgComponent } from './dataset-by-org/dataset-by-org.component';
@@ -7,8 +8,14 @@ import { DatasetFilePreviewComponent } from './dataset-file-preview/dataset-file
 
 const routes: Routes = [
   {path: '', redirectTo: 'by-category', pathMatch: 'full'},
-  { path: 'by-category', component: DatasetByCatComponent, data: { breadcrumb: 'by-category'} },
-  {path: 'by-organization', component: DatasetByOrgComponent, data: {breadcrumb: 'by organization'}},
+  { path: 'by-category', component: DatasetByCatComponent, data: { breadcrumb: 'by-category'}, children: [
+    {path: ':id', component: DatasetGroupListComponent, pathMatch: 'full', data: {type: 'category'}},
+    {path: ':id/:id', component: DatasetDetailComponent, data: {isInner: true}}
+  ] },
+  {path: 'by-organization', component: DatasetByOrgComponent, data: {breadcrumb: 'by organization'}, children: [
+    {path: ':id', component: DatasetGroupListComponent, pathMatch: 'full', data: {type: 'organization'}},
+    {path: ':id/:id', component: DatasetDetailComponent, data: {isInner: true}}
+  ]},
   {path: ':id/resources', component: DatasetFilePreviewComponent},
   {path: 'searchResults', component: DatasetSearchResultComponent},
   {path: ':id', component: DatasetDetailComponent, data: {breadcrumb: 'details'}}

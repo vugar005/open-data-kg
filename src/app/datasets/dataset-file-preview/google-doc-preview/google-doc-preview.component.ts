@@ -9,27 +9,35 @@ import { takeUntil } from 'rxjs/operators';
   styleUrls: ['./google-doc-preview.component.scss']
 })
 export class GoogleDocPreviewComponent implements OnInit, OnDestroy {
-  @Input() link = 'https://drive.google.com/viewerng/viewer?url=https://calibre-ebook.com/downloads/demos/demo.docx&embedded=true';
+  @Input() link;
   safeUrl: SafeResourceUrl;
   iframeLoaded$ = new Subject<boolean>();
   _onDestroy$ = new Subject<void>();
   loadSubscription: Subscription;
+  loaded: boolean;
   constructor(private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
-    interval(2000).pipe(takeUntil(this.iframeLoaded$), takeUntil(this._onDestroy$)).subscribe(res => this.getSafeLink());
+     this.getSafeLink();
+   interval(3000).pipe(takeUntil(this.iframeLoaded$), takeUntil(this._onDestroy$)).subscribe(res => this.getSafeLink());
   }
   onIframeLoad() {
-    console.log('loaded')
+    console.log('loaded');
+    // https://drive.google.com/viewerng/viewer?url=https://calibre-ebook.com/downloads/demos/demo.docx&embedded=true
     this.iframeLoaded$.next(true);
+    this.loaded = true;
   }
   ngOnDestroy() {
     this._onDestroy$.next();
   }
   getSafeLink() {
+    if (this.loaded) {return; }
+    this.safeUrl = null;
     console.log('get safe');
-    console.log(this.link)
+    console.log(this.link);
+    setTimeout(() => {
     this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.link);
+    }, 10);
   }
 
 }

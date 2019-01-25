@@ -5,8 +5,10 @@
     [url]="'api/get/Permission/Datasets/GlobalSearchForDataset'"
     [apiKey]="'datasetFullname'"
     [listItemLabel]="'name'"
-    (selected)="onSelected($event, f)" ngModel
-   (keydown)="onInputEnter($event, f)">
+    (selected)="onSelected($event, f)"
+   (keydown)="onInputEnter($event, f)"
+  ngModel name="datasetFullname"
+   >
     <div class="search-ico" (click)="onSubmit(f)">
       <img src="./assets/icons/search-icon.svg">
     </div>
@@ -21,5 +23,6 @@
        <img src="./assets/icons/caret.svg" class="icon">
       </div>
 </div>
+<input [hidden]="true">
 </form>
 

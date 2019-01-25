@@ -24,7 +24,7 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent },
   {path: 'admin', loadChildren: './admin-panel/admin-panel.module#AdminPanelModule'},
   {path: '404', component: NotFoundComponent},
- {path: '**', redirectTo: '404'}
+// {path: '**', redirectTo: '404'}
 ];
 
 @NgModule({

@@ -7,7 +7,9 @@
           </mat-expansion-panel-header>
           <dataset-box *ngFor="let dataset of item?.r" [@fadeIn]="fadeIn"
           [dataset]="dataset"
-          (click)="boxSelected.emit(dataset.datasetId)"
+          routerLink="./{{dataset.datasetId}}"
           ></dataset-box>
         </mat-expansion-panel>
       </mat-accordion>
+      <!-- (click)="boxSelected.emit(dataset.datasetId)" -->
+      <!-- [queryParams]="{datasetId: dataset.id}" -->

@@ -1,9 +1,9 @@
+import { DatasetsService } from './../datasets.service';
 import { SharedService } from 'src/app/shared/shared.service';
-import { DatasetGroupListComponent } from './../dataset-group-list/dataset-group-list.component';
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'dataset-by-cat',
@@ -11,33 +11,21 @@ import { Router } from '@angular/router';
   styleUrls: ['./dataset-by-cat.component.scss']
 })
 export class DatasetByCatComponent {
-  @ViewChild('dataset_list') list: DatasetGroupListComponent;
   faSearch = faSearch;
-  datasetId: string;
-  constructor(private sharedService: SharedService, private router: Router) {}
+  constructor(private sharedService: SharedService, private router: Router,
+    private datsetService: DatasetsService, private route: ActivatedRoute) {}
   onSubmit(form: NgForm) {
-    this.exitDetail();
-    setTimeout(() => {
-     this.list.getListByCategory(form.value);
-    }, 0);
+    this.datsetService.datasetFilter$.next(form);
   }
   onNavChanged(e) {
-   this.router.navigate([`/home/datasets/by-${e}`]);
+   this.router.navigate([`/home/datasets/by-${e}/0`]);
   }
- exitDetail() {
-  this.datasetId = undefined;
- }
- onReturn() {
-   setTimeout(() => {
-    this.exitDetail();
-   }, 100);
- }
  handleResultSelected(e: any) {
   if (!e.data) {
     this.handleShowAll(e.form);
    return;
   }
-  this.datasetId = e.data.id;
+  this.onSubmit(e.form);
 }
 handleShowAll(f: NgForm) {
   this.router.navigate(['/home/datasets/searchResults'], {queryParams: {query: f.value.datasetFullName}});

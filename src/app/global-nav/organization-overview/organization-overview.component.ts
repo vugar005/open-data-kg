@@ -20,6 +20,6 @@ export class OrganizationOverviewComponent implements OnInit {
 
   }
   onNavigate(id: string) {
-      this.router.navigate(['/home/datasets/by-organization'], { queryParams: {id: id} });
+      this.router.navigate([`/home/datasets/by-organization/${id}`]);
   }
 }

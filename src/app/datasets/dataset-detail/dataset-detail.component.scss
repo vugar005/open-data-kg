@@ -138,18 +138,33 @@ section#api {
           text-align: center;
           background: #FFA800;
         cursor: pointer;
-          &.ZIP{
-          background: #FFA800;
-          }
-          &.JSON {
-          background: #7E7E7E;
-          }
-          &.CVS {
+        &.ZIP{
           background: #73CB49;
-          }
-          &.XML {
-            background: #C84E4E;
-          }
+         }
+         &.JSON {
+          background: #34ace0;
+         }
+         &.CSV {
+          background: #487eb0;
+         }
+         &.XML {
+            background: #7f8c8d;
+         }
+         &.XLS, &.XLSX {
+           background: #16a085;
+         }
+         &.DOC, &.DOCX {
+           background: #2980b9;
+         }
+         &.PPT, &.PPTX {
+           background: #e67e22;
+         }
+         &.HTML {
+           background: #1abc9c;
+         }
+         &.PDF {
+          background: #c23616;
+        }
       }
       .item-description {
         font-weight: bold;

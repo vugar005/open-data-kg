@@ -3,10 +3,9 @@ import { DatasetGroupListComponent } from './../dataset-group-list/dataset-group
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import { Observable } from 'rxjs';
 import { SharedService } from 'src/app/shared/shared.service';
 import { Router } from '@angular/router';
-import { OrgQuery } from '../models/orgQuery.model';
+import { DatasetsService } from '../datasets.service';
 
 @Component({
   selector: 'app-dataset-by-org',
@@ -14,34 +13,20 @@ import { OrgQuery } from '../models/orgQuery.model';
   styleUrls: ['./dataset-by-org.component.scss']
 })
 export class DatasetByOrgComponent  {
-
-  @ViewChild('dataset_list') list: DatasetGroupListComponent;
   faSearch = faSearch;
-  datasetId: string;
-  constructor(private sharedService: SharedService, private router: Router) {}
+  constructor(private sharedService: SharedService, private router: Router, private datasetService: DatasetsService) {}
   onSubmit(form: NgForm) {
-    this.exitDetail();
-    setTimeout(() => {
-     this.list.getListByOrganization(form.value);
-    }, 0);
+    this.datasetService.datasetFilter$.next(form);
   }
   onNavChanged(e) {
-   this.router.navigate([`/home/datasets/by-${e}`]);
+   this.router.navigate([`/home/datasets/by-${e}/0`]);
   }
- exitDetail() {
-  this.datasetId = undefined;
- }
- onReturn() {
-   setTimeout(() => {
-    this.exitDetail();
-   }, 100);
- }
  handleResultSelected(e: any) {
   if (!e.data) {
     this.handleShowAll(e.form);
    return;
   }
-  this.datasetId = e.data.id;
+  this.onSubmit(e.form);
 }
 handleShowAll(f: NgForm) {
   this.router.navigate(['/home/datasets/searchResults'], {queryParams: {query: f.value.datasetFullName}});

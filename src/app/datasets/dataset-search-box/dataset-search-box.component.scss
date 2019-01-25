@@ -109,17 +109,32 @@
       color: #ffffff;
       text-align: center;
       cursor: pointer;
-       &.ZIP{
+      &.ZIP{
         background: #73CB49;
        }
        &.JSON {
-        background: #7E7E7E;
+        background: #34ace0;
        }
-       &.CVS {
-        background: #73CB49;
+       &.CSV {
+        background: #487eb0;
        }
        &.XML {
-          background: #4ABBDF;
+          background: #7f8c8d;
+       }
+       &.XLS, &.XLSX {
+         background: #16a085;
+       }
+       &.DOC, &.DOCX {
+         background: #2980b9;
+       }
+       &.PPT, &.PPTX {
+         background: #e67e22;
+       }
+       &.HTML {
+         background: #1abc9c;
+       }
+       &.PDF {
+         background: #c23616;
        }
 
     }

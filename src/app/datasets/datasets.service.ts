@@ -5,18 +5,18 @@ import { Observable } from 'rxjs/internal/Observable';
 import { DatasetApi } from './models/datasetApi.model';
 import { map } from 'rxjs/operators';
 import { Category } from './models/category.model';
-import { CategoryQuery } from './models/category-query.model';
 import { DatasetByCategoryGroupByOrg } from '../shared/models/DatasetByCategoryGroupByOrg.model';
-import { OrgQuery } from './models/orgQuery.model';
 import { TableModel } from '../shared/models/table.model';
 import { Organization } from './models/organization.model';
 import { Dataset } from './models/dataset.model';
+import { Subject } from 'rxjs';
+import { NgForm } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DatasetsService {
-resourceDataset: DatasetDetail;
+  datasetFilter$ = new Subject<NgForm>();
 constructor(private http: HttpClient) { }
 getDatasetById(id: string): Observable<DatasetDetail> {
   const body = {

@@ -1,10 +1,11 @@
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit, Output, EventEmitter, Input, SimpleChanges, OnChanges } from '@angular/core';
 import { trigger, transition, useAnimation } from '@angular/animations';
 import { fadeIn } from 'ng-animate';
 import { Observable } from 'rxjs';
 import { DatasetsService } from '../datasets.service';
 import { NgForm } from '@angular/forms';
+
 
 @Component({
   selector: 'dataset-group-list',
@@ -19,18 +20,27 @@ export class DatasetGroupListComponent implements OnInit, OnChanges {
   fadeIn = true;
   id: string;
   emptyQuery = {formatId: '', datasetFullName: ''};
-  constructor(private datasetService: DatasetsService, private route: ActivatedRoute) { }
+  constructor(private datasetService: DatasetsService, private route: ActivatedRoute, private router: Router) {
+    this.type = route.snapshot.data['type'];
+   }
 
   ngOnInit() {
     this.listenToRouteQuery();
+    this.listenToFormChanges();
   }
   isExpanded(i) {
    // return setTimeout(() => i === 0, 300);
   }
+  listenToFormChanges() {
+   this.datasetService.datasetFilter$.subscribe((form: NgForm) => {
+     this.getList(form.value);
+   });
+  }
   listenToRouteQuery() {
-    this.route.queryParams.subscribe(res => {
+    this.route.params.subscribe(res => {
       this.id  = res['id'];
        if (!this.id) {
+         console.log('no id')
          this.id = '0';
        }
        this.getList(this.emptyQuery);
@@ -51,6 +61,9 @@ export class DatasetGroupListComponent implements OnInit, OnChanges {
    this.list$ = this.datasetService.getDatasetsWithGroupByOrg({...value, categoryId: this.id});
   }
   getListByOrganization(value) {
-    this.list$ = this.datasetService.getDatasetsWithGroupByOrg({...value, orgId: this.id});
+    this.list$ = this.datasetService.getDatasetsWithGroupByCat({...value, orgId: this.id});
+  }
+  onSelected(id) {
+    this.router.navigate(['./'], {relativeTo: this.route, queryParamsHandling: 'merge', queryParams: {datasetId: id}});
   }
 }

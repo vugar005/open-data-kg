@@ -44,6 +44,7 @@ export class DatasetDetailComponent implements OnInit, OnChanges {
     private dialog: MatDialog
     ) {
       this.isLoggedIn$ = store.select(isLoggedIn);
+      this.isInner = this.route.snapshot.data['isInner'];
     }
 
   ngOnInit() {
@@ -61,6 +62,7 @@ export class DatasetDetailComponent implements OnInit, OnChanges {
   }
   getRoutId() {
    this.route.params.subscribe(res => {
+     console.log(res)
      if (!res['id']) {return; }
      this.getDatasetById(res['id']);
    });

@@ -31,7 +31,7 @@ export class CategoryOverviewComponent implements OnInit, AfterViewInit {
     });
   }
   onNavigate(id: string) {
-      this.router.navigate(['/home/datasets/by-category'], { queryParams: {id: id} });
+      this.router.navigate([`/home/datasets/by-category/${id}`]);
   }
   replaceImgWithSvg() {
     setTimeout(() => {
