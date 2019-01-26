@@ -12,12 +12,11 @@ import { ActivatedRoute } from '@angular/router';
 import { BreadCrumb } from './models/breadcrumb.model';
 import { TableModel } from './models/table.model';
 import { Store } from '@ngrx/store';
-import { getApiUrl } from '../auth/store/auth.selectors';
 import { getHostname } from '../app.utils';
 @Injectable()
 export class SharedService {
   toastRunning: boolean;
-  toggleHeader = new Subject();
+  toggleHeader = new Subject<boolean>();
   hostname: string;
   constructor(
     public iziToast: Ng2IzitoastService,

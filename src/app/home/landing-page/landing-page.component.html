@@ -1,17 +1,22 @@
-<desktop></desktop>
+<div id="landing-page-wrapper">
+  <desktop id="desktop"></desktop>
 
-    <div class="global-navbar" navStyleChange  #dir="navStyleChange"   (clickOutside)="dir.pinBottom()" >
-       <mouse-scroll-icon (click)="dir.toggleBlockClass($event)"></mouse-scroll-icon>
-        <global-nav (navChanged)="onNavChange($event)" (click)="dir.pinTop()" class="bottom" ></global-nav>
-       <div class="content" >
+
+    <div class="global-navbar" id="global-nav"  >
+      <a  href="javascript:void(0)" (click)="toggleGlobalNav('#global-nav')" class="mouse-scroll-wrapper">
+        <mouse-scroll-icon ></mouse-scroll-icon></a>
+        <global-nav (navChanged)="onNavChange($event)"  class="bottom" ></global-nav>
+       <div class="content  content-wrapper"
+        >
          <div class="overview-box">
             <category-overview *ngIf="state ==='category'" class="animated fadeIn"></category-overview>
             <organization-overview *ngIf="state ==='organization'" class="animated fadeIn"></organization-overview>
             <latest-datasets *ngIf="state ==='latest'" class="animated fadeIn"></latest-datasets>
             <popular-datasets *ngIf="state ==='popular'" class="animated fadeIn"></popular-datasets>
          </div>
-          <total-datasets-count></total-datasets-count>
           <app-footer></app-footer>
        </div>
       </div>
 
+
+</div>

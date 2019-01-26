@@ -32,7 +32,7 @@ export class HeaderComponent implements OnInit {
   user$: Observable<User>;
   showMenu: boolean;
   apiUrl$: Observable<string>;
-   @HostBinding('@enterAnimation') enter = 0;
+//   @HostBinding('@enterAnimation') enter = 0;
  //  @HostBinding('@fadeOut') leave = true;
   constructor(private store: Store<AppState>) {
     this.isLoggedIn$ = store.select(isLoggedIn);

@@ -6,13 +6,8 @@
   height: var(--kg-global-nav-height);
   background: var(--kg-box-background);
   position: sticky;
-  z-index: 2;
-}
-:host(.bottom) {
   top: 0;
-}
-:host(.top) {
-  top: 57px;
+  z-index: 2;
 }
 .global-modules {
   display: flex;

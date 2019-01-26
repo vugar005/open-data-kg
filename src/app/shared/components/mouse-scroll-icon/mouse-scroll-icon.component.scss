@@ -1,11 +1,13 @@
 :host {
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position:sticky;
   top: 0;
   height: var(--kg-mouse-scroll-icon-height);
   z-index: 3;
    width: 100%;
-   background-image: var(--kg-background-image);
+ //  background-image: var(--kg-background-image);
    transition: backgrounImage 300ms ease-in-out;
 }
 .scroll-text {

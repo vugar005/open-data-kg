@@ -1,9 +1,6 @@
-import { SelectType } from 'src/app/shared/models/select-type.model';
-import { DatasetGroupListComponent } from './../dataset-group-list/dataset-group-list.component';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import { SharedService } from 'src/app/shared/shared.service';
 import { Router } from '@angular/router';
 import { DatasetsService } from '../datasets.service';
 
@@ -14,7 +11,7 @@ import { DatasetsService } from '../datasets.service';
 })
 export class DatasetByOrgComponent  {
   faSearch = faSearch;
-  constructor(private sharedService: SharedService, private router: Router, private datasetService: DatasetsService) {}
+  constructor( private router: Router, private datasetService: DatasetsService) {}
   onSubmit(form: NgForm) {
     this.datasetService.datasetFilter$.next(form);
   }
@@ -31,8 +28,5 @@ export class DatasetByOrgComponent  {
 handleShowAll(f: NgForm) {
   this.router.navigate(['/home/datasets/searchResults'], {queryParams: {query: f.value.datasetFullName}});
  }
-toggleHeader(e: HTMLElement) {
-this.sharedService.toggleHeader.next(e);
-}
 
 }

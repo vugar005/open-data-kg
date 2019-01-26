@@ -1,11 +1,10 @@
 :host {
   display: block;
   width: 100vw;
-  height: 100%;
+  height: calc(100vh - var(--kg-header-height) - var(--kg-mouse-scroll-icon-height) - var(--kg-global-nav-height));
   position: sticky;
   top:0;
   z-index: 1;
-  padding-bottom: 100px;
 }
 
 

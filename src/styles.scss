@@ -6,7 +6,7 @@
   --color-primary: #539EC0;
   --kg-header-height: 70px;
   --kg-global-nav-height: 70px;
-  --kg-mouse-scroll-icon-height: 57px;
+  --kg-mouse-scroll-icon-height: 50px;
   --kg-background-image: linear-gradient(to right, #4e8ec8, #47a8c5);
   --kg-box-background:  #ffffff;
   --kg-wrapper-background: #f5f6fa;
@@ -27,6 +27,9 @@
 }
  a, p, h1, h2, h3, h4, h5 {
   margin: 0;
+}
+html {
+  scroll-behavior: smooth;
 }
 html, body {
   width: 100%;

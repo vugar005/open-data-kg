@@ -1,5 +1,4 @@
 import { DatasetsService } from './../datasets.service';
-import { SharedService } from 'src/app/shared/shared.service';
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
@@ -12,7 +11,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class DatasetByCatComponent {
   faSearch = faSearch;
-  constructor(private sharedService: SharedService, private router: Router,
+  constructor(private router: Router,
     private datsetService: DatasetsService, private route: ActivatedRoute) {}
   onSubmit(form: NgForm) {
     this.datsetService.datasetFilter$.next(form);
@@ -30,8 +29,5 @@ export class DatasetByCatComponent {
 handleShowAll(f: NgForm) {
   this.router.navigate(['/home/datasets/searchResults'], {queryParams: {query: f.value.datasetFullName}});
  }
-toggleHeader(e: HTMLElement) {
-this.sharedService.toggleHeader.next(e);
-}
 
 }

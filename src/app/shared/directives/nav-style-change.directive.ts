@@ -19,14 +19,9 @@ export class NavStyleChangeDirective implements AfterViewInit, OnDestroy {
     private renderer: Renderer2
     ) { }
     ngAfterViewInit() {
-      // this.listenToModuleClick();
       this.listenToScrollChange();
     }
     listenToModuleClick() {
-    //  const modules = document.getElementsByClassName('global-module');
-    //  Array.from(modules).forEach(mod => {
-    //   mod.addEventListener('click', this.pinTop.bind(this));
-    //  });
      fromEvent(document, 'click')
      .pipe(
        tap((e: Event) => {
@@ -46,14 +41,11 @@ export class NavStyleChangeDirective implements AfterViewInit, OnDestroy {
         }  else {
           clickedComponent = clickedComponent.parentNode;
           console.log('3')
-         // this.active = false;
         }
       } while (clickedComponent);
       if (!clickedComponent) {
          this.active = false;
       }
-    //  console.log(this.active)
- //     this.toggleClass(this.active);
         })
      ).subscribe();
     }
@@ -101,16 +93,10 @@ export class NavStyleChangeDirective implements AfterViewInit, OnDestroy {
   }
   pinTop() {
     this.active = true;
-  //  console.log('top called')
     this.renderer.addClass(this.element.nativeElement, 'top');
   }
   pinBottom() {
     this.active = false;
-  //  console.log('bottom called')
     this.renderer.removeClass(this.element.nativeElement, 'top');
   }
-  // hide() {
-  //   this.renderer.removeClass(this.element.nativeElement, 'top');
-  //   this.renderer.removeClass(this.element.nativeElement, 'bottom');
-  // }
 }

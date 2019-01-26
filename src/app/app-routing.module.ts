@@ -22,8 +22,8 @@ const routes: Routes = [
   ]},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent },
-  {path: 'admin', loadChildren: './admin-panel/admin-panel.module#AdminPanelModule'},
-  {path: '404', component: NotFoundComponent},
+   {path: 'admin', loadChildren: './admin-panel/admin-panel.module#AdminPanelModule'},
+   {path: '404', component: NotFoundComponent},
  {path: '**', redirectTo: '404'}
 ];
 

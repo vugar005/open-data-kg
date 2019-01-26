@@ -13,6 +13,28 @@
                 </div>
                </div>
         </ng-container>
+        <ng-container *ngFor="let item of (categories);let first=first" >
+            <div class="col-2" (click) ="onNavigate(item.id)" *ngIf="!first">
+                <div class="item-box"  >
+                  <div class="icon">
+                      <img src="./assets/icons/categories/{{item.id}}.svg" class="svg"
+                      onerror="this.src='./assets/icons/categories/181110344301612908.svg'" >
+                  </div>
+                  <div class="name">{{item?.name}}</div>
+                </div>
+               </div>
+        </ng-container>
+        <ng-container *ngFor="let item of (categories);let first=first" >
+            <div class="col-2" (click) ="onNavigate(item.id)" *ngIf="!first">
+                <div class="item-box"  >
+                  <div class="icon">
+                      <img src="./assets/icons/categories/{{item.id}}.svg" class="svg"
+                      onerror="this.src='./assets/icons/categories/181110344301612908.svg'" >
+                  </div>
+                  <div class="name">{{item?.name}}</div>
+                </div>
+               </div>
+        </ng-container>
 
   </div>
 
