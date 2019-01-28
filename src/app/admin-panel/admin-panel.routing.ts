@@ -1,13 +1,12 @@
 import { FileManagerComponent } from './file-manager/file-manager.component';
 import { AppCustomPreloader } from './../app-custom-preloader';
-import { delay } from 'rxjs/operators';
 import { Routes, RouterModule, PreloadingStrategy } from '@angular/router';
 import { AdminPanelComponent } from './admin-panel.component';
 import { AdminGuard } from '../auth/admin.guard';
 import { UserResolver } from '../shared/resolvers/user.resolver';
 
 const routes: Routes = [
-  {path: '', component: AdminPanelComponent,  children: [
+  {path: '', component: AdminPanelComponent, resolve: [UserResolver], canActivate: [AdminGuard], children: [
   //  {path: '', redirectTo: 'applications', pathMatch: 'full'},
     {path: 'modules', loadChildren: './ent-modules/ent-modules.module#EntModulesModule'},
     {path: 'applications', loadChildren: './ent-applications/ent-applications.module#EntApplicationsModule'},

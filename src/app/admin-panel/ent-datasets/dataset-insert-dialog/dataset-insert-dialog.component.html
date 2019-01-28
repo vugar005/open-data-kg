@@ -38,23 +38,6 @@
                               <mat-error>{{getErrors('updateDateVersion')}}</mat-error>
                             </mat-form-field>
 
-                            <mat-form-field>
-                                <mat-select placeholder="{{'~categoryId' | translate}}" class="nt-form-input" name="categoryId" ngModel>
-                                  <mat-option value="">Choose</mat-option>
-                                  <mat-option *ngFor="let item of (catTypes$ | async)" [value]="item.value">
-                                    <div class="option-wrapper">
-                                        <div class="cat-icon">
-                                            <img src="./assets/icons/categories/{{item.value}}.svg"
-                                             onerror="this.src='./assets/icons/categories/181110344301612908.svg'" >
-                                       </div>
-                                       <div class="label">{{item.label}}</div>
-                                    </div>
-
-                                  </mat-option>
-                                </mat-select>
-                                <mat-error>{{getErrors('categoryId')}}</mat-error>
-                              </mat-form-field>
-
                            </div>
                     </div>
 
@@ -124,14 +107,6 @@
                   (actionClick)="onOptClickCat($event, tableCat)"
                   >
                   </ngx-native-table>
-                    <!-- <ngx-nt-table #table4
-                    [config]="config4"
-                    (rowAdd)="initDialog4(table4)"
-                    (rowEdit)="initDialog4(table4, $event)"
-                    [multiSelect]="false"
-                    [pagination]="false"
-                    [editTemplate]="editerCat"
-                  ></ngx-nt-table> -->
                  </div>
 
                 <ng-template #editerCat>

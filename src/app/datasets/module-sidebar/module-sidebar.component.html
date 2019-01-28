@@ -4,14 +4,19 @@
    <p> {{type | titlecase}}</p>
   </div>
   <div class="items-co">
-      <div class="item"  *ngFor="let cat of itemList; let i = index" (click)="onItemClick(cat.id)"
-      [ngClass]="{'active': itemList[i].id === selectedIndex}">
+      <div class="item"  *ngFor="let item of itemList; let i = index" (click)="onItemClick(item.id)"
+      [ngClass]="{'active': itemList[i].id === selectedIndex,
+      'active-org': (itemList[i].id === selectedIndex) && ( type === 'organization') }"
+      >
 
             <div class="item-box"  [attr.id]="itemList[i].id" >
-              <div class="icon">
+              <div class="icon" *ngIf="type === 'category'">
                   <img src="./assets/icons/categories/{{itemList[i].id}}.svg" (load)="onImgLoad()"
                   onerror="this.src='./assets/icons/categories/181110344301612908.svg'"  class="svg logo-img">
-                 <!-- <img src="./assets/icons/seeding.svg" class="svg logo-img"> -->
+              </div>
+              <div class="icon" *ngIf="type === 'organization'">
+                <img src="{{item.logoFileId | imgSrc}}" class="svg logo-img" (load)="onImgLoad()"
+                onerror="this.src = './assets/icons/categories/181219371709999148.svg'">
               </div>
               <div class="name"> {{itemList[i].name}} ({{itemList[i].countCategory}})</div>
             </div>

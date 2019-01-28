@@ -24,8 +24,8 @@
 
           >
              <google-doc-preview *ngIf="googleDocsFormat.includes(apiFormat.toUpperCase())" [link]="dataLink"></google-doc-preview>
-             <geojson-preview *ngIf="apiFormat === 'GeoJSON'" [link]="dataLink" ></geojson-preview>
-             <other-json-preview *ngIf="apiFormat === 'XML'" [link]="dataLink"></other-json-preview>
+             <geojson-preview *ngIf="apiFormat.toUpperCase() === 'GEOJSON'" [link]="dataLink" ></geojson-preview>
+             <!-- <other-json-preview *ngIf="apiFormat === 'XML'" [link]="dataLink"></other-json-preview> -->
           </div>
         </div>
       </div>

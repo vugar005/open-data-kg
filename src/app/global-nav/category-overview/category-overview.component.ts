@@ -1,11 +1,9 @@
 import { Component, OnInit, AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import {faSearch} from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
 import {  Category } from 'src/app/datasets/models/category.model';
 import { DatasetsService } from 'src/app/datasets/datasets.service';
 import { SharedService } from 'src/app/shared/shared.service';
-import { shareReplay } from 'rxjs/operators';
 
 @Component({
   selector: 'category-overview',

@@ -9,5 +9,6 @@ export interface Organization {
   active: string;
   nameEn: string;
   id: string;
+  logoFileId: string;
   createDate: string;
 }

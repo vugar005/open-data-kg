@@ -16,6 +16,7 @@ export class DictionariesInsertDialogComponent  {
   dicTypes$: Observable<any>;
   dictionaries$: Observable<any>;
   parentIds$: Observable<SelectType[]>;
+  catTypes$: Observable<SelectType[]>;
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<DictionariesInsertDialogComponent>,
@@ -25,6 +26,8 @@ export class DictionariesInsertDialogComponent  {
    this.dicTypes$ = sharedService.getModTypes('api/post/Permission/DictionaryTypes/GetDictionaryTypeList');
    this.parentIds$ = sharedService.getTypes('1000003');
    this.dictionaries$ = sharedService.getModTypes('api/post/Permission/Dictionaries/GetDictionaryList');
+   this.catTypes$ = this.sharedService.getTypes('1000004');
+   console.log(this.data)
   }
   getErrors(str) {
     if (!this.ntForm || !NgxFormUtils) { return; }

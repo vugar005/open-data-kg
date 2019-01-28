@@ -19,7 +19,7 @@ export class GoogleDocPreviewComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
      this.getSafeLink();
-   interval(3000).pipe(takeUntil(this.iframeLoaded$), takeUntil(this._onDestroy$)).subscribe(res => this.getSafeLink());
+   interval(5000).pipe(takeUntil(this.iframeLoaded$), takeUntil(this._onDestroy$)).subscribe(res => this.getSafeLink());
   }
   onIframeLoad() {
     console.log('loaded');

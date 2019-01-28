@@ -1,6 +1,6 @@
 <div class="news-card" *ngIf="ready" [@fadeInRight]="fadeInRight"  >
   <div class="cardImage">
-    <img [src]="news.fileId">
+    <img src="{{news.fileId | imgSrc}}">
   </div>
    <div class="cardBody">
       <div class="cardTitle">

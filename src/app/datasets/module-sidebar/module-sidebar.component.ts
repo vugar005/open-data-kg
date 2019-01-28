@@ -1,3 +1,4 @@
+import { Organization } from 'src/app/datasets/models/organization.model';
 import { Component, OnInit, Output, EventEmitter, Input, HostBinding, ChangeDetectorRef, AfterViewInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { trigger, transition, useAnimation } from '@angular/animations';
@@ -17,7 +18,7 @@ export class ModuleSidebarComponent implements OnInit, AfterViewInit {
   @Output() datasetGroups = new EventEmitter();
   @Output() selected = new EventEmitter();
   @HostBinding('@fadeIn')
-  itemList: Category[];
+  itemList: Category[] | Organization[];
   orgIds: string[] = [];
   ready = false;
   selectedIndex: string;

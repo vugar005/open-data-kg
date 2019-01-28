@@ -15,7 +15,7 @@ export class DatasetFilePreviewComponent implements OnInit {
   dataset: TableModel;
   dataLink: string;
   apiFormat: string;
-  googleDocsFormat = ['DOC', 'XLS', 'PPT', 'DOCX', 'XLSX', 'PPTX', 'PDF', 'HTML', 'TXT',  'CSV'];
+  googleDocsFormat = ['DOC', 'XLS', 'PPT', 'DOCX', 'XLSX', 'PPTX', 'PDF', 'HTML', 'TXT',  'CSV', 'XML'];
   constructor(
     private datasetService: DatasetsService,
     private sanitizer: DomSanitizer,
@@ -38,8 +38,6 @@ export class DatasetFilePreviewComponent implements OnInit {
   getQueryParams() {
     this.route.queryParams.subscribe(res => {
     this.apiFormat = res['type'];
-    console.log(this.googleDocsFormat.includes(this.apiFormat));
-    console.log(this.apiFormat);
     });
   }
 

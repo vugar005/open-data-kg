@@ -3,6 +3,7 @@ export interface Category {
   countCategory: string;
   createUserId: string;
   id: string;
+  iconPath: string;
   name: string;
   nameEn: string;
   nameKg: string;

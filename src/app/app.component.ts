@@ -68,7 +68,7 @@ export class AppComponent implements OnInit {
   }
   tryAutoLogin() {
    try {
-    const jwtToken = localStorage.getItem('kg-token');
+    const jwtToken = localStorage.getItem('kg_token');
     if (!(jwtToken)) {
         return;
     }

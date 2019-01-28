@@ -12,7 +12,7 @@ export class OtherJsonPreviewComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    this.http.post(`${this.link}&type=serverApi`, {}).subscribe(res => {
+    this.http.get(`${this.link}&type=serverApi`,  { responseType: 'text' }).subscribe(res => {
       this.data = res;
       console.log(res);
     });

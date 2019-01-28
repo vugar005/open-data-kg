@@ -1,5 +1,5 @@
 
-<div class="content-wrapper" [ngClass]="{ 'with-overflow': !isInner }">
+<div class="content-wrapper">
   <div [class]="isInner ? 'container-fluid' : 'container'" *ngIf="dataset">
     <div class="row" *ngIf="!isInner">
         <div class="co-header">
@@ -79,7 +79,7 @@
                 <div class="item-icon {{ api?.format }}">{{ api?.format }}</div>
                 <div class="item-description">{{ api?.descriptionEn }}</div>
                 <div class="item-links">
-                  <div class="info-link" (click)="onResourcesNavigate(dataset.kv.id, api.format)">
+                  <div class="info-link" (click)="onResourcesNavigate(dataset.kv.id, api)">
                     <img src="./assets/icons/info.svg" />
                   </div>
                   <a

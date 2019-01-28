@@ -39,7 +39,6 @@ export class DatasetInsertDialogComponent implements OnInit, AfterViewInit {
   adapter = new FileManagerUploaderAdapter(this.http);
   startDate = new Date(1990, 0, 1);
   plugins = {plugins: 'link test', toolbar: 'test'};
-  catTypes$: Observable<SelectType[]>;
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<ModulesInsertDialogComponent>,
@@ -50,7 +49,6 @@ export class DatasetInsertDialogComponent implements OnInit, AfterViewInit {
     private http: HttpClient,
     private sharedAdminService: SharedAdminService
   ) {
-    this.catTypes$ = this.sharedService.getTypes('1000004');
     this.store.select(getUserOrg)
     .pipe(
       take(1)

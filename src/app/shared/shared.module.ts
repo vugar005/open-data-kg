@@ -1,3 +1,4 @@
+import { ImgSrcPipeModule } from './pipes/img-src-pipe.module';
 import { SharedTranslateModule } from './shared-translate.module';
 import { ProgressSpinnerComponent } from './../progress-spinner/progress-spinner.component';
 import { GlobalNavComponent } from './../global-nav/global-nav.component';
@@ -39,7 +40,8 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
       TypeheadModule,
       MatProgressSpinnerModule,
       MatButtonModule,
-      SharedTranslateModule
+      SharedTranslateModule,
+      ImgSrcPipeModule
     ],
     exports: [
       CommonModule,
@@ -58,7 +60,8 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
       MatButtonModule,
       CommentsModule,
       MatProgressSpinnerModule,
-      ProgressSpinnerComponent
+      ProgressSpinnerComponent,
+      ImgSrcPipeModule
     ],
     providers: [
       {

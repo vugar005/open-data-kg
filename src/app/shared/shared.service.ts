@@ -104,7 +104,7 @@ export class SharedService {
   }
   canAutoLogin() {
     try {
-      const jwtToken = localStorage.getItem('kg-token');
+      const jwtToken = localStorage.getItem('kg_token');
       const user = JSON.parse(localStorage.getItem('kg-user'));
       if (!(jwtToken && user)) {
         return;

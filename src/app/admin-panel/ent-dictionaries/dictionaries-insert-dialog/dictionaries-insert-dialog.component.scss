@@ -3,6 +3,16 @@
   overflow-y: auto;
   max-height: 80vh;
 }
+.option-wrapper {
+  display: flex;
+  .cat-icon {
+    width: 30px;
+    margin-right: 10px;
+  }
+  .label {
+
+  }
+}
 .nt-form {
   display: flex;
   flex-direction: column;

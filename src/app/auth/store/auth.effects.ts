@@ -80,7 +80,7 @@ export class AuthEffects {
     .pipe(
       ofType(AuthActionTypes.SET_TOKEN),
       tap((res: any) => {
-        localStorage.setItem('kg-token', res.payload.jwtToken);
+        localStorage.setItem('kg_token', res.payload.jwtToken);
       })
     );
     @Effect({dispatch: false})

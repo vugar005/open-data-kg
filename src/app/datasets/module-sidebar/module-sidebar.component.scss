@@ -100,7 +100,6 @@
     }
 
     &.active {
-      box-shadow: 5px 2px 22px rgba(255,255,255,0.5);
       .item-box {
         .name {
           color: #000000;
@@ -110,6 +109,14 @@
         /deep/ .logo-img path {
           transition: all 500ms ease-in-out;
           fill: #4C9EC7!important;
+        }
+      }
+    }
+    &.active-org {
+      box-shadow: 0 0 6px #95d4f5;
+      .item-box {
+        .name {
+          color: var(--color-primary);
         }
       }
     }

@@ -13,6 +13,7 @@ import { Dataset } from '../models/dataset.model';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { isLoggedIn } from 'src/app/auth/store/auth.selectors';
+import { DatasetApi } from '../models/datasetApi.model';
 @Component({
   selector: 'dataset-detail',
   templateUrl: './dataset-detail.component.html',
@@ -123,12 +124,21 @@ export class DatasetDetailComponent implements OnInit, OnChanges {
   getFavoriteDataset(): Dataset {
     return this.favouriteDatasets.find(f => f.datasetId === this.dataset.kv.id);
   }
-  onResourcesNavigate(id: string, format: string) {
-    this.router.navigate([`/home/datasets/${id}/resources`], {queryParams: {type: format}});
-    // window.open(
-    //   `http://localhost:4200/#/home/datasets/${id}/resources?type=${format}`,
-    //   '_blank' // <- This is what makes it open in a new window.
-    // );
+  onResourcesNavigate(datasetId: string, api: DatasetApi) {
+    let dataLink: string;
+    if (api.format.toUpperCase() === 'GEOJSON') {
+       this.router.navigate([`/home/datasets/${datasetId}/resources`], {queryParams: {type: api.format}});
+       return;
+    }
+    if (api.formatTypeCode === 'FRMT1') {
+      dataLink = api && api.openPortalLink;
+    } else if (api.formatTypeCode === 'FRMT2') {
+      dataLink = api && api.link;
+    }
+    window.open(
+      dataLink,
+      '_blank' // <- This is what makes it open in a new window.
+    );
   }
   onShareClick() {
     console.log(this.dataset.kv.id);
