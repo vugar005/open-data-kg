@@ -84,9 +84,7 @@
                   </div>
                   <a
                     class="api-link"
-                    href="{{ api?.openPortalLink }} ? {{
-                      api?.openPortalLink
-                    }} : javascript.void()"
+                    href="{{ api?.openPortalLink ? api?.openPortalLink : javascript.void()}}"
                     target="_blank"
                     title="open link"
                   >
