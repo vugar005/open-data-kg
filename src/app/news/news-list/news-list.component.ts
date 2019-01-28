@@ -123,9 +123,9 @@ export class NewsListComponent implements OnInit, AfterViewInit, OnDestroy {
     };
    this.sharedService.getTableData(`api/get/Permission/Sharing/Get${this.type}ForCommon`, body)
    .subscribe(res => {
-     if (!res) {return; }
-     this.newsList = (res.r);
-     this.rowCount = res.rowCount;
+    if (!res && res.tbl && res.tbl[0]) {return; }
+     this.newsList = (res.tbl[0].r);
+     this.rowCount = res.tbl[0].rowCount;
     this.buildPagination(1);
       this.initSwiper();
     });

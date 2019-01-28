@@ -58,14 +58,14 @@ export class ModuleSidebarComponent implements OnInit, AfterViewInit {
     }
   }
   getCategories() {
-      this.datasetService.getCategories()
+      this.sharedService.getTableDataRows('api/get/Permission/Datasets/GetDatasetCategoryWithCount')
       .subscribe((res: Category[]) => {
         this.itemList = res;
         this.replaceImgWithSvg();
       });
   }
   getOrganizations() {
-    this.datasetService.getOrganizations()
+    this.sharedService.getTableDataRows('api/get/Permission/Datasets/GetOrganizationWithCategoryCount')
     .subscribe((res: Category[]) => {
       this.itemList = res;
       this.replaceImgWithSvg();

@@ -3,6 +3,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { DatasetDetail } from './../models/dataset-detail.model';
 import { DatasetsService } from 'src/app/datasets/datasets.service';
 import { Component, OnInit, Input } from '@angular/core';
+import { SharedService } from 'src/app/shared/shared.service';
+import { TableModel } from 'src/app/shared/models/table.model';
 
 @Component({
   selector: 'dataset-file-preview',
@@ -10,14 +12,15 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./dataset-file-preview.component.scss']
 })
 export class DatasetFilePreviewComponent implements OnInit {
-  dataset: DatasetDetail;
+  dataset: TableModel;
   dataLink: string;
   apiFormat: string;
   googleDocsFormat = ['DOC', 'XLS', 'PPT', 'DOCX', 'XLSX', 'PPTX', 'PDF', 'HTML', 'TXT',  'CSV'];
   constructor(
     private datasetService: DatasetsService,
     private sanitizer: DomSanitizer,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private sharedService: SharedService
   ) {}
 
   ngOnInit() {
@@ -41,7 +44,12 @@ export class DatasetFilePreviewComponent implements OnInit {
   }
 
   getDatasetById(id: string) {
-    this.datasetService.getDatasetById(id).subscribe(res => {
+    const body = {
+      kv: {
+        id: id
+      }
+    };
+    this.sharedService.getTableData('api/get/Permission/Datasets/GetDatasetDetails', body).subscribe(res => {
       this.dataset = res;
       const apiTbl = this.dataset.tbl.find( tbl => tbl.tn === 'API');
       const apiRow = apiTbl.r.find( row => row.format === this.apiFormat);

@@ -1,9 +1,9 @@
+import { AppState } from './../reducers/index';
 import { TranslateService } from '@ngx-translate/core';
 import { SharedService } from './../shared/shared.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { tap, map } from 'rxjs/operators';
 import { CommentModel } from './models/comment.model';
 
 @Component({
@@ -17,7 +17,8 @@ export class CommentsComponent implements OnInit {
   @Input() kvKey: string;
   @Input() id: string;
   comments$: Observable<CommentModel[]>;
-  constructor(protected http: HttpClient, private sharedService: SharedService, private translateService: TranslateService) { }
+  constructor(protected http: HttpClient, private sharedService: SharedService,
+    private translateService: TranslateService) { }
 
   ngOnInit() {
   this.getCommentList(this.getApi);
@@ -25,17 +26,10 @@ export class CommentsComponent implements OnInit {
   getCommentList(api: string) {
     const body = {
       kv: {
-     //   datasetId: this.datasetId,
       }
     };
     body.kv[this.kvKey] = this.id;
-    this.comments$ = this.http.post<CommentModel[]>(api,  JSON.stringify(body))
-    .pipe(
-      map((res: any) => {
-      if (res && res.tbl && res.tbl[0] && res.tbl[0].r) {
-        return  res.tbl[0].r;
-      }
-    }));
+    this.comments$ = this.sharedService.getTableDataRows(api, body, true);
   }
   onSubmitted(value) {
     this.sharedService.createNotification('sucess', this.translateService.instant('~commentAddSuccess'));

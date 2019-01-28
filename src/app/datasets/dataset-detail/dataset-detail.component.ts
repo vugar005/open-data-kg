@@ -1,8 +1,8 @@
+import { TableModel } from './../../shared/models/table.model';
 import { ShareDialogComponent } from './../share-dialog/share-dialog.component';
 import { MatDialog } from '@angular/material';
 import { AppState } from './../../reducers/index';
 import { SharedService } from 'src/app/shared/shared.service';
-import { DatasetDetail } from '../models/dataset-detail.model';
 import { Component, OnInit, Input, Output, EventEmitter, HostBinding, OnChanges, SimpleChanges } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import {faChevronLeft} from '@fortawesome/free-solid-svg-icons';
@@ -26,7 +26,7 @@ export class DatasetDetailComponent implements OnInit, OnChanges {
   @Input() id: string;
   @Input() isInner = false;
   @Output() navBack = new EventEmitter<void>();
-  dataset: DatasetDetail;
+  dataset: TableModel;
   datasetApi: any;
   datasetKeywords: any;
   datasetCategories: any;
@@ -68,35 +68,52 @@ export class DatasetDetailComponent implements OnInit, OnChanges {
    });
   }
   getDatasetById(id: string) {
-   this.datasetService.getDatasetById(id).subscribe(res => {
+    const body = {
+      kv: {
+        id: id
+      }
+    };
+   this.sharedService.getTableData('api/get/Permission/Datasets/GetDatasetDetails', body).subscribe(res => {
    this.dataset = res;
    this.datasetApi = this.dataset.tbl.find(tb => tb.tn === 'API');
    this.datasetKeywords = this.dataset.tbl.find(tb => tb.tn === 'KEYWORD');
    this.datasetCategories = this.dataset.tbl.find(tb => tb.tn === 'CATEGORY');
  });
   }
-  onRatingUpdated() {
-  //  console.log('udpated');
+  onRatingUpdated(e) {
+   if (e) {
+     this.sharedService.createNotification('sucess', 'Rating submitted!');
+   }
   }
   onFavoriteMark(id: string) {
-    this.datasetService.markDatasetAsFavorite(id).subscribe(res => {
-     this.sharedService.createNotification('Sucess', 'Saving Dataset');
-      this.getFavoriteDatasets();
+    const obj = {
+      kv: {
+        datasetId: id
+      }
+    };
+    this.sharedService.getTableData('api/post/Permission/Datasets/InsertFavoriteDataset', obj, true).subscribe(res => {
+      if (!res) { return; }
+        this.sharedService.createNotification('Sucess', 'Saving Dataset');
+        this.getFavoriteDatasets();
     });
   }
   onUnFavoriteMark(id: string) {
   const favDataset = this.getFavoriteDataset();
-    this.datasetService.unmarkDatasetAsFavorite(favDataset.id).subscribe(res => {
-  //    this.sharedService.createNotification('Sucess', 'Unsaving Dataset');
+  const obj = {
+    kv: {
+      id: favDataset.id
+    }
+  };
+    this.sharedService.getTableData('api/post/Permission/Datasets/DeleteFavoriteDataset', obj, true).subscribe(res => {
+      if (!res) { return; }
+     this.sharedService.createNotification('Sucess', 'Unsaving Dataset');
       this.getFavoriteDatasets();
     });
   }
   getFavoriteDatasets() {
-    this.sharedService.getTableData('api/post/Permission/Datasets/GetFavoriteDatasetList')
+    this.sharedService.getTableDataRows('api/post/Permission/Datasets/GetFavoriteDatasetList', {}, true)
     .subscribe(res => {
-      if (res && res.r) {
-        this.favouriteDatasets = res.r;
-      }
+        this.favouriteDatasets = res;
     });
   }
   isFavorite() {
@@ -114,7 +131,7 @@ export class DatasetDetailComponent implements OnInit, OnChanges {
     // );
   }
   onShareClick() {
-    console.log(this.dataset.kv.id)
+    console.log(this.dataset.kv.id);
   const ref = this.dialog.open(ShareDialogComponent, {
     data: this.dataset.kv.id,
     autoFocus: false

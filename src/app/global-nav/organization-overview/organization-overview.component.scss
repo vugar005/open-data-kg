@@ -1,7 +1,7 @@
 :host {
   display: block;
   width: 100%;
-  min-height: 400px;
+  min-height: calc(100vh - var(--kg-mouse-scroll-icon-height) - var(--kg-global-nav-height) - var(--kg-footer-height));
   position: relative;
   padding-top: 30px;
 }

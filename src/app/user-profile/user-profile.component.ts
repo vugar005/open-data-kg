@@ -36,8 +36,9 @@ export class UserProfileComponent implements OnInit {
    this.getFavoriteDatasets();
   }
   getFavoriteDatasets() {
-    this.sharedService.getTableData('api/post/Permission/Datasets/GetFavoriteDatasetList')
-    .subscribe(res => this.datasets = res.r);
+    this.sharedService.getTableDataRows('api/post/Permission/Datasets/GetFavoriteDatasetList', {}, true)
+    .subscribe(res => {
+      this.datasets = res; });
   // this.store.dispatch(new LoadFavoriteDatasets());
  //  this.datasets$ = this.store.select(getFavoriteDatasets);
  // this.datasets$.subscribe(res => console.log(res));

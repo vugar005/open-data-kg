@@ -27,7 +27,8 @@ export class DatasetByCatComponent {
   this.onSubmit(e.form);
 }
 handleShowAll(f: NgForm) {
-  this.router.navigate(['/home/datasets/searchResults'], {queryParams: {query: f.value.datasetFullName}});
+  console.log(f.value)
+  this.router.navigate(['/home/datasets/searchResults'], {queryParams: {query: f.value.datasetFullname}});
  }
 
 }

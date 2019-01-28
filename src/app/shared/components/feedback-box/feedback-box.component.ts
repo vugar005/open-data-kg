@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { SharedService } from '../../shared.service';
 
 @Component({
   selector: 'feedback-box',
@@ -13,7 +13,7 @@ export class FeedbackBoxComponent implements OnInit {
   @Output() ratingUpdated = new EventEmitter();
   index = null;
   ceilDefaultIndex: number;
-  constructor(private http: HttpClient) { }
+  constructor(private sharedService: SharedService) { }
 
   ngOnInit() {
    this.ceilDefaultIndex = Math.ceil(+this.defaultIndex);
@@ -34,7 +34,7 @@ export class FeedbackBoxComponent implements OnInit {
       datasetId: this.datasetId
     }
   };
-  this.http.post(this.insertApi, JSON.stringify(body))
+  this.sharedService.getTableData(this.insertApi, body, true)
   .subscribe(res => this.ratingUpdated.next(), (er) => this.index = this.ceilDefaultIndex);
   }
 }

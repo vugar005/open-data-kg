@@ -29,10 +29,12 @@ export class DatasetFiltersComponent implements OnInit {
   onSubmit(form: NgForm) {
     this.formSubmit.next(form);
   }
-  onSelected(e, f: NgForm) {
-    this.form.controls['datasetFullname'].setValue(e.name);
+  onSelected(e) {
+    this.form.form.controls['datasetFullname'].setValue(e.name);
     this.onSubmit(this.form);
-   this.selected.next({data: e, form: f});
+    console.log(this.form.value)
+    console.log(e)
+   this.selected.next({data: e, form: this.form});
   }
 
 }

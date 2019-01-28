@@ -5,7 +5,7 @@
     [url]="'api/get/Permission/Datasets/GlobalSearchForDataset'"
     [apiKey]="'datasetFullname'"
     [listItemLabel]="'name'"
-    (selected)="onSelected($event, f)"
+    (selected)="onSelected($event)"
    (keydown)="onInputEnter($event, f)"
   ngModel name="datasetFullname"
    >

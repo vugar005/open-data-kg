@@ -23,7 +23,7 @@ export class CategoryOverviewComponent implements OnInit, AfterViewInit {
   this.getCategories();
   }
   getCategories() {
-    this.datasetService.getCategories()
+    this.sharedService.getTableDataRows('api/get/Permission/Datasets/GetDatasetCategoryWithCount')
     .subscribe(res => {
       this.categories = res;
       this.replaceImgWithSvg();

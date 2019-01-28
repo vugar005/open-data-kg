@@ -1,6 +1,6 @@
 export interface TableModel {
   err: string;
-  kv: Object;
+  kv: any;
   tbl: Tbl[];
 }
 interface Tbl {

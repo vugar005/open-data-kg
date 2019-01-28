@@ -1,3 +1,4 @@
+import { SharedService } from 'src/app/shared/shared.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit, Output, EventEmitter, Input, SimpleChanges, OnChanges } from '@angular/core';
 import { trigger, transition, useAnimation } from '@angular/animations';
@@ -20,7 +21,8 @@ export class DatasetGroupListComponent implements OnInit, OnChanges {
   fadeIn = true;
   id: string;
   emptyQuery = {formatId: '', datasetFullName: ''};
-  constructor(private datasetService: DatasetsService, private route: ActivatedRoute, private router: Router) {
+  constructor(private sharedService: SharedService, private route: ActivatedRoute,
+    private router: Router, private datasetService: DatasetsService) {
     this.type = route.snapshot.data['type'];
    }
 
@@ -58,10 +60,22 @@ export class DatasetGroupListComponent implements OnInit, OnChanges {
     }
   }
   getListByCategory(value) {
-   this.list$ = this.datasetService.getDatasetsWithGroupByOrg({...value, categoryId: this.id});
+    const body = {
+      kv: {
+          ...value,
+          categoryId: this.id
+        }
+      };
+   this.list$ = this.sharedService.getTableData('api/get/Permission/Datasets/GetDatasetListByCategoryIdWithGroupByOrg', body);
   }
   getListByOrganization(value) {
-    this.list$ = this.datasetService.getDatasetsWithGroupByCat({...value, orgId: this.id});
+    const body = {
+      kv: {
+          ...value,
+          orgId: this.id
+        }
+      };
+    this.list$ = this.sharedService.getTableData('api/get/Permission/Datasets/GetDatasetListByOrgIdWithGroupByCategory', body);
   }
   onSelected(id) {
     this.router.navigate(['./'], {relativeTo: this.route, queryParamsHandling: 'merge', queryParams: {datasetId: id}});

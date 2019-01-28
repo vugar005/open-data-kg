@@ -1,6 +1,6 @@
 <div class="item" *ngIf="item && ready"  [@slideInRight]="slideInRight" (click)="change()">
   <div class="item-img">
-    <img src="{{item.fileId}}">
+    <img src="{{item.fileId | imgSrc}}">
   </div>
   <div class="item-body">
     <div class="item-title">{{item.title}}</div>

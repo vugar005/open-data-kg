@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { SharedService } from './../../shared/shared.service';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
@@ -13,7 +13,7 @@ export class CommentAddComponent implements OnInit {
   @Input() insertApi: string;
   @Output() commentSubmit = new EventEmitter();
   loading: boolean;
-  constructor(private http: HttpClient) { }
+  constructor(private sharedService: SharedService) { }
 
   ngOnInit() {
   }
@@ -29,7 +29,7 @@ export class CommentAddComponent implements OnInit {
       }
     };
     body.kv[this.kvKey] = this.id;
-    this.http.post(this.insertApi, JSON.stringify(body))
+    this.sharedService.getTableData(this.insertApi, body, true)
     .subscribe(res => {
       this.commentSubmit.next();
     });

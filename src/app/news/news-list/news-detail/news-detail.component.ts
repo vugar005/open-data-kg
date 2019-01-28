@@ -35,7 +35,8 @@ export class NewsDetailComponent implements OnInit {
         };
         this.sharedService.getTableData(`api/get/Permission/Sharing/Get${this.type}ForCommon`, body)
         .subscribe(res => {
-          this.newsItem = res && res.r[0];
+          if (!res && res.tbl && res.tbl[0]) {return; }
+          this.newsItem = res && res.tbl[0].r[0];
           this.getNewsByCategory();
         });
     });
@@ -49,7 +50,8 @@ export class NewsDetailComponent implements OnInit {
     };
     this.sharedService.getTableData(`api/get/Permission/Sharing/Get${this.type}ForCommon`, body)
     .subscribe(res => {
-      this.otherItems = res.r;
+      if (!res && res.tbl && res.tbl[0]) {return; }
+      this.otherItems = res.tbl[0].r;
     });
   }
 

@@ -4,6 +4,7 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { Organization } from 'src/app/datasets/models/organization.model';
+import { SharedService } from 'src/app/shared/shared.service';
 
 @Component({
   selector: 'organization-overview',
@@ -13,10 +14,10 @@ import { Organization } from 'src/app/datasets/models/organization.model';
 export class OrganizationOverviewComponent implements OnInit {
   faSearch = faSearch;
   items$: Observable<Organization[]>;
-  constructor(private router: Router, private datasetSevice: DatasetsService) { }
+  constructor(private router: Router, private sharedService: SharedService) { }
 
   ngOnInit() {
-   this.items$ = this.datasetSevice.getOrganizations();
+   this.items$ = this.sharedService.getTableDataRows('api/get/Permission/Datasets/GetOrganizationWithCategoryCount');
 
   }
   onNavigate(id: string) {

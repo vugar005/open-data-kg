@@ -1,4 +1,5 @@
 import { SharedService } from 'src/app/shared/shared.service';
+import { getHostname } from '../app.utils';
 const scripts = [];
 const styles = [];
 export function getCurentLocale(): string {
@@ -50,8 +51,7 @@ export function loadExternalStyles(url: string) {
   }
  }
  export function imgSrcParser(fileId: string) {
-   const hostname = localStorage.getItem('kg_hostname');
-   console.log(hostname)
+   const hostname = getHostname();
   return `${hostname}/api/get/file/${fileId}`;
  }
   export function addAttachFileToolbar(modal, fileManagerDialog) {

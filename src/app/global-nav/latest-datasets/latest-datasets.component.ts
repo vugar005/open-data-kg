@@ -14,7 +14,7 @@ export class LatestDatasetsComponent implements OnInit {
     this.getPopularDatasets();
   }
   getPopularDatasets() {
-    this.sharedService.getTableData('api/get/Permission/Datasets/GetLatestDatasetList')
-    .subscribe( res => this.datasets = res.r);
+    this.sharedService.getTableDataRows('api/get/Permission/Datasets/GetLatestDatasetList')
+    .subscribe( res => this.datasets = res);
   }
 }

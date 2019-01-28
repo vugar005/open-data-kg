@@ -2,9 +2,9 @@ import { AppState } from 'src/app/reducers';
 import { Injectable } from '@angular/core';
 import { Ng2IzitoastService } from 'ng2-izitoast';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, of } from 'rxjs';
 import { SelectType } from './models/select-type.model';
-import { map, take, tap} from 'rxjs/operators';
+import { map, take, tap, switchMap} from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -13,6 +13,7 @@ import { BreadCrumb } from './models/breadcrumb.model';
 import { TableModel } from './models/table.model';
 import { Store } from '@ngrx/store';
 import { getHostname } from '../app.utils';
+import { isSuperAdmin } from '../auth/store/auth.selectors';
 @Injectable()
 export class SharedService {
   toastRunning: boolean;
@@ -256,10 +257,29 @@ buildBreadCrumb(route: ActivatedRoute, url: string = '',
  getCurentLocale(): string {
   return localStorage.getItem('kg-language') || 'en';
 }
-getTableData(url: string, kv: Object = {}): Observable<any> {
-  return this.http.post<TableModel>(url, JSON.stringify(kv)).pipe(
-    map(res => res && res.tbl && res.tbl[0] && res.tbl[0]),
-    map(res => this.mapFileId(res)));
+getTableData(url: string, kv: Object = {}, skipAdmin = false): Observable<TableModel> {
+  return this.store.select(isSuperAdmin)
+  .pipe(
+    take(1),
+    switchMap(superAdmin => {
+     if (!skipAdmin || (skipAdmin && !superAdmin) ) {
+       return this.http.post<TableModel>(url, JSON.stringify(kv));
+     } else { return of(null); }
+    }),
+  );
+}
+getTableDataRows(url: string, kv: Object = {}, skipAdmin = false) {
+return this.getTableData(url, kv, skipAdmin)
+  .pipe(
+    map((table: TableModel) => {
+      if (table && table.tbl && table.tbl[0] && table.tbl[0].r) {
+        return table.tbl[0].r;
+      } else {
+        return null;
+      }
+  })
+  );
+
 }
 private mapFileId(res: any) {
   if (!(res && res.r)) {return; }
