@@ -6,16 +6,16 @@
   display: flex;
   align-items: center;
   background: rgba(255, 255, 255, 0.9);
-  border-radius: 10px;
-  padding: 10px 10px;
-  margin-bottom: 5px;
+  border-radius: 0.625rem;
+  padding: 0.625rem 0.625rem;
+  margin-bottom: 0.3125rem;
   cursor: pointer;
   .item-img {
-    width: 75px;
-    height: 75px;
-    border-radius: 7px;
-    margin: 5px;
-    margin-right: 10px;
+    width: 4.6875rem;
+    height: 4.6875rem;
+    border-radius: 0.4375rem;
+    margin: 0.3125rem;
+    margin-right: 0.625rem;
     img {
       border-radius: 50%;
       width: 100%;
@@ -25,24 +25,24 @@
   .item-body {
     display: flex;
     flex-direction: column;
-    width: 200px;
+    width: 12.5rem;
     .item-title {
       font-weight: bold;
-      font-size: 15px;
+      font-size: 0.9375rem;
       color: #666666;
-      padding-bottom: 10px;
-      height: 25px;
+      padding-bottom: 0.625rem;
+      height: 1.525rem;
       overflow: hidden;
     }
     .item-content {
-      font-size: 10px;
+      font-size: 0.625rem;
       color: #666666;
-      padding-bottom: 15px;
-      height: 43px;
+      padding-bottom: 0.9375rem;
+      height: 2.6875rem;
       overflow: hidden;
     }
     .item-footer {
-      font-size: 8px;
+      font-size: 0.5rem;
       color: #666666;
     }
   }

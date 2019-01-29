@@ -1,3 +1,4 @@
+import { HeaderPopupNewComponent } from './header/header-popup-new/header-popup-new.component';
 import { LatestDatasetsComponent } from './global-nav/latest-datasets/latest-datasets.component';
 import { DatasetBoxModule } from './datasets/dataset-box.module';
 import { NgModule, LOCALE_ID, SkipSelf, Optional } from '@angular/core';
@@ -32,7 +33,6 @@ import { Ng2IziToastModule } from 'ng2-izitoast';
 import { SharedAcrossModule } from './shared/shared-across.module';
 import { ClickOutsideModule } from 'ng-click-outside';
 import { SharedModule } from './shared/shared.module';
-import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { TypeheadModule } from 'ngx-typehead-dir';
 import { SharedRbacModule } from './shared/shared-rbac.module';
 import { HttpClientBusyModule } from 'ngx-httpclient-busy';
@@ -50,7 +50,12 @@ import { WaveParticlesComponent } from './home/landing-page/wave-particles/wave-
 import { NewsSidebarComponent } from './home/landing-page/news-sidebar/news-sidebar.component';
 import { NewsSidebarItemComponent } from './home/landing-page/news-sidebar/news-sidebar-item/news-sidebar-item.component';
 import { DesktopComponent } from './home/landing-page/desktop/desktop.component';
-
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
+import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
+  suppressScrollX: true
+};
 @NgModule({
 declarations: [
   HeaderComponent,
@@ -71,7 +76,8 @@ declarations: [
   NotFoundComponent,
   OrganizationOverviewComponent,
   UserProfileComponent,
-  UserProfileEditComponent
+  UserProfileEditComponent,
+  HeaderPopupNewComponent
 ],
 entryComponents: [NotLoggedInDialogComponent, UserProfileEditComponent],
 imports: [
@@ -91,6 +97,7 @@ imports: [
   TypeheadModule,
   SharedRbacModule,
   FormUtilsModule,
+  PerfectScrollbarModule,
   DatasetBoxModule,
   MaterialModule,
   ImgSrcPipeModule,
@@ -138,7 +145,8 @@ exports: [
   HttpClientBusyModule,
   TranslateModule,
   MaterialModule,
-  ImgSrcPipeModule
+  ImgSrcPipeModule,
+  HeaderPopupNewComponent
 ],
 providers: [
   SharedService,
@@ -148,6 +156,10 @@ providers: [
   {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
   {provide: HTTP_INTERCEPTORS, useClass: APIInterceptor, multi: true },
   {provide: HTTP_INTERCEPTORS, useClass: LangInterceptor,  multi: true },
+  {
+    provide: PERFECT_SCROLLBAR_CONFIG,
+    useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
+  },
   { provide: LOCALE_ID,
     deps: [SharedService],
     useFactory: (sharedService) => sharedService.getCurentLocale()

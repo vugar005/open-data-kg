@@ -2,8 +2,8 @@
   display: block;
   position: absolute;
   right: 0;
-  width: 360px;
-  margin-right: 15px;
+  width: 22.5rem;
+  margin-right: 0.9375rem;
   z-index: 1;
 
 }
@@ -12,31 +12,31 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 1.25rem;
     img {
-      width: 40px;
-      height: 10px;
+      width: 2.5rem;
+      height: 0.625rem;
     }
     .see-all {
-      margin-left: 20px;
+      margin-left: 1.25rem;
       font-weight: 300;
-      font-size: 13px;
+      font-size: 0.8125rem;
       text-align: right;
       color: #FFFFFF;
       cursor: pointer;
     }
   }
   .items-co {
-    min-height: 325px;
+    min-height: 20.3125rem;
   }
   .sidebar-footer {
     display: flex;
     justify-content: flex-end;
-    margin-top: 30px;
+    margin-top: 1.875rem;
     .swiper-arrow {
-      width: 44px;
-      height: 44px;
-      margin-left: 15px;
+      width: 2.75rem;
+      height: 2.75rem;
+      margin-left: 0.9375rem;
       cursor: pointer;
     }
   }

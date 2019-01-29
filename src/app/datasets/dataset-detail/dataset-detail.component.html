@@ -79,14 +79,14 @@
                 <div class="item-icon {{ api?.format }}">{{ api?.format }}</div>
                 <div class="item-description">{{ api?.descriptionEn }}</div>
                 <div class="item-links">
-                  <div class="info-link" (click)="onResourcesNavigate(dataset.kv.id, api)">
+                  <a class="info-link" title="Preview" (click)="onResourcesNavigate(dataset.kv.id, api)">
                     <img src="./assets/icons/info.svg" />
-                  </div>
-                  <a
+                  </a>
+                  <a *ngIf="api.format.toUpperCase() !== 'GEOJSON'"
                     class="api-link"
                     href="{{ api?.openPortalLink ? api?.openPortalLink : javascript.void()}}"
                     target="_blank"
-                    title="open link"
+                    title="Download"
                   >
                     <img src="./assets/icons/attach.svg" />
                   </a>

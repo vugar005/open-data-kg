@@ -45,8 +45,5 @@ this.store.dispatch(new Logout());
 }
 onClose(el: HTMLElement) {
   this.close.next();
-  // el.style.animationDirection = 'reverse';
-  // el.style.animation = 'checked-anim 1s ease both';
-  // setTimeout(() => this.close.next(), 300);
 }
 }

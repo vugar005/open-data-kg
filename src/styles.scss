@@ -7,7 +7,7 @@
   --kg-header-height: 70px;
   --kg-footer-height: 258px;
   --kg-global-nav-height: 70px;
-  --kg-mouse-scroll-icon-height: 50px;
+  --kg-mouse-scroll-icon-height: 0px;
   --kg-background-image: linear-gradient(to right, #4e8ec8, #47a8c5);
   --kg-box-background:  #ffffff;
   --kg-wrapper-background: #f5f6fa;
@@ -282,9 +282,21 @@ img {
    font-size: 14px;
   }
  }
+ @media all and (max-width: 768px) {
+  html {
+   font-size: 12px;
+ }
+}
+@media all and (max-width: 576px) {
+  html {
+   font-size: 10px;
+ }
+}
 // @media (min-width: 576px), (max-width: 768px) {
 //   .container {
 //     max-width: 100%;
 //     width: 100%;
 //   }
 // }
+
+

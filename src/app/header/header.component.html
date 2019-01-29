@@ -16,14 +16,22 @@
              onerror="this.src= './assets/img/default-avatar.png '">
           </div>
     </div>
-    <button class="hamburger hamburger--slider linksButton" type="button"
-    [ngStyle]="{'visibility': showMenu ? 'hidden' : 'visible'}" (click)="showMenu = true"
-    >
-        <span class="hamburger-box">
-          <span  class="hamburger-inner"></span>
-        </span>
-      </button>
-  </div>
+ <!-- <div class="menu-wrapper" (click)="showMenu = true">
+  <mat-icon >menu</mat-icon>
+ </div> -->
+
 </div>
 
-<header-popup *ngIf="showMenu" (close)="showMenu = false"></header-popup>
+<button class="hamburger hamburger--emphatic js-hamburger linksButton" type="button" style="z-index: 10000; position: relative;"
+[ngClass]="{'is-active': showMenu}"
+(click)="showMenu = !showMenu"
+>
+    <span class="hamburger-box">
+      <span  class="hamburger-inner"></span>
+    </span>
+  </button>
+
+</div>
+
+<header-popup *ngIf="false" (close)="onClose()"></header-popup>
+<header-popup-new *ngIf="showMenu" (close)="onClose()" ></header-popup-new>

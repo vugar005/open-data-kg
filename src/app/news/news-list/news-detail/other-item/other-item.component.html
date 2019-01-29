@@ -1,6 +1,6 @@
 <div class="card-wrapper" *ngIf="item">
   <div class="card-image">
-      <img [src]="item.fileId">
+      <img [src]="item.fileId | imgSrc">
   </div>
   <div class="ng-card-content">
     <div class="ng-card-title">{{item.title}}</div>

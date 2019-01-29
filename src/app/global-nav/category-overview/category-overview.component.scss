@@ -3,54 +3,37 @@
   width: 100%;
  min-height: calc(100vh - var(--kg-mouse-scroll-icon-height) - var(--kg-global-nav-height) - var(--kg-footer-height));
   position: relative;
-  padding-top: 30px;
-}
-
-
-.co-header {
-  display: flex;
-  align-items: center;
-  width: 50%;
-  background: white;
-  padding: 5px 10px;
-  .search-ico {
-    color: var(--color-primary);
-    padding: 0 21px;
-    font-size: 16px;
-    opacity: 0.8;
-    color:  #666666;
-  }
-  .search-bar {
-    width: 100%;
-    border-radius: 9px;
-    &::placeholder {
-      color:  #969696;
-    }
-  }
+  padding-top: 1.875rem;
 }
 
 .item-box {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 30px;
-  border-radius: 5px;
+  justify-content: center;
+  padding: 1.5625rem;
+  border-radius: 0.3125rem;
   transition: all 200ms ease-in-out;
   cursor: pointer;
-  margin-bottom: 30px;
+  height: 13.125rem;
   .name  {
-    padding-top: 22px;
+    padding-top: 1rem;
     font-weight: 600;
-    line-height: 17px;
-    font-size: 16px;
+    line-height: 1.0625rem;
+    font-size: 1rem;
     text-align: center;
     color: #505050;
+    width: 9.375rem;
   }
   .icon {
-    max-width: 43px;
+    max-width: 2.6875rem;
+   /deep/ svg {
+      width: 2.1875rem;
+      height: 2.1875rem;
+    }
   }
   &:hover {
-    box-shadow: 5px 15px 22px rgba(0, 0, 0, 0.1);
+    box-shadow: 0.3125rem 0.9375rem 1.375rem rgba(0, 0, 0, 0.1);
     .icon {
       /deep/ .replaced-svg {
         transition: all 500ms ease-in-out;

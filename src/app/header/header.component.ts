@@ -43,5 +43,8 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
  //   setTimeout(() => this.enter = true, 3000)
   }
+  onClose() {
+    setTimeout(() => this.showMenu = false, 300);
+  }
 
 }

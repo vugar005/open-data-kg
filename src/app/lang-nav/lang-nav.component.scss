@@ -18,7 +18,7 @@
   z-index: 1;
   position: relative;
   .lang {
-    font-size: 16px;
+    font-size: 1rem;
     color: #ffffff;
     cursor: pointer;
     transition: font-weight 0ms ease-in-out;
@@ -30,9 +30,9 @@
     }
   }
   .horizontal-line {
-    height: 60px;
+    height: 3.75rem;
     width: 1px;
-    left: 4px;
+    left: 0.25rem;
     background: #ffffff;
     position: relative;
   }

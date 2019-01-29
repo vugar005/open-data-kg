@@ -51,6 +51,7 @@ export class ModuleSidebarComponent implements OnInit, AfterViewInit {
     }
    }
   getItemList() {
+    this.loadedImgCount = 0;
     if (this.type === 'category') {
       this.getCategories();
     }

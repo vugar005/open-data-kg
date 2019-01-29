@@ -38,13 +38,19 @@ export class NewsSidebarComponent implements OnInit {
   }
   onPrev() {
     if (this.startIndex === 0) {return; }
-    this.startIndex -= 1;
-    this.endIndex -= 1;
+    this.startIndex -= 3;
+    this.endIndex -= 3;
+    // setTimeout(() =>  {
+    //   this.startIndex -= 1;
+    // }, 550);
+    // setTimeout(() =>  {
+    //   this.startIndex -= 1;
+    // }, 1100);
   }
   onNext() {
     if (this.endIndex ===  this.rowCount) {return; }
-    this.startIndex += 1;
-    this.endIndex += 1;
+    this.startIndex += 3;
+    this.endIndex += 3;
   }
   getNews(query = new NewsQuery()) {
     this.items = [];
@@ -58,8 +64,8 @@ export class NewsSidebarComponent implements OnInit {
    this.sharedService.getTableData(`api/get/Permission/Sharing/GetNewsForCommon`, body)
    .subscribe(res => {
     if (!res && res.tbl && res.tbl[0]) {return; }
-     this.items = res.tbl[0].r;
-     this.rowCount = res.tbl[0].rowCount;
+     this.items = res.tbl[0].r.concat(res.tbl[0].r).concat(res.tbl[0].r);
+     this.rowCount = res.tbl[0].rowCount * 3;
      this.endIndex = this.rowCount;
      this.startIndex = this.rowCount - 3;
     });

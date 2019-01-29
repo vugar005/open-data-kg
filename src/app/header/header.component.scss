@@ -27,6 +27,16 @@
     align-items: center;
     z-index: 2;
     position: relative;
+    margin-left: auto;
+    .menu-wrapper {
+      color: white;
+      padding-left: 0.625rem;
+      font-size: 17px;
+      align-self: center;
+      line-height: 0;
+      height: 17px;
+      cursor: pointer;
+    }
     .auth-nav {
       font-size: 1rem;
       color: white;
@@ -38,11 +48,12 @@
       display: flex;
       align-items: center;
       .name {
+        margin-right: 1.25rem;
        p {
         font-size: 0.875rem;
         text-align: center;
         color: #FFFFFF;
-        padding-right: 1.1875rem;
+        padding-right: 0.875rem;
         text-align: right;
        }
       }
@@ -50,6 +61,7 @@
         width: 2.25rem;
         height: 2.25rem;
         cursor: pointer;
+        margin-right: 1.25rem;
         img {
           width: 100%;
           height: 100%;
@@ -60,31 +72,5 @@
     }
   }
 }
-.hamburger {
-  display: flex!important;
-  padding: 0.9375rem;
-}
-.hamburger-box {
-  height: 1.1875rem!important;
-}
-.hamburger-inner {
-  background-color: #FFFFFF!important;
-  width: 1.5625rem;
-  height: 0.0625rem;
-  &::after, &::before {
-    background-color: #FFFFFF!important;
-    width: 1.5625rem;
-    height: 0.0625rem;
-  }
-}
-.hamburger {
-  padding-right: 0!important;
-}
-.hamburger--slider .hamburger-inner:before {
-  top: 0.4375rem;
-  width: 1.1875rem;
-  right: 0;
-}
-.hamburger--slider .hamburger-inner:after {
-  top: 0.875rem;
-}
+// .hamburger {
+

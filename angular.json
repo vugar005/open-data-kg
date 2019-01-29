@@ -30,7 +30,7 @@
               "node_modules/daemonite-material/css/material.min.css",
               "node_modules/swiper/dist/css/swiper.min.css",
               "node_modules/izitoast/dist/css/iziToast.min.css",
-              "node_modules/hamburgers/dist/hamburgers.min.css",
+              "src/assets/themes/hamburgers-settings.scss",
               "src/styles.scss"
             ],
             "scripts": [

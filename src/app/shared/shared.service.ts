@@ -224,7 +224,7 @@ replaceSvgWitInline() {
 
         // Check if the viewport is set, if the viewport is not set the SVG wont't scale.
         if (!svg.getAttribute('viewBox') && svg.getAttribute('height') && svg.getAttribute('width')) {
-            svg.setAttribute('viewBox', '0 0 ' + svg.getAttribute('height') + ' ' + svg.getAttribute('width'))
+            svg.setAttribute('viewBox', '0 0 ' + svg.getAttribute('height') + ' ' + svg.getAttribute('width'));
         }
 
         // Replace image with new SVG

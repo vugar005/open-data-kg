@@ -21,12 +21,12 @@
     position: relative;
     .icon {
       cursor: pointer;
-      height: 30px;
-      width: 30px;
-      margin-right: 10px;
+      height: 1.875rem;
+      width: 1.875rem;
+      margin-right: 0.625rem;
     }
     .text {
-      font-size: 14px;
+      font-size: 0.875rem;
       font-weight: 600;
       color: #666666;
       cursor: pointer;
@@ -36,7 +36,7 @@
       height: 3px;
       width: 0;
       position: absolute;
-       margin-top: 32px;
+       margin-top: 2rem;
       background: #4D94C8;
       border-radius: 10px;
       transition: width 300ms ease-in-out;
@@ -49,3 +49,8 @@
   }
 }
 
+@media (max-width: 768px) {
+  .global-modules {
+    width: 100%;
+  }
+}

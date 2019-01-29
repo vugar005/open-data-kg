@@ -1,0 +1,50 @@
+<div class="overlay" id="overlay" [ngClass]="{'open': open}">
+  <nav class="overlay-menu">
+    <div class="items-wrapper">
+      <div  class="items" >
+
+          <div class="item" (click)="onNavigate('home/news', 'News')">
+            <div class="icon">
+              <img src="./assets/icons/nav-news.svg">
+            </div>
+            <div class="name">{{'~news' | translate}}</div>
+          </div>
+
+          <div class="item " (click)="onNavigate('home/news', 'Announcement')" >
+            <div class="icon">
+              <img src="./assets/icons/nav-annoucement.svg">
+            </div>
+            <div class="name">{{'~announcements' | translate}}</div>
+          </div>
+
+          <div class="item" (click)="onNavigate('home/news', 'Blog')" routerLinkActive="router-link-active" >
+              <div class="icon">
+                <img src="./assets/icons/nav-blog.svg">
+              </div>
+              <div class="name">{{'~blogs' | translate}}</div>
+            </div>
+
+            <div class="item"   *ngIf="(isAdmin$ | async)" >
+                <div class="icon">
+                  <img src="./assets/icons/nav-dashboard.svg">
+                </div>
+                <div class="name" (click)="onNavigate('/admin')">{{'~goToDashboard' | translate}}</div>
+              </div>
+
+          <div class="item " >
+            <div class="icon">
+              <img src="./assets/icons/nav-lang.svg">
+            </div>
+            <div class="name">English</div>
+          </div>
+          <div class="item " (click)="onLogout()">
+            <div class="icon">
+              <img src="./assets/icons/nav-logout.svg">
+            </div>
+            <div class="name" *ngIf="isLoggedIn$ | async">{{'~logout' | translate}}</div>
+            <div class="name" *ngIf="!(isLoggedIn$ | async)" [routerLink]="['/login']" >{{'~login' | translate}}</div>
+          </div>
+        </div>
+   </div>
+  </nav>
+</div>
