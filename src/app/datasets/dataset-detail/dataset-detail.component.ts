@@ -125,23 +125,23 @@ export class DatasetDetailComponent implements OnInit, OnChanges {
     return this.favouriteDatasets.find(f => f.datasetId === this.dataset.kv.id);
   }
   onResourcesNavigate(datasetId: string, api: DatasetApi) {
-    let dataLink: string;
-    if (api.format.toUpperCase() === 'GEOJSON') {
-       this.router.navigate([`/home/datasets/${datasetId}/resources`], {queryParams: {type: api.format}});
-       return;
-    }
-    if (api.formatTypeCode === 'FRMT1') {
-      dataLink = api && api.openPortalLink;
-    } else if (api.formatTypeCode === 'FRMT2') {
-      dataLink = api && api.link;
-    }
-    window.open(
-      dataLink,
-      '_blank' // <- This is what makes it open in a new window.
-    );
+    this.router.navigate([`/home/datasets/${datasetId}/resources`], {queryParams: {type: api.format}});
+    // let dataLink: string;
+    // if (api.format.toUpperCase() === 'GEOJSON') {
+    //    this.router.navigate([`/home/datasets/${datasetId}/resources`], {queryParams: {type: api.format}});
+    //    return;
+    // }
+    // if (api.formatTypeCode === 'FRMT1') {
+    //   dataLink = api && api.openPortalLink;
+    // } else if (api.formatTypeCode === 'FRMT2') {
+    //   dataLink = api && api.link;
+    // }
+    // window.open(
+    //   dataLink,
+    //   '_blank' // <- This is what makes it open in a new window.
+    // );
   }
   onShareClick() {
-    console.log(this.dataset.kv.id);
   const ref = this.dialog.open(ShareDialogComponent, {
     data: this.dataset.kv.id,
     autoFocus: false

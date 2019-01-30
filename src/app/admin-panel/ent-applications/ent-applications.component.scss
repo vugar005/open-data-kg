@@ -1,8 +1,7 @@
 :host {
   display: flex;
   flex-direction: column;
-  width: calc(100%);
+  width: calc(100% - var(--kg-right-aside-width) - var(--kg-admin-padding) * 2);
   height: 100%;
-  margin-right: var(--kg-admin-padding);
   box-shadow: 0.06rem 0.25rem 1.1rem rgba(0, 0, 0, 0.05);
 }

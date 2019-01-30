@@ -87,7 +87,7 @@ export class AppComponent implements OnInit {
     this.store.dispatch(new SetApiUrl(URL));
   }
   setDefaultLang() {
-    const language = localStorage.getItem('kg-language') || 'en';
+    const language = localStorage.getItem('kg_language') || 'en';
     this.translateService.setDefaultLang(language);
     this.store.dispatch(new SetAppLanguage(language));
   }

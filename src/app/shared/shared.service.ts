@@ -255,7 +255,9 @@ buildBreadCrumb(route: ActivatedRoute, url: string = '',
     return newBreadcrumbs;
 }
  getCurentLocale(): string {
-  return localStorage.getItem('kg-language') || 'en';
+   let lang = localStorage.getItem('kg_language');
+   if (lang === 'kg') { lang = 'ky'; }
+  return lang || 'en';
 }
 getTableData(url: string, kv: Object = {}, skipAdmin = false): Observable<TableModel> {
   return this.store.select(isSuperAdmin)

@@ -6,6 +6,8 @@ import { isLoggedIn, getUser, getApiUrl } from '../auth/store/auth.selectors';
 import { User } from '../auth/models/user.model.';
 import { trigger, transition, useAnimation, state, style, animate } from '@angular/animations';
 import { fadeIn, zoomOut, zoomIn, fadeOut } from 'ng-animate';
+import { SetHeaderPopupState } from '../shared/store/ui.actions';
+import { getHeaderPopupState } from '../shared/store/ui.selectors';
 
 @Component({
   selector: 'app-header',
@@ -32,19 +34,28 @@ export class HeaderComponent implements OnInit {
   user$: Observable<User>;
   showMenu: boolean;
   apiUrl$: Observable<string>;
+  popupState$: Observable<boolean>;
 //   @HostBinding('@enterAnimation') enter = 0;
  //  @HostBinding('@fadeOut') leave = true;
   constructor(private store: Store<AppState>) {
     this.isLoggedIn$ = store.select(isLoggedIn);
     this.user$ = store.select(getUser);
     this.apiUrl$ = store.select(getApiUrl);
+    this.popupState$ = store.select(getHeaderPopupState);
   }
 
   ngOnInit() {
  //   setTimeout(() => this.enter = true, 3000)
   }
   onClose() {
-    setTimeout(() => this.showMenu = false, 300);
+    setTimeout(() => {
+     this.showMenu = false;
+      this.store.dispatch(new SetHeaderPopupState(this.showMenu));
+    }, 300);
+  }
+  togglePopup() {
+    this.showMenu = !this.showMenu;
+    this.store.dispatch(new SetHeaderPopupState(this.showMenu));
   }
 
 }

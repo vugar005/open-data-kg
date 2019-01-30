@@ -23,7 +23,7 @@
     </div>
 
     <div class="right">
-        <mat-form-field *ngIf="data?.row.dicTypeId === '1000004'">
+        <mat-form-field *ngIf="data?.row?.dicTypeId === '1000004'">
             <mat-select placeholder="{{'~categoryId' | translate}}" class="nt-form-input" name="iconPath" ngModel>
               <mat-option value="">Choose</mat-option>
               <mat-option *ngFor="let item of (catTypes$ | async)" [value]="item.value">

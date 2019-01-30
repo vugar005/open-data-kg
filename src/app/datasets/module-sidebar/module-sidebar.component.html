@@ -1,9 +1,12 @@
-<div class="sidebar-wrapper">
-  <div class="module-title">
-    <div class="arrow-icon"> </div>
-   <p> {{type | titlecase}}</p>
-  </div>
-  <div class="items-co">
+
+<mat-accordion [displayMode]="'flat'" >
+  <mat-expansion-panel [expanded]="true">
+    <mat-expansion-panel-header [collapsedHeight]="'60px'" [expandedHeight]="'60px'">
+      <mat-panel-title>
+         <p> {{type | titlecase}}</p>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="items-co">
       <div class="item"  *ngFor="let item of itemList; let i = index" (click)="onItemClick(item.id)"
       [ngClass]="{'active': itemList[i].id === selectedIndex,
       'active-org': (itemList[i].id === selectedIndex) && ( type === 'organization') }"
@@ -23,5 +26,9 @@
 
       </div>
   </div>
+  </mat-expansion-panel>
+</mat-accordion>
 
-</div>
+
+
+

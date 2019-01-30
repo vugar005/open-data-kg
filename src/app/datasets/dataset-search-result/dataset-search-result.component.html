@@ -15,7 +15,7 @@
               </div>
           </div>
        <dataset-search-box *ngFor="let dataset of (datasets$ | async)"  [dataset]="dataset"
-       routerLink="/datasets/details/{{dataset.id}}"
+       routerLink="home/datasets/details/{{dataset.id}}"
        ></dataset-search-box>
       </div>
     </div>

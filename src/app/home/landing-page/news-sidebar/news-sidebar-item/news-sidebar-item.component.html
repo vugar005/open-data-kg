@@ -3,8 +3,8 @@
     <img src="{{item.fileId | imgSrc}}">
   </div>
   <div class="item-body">
-    <div class="item-title">{{item.title}}</div>
+    <div class="item-title text-ellipsis">{{item.title}}</div>
     <div class="item-content" [innerHtml]="item.content"></div>
-    <div class="item-footer">{{item.publishDate}}</div>
+    <div class="item-footer">{{item.publishDate | date: 'd MMMM y'}}</div>
   </div>
 </div>

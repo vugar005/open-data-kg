@@ -6,3 +6,7 @@ export const getAppLanguage = createSelector(
   getUiState,
   ui => ui.app_language
 );
+export const getHeaderPopupState = createSelector(
+  getUiState,
+  ui => ui.header_popup_state
+);

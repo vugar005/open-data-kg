@@ -1,4 +1,4 @@
-import { HeaderPopupNewComponent } from './header/header-popup-new/header-popup-new.component';
+import { HeaderPopupComponent } from './header/header-popup/header-popup.component';
 import { LatestDatasetsComponent } from './global-nav/latest-datasets/latest-datasets.component';
 import { DatasetBoxModule } from './datasets/dataset-box.module';
 import { NgModule, LOCALE_ID, SkipSelf, Optional } from '@angular/core';
@@ -14,13 +14,12 @@ import { NavStyleChangeDirective } from './shared/directives/nav-style-change.di
 import { HeaderToggleDirective } from './shared/directives/header-toggle.directive';
 import { TotalDatasetsCountComponent } from './global-nav/total-datasets-count/total-datasets-count.component';
 import { ClassChangerDirective } from './shared/directives/class-changer.directive';
-import { HeaderPopupComponent } from './header/header-popup/header-popup.component';
 import { CategoryOverviewComponent } from './global-nav/category-overview/category-overview.component';
 import { MouseScrollIconComponent } from './shared/components/mouse-scroll-icon/mouse-scroll-icon.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { OrganizationOverviewComponent } from './global-nav/organization-overview/organization-overview.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
-import { CommonModule } from '@angular/common';
+import { CommonModule, registerLocaleData } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthModule } from './auth/auth.module';
@@ -56,6 +55,10 @@ import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
 };
+import localeRu from '@angular/common/locales/ru';
+import localeKy from '@angular/common/locales/ky';
+registerLocaleData(localeRu);
+registerLocaleData(localeKy);
 @NgModule({
 declarations: [
   HeaderComponent,
@@ -77,7 +80,6 @@ declarations: [
   OrganizationOverviewComponent,
   UserProfileComponent,
   UserProfileEditComponent,
-  HeaderPopupNewComponent
 ],
 entryComponents: [NotLoggedInDialogComponent, UserProfileEditComponent],
 imports: [
@@ -146,7 +148,6 @@ exports: [
   TranslateModule,
   MaterialModule,
   ImgSrcPipeModule,
-  HeaderPopupNewComponent
 ],
 providers: [
   SharedService,

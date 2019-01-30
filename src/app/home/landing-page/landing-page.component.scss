@@ -9,6 +9,9 @@
   width: 100%;
   height: 100%;
   position: relative;
+  &.blur {
+    filter: blur(3px);
+  }
   .global-navbar{
     display: flex;
     flex-direction: column;

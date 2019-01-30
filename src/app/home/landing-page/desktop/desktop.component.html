@@ -3,27 +3,31 @@
   <div class="container search-container ">
     <div class="row search-row">
       <div class="col-10 col-md-7 col-lg-6 col-xl-5  ">
-        <div class="search-header">
-          <div class="primary-name">
-            {{'~primaryName' | translate}}
-          </div>
-          <div class="secondary-name">
-            {{'~secondaryName' | translate}}
-          </div>
-        </div>
-        <div class="input-co">
-            <input class="ng-input" placeholder="{{'~searchDataset' | translate}}" (click)="resetMouse()"
-            typehead-co
-            [url]="'api/get/Permission/Datasets/GlobalSearchForDataset'"
-            [apiKey]="'datasetFullname'"
-            [listItemLabel]="'name'"
-            (selected)="handleResultSelected($event)"
-            [(ngModel)]="inputValue"
-            >
-            <div class="search-ico" (click)="handleShowAll()">
-            <img src="./assets/icons/search.svg">
+
+       <div class="search-input-wrapper">
+          <div class="search-header">
+              <div class="primary-name">
+                {{'~primaryName' | translate}}
+              </div>
+              <div class="secondary-name">
+                {{'~secondaryName' | translate}}
+              </div>
             </div>
-        </div>
+            <div class="input-co">
+                <input class="ng-input" placeholder="{{'~searchDataset' | translate}}" (click)="resetMouse()"
+                typehead-co
+                [url]="'api/get/Permission/Datasets/GlobalSearchForDataset'"
+                [apiKey]="'datasetFullname'"
+                [listItemLabel]="'name'"
+                (selected)="handleResultSelected($event)"
+                [(ngModel)]="inputValue"
+                >
+                <div class="search-ico" (click)="handleShowAll()">
+                <img src="./assets/icons/search.svg">
+                </div>
+            </div>
+       </div>
+
       </div>
     </div>
   </div>

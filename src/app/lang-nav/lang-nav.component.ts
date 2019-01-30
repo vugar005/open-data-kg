@@ -20,7 +20,7 @@ export class LangNavComponent implements OnInit {
     this.currentLang = undefined;
     this.translateService.setDefaultLang(lang);
     this.store.dispatch(new SetAppLanguage(lang));
-    localStorage.setItem('kg-language', lang);
+    localStorage.setItem('kg_language', lang);
     location.reload();
   }
   listenToCurrentLang() {

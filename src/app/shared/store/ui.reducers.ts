@@ -2,9 +2,11 @@ import { UIActionTypes, UIActions } from './ui.actions';
 
 export interface UIState {
   app_language: string;
+  header_popup_state: boolean;
 }
 const initialState: UIState = {
-  app_language: ''
+  app_language: '',
+  header_popup_state: false
 };
 export function reducer(state = initialState, action: UIActions) {
   switch (action.type) {
@@ -12,6 +14,11 @@ export function reducer(state = initialState, action: UIActions) {
    return {
      ...state,
      app_language: action.payload
+   };
+   case UIActionTypes.SET_HEADER_POPUP_STATE:
+   return {
+     ...state,
+     header_popup_state: action.payload
    };
    default:
    return state;

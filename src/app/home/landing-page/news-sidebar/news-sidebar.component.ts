@@ -28,6 +28,7 @@ export class NewsSidebarComponent implements OnInit {
     setTimeout(() => {
       this.render = true;
       this.getNews();
+   //   this.sharedService.replaceSvgWitInline();
     }, 2000);
     this.initAutoSlide();
   }

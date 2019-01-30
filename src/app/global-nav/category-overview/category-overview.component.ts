@@ -34,7 +34,7 @@ export class CategoryOverviewComponent implements OnInit, AfterViewInit {
   replaceImgWithSvg() {
     setTimeout(() => {
       console.log('replace---')
-    this.sharedService.replaceSvgWitInline();
+  //  this.sharedService.replaceSvgWitInline();
     }, 2000);
   }
   ngAfterViewInit() {
