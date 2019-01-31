@@ -1,31 +1,62 @@
 <div class="ng-admin-co-header">
-  <div class="moduleName">
-    {{'~comments' | translate}}
-  </div>
-  <div class="ng-admin-actions-template"  >
-    <button (click)="table.onPrint()" >{{'~print' | translate}}</button>
+  <div class="moduleName">{{ '~comments' | translate }}</div>
+  <div class="ng-admin-actions-template">
+    <button (click)="table.onPrint()">{{ '~print' | translate }}</button>
     <!-- <button  *rbacAllow="['1000011', 'ADD']" (click)="table.addData()" >{{'~addData' | translate}}</button> -->
-    <button  *rbacAllow="['1000011', 'DELETE']" (click)="table.onRemove()"
-     [disabled]="!(table?.isRowSelected)">{{'~removeSelected' | translate}}</button>
-    <button  [disabled]="!(table.selectedRow)"
-    (click)="table.onRowPin()" > {{'~pinToTop' | translate}}</button>
-    <button (click)="table.onExport()" >{{'~export' | translate}}</button>
- </div>
- </div>
+    <button
+      *rbacAllow="['1000011', 'DELETE']"
+      (click)="table.onMultiRemove()"
+      [disabled]="!table?.isRowSelected"
+    >
+      {{ '~removeSelected' | translate }}
+    </button>
+    <mat-select
+      placeholder="Toggle Columns"
+      [multiple]="true"
+      (selectionChange)="table?.toggleColumns($event)"
+      [(ngModel)]="table.visibleColumnDefs"
+      #select="ngModel"
+      class="toggle-columns-select"
+    >
+      <mat-select-trigger> Toggle Columns </mat-select-trigger>
+      <div style="margin: 5px 0;display: flex;justify-content: center">
+        <button mat-button color="primary" (click)="table?.showAllColumns()">
+          Show all
+        </button>
+        <button mat-button color="warn" (click)="table?.hideAllColumns()">
+          Hide all
+        </button>
+      </div>
+      <mat-option *ngFor="let col of table?.defaultColumnDefs" [value]="col">{{
+        col.n
+      }}</mat-option>
+    </mat-select>
+    <button (click)="table.onExport()">{{ '~export' | translate }}</button>
+  </div>
+</div>
 
- <div class="ng-admin-content">
-   <div class="ng-admin-table">
-    <ngx-native-table #table
-    [config]="config"
-    [editTemplate]="editer"
-    (actionClick)="onOptClick($event, table)"
+<div class="ng-admin-content">
+  <div class="ng-admin-table">
+    <ngx-native-table
+      #table
+      [config]="config"
+      [editTemplate]="editer"
+      (actionClick)="onOptClick($event, table)"
     >
     </ngx-native-table>
-   </div>
- </div>
- <ng-template #editer>
-  <button [attr.t-btn]="'edit'"   *rbacAllow="['1000011', 'EDIT']">{{'~edit' | translate}}</button>
-  <button [attr.t-btn]="'remove'" *rbacAllow="['1000011', 'DELETE']">{{'~delete' | translate}}</button>
-  <button [attr.t-btn]="'confirm'" *rbacAllow="['1000011', 'CONFIRM']">{{'~confirm' | translate}}</button>
-  <button [attr.t-btn]="'unConfirm'" *rbacAllow="['1000011', 'UNCONFIRM']">{{'~unconfirm' | translate}}</button>
+  </div>
+</div>
+<ng-template #editer>
+  <button [attr.t-btn]="'edit'" *rbacAllow="['1000011', 'EDIT']">
+    {{ '~edit' | translate }}
+  </button>
+  <button [attr.t-btn]="'remove'" *rbacAllow="['1000011', 'DELETE']">
+    {{ '~delete' | translate }}
+  </button>
+  <button [attr.t-btn]="'confirm'" *rbacAllow="['1000011', 'CONFIRM']">
+    {{ '~confirm' | translate }}
+  </button>
+  <button [attr.t-btn]="'unConfirm'" *rbacAllow="['1000011', 'UNCONFIRM']">
+    {{ '~unconfirm' | translate }}
+  </button>
 </ng-template>

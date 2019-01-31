@@ -66,6 +66,7 @@ export class NewsSidebarComponent implements OnInit {
    .subscribe(res => {
     if (!res && res.tbl && res.tbl[0]) {return; }
      this.items = res.tbl[0].r.concat(res.tbl[0].r).concat(res.tbl[0].r);
+    console.log(this.items)
      this.rowCount = res.tbl[0].rowCount * 3;
      this.endIndex = this.rowCount;
      this.startIndex = this.rowCount - 3;

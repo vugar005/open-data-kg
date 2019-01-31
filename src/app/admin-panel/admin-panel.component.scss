@@ -36,4 +36,6 @@
   width: calc(100% - 256px);
   height: 100vh;
   padding: var(--kg-admin-padding) 0;
+  overflow-x: auto;
+  overflow-y: hidden;
 }

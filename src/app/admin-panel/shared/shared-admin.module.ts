@@ -29,7 +29,7 @@ import { MaterialModule } from 'src/app/material.module';
     ImgSrcPipeModule,
     FileManagerModule,
     NgxNativeTableModule,
-    MaterialModule
+    MaterialModule,
   ],
   exports: [
     FontAwesomeModule,

@@ -5,12 +5,12 @@
 
         <div class="upload-item-img">
 
-          <ng-container *ngIf="!imgId">
+          <ng-container *ngIf="!user?.photoFileId">
             <img src="./assets/icons/avatar.svg" (click)="onUpload()">
           </ng-container>
 
-          <ng-container *ngIf="imgId">
-            <img src="http://192.168.1.23:8080/DispatcherRest/api/get/file/{{imgId}}" (click)="onUpload()" onerror="this.src = './assets/icons/avatar.svg'">
+          <ng-container *ngIf="user?.photoFileId">
+            <img src="{{user?.photoFileId | imgSrc}}" (click)="onUpload()" onerror="this.src = './assets/icons/avatar.svg'">
           </ng-container>
           <div class="img-corners">
             <div class="arrow"></div>
@@ -23,22 +23,22 @@
         </div>
 
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="{{'~username' | translate}}" class="nt-form-input" name="userName" ngModel required>
+          <input matInput placeholder="{{'~username' | translate}}" class="nt-form-input" name="userName" [ngModel]="user?.userName" required>
           <mat-error>{{getErrors('userName')}}</mat-error>
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="{{'~firstname' | translate}}" class="nt-form-input" name="name" ngModel required>
+          <input matInput placeholder="{{'~firstname' | translate}}" class="nt-form-input" name="name" [ngModel]="user?.name"  required>
           <mat-error>{{getErrors('fName')}}</mat-error>
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="{{'~lastname' | translate}}" class="nt-form-input" name="surname" ngModel required>
+          <input matInput placeholder="{{'~lastname' | translate}}" class="nt-form-input" name="surname"[ngModel]="user?.surname" required>
           <mat-error>{{getErrors('lname')}}</mat-error>
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="{{'~middlename' | translate}}" class="nt-form-input" name="patronymic" ngModel >
+          <input matInput placeholder="{{'~middlename' | translate}}" class="nt-form-input" name="patronymic" [ngModel]="user?.patronymic" >
           <mat-error>{{getErrors('mname')}}</mat-error>
         </mat-form-field>
 
@@ -48,22 +48,19 @@
       <div class="right">
 
         <mat-form-field>
-          <mat-select placeholder="{{'~gender' | translate}}" class="nt-form-input" name="genderId" ngModel>
+          <mat-select placeholder="{{'~gender' | translate}}" class="nt-form-input" name="genderId" [ngModel]="user?.gender?.id">
             <mat-option *ngFor="let item of (genders$ | async)" [value]="item.value"> {{item.label}} </mat-option>
           </mat-select>
           <mat-error>{{getErrors('genderId')}}</mat-error>
         </mat-form-field>
 
-
         <mat-form-field>
-          <input matInput [matDatepicker]="picker" placeholder="{{'~birthdate' | translate}}" name="birthdate" ngModel
+          <input matInput [matDatepicker]="picker" placeholder="{{'~birthdate' | translate}}" name="birthdate" [ngModel]="user?.birthdate"
             [max]="maxDate">
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker [startAt]="startDate" startView="year"></mat-datepicker>
           <mat-error>{{getErrors('birthDate')}}</mat-error>
         </mat-form-field>
-
-
 
         <mat-form-field class="example-full-width" >
           <input matInput placeholder="{{'~oldPassword' | translate}}" class="nt-form-input" name="oldPassword" autocomplete="off" ngModel [type]="hideOld ? 'password' : 'text'">
@@ -78,7 +75,7 @@
           <mat-error>{{getErrors('passwd')}}</mat-error>
         </mat-form-field>
 
-        <input [hidden]="true" name="photoFileId" value="photoFileId" [(ngModel)]="imgId" >
+        <input [hidden]="true" name="photoFileId" value="photoFileId" [(ngModel)]="user.photoFileId" >
         <input [hidden]="true" name="id" ngModel>
       </div>
     </div>

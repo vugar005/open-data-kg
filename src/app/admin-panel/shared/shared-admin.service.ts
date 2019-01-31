@@ -1,9 +1,11 @@
 import { MatDialog } from '@angular/material';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { TableEditerAction } from 'ngx-native-table';
 import { NgxNativeTableComponent } from 'ngx-native-table';
 import { ApiConfig } from 'ngx-native-table';
+import { Observable } from 'rxjs';
+import { TableModel } from 'src/app/shared/models/table.model';
 
 @Injectable()
 export class SharedAdminService {
@@ -13,7 +15,18 @@ export class SharedAdminService {
     table: NgxNativeTableComponent,
     templateComponent
   ) {
+    console.log(actionObject.type);
+
     switch (actionObject.type) {
+      case 'toggleColumnView': {
+        const data = actionObject.data;
+        const body = {
+            viewName: data.tableName,
+            columns: data.hiddenColumnNames
+        };
+        this.postTableData('api/post/InsertHiddenColumn', body).subscribe();
+        break;
+      }
       case 'insert':
         this.dialog.open(templateComponent, {
           data: { table: table, row: undefined }
@@ -26,19 +39,42 @@ export class SharedAdminService {
         });
         console.log('on edit');
         break;
-      case 'confirm':
-      console.log('confirm')
-      this.onStatusUpdate(table.config.confirmApi, actionObject.data);
-        break;
-      case 'unConfirm':
-      this.onStatusUpdate(table.config.unConfirmApi, actionObject.data);
-        break;
-      case 'active':
-       this.onStatusUpdate(table.config.activateApi, actionObject.data);
-        break;
-      case 'deactive':
-      this.onStatusUpdate(table.config.activateApi, actionObject.data);
-        break;
+      case 'confirm': {
+        const body = {
+          kv: {
+            id: actionObject.data.id
+          }
+        };
+        this.postTableData(table.config.confirmApi, body).subscribe();
+          break;
+      }
+      case 'unConfirm': {
+        const body = {
+          kv: {
+            id: actionObject.data.id
+          }
+        };
+        this.postTableData(table.config.unConfirmApi, body).subscribe();
+          break;
+      }
+      case 'active': {
+        const body = {
+          kv: {
+            id: actionObject.data.id
+          }
+        };
+        this.postTableData(table.config.activateApi, body).subscribe();
+         break;
+      }
+      case 'deactive': {
+        const body = {
+          kv: {
+            id: actionObject.data.id
+          }
+        };
+        this.postTableData(table.config.deactivateApi, body).subscribe();
+          break;
+      }
     }
   }
 
@@ -50,12 +86,12 @@ export class SharedAdminService {
       );
     }
   }
-  onStatusUpdate(url: string, data: any) {
-    const body = {
-      kv: {
-        id: data.id
-      }
+  postTableData(url: string, kv: Object = {}): Observable<TableModel> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+      })
     };
-    this.http.post(url, JSON.stringify(body)).subscribe();
+    return this.http.post<TableModel>(url, JSON.stringify(kv), httpOptions);
   }
 }

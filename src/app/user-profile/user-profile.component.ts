@@ -44,8 +44,7 @@ export class UserProfileComponent implements OnInit {
  // this.datasets$.subscribe(res => console.log(res));
   }
   onEdit() {
-    console.log(this.user)
-   this.dialog.open(UserProfileEditComponent, {data: { user: this.user} });
+   this.dialog.open(UserProfileEditComponent, {data: { user: {...this.user}} });
   }
 
 }

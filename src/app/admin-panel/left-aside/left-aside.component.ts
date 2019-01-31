@@ -1,10 +1,11 @@
+import { User, UserOrg } from './../../auth/models/user.model.';
 import { Component, OnInit } from '@angular/core';
 import {faAccusoft} from '@fortawesome/free-brands-svg-icons';
 import { Observable } from 'rxjs';
 import { AdminPanelService } from '../admin-panel.service';
 import { AppState } from 'src/app/reducers';
 import { Store } from '@ngrx/store';
-import { getUserModules } from 'src/app/auth/store/auth.selectors';
+import { getUserModules, getUserOrg } from 'src/app/auth/store/auth.selectors';
 import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'left-aside',
@@ -18,10 +19,12 @@ export class LeftAsideComponent implements OnInit {
   hostname: string;
   token$: Observable<string>;
   modules: any;
+  userOrg$: Observable<UserOrg>;
   constructor(private adminService: AdminPanelService,
      private store: Store<AppState>,
      private router: Router,
      private route: ActivatedRoute) {
+       this.userOrg$ = this.store.select(getUserOrg);
    }
 
   ngOnInit() {

@@ -20,6 +20,7 @@ import { ErrorInterceptor } from '../shared/interceptors/error.interceptor';
 import { TokenInterceptor } from '../auth/token.inteceptor';
 import { APIInterceptor } from '../shared/interceptors/api.interceptor';
 import { LangInterceptor } from '../shared/interceptors/lang.interceptor';
+import { ImgSrcPipeModule } from '../shared/pipes/img-src-pipe.module';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './SHARED/', '.json');
 }
@@ -39,7 +40,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     FontAwesomeModule,
     AdminPanelRoutes,
     SharedAcrossModule,
-    FileManagerModule
+    FileManagerModule,
+    ImgSrcPipeModule
   ],
   declarations: [
     AdminPanelComponent,

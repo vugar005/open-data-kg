@@ -17,7 +17,6 @@ import { User } from 'src/app/auth/models/user.model.';
 })
 export class UserProfileEditComponent implements OnInit {
   @ViewChild('f') ntForm: NgForm;
-  imgId: string;
   genders$: Observable<SelectType[]>;
   hide = true;
   hideOld = true;
@@ -32,6 +31,8 @@ export class UserProfileEditComponent implements OnInit {
   private http: HttpClient
   ) {
     this.genders$ = this.sharedService.getTypes('181010384504309277');
+    this.user = this.data.user;
+    this.user.birthdate = new Date(this.user.birthdate.toString());
   }
 
   ngOnInit() {
@@ -43,8 +44,7 @@ export class UserProfileEditComponent implements OnInit {
     onUpload() {
       const dialogRef = this.dialog.open(UploadFileDialogComponent, {data: {adapter: this.adapter}});
       dialogRef.afterClosed().subscribe(res => {
-        console.log(res);
-        if (res) { this.imgId = res; }
+        if (res) { this.user.photoFileId = res; }
         dialogRef.close();
       });
     }
