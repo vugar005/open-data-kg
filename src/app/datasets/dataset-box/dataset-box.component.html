@@ -1,7 +1,7 @@
 
 <div class="container-fluid wrapper-div" >
   <div class="row">
-     <div class="col-9">
+     <div class="col-12 col-md-9">
         <div class="left">
             <div class="item-title">{{dataset?.datasetName}}</div>
               <div class="item-content" [innerHTML]="dataset?.datasetDescription">
@@ -27,7 +27,7 @@
               </div>
         </div>
      </div>
-      <div class="col-3 center pr-0">
+      <div class="col-3 center pr-0 d-none d-md-flex">
           <div class="right">
             <div class="box-perspective">
               <div class="open-box" *ngIf="mode === 'show'">

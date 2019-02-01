@@ -209,7 +209,7 @@ replaceSvgWitInline() {
 
         // Get the SVG tag, ignore the rest
        const svg = xmlDoc.getElementsByTagName('svg')[0];
-
+        if (!svg) {return; }
         // Add replaced image's ID to the new SVG
         if (typeof imgID !== 'undefined') {
           svg.setAttribute('id', imgID);

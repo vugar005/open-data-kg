@@ -5,18 +5,17 @@
   display: flex;
   .search-box {
     display: flex;
-     padding: 6px 40px;
-     width: 70%;
-     background: #ffffff;
-     position: relative;
-     border-radius: 100px;
-     .ng-input {
+    padding: 8px 40px;
+    background: #ffffff;
+    position: relative;
+    border-radius: 100px;
+    .ng-input {
       &::placeholder {
         font-size: 14px;
-       color: #969696;
+        color: #969696;
       }
       .search-ico {
-        color:  #969696;
+        color: #969696;
         padding: 0 21px;
         font-size: 18px;
         opacity: 0.8;
@@ -24,52 +23,63 @@
         right: 0;
         cursor: pointer;
       }
-     }
+    }
   }
   .format-select {
-      width: 26%;
-      margin-left: auto;
-      position: relative;
-      select {
-        width: 100%;
-        height: 100%;
-        border:0;
-        color: #969696;
-        font-size: 14px;
-        height: 40px;
-        outline: none;
-        border-radius: 100px;
-        -moz-appearance:none;
-        -webkit-appearance:none;
-        appearance:none;
-        padding: 12px 0 9px 20%;
-        cursor: pointer;
-        .default {
-          padding: 15px 50px;
-
-        }
-      }
-      .custom-caret {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: absolute;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        margin: auto;
-        width: 30px;
-        height: 30px;
-        padding-top: 2px;
-        margin-right: 7px;
-        cursor: pointer;
-        background: #49ACC6;
-        border-radius: 100px;
-        pointer-events: none;
-        .icon {
-          width: 12px;
-        }
+    margin-left: auto;
+    position: relative;
+    select {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      background: #ffffff;
+      color: #969696;
+      font-size: 14px;
+    //  height: 40px;
+      outline: none;
+      border-radius: 100px;
+      -moz-appearance: none;
+      -webkit-appearance: none;
+      appearance: none;
+      padding: 10px 9px;
+      padding-left: 20%;
+      cursor: pointer;
+      .default {
+        padding: 15px 50px;
       }
     }
-
+    .custom-caret {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      width: 30px;
+      height: 30px;
+      padding-top: 2px;
+      margin-right: 7px;
+      cursor: pointer;
+      background: #49acc6;
+      border-radius: 100px;
+      pointer-events: none;
+      .icon {
+        width: 12px;
+      }
+    }
+  }
+}
+@media (max-width: 992px) {
+  :host {
+    margin-top: 1.5rem;
+  }
+}
+@media (max-width: 576px) {
+  .filter-form {
+    .format-select {
+      margin-top: 1.5rem;
+    }
+  }
 }

@@ -11,9 +11,9 @@
     display: flex;
     align-items: center;
     .user-img {
-    width: 45px;
-    height: 45px;
-    margin-right: 10px;
+    width: 2.8125rem;
+    height: 2.8125rem;
+    margin-right: 0.625rem;
       img {
       border-radius: 50%;
       }
@@ -24,7 +24,7 @@
       .user-name {
         font-weight: 600;
         line-height: normal;
-        font-size: 12px;
+        font-size: 0.75rem;
         color: #666666;
       }
       .comment-date {
@@ -41,11 +41,11 @@
 
 }
 .ng-bottom {
-  padding-top: 12px;
-  font-size: 14px;
+  padding-top: 0.75rem;
+  font-size: 0.875rem;
   color: #555555;
-  border-bottom: 0.5px solid #B6B6B6;
-  padding-bottom: 20px;
+  border-bottom: 0.0313rem solid #B6B6B6;
+  padding-bottom: 1.25rem;
 }
 
 .ng-bottom:last-child {

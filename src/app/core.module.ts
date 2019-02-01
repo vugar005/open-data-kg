@@ -1,5 +1,4 @@
 import { HeaderPopupComponent } from './header/header-popup/header-popup.component';
-import { LatestDatasetsComponent } from './global-nav/latest-datasets/latest-datasets.component';
 import { DatasetBoxModule } from './datasets/dataset-box.module';
 import { NgModule, LOCALE_ID, SkipSelf, Optional } from '@angular/core';
 import { SharedService } from './shared/shared.service';
@@ -14,10 +13,8 @@ import { NavStyleChangeDirective } from './shared/directives/nav-style-change.di
 import { HeaderToggleDirective } from './shared/directives/header-toggle.directive';
 import { TotalDatasetsCountComponent } from './global-nav/total-datasets-count/total-datasets-count.component';
 import { ClassChangerDirective } from './shared/directives/class-changer.directive';
-import { CategoryOverviewComponent } from './global-nav/category-overview/category-overview.component';
 import { MouseScrollIconComponent } from './shared/components/mouse-scroll-icon/mouse-scroll-icon.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { OrganizationOverviewComponent } from './global-nav/organization-overview/organization-overview.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { CommonModule, registerLocaleData } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
@@ -36,7 +33,6 @@ import { TypeheadModule } from 'ngx-typehead-dir';
 import { SharedRbacModule } from './shared/shared-rbac.module';
 import { HttpClientBusyModule } from 'ngx-httpclient-busy';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { PopularDatasetsComponent } from './global-nav/popular-datasets/popular-datasets.component';
 import { NotLoggedInDialogComponent } from './not-loggedIn-dialog/not-loggedIn-dialog.component';
 import { HttpLoaderFactory } from './shared/shared-translate.module';
 import { FormUtilsModule } from 'ngx-form-utils';
@@ -71,13 +67,9 @@ declarations: [
   HeaderPopupComponent,
   NewsSidebarComponent,
   NewsSidebarItemComponent,
-  CategoryOverviewComponent,
-  LatestDatasetsComponent,
-  PopularDatasetsComponent,
   MouseScrollIconComponent,
   DesktopComponent,
   NotFoundComponent,
-  OrganizationOverviewComponent,
   UserProfileComponent,
   UserProfileEditComponent,
 ],
@@ -126,11 +118,9 @@ exports: [
   HeaderPopupComponent,
   NewsSidebarComponent,
   NewsSidebarItemComponent,
-  CategoryOverviewComponent,
   MouseScrollIconComponent,
   DesktopComponent,
   NotFoundComponent,
-  OrganizationOverviewComponent,
   UserProfileComponent,
   AuthModule,
   HttpClientModule,

@@ -33,13 +33,14 @@
                 <div class="star-content">
                   <star-rating [rating]="dataset?.kv?.rating"></star-rating>
                 </div>
-                <div class="count">
+              </div>
+
+              <div class="item-view-count">
                   <div class="icon">
                     <img src="./assets/icons/focus (1).svg" />
                   </div>
                   <div class="text">{{ dataset?.kv?.reviewCount }}</div>
                 </div>
-              </div>
 
               <div class="box-perspective right" forLoggedIn (clicked)="onFavoriteMark(dataset.kv.id)" *ngIf="!isFavorite() else unsave">
                   <div class="text pr-2">
@@ -79,7 +80,12 @@
                 <div class="item-icon {{ api?.format }}">{{ api?.format }}</div>
                 <div class="item-description">{{ api?.descriptionEn }}</div>
                 <div class="item-links">
-                  <a class="info-link" title="Preview" (click)="onResourcesNavigate(dataset.kv.id, api)">
+                  <a class="info-link" title="Preview" (click)="onResourcesNavigate(dataset.kv.id, api)"
+                   *ngIf="api?.formatTypeCode !== 'FRMT1' || api?.format.toUpperCase() === 'GEOJSON'">
+                    <img src="./assets/icons/info.svg" />
+                  </a>
+                  <a class="info-link" title="Preview" target="_blank" [href]="api.openPortalLink"
+                   *ngIf="api?.formatTypeCode === 'FRMT1'  &&  api?.format.toUpperCase() !== 'GEOJSON'">
                     <img src="./assets/icons/info.svg" />
                   </a>
                   <a *ngIf="api.format.toUpperCase() !== 'GEOJSON'"

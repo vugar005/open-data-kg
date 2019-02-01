@@ -33,10 +33,12 @@ export class ModuleSidebarComponent implements OnInit, AfterViewInit {
     const match  = this.router.url.match(/[0-9]+/);
     if (match) {
         this.handleRouteId(match[0]);
+    } else {
+    //  this.handleRouteId(0);
     }
-     this.route.params.subscribe(res => {
-    //  this.handleRouteId(res);
-     });
+    //  this.route.params.subscribe(res => {
+    // //  this.handleRouteId(res);
+    //  });
   }
   handleRouteId(routeId) {
     const id = routeId || '0';
