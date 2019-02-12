@@ -12,15 +12,15 @@ import { LandingPageComponent } from './home/landing-page/landing-page.component
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
-  {path: 'home', component: HomeComponent, data: { breadcrumb: 'Home'}, resolve: [UserResolver], children: [
-    {path: '', component: LandingPageComponent, pathMatch: 'full'},
+  {path: 'home', component: HomeComponent, data: { breadcrumb: 'Home', state: 'home'}, resolve: [UserResolver], children: [
+    {path: '', component: LandingPageComponent, pathMatch: 'full', data: {state: 'landing-page'}},
     {path: 'datasets', loadChildren: './datasets/datasets.module#DatasetsModule', data: {  breadcrumb: 'details'}},
     {path: 'news', loadChildren: './news/news.module#NewsModule'},
     {path: 'blogs', loadChildren: './blog/blog.module#BlogModule'},
     {path: 'user-profile', component: UserProfileComponent},
     {path: 'announcements', loadChildren: './annoucements/announcements.module#AnnouncementsModule'},
   ]},
-  {path: 'login', component: LoginComponent},
+  {path: 'login', component: LoginComponent, data: {state: 'login'}},
   {path: 'register', component: RegisterComponent },
    {path: 'admin', loadChildren: './admin-panel/admin-panel.module#AdminPanelModule'},
    {path: '404', component: NotFoundComponent},

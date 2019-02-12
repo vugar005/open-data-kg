@@ -27,7 +27,6 @@ export class AdminPanelComponent implements OnInit, OnDestroy {
     if (!(this.modules && this.modules.length > 0)) {return; }
     const paths = this.router.url.split('/');
     if (paths.length <= 2) {
-      console.log('admin root')
       this.router.navigate([`/admin/${this.modules[0].url}`]);
     }
   }

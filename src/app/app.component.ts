@@ -7,16 +7,23 @@ import { Store } from '@ngrx/store';
 import { Observable, fromEvent } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { AutoSetToken, SetApiUrl, SetModules, SetUser } from './auth/store/auth.actions';
-import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
-import { filter, distinctUntilChanged, map } from 'rxjs/operators';
+import { Router, ActivatedRoute, NavigationEnd, Data, ChildActivationEnd, ActivationEnd } from '@angular/router';
+import { filter, distinctUntilChanged, map, take, switchMap, tap } from 'rxjs/operators';
 import { getHostname } from './app.utils';
 import cssVars from 'css-vars-ponyfill';
-
+import { trigger, transition, useAnimation, state } from '@angular/animations';
+import {rotateCubeToLeft, rotateCubeToRight} from 'ngx-router-animations';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  animations: [
+   // trigger('rotateCubeToLeft', [ transition('login => admin', useAnimation(rotateCubeToLeft))]),
+    trigger('rotateCubeToRight', [ transition('admin => home', useAnimation(rotateCubeToRight))]),
+    trigger('rotateCubeToLeft', [ transition('home => admin', useAnimation(rotateCubeToLeft))]),
+    trigger('rotateCubeAdmin', [ transition('login => admin', useAnimation(rotateCubeToLeft))]),
+  ],
 })
 
 export class AppComponent implements OnInit {
@@ -24,6 +31,7 @@ export class AppComponent implements OnInit {
   headerClass$: Observable<string>;
   globalNavClass$: Observable<string>;
   root: HTMLElement;
+  routeState: Data;
   constructor(
     private translateService: TranslateService,
     private store: Store<AppState>,
@@ -37,11 +45,16 @@ export class AppComponent implements OnInit {
      }, 3000)
   }
   ngOnInit() {
+    console.log('feb2')
     this.setHostname();
     this.tryAutoLogin();
     this.setDefaultLang();
     this.listenToOnlineChanges();
- //   this.initBreadCrumb();
+   // this.listenToRouteData();
+  }
+  getState(outlet) {
+  // console.log(outlet)
+    return outlet.activatedRouteData.state;
   }
   initBreadCrumb() {
     this.router.events
@@ -50,6 +63,16 @@ export class AppComponent implements OnInit {
       distinctUntilChanged(),
       map(event =>  this.sharedService.buildBreadCrumb(this.route.root))
     ).subscribe(res => console.log(res));
+  }
+  listenToRouteData() {
+    this.router.events
+    .pipe(
+      filter(event => event instanceof NavigationEnd),
+      map(() => this.route),
+      map(route => route.firstChild),
+      switchMap(route => route.data),
+      tap(res => console.log(res))
+      ).subscribe();
   }
   listenToOnlineChanges() {
     this.root = document.documentElement;

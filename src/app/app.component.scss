@@ -8,11 +8,11 @@
 .hide {
   display: none;
 }
-// :host:before {
-//   content: "";
-//   position: fixed;
-//   width: 100vw;
-//   height: 100vh;
-//   z-index: 9999;
-//   filter: grayscale(1);
-// }
+.router-wrapper {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: calc(100%);
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
