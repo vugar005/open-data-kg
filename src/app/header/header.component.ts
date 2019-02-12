@@ -48,10 +48,7 @@ export class HeaderComponent implements OnInit {
  //   setTimeout(() => this.enter = true, 3000)
   }
   onClose() {
-    setTimeout(() => {
-     this.showMenu = false;
-      this.store.dispatch(new SetHeaderPopupState(this.showMenu));
-    }, 300);
+       this.showMenu = false;
   }
   togglePopup() {
     this.showMenu = !this.showMenu;

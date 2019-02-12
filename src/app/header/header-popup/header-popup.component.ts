@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 import { Logout } from 'src/app/auth/store/auth.actions';
 import { Observable } from 'rxjs';
 import { isLoggedIn, isAdmin } from 'src/app/auth/store/auth.selectors';
+import { SetHeaderPopupState } from 'src/app/shared/store/ui.actions';
 
 @Component({
   selector: 'header-popup',
@@ -27,10 +28,9 @@ export class HeaderPopupComponent implements OnInit {
   }
   onNavigate(route: string, type: string) {
     this.close.next();
+    this.store.dispatch(new SetHeaderPopupState(false));
     /** Timeout because of header animation */
-   setTimeout(() => {
     this.router.navigate([route], {queryParams: {type: type}});
-   }, 0);
   }
   onLogout() {
     this.close.next();

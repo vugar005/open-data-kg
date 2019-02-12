@@ -16,7 +16,7 @@ export class DatasetEffects {
     switchMap((res: any) =>
      this.sharedService.getTableData('api/post/Permission/Datasets/GetFavoriteDatasetList')
      ),
-     mergeMap((res: HttpResponse<any>) => {
+     mergeMap((res: any) => {
        return [{
          type: DatasetsActionTypes.SET_FAVOURITE_DATEASETS,
          payload: res

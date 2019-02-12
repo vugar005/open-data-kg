@@ -76,9 +76,9 @@ export class NavStyleChangeDirective implements AfterViewInit, OnDestroy {
   }
 
   handleScrollEvent(e: WheelEvent) {
-   if (e.wheelDelta < 0) {
-     this.pinTop();
-   }
+  //  if (e.wheelDelta < 0) {
+  //    this.pinTop();
+  //  }
   }
   ngOnDestroy() {
     this._onDestroy$.next();
