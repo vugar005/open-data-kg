@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import {
   Component,
   OnInit,
@@ -12,6 +13,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { AppState } from 'src/app/reducers';
+import { DatasetTypeAheadAdapter } from 'src/app/datasets/dataset-typeahead.adapter';
 @Component({
   selector: 'desktop',
   templateUrl: './desktop.component.html',
@@ -24,7 +26,8 @@ export class DesktopComponent implements OnInit, AfterViewInit {
   faChevronRight = faChevronRight;
   globalNavClass$: Observable<string>;
   inputValue: string;
-  constructor(private store: Store<AppState>, private router: Router) {
+  adapter = new  DatasetTypeAheadAdapter(this.http);
+  constructor(private store: Store<AppState>, private router: Router, private http: HttpClient) {
   }
 
   ngOnInit() {}

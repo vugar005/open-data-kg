@@ -1,8 +1,10 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { SelectType } from 'src/app/shared/models/select-type.model';
 import { SharedService } from 'src/app/shared/shared.service';
+import { NewsTypeAheadAdapter } from './news-typeahead.adapter';
 
 @Component({
   selector: 'news-filters',
@@ -10,11 +12,13 @@ import { SharedService } from 'src/app/shared/shared.service';
   styleUrls: ['./news-filters.component.scss']
 })
 export class NewsFiltersComponent {
+  @ViewChild('f') form: NgForm;
   @Input() type: string;
   @Output() formSubmit = new EventEmitter<NgForm>();
   @Output() public selected = new EventEmitter<any>();
   catTypes$: Observable<SelectType[]>;
-  constructor(private sharedService: SharedService) {
+  adapter = new NewsTypeAheadAdapter(this.http);
+  constructor(private sharedService: SharedService, private http: HttpClient) {
     this.catTypes$ = this.sharedService.getTypes('1000008');
    }
 
@@ -26,9 +30,9 @@ export class NewsFiltersComponent {
   onSubmit(form: NgForm) {
     this.formSubmit.next(form);
   }
-  onSelected(e, f: NgForm) {
-    f.controls['title'].setValue(e.title);
-    this.onSubmit(f);
+  handleResultSelected(e) {
+    this.form.controls['title'].setValue(e.title);
+    this.onSubmit(this.form);
+ //   this.form.controls['title'].setValue('');
   }
-
 }

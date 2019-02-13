@@ -15,17 +15,22 @@
             </div>
             <div class="input-co">
                 <input class="ng-input" placeholder="{{'~searchDataset' | translate}}" (click)="resetMouse()"
-                typehead-co
-                [url]="'api/get/Permission/Datasets/GlobalSearchForDataset'"
-                [apiKey]="'datasetFullname'"
-                [listItemLabel]="'name'"
-                (selected)="handleResultSelected($event)"
+                simpleTypeAhead
+                [taListItemLabel]="'name'"
+                (taSelected)="handleResultSelected($event)"
+                (taShowAllSelected)="handleShowAll()"
                 [(ngModel)]="inputValue"
+                [taAdapter]="adapter"
+                [taShowAllTpl]="showAllTpl"
                 >
                 <div class="search-ico" (click)="handleShowAll()">
                 <img src="./assets/icons/search.svg">
                 </div>
+                <ng-template #showAllTpl>
+                  Show All
+               </ng-template>
             </div>
+
        </div>
 
       </div>

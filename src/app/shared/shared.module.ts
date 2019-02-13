@@ -1,3 +1,4 @@
+import { NgxSimpleTypeAheadModule } from 'ngx-simple-typeahead';
 import { ImgSrcPipeModule } from './pipes/img-src-pipe.module';
 import { SharedTranslateModule } from './shared-translate.module';
 import { ProgressSpinnerComponent } from './../progress-spinner/progress-spinner.component';
@@ -17,7 +18,6 @@ import { RouterModule } from '@angular/router';
 import { ScrollListenerDirective } from './directives/scroll-listener.directive';
 import { CommentsModule } from '../comments/comments.module';
 import { LangNavComponent } from '../lang-nav/lang-nav.component';
-import { TypeheadModule } from 'ngx-typehead-dir';
 import { GlobalNavModule } from '../global-nav/global-nav.module';
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
@@ -38,7 +38,7 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
       FormsModule,
       RouterModule,
       CommentsModule,
-      TypeheadModule,
+      NgxSimpleTypeAheadModule,
       MatProgressSpinnerModule,
       MatButtonModule,
       SharedTranslateModule,
@@ -58,7 +58,7 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
       ScrollListenerDirective,
       GlobalNavComponent,
       LangNavComponent,
-      TypeheadModule,
+      NgxSimpleTypeAheadModule,
       MatButtonModule,
       CommentsModule,
       MatProgressSpinnerModule,

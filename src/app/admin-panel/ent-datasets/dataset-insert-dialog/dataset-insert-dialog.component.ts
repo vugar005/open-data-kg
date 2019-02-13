@@ -7,7 +7,6 @@ import { MAT_DIALOG_DATA, MatDialogRef, MatDialog } from '@angular/material';
 import { ModulesInsertDialogComponent } from '../../ent-modules/modules-insert-dialog/modules-insert-dialog.component';
 import { SharedService } from 'src/app/shared/shared.service';
 import { NgxFormUtils } from 'ngx-form-utils';
-import { ApiConfig } from 'nt-table/lib/api-config.model';
 import { DatasetApiInsertComponent } from './dataset-api-insert/dataset-api-insert.component';
 import { DatasetCategoryInsertComponent } from './dataset-category-insert/dataset-category-insert.component';
 import { DatasetKeywordInsertComponent } from './dataset-keyword-insert/dataset-keyword-insert.component';
@@ -20,7 +19,7 @@ import { HttpClient } from '@angular/common/http';
 import { addAttachFileToolbar } from 'src/app/shared/shared-methods';
 import { FileManagerDialogComponent } from '../../file-manager-dialog/file-manager-dialog.component';
 import { SharedAdminService } from '../../shared/shared-admin.service';
-import { TableEditerAction, NgxNativeTableComponent } from 'ngx-native-table';
+import { TableEditerAction, NgxNativeTableComponent, ApiConfig } from 'ngx-native-table';
 
 @Component({
   selector: 'app-dataset-insert-dialog',

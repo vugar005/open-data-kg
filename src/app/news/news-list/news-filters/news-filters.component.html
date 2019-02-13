@@ -1,12 +1,13 @@
 <form #f="ngForm" class=" filter-form" >
   <div class="search-box">
-    <input placeholder="{{'~search' | translate}}" class="ng-input"
-    typehead-co
-    [url]="'api/get/Permission/Sharing/GetNewsForCommon'"
-    [apiKey]="'title'"
-    [listItemLabel]="'title'"
-    (selected)="onSelected($event,f)" ngModel
-    name="title" (keydown)="onInputEnter($event, f)">
+    <input class="ng-input" placeholder="{{'~searchDataset' | translate}}"
+    simpleTypeAhead
+    [taListItemLabel]="'title'"
+    (taSelected)="handleResultSelected($event)"
+    [taAdapter]="adapter"
+    ngModel name="title"
+    [autocomplete]="'off'"
+    >
     <div class="search-ico" (click)="onSubmit(f)">
       <img src="./assets/icons/search-icon.svg">
     </div>

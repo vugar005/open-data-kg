@@ -1,8 +1,7 @@
 import { MultiLangInsertComponent } from './multi-lang-insert/multi-lang-insert.component';
 import { Component, ViewChild } from '@angular/core';
-import { ApiConfig } from 'nt-table/lib/api-config.model';
 import { SharedAdminService } from '../shared/shared-admin.service';
-import { TableEditerAction, NgxNativeTableComponent } from 'ngx-native-table';
+import { TableEditerAction, NgxNativeTableComponent, ApiConfig } from 'ngx-native-table';
 
 @Component({
   selector: 'ent-multi-lang',

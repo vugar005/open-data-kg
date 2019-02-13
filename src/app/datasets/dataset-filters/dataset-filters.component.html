@@ -3,18 +3,21 @@
     <div class="row align-items-center justify-content-between">
       <div class="col-12 col-sm-7 col-lg-8 p-0">
           <div class="search-box">
-              <input placeholder="{{'~searchDataset' | translate}}" class="ng-input" name="datasetFullname"
-              typehead-co
-              [url]="'api/get/Permission/Datasets/GlobalSearchForDataset'"
-              [apiKey]="'datasetFullname'"
-              [listItemLabel]="'name'"
-              (selected)="onSelected($event)"
-             (keydown)="onInputEnter($event, f)"
+            <input class="ng-input" placeholder="{{'~searchDataset' | translate}}"
+            simpleTypeAhead
+            [taListItemLabel]="'name'"
+            (taSelected)="handleResultSelected($event)"
+            (taShowAllSelected)="handleShowAll()"
             ngModel name="datasetFullname"
-             >
-              <div class="search-ico" (click)="onSubmit(f)">
-                <img src="./assets/icons/search-icon.svg">
-              </div>
+            [taAdapter]="adapter"
+            [taShowAllTpl]="showAllTpl"
+            >
+            <div class="search-ico" (click)="onSubmit(f)">
+            <img src="./assets/icons/search.svg">
+            </div>
+            <ng-template #showAllTpl>
+              Show All
+           </ng-template>
             </div>
       </div>
       <div class="col-12 col-sm-4 col-lg-3 p-0">
@@ -30,8 +33,6 @@
       </div>
     </div>
   </div>
-
-
 
 <input [hidden]="true">
 </form>

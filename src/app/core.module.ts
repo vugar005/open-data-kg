@@ -29,7 +29,6 @@ import { Ng2IziToastModule } from 'ng2-izitoast';
 import { SharedAcrossModule } from './shared/shared-across.module';
 import { ClickOutsideModule } from 'ng-click-outside';
 import { SharedModule } from './shared/shared.module';
-import { TypeheadModule } from 'ngx-typehead-dir';
 import { SharedRbacModule } from './shared/shared-rbac.module';
 import { HttpClientBusyModule } from 'ngx-httpclient-busy';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -48,6 +47,7 @@ import { DesktopComponent } from './home/landing-page/desktop/desktop.component'
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+import {NgxSimpleTypeAheadModule} from 'ngx-simple-typeahead';
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
 };
@@ -88,7 +88,7 @@ imports: [
   SharedAcrossModule,
   ClickOutsideModule,
   PerfectScrollbarModule,
-  TypeheadModule,
+  NgxSimpleTypeAheadModule,
   SharedRbacModule,
   FormUtilsModule,
   PerfectScrollbarModule,
@@ -132,7 +132,7 @@ exports: [
   ClickOutsideModule,
   PerfectScrollbarModule,
   SharedModule,
-  TypeheadModule,
+  NgxSimpleTypeAheadModule,
   SharedRbacModule,
   HttpClientBusyModule,
   TranslateModule,
