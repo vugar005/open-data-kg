@@ -33,9 +33,10 @@
 .wrapper-div {
   display: flex;
   position: relative;
-  width: calc(100% - 256px);
+  width: calc(100% - var(--kg-admin-right-aside-width));
   height: 100vh;
   padding: var(--kg-admin-padding) 0;
   overflow-x: auto;
   overflow-y: hidden;
+  min-width: 625px;
 }

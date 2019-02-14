@@ -3,7 +3,7 @@
     {{'~news' | translate}}
   </div>
    <div class="ng-admin-actions-template"  >
-    <button (click)="table.onPrintSelected()" >{{'~print' | translate}}</button>
+    <button (click)="table.onPrint()" >{{'~print' | translate}}</button>
     <button  *rbacAllow="['1000014', 'ADD']" (click)="table.addData()" >{{'~addData' | translate}}</button>
     <button  *rbacAllow="['1000014', 'DELETE']" (click)="table.onMultiRemove()"
      [disabled]="!(table?.isRowSelected)">{{'~removeSelected' | translate}}</button>

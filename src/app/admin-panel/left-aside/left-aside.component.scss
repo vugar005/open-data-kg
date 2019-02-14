@@ -1,7 +1,7 @@
 :host {
   display: flex;
   flex-direction: column;
-  width: 256px;
+  width: var(--kg-admin-left-aside-width);
   height: 100vh;
   padding: var(--kg-admin-padding);
   height: calc(100vh);
@@ -98,10 +98,5 @@
         color: #FFFFFF;
       }
     }
-  }
-}
-@media all and (min-width: 1199px) {
-  :host {
-    width: 300px;
   }
 }

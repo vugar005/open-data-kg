@@ -2,9 +2,9 @@
   display: block;
   margin-left: auto;
   height: calc(100vh - 16px);
-  width: var(--kg-right-aside-width);
+  width: var(--kg-admin-right-aside-width);
   border-radius: 5px;
-  margin: 0 var(--kg-admin-padding);
+  padding: 0 var(--kg-admin-padding);
 }
 
 .side-nav {

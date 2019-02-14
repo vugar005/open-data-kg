@@ -6,18 +6,19 @@
             <div class="upload-item-img">
 
                 <ng-container *ngIf="!imgId">
-                  <img src="./assets/icons/avatar.svg" (click)="onUpload()">
+                  <img src="./assets/icons/avatar.svg" >
                 </ng-container>
 
                 <ng-container *ngIf="imgId">
-                  <img src="http://192.168.1.23:8080/DispatcherRest/api/get/file/{{imgId}}" (click)="onUpload()" onerror="this.src = './assets/icons/avatar.svg'">
+                  <img  src="{{imgId | imgSrc}}"  onerror="this.src = './assets/icons/avatar.svg'">
                 </ng-container>
                 <div class="img-corners">
                   <div class="arrow"></div>
                   <div class="arrow-2"></div>
                 </div>
                 <div class="upload-div animated slideInUp">
-                  <p>{{'~uploadImg' | translate}}</p>
+                  <p *ngIf="!imgId" (click)="onUpload()">{{'~uploadImg' | translate}}</p>
+                  <p *ngIf="imgId" class="remove-img" (click)="onRemoveFile(imgId)">{{'~removeImg' | translate}}</p>
                 </div>
 
               </div>

@@ -56,5 +56,8 @@ export class RegisterComponent implements OnInit, OnDestroy, AfterViewInit {
       dialogRef.close();
     });
   }
+  onRemoveFile(id: string) {
+    this.sharedService.removeFile(id).subscribe(res => this.imgId = undefined);
+ }
 
 }

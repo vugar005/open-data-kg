@@ -9,18 +9,19 @@
                 <div class="upload-item-img">
 
                     <ng-container *ngIf="!imgId">
-                      <img src="./assets/icons/governement.svg" (click)="onUpload()">
+                      <img src="./assets/icons/governement.svg" >
                     </ng-container>
 
                     <ng-container *ngIf="imgId">
-                      <img src="{{imgId | imgSrc}}" (click)="onUpload()" onerror="this.src = './assets/icons/governement.svg'">
+                      <img src="{{imgId | imgSrc}}"  onerror="this.src = './assets/icons/governement.svg'">
                     </ng-container>
                     <div class="img-corners">
                       <div class="arrow"></div>
                       <div class="arrow-2"></div>
                     </div>
                     <div class="upload-div animated slideInUp">
-                      <p>{{'~uploadImage' | translate}}</p>
+                      <p *ngIf="!imgId" (click)="onUpload()">{{'~uploadImg' | translate}}</p>
+                      <p *ngIf="imgId" class="remove-img" (click)="onRemoveFile(imgId)">{{'~removeImg' | translate}}</p>
                     </div>
 
                   </div>

@@ -48,6 +48,9 @@ export class UserProfileEditComponent implements OnInit {
         dialogRef.close();
       });
     }
+    onRemoveFile(id: string) {
+      this.sharedService.removeFile(id).subscribe(res => this.user.photoFileId = undefined);
+   }
     onSubmit(f: NgForm) {
      this.http.post('api/post/profile/change',  f.value).subscribe((res: any) => {
      if (res.code === 'INVALID_PARAMS') {

@@ -5,7 +5,7 @@
    <div class="ng-admin-actions-template"  >
     <button (click)="table.onPrint()" >{{'~print' | translate}}</button>
     <button  *rbacAllow="['1000001', 'ADD']" (click)="table.addData()" >{{'~addData' | translate}}</button>
-    <button  *rbacAllow="['1000001', 'DELETE']" (click)="table.onRemoveSelected()"
+    <button  *rbacAllow="['1000001', 'DELETE']" (click)="table.onMultiRemove()"
      [disabled]="!(table?.isRowSelected)">{{'~removeSelected' | translate}}</button>
       <mat-select placeholder="Toggle Columns" [multiple]="true"
                (selectionChange)="table?.toggleColumns($event)"

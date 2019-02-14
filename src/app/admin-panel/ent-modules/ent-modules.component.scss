@@ -3,5 +3,6 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  width: calc(100vw - var(--kg-admin-left-aside-width) - var(--kg-admin-right-aside-width));
   box-shadow: 0.06rem 0.25rem 1.1rem rgba(0, 0, 0, 0.05);
 }

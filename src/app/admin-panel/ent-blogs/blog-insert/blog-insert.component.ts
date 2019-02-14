@@ -40,6 +40,9 @@ export class BlogInsertComponent {
         dialogRef.close();
       });
     }
+    onRemoveFile(id: string) {
+      this.sharedService.removeFile(id).subscribe(res => this.imgId = undefined);
+   }
     onEditorInit() {
       return addAttachFileToolbar(this.dialog, FileManagerDialogComponent);
     }

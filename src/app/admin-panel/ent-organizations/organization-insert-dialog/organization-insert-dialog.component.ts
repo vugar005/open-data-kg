@@ -107,4 +107,7 @@ export class OrganizationInsertDialogComponent implements OnInit {
         dialogRef.close();
       });
     }
+    onRemoveFile(id: string) {
+      this.sharedService.removeFile(id).subscribe(res => this.imgId = undefined);
+   }
 }

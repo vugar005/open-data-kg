@@ -283,19 +283,8 @@ return this.getTableData(url, kv, skipAdmin)
   );
 
 }
-private mapFileId(res: any) {
-  if (!(res && res.r)) {return; }
- const newRows = res.r.map(data => {
-    if (data.fileId) {
-      return {
-        ...data,
-        fileId: `${this.hostname}/api/get/file/${data.fileId}`
-      };
-    }
-    return data;
-  });
-  res.r = newRows;
-  return res;
+removeFile(id: string): Observable<any> {
+  return this.http.post(`api/post/file/${id}/remove`, {});
 }
 
 }

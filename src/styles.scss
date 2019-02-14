@@ -13,7 +13,8 @@
   --kg-wrapper-background: #f5f6fa;
   --kg-dataset-filters-height: 88px;
   --kg-admin-padding: 0.5rem;
-  --kg-right-aside-width: 64px;
+  --kg-admin-right-aside-width: 80px;
+  --kg-admin-left-aside-width: 300px;
  // --kg-background-image: linear-gradient(to right,#84817a, #aaa69d);
 }
 * {
@@ -170,7 +171,7 @@ img {
     background: lightgrey;
     padding: 7px;
     text-align: center;
-    pointer-events: none;
+   // pointer-events: none;
     }
     &:hover {
       .upload-div {
@@ -333,9 +334,12 @@ img {
 }
 
 @media all and (max-width: 1199px) {
- html {
-  font-size: 15px;
- }
+  html {
+    font-size: 15px;
+  }
+  :root {
+      --kg-admin-left-aside-width: 256px;
+  }
 }
 @media all and (max-width: 992px) {
   html {
