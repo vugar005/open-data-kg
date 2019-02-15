@@ -19,6 +19,7 @@ import { ScrollListenerDirective } from './directives/scroll-listener.directive'
 import { CommentsModule } from '../comments/comments.module';
 import { LangNavComponent } from '../lang-nav/lang-nav.component';
 import { GlobalNavModule } from '../global-nav/global-nav.module';
+import { QuicklinkModule } from 'ngx-quicklink';
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
   slidesPerView: 'auto'
@@ -43,7 +44,8 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
       MatButtonModule,
       SharedTranslateModule,
       ImgSrcPipeModule,
-      GlobalNavModule
+      GlobalNavModule,
+      QuicklinkModule
     ],
     exports: [
       CommonModule,
@@ -64,7 +66,8 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
       MatProgressSpinnerModule,
       ProgressSpinnerComponent,
       ImgSrcPipeModule,
-      GlobalNavModule
+      GlobalNavModule,
+      QuicklinkModule
     ],
     providers: [
       {

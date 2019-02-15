@@ -9,7 +9,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { AppCustomPreloader } from './app-custom-preloader';
 import { UserResolver } from './shared/resolvers/user.resolver';
 import { LandingPageComponent } from './home/landing-page/landing-page.component';
-
+import { QuicklinkStrategy} from 'ngx-quicklink';
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'home', component: HomeComponent, data: { breadcrumb: 'Home', state: 'home'}, resolve: [UserResolver], children: [

@@ -10,12 +10,12 @@
             <div class="name">{{'~news' | translate}}</div>
           </div>
 
-          <div class="item " (click)="onNavigate('home/news', 'Announcement')" >
+          <a class="item" href="/admin" >
             <div class="icon">
               <img src="./assets/icons/nav-annoucement.svg">
             </div>
             <div class="name">{{'~announcements' | translate}}</div>
-          </div>
+          </a>
 
           <div class="item blog" (click)="onNavigate('home/news', 'Blog')" routerLinkActive="router-link-active">
               <div class="icon">

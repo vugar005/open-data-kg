@@ -1,3 +1,4 @@
+import { QuicklinkModule } from 'ngx-quicklink';
 import { SharedAcrossModule } from './../../shared/shared-across.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgModule} from '@angular/core';
@@ -30,6 +31,7 @@ import { MaterialModule } from 'src/app/material.module';
     FileManagerModule,
     NgxNativeTableModule,
     MaterialModule,
+    QuicklinkModule
   ],
   exports: [
     FontAwesomeModule,
@@ -46,7 +48,8 @@ import { MaterialModule } from 'src/app/material.module';
     ImgSrcPipeModule,
     FileManagerModule,
     NgxNativeTableModule,
-    MaterialModule
+    MaterialModule,
+    QuicklinkModule
     ],
   declarations: [
     FileManagerDialogComponent
