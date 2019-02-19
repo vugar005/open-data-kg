@@ -3,7 +3,7 @@
   flex-direction: column;
   background: var(--kg-wrapper-background);
  // height: calc(100vh - var(--kg-header-height));
-  flex: 1;
+  flex: 1 0 auto;
   position: relative;
   z-index: 6; // 1 less than app-header
 }

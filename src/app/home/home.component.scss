@@ -8,3 +8,8 @@
   background-image: var(--kg-background-image);
 
 }
+#home-wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}

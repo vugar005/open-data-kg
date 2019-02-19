@@ -80,14 +80,17 @@
                 <div class="item-icon {{ api?.format }}">{{ api?.format }}</div>
                 <div class="item-description">{{ api?.descriptionEn }}</div>
                 <div class="item-links">
+
                   <a class="info-link" title="Preview" (click)="onResourcesNavigate(dataset.kv.id, api)"
                    *ngIf="api?.formatTypeCode !== 'FRMT1' || api?.format.toUpperCase() === 'GEOJSON'">
                     <img src="./assets/icons/info.svg" />
                   </a>
+
                   <a class="info-link" title="Preview" target="_blank" [href]="api.openPortalLink"
                    *ngIf="api?.formatTypeCode === 'FRMT1'  &&  api?.format.toUpperCase() !== 'GEOJSON'">
                     <img src="./assets/icons/info.svg" />
                   </a>
+
                   <a *ngIf="api.format.toUpperCase() !== 'GEOJSON'"
                     class="api-link"
                     href="{{ api?.openPortalLink ? api?.openPortalLink : javascript.void()}}"

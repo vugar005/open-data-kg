@@ -1,23 +1,22 @@
-<div class="sidebar-co" *ngIf="render" >
+<div class="sidebar-co" *ngIf="visibleItems"  >
     <div class="sidebar-header">
         <img src="./assets/icons/news-top-arrow.svg">
         <div class="see-all" [routerLink]="['/home/news']" [queryParams]="{type: 'News'}">{{'~seeAllNews' | translate}}</div>
       </div>
-     <div class="items-co">
-        <ng-container  *ngFor ="let item of items;let i= index">
-            <news-sidebar-item [item]="item" [index]="i" *ngIf=" i+1 > startIndex && i +1 <= endIndex "
-              [@slideOutRight]="slideOutRight"
-              routerLink="/home/news/{{item.id}}"
-              [queryParams]="{type: 'News'}"
-            ></news-sidebar-item>
-        </ng-container>
+     <div [@slideInNews]="visibleItems" class="items-co">
+
+            <news-sidebar-item   *ngFor ="let item of visibleItems;let i= index"  [item]="item" [index]="i"
+            routerLink="/home/news/{{item.id}}"
+            [queryParams]="{type: 'News'}"
+          ></news-sidebar-item>
+
      </div>
 
       <div class="sidebar-footer">
-          <div class="swiper-arrow"  (click)="onPrev()">
+          <div class="swiper-arrow"  (click)="onNext()">
               <img src="./assets/icons/sidebar-arrow-right.svg" class="svg">
             </div>
-          <div class="swiper-arrow" (click)="onNext()">
+          <div class="swiper-arrow" (click)="onPrev()">
             <img src="./assets/icons/sidebar-arrow-left.svg" class="svg">
           </div>
 

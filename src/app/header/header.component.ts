@@ -49,6 +49,7 @@ export class HeaderComponent implements OnInit {
   }
   onClose() {
        this.showMenu = false;
+       this.store.dispatch(new SetHeaderPopupState(this.showMenu));
   }
   togglePopup() {
     this.showMenu = !this.showMenu;

@@ -19,17 +19,24 @@
   padding-top: 8px;
   height: calc(100vh - var(--kg-header-height));
 }
-.dataset-info-wrapper {
+.dataset-info {
   display: flex;
   flex-direction: column;
   padding: 32px 40px;
   background: #ffffff;
   border-radius: 10px;
-  .dataset-name {
-    font-size: 18px;
-    color: #333333;
+  .dataset-info__header {
+    display: flex;
+    justify-content: space-between;
     padding-bottom: 30px;
-    font-weight: bold;
+    .dataset-name {
+      font-size: 18px;
+      color: #333333;
+      font-weight: bold;
+    }
+    .dataset-download {
+
+    }
   }
   .dataset-description {
     font-size: 14px;

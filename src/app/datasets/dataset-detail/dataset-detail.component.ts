@@ -82,9 +82,7 @@ export class DatasetDetailComponent implements OnInit, OnChanges {
  });
   }
   onRatingUpdated(e) {
-   if (e) {
      this.sharedService.createNotification('sucess', 'Rating submitted!');
-   }
   }
   onFavoriteMark(id: string) {
     const obj = {

@@ -1,7 +1,7 @@
 
       <mat-accordion [displayMode]="'flat'"  [multi]="true" >
         <mat-expansion-panel *ngFor="let item of (list$ | async)?.tbl;let first=first" [expanded]="true">
-          <mat-expansion-panel-header [collapsedHeight]="'60px'" [expandedHeight]="'60px'">
+          <mat-expansion-panel-header [collapsedHeight]="'60px'"  [expandedHeight]="'60px'">
             <mat-panel-title>
               {{item?.tn}}
             </mat-panel-title>

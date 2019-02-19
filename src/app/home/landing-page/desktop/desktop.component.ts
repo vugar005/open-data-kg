@@ -14,6 +14,7 @@ import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { AppState } from 'src/app/reducers';
 import { DatasetTypeAheadAdapter } from 'src/app/datasets/dataset-typeahead.adapter';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'desktop',
   templateUrl: './desktop.component.html',
@@ -27,8 +28,10 @@ export class DesktopComponent implements OnInit, AfterViewInit {
   globalNavClass$: Observable<string>;
   inputValue: string;
   adapter = new  DatasetTypeAheadAdapter(this.http);
+  isProd: boolean;
   constructor(private store: Store<AppState>, private router: Router, private http: HttpClient) {
-  }
+     this.isProd = environment.production;
+ }
 
   ngOnInit() {}
   resetMouse() {

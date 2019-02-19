@@ -84,7 +84,11 @@ export class NewsListComponent implements OnInit, AfterViewInit, OnDestroy {
      value = this.slidesPerView = 5;
     } else if (window.innerWidth > 992) {
      value =  this.slidesPerView = 4;
-    }
+    } else if (window.innerWidth > 600) {
+      value =  this.slidesPerView = 3;
+     }  else if (window.innerWidth > 576) {
+      value =  this.slidesPerView = 2;
+     }
     return value;
   }
   buidRange(p: number): string {

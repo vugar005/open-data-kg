@@ -28,13 +28,12 @@ export class HeaderPopupComponent implements OnInit {
   }
   onNavigate(route: string, type: string) {
     this.close.next();
-    this.store.dispatch(new SetHeaderPopupState(false));
     /** Timeout because of header animation */
     this.router.navigate([route], {queryParams: {type: type}});
   }
   onLogout() {
     this.close.next();
-  this.store.dispatch(new Logout());
+    this.store.dispatch(new Logout());
   }
   onClose(el: HTMLElement) {
     this.open = false;

@@ -8,6 +8,9 @@
 
 }
 .sidebar-co {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   .sidebar-header {
     display: flex;
     justify-content: flex-end;
@@ -27,7 +30,8 @@
     }
   }
   .items-co {
-    min-height: 20.3125rem;
+    height: 310px;
+  //  min-height: 20.3125rem;
   }
   .sidebar-footer {
     display: flex;

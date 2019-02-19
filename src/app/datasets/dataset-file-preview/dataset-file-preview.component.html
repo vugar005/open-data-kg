@@ -13,12 +13,28 @@
   <div class="row">
     <div class="col-12">
       <div class="dataset-file-preview-wrapper">
-        <div class="dataset-info-wrapper">
-          <div class="dataset-name">{{ dataset?.kv.name }}</div>
-          <div class="dataset-description" [innerHTML]="dataset?.kv.description" ></div>
+        <div class="dataset-info">
+          <div class="dataset-info__header">
+              <div class="dataset-name">{{ dataset?.kv.name }}</div>
+              <div class="dataset-download" *ngIf="currentApi">
+                  <a *ngIf="currentApi.format.toUpperCase() !== 'GEOJSON'"
+                  class="api-link"
+                  href="{{ currentApi?.openPortalLink ? currentApi?.openPortalLink : javascript.void()}}"
+                  target="_blank"
+                  title="Download"
+                >
+                <button mat-stroked-button color="primary" [disabled]="!currentApi?.openPortalLink">Download</button>
+                </a>
+
+          </div>
         </div>
 
-        <div class="file-box">
+        <div class="dataset-info__bottom">
+            <div class="dataset-description" [innerHTML]="dataset?.kv.description" ></div>
+        </div>
+      </div>
+
+      <div class="file-box">
           <div
             class="iframe-wrapper" *ngIf="dataLink"
 
@@ -28,7 +44,6 @@
              <!-- <other-json-preview *ngIf="apiFormat === 'XML'" [link]="dataLink"></other-json-preview> -->
           </div>
         </div>
-      </div>
     </div>
   </div>
 </div>

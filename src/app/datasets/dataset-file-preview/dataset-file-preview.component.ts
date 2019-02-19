@@ -1,3 +1,4 @@
+import { filter } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { DatasetDetail } from './../models/dataset-detail.model';
@@ -13,6 +14,7 @@ import { TableModel } from 'src/app/shared/models/table.model';
 })
 export class DatasetFilePreviewComponent implements OnInit {
   dataset: TableModel;
+   currentApi: any;
   dataLink: string;
   apiFormat: string;
   googleDocsFormat = ['DOC', 'XLS', 'PPT', 'DOCX', 'XLSX', 'PPTX', 'PDF', 'HTML', 'TXT',  'CSV', 'XML'];
@@ -49,6 +51,8 @@ export class DatasetFilePreviewComponent implements OnInit {
     };
     this.sharedService.getTableData('api/get/Permission/Datasets/GetDatasetDetails', body).subscribe(res => {
       this.dataset = res;
+      const datasetApis = this.dataset.tbl.find(tb => tb.tn === 'API');
+      this.currentApi = datasetApis.r.find(api => api.format === this.apiFormat);
       const apiTbl = this.dataset.tbl.find( tbl => tbl.tn === 'API');
       const apiRow = apiTbl.r.find( row => row.format === this.apiFormat);
       if (apiRow.formatTypeCode === 'FRMT1') {

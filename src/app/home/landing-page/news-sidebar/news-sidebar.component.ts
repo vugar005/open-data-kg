@@ -1,7 +1,6 @@
-import { concat } from 'rxjs/operators';
+import { slideInNews } from './../../../animations';
 import { Component, OnInit } from '@angular/core';
-import { trigger, transition, useAnimation } from '@angular/animations';
-import { slideInRight, slideInLeft, slideOutRight } from 'ng-animate';
+import { trigger,  useAnimation, transition } from '@angular/animations';
 import { NewsItem } from 'src/app/news/models/news-item.model';
 import { NewsQuery } from 'src/app/news/models/news-query.model';
 import { SharedService } from 'src/app/shared/shared.service';
@@ -12,46 +11,45 @@ import { interval } from 'rxjs';
   templateUrl: './news-sidebar.component.html',
   styleUrls: ['./news-sidebar.component.scss'],
   animations: [
-    trigger('slideOutRight', [transition(':leave', useAnimation(slideOutRight, { params: { timing: 0.500, delay: 0 }}))])
+    trigger('slideInNews', [ transition('* => *',  useAnimation(slideInNews))])
   ],
 })
 export class NewsSidebarComponent implements OnInit {
-  render = false;
   startIndex = 7;
   endIndex = 10;
-  slideOutRight = true;
   items: NewsItem[];
+  visibleItems: NewsItem[];
   rowCount: number;
+  stateChange: number;
   constructor(private sharedService: SharedService) { }
 
   ngOnInit() {
     setTimeout(() => {
-      this.render = true;
       this.getNews();
    //   this.sharedService.replaceSvgWitInline();
-    }, 2000);
+    }, 3000);
     this.initAutoSlide();
   }
   initAutoSlide() {
-  interval(1000).subscribe(res => {
-  //  if (this.s) {}
-  });
+    interval(1000).subscribe(res => {
+    });
+  }
+  changeNewsState() {
+    this.stateChange = Math.random();
+    this.visibleItems = [];
+    setTimeout(() => this.visibleItems = this.items.filter((item, i) => i + 1 > this.startIndex && i + 1 <= this.endIndex), 0)
   }
   onPrev() {
     if (this.startIndex === 0) {return; }
     this.startIndex -= 3;
     this.endIndex -= 3;
-    // setTimeout(() =>  {
-    //   this.startIndex -= 1;
-    // }, 550);
-    // setTimeout(() =>  {
-    //   this.startIndex -= 1;
-    // }, 1100);
+    this.changeNewsState();
   }
   onNext() {
     if (this.endIndex ===  this.rowCount) {return; }
     this.startIndex += 3;
     this.endIndex += 3;
+    this.changeNewsState();
   }
   getNews(query = new NewsQuery()) {
     this.items = [];
@@ -65,11 +63,14 @@ export class NewsSidebarComponent implements OnInit {
    this.sharedService.getTableData(`api/get/Permission/Sharing/GetNewsForCommon`, body)
    .subscribe(res => {
     if (!res && res.tbl && res.tbl[0]) {return; }
-     this.items = res.tbl[0].r.concat(res.tbl[0].r).concat(res.tbl[0].r);
-    console.log(this.items)
-     this.rowCount = res.tbl[0].rowCount * 3;
+     const items = res.tbl[0].r;
+    // this.items = items.slice(0, 6)
+     this.items = items;
+     this.rowCount = res.tbl[0].rowCount;
      this.endIndex = this.rowCount;
      this.startIndex = this.rowCount - 3;
+   this.changeNewsState();
+
     });
   }
 

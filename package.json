@@ -58,7 +58,7 @@
     "ngx-form-utils": "0.0.3",
     "ngx-httpclient-busy": "^0.2.2",
     "ngx-input": "0.0.1",
-    "ngx-native-table": "0.0.5",
+    "ngx-native-table": "0.0.9",
     "ngx-perfect-scrollbar": "^6.3.1",
     "ngx-quicklink": "0.0.6",
     "ngx-router-animations": "0.0.3",

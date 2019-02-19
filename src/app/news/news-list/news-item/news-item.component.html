@@ -6,8 +6,8 @@
       <div class="cardTitle">
           {{news.title}}
         </div>
-    <div class="cardContent">
-      {{news.content}}
+    <div class="cardContent" [innerHtml]="news.content">
+
     </div>
     <div class="cardFooter">
       {{news.publishDate}}
