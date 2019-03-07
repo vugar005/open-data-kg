@@ -4,13 +4,39 @@
         <div class="co-title">Popular datasets </div>
       </div>
     </div>
+
     <div class="row">
       <div class="col-12">
         <div class="item-list">
-            <div class="item-box" *ngFor="let dataset of datasets"  routerLink="/home/datasets/{{dataset.id}}">
-                <div class="item-name">{{dataset.name}}</div>
-              </div>
+          <dataset-statistics *ngIf="datasetsByReview"
+          [datasets]="datasetsByReview"
+          [caption] = "'~statisticsByReview'"
+          ></dataset-statistics>
+        </div>
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="item-list">
+          <dataset-statistics *ngIf="datasetsByDownloads"
+          [datasets]="datasetsByDownloads"
+          [caption] = "'~statisticsByDownloads'"
+          ></dataset-statistics>
         </div>
       </div>
     </div>
+
+    <div class="row">
+      <div class="col-12">
+        <div class="item-list">
+          <dataset-statistics *ngIf="datasetsByComment"
+          [datasets]="datasetsByComment"
+          [caption] = "'~statisticsByComment'"
+          ></dataset-statistics>
+        </div>
+      </div>
+    </div>
+
+
   </div>

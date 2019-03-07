@@ -6,20 +6,32 @@ import { OrganizationOverviewComponent } from './organization-overview/organizat
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ImgSrcPipeModule } from '../shared/pipes/img-src-pipe.module';
-
+import { DatasetStatisticsComponent } from './popular-datasets/dataset-statistics/dataset-statistics.component';
+import { FusionChartsModule } from 'angular-fusioncharts';
+import * as FusionCharts from 'fusioncharts';
+import * as FusionTheme from 'fusioncharts/themes/fusioncharts.theme.fusion';
+import * as Charts from 'fusioncharts/fusioncharts.charts';
+FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme)
 @NgModule({
-  imports: [CommonModule, RouterModule, ImgSrcPipeModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    ImgSrcPipeModule,
+    FusionChartsModule
+  ],
   declarations: [
     CategoryOverviewComponent,
     LatestDatasetsComponent,
     OrganizationOverviewComponent,
     PopularDatasetsComponent,
+    DatasetStatisticsComponent,
   ],
   exports: [
     CategoryOverviewComponent,
     LatestDatasetsComponent,
     OrganizationOverviewComponent,
     PopularDatasetsComponent,
+    FusionChartsModule
   ]
 })
 export class GlobalNavModule {}
