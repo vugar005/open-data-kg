@@ -1,10 +1,18 @@
 :host {
     display: block;
     width: 100%;
-    min-height: 300px;
     margin-bottom: 20px;
+    padding: 20px;
+    background: #ffffff;
+    min-height: 340px;
     box-shadow: 5px 15px 20px rgba(0, 0, 0, 0.1);
 }
 /deep/ .raphael-group-32-creditgroup {
-   // visibility: hidden;
+ visibility: hidden;
+}
+/deep/ .raphael-group-194-creditgroup {
+ visibility: hidden;
+}
+/deep/ .raphael-group-352-creditgroup {
+ visibility: hidden;
 }

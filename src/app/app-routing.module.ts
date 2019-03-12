@@ -14,7 +14,7 @@ const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'home', component: HomeComponent, data: { breadcrumb: 'Home', state: 'home'}, resolve: [UserResolver], children: [
     {path: '', component: LandingPageComponent, pathMatch: 'full', data: {state: 'landing-page'}},
-    {path: 'datasets', loadChildren: './datasets/datasets.module#DatasetsModule', data: {  breadcrumb: 'details'}},
+    {path: 'datasets', loadChildren: './datasets/datasets.module#DatasetsModule', data: {  breadcrumb: 'datasets'}},
     {path: 'news', loadChildren: './news/news.module#NewsModule'},
     {path: 'blogs', loadChildren: './blog/blog.module#BlogModule'},
     {path: 'user-profile', component: UserProfileComponent},

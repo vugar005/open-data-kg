@@ -189,6 +189,7 @@ img {
 
 }
 .ta-results {
+  padding: 15px 15px 0 15px;
   top: 53px;
   width: 100%;
   left: 0;
@@ -197,14 +198,17 @@ img {
   margin-top: 5px;
   font-size: 14px;
   border-radius: 25px;
+
   .ta-item {
     font-size: 14px;
     text-align: left;
+    box-shadow: none!important;
+    border: 0!important;
      &:last-child {
-       border-radius: 0 0 25px 25px;
+      border-radius: 0 0 25px 25px;
      }
      &:nth-child(2) {
-       border-radius: 25px 25px 0 0;
+     //  border-radius: 25px 25px 0 0;
      }
 
      .ta-item-all {
@@ -321,16 +325,17 @@ img {
 ::-webkit-scrollbar {
   width: 7px;
   height: 7px;
+  background-color: #dcdcdc;
 }
 
 ::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 4px rgba(0,0,0,0.2);
-  border-radius: 8px;
+  -webkit-box-shadow: inset 0 0 1px #bcbcbc;
+  border-radius: 2px;
 }
 
 ::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  background-color: rgba(0,0,0,0.2);
+ // border-radius: 2px;
+  background-color: #bcbcbc;
 }
 
 @media all and (max-width: 1199px) {

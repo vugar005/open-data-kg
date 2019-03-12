@@ -11,7 +11,7 @@ import { PopularDatasetsComponent } from '../global-nav/popular-datasets/popular
 const routes: Routes = [
   {path: '', redirectTo: 'by-category', pathMatch: 'full'},
   { path: 'by-category', component: DatasetByCatComponent, data: { breadcrumb: 'by-category'}, children: [
-    {path: ':id', component: DatasetGroupListComponent, pathMatch: 'full', data: {type: 'category'}},
+    {path: ':id', component: DatasetGroupListComponent, pathMatch: 'full', data: {type: 'category',  breadcrumb: 'datasets'}},
     {path: ':id/:id', component: DatasetDetailComponent, data: {isInner: true}}
   ] },
   {path: 'by-organization', component: DatasetByOrgComponent, data: {breadcrumb: 'by organization'}, children: [
