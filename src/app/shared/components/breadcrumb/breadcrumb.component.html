@@ -1,0 +1,10 @@
+<div class="breacrumb">
+  <div class="breadcrumb__back" (click)="location.back()" >
+        <img src="/assets/icons/arrow-grey.svg">
+   </div>
+   <div class="breadcrumb__tree">
+      <div class="link" *ngFor="let breadcrumb of breadcrumbs; let last = last" [ngClass]="{'highlighted': last}" [routerLink]="breadcrumb.url">
+          {{breadcrumb.label}}<span *ngIf="!last" class="seperator"> |</span>
+      </div>
+    </div>
+ </div>

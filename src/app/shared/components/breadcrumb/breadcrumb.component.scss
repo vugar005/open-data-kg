@@ -1,0 +1,35 @@
+:host {
+    display: block;
+}
+.breacrumb {
+    display: flex;
+    align-items: center;
+    position: relative;
+    .breacrumb__back {
+        left: 0px;
+        position: absolute;
+        font-size: 18px;
+        top: 7px;
+        cursor: pointer;
+    }
+    .breadcrumb__tree {
+        display: flex;
+        align-items: center;
+        font-size: 13px;
+        color: #333333;
+        margin-left: 15px;
+        .link {
+            padding-left: 7px;
+            cursor: pointer;
+            &.highlighted {
+                font-weight: bold;
+            }
+            .seperator {
+                padding-left: 7px;
+            }
+        }
+    }
+    .breadcrumb__back {
+        cursor: pointer;
+    }
+}
