@@ -3,14 +3,19 @@ import { NgForm } from '@angular/forms';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
 import { DatasetsService } from '../datasets.service';
+import { BreadCrumb } from 'src/app/shared/models/breadcrumb.model';
 
 @Component({
-  selector: 'app-dataset-by-org',
+  selector: 'dataset-by-org',
   templateUrl: './dataset-by-org.component.html',
   styleUrls: ['./dataset-by-org.component.scss']
 })
 export class DatasetByOrgComponent  {
   faSearch = faSearch;
+  breadcrumbs: BreadCrumb[] = [
+    {label: 'Home', url: ''},
+    {label: 'Datasets', url: `/home/datasets/by-organization/0`}
+  ];
   constructor( private router: Router, private datasetService: DatasetsService) {}
   onSubmit(form: NgForm) {
     this.datasetService.datasetFilter$.next(form);

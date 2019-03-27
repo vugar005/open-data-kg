@@ -3,17 +3,21 @@ import { Component, OnInit } from '@angular/core';
 import { MockText } from './mock-text';
 import { SharedService } from 'src/app/shared/shared.service';
 import { NewsItem } from '../../models/news-item.model';
+import { BreadCrumb } from 'src/app/shared/models/breadcrumb.model';
 
 @Component({
   selector: 'news-detail',
   templateUrl: './news-detail.component.html',
-  styleUrls: ['./news-detail.component.scss']
+  styleUrls: ['./news-detail.component.scss'],
+  animations: [
+  ]
 })
 export class NewsDetailComponent implements OnInit {
   mockText = MockText;
   newsItem: NewsItem;
   otherItems: NewsItem[];
   type: string;
+  breadcrumbs:BreadCrumb[];
   constructor(private sharedService: SharedService, private route: ActivatedRoute) {
    }
 
@@ -22,8 +26,15 @@ export class NewsDetailComponent implements OnInit {
       if (!res['type']) {return; }
       this.type = res['type'];
     this.getNewsDetail();
+    this.initBreadCrumb();
     });
   }
+    initBreadCrumb() {
+     this.breadcrumbs = [
+        {label: 'Home', url: ''},
+        {label: 'News', url: `/home/news`}
+      ];
+    }
   getNewsDetail() {
     this.route.params.subscribe(params => {
       const id = params['id'];

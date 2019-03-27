@@ -4,7 +4,7 @@ import { NewsDetailComponent } from './news-list/news-detail/news-detail.compone
 import { NewsComponent } from './news.component';
 
 const routes: Routes = [
-  {path: '', component: NewsComponent, data: {state: 'news'}, children: [
+  {path: '', component: NewsComponent, data: {breadcrumb: 'news'}, children: [
     { path: '', component: NewsListComponent, pathMatch: 'full', data: {state: 'news-list'}},
     { path: ':id', component: NewsDetailComponent }
   ]}

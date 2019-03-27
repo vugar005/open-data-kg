@@ -7,7 +7,9 @@ import {
   ElementRef,
   HostListener,
   ChangeDetectionStrategy,
-  ChangeDetectorRef
+  ChangeDetectorRef,
+  DoCheck,
+  OnChanges
 } from '@angular/core';
 import { loadExternalScripts } from 'src/app/shared/shared-methods';
 declare var THREE;
@@ -18,7 +20,7 @@ declare var THREE;
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class WaveParticlesComponent
-  implements OnInit, AfterViewInit, OnDestroy {
+  implements OnInit, AfterViewInit, OnDestroy, DoCheck, OnChanges {
   @ViewChild('container')
   elementRef: ElementRef;
   SEPARATION = 100;
@@ -58,13 +60,16 @@ export class WaveParticlesComponent
 
   ngOnInit() {
     this.loadThreejs();
+  // this.changeDetectorRef.detach();
+  }
+  ngDoCheck() {
+  //  console.log('DoCheck in Wave')
+  }
+  ngOnChanges() {
+    console.log('on changes in Wave')
   }
   ngAfterViewInit() {
-   // this.initWaves();
-    // this.loadThreejs()
-    //   .then(res => {
-    //     this.initWaves();
-    //   });
+
   }
   initWaves() {
     this.scene = THREE.Scene;
@@ -81,7 +86,7 @@ export class WaveParticlesComponent
   resetMouse() {
     this.mouseX = 170;
     this.mouseY = -294;
-    this.changeDetectorRef.detectChanges();
+   // this.changeDetectorRef.detectChanges();
   }
 
   init() {

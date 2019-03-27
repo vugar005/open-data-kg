@@ -1,5 +1,5 @@
 import { slideInNews } from './../../../animations';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { trigger,  useAnimation, transition } from '@angular/animations';
 import { NewsItem } from 'src/app/news/models/news-item.model';
 import { NewsQuery } from 'src/app/news/models/news-query.model';
@@ -21,7 +21,7 @@ export class NewsSidebarComponent implements OnInit {
   visibleItems: NewsItem[];
   rowCount: number;
   stateChange: number;
-  constructor(private sharedService: SharedService) { }
+  constructor(private sharedService: SharedService, private changeRef: ChangeDetectorRef) { }
 
   ngOnInit() {
     setTimeout(() => {
@@ -37,7 +37,11 @@ export class NewsSidebarComponent implements OnInit {
   changeNewsState() {
     this.stateChange = Math.random();
     this.visibleItems = [];
-    setTimeout(() => this.visibleItems = this.items.filter((item, i) => i + 1 > this.startIndex && i + 1 <= this.endIndex), 0)
+    setTimeout(() => {
+      this.visibleItems = this.items.filter((item, i) => i + 1 > this.startIndex && i + 1 <= this.endIndex);
+      this.changeRef.markForCheck();
+    });
+
   }
   onPrev() {
     if (this.startIndex === 0) {return; }
@@ -70,7 +74,6 @@ export class NewsSidebarComponent implements OnInit {
      this.endIndex = this.rowCount;
      this.startIndex = this.rowCount - 3;
    this.changeNewsState();
-
     });
   }
 

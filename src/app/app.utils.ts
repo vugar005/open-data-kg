@@ -40,3 +40,10 @@ export function getPaginationRange(c, m) {
 
   return rangeWithDots;
 }
+
+export function switchToView(name: string) {
+  const nav = document.querySelector(name);
+  if (nav) { nav.scrollIntoView({
+    behavior: 'smooth', block: 'start', inline: 'nearest'
+  }); }
+}

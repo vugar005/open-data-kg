@@ -8,9 +8,6 @@ import { NewsItem } from 'src/app/news/models/news-item.model';
   selector: 'news-sidebar-item',
   templateUrl: './news-sidebar-item.component.html',
   styleUrls: ['./news-sidebar-item.component.scss'],
-  animations: [
-  ],
-  changeDetection: ChangeDetectionStrategy.Default
 })
 export class NewsSidebarItemComponent implements OnInit, OnDestroy, OnChanges {
   @Input() item: NewsItem;

@@ -26,10 +26,10 @@
     width: 9.375rem;
   }
   .icon {
-    max-width: 3.6875rem;
-   /deep/ svg {
-      width: 2.1875rem;
-      height: 2.1875rem;
+    max-width: 100px;
+    height: 45px;
+    img {
+      width: auto;
     }
   }
   &:hover {

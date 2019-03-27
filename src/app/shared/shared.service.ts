@@ -19,6 +19,7 @@ export class SharedService {
   toastRunning: boolean;
   toggleHeader = new Subject<boolean>();
   hostname: string;
+  globalNavState$ = new Subject<string>();
   constructor(
     public iziToast: Ng2IzitoastService,
     private jwtService: JwtHelperService,
@@ -27,10 +28,6 @@ export class SharedService {
     private domSanitizer: DomSanitizer,
     private store: Store<AppState>
   ) {
-    // this.store.select(getApiUrl).pipe(take(1)).subscribe(res => {
-    //   this.hostname = res;
-    //   console.log(res)
-    // });
     this.hostname = getHostname();
   }
   createNotification(type: string, message: string, position = 'bottomRight') {

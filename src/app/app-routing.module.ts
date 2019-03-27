@@ -13,14 +13,14 @@ import { QuicklinkStrategy} from 'ngx-quicklink';
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'home', component: HomeComponent, data: { breadcrumb: 'Home', state: 'home'}, resolve: [UserResolver], children: [
-    {path: '', component: LandingPageComponent, pathMatch: 'full', data: {state: 'landing-page'}},
+    {path: '', component: LandingPageComponent, pathMatch: 'full', data: {state: 'landing-page', breadcrumb: ''}},
     {path: 'datasets', loadChildren: './datasets/datasets.module#DatasetsModule', data: {  breadcrumb: 'datasets'}},
-    {path: 'news', loadChildren: './news/news.module#NewsModule'},
+    {path: 'news', loadChildren: './news/news.module#NewsModule',  data: {  breadcrumb: 'news'}},
     {path: 'blogs', loadChildren: './blog/blog.module#BlogModule'},
     {path: 'user-profile', component: UserProfileComponent},
     {path: 'announcements', loadChildren: './annoucements/announcements.module#AnnouncementsModule'},
   ]},
-  {path: 'login', component: LoginComponent, data: {state: 'login'}},
+  {path: 'login', component: LoginComponent, data: {breadcrumb: 'login'}},
   {path: 'register', component: RegisterComponent },
    {path: 'admin', loadChildren: './admin-panel/admin-panel.module#AdminPanelModule'},
    {path: '404', component: NotFoundComponent},

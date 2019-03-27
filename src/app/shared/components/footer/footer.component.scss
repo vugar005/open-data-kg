@@ -1,28 +1,43 @@
 :host {
   display: block;
   background: #383a3c;
-  padding-top: 58px;
+  padding-top: 3.625rem;
   width: 100%;
 }
 
 .app-icon {
-  width: 85px;
-  height: 29px;
-  margin-bottom: 7px;
+  width: 5.3125rem;
+  height: 1.8125rem;
+  margin-bottom: 0.4375rem;
 }
-
+.brand-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 100%;
+  justify-content: flex-end;
+  width: 6.25rem;
+  margin-right: auto;
+  .title {
+    color: grey;
+    font-size: 0.875rem;
+  }
+  img {
+    height: auto;
+  }
+}
 .app-title {
   .primary {
     font-weight: 800;
     line-height: 13px;
-    font-size: 12px;
+    font-size: 0.75rem;
     text-transform: uppercase;
     color: #FFFFFF;
   }
 
   .secondary {
-    line-height: 11px;
-    font-size: 10px;
+    line-height: 0.6875rem;
+    font-size: 0.625rem;
     color: #FFFFFF;
   }
 }
@@ -33,8 +48,8 @@
   align-items: flex-start;
 
   .link {
-    line-height: 29px;
-    font-size: 14px;
+    line-height: 1.8125rem;
+    font-size: 1.0625rem;
     color: #FFFFFF;
     cursor: pointer;
   }
@@ -44,22 +59,28 @@
   display: flex;
   align-items: flex-end;
   cursor: pointer;
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
   .primary {
-    width: 18px;
-    height: 18px;
+    width: 1.125rem;
+    height: 1.125rem;
   }
 
   .secondary {
-    width: 86px;
-    height: 20px;
+    width: 5.375rem;
+    height: 1.25rem;
   }
 }
 
 .rights {
-  padding: 15px 0;
-  font-size: 10px;
+  padding: 0.9375rem 0;
+  font-size: 0.625rem;
   text-align: center;
   color: #FFFFFF;
   background: rgba(0, 0, 0, 0.22);
+}
+
+@media (max-width: 768px)  {
+  .footer {
+    max-width: 720px;
+  }
 }

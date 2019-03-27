@@ -45,6 +45,7 @@ export class DatasetGroupListComponent implements OnInit, OnChanges {
          console.log('no id')
          this.id = '0';
        }
+       console.log(this.id)
        this.getList(this.emptyQuery);
     });
   }

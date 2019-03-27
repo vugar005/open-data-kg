@@ -6,7 +6,7 @@
       <a  href="javascript:void(0)" (click)="toggleGlobalNav()" class="mouse-scroll-wrapper">
         <!-- <mouse-scroll-icon ></mouse-scroll-icon> -->
       </a>
-        <global-nav (navChanged)="onNavChange($event)"  class="bottom" ></global-nav>
+        <global-nav (navChanged)="onNavChange($event)"  class="bottom" [(state)]="state" ></global-nav>
        <div class="content  content-wrapper"
         >
          <div class="overview-box">

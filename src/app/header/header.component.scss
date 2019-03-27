@@ -1,6 +1,6 @@
 :host {
   display: block;
-  height:var(--kg-header-height);
+  flex:0 0 var(--kg-header-height);
   width: 100%;
   // position: relative;
   top:0;

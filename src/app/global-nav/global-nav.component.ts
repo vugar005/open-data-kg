@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ChangeDetectionStrategy, Input, Output, EventEmitter, OnChanges, SimpleChanges, ChangeDetectorRef } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -7,8 +7,9 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./global-nav.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class GlobalNavComponent  {
+export class GlobalNavComponent implements OnChanges  {
   @Output() navChanged = new EventEmitter<string>();
+  @Input() state: string = 'category';
   modules = [
     {
       name: '~categories',
@@ -31,8 +32,7 @@ export class GlobalNavComponent  {
       link: 'popular'
     }
   ];
-  state = 'category';
-  constructor(private router: Router) {
+  constructor(private router: Router, private changeRef: ChangeDetectorRef) {
   if (this.router.url.includes('category')) {
     this.state = 'category';
   } else if (this.router.url.includes('organization')) {
@@ -43,5 +43,11 @@ export class GlobalNavComponent  {
 onNavigate(link: string) {
   this.state = link;
   this.navChanged.emit(link);
+}
+ngOnChanges(changes: SimpleChanges) {
+  if (changes && changes['state']) {
+    this.state = changes['state'].currentValue;
+    this.changeRef.detectChanges();
+  }
 }
 }

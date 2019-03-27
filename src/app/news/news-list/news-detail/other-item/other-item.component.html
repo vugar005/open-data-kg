@@ -4,7 +4,7 @@
   </div>
   <div class="ng-card-content">
     <div class="ng-card-title">{{item.title}}</div>
-    <div class="card-text">{{item.content}}</div>
-    <div class="card-date">{{item.publishDate}}</div>
+    <div class="card-text" [innerHtml]="item.content"></div>
+    <div class="card-date">{{item.publishDate | date: 'd MMMM y'}}</div>
   </div>
 </div>

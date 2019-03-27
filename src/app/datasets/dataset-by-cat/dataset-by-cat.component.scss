@@ -8,7 +8,7 @@
   z-index: 6; // 1 less than app-header
 }
 .content-wrapper {
-  flex: 1;
+  min-height: calc(100vh - var(--kg-header-height) - var(--kg-global-nav-height));
  // overflow: auto;
 }
 .animated {

@@ -29,7 +29,7 @@ export class NewsListComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit() {
     this.route.queryParams.subscribe(res => {
-      this.type = res['type'];
+      this.type = res['type'] || 'News';
       this.getSlidesPerView();
       this.initSwiper();
       this.getNews();
@@ -127,7 +127,7 @@ export class NewsListComponent implements OnInit, AfterViewInit, OnDestroy {
     };
    this.sharedService.getTableData(`api/get/Permission/Sharing/Get${this.type}ForCommon`, body)
    .subscribe(res => {
-    if (!res && res.tbl && res.tbl[0]) {return; }
+    if (!(res && res.tbl && res.tbl[0])) {return; }
      this.newsList = (res.tbl[0].r);
      this.rowCount = res.tbl[0].rowCount;
     this.buildPagination(1);

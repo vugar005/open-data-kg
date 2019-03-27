@@ -50,6 +50,7 @@ export class AppComponent implements OnInit {
     this.tryAutoLogin();
     this.setDefaultLang();
     this.listenToOnlineChanges();
+ //   this.initBreadCrumb();
    // this.listenToRouteData();
   }
   getState(outlet) {

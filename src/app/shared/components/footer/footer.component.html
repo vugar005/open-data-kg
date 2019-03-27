@@ -1,6 +1,6 @@
-<div class="container">
+<div class="container footer">
   <div class="row">
-    <div class="col-3">
+    <div class="col-12 col-md-2">
       <div class="app-icon">
         <img src="./assets/icons/opendata_final.svg" />
       </div>
@@ -9,34 +9,47 @@
         <div class="secondary">Open Data Portal</div>
       </div>
     </div>
-    <div class="col-9">
+    <div class="col-12 col-md-8">
       <div class="container-fluid">
-        <div class="row">
+        <div class="row pt-4 pt-md-0">
           <div class="col-4">
             <div class="links-box">
-              <div class="link">Suggest a dataset</div>
-              <div class="link">Privacy Policy</div>
-              <div class="link">Give a feedback</div>
-              <div class="link">About</div>
+              <div class="link"
+                [routerLink] = "'/home/news'"
+                [queryParams]="{type: 'News'}"
+              >News</div>
+              <div class="link"
+                [routerLink] = "'/home/news'"
+                [queryParams]="{type: 'Annoucement'}"
+              >Announcements</div>
+              <div class="link"
+                [routerLink] = "'/home/news'"
+                [queryParams]="{type: 'Blog'}"
+              >Blogs</div>
             </div>
           </div>
           <div class="col-4">
             <div class="links-box">
-              <div class="link">Suggest a dataset</div>
-              <div class="link">Privacy Policy</div>
-              <div class="link">Give a feedback</div>
-              <div class="link">About</div>
+              <div class="link" routerLink="/home/datasets/by-category/0">Categories</div>
+              <div class="link" routerLink="/home/datasets/by-organization/">Organizations</div>
+              <div class="link" (click)="onLatestNavigate()">Latest Datasets</div>
             </div>
           </div>
           <div class="col-4">
             <div class="links-box">
-              <div class="link">Suggest a dataset</div>
-              <div class="link">Privacy Policy</div>
-              <div class="link">Give a feedback</div>
-              <div class="link">About</div>
+              <div class="link">Kyrgyzstan lorem</div>
+              <div class="link">Tel: 080 898 4335</div>
+              <div class="link">Fax: 98879 345 5773</div>
+              <div class="link">Email: office@opendata.kg</div>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-2 d-none d-lg-block">
+      <div class="brand-logo">
+        <div class="title">Created by</div>
+          <img src="./assets/icons/neuron-footer.svg">
       </div>
     </div>
   </div>
