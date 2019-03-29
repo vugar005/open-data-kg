@@ -1,0 +1,18 @@
+
+<p class="caption">{{caption}}</p>
+<table class="table" *ngIf="datasets">
+  <thead class="thead-light">
+    <th >Name</th>
+    <th >Code</th>
+    <th >Count</th>
+  </thead>
+<tbody>
+    <tr  *ngFor="let dataset of datasets">
+        <td style="max-width: 350px" class="text-ellipsis ">
+          <a href="javscript:void(0)" title="{{dataset['name']}}">{{dataset['name']}}</a>
+        </td>
+        <td >{{dataset['code']}}</td>
+        <td >{{dataset['count']}}</td>
+    </tr>
+</tbody>
+</table>

@@ -10,7 +10,11 @@
   color: #333333;
   padding: 2.5rem 0;
 }
-
+/deep/ {
+  .mat-tab-labels{
+    justify-content: center; /* align items in Main Axis */
+}
+}
 .item-list {
   display: flex;
   flex-wrap: wrap;

@@ -4,39 +4,53 @@
         <div class="co-title">Popular datasets </div>
       </div>
     </div>
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-9">
+            <mat-tab-group>
+              <mat-tab label="Chart" position="0">
+              <ng-template matTabContent>
+                  <div class="item-list">
+                      <dataset-statistics *ngIf="datasetsByReview"
+                      [datasets]="datasetsByReview"
+                      [caption] = "'~statisticsByReview'"
+                      ></dataset-statistics>
 
-    <div class="row">
-      <div class="col-12">
-        <div class="item-list">
-          <dataset-statistics *ngIf="datasetsByReview"
-          [datasets]="datasetsByReview"
-          [caption] = "'~statisticsByReview'"
-          ></dataset-statistics>
+                      <dataset-statistics *ngIf="datasetsByDownloads"
+                      [datasets]="datasetsByDownloads"
+                      [caption] = "'~statisticsByDownloads'"
+                      ></dataset-statistics>
+
+                      <dataset-statistics *ngIf="datasetsByComment"
+                      [datasets]="datasetsByComment"
+                      [caption] = "'~statisticsByComment'"
+                      ></dataset-statistics>
+                    </div>
+              </ng-template>
+
+              </mat-tab>
+              <mat-tab label="Table">
+
+             <ng-template matTabContent>
+                <table-statistics *ngIf="datasetsByReview"
+                [datasets]="datasetsByReview"
+                [caption] = "'~statisticsByReview'"
+                ></table-statistics>
+
+                <table-statistics *ngIf="datasetsByDownloads"
+                [datasets]="datasetsByDownloads"
+                [caption] = "'~statisticsByDownloads'"
+                ></table-statistics>
+
+                <table-statistics *ngIf="datasetsByComment"
+                [datasets]="datasetsByComment"
+                [caption] = "'~statisticsByComment'"
+                ></table-statistics>
+             </ng-template>
+
+              </mat-tab>
+            </mat-tab-group>
         </div>
       </div>
-
-    </div>
-    <div class="row">
-      <div class="col-12">
-        <div class="item-list">
-          <dataset-statistics *ngIf="datasetsByDownloads"
-          [datasets]="datasetsByDownloads"
-          [caption] = "'~statisticsByDownloads'"
-          ></dataset-statistics>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-12">
-        <div class="item-list">
-          <dataset-statistics *ngIf="datasetsByComment"
-          [datasets]="datasetsByComment"
-          [caption] = "'~statisticsByComment'"
-          ></dataset-statistics>
-        </div>
-      </div>
-    </div>
 
 
   </div>

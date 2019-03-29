@@ -2,21 +2,13 @@
   display: block;
   width: 100vw;
   height: calc(100vh);
-  background: #ffffff;
-}
-.auth-co:before {
-  position: fixed;
-  top:0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(255,166,87,.7);
-  opacity: .1;
-  pointer-events: none;
-  content: ' ';
-  z-index: 99999;
+  background: var(--kg-background-image);
+  position: relative;
 }
 .auth-co {
   padding-top: 9.9em;
+  position: relative;
+  z-index: 2;
 .brand-logo {
   display: flex;
   flex-direction: column;
@@ -26,13 +18,13 @@
     font-size: 42px;
     font-weight: bold;
     text-align: center;
-    color: lightgray;
+    color: #ffffff;
   }
   .secondary-name {
     font-size: 21px;
     font-weight: bold;
     text-align: center;
-    color: #525252;
+    color: #ffffff;
     letter-spacing: 19px
   }
 }
@@ -41,7 +33,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 4.3em;
+  width: 315px;
+  margin: auto;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 48px;
+  border-radius: 9px;
+  margin-top: 50px;
   .form-header {
       font-family: Raleway;
       font-size: 20px;
@@ -49,45 +46,42 @@
       line-height: 1.2;
       letter-spacing: 0.8px;
       text-align: center;
-      color: lightgray;
+      color: #ffffff;
       margin-bottom: 15px;
   }
-  .login-form {
+  .auth-form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    .field-style {
-      width: 175px;
+    .auth-form__field {
+      background-color: rgba(255, 255, 255, 0.3);
+      border-radius: 3px;
+      text-align: center;
+      margin-bottom: 15px;
+      padding: 5px 20px;
     }
-    // input {
-    //   background: #74B9D3;
-    //   border: 0;
-    //   text-align: center;
-    //   margin-bottom: 15px;
-    //   color: #ffffff;
-    //   outline: 0;
-    //   padding: 5px 20px;
-    //   &::placeholder {
-    //     color: #ffffff;
-    //     opacity: 0.8;
-    //   }
-    // }
-    // button.login {
-    //   background: #ffffff;
-    //   color: #4AA2C6;
-    //   padding: 5px 20px;
-    //   width: 100%;
-    //   cursor: pointer;
-    // }
+  }
+    .auth-form__submit{
+      background: #ffffff;
+      color: #4AA2C6;
+      padding: 5px 20px;
+      width: 100%;
+      font-weight: bold;
+      font-size: 12px;
+      line-height: 24px;
+      width: 100%;
+      border-radius: 3px;
+      cursor: pointer;
+
+    }
   }
   .toRegister {
     margin-top: 20px;
-    color: #525252;
+    color: #ffffff;
    a {
-      text-decoration: underline;
+      text-decoration: underline!important;
       cursor: pointer;
       color: inherit;
     }
   }
-}
 }

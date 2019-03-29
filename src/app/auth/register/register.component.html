@@ -1,107 +1,86 @@
-<div class="auth-co">
-  <div class="brand-logo" [routerLink]="['/']"  >
-    <div class="primary-name">
-      {{'~primaryName' | translate}}
-    </div>
-    <div class="secondary-name">
-        {{'~secondaryName' | translate}}
-    </div>
-  </div>
+<perfect-scrollbar id="main_content">
 
-  <div class="auth-box">
-     <div class="form-header">{{'~register' | translate}}</div>
-     <form #f="ngForm" class="nt-form" (ngSubmit)="onSubmit(f)">
-
-      <div class="inputs">
-        <div class="left">
-
-          <div class="upload-item-img">
-
-            <ng-container *ngIf="!imgId">
-              <img src="./assets/icons/avatar.svg">
-            </ng-container>
-
-            <ng-container *ngIf="imgId">
-              <img src="{{imgId | imgSrc}}" onerror="this.src = './assets/icons/avatar.svg'">
-            </ng-container>
-            <div class="img-corners">
-              <div class="arrow"></div>
-              <div class="arrow-2"></div>
-            </div>
-            <div class="upload-div animated slideInUp">
-                 <p *ngIf="!imgId" (click)="onUpload()">{{'~uploadImg' | translate}}</p>
-                <p *ngIf="imgId" class="remove-img" (click)="onRemoveFile(imgId)">{{'~removeImg' | translate}}</p>
-            </div>
-
+    <div class="auth-co">
+        <div class="brand-logo" [routerLink]="['/']"  >
+          <div class="primary-name">
+            {{'~primaryName' | translate}}
           </div>
-
-          <mat-form-field class="example-full-width">
-            <input matInput placeholder="Email" class="nt-form-input" name="userName" ngModel required>
-            <mat-error>{{getErrors('userName')}}</mat-error>
-          </mat-form-field>
-
-          <mat-form-field class="example-full-width">
-            <input matInput placeholder="{{'~firstname' | translate}}" class="nt-form-input" name="name" ngModel required>
-            <mat-error>{{getErrors('name')}}</mat-error>
-          </mat-form-field>
-
-          <mat-form-field class="example-full-width">
-            <input matInput placeholder="{{'~lastname' | translate}}" class="nt-form-input" name="surname" ngModel required>
-            <mat-error>{{getErrors('surname')}}</mat-error>
-          </mat-form-field>
-
-          <mat-form-field class="example-full-width">
-            <input matInput placeholder="{{'~middlename' | translate}}" class="nt-form-input" name="mname" ngModel required>
-            <mat-error>{{getErrors('mname')}}</mat-error>
-          </mat-form-field>
-
+          <div class="secondary-name">
+              {{'~secondaryName' | translate}}
+          </div>
         </div>
 
-        <div class="right">
+        <div class="auth-box">
+           <div class="form-header">{{'~register' | translate}}</div>
+           <form #f="ngForm" class="nt-form" (ngSubmit)="onSubmit(f)">
 
-          <mat-form-field>
-            <mat-select placeholder="{{'~gender' | translate}}" class="nt-form-input" name="genderId" ngModel required>
-              <mat-option *ngFor="let item of (genders$ | async)" [value]="item.value"> {{item.label}} </mat-option>
-            </mat-select>
-            <mat-error>{{getErrors('genderId')}}</mat-error>
-          </mat-form-field>
+            <div class="inputs">
+              <div class="left">
+
+                  <div class="auth-form__field">
+                      <input name="userName" ngModel  placeholder="{{'~userName' | translate}}" required>
+                  </div>
+
+                  <div class="auth-form__field">
+                      <input name="name" ngModel   placeholder="{{'~firstName' | translate}}" required>
+                  </div>
+
+                  <div class="auth-form__field">
+                      <input name="surname" ngModel   placeholder="{{'~lastName' | translate}}"required>
+                  </div>
+
+                  <div class="auth-form__field">
+                      <input name="mName" ngModel   placeholder="{{'~middleName' | translate}}" >
+                  </div>
+
+              </div>
+
+              <div class="right">
+
+                <div class="auth-form__field">
+                    <select  name="genderId" ngModel required>
+                        <option value="" disabled selected>{{'~gender' | translate}}</option>
+                        <option *ngFor="let item of (genders$ | async)" [value]="item.value"> {{item.label}} </option>
+                    </select>
+                </div>
 
 
-          <mat-form-field>
-            <input matInput [matDatepicker]="picker" placeholder="{{'~birthdate' | translate}}" name="birthdate" ngModel required
-              [max]="maxDate">
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker [startAt]="startDate" startView="year"></mat-datepicker>
-            <mat-error>{{getErrors('birthdate')}}</mat-error>
-          </mat-form-field>
+                <div class="auth-form__field">
+                    <input  [matDatepicker]="picker" placeholder="{{'~birthdate' | translate}}" name="birthdate" ngModel required
+                    [max]="maxDate">
+                    <div class="icon">
+                        <mat-datepicker-toggle matSuffix [for]="picker" style="color: #ffffff"></mat-datepicker-toggle>
+                        <mat-datepicker #picker [startAt]="startDate" startView="year"></mat-datepicker>
+                    </div>
+                </div>
 
-          <mat-form-field class="example-full-width" >
-            <input matInput placeholder="{{'~password' | translate}}" class="nt-form-input" name="password" ngModel [type]="hideOld ? 'password' : 'text'">
-            <mat-icon matSuffix (click)="hideOld = !hideOld">{{hideOld ? 'visibility_off' : 'visibility'}}</mat-icon>
-            <mat-error>{{getErrors('password')}}</mat-error>
-          </mat-form-field>
 
-          <mat-form-field class="example-full-width">
-            <input matInput placeholder="{{'~confirmPassword' | translate}}" class="nt-form-input" name="confPasswd"  [type]="hide ? 'password' : 'text'"
-             >
-            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-            <mat-error>{{getErrors('confPasswd')}}</mat-error>
-          </mat-form-field>
+                  <div class="auth-form__field">
+                      <input name="password"  ngModel   placeholder="{{'~password' | translate}}" required >
+                  </div>
 
-          <input [hidden]="true" name="photoFileId" value="imgId" [(ngModel)]="imgId" >
-          <input [hidden]="true" name="id" ngModel>
-          <input [hidden]="true" name="personId" ngModel>
+                  <div class="auth-form__field">
+                      <input name="confPsasswd"  placeholder="{{'~confirmPassword' | translate}}" required >
+                  </div>
+
+
+                <input [hidden]="true" name="photoFileId" value="imgId" [(ngModel)]="imgId" >
+                <input [hidden]="true" name="id" ngModel>
+                <input [hidden]="true" name="personId" ngModel>
+              </div>
+            </div>
+
+              <button class="auth-form__submit"  type="submit"
+               > {{'register' | translate}} </button>
+
+          </form>
+
+           <div class="toRegister">
+            <a [routerLink]="'/login'">{{'login' | translate}}</a>
+           </div>
         </div>
       </div>
-      <div class="actions">
-        <button mat-raised-button  type="submit"
-         > {{'register' | translate}} </button>
-      </div>
 
-    </form>
 
-     <div class="toRegister">
-      <a [routerLink]="'/login'">{{'login' | translate}}</a>
-     </div>
-  </div>
-</div>
+
+</perfect-scrollbar>

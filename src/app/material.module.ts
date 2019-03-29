@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { MatButtonModule, MatFormFieldModule, MatInputModule, MatIconModule, MatSelectModule, MatDatepickerModule} from '@angular/material';
+import { MatButtonModule, MatFormFieldModule, MatInputModule, MatIconModule, MatSelectModule, MatDatepickerModule, MatTabsModule} from '@angular/material';
 import {MatDialogModule, MatMenuModule, MatStepperModule, DateAdapter, MAT_DATE_LOCALE, MAT_DATE_FORMATS } from '@angular/material';
 import { MatMomentDateModule, MomentDateAdapter } from '@angular/material-moment-adapter';
 import { SharedService } from './shared/shared.service';
@@ -44,7 +44,7 @@ export const MY_FORMATS = {
   MatButtonModule,
   MatDialogModule,
   MatMenuModule,
-  MatStepperModule
+  MatStepperModule,
  ],
  providers: [
   {provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE]},

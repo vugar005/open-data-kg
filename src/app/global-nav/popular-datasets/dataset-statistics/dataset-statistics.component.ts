@@ -28,7 +28,6 @@ export class DatasetStatisticsComponent implements OnInit {
           ]
       }
     }).reverse();
-    console.log(datasets)
     this.data = {
       "chart": {
         "caption": this.translateService.instant(this.caption),
@@ -50,7 +49,6 @@ export class DatasetStatisticsComponent implements OnInit {
         ...datasets
       ]
     }
-    console.log(this.data)
   }
 
 }

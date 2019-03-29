@@ -40,7 +40,6 @@ import { MaterialModule } from './material.module';
 import { UserResolver } from './shared/resolvers/user.resolver';
 import { ImgSrcPipeModule } from './shared/pipes/img-src-pipe.module';
 import { LandingPageComponent } from './home/landing-page/landing-page.component';
-import { WaveParticlesComponent } from './home/landing-page/wave-particles/wave-particles.component';
 import { NewsSidebarComponent } from './home/landing-page/news-sidebar/news-sidebar.component';
 import { NewsSidebarItemComponent } from './home/landing-page/news-sidebar/news-sidebar-item/news-sidebar-item.component';
 import { DesktopComponent } from './home/landing-page/desktop/desktop.component';
@@ -53,13 +52,13 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 };
 import localeRu from '@angular/common/locales/ru';
 import localeKy from '@angular/common/locales/ky';
+import { WaveParticlesModule } from './home/landing-page/wave-particles/wave-particles.module';
 registerLocaleData(localeRu);
 registerLocaleData(localeKy);
 @NgModule({
 declarations: [
   HeaderComponent,
   LandingPageComponent,
-  WaveParticlesComponent,
   NavStyleChangeDirective,
   HeaderToggleDirective,
   TotalDatasetsCountComponent,
@@ -95,6 +94,7 @@ imports: [
   DatasetBoxModule,
   MaterialModule,
   ImgSrcPipeModule,
+  WaveParticlesModule,
   HttpClientBusyModule.forRoot(),
   TranslateModule.forRoot({
     loader: {
@@ -110,7 +110,6 @@ exports: [
   SharedModule,
   HeaderComponent,
   LandingPageComponent,
-  WaveParticlesComponent,
   NavStyleChangeDirective,
   HeaderToggleDirective,
   TotalDatasetsCountComponent,
@@ -138,6 +137,7 @@ exports: [
   TranslateModule,
   MaterialModule,
   ImgSrcPipeModule,
+  WaveParticlesModule
 ],
 providers: [
   SharedService,

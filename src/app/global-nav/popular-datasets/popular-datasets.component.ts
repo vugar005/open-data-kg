@@ -14,7 +14,6 @@ export class PopularDatasetsComponent implements OnInit {
   datasetsByReview: Dataset[];
   datasetsByDownloads: Dataset[];
   constructor(private sharedService: SharedService) { }
-
   ngOnInit() {
     this.getPopularDatasets();
   }

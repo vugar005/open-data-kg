@@ -10,22 +10,17 @@
 
   <div class="auth-box">
      <div class="form-header"> {{'~login' | translate}}</div>
-     <form #f="ngForm" class="login-form" (ngSubmit)="onSubmit(f)">
-        <mat-form-field class="field-style" >
-            <input matInput placeholder="Email" class="nt-form-input" name="username" ngModel required type="email">
-            <mat-error>{{getErrors('username')}}</mat-error>
-          </mat-form-field>
+     <form #f="ngForm" class="auth-form" (ngSubmit)="onSubmit(f)" >
 
-          <mat-form-field class="field-style" >
-              <input matInput placeholder="{{'~password' | translate}}" class="nt-form-input"
-                     name="password" ngModel required [type]="hide ? 'password' : 'text'">
-              <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-         </mat-form-field>
+      <input name="username" class="auth-form__field" ngModel type="email" placeholder="Email">
 
-       <button mat-raised-button type="submit" > {{'~login' | translate}}</button>
+      <input name="password" class="auth-form__field" ngModel type="password" placeholder="Password">
+
+       <button  class="auth-form__submit" type="submit" > {{'~login' | translate}}</button>
      </form>
      <div class="toRegister">
          <a [routerLink]="'/register'" >  {{'~register' | translate}}</a>
      </div>
   </div>
 </div>
+<wave-particles [AMOUNTX]="35" [AMOUNTY]="35"></wave-particles>

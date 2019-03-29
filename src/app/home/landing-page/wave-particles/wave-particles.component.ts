@@ -9,7 +9,8 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   DoCheck,
-  OnChanges
+  OnChanges,
+  Input
 } from '@angular/core';
 import { loadExternalScripts } from 'src/app/shared/shared-methods';
 declare var THREE;
@@ -24,8 +25,8 @@ export class WaveParticlesComponent
   @ViewChild('container')
   elementRef: ElementRef;
   SEPARATION = 100;
-  AMOUNTX = 35; // 35
-  AMOUNTY = 35; // 35
+  @Input() AMOUNTX = 35; // 35
+  @Input() AMOUNTY = 35; // 35
   particles = [];
   particle;
   count = 0;

@@ -13,11 +13,10 @@
 .brand-logo {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   height: 100%;
-  justify-content: flex-end;
   width: 6.25rem;
-  margin-right: auto;
+  margin-bottom: 1.25rem;
+  margin-left: auto;
   .title {
     color: grey;
     font-size: 0.875rem;

@@ -11,13 +11,16 @@ import { FusionChartsModule } from 'angular-fusioncharts';
 import * as FusionCharts from 'fusioncharts';
 import * as FusionTheme from 'fusioncharts/themes/fusioncharts.theme.fusion';
 import * as Charts from 'fusioncharts/fusioncharts.charts';
+import { MatTabsModule } from '@angular/material';
+import { TableStatisticsComponent } from './popular-datasets/table-statistics/table-statistics.component';
 FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme)
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
     ImgSrcPipeModule,
-    FusionChartsModule
+    FusionChartsModule,
+    MatTabsModule
   ],
   declarations: [
     CategoryOverviewComponent,
@@ -25,13 +28,15 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme)
     OrganizationOverviewComponent,
     PopularDatasetsComponent,
     DatasetStatisticsComponent,
+    TableStatisticsComponent,
   ],
   exports: [
     CategoryOverviewComponent,
     LatestDatasetsComponent,
     OrganizationOverviewComponent,
     PopularDatasetsComponent,
-    FusionChartsModule
+    FusionChartsModule,
+    MatTabsModule
   ]
 })
 export class GlobalNavModule {}

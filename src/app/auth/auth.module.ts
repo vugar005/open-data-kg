@@ -14,6 +14,9 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { MatIconModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatDatepickerModule,
   MatButtonModule } from '@angular/material';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import { WaveParticlesModule } from '../home/landing-page/wave-particles/wave-particles.module';
+import { SharedTranslateModule } from '../shared/shared-translate.module';
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 export function tokenGetter() {
   return localStorage.getItem('access_token');
 }
@@ -32,6 +35,9 @@ export function tokenGetter() {
     SharedModule,
     FormsModule,
     MatIconModule,
+    WaveParticlesModule,
+    SharedTranslateModule,
+    PerfectScrollbarModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
