@@ -45,6 +45,7 @@ export class RegisterComponent implements OnInit, OnDestroy, AfterViewInit {
   ngAfterViewInit() {
   }
   onSubmit(f: NgForm) {
+    console.log(f)
     if (!f.valid) {return; }
     this.store.dispatch(new TryRegister(f.form.value));
   }
@@ -59,5 +60,6 @@ export class RegisterComponent implements OnInit, OnDestroy, AfterViewInit {
   onRemoveFile(id: string) {
     this.sharedService.removeFile(id).subscribe(res => this.imgId = undefined);
  }
+
 
 }

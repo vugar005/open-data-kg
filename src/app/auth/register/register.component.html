@@ -19,6 +19,9 @@
 
                   <div class="auth-form__field">
                       <input name="userName" ngModel  placeholder="{{'~userName' | translate}}" required>
+                      <div class="invalid-feedback" >
+                           {{getErrors('userName')}}
+                      </div>
                   </div>
 
                   <div class="auth-form__field">
@@ -56,11 +59,11 @@
 
 
                   <div class="auth-form__field">
-                      <input name="password"  ngModel   placeholder="{{'~password' | translate}}" required >
+                      <input name="password"  ngModel  type="password" placeholder="{{'~password' | translate}}" required >
                   </div>
 
                   <div class="auth-form__field">
-                      <input name="confPsasswd"  placeholder="{{'~confirmPassword' | translate}}" required >
+                      <input name="confPsasswd"  type="password" placeholder="{{'~confirmPassword' | translate}}" required >
                   </div>
 
 
@@ -71,12 +74,12 @@
             </div>
 
               <button class="auth-form__submit"  type="submit"
-               > {{'register' | translate}} </button>
+               > {{'~register' | translate}} </button>
 
           </form>
 
            <div class="toRegister">
-            <a [routerLink]="'/login'">{{'login' | translate}}</a>
+            <a [routerLink]="'/login'">{{'~login' | translate}}</a>
            </div>
         </div>
       </div>

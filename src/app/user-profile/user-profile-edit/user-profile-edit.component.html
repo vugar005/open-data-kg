@@ -1,4 +1,4 @@
-<form #f="ngForm" class="nt-form" (ngSubmit)="onSubmit(f)" autocomplete="off">
+<form #f="ngForm" class="nt-form" (ngSubmit)="onSubmit(f)" autocomplete="2">
 
     <div class="inputs">
       <div class="left">
@@ -64,13 +64,13 @@
         </mat-form-field>
 
         <mat-form-field class="example-full-width" >
-          <input matInput placeholder="{{'~oldPassword' | translate}}" class="nt-form-input" name="oldPassword" autocomplete="off" ngModel [type]="hideOld ? 'password' : 'text'">
+          <input matInput placeholder="{{'~oldPassword' | translate}}" class="nt-form-input" name="oldPassword" autocomplete="new-password" ngModel [type]="hideOld ? 'password' : 'text'">
           <mat-icon matSuffix (click)="hideOld = !hideOld">{{hideOld ? 'visibility_off' : 'visibility'}}</mat-icon>
           <mat-error>{{getErrors('oldPassword')}}</mat-error>
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="{{'~newPassword' | translate}}" value="" class="nt-form-input" name="password" ngModel [type]="hide ? 'password' : 'text'"
+          <input matInput placeholder="{{'~newPassword' | translate}}" value="" class="nt-form-input" name="password" autocomplete="new-password" ngModel [type]="hide ? 'password' : 'text'"
             [required]="!data.user">
           <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
           <mat-error>{{getErrors('passwd')}}</mat-error>

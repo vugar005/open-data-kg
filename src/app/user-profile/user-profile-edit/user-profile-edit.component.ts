@@ -9,6 +9,10 @@ import { NgForm } from '@angular/forms';
 import { NgxFormUtils } from 'ngx-form-utils';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/auth/models/user.model.';
+import { AppState } from 'src/app/reducers';
+import { Store } from '@ngrx/store';
+import { TableModel } from 'src/app/shared/models/table.model';
+import { AutoSetUser } from 'src/app/auth/store/auth.actions';
 
 @Component({
   selector: 'app-user-profile-edit',
@@ -28,7 +32,8 @@ export class UserProfileEditComponent implements OnInit {
   public  dialogRef: MatDialogRef<UserProfileEditComponent>,
   private dialog: MatDialog,
   private sharedService: SharedService,
-  private http: HttpClient
+  private http: HttpClient,
+  private store: Store<AppState>
   ) {
     this.genders$ = this.sharedService.getTypes('181010384504309277');
     this.user = this.data.user;
@@ -56,9 +61,18 @@ export class UserProfileEditComponent implements OnInit {
      if (res.code === 'INVALID_PARAMS') {
       this.sharedService.createNotification('error', res.message['kg']);
      } else {
+       this.refetchUser();
        this.dialogRef.close();
      }
      });
+    }
+    refetchUser() {
+     this.http.post<any>('api/post/user/check', {})
+     .subscribe(res => {
+       if (res && res.data) {
+        this.store.dispatch(new AutoSetUser(res.data));
+       }
+     })
     }
 
 }
