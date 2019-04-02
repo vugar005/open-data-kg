@@ -12,34 +12,34 @@
 
         <div class="auth-box">
            <div class="form-header">{{'~register' | translate}}</div>
-           <form #f="ngForm" class="nt-form" (ngSubmit)="onSubmit(f)">
+           <form #f="ngForm" class="nt-form" (ngSubmit)="onSubmit(f)" >
 
             <div class="inputs">
               <div class="left">
 
                   <div class="auth-form__field">
-                      <input name="userName" ngModel  placeholder="{{'~userName' | translate}}" required>
+                      <input name="userName" ngModel readonly onfocus="this.removeAttribute('readonly');"   placeholder="{{'~userName' | translate}}"  required>
                       <div class="invalid-feedback" >
                            {{getErrors('userName')}}
                       </div>
                   </div>
 
                   <div class="auth-form__field">
-                      <input name="name" ngModel   placeholder="{{'~firstName' | translate}}" required>
+                      <input name="name" ngModel readonly onfocus="this.removeAttribute('readonly');"   placeholder="{{'~firstName' | translate}}" required>
                       <div class="invalid-feedback" >
-                           {{getErrors('firstName')}}
+                           {{getErrors('name')}}
                       </div>
                   </div>
 
                   <div class="auth-form__field">
-                      <input name="surname" ngModel   placeholder="{{'~lastName' | translate}}"required>
+                      <input name="surname" ngModel readonly onfocus="this.removeAttribute('readonly');"   placeholder="{{'~lastName' | translate}}"required>
                       <div class="invalid-feedback" >
-                        {{getErrors('lastName')}}
+                        {{getErrors('surname')}}
                    </div>
                   </div>
 
                   <div class="auth-form__field">
-                      <input name="mName" ngModel   placeholder="{{'~middleName' | translate}}" >
+                      <input name="mName" ngModel readonly onfocus="this.removeAttribute('readonly');"   placeholder="{{'~middleName' | translate}}" >
                       <div class="invalid-feedback" >
                         {{getErrors('mName')}}
                    </div>
@@ -50,7 +50,7 @@
               <div class="right">
 
                 <div class="auth-form__field">
-                    <select  name="genderId" ngModel required>
+                    <select  name="genderId" ngModel readonly onfocus="this.removeAttribute('readonly');" required>
                         <option value="" disabled selected>{{'~gender' | translate}}</option>
                         <option *ngFor="let item of (genders$ | async)" [value]="item.value"> {{item.label}} </option>
                     </select>
@@ -61,7 +61,7 @@
 
 
                 <div class="auth-form__field">
-                    <input  [matDatepicker]="picker" placeholder="{{'~birthdate' | translate}}" name="birthdate" ngModel required
+                    <input  [matDatepicker]="picker" placeholder="{{'~birthdate' | translate}}" name="birthdate" ngModel readonly onfocus="this.removeAttribute('readonly');" required
                     [max]="maxDate">
                     <div class="icon">
                         <mat-datepicker-toggle matSuffix [for]="picker" style="color: #ffffff"></mat-datepicker-toggle>
@@ -74,7 +74,7 @@
 
 
                   <div class="auth-form__field">
-                      <input name="password"  ngModel  type="password" placeholder="{{'~password' | translate}}" required >
+                      <input name="password"  ngModel readonly onfocus="this.removeAttribute('readonly');"  type="password" placeholder="{{'~password' | translate}}" required >
                   </div>
 
                   <div class="auth-form__field">
@@ -82,9 +82,9 @@
                   </div>
 
 
-                <input [hidden]="true" name="photoFileId" value="imgId" [(ngModel)]="imgId" >
-                <input [hidden]="true" name="id" ngModel>
-                <input [hidden]="true" name="personId" ngModel>
+                <input [hidden]="true" name="photoFileId" value="imgId" [(ngModel)]="imgId" readonly onfocus="this.removeAttribute('readonly');">
+                <input [hidden]="true" name="id" ngModel readonly onfocus="this.removeAttribute('readonly');">
+                <input [hidden]="true" name="personId" ngModel readonly onfocus="this.removeAttribute('readonly');">
               </div>
             </div>
 
@@ -103,4 +103,4 @@
 
 </perfect-scrollbar>
 
-<wave-particles [AMOUNTX]="35" [AMOUNTY]="35"></wave-particles>
+<wave-particles [AMOUNTX]="25" [AMOUNTY]="25"></wave-particles>

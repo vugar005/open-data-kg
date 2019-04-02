@@ -3,7 +3,8 @@ import {
   OnInit,
   OnDestroy,
   AfterViewInit,
-  ViewChild
+  ViewChild,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import { AppState } from '../../reducers';
 import { Store } from '@ngrx/store';
@@ -19,7 +20,8 @@ declare var Typed;
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  animations: [trigger('fadeIn', [transition(':enter', useAnimation(fadeIn))])]
+  animations: [trigger('fadeIn', [transition(':enter', useAnimation(fadeIn))])],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoginComponent implements OnInit, OnDestroy, AfterViewInit {
   // @HostBinding('@fadeIn')

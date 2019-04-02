@@ -10,7 +10,7 @@
   padding: 0.625rem 0.625rem;
   height: 98px;
   cursor: pointer;
-  .item-img {
+  .item__img {
     width: 4.6875rem;
     height: 4.6875rem;
     border-radius: 0.4375rem;
@@ -22,24 +22,24 @@
       height: 100%;
     }
   }
-  .item-body {
+  .item__content{
     display: flex;
     flex-direction: column;
     width: 12.5rem;
-    .item-title {
+    .item__content__title {
       font-weight: bold;
       font-size: 0.9375rem;
       color: #666666;
       padding-bottom: 0.625rem;
     }
-    .item-content {
+    .item__content__text {
       font-size: 0.875rem;
       color: #666666;
       padding-bottom: 0.9375rem;
-      height: 2.6875rem;
+      height: 2.6rem;
       overflow: hidden;
     }
-    .item-footer {
+    .item__content__footer {
       font-size: 0.5rem;
       color: #666666;
     }

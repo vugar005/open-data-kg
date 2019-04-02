@@ -110,5 +110,7 @@
       "~fileManager": "",
       "~removeImg": "Remove Image",
       "~commentAddSuccess": "Comment added and will be shown after confirmation !",
-      "~statisticsByDownloads": "Statistics By Downloads"
+      "~statisticsByReview": "Statistics By Review",
+      "~statisticsByDownloads": "Statistics By Downloads",
+      "~statisticsByComment": "Statistics By Comment"
 }

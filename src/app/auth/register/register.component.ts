@@ -1,5 +1,5 @@
 import { UploadFileDialogComponent } from './../../admin-panel/upload-file-dialog/upload-file-dialog.component';
-import { Component, OnInit, OnDestroy, AfterViewInit, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { AppState } from '../../reducers';
 import { Store } from '@ngrx/store';
 import { getFormErrors } from 'src/app/shared/table-utils/form-utils/form-utils.methods';
@@ -13,7 +13,8 @@ import { getApiUrl } from '../store/auth.selectors';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  styleUrls: ['./register.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RegisterComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild('f') ntForm: NgForm;
@@ -39,13 +40,21 @@ export class RegisterComponent implements OnInit, OnDestroy, AfterViewInit {
   ngOnDestroy() {
   }
  getErrors(str) {
+   if (!(this.ntForm && this.ntForm.controls[str] )) {return;}
+  if (!this.ntForm.controls[str].touched) {return; }
+
     return getFormErrors(this.ntForm, str);
   }
   ngAfterViewInit() {
   }
   onSubmit(f: NgForm) {
-    console.log(f)
-    if (!f.valid) {return; }
+  //
+    Object.keys(this.ntForm.controls)
+      .map(controlName => this.ntForm.controls[controlName])
+      .forEach((control: any) => {
+        control.markAsTouched();
+      });
+      if (!f.valid) {return; }
     this.store.dispatch(new TryRegister(f.form.value));
   }
   onUpload() {

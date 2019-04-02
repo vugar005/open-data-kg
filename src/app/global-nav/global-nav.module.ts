@@ -13,6 +13,7 @@ import * as FusionTheme from 'fusioncharts/themes/fusioncharts.theme.fusion';
 import * as Charts from 'fusioncharts/fusioncharts.charts';
 import { MatTabsModule } from '@angular/material';
 import { TableStatisticsComponent } from './popular-datasets/table-statistics/table-statistics.component';
+import { SharedTranslateModule } from '../shared/shared-translate.module';
 FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme)
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme)
     RouterModule,
     ImgSrcPipeModule,
     FusionChartsModule,
-    MatTabsModule
+    MatTabsModule,
+    SharedTranslateModule
   ],
   declarations: [
     CategoryOverviewComponent,
