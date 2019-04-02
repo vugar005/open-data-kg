@@ -1,8 +1,10 @@
 import { Component, ViewChild } from '@angular/core';
 import { CommentInsertDialogComponent } from './comment-insert-dialog/comment-insert-dialog.component';
 import { SharedAdminService } from '../shared/shared-admin.service';
-import { TableEditerAction, ApiConfig } from 'ngx-native-table';
-import { NgxNativeTableComponent } from 'ngx-native-table';
+import { NgxNativeTableComponent } from 'src/app/shared/table-utils/native-table/native-table.component';
+import { ApiConfig } from 'src/app/shared/table-utils/native-table/api-config.model';
+import { TableEditerAction } from 'src/app/shared/table-utils/native-table/table-action.model';
+import { TableUtilsService } from 'src/app/shared/table-utils/table-utils.service';
 
 @Component({
   selector: 'ent-comments',
@@ -22,9 +24,9 @@ export class EntCommentsComponent {
     // }
   };
   @ViewChild('table') table: NgxNativeTableComponent;
-  constructor(private sharedAdminService: SharedAdminService) { }
-  onOptClick(action: TableEditerAction, table: NgxNativeTableComponent) {
-    this.sharedAdminService.tableActionImplement(action, table, CommentInsertDialogComponent);
+  constructor(private tableUtilsService: TableUtilsService) { }
+  onOptClick(action: TableEditerAction) {
+    this.tableUtilsService.tableActionImplement(action, this.table, CommentInsertDialogComponent);
    }
 
 }

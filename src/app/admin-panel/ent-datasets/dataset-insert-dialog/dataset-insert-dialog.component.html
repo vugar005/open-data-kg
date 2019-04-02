@@ -109,10 +109,17 @@
                   </ngx-native-table>
                  </div>
 
-                <ng-template #editerCat>
-                  <button [attr.t-btn]="'edit'" *rbacAllow="['1000010', 'EDIT_CTGR']">{{'~edit' | translate}}</button>
-                  <button [attr.t-btn]="'remove'" *rbacAllow="['1000010', 'DELETE_CTGR']">{{'~' | translate}}</button>
-                </ng-template>
+                <ng-template #editerCat let-row="row">
+                  <button  [matMenuTriggerFor]="catMenu"><table-edit-button> </table-edit-button> </button>
+                  <mat-menu #catMenu="matMenu" class="table-editer-menu">
+                    <button mat-menu-item *rbacAllow="['1000010', 'EDIT_CTGR']" (click)="onOptClickCat({data: row, type: 'edit'}, tableCat)" >
+                        {{ '~edit' | translate }}
+                      </button>
+                      <button mat-menu-item  *rbacAllow="['1000010', 'DELETE_CTGR']" (click)="onOptClickCat({data: row, type: 'delete'}, tableCat)" >
+                        {{ '~delete' | translate }}
+                      </button>
+                  </mat-menu>
+                  </ng-template>
 
                 <div>
                     <button mat-button matStepperPrevious>{{'~back' | translate}}</button>
@@ -140,10 +147,19 @@
                   >
                   </ngx-native-table>
                  </div>
-                 <ng-template #editerKeyword>
-                  <button [attr.t-btn]="'edit'" *rbacAllow="['1000010', 'EDIT_KYWD']">{{'~edit' | translate}}</button>
-                  <button [attr.t-btn]="'remove'" *rbacAllow="['1000010', 'DELETE_KYWD']">{{'~remove' | translate}}</button>
-                </ng-template>
+
+
+                <ng-template #editerKeyword let-row="row">
+                  <button  [matMenuTriggerFor]="KeywordMenu"><table-edit-button> </table-edit-button> </button>
+                  <mat-menu #KeywordMenu="matMenu" class="table-editer-menu">
+                    <button mat-menu-item *rbacAllow="['1000010', 'EDIT_KYWD']" (click)="onOptClickKeyword({data: row, type: 'edit'}, tableKeyword)" >
+                        {{ '~edit' | translate }}
+                      </button>
+                      <button mat-menu-item  *rbacAllow="['1000010', 'DELETE_KYWD']" (click)="onOptClickKeyword({data: row, type: 'delete'}, tableKeyword)" >
+                        {{ '~delete' | translate }}
+                      </button>
+                  </mat-menu>
+                  </ng-template>
 
                 <div>
                     <button mat-button matStepperPrevious>{{'~back' | translate}}</button>
@@ -171,10 +187,18 @@
                     ></ngx-native-table>
                    </div>
 
-                   <ng-template #editerApi>
-                    <button [attr.t-btn]="'edit'" *rbacAllow="['1000010', 'EDIT_API']">{{'~edit' | translate}}</button>
-                    <button [attr.t-btn]="'remove'" *rbacAllow="['1000010', 'DELETE_API']">{{'~remove' | translate}}</button>
-                  </ng-template>
+
+                  <ng-template #editerApi let-row="row">
+                    <button  [matMenuTriggerFor]="ApiMenu"><table-edit-button> </table-edit-button> </button>
+                    <mat-menu #ApiMenu="matMenu" class="table-editer-menu">
+                      <button mat-menu-item *rbacAllow="['1000010', 'EDIT_API']" (click)="onOptClickApi({data: row, type: 'edit'}, tableApi)" >
+                          {{ '~edit' | translate }}
+                        </button>
+                        <button mat-menu-item  *rbacAllow="['1000010', 'DELETE_API']" (click)="onOptClickApi({data: row, type: 'delete'}, tableApi)" >
+                          {{ '~delete' | translate }}
+                        </button>
+                    </mat-menu>
+                    </ng-template>
 
                   <div>
                       <button mat-button matStepperPrevious>{{'~back' | translate}}</button>

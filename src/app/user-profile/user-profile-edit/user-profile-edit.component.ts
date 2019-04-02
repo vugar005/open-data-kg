@@ -6,7 +6,7 @@ import { UploadFileDialogComponent } from './../../admin-panel/upload-file-dialo
 import { Component, OnInit, Inject, ViewChild } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialog } from '@angular/material';
 import { NgForm } from '@angular/forms';
-import { NgxFormUtils } from 'ngx-form-utils';
+import { getFormErrors } from 'src/app/shared/table-utils/form-utils/form-utils.methods';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/auth/models/user.model.';
 import { AppState } from 'src/app/reducers';
@@ -42,10 +42,9 @@ export class UserProfileEditComponent implements OnInit {
 
   ngOnInit() {
   }
-  getErrors(str) {
-    if (!this.ntForm || !NgxFormUtils) { return; }
-     return NgxFormUtils.getErrors(this.ntForm, str);
-    }
+ getErrors(str) {
+    return getFormErrors(this.ntForm, str);
+  }
     onUpload() {
       const dialogRef = this.dialog.open(UploadFileDialogComponent, {data: {adapter: this.adapter}});
       dialogRef.afterClosed().subscribe(res => {

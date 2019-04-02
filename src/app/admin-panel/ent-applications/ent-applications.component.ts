@@ -1,8 +1,9 @@
-import { SharedAdminService } from './../shared/shared-admin.service';
-import { Component} from '@angular/core';
+import { Component, ViewChild} from '@angular/core';
+import { ApiConfig } from 'src/app/shared/table-utils/native-table/api-config.model';
+import { TableUtilsService } from 'src/app/shared/table-utils/table-utils.service';
+import { NgxNativeTableComponent } from 'src/app/shared/table-utils/native-table/native-table.component';
+import { TableEditerAction } from 'src/app/shared/table-utils/native-table/table-action.model';
 import { ApplicationsInsertDialogComponent } from './applications-insert-dialog/applications-insert-dialog.component';
-import { TableEditerAction, ApiConfig } from 'ngx-native-table';
-import { NgxNativeTableComponent } from 'ngx-native-table';
 
 @Component({
   selector: 'ent-applications',
@@ -10,14 +11,15 @@ import { NgxNativeTableComponent } from 'ngx-native-table';
   styleUrls: ['./ent-applications.component.scss']
 })
 export class EntApplicationsComponent  {
+  @ViewChild('table') table: NgxNativeTableComponent;
   config: ApiConfig = {
     getApi: 'api/post/Permission/Applications/GetApplicationList',
     insertApi: 'api/post/Permission/Applications/InsertNewApplication',
     updateApi: 'api/post/Permission/Applications/UpdateApplication',
     deleteApi: 'api/post/Permission/Applications/DeleteApplication',
   };
-  constructor(private sharedAdminService: SharedAdminService) { }
-  onOptClick(action: TableEditerAction, table: NgxNativeTableComponent) {
-    this.sharedAdminService.tableActionImplement(action, table, ApplicationsInsertDialogComponent);
+  constructor(private tableUtilsService: TableUtilsService) { }
+  onOptClick(action: TableEditerAction) {
+    this.tableUtilsService.tableActionImplement(action, this.table, ApplicationsInsertDialogComponent);
    }
 }

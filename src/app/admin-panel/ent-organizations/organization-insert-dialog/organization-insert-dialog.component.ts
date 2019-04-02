@@ -5,7 +5,7 @@ import { NgForm } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialog } from '@angular/material';
 import { ModulesInsertDialogComponent } from '../../ent-modules/modules-insert-dialog/modules-insert-dialog.component';
-import { NgxFormUtils } from 'ngx-form-utils';
+import { getFormErrors } from 'src/app/shared/table-utils/form-utils/form-utils.methods';
 import {faAddressCard} from '@fortawesome/free-solid-svg-icons';
 import {faPhone} from '@fortawesome/free-solid-svg-icons';
 import { AppState } from 'src/app/reducers';
@@ -17,7 +17,10 @@ import { OrgAddressInsertComponent } from './org-address-insert/org-address-inse
 import { OrgContactInsertComponent } from './org-contact-insert/org-contact-insert.component';
 import { UploadFileDialogComponent } from '../../upload-file-dialog/upload-file-dialog.component';
 import { SharedAdminService } from '../../shared/shared-admin.service';
-import { TableEditerAction, NgxNativeTableComponent, ApiConfig } from 'ngx-native-table';
+import { ApiConfig } from 'src/app/shared/table-utils/native-table/api-config.model';
+import { TableEditerAction } from 'src/app/shared/table-utils/native-table/table-action.model';
+import { NgxNativeTableComponent } from 'src/app/shared/table-utils/native-table/native-table.component';
+import { TableUtilsService } from 'src/app/shared/table-utils/table-utils.service';
 @Component({
   selector: 'app-organization-insert-dialog',
   templateUrl: './organization-insert-dialog.component.html',
@@ -25,6 +28,8 @@ import { TableEditerAction, NgxNativeTableComponent, ApiConfig } from 'ngx-nativ
 })
 export class OrganizationInsertDialogComponent implements OnInit {
   @ViewChild('f') ntForm: NgForm;
+  @ViewChild('tableContact') tableContact: NgxNativeTableComponent;
+  @ViewChild('tableAddress') tableAddress: NgxNativeTableComponent;
   apps$: Observable<any>;
   orgTypes$: Observable<SelectType[]>;
   faAddressCard = faAddressCard;
@@ -41,7 +46,7 @@ export class OrganizationInsertDialogComponent implements OnInit {
     private sharedService: SharedService,
     private dialog: MatDialog,
     private store: Store<AppState>,
-    private sharedAdminService: SharedAdminService
+    private tableUtilsService: TableUtilsService
   ) {
     this.store.select(getUserOrg)
     .pipe(
@@ -53,16 +58,15 @@ export class OrganizationInsertDialogComponent implements OnInit {
       }
     });
   }
-  onOptClickAddress(action: TableEditerAction, table: NgxNativeTableComponent) {
-    this.sharedAdminService.tableActionImplement(action, table, OrgAddressInsertComponent);
+  onOptClickAddress(action: TableEditerAction) {
+    this.tableUtilsService.tableActionImplement(action, this.tableAddress, OrgAddressInsertComponent);
    }
-  onOptClickContact(action: TableEditerAction, table: NgxNativeTableComponent) {
-    this.sharedAdminService.tableActionImplement(action, table, OrgContactInsertComponent);
+  onOptClickContact(action: TableEditerAction) {
+    this.tableUtilsService.tableActionImplement(action, this.tableContact, OrgContactInsertComponent);
    }
-  getErrors(str) {
-    if (!this.ntForm || !NgxFormUtils) { return; }
-     return NgxFormUtils.getErrors(this.ntForm, str);
-    }
+ getErrors(str) {
+    return getFormErrors(this.ntForm, str);
+  }
     onClose(res) {
       if (res && res.kv && res.kv.id) {
         this.ntForm.setValue({

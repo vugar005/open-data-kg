@@ -26,14 +26,23 @@
 
                   <div class="auth-form__field">
                       <input name="name" ngModel   placeholder="{{'~firstName' | translate}}" required>
+                      <div class="invalid-feedback" >
+                           {{getErrors('firstName')}}
+                      </div>
                   </div>
 
                   <div class="auth-form__field">
                       <input name="surname" ngModel   placeholder="{{'~lastName' | translate}}"required>
+                      <div class="invalid-feedback" >
+                        {{getErrors('lastName')}}
+                   </div>
                   </div>
 
                   <div class="auth-form__field">
                       <input name="mName" ngModel   placeholder="{{'~middleName' | translate}}" >
+                      <div class="invalid-feedback" >
+                        {{getErrors('mName')}}
+                   </div>
                   </div>
 
               </div>
@@ -45,6 +54,9 @@
                         <option value="" disabled selected>{{'~gender' | translate}}</option>
                         <option *ngFor="let item of (genders$ | async)" [value]="item.value"> {{item.label}} </option>
                     </select>
+                    <div class="invalid-feedback" >
+                        {{getErrors('genderId')}}
+                   </div>
                 </div>
 
 
@@ -55,6 +67,9 @@
                         <mat-datepicker-toggle matSuffix [for]="picker" style="color: #ffffff"></mat-datepicker-toggle>
                         <mat-datepicker #picker [startAt]="startDate" startView="year"></mat-datepicker>
                     </div>
+                    <div class="invalid-feedback" >
+                        {{getErrors('birthdate')}}
+                   </div>
                 </div>
 
 
@@ -87,3 +102,5 @@
 
 
 </perfect-scrollbar>
+
+<wave-particles [AMOUNTX]="35" [AMOUNTY]="35"></wave-particles>

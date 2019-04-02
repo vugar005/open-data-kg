@@ -84,6 +84,7 @@ button {
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 100%;
+  font-family: 'OpensSans', sans-serif;
   cursor: pointer;
   &:focus {
     outline: 0;
@@ -114,6 +115,7 @@ input {
   border: 0;
   color: #ffffff;
   outline: 0;
+  font-family: 'OpensSans', sans-serif;
 }
 input:-webkit-autofill,
 input:-webkit-autofill:hover,

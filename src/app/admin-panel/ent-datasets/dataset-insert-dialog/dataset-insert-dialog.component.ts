@@ -6,7 +6,7 @@ import { SelectType } from 'src/app/shared/models/select-type.model';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialog } from '@angular/material';
 import { ModulesInsertDialogComponent } from '../../ent-modules/modules-insert-dialog/modules-insert-dialog.component';
 import { SharedService } from 'src/app/shared/shared.service';
-import { NgxFormUtils } from 'ngx-form-utils';
+import { getFormErrors } from 'src/app/shared/table-utils/form-utils/form-utils.methods';
 import { DatasetApiInsertComponent } from './dataset-api-insert/dataset-api-insert.component';
 import { DatasetCategoryInsertComponent } from './dataset-category-insert/dataset-category-insert.component';
 import { DatasetKeywordInsertComponent } from './dataset-keyword-insert/dataset-keyword-insert.component';
@@ -18,8 +18,10 @@ import { take } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { addAttachFileToolbar } from 'src/app/shared/shared-methods';
 import { FileManagerDialogComponent } from '../../file-manager-dialog/file-manager-dialog.component';
-import { SharedAdminService } from '../../shared/shared-admin.service';
-import { TableEditerAction, NgxNativeTableComponent, ApiConfig } from 'ngx-native-table';
+import { ApiConfig } from 'src/app/shared/table-utils/native-table/api-config.model';
+import { TableEditerAction } from 'src/app/shared/table-utils/native-table/table-action.model';
+import { NgxNativeTableComponent } from 'src/app/shared/table-utils/native-table/native-table.component';
+import { TableUtilsService } from 'src/app/shared/table-utils/table-utils.service';
 
 @Component({
   selector: 'app-dataset-insert-dialog',
@@ -46,7 +48,7 @@ export class DatasetInsertDialogComponent implements OnInit, AfterViewInit {
     private dialog: MatDialog,
     private store: Store<AppState>,
     private http: HttpClient,
-    private sharedAdminService: SharedAdminService
+    private tableUtilsService: TableUtilsService
   ) {
     this.store.select(getUserOrg)
     .pipe(
@@ -59,21 +61,20 @@ export class DatasetInsertDialogComponent implements OnInit, AfterViewInit {
     });
   }
   onOptClickCat(action: TableEditerAction, table: NgxNativeTableComponent) {
-    this.sharedAdminService.tableActionImplement(action, table, DatasetCategoryInsertComponent);
+    this.tableUtilsService.tableActionImplement(action, table, DatasetCategoryInsertComponent);
    }
   onOptClickKeyword(action: TableEditerAction, table: NgxNativeTableComponent) {
-    this.sharedAdminService.tableActionImplement(action, table, DatasetKeywordInsertComponent);
+    this.tableUtilsService.tableActionImplement(action, table, DatasetKeywordInsertComponent);
    }
   onOptClickApi(action: TableEditerAction, table: NgxNativeTableComponent) {
-    this.sharedAdminService.tableActionImplement(action, table, DatasetApiInsertComponent);
+    this.tableUtilsService.tableActionImplement(action, table, DatasetApiInsertComponent);
    }
   onEditorInit() {
     return addAttachFileToolbar(this.dialog, FileManagerDialogComponent);
   }
-  getErrors(str) {
-    if (!this.ntForm || !NgxFormUtils) { return; }
-     return NgxFormUtils.getErrors(this.ntForm, str);
-    }
+ getErrors(str) {
+    return getFormErrors(this.ntForm, str);
+  }
     ngAfterViewInit() {
     }
 
@@ -118,6 +119,7 @@ export class DatasetInsertDialogComponent implements OnInit, AfterViewInit {
       }
    ngOnInit() {
    this.setConfigs();
+   console.log(this.data)
    }
 
 }

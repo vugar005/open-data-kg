@@ -1,7 +1,7 @@
 import { Component, ViewChild, Inject, ViewContainerRef } from '@angular/core';
 import { NgForm, } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialog } from '@angular/material';
-import { NgxFormUtils } from 'ngx-form-utils';
+import { getFormErrors } from 'src/app/shared/table-utils/form-utils/form-utils.methods';
 import { Observable } from 'rxjs';
 import { SelectType } from 'src/app/shared/models/select-type.model';
 import { trigger, transition, useAnimation } from '@angular/animations';
@@ -42,10 +42,9 @@ export class UserInsertDialogComponent  {
     this.orgTypes$ = this.sharedService.getModTypes('api/post/Permission/Organizations/GetOrganizationList');
     this.genders$ = this.sharedService.getTypes('181010384504309277');
   }
-  getErrors(str) {
-    if (!this.ntForm || !NgxFormUtils) { return; }
-     return NgxFormUtils.getErrors(this.ntForm, str);
-    }
+ getErrors(str) {
+    return getFormErrors(this.ntForm, str);
+  }
     onDateChange(e) {
       console.log(e.value);
     console.log(this.data);

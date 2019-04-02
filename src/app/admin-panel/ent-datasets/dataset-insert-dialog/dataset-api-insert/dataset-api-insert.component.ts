@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, Inject, ViewContainerRef } from '@angular
 import { NgForm } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
-import { NgxFormUtils } from 'ngx-form-utils';
+import { getFormErrors } from 'src/app/shared/table-utils/form-utils/form-utils.methods';
 import { SharedService } from 'src/app/shared/shared.service';
 
 @Component({
@@ -24,9 +24,8 @@ export class DatasetApiInsertComponent {
     this.formatTypes$ = this.sharedService.getTypes('181116173908947318');
     this.versionTypes$ = this.sharedService.getTypes('181116181702942313');
   }
-  getErrors(str) {
-    if (!this.ntForm || !NgxFormUtils) { return; }
-     return NgxFormUtils.getErrors(this.ntForm, str);
-    }
+ getErrors(str) {
+    return getFormErrors(this.ntForm, str);
+  }
 
 }

@@ -31,15 +31,28 @@
     <ngx-native-table #table
     [config]="config"
     [editTemplate]="editer"
-    (actionClick)="onOptClick($event, table)"
+    (actionClick)="onOptClick($event)"
     >
     </ngx-native-table>
    </div>
  </div>
 
- <ng-template #editer>
-  <button [attr.t-btn]="'edit'"   *rbacAllow="['1000014', 'EDIT']">{{'~edit' | translate}}</button>
-  <button [attr.t-btn]="'remove'" *rbacAllow="['1000014', 'DELETE']">{{'~delete' | translate}}</button>
-  <button [attr.t-btn]="'confirm'" *rbacAllow="['1000014', 'CONFIRM']">{{'~confirm' | translate}}</button>
-<button [attr.t-btn]="'unConfirm'" *rbacAllow="['1000014', 'UNCONFIRM']">{{'~unconfirm' | translate}}</button>
-</ng-template>
+
+
+<ng-template #editer let-row="row">
+  <button  [matMenuTriggerFor]="menu"><table-edit-button> </table-edit-button> </button>
+  <mat-menu #menu="matMenu" class="table-editer-menu">
+    <button mat-menu-item *rbacAllow="['1000014', 'EDIT']" (click)="onOptClick({data: row, type: 'edit'})" >
+        {{ '~edit' | translate }}
+      </button>
+      <button mat-menu-item  *rbacAllow="['1000014', 'DELETE']" (click)="onOptClick({data: row, type: 'delete'})" >
+        {{ '~delete' | translate }}
+      </button>
+      <button mat-menu-item  *rbacAllow="['1000014', 'CONFIRM']" (click)="onOptClick({data: row, type: 'confirm'})" >
+        {{ '~confirm' | translate }}
+      </button>
+      <button mat-menu-item  *rbacAllow="['1000014', 'UNCONFIRM']" (click)="onOptClick({data: row, type: 'unconfirm'})" >
+        {{ '~unconfirm' | translate }}
+      </button>
+  </mat-menu>
+  </ng-template>

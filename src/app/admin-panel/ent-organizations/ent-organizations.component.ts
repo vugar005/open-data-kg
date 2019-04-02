@@ -1,7 +1,10 @@
 import { Component, ViewChild } from '@angular/core';
 import { OrganizationInsertDialogComponent } from './organization-insert-dialog/organization-insert-dialog.component';
 import { SharedAdminService } from '../shared/shared-admin.service';
-import { TableEditerAction, NgxNativeTableComponent, ApiConfig } from 'ngx-native-table';
+import { NgxNativeTableComponent } from 'src/app/shared/table-utils/native-table/native-table.component';
+import { ApiConfig } from 'src/app/shared/table-utils/native-table/api-config.model';
+import { TableEditerAction } from 'src/app/shared/table-utils/native-table/table-action.model';
+import { TableUtilsService } from 'src/app/shared/table-utils/table-utils.service';
 
 @Component({
   selector: 'ent-organizations',
@@ -16,9 +19,9 @@ export class EntOrganizationsComponent {
     updateApi: 'api/post/Permission/Organizations/UpdateOrganization',
     deleteApi: 'api/post/Permission/Organizations/DeleteOrganization'
   };
-  constructor(private sharedAdminService: SharedAdminService) { }
-  onOptClick(action: TableEditerAction, table: NgxNativeTableComponent) {
-    this.sharedAdminService.tableActionImplement(action, table, OrganizationInsertDialogComponent);
+  constructor(private tableUtilsService: TableUtilsService) { }
+  onOptClick(action: TableEditerAction) {
+    this.tableUtilsService.tableActionImplement(action, this.table, OrganizationInsertDialogComponent);
    }
 
 }

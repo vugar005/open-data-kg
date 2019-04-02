@@ -4,7 +4,7 @@ import { SelectType } from 'src/app/shared/models/select-type.model';
 import { NgForm } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { SharedService } from 'src/app/shared/shared.service';
-import { NgxFormUtils } from 'ngx-form-utils';
+import { getFormErrors } from 'src/app/shared/table-utils/form-utils/form-utils.methods';
 
 @Component({
   selector: 'app-dataset-keyword-insert',
@@ -23,8 +23,7 @@ export class DatasetKeywordInsertComponent  {
   ) {
     this.keywordTypes$ = this.sharedService.getTypes('1000003');
   }
-  getErrors(str) {
-    if (!this.ntForm || !NgxFormUtils) { return; }
-     return NgxFormUtils.getErrors(this.ntForm, str);
-    }
+ getErrors(str) {
+    return getFormErrors(this.ntForm, str);
+  }
 }

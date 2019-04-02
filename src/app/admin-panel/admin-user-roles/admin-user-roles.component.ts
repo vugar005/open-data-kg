@@ -1,7 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
 import { UserRolesInsertDialogComponent } from './user-roles-insert-dialog/user-roles-insert-dialog.component';
-import { NgxNativeTableComponent, ApiConfig, TableEditerAction } from 'ngx-native-table';
-import { SharedAdminService } from '../shared/shared-admin.service';
+import { NgxNativeTableComponent } from 'src/app/shared/table-utils/native-table/native-table.component';
+import { ApiConfig } from 'src/app/shared/table-utils/native-table/api-config.model';
+import { TableEditerAction } from 'src/app/shared/table-utils/native-table/table-action.model';
+import { TableUtilsService } from 'src/app/shared/table-utils/table-utils.service';
 
 @Component({
   selector: 'admin-user-roles',
@@ -19,9 +21,9 @@ export class AdminUserRolesComponent {
       ownerId: '181109524302827110'
     }
   };
-  constructor(private sharedAdminService: SharedAdminService) { }
-  onOptClick(action: TableEditerAction, table: NgxNativeTableComponent) {
-    this.sharedAdminService.tableActionImplement(action, table, UserRolesInsertDialogComponent);
+  constructor(private tableUtilsService: TableUtilsService) { }
+  onOptClick(action: TableEditerAction) {
+    this.tableUtilsService.tableActionImplement(action, this.table, UserRolesInsertDialogComponent);
    }
 
 }

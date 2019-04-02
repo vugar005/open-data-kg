@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { SelectType } from 'src/app/shared/models/select-type.model';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { SharedService } from 'src/app/shared/shared.service';
-import { NgxFormUtils } from 'ngx-form-utils';
+import { getFormErrors } from 'src/app/shared/table-utils/form-utils/form-utils.methods';
 
 @Component({
   selector: 'app-org-contact-insert',
@@ -22,10 +22,9 @@ export class OrgContactInsertComponent {
   ) {
     this.types$ = this.sharedService.getTypes('181110214600956271');
   }
-  getErrors(str) {
-    if (!this.ntForm || !NgxFormUtils) { return; }
-     return NgxFormUtils.getErrors(this.ntForm, str);
-    }
+ getErrors(str) {
+    return getFormErrors(this.ntForm, str);
+  }
 
 
 }

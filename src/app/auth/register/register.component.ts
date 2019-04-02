@@ -2,7 +2,7 @@ import { UploadFileDialogComponent } from './../../admin-panel/upload-file-dialo
 import { Component, OnInit, OnDestroy, AfterViewInit, ViewChild } from '@angular/core';
 import { AppState } from '../../reducers';
 import { Store } from '@ngrx/store';
-import { NgxFormUtils } from 'ngx-form-utils';
+import { getFormErrors } from 'src/app/shared/table-utils/form-utils/form-utils.methods';
 import { NgForm } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { SelectType } from 'src/app/shared/models/select-type.model';
@@ -38,10 +38,9 @@ export class RegisterComponent implements OnInit, OnDestroy, AfterViewInit {
   }
   ngOnDestroy() {
   }
-  getErrors(str) {
-    if (!this.ntForm || !NgxFormUtils) { return; }
-     return NgxFormUtils.getErrors(this.ntForm, str);
-    }
+ getErrors(str) {
+    return getFormErrors(this.ntForm, str);
+  }
   ngAfterViewInit() {
   }
   onSubmit(f: NgForm) {

@@ -3,7 +3,7 @@ import { Component, OnInit, ViewChild, Inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { NgForm } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialog } from '@angular/material';
-import { NgxFormUtils } from 'ngx-form-utils';
+import { getFormErrors } from 'src/app/shared/table-utils/form-utils/form-utils.methods';
 import { addAttachFileToolbar } from 'src/app/shared/shared-methods';
 import { FileManagerDialogComponent } from '../../file-manager-dialog/file-manager-dialog.component';
 import { UploadFileDialogComponent } from '../../upload-file-dialog/upload-file-dialog.component';
@@ -28,10 +28,9 @@ export class BlogInsertComponent {
     this.cats$ = this.sharedService.getTypes('1000008');
 
   }
-  getErrors(str) {
-    if (!this.ntForm || !NgxFormUtils) { return; }
-     return NgxFormUtils.getErrors(this.ntForm, str);
-    }
+ getErrors(str) {
+    return getFormErrors(this.ntForm, str);
+  }
     onUpload() {
       const dialogRef = this.dialog.open(UploadFileDialogComponent);
       dialogRef.afterClosed().subscribe(res => {

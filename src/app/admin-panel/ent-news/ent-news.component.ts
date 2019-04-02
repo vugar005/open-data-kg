@@ -1,8 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NewsInsertDialogComponent } from './news-insert-dialog/news-insert-dialog.component';
 import { SharedAdminService } from '../shared/shared-admin.service';
-import { TableEditerAction, ApiConfig } from 'ngx-native-table';
-import { NgxNativeTableComponent } from 'ngx-native-table';
+import { NgxNativeTableComponent } from 'src/app/shared/table-utils/native-table/native-table.component';
+import { ApiConfig } from 'src/app/shared/table-utils/native-table/api-config.model';
+import { TableEditerAction } from 'src/app/shared/table-utils/native-table/table-action.model';
+import { TableUtilsService } from 'src/app/shared/table-utils/table-utils.service';
 
 @Component({
   selector: 'app-ent-news',
@@ -20,8 +22,8 @@ export class EntNewsComponent  {
     unConfirmApi: 'api/post/Permission/Sharing/UnconfirmNews'
   };
   @ViewChild('table') table: NgxNativeTableComponent;
-  constructor(private sharedAdminService: SharedAdminService) { }
-  onOptClick(action: TableEditerAction, table: NgxNativeTableComponent) {
-    this.sharedAdminService.tableActionImplement(action, table, NewsInsertDialogComponent);
+  constructor(private tableUtilsService: TableUtilsService) { }
+  onOptClick(action: TableEditerAction) {
+    this.tableUtilsService.tableActionImplement(action, this.table, NewsInsertDialogComponent);
    }
 }

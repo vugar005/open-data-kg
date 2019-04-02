@@ -45,23 +45,29 @@
       #table
       [config]="config"
       [editTemplate]="editer"
-      (actionClick)="onOptClick($event, table)"
+      (actionClick)="onOptClick($event)"
     >
     </ngx-native-table>
   </div>
 </div>
 
-<ng-template #editer>
-  <button [attr.t-btn]="'edit'" *rbacAllow="['1000005', 'EDIT']">
-    {{ '~edit' | translate }}
-  </button>
-  <button [attr.t-btn]="'remove'" *rbacAllow="['1000005', 'DELETE']">
-    {{ '~delete' | translate }}
-  </button>
-  <button [attr.t-btn]="'active'" *rbacAllow="['1000005', 'ACTIVE']">
-    {{ '~activate' | translate }}
-  </button>
-  <button [attr.t-btn]="'deactive'" *rbacAllow="['1000005', 'DEACTIVE']">
-    {{ '~deactivate' | translate }}
-  </button>
-</ng-template>
+
+
+
+<ng-template #editer let-row="row">
+  <button  [matMenuTriggerFor]="menu"><table-edit-button> </table-edit-button> </button>
+  <mat-menu #menu="matMenu" class="table-editer-menu">
+    <button mat-menu-item *rbacAllow="['1000005', 'EDIT']" (click)="onOptClick({data: row, type: 'edit'})" >
+        {{ '~edit' | translate }}
+      </button>
+      <button mat-menu-item  *rbacAllow="['1000005', 'DELETE']" (click)="onOptClick({data: row, type: 'delete'})" >
+        {{ '~delete' | translate }}
+      </button>
+      <button mat-menu-item  *rbacAllow="['1000005', 'ACTIVE']" (click)="onOptClick({data: row, type: 'active'})" >
+        {{ '~activate' | translate }}
+      </button>
+      <button mat-menu-item  *rbacAllow="['1000005', 'DEACTIVE']" (click)="onOptClick({data: row, type: 'deactive'})" >
+        {{ '~deactivate' | translate }}
+      </button>
+  </mat-menu>
+  </ng-template>

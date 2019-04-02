@@ -1,11 +1,11 @@
 import { MatDialog } from '@angular/material';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { TableEditerAction } from 'ngx-native-table';
-import { NgxNativeTableComponent } from 'ngx-native-table';
-import { ApiConfig } from 'ngx-native-table';
 import { Observable } from 'rxjs';
 import { TableModel } from 'src/app/shared/models/table.model';
+import { TableEditerAction } from 'src/app/shared/table-utils/native-table/table-action.model';
+import { NgxNativeTableComponent } from 'src/app/shared/table-utils/native-table/native-table.component';
+import { ApiConfig } from 'src/app/shared/table-utils/native-table/api-config.model';
 
 @Injectable()
 export class SharedAdminService {

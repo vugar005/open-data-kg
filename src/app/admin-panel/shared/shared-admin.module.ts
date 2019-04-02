@@ -19,9 +19,10 @@ import { EditorModule } from '@tinymce/tinymce-angular';
 import { FileManagerModule } from '../file-manager/file-manager.module';
 import { ImgSrcPipeModule } from 'src/app/shared/pipes/img-src-pipe.module';
 import { FileManagerDialogComponent } from '../file-manager-dialog/file-manager-dialog.component';
-import { NgxNativeTableModule} from 'ngx-native-table';
 import { SharedAdminService } from './shared-admin.service';
 import { MaterialModule } from 'src/app/material.module';
+import { NgxNativeTableModule } from 'src/app/shared/table-utils/native-table/native-table.module';
+import { TableUtilsModule } from 'src/app/shared/table-utils/table-utils.module';
 @NgModule({
   imports: [
     CKEditorModule,
@@ -29,9 +30,9 @@ import { MaterialModule } from 'src/app/material.module';
     EditorModule,
     ImgSrcPipeModule,
     FileManagerModule,
-    NgxNativeTableModule,
     MaterialModule,
-    QuicklinkModule
+    QuicklinkModule,
+    TableUtilsModule
   ],
   exports: [
     FontAwesomeModule,
@@ -47,9 +48,9 @@ import { MaterialModule } from 'src/app/material.module';
     EditorModule,
     ImgSrcPipeModule,
     FileManagerModule,
-    NgxNativeTableModule,
     MaterialModule,
-    QuicklinkModule
+    QuicklinkModule,
+    TableUtilsModule
     ],
   declarations: [
     FileManagerDialogComponent

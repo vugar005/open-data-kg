@@ -13,7 +13,7 @@ import { fadeIn } from 'ng-animate';
 import { NgForm } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { loadExternalScripts } from 'src/app/shared/shared-methods';
-import { NgxFormUtils } from 'ngx-form-utils';
+import { getFormErrors } from 'src/app/shared/table-utils/form-utils/form-utils.methods';
 declare var Typed;
 @Component({
   selector: 'app-login',
@@ -38,10 +38,9 @@ export class LoginComponent implements OnInit, OnDestroy, AfterViewInit {
       this.typed.destroy();
     }
   }
-  getErrors(str) {
-    if (!this.ntForm || !NgxFormUtils) { return; }
-     return NgxFormUtils.getErrors(this.ntForm, str);
-    }
+ getErrors(str) {
+    return getFormErrors(this.ntForm, str);
+  }
   onSubmit(f: NgForm) {
     if (!f.valid) {return; }
     this.store.dispatch(new TryLogin(f.form.value));

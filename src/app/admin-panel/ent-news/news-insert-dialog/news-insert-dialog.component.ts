@@ -4,7 +4,7 @@ import { NgForm } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialog } from '@angular/material';
 import { ApplicationsInsertDialogComponent } from '../../ent-applications/applications-insert-dialog/applications-insert-dialog.component';
 import { SharedService } from 'src/app/shared/shared.service';
-import { NgxFormUtils } from 'ngx-form-utils';
+import { getFormErrors } from 'src/app/shared/table-utils/form-utils/form-utils.methods';
 import * as InlineEdtior from '@ckeditor/ckeditor5-build-inline';
 import { addAttachFileToolbar } from 'src/app/shared/shared-methods';
 import { FileManagerDialogComponent } from '../../file-manager-dialog/file-manager-dialog.component';
@@ -34,10 +34,9 @@ export class NewsInsertDialogComponent  {
     this.cats$ = this.sharedService.getTypes('1000008');
 
   }
-  getErrors(str) {
-    if (!this.ntForm || !NgxFormUtils) { return; }
-     return NgxFormUtils.getErrors(this.ntForm, str);
-    }
+ getErrors(str) {
+    return getFormErrors(this.ntForm, str);
+  }
     onEditorInit() {
       return addAttachFileToolbar(this.dialog, FileManagerDialogComponent);
     }

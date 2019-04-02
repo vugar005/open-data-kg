@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { ModulesInsertDialogComponent } from '../../ent-modules/modules-insert-dialog/modules-insert-dialog.component';
-import { NgxFormUtils } from 'ngx-form-utils';
+import { getFormErrors } from 'src/app/shared/table-utils/form-utils/form-utils.methods';
 import { SharedService } from 'src/app/shared/shared.service';
 
 @Component({
@@ -25,9 +25,8 @@ export class OperationsInsertDialogComponent implements OnInit {
     this.modules$ = this.sharedService.getModTypes('api/get/Permission/Modules/GetModuleList');
     this.operations$ = this.sharedService.getModTypes('api/post/Permission/Operations/GetOperationList');
   }
-  getErrors(str) {
-    if (!this.ntForm || !NgxFormUtils) { return; }
-     return NgxFormUtils.getErrors(this.ntForm, str);
-    }
+ getErrors(str) {
+    return getFormErrors(this.ntForm, str);
+  }
 
 }
