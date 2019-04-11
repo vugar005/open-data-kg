@@ -54,7 +54,9 @@ export class OrganizationInsertDialogComponent implements OnInit {
     )
     .subscribe(res => {
       if (res.id) {
-        this.orgTypes$ = this.sharedService.getTypesByParentId('1000001', res.orgTypeId);
+      this.orgTypes$ = this.sharedService.getTypesByParentId('1000001', res.orgTypeId);
+
+    //   this.orgTypes$ = this.sharedService.getModTypes('api/post/Permission/Organizations/GetOrganizationList');
       }
     });
   }

@@ -66,7 +66,7 @@ export class NewsSidebarComponent implements OnInit {
     };
    this.sharedService.getTableData(`api/get/Permission/Sharing/GetNewsForCommon`, body)
    .subscribe(res => {
-    if (!res && res.tbl && res.tbl[0]) {return; }
+    if ( !(res && res.tbl && res.tbl[0])) {return; }
      const items = res.tbl[0].r;
     // this.items = items.slice(0, 6)
      this.items = items;
