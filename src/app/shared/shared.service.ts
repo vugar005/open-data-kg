@@ -135,6 +135,30 @@ export class SharedService {
     };
   }
 
+  getModTypesParentId(
+    typeId: string,
+    parentId: string
+  ): Observable<SelectType[]> {
+    const body = {
+      kv: {
+        dicTypeId: typeId,
+        parentId: parentId
+      }
+    };
+    return this.http
+      .post(
+        `api/post/Permission/Dictionaries/GetDictionaryListByType`,
+        JSON.stringify(body)
+      )
+      .pipe(
+        map((res: any) => {
+          if (!(res && res.tbl[0]) && res.tbl[0].r) {
+            return;
+          }
+          return res.tbl[0].r.map(row => this.mapType(row));
+        })
+      );
+  }
   getTypesByParentId(
     typeId: string,
     parentId: string
