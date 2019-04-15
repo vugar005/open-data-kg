@@ -58,7 +58,7 @@ export class TableUtilsService {
             id: actionObject.data.id
           }
         };
-        this.postTableData(table.config.confirmApi, body, table).subscribe();
+        this.postTableData(table.config.confirmApi, body, table).subscribe(res => table.getTableData());
         break;
       }
       case 'unconfirm': {
@@ -67,7 +67,7 @@ export class TableUtilsService {
             id: actionObject.data.id
           }
         };
-        this.postTableData(table.config.unConfirmApi, body, table).subscribe();
+        this.postTableData(table.config.unConfirmApi, body, table).subscribe(res => table.getTableData());
         break;
       }
       case 'active': {
@@ -76,7 +76,7 @@ export class TableUtilsService {
             id: actionObject.data.id
           }
         };
-        this.postTableData(table.config.activateApi, body, table).subscribe();
+        this.postTableData(table.config.activateApi, body, table).subscribe(res => table.getTableData());
         break;
       }
       case 'deactive': {
@@ -85,7 +85,7 @@ export class TableUtilsService {
             id: actionObject.data.id
           }
         };
-        this.postTableData(table.config.deactivateApi, body, table).subscribe();
+        this.postTableData(table.config.deactivateApi, body, table).subscribe(res => table.getTableData());
         break;
       }
     }

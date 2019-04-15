@@ -13,6 +13,7 @@ import { AppState } from 'src/app/reducers';
 import { Store } from '@ngrx/store';
 import { TableModel } from 'src/app/shared/models/table.model';
 import { AutoSetUser } from 'src/app/auth/store/auth.actions';
+import { getUser } from 'src/app/auth/store/auth.selectors';
 
 @Component({
   selector: 'app-user-profile-edit',
@@ -27,7 +28,7 @@ export class UserProfileEditComponent implements OnInit {
   maxDate = new Date(1994, 9, 30);
   startDate = new Date(1990, 0, 1);
   adapter = new ProfileUploaderAdapter(this.http);
-  user: User;
+  user$: Observable<User>;
   constructor( @Inject(MAT_DIALOG_DATA) public data: any,
   public  dialogRef: MatDialogRef<UserProfileEditComponent>,
   private dialog: MatDialog,
@@ -36,8 +37,8 @@ export class UserProfileEditComponent implements OnInit {
   private store: Store<AppState>
   ) {
     this.genders$ = this.sharedService.getTypes('181010384504309277');
-    this.user = this.data.user;
-    this.user.birthdate = new Date(this.user.birthdate.toString());
+    this.user$ = this.store.select(getUser);
+  //  this.user.birthdate = new Date(this.user.birthdate.toString());
   }
 
   ngOnInit() {
@@ -48,12 +49,12 @@ export class UserProfileEditComponent implements OnInit {
     onUpload() {
       const dialogRef = this.dialog.open(UploadFileDialogComponent, {data: {adapter: this.adapter}});
       dialogRef.afterClosed().subscribe(res => {
-        if (res) { this.user.photoFileId = res; }
+        if (res) { this.ntForm.controls['photoFileId'].setValue(res); }
         dialogRef.close();
       });
     }
     onRemoveFile(id: string) {
-      this.sharedService.removeFile(id).subscribe(res => this.user.photoFileId = undefined);
+      this.sharedService.removeFile(id).subscribe(res => this.ntForm.controls['photoFileId'].setValue(undefined));
    }
     onSubmit(f: NgForm) {
      this.http.post('api/post/profile/change',  f.value).subscribe((res: any) => {

@@ -7,9 +7,9 @@ export interface CommentModel {
   datasetName: string;
   confirmStatusEn: string;
   active: string;
-  createUserPhotoFileId: string;
-  createUserLastname: string;
-  createUserFirstname: string;
+  sharingFileId: string;
+  createPersonLastname: string;
+  createPersonFirstname: string;
   datasetNameEn: string;
   createUserMiddlename: string;
   datasetNameRu: string;

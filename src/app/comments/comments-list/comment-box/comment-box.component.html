@@ -1,12 +1,12 @@
 <div class="ng-top">
   <div class="user-content">
     <div  class="user-img" >
-        <img *ngIf="!comment.createUserPhotoFileId" src="./assets/img/default-avatar.png">
-        <img *ngIf="comment.createUserPhotoFileId"  src="{{apiUrl$ | async}}/api/get/file/{{comment.createUserPhotoFileId}}"
+        <img *ngIf="!comment.sharingFileId" src="./assets/img/default-avatar.png">
+        <img *ngIf="comment.sharingFileId"  src="{{apiUrl$ | async}}/api/get/file/{{comment.sharingFileId}}"
          onerror="this.src= './assets/img/default-avatar.png '">
     </div>
     <div class="user-info">
-      <div class="user-name">{{comment?.createUserFirstname}} {{comment?.createUserLastname}}</div>
+      <div class="user-name">{{comment?.createPersonFirstname}} {{comment?.createPersonLastname}}</div>
      <div class="comment-date">{{comment.createDate}}</div>
     </div>
   </div>

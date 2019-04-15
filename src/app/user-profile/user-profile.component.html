@@ -1,6 +1,6 @@
 <div class="main-info-wrapper">
     <div class="main-info-background"></div>
-    <div class="container " *ngIf="user">
+    <div class="container " *ngIf="user$ | async as user">
 
         <div class="row">
           <div class="col-12 p-0">

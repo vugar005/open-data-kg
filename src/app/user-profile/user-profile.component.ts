@@ -19,14 +19,14 @@ import { take } from 'rxjs/operators';
   styleUrls: ['./user-profile.component.scss']
 })
 export class UserProfileComponent implements OnInit {
- user: User;
+ user$: Observable<User>;
  apiUrl$: Observable<string>;
  datasets: Dataset[];
  currentMod = 'show';
   constructor(private store: Store<AppState>, private sharedService: SharedService, private http: HttpClient,
     private dialog: MatDialog
     ) {
-  store.select(getUser).pipe(take(1)).subscribe(res => this.user = res);
+  this.user$ = store.select(getUser);
     this.apiUrl$ = store.select(getApiUrl);
   }
 
@@ -44,7 +44,7 @@ export class UserProfileComponent implements OnInit {
  // this.datasets$.subscribe(res => console.log(res));
   }
   onEdit() {
-   this.dialog.open(UserProfileEditComponent, {data: { user: {...this.user}} });
+   this.dialog.open(UserProfileEditComponent);
   }
 
 }
