@@ -9,7 +9,7 @@
     </button>
     <button
       *rbacAllow="['1000008', 'DELETE']"
-      (click)="table.onMultiRemove()"
+      (click)="table.deleteData()"
       [disabled]="!table?.isRowSelected"
     >
       {{ '~removeSelected' | translate }}
@@ -35,7 +35,7 @@
         col.n
       }}</mat-option>
     </mat-select>
-    <button (click)="table.onExport()">{{ '~export' | translate }}</button>
+
   </div>
 </div>
 

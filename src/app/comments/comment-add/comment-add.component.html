@@ -1,16 +1,15 @@
 <form #f="ngForm" >
-  <div class="co-add-top">
-    <div class="co-add-msg-icon">
-      <img src="./assets/icons/msg-icon.svg">
+  <div class="comment__add">
+    <div class="comment__add__content">
+      <textarea placeholder="{{'~writeComment' | translate}}" class="co-add-textarea" name="comment" required ngModel></textarea>
+
+
     </div>
-    <div class="co-add-content">
-      <textarea placeholder="Write feedback here" class="co-add-textarea" name="comment" required ngModel></textarea>
+    <div class="comment__add__button">
+      <button mat-raised-button color="primary"  type="submit" forLoggedIn (clicked)="onSubmit(f)" [disabled]="loading"
+      >{{'~send' | translate}}</button>
     </div>
  </div>
  <input hidden name="kvKey" [(ngModel)]="id">
- <div class="co-add-bottom">
-   <button mat-raised-button color="primary"  type="submit" forLoggedIn (clicked)="onSubmit(f)" [disabled]="loading"
-   >{{'~send' | translate}}</button>
- </div>
 
 </form>

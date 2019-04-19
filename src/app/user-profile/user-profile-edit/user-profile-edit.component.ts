@@ -14,7 +14,7 @@ import { Store } from '@ngrx/store';
 import { TableModel } from 'src/app/shared/models/table.model';
 import { AutoSetUser } from 'src/app/auth/store/auth.actions';
 import { getUser } from 'src/app/auth/store/auth.selectors';
-
+import * as moment from 'moment';
 @Component({
   selector: 'app-user-profile-edit',
   templateUrl: './user-profile-edit.component.html',
@@ -42,6 +42,16 @@ export class UserProfileEditComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.user$.subscribe(res => {
+      console.log(res.birthdate);
+      setTimeout(() => {
+        // const birthdate = (this.ntForm.controls['birthdate'].value);
+        // console.log(new Date(birthdate));
+        // return;
+        // this.ntForm.controls['birthdate'].setValue(birthdate.toDate());
+        // console.log(this.ntForm);
+      }, 100);
+    });
   }
  getErrors(str) {
     return getFormErrors(this.ntForm, str);

@@ -15,32 +15,32 @@
               <div class="item-center">
 
                   <div class="item-center__group">
-                      <div class="key">Username: </div>
+                      <div class="key">{{'~username' | translate}}: </div>
                       <div class="value">{{user.userName}}</div>
                     </div>
                   <div class="item-center__group">
-                      <div class="key">User Type: </div>
+                      <div class="key">{{'~userType' | translate}}: </div>
                       <div class="value">{{user.userType}}</div>
                     </div>
                   <div class="item-center__group">
-                      <div class="key">Name: </div>
+                      <div class="key">{{'~name' | translate}}: </div>
                       <div class="value">{{user.name}} {{user.surname}}</div>
                     </div>
 
                 <div class="item-center__group">
-                    <div class="key">Born: </div>
-                    <div class="value">{{user.birthdate | date: 'd MMMM y'}}</div>
+                    <div class="key">{{'~birthdate' | translate}}: </div>
+                    <div class="value">{{ (user?.birthdate) }}</div>
                 </div>
 
                 <div class="item-center__group">
-                  <div class="key">Gender: </div>
+                  <div class="key">{{'~gender' | translate}}: </div>
                   <div class="value">{{user.gender.value['en']}}</div>
                 </div>
 
               </div>
               <div class="item-right">
                 <div class="edit-btn">
-                    <button mat-raised-button (click)="onEdit()">EDIT PROFILE</button>
+                    <button mat-raised-button (click)="onEdit()">{{'~editProfile' | translate}}</button>
                 </div>
 <!--
                 <div class="icon">
@@ -64,7 +64,7 @@
           <div class="profile-modules-wrapper">
             <div class="profile-save-module" (click)="currentMod = 'show'">
               <div class="mod-icon"><img src="./assets/icons/folder (1).svg"></div>
-              <div class="mod-text">Saved Data</div>
+              <div class="mod-text">{{'~savedData' | translate}}</div>
             </div>
           </div>
          </div>
@@ -77,3 +77,4 @@
          </div>
        </div>
      </div>
+

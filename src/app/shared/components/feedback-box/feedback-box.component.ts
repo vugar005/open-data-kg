@@ -35,6 +35,11 @@ export class FeedbackBoxComponent implements OnInit {
     }
   };
   this.sharedService.getTableData(this.insertApi, body, true)
-  .subscribe(res => this.ratingUpdated.next(), (er) => this.index = this.ceilDefaultIndex);
+  .subscribe(res => {
+    console.log(res);
+    if (res) {
+      this.ratingUpdated.next();
+    }
+  }, (er) => this.index = this.ceilDefaultIndex);
   }
 }

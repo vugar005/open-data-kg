@@ -6,13 +6,13 @@ import {
   HttpResponse,
 } from '@angular/common/http';
 import {Observable} from 'rxjs/internal/Observable';
-import {tap, catchError} from 'rxjs/operators';
+import {tap, catchError, map} from 'rxjs/operators';
 import {Injectable} from '@angular/core';
 import {Store} from '@ngrx/store';
 import { SharedService } from '../shared.service';
 import { AppState } from '../../reducers';
 import { Ng2IzitoastService } from 'ng2-izitoast';
-import { of } from 'rxjs';
+import { of, throwError } from 'rxjs';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
@@ -21,11 +21,13 @@ export class ErrorInterceptor implements HttpInterceptor {
     return next.handle(req)
       .pipe(
        catchError(er => this.handleHttpError(er)),
-       tap((response) => {
+       map((response) => {
           if (response instanceof HttpResponse) {
             if (response.body && response.body.err && response.body.err.length > 0) {
               const errors = response.body.err;
              this.handleHttpError(errors[0].val).subscribe(res => console.log(res));
+             throwError(errors);
+             return;
             }
             if (response.body && response.body.code === 'UNAUTHORIZED') {
               // this.sharedService.createNotification('error', `${req.urlWithParams}`, 'Unauthorized');
@@ -35,6 +37,7 @@ export class ErrorInterceptor implements HttpInterceptor {
               //   });
             }
           }
+          return response;
         }, (err: any) => {
           if (err instanceof HttpErrorResponse) {
             this.handleHttpError(err.message);

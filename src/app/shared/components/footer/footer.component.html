@@ -17,22 +17,22 @@
               <div class="link"
                 [routerLink] = "'/home/news'"
                 [queryParams]="{type: 'News'}"
-              >News</div>
+          >{{'~news' | translate}}</div>
               <div class="link"
                 [routerLink] = "'/home/news'"
                 [queryParams]="{type: 'Annoucement'}"
-              >Announcements</div>
+              >{{'~announcements' | translate}}</div>
               <div class="link"
                 [routerLink] = "'/home/news'"
                 [queryParams]="{type: 'Blog'}"
-              >Blogs</div>
+              >{{'~blogs' | translate}}</div>
             </div>
           </div>
           <div class="col-4">
             <div class="links-box">
-              <div class="link" routerLink="/home/datasets/by-category/0">Categories</div>
-              <div class="link" routerLink="/home/datasets/by-organization/">Organizations</div>
-              <div class="link" (click)="onLatestNavigate()">Latest Datasets</div>
+              <div class="link" routerLink="/home/datasets/by-category/0">{{'~categories' | translate}}</div>
+              <div class="link" routerLink="/home/datasets/by-organization/">{{'~organizations' | translate}}</div>
+              <div class="link" (click)="onLatestNavigate()">{{'~latestDatasets' | translate}}</div>
             </div>
           </div>
           <div class="col-4">
@@ -59,10 +59,10 @@
     </div>
     <div class="col-3">
       <div class="brand-logo">
-        <div class="title">Created by</div>
+        <div class="title">{{'~createdBy' | translate}}</div>
           <img src="./assets/icons/neuron-footer.svg">
       </div>
     </div>
   </div>
 </div>
-<div class="rights">All Rights Reserved</div>
+<div class="rights">{{'~allRightsReserved' | translate}}</div>

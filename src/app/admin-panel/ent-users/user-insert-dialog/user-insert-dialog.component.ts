@@ -39,7 +39,7 @@ export class UserInsertDialogComponent  {
     private dialog: MatDialog
   ) {
     this.roles$ = this.sharedService.getModTypes('api/post/Permission/UserRoles/GetUserRoleList');
-    this.orgTypes$ = this.sharedService.getTypes('api/post/Permission/Organizations/GetOrganizationList', '', 'post');
+    this.orgTypes$ = this.sharedService.getModTypes('api/post/Permission/Organizations/GetOrganizationList');
     this.genders$ = this.sharedService.getTypes('181010384504309277');
   }
  getErrors(str) {

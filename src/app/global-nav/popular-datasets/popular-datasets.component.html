@@ -1,13 +1,13 @@
 <div class="container">
     <div class="row">
       <div class="col-12">
-        <div class="co-title">Popular datasets </div>
+        <div class="co-title">{{'~popularDatasets' | translate | titlecase}} </div>
       </div>
     </div>
     <div class="row justify-content-center">
         <div class="col-12 col-lg-9">
             <mat-tab-group>
-              <mat-tab label="Chart" position="0">
+              <mat-tab label="{{'~chart' | translate | titlecase}}" position="0">
               <ng-template matTabContent>
                   <div class="item-list">
                       <dataset-statistics *ngIf="datasetsByReview"
@@ -28,7 +28,7 @@
               </ng-template>
 
               </mat-tab>
-              <mat-tab label="Table">
+              <mat-tab label="{{'~table' | translate | titlecase}}">
 
              <ng-template matTabContent>
                 <table-statistics *ngIf="datasetsByReview"

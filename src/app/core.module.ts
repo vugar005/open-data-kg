@@ -53,6 +53,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 import localeRu from '@angular/common/locales/ru';
 import localeKy from '@angular/common/locales/ky';
 import { WaveParticlesModule } from './home/landing-page/wave-particles/wave-particles.module';
+import { FooterModule } from './shared/components/footer/footer.module';
 registerLocaleData(localeRu);
 registerLocaleData(localeKy);
 @NgModule({
@@ -95,6 +96,7 @@ imports: [
   MaterialModule,
   ImgSrcPipeModule,
   WaveParticlesModule,
+  FooterModule,
   HttpClientBusyModule.forRoot(),
   TranslateModule.forRoot({
     loader: {

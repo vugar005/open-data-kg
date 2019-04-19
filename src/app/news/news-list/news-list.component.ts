@@ -6,6 +6,7 @@ import { NewsItem } from '../models/news-item.model';
 import { NewsQuery } from '../models/news-query.model';
 import { NgForm } from '@angular/forms';
 import { getPaginationRange } from 'src/app/app.utils';
+import { TranslateService } from '@ngx-translate/core';
 declare var Swiper;
 @Component({
   selector: 'app-news-list',
@@ -24,7 +25,10 @@ export class NewsListComponent implements OnInit, AfterViewInit, OnDestroy {
   rangeArray = [];
   type: string; // news, blogs or annoucements
   @HostListener('window:resize', ['$event']) resize() {this.onWindowResize(); }
-  constructor(private sharedService: SharedService, private route: ActivatedRoute) {
+  constructor(private sharedService: SharedService,
+          private route: ActivatedRoute,
+          private translateService: TranslateService
+          ) {
   }
 
   ngOnInit() {
@@ -144,6 +148,9 @@ export class NewsListComponent implements OnInit, AfterViewInit, OnDestroy {
        return;
       }
       this.getNews();
+    }
+    getName(type: string) {
+      return this.translateService.instant(`~${type}`);
     }
 
 }

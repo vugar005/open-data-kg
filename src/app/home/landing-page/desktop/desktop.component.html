@@ -6,12 +6,9 @@
 
        <div class="search-input-wrapper">
           <div class="search-header">
-              <div class="primary-name">
-                {{'~primaryName' | translate}}
-              </div>
-              <div class="secondary-name">
-                {{'~secondaryName' | translate}}
-              </div>
+            <div class="search-header__icon">
+                <img src="./assets/icons/ky-opendata.svg">
+            </div>
             </div>
             <div class="input-co">
                 <input class="ng-input" placeholder="{{'~searchDataset' | translate}}" (click)="resetMouse()"
@@ -27,7 +24,7 @@
                 <img src="./assets/icons/search.svg">
                 </div>
                 <ng-template #showAllTpl>
-                  Show All
+                {{'~showAll' | translate}}
                </ng-template>
             </div>
 

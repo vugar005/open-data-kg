@@ -4,13 +4,13 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   selector: 'ngx-simple-paginator',
   template: `
   <div class="ngx-paginator-container">
-      <div class="ngx-paginator-page-size">
+      <div class="ngx-paginator-page-size" *ngIf="showPaginatorLabel">
         <div class="ngx-paginator-page-size-label"> Items per page:
         </div>
       </div>
-      <div class="ngx-paginator-range-actions">
-        <div class="ngx-paginator-range-label"> {{label}}</div>
-        <div class="ngx-dropdown-wrapper" style="width: 2rem; font-size: 12px;">
+      <div class="ngx-paginator-range-actions" >
+        <div class="ngx-paginator-range-label" *ngIf="showPaginatorRange"> {{label}}</div>
+        <div class="ngx-dropdown-wrapper" *ngIf="showPaginatorRange" style="width: 2rem; font-size: 12px;">
         <ngx-simple-dropdown [positinY]="'above'">
           <p  dropdownToggle>{{pageSize}}</p>
           <ul *dropdownMenu class="ngx-dropdown-menu">
@@ -54,6 +54,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./paginator.component.scss']
 })
 export class PaginatorComponent implements OnInit {
+  @Input() showPaginatorLabel = true;
+  @Input() showPaginatorRange = true;
   @Input()  get length() {return this._length; }
             set length(value: number) { this._length = +value ; }
   @Input()  get pageSize() {return this._pageSize; }

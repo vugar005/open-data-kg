@@ -5,7 +5,7 @@
   <div class="ng-admin-actions-template"  >
     <button (click)="table.onPrint()" >{{'~print' | translate}}</button>
     <button  *rbacAllow="['1000007', 'ADD']" (click)="table.addData()" >{{'~addData' | translate}}</button>
-    <button  *rbacAllow="['1000007', 'DELETE']" (click)="table.onMultiRemove()"
+    <button  *rbacAllow="['1000007', 'DELETE']" (click)="table.deleteData()"
      [disabled]="!(table?.isRowSelected)">{{'~removeSelected' | translate}}</button>
      <mat-select placeholder="Toggle Columns" [multiple]="true"
                (selectionChange)="table?.toggleColumns($event)"
@@ -22,7 +22,7 @@
      </div>
      <mat-option *ngFor="let col of table?.defaultColumnDefs" [value]="col">{{col.n}}</mat-option>
    </mat-select>
-    <button (click)="table.onExport()" >{{'~export' | translate}}</button>
+
  </div>
  </div>
 

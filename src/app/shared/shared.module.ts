@@ -13,7 +13,6 @@ import { MatRippleModule, MatProgressSpinnerModule, MatButtonModule } from '@ang
 import { SharedUploadModule } from './shared-upload.module';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { FooterComponent } from './components/footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { ScrollListenerDirective } from './directives/scroll-listener.directive';
 import { CommentsModule } from '../comments/comments.module';
@@ -21,13 +20,13 @@ import { LangNavComponent } from '../lang-nav/lang-nav.component';
 import { GlobalNavModule } from '../global-nav/global-nav.module';
 import { QuicklinkModule } from 'ngx-quicklink';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
+import { FooterModule } from './components/footer/footer.module';
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
   slidesPerView: 'auto'
 };
 @NgModule({
   declarations: [
-    FooterComponent,
     ScrollListenerDirective,
     GlobalNavComponent,
     LangNavComponent,
@@ -48,13 +47,13 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
       ImgSrcPipeModule,
       GlobalNavModule,
       QuicklinkModule,
+      FooterModule
     ],
     exports: [
       CommonModule,
       FontAwesomeModule,
       SharedTranslateModule,
       SwiperModule,
-      FooterComponent,
       MatRippleModule,
       ReactiveFormsModule,
       FormsModule,

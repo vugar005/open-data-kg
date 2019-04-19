@@ -1,7 +1,7 @@
 <div class="co-wrapper" >
   <div class="co-header">
       <div class="module-name">
-          {{type | translate | titlecase}}
+          {{ getName(type) | translate | titlecase}}
         </div>
         <div class="news-filters">
             <news-filters (formSubmit)="onNewsFilter($event)" [type]="type"></news-filters>

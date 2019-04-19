@@ -6,27 +6,25 @@
   position: relative;
 }
 .auth-co {
-  padding-top: 9.9em;
   position: relative;
   z-index: 2;
-.brand-logo {
+
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
+  padding: 0;
+.brand-logo {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  .brand-logo__icon {
+    width: 27.75rem;
+  }
   cursor: pointer;
-  .primary-name {
-    font-size: 42px;
-    font-weight: bold;
-    text-align: center;
-    color: #ffffff;
-  }
-  .secondary-name {
-    font-size: 21px;
-    font-weight: bold;
-    text-align: center;
-    color: #ffffff;
-    letter-spacing: 19px
-  }
+
 }
 
 .auth-box {
@@ -34,17 +32,15 @@
   flex-direction: column;
   align-items: center;
   width: 360px;
-  margin: auto;
+  // margin: auto;
   background: rgba(255, 255, 255, 0.2);
   padding: 48px;
   border-radius: 9px;
   margin-top: 50px;
   .form-header {
-      font-family: Raleway;
       font-size: 20px;
       font-weight: bold;
       line-height: 1.2;
-      letter-spacing: 0.8px;
       text-align: center;
       color: #ffffff;
       margin-bottom: 15px;

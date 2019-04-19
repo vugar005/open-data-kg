@@ -14,7 +14,9 @@ import {
   ViewChildren,
   QueryList,
   OnDestroy,
-  ViewChild
+  ViewChild,
+  OnChanges,
+  SimpleChanges
 } from '@angular/core';
 import { NativeTableService } from './native-table.service';
 import { PageQuery } from './page-query.model';
@@ -50,7 +52,7 @@ import { NgForm } from '@angular/forms';
       <input type="checkbox" /> <span class="ngx-checkmark"></span>
     </div> -->
   </th>
-  <th *ngIf="indexNumber" class="ngx-native-table__th ngx-index-number">#</th>
+  <th *ngIf="indexNumber" class="ngx-native-table__th --index-number">#</th>
 
   <th *ngFor="let col of visibleColumnDefs" [attr.col-key]="col?.i" class="ngx-native-table__th"
    [orderByColumn]="col?.i" [sortState] = "sortState" (sortChange)="onSortChange($event)">
@@ -65,8 +67,8 @@ import { NgForm } from '@angular/forms';
    <ng-container *ngTemplateOutlet="extraColumn;context: {type: 'th'}"> </ng-container>
   </th>
 
-  <th *ngIf="editTemplate" class="ngx-native-table-editTemplate" class="ngx-native-table__th">
-    Editer
+  <th *ngIf="editTemplate"class="ngx-native-table__th --editer">
+    <!-- Editer -->
   </th>
 </thead>
 <tbody>
@@ -76,7 +78,7 @@ import { NgForm } from '@angular/forms';
   *ngIf="rowSelection"
   >
   </td>
-    <td *ngIf="indexNumber" class="ngx-native-table__td ngx-index-number"></td>
+    <td *ngIf="indexNumber" class="ngx-native-table__td --index-number"></td>
     <td *ngFor="let col of visibleColumnDefs" [attr.col-key]="col?.i" class="ngx-native-table__td" >
     <div class="filter-cell">
      <input placeholder ="Search {{col.n }}"
@@ -87,7 +89,7 @@ import { NgForm } from '@angular/forms';
  </td>
  <td *ngFor="let column of extraColumnTemplates" class="ngx-native-table__td">
   </td>
-  <td *ngIf="editTemplate" class="ngx-native-table-editTemplate" class="ngx-native-table__td">
+  <td *ngIf="editTemplate" class="ngx-native-table__td --editer">
   </td>
 </tr>
 
@@ -96,6 +98,7 @@ import { NgForm } from '@angular/forms';
     [attr.row_id]="row?.id"
     [data]="row"
     rowCheckbox
+    (click)="onRowClick(row)"
     class="ngx-native-table__tr"
   >
     <td
@@ -103,11 +106,11 @@ import { NgForm } from '@angular/forms';
       valign="middle"
       class="ngx-native-table__td ngx-native-checkmark-cell"
     >
-      <div class="ngx-checkmark-container">
-        <span class="ngx-checkmark"></span>
+      <div class="ngx-checkmark">
+        <span class="ngx-checkmark__icon"></span>
       </div>
     </td>
-    <td *ngIf="indexNumber" class="ngx-native-table__td ngx-index-number">{{ i + 1 }}</td>
+    <td *ngIf="indexNumber" class="ngx-native-table__td --index-number">{{ pageIndex * pageSize + i + 1 }}</td>
 
     <td
       *ngFor="let col of visibleColumnDefs"
@@ -122,11 +125,14 @@ import { NgForm } from '@angular/forms';
     </td>
     <td
       *ngIf="editTemplate"
-      class="ngx-native-table__td ngx-native-table-editTemplate"
+      class="ngx-native-table__td --editer"
       [ngStyle]="{ 'z-index': activeEditMenuIndex === i ? '2' : '0' }"
     >
+        <div class="table-edit-wrapper">
         <ng-container *ngTemplateOutlet="editTemplate;context: {row: row}"> </ng-container>
+        </div>
     </td>
+
 
   </tr>
 </tbody>
@@ -136,6 +142,8 @@ import { NgForm } from '@angular/forms';
 <ngx-simple-paginator *ngIf="pagination" class="ngx-simeple-paginator"
 [length] = "rowCount"
 [pageSize]="pageSize"
+[showPaginatorLabel]="showPaginatorLabel"
+[showPaginatorRange]="showPaginatorRange"
 (page)="onPageChange($event)"
 > </ngx-simple-paginator>
 
@@ -144,13 +152,15 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./native-table.component.scss'],
   providers: [NativeTableService]
 })
-export class NgxNativeTableComponent implements OnInit, AfterViewInit, OnDestroy {
+export class NgxNativeTableComponent implements OnInit, AfterViewInit, OnDestroy, OnChanges {
   @ViewChild('f') form: NgForm;
   @ViewChildren(RowCheckboxDirective) public rowCheckboxes: QueryList<any>;
   @Input() config: any;
   @Input() pagination = true;
   @Input() pageSize = 25;
   @Input() rowSelection = true;
+  @Input() showPaginatorLabel = false;
+  @Input() showPaginatorRange = true;
   @ViewChild(ConfirmModalComponent) confirmRef: ConfirmModalComponent;
   @Input() indexNumber = true;
   @Input() editTemplate: TemplateRef<any>;
@@ -158,6 +168,8 @@ export class NgxNativeTableComponent implements OnInit, AfterViewInit, OnDestroy
   @Input() dialogRef: any;
   @Output() tdCellClick = new EventEmitter<{row: any, col_key: string}>();
   @Output() rowRemoved = new EventEmitter();
+  @Output() rowClick = new EventEmitter();
+  @Output() rowDataLoaded = new EventEmitter();
   @Output()
   actionClick = new EventEmitter<TableEditerAction>();
   @ContentChild('', { read: ElementRef }) editerComponent: any;
@@ -175,7 +187,7 @@ export class NgxNativeTableComponent implements OnInit, AfterViewInit, OnDestroy
   rowCount: number;
   /** Full table data response */
   tableData: any;
-  pageIndex: number;
+  pageIndex: number = 0;
   columnFilterChanged$ = new Subject<void>();
   sortState: SortChangeModel;
   constructor(public tableService: NativeTableService) {}
@@ -184,6 +196,14 @@ export class NgxNativeTableComponent implements OnInit, AfterViewInit, OnDestroy
     this.getTableData( true);
     this.listenToGetDataEvent();
     this.listenToFormChange();
+  }
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes && changes['config'] && !changes['config'].firstChange) {
+      this.pagination = false;
+      setTimeout(() => this.pagination = true)
+      this.pageIndex = 0;
+      this.getTableData(true);
+    }
   }
   listenToFormChange(): void {
     this.columnFilterChanged$
@@ -281,6 +301,7 @@ export class NgxNativeTableComponent implements OnInit, AfterViewInit, OnDestroy
       return row;
     });
     this.rowData = newRowData;
+    this.rowDataLoaded.next(newRowData);
   }
   buildColumns(data): void {
     const customSequentialColumndDefs = [];
@@ -308,6 +329,7 @@ export class NgxNativeTableComponent implements OnInit, AfterViewInit, OnDestroy
      this.defaultColumnDefs
        .slice()
        .filter(col => !this.hiddenColumnNames.includes(col.i));
+
   }
   toggleColumns(): void {
   //  console.log( [...this.defaultColumnDefs].filter(colDef => (this.visibleColumnDefs.map(col => col.n))));
@@ -339,6 +361,10 @@ export class NgxNativeTableComponent implements OnInit, AfterViewInit, OnDestroy
   addData(): void {
     this.actionClick.next({type: 'insert'});
   }
+  deleteData(): void {
+    if  (!this.getCheckedRows) {return; }
+    this.actionClick.next({type: 'delete', data: this.getCheckedRows().map(res => res.data)});
+  }
 
   onPrint() {
     console.log('on print');
@@ -369,5 +395,8 @@ export class NgxNativeTableComponent implements OnInit, AfterViewInit, OnDestroy
   }
   onTdCellClick(data: {row: any, col_key: string}) {
     this.tdCellClick.next(data);
+  }
+  onRowClick(row) {
+    this.rowClick.next(row);
   }
   }

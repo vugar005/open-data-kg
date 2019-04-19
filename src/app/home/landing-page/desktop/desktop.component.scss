@@ -29,18 +29,9 @@
         flex-direction: column;
         align-items: flex-start;
 
-        .primary-name {
-          font-weight: 800;
-          line-height: 2.4375rem;
-          font-size: 1.9375rem;
-          text-transform: uppercase;
-          color: #ffffff;
-        }
-
-        .secondary-name {
-          line-height: 1.625rem;
-          font-size: 1.375rem;
-          color: #FFFFFF;
+        .search-header__icon {
+          width: 360px;
+          margin-bottom:  8px;
         }
       }
 

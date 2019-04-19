@@ -1,5 +1,5 @@
 import { SharedService } from './../../shared/shared.service';
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -8,6 +8,7 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./comment-add.component.scss']
 })
 export class CommentAddComponent implements OnInit {
+  @ViewChild('f') f: NgForm;
   @Input() id: string;
   @Input() kvKey: string;
   @Input() insertApi: string;
@@ -31,7 +32,10 @@ export class CommentAddComponent implements OnInit {
     body.kv[this.kvKey] = this.id;
     this.sharedService.getTableData(this.insertApi, body, true)
     .subscribe(res => {
-      this.commentSubmit.next();
+      if (res) {
+        this.f.controls['comment'].setValue('');
+        this.commentSubmit.next();
+      }
     });
   }
 

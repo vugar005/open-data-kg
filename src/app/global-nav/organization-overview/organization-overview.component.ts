@@ -17,7 +17,7 @@ export class OrganizationOverviewComponent implements OnInit {
   constructor(private router: Router, private sharedService: SharedService) { }
 
   ngOnInit() {
-   this.items$ = this.sharedService.getTableDataRows('api/get/Permission/Datasets/GetOrganizationWithCategoryCount');
+   this.items$ = this.sharedService.getTableDataRows('api/get/Permission/Datasets/GetOrganizationWithCategoryCount',  {kv: {}});
 
   }
   onNavigate(id: string) {

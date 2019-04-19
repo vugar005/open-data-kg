@@ -39,7 +39,7 @@ export const getUserType = createSelector(
 );
 export const isAdmin = createSelector(
   getUserType,
-  type => type === 'ADMIN' || type === 'SYSADMIN'
+  type => type === 'ADMIN' || type === 'SYSADMIN' || type === 'OWNER'
 );
 export const isSuperAdmin = createSelector(
   getUserType,

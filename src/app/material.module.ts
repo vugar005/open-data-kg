@@ -7,7 +7,7 @@ import { SharedUploadModule } from './shared/shared-upload.module';
 
 export const MY_FORMATS = {
   parse: {
-    dateInput: 'L'
+    dateInput: 'DD/MM/YYYY'
   },
   display: {
     dateInput: 'DD/MM/YYYY',

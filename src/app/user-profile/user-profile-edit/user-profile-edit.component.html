@@ -56,11 +56,11 @@
         </mat-form-field>
 
         <mat-form-field>
-          <input matInput [matDatepicker]="picker" placeholder="{{'~birthdate' | translate}}" name="birthdate" [ngModel]="user?.birthdate"
+          <input matInput [matDatepicker]="picker" placeholder="{{'~birthdate' | translate}}" name="birthdate"  [ngModel]="user.birthdate"
             [max]="maxDate">
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker [startAt]="startDate" startView="year"></mat-datepicker>
-          <mat-error>{{getErrors('birthDate')}}</mat-error>
+          <mat-error>{{getErrors('birthdate')}}</mat-error>
         </mat-form-field>
 
         <mat-form-field class="example-full-width" >
@@ -76,7 +76,7 @@
           <mat-error>{{getErrors('passwd')}}</mat-error>
         </mat-form-field>
 
-        <input [hidden]="true" name="photoFileId" value="photoFileId">
+        <input [hidden]="true" name="photoFileId" value="photoFileId" ngModel>
         <input [hidden]="true" name="id" ngModel>
       </div>
     </div>

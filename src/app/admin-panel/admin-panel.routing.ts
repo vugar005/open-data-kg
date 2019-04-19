@@ -7,7 +7,6 @@ import { UserResolver } from '../shared/resolvers/user.resolver';
 
 const routes: Routes = [
   {path: '', component: AdminPanelComponent, resolve: [UserResolver], data: {state: 'admin'},  children: [
-   {path: '', redirectTo: 'applications', pathMatch: 'full'},
      {path: 'applications', loadChildren: './ent-applications/ent-applications.module#EntApplicationsModule'},
      {path: 'modules', loadChildren: './ent-modules/ent-modules.module#EntModulesModule'},
 
