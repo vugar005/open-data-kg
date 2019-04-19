@@ -26,7 +26,7 @@ export class UserProfileComponent implements OnInit {
   constructor(private store: Store<AppState>, private sharedService: SharedService, private http: HttpClient,
     private dialog: MatDialog
     ) {
-  this.user$ = store.select(getUser);
+    this.user$ = store.select(getUser);
     this.apiUrl$ = store.select(getApiUrl);
   }
 

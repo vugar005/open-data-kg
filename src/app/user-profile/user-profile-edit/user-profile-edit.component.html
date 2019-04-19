@@ -1,6 +1,6 @@
 <form #f="ngForm" class="nt-form" (ngSubmit)="onSubmit(f)" autocomplete="2">
 
-    <div class="inputs" *ngIf="user$ | async as user ">
+    <div class="inputs" *ngIf="user ">
       <div class="left">
 
         <div class="upload-item-img">

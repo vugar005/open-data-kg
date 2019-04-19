@@ -12,12 +12,14 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ErrorInterceptor } from '../shared/interceptors/error.interceptor';
 import { TokenInterceptor } from '../auth/token.inteceptor';
 import { APIInterceptor } from '../shared/interceptors/api.interceptor';
+import { FooterModule } from '../shared/components/footer/footer.module';
 
 @NgModule({
   imports: [
     CommonModule,
     NewsRoutes,
     SharedModule,
+    FooterModule
   ],
   declarations: [
     NewsComponent,

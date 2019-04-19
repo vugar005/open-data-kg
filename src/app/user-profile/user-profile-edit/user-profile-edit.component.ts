@@ -28,7 +28,7 @@ export class UserProfileEditComponent implements OnInit {
   maxDate = new Date(1994, 9, 30);
   startDate = new Date(1990, 0, 1);
   adapter = new ProfileUploaderAdapter(this.http);
-  user$: Observable<User>;
+  user: User;
   constructor( @Inject(MAT_DIALOG_DATA) public data: any,
   public  dialogRef: MatDialogRef<UserProfileEditComponent>,
   private dialog: MatDialog,
@@ -37,21 +37,22 @@ export class UserProfileEditComponent implements OnInit {
   private store: Store<AppState>
   ) {
     this.genders$ = this.sharedService.getTypes('181010384504309277');
-    this.user$ = this.store.select(getUser);
+    this.store.select(getUser)
+    .subscribe(res => this.user = {...res});
   //  this.user.birthdate = new Date(this.user.birthdate.toString());
   }
 
   ngOnInit() {
-    this.user$.subscribe(res => {
-      console.log(res.birthdate);
-      setTimeout(() => {
-        // const birthdate = (this.ntForm.controls['birthdate'].value);
-        // console.log(new Date(birthdate));
-        // return;
-        // this.ntForm.controls['birthdate'].setValue(birthdate.toDate());
-        // console.log(this.ntForm);
-      }, 100);
-    });
+    // this.user$.subscribe(res => {
+    //   console.log(res.birthdate);
+    //   setTimeout(() => {
+    //     // const birthdate = (this.ntForm.controls['birthdate'].value);
+    //     // console.log(new Date(birthdate));
+    //     // return;
+    //     // this.ntForm.controls['birthdate'].setValue(birthdate.toDate());
+    //     // console.log(this.ntForm);
+    //   }, 100);
+    // });
   }
  getErrors(str) {
     return getFormErrors(this.ntForm, str);
@@ -59,7 +60,10 @@ export class UserProfileEditComponent implements OnInit {
     onUpload() {
       const dialogRef = this.dialog.open(UploadFileDialogComponent, {data: {adapter: this.adapter}});
       dialogRef.afterClosed().subscribe(res => {
-        if (res) { this.ntForm.controls['photoFileId'].setValue(res); }
+        if (res) {
+           this.ntForm.controls['photoFileId'].setValue(res);
+           this.user.photoFileId = res;
+          }
         dialogRef.close();
       });
     }

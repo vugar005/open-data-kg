@@ -6,12 +6,14 @@ import { BlogItemComponent } from './blog-list/blog-item/blog-item.component';
 import { BlogRoutes } from './blog.routing';
 import { SharedModule } from '../shared/shared.module';
 import { BlogDetailComponent } from './blog-detail/blog-detail.component';
+import { FooterModule } from '../shared/components/footer/footer.module';
 
 @NgModule({
   imports: [
     CommonModule,
     BlogRoutes,
-    SharedModule
+    SharedModule,
+    FooterModule
   ],
   declarations: [
     BlogComponent,
