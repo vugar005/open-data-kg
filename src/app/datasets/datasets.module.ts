@@ -21,8 +21,6 @@ import { ErrorInterceptor } from '../shared/interceptors/error.interceptor';
 import { TokenInterceptor } from '../auth/token.inteceptor';
 import { APIInterceptor } from '../shared/interceptors/api.interceptor';
 import { DatasetDetailComponent } from './dataset-detail/dataset-detail.component';
-import { DatasetBoxModule } from './dataset-box.module';
-import { StarRatingModule } from '../shared/star-rating.module';
 import { StoreModule } from '@ngrx/store';
 import * as fromStore from './store/dataset.reducer';
 import { DatasetEffects } from './store/dataset.effects';
@@ -31,6 +29,8 @@ import { DatasetFiltersComponent } from './dataset-filters/dataset-filters.compo
 import { ShareDialogComponent } from './share-dialog/share-dialog.component';
 import { GoogleDocPreviewComponent } from './dataset-file-preview/google-doc-preview/google-doc-preview.component';
 import { OtherJsonPreviewComponent } from './dataset-file-preview/other-json-preview/other-json-preview.component';
+import { DatasetBoxModule } from './dataset-box/dataset-box.module';
+import { StarRatingModule } from '../shared/star-rating.module';
 
 @NgModule({
   imports: [

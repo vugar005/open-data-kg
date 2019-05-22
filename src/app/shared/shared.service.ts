@@ -13,7 +13,7 @@ import { BreadCrumb } from './models/breadcrumb.model';
 import { TableModel } from './models/table.model';
 import { Store } from '@ngrx/store';
 import { getHostname } from '../app.utils';
-import { isSuperAdmin } from '../auth/store/auth.selectors';
+import { isSuperAdmin, isUserType } from '../auth/store/auth.selectors';
 @Injectable()
 export class SharedService {
   toastRunning: boolean;
@@ -280,19 +280,20 @@ buildBreadCrumb(route: ActivatedRoute, url: string = '',
    if (lang === 'kg') { lang = 'ky'; }
   return lang || 'en';
 }
-getTableData(url: string, kv: Object = {}, skipAdmin = false): Observable<TableModel> {
-  return this.store.select(isSuperAdmin)
+/** onlyUserType: skip request if user type is not User */
+getTableData(url: string, kv: Object = {}, onlyUserType = false): Observable<TableModel> {
+  return this.store.select(isUserType)
   .pipe(
     take(1),
-    switchMap(superAdmin => {
-     if (!skipAdmin || (skipAdmin && !superAdmin) ) {
+    switchMap(isUsertype => {
+     if (!onlyUserType || (onlyUserType && isUsertype) ) {
        return this.http.post<TableModel>(url, JSON.stringify(kv));
      } else { return of(null); }
-    }),
+    })
   );
 }
-getTableDataRows(url: string, kv: Object = {}, skipAdmin = false) {
-return this.getTableData(url, kv, skipAdmin)
+getTableDataRows(url: string, kv: Object = {}, onlyUserType = false) {
+return this.getTableData(url, kv, onlyUserType)
   .pipe(
     map((table: TableModel) => {
       if (table && table.tbl && table.tbl[0] && table.tbl[0].r) {

@@ -23,12 +23,14 @@ export class ModuleSidebarComponent implements OnInit, AfterViewInit {
   ready = false;
   selectedIndex: string;
   loadedImgCount = 0;
+  title: string;
  constructor(private route: ActivatedRoute, private datasetService: DatasetsService,
   private router: Router,
   private sharedService: SharedService, private changeRef: ChangeDetectorRef) {
    }
 
   ngOnInit() {
+    this.title = this.type === 'category' ? '~category' : '~organization';
     this.getItemList();
     const match  = this.router.url.match(/[0-9]+/);
     if (match) {

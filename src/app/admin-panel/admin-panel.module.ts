@@ -21,6 +21,7 @@ import { TokenInterceptor } from '../auth/token.inteceptor';
 import { APIInterceptor } from '../shared/interceptors/api.interceptor';
 import { LangInterceptor } from '../shared/interceptors/lang.interceptor';
 import { ImgSrcPipeModule } from '../shared/pipes/img-src-pipe.module';
+import { SharedTranslateModule } from '../shared/shared-translate.module';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './SHARED/', '.json');
 }
@@ -30,6 +31,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatMenuModule,
     SharedRbacModule,
     MatDialogModule,
+    SharedTranslateModule,
     TranslateModule.forChild({
       loader: {
         provide: TranslateLoader,

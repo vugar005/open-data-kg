@@ -1,6 +1,6 @@
 <div class="ng-admin-co-header">
   <div class="moduleName">
-    {{'~news' | translate}}
+    {{'~announcements' | translate}}
   </div>
    <div class="ng-admin-actions-template"  >
     <button (click)="table.onPrint()" >{{'~print' | translate}}</button>
@@ -14,7 +14,7 @@
                class="toggle-columns-select"
    >
     <mat-select-trigger>
-      Toggle Columns
+     {{'~toggleColumns' | translate}}
     </mat-select-trigger>
      <div style="margin: 5px 0;display: flex;justify-content: center">
        <button mat-button color="primary" (click)="table?.showAllColumns()">Show all</button>

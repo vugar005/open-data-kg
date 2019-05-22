@@ -1,5 +1,4 @@
 import { HeaderPopupComponent } from './header/header-popup/header-popup.component';
-import { DatasetBoxModule } from './datasets/dataset-box.module';
 import { NgModule, LOCALE_ID, SkipSelf, Optional } from '@angular/core';
 import { SharedService } from './shared/shared.service';
 import { AdminGuard } from './auth/admin.guard';
@@ -54,6 +53,7 @@ import localeRu from '@angular/common/locales/ru';
 import localeKy from '@angular/common/locales/ky';
 import { WaveParticlesModule } from './home/landing-page/wave-particles/wave-particles.module';
 import { FooterModule } from './shared/components/footer/footer.module';
+import { DatasetBoxModule } from './datasets/dataset-box/dataset-box.module';
 registerLocaleData(localeRu);
 registerLocaleData(localeKy);
 @NgModule({
