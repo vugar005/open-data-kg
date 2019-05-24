@@ -1,7 +1,7 @@
         <form #f="ngForm" patch-form [form]="f" [data]="data?.row" class="nt-form" >
             <mat-vertical-stepper [linear]="true" #stepper [selectedIndex]="selectedIndex"  color="accent">
               <mat-step [stepControl]="f" [optional]="true" color="accent">
-                <ng-template matStepLabel>Dataset main info</ng-template>
+                <ng-template matStepLabel>{{'~datasetMainInfo' | translate}}</ng-template>
                 <div class="main-info">
                     <div class="row-1">
                         <div class="left">

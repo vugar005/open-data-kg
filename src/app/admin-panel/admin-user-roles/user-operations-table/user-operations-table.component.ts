@@ -21,7 +21,7 @@ export class UserOperationsTableComponent implements OnInit {
   gridApi: GridApi;
   gridColumnApi: ColumnApi;
   columnDefs: AgGridColumn[] = [];
-  neededColumns = [ 'moduleEn', 'operationEn', 'checkbox'];
+  neededColumns = [ 'module', 'operation', 'checkbox'];
   frameworkComponents;
   gridOptions;
   constructor(private adminService: AdminPanelService, private store: Store<AppState>) { }

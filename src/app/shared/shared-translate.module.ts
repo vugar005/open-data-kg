@@ -5,8 +5,9 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 export function HttpLoaderFactory(http: HttpClient) {
-  const link = environment.production ? '../SHARED/' : './assets/i18n/';
-  return new TranslateHttpLoader(http, link, `.json?random=${Math.random() * 100}`);
+//  const link = 'http://opendata.neuron.az/SHARED/';
+ const link = environment.production ? '../SHARED/' : './assets/i18n/';
+  return new TranslateHttpLoader(http, link, `.json?${Math.random() * 1000}`);
 }
 @NgModule({
  imports: [

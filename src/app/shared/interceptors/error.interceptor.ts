@@ -20,7 +20,9 @@ export class ErrorInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<any> {
     return next.handle(req)
       .pipe(
-       catchError(er => this.handleHttpError(er)),
+       catchError(er => {
+        return this.handleHttpError(er)
+       }),
        map((response) => {
           if (response instanceof HttpResponse) {
             if (response.body && response.body.err && response.body.err.length > 0) {

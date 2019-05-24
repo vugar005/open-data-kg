@@ -9,7 +9,14 @@
   <div class="row">
     <div class="col-12">
       <div class="content-wrapper">
-        <div class="co-title">{{type | titlecase}}</div>
+        <div class="co-title">
+          <ng-container [ngSwitch]="type">
+              <p *ngSwitchCase="'News'">{{'~news' | translate}} </p>
+              <p *ngSwitchCase="'Blog'">{{'~blogs' | translate}} </p>
+              <p *ngSwitchCase="'Announcement'">{{'~announcements' | translate}} </p>
+          </ng-container>
+
+        </div>
         <div class="item-title">
          {{newsItem.title}}
         </div>
@@ -33,7 +40,11 @@
     <div class="col-8 col-xl-6">
       <div class="other-items">
         <div class="other-items__title">
-            Recomended news
+          <ng-container [ngSwitch]="type">
+              <p *ngSwitchCase="'News'">{{'~recommendedNews' | translate}} </p>
+              <p *ngSwitchCase="'Blog'">{{'~recommendedBlogs' | translate}} </p>
+              <p *ngSwitchCase="'Announcement'">{{'~recommendedAnnouncements' | translate}} </p>
+          </ng-container>
         </div>
        <other-item *ngFor="let item of otherItems" [item]="item" routerLink="/home/news/{{item.id}}" [queryParams]="{type: type}"> </other-item>
       </div>

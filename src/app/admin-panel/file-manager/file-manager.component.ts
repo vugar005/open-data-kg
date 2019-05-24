@@ -26,7 +26,10 @@ export class FileManagerComponent implements OnInit {
   }
   onFileAdd() {
    const ref = this.dialog.open(UploadFileDialogComponent, {data: {
-     adapter: this.adapter
+     adapter: this.adapter,
+     data: {
+   //    fileExtensions:
+     }
    }});
     ref.afterClosed().subscribe(res => {
       this.onFileAdded(res);

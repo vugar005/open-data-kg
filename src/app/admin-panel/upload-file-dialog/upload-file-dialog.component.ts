@@ -22,7 +22,7 @@ export class UploadFileDialogComponent implements OnInit {
     aspectRatio: 1.25,
     cropBoxResizable: true
   };
-  constructor( @Inject(MAT_DIALOG_DATA) private data: any,
+  constructor( @Inject(MAT_DIALOG_DATA) public data: any,
                public dialogRef: MatDialogRef<UploadFileDialogComponent>,
                private http: HttpClient) {}
   ngOnInit() {

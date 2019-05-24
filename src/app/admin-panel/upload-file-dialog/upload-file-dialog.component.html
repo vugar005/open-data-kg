@@ -1,6 +1,7 @@
 <ngx-file-picker
-[fileMaxSize]="5"
+
 [adapter]="adapter"
+[fileExtensions]="data?.fileExtensions"
 [uploadType]="'multi'"
 (validationError)="onValidationError($event)"
 (uploadSuccess)="onUploaded($event)"
