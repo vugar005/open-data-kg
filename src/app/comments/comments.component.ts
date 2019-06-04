@@ -21,6 +21,7 @@ export class CommentsComponent implements OnInit {
     private translateService: TranslateService) { }
 
   ngOnInit() {
+    console.log(this.getApi)
   this.getCommentList(this.getApi);
   }
   getCommentList(api: string) {
@@ -29,7 +30,7 @@ export class CommentsComponent implements OnInit {
       }
     };
     body.kv[this.kvKey] = this.id;
-    this.comments$ = this.sharedService.getTableDataRows(api, body, true);
+    this.comments$ = this.sharedService.getTableDataRows(api, body, false);
   }
   onSubmitted(value) {
     this.sharedService.createNotification('sucess', this.translateService.instant('~commentAddSuccess'));

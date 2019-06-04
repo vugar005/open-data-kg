@@ -15,7 +15,7 @@
 
   <div class="format-select">
       <select  name="categoryId" ngModel id="format_select" (ngModelChange)="onSubmit(f)">
-        <option value="" class="default" >{{'~category' | translate}}</option>
+        <option value="" disabled selected>{{'~category' | translate}}</option>
         <option  *ngFor="let type of (catTypes$ | async)" [value]="type?.value">{{type?.label}}</option>
       </select>
       <div class="custom-caret">

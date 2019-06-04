@@ -8,8 +8,12 @@ export interface CommentModel {
   confirmStatusEn: string;
   active: string;
   sharingFileId: string;
-  createPersonLastname: string;
   createPersonFirstname: string;
+  createPersonLastname: string;
+
+  createUserFirstname: string;
+  createUserLastname: string;
+
   datasetNameEn: string;
   createUserMiddlename: string;
   datasetNameRu: string;

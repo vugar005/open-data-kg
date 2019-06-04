@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { Router, ActivatedRoute } from '@angular/router';
 import { BreadCrumb } from 'src/app/shared/models/breadcrumb.model';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'dataset-by-cat',
@@ -13,17 +14,27 @@ import { BreadCrumb } from 'src/app/shared/models/breadcrumb.model';
 export class DatasetByCatComponent {
   faSearch = faSearch;
   breadcrumbs: BreadCrumb[] = [
-    {label: 'Home', url: ''},
-    {label: 'Datasets', url: `/home/datasets/by-category/0`}
+
   ];
   constructor(private router: Router,
-    private datsetService: DatasetsService, private route: ActivatedRoute) {}
+    private datsetService: DatasetsService, private route: ActivatedRoute,
+    private translateService: TranslateService
+    ) {
+      this.initBreadcrumbs();
+    }
   onSubmit(form: NgForm) {
     this.datsetService.datasetFilter$.next(form);
   }
   onNavChanged(e) {
    this.router.navigate([`/home/datasets/by-${e}/0`]);
   }
+  initBreadcrumbs() {
+    this.breadcrumbs = [
+      {label: this.translateService.instant('~home'), url: ''},
+      {label: this.translateService.instant('~datasets'), url: `/home/datasets/by-category/0`}
+    ];
+  }
+
  handleResultSelected(e: any) {
   if (!e.data) {
     this.handleShowAll(e.form);

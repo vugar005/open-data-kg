@@ -206,7 +206,7 @@ export class SharedService {
   private mapType(res): SelectType {
     return {
       value: res.id,
-      label: res.nameEn
+      label: res.name
     };
   }
 
